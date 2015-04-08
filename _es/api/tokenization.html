@@ -21,22 +21,7 @@ title: Tokenizacíon API
 <div class="container">
 <div class="row" style="background-color: #f5f5f5;">
 
-<div id="page-menu-column1">
-&nbsp;<br>
-<div id="home-one-column">
-<p align="center" class="blue-text-13"><b>Manual integración API</b>
-</div>
-
-<div class="lateral-menu pagos" onclick="location.href='http://desarrolladores.payulatam.com/api-pagos/'">Pagos</div>
-<div class="lateral-menu consultas" onclick="location.href='http://desarrolladores.payulatam.com/api-consultas/'">Consultas</div>
-<div class="lateral-menu tokenizacion" onclick="location.href='http://desarrolladores.payulatam.com/api-tokenizacion/'">Tokenización</div>
-<div class="lateral-menu recurring" onclick="location.href='http://desarrolladores.payulatam.com/api-pagos-recurrentes/'">Pagos recurrentes</div>
-<div class="lateral-menu cancel" onclick="location.href='http://desarrolladores.payulatam.com/api-modulo-de-cancelaciones/'">Reembolsos</div>
-<div class="lateral-menu pruebas" onclick="location.href='http://desarrolladores.payulatam.com/api-pruebas-pago/'">Pruebas con la API</div>
-<div class="lateral-menu tablas" onclick="location.href='http://desarrolladores.payulatam.com/api-tablas-variables/'">Tablas de variables</div>
-<div class="lateral-menu info" onclick="location.href='http://desarrolladores.payulatam.com/api-consideraciones-sobre-las-variables/'">Consideraciones</div>
-</div>
-
+{% include sidemenu_api.html %}
 <div id="page-menu-column2">
 <div id="como-funciona" class="payu-fragment">
 &nbsp;<br>
@@ -62,8 +47,12 @@ Para el uso de las funcionalidades del producto de Tokenización desde el API, d
 <span class="grey-text-13">Mediante esta funcionalidad puedes registrar los datos de la tarjeta de crédito de un cliente y así obtener un código secuencial token.</span>
 
 <!-- TABS REGISTRO INDIVIDUAL -->
-[tabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[tab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
 Ejemplo petición:
 <pre>
 {
@@ -104,7 +93,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[tab title="XML"]
+<div id="squelch-taas-tab-content-2">
 Ejemplo petición:
 <pre>
 &lt;request&gt;
@@ -161,8 +150,12 @@ Para tokenizar tarjetas de crédito masivamente debes crear un archivo con forma
 <p align="center"><img src="/images/tokenizacion-masivo.jpg" border="0"></p>
 
 <!-- TABS REGISTRO MASIVO -->
-[tabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[tab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
 Ejemplo petición:
 <pre>
 {
@@ -187,7 +180,7 @@ Ejemplo respuesta:
 &nbsp;<br>
 Debes implementar una funcionalidad que tome el contenido del archivo y lo pase a <b>base 64</b>, el resultado de este procedimiento es el que se envía en el parámetro <b>&lt;contentFile&gt;</b>.
 </div>
-[tab title="XML"]
+<div id="squelch-taas-tab-content-2">
 Ejemplo petición:
 <pre>
 &lt;request&gt;
@@ -226,11 +219,21 @@ Debes implementar una funcionalidad que tome el contenido del archivo y lo pase 
 <!-- TABS COBRO INDIVIDUAL CON TOKEN -->
 
 
-[tabs][tab title="Brasil"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+	<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Brazil</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Colombia</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">México</a></li>
+	</ul>
+<div id="squelch-taas-tab-content-1">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización)</span><br>
 <span class="grey-text-13">Franquicias disponibles: Visa, Mastercard, Amex, Diners y ELO</span>
-[subtabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[subtab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 {
@@ -312,7 +315,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[subtab title="XML"]
+<div id="squelch-taas-tab-content-1-2">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 &lt;request&gt;
@@ -393,11 +396,15 @@ Ejemplo respuesta:
 </div>
 &nbsp;<br>
 
-[tab title="Colombia"]
+<div id="squelch-taas-tab-content-2">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span><br>
 <span class="grey-text-13">Franquicias disponibles: Visa, Mastercard, Amex y Diners</span><br>
-[subtabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[subtab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 {
@@ -505,7 +512,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[subtab title="XML"]
+<div id="squelch-taas-tab-content-1-2">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 &lt;request&gt;
@@ -611,11 +618,15 @@ Ejemplo respuesta:
 </div>
 </div>
 
-[tab title="México"]
+<div id="squelch-taas-tab-content-3">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span><br>
 <span class="grey-text-13">Franquicias disponibles: Visa y Mastercard (AMEX aún no se encuentra disponible para procesar sin validar el código de seguridad).</span><br>
-[subtabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[subtab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 {
@@ -724,7 +735,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[subtab title="XML"]
+<div id="squelch-taas-tab-content-1-2">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 &lt;request&gt;
@@ -836,12 +847,21 @@ Ejemplo respuesta:
 <div class="note1">Nota: Para los siguientes países no es posible procesar transacciones sin validar el código de seguridad cvv2. Es necesario envíar el parámetro <span class="highlight-txt">securityCode</span> en la petición.</div>
 
 
-[tabs title="" disabled="false" collapsible="false" active="0" event="click"]
-[tab title="Argentina"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+	<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Argentina</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">México</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Panamá</a></li>
+	</ul>
+<div id="squelch-taas-tab-content-1">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span><br>
 <span class="grey-text-13">Franquicias disponibles: Visa, Mastercard, Amex, T. Naranja, T. Shopping, Cabal, Argencard y Cencosud</span>
-[subtabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[subtab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 {
@@ -952,7 +972,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[subtab title="XML"]
+<div id="squelch-taas-tab-content-1-2">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 &lt;request&gt;
@@ -1064,11 +1084,15 @@ Ejemplo respuesta:
 
 
 
-[tab title="México"]
+<div id="squelch-taas-tab-content-2">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span><br>
 <span class="grey-text-13">Franquicias disponibles: Amex</span><br>
-[subtabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[subtab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 {
@@ -1180,7 +1204,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[subtab title="XML"]
+<div id="squelch-taas-tab-content-1-2">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 &lt;request&gt;
@@ -1288,11 +1312,15 @@ Ejemplo respuesta:
 </div>
 </div></div>
 
-[tab title="Panamá"]
+<div id="squelch-taas-tab-content-3">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span><br>
 <span class="grey-text-13">Franquicias disponibles: Visa y Mastercard</span><br>
-[subtabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[subtab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 {
@@ -1403,7 +1431,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[subtab title="XML"]
+<div id="squelch-taas-tab-content-1-2">
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 &lt;request&gt;
@@ -1535,8 +1563,12 @@ Para esta funcionalidad debes crear un archivo con formato CSV bajo las siguient
 <p align="center"><img src="/images/tokenizacion-cobro-masivo.jpg" border="0"></p>
 
 <!-- TABS COBROS MASIVO CON TOKEN -->
-[tabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[tab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
 Ejemplo petición:
 <pre>
 {
@@ -1561,7 +1593,7 @@ Ejemplo respuesta:
 &nbsp;<br>
 Debes implementar una funcionalidad que tome el contenido del archivo y lo pase a <b>base 64</b>, el resultado de este procedimiento es el que se envía en el parámetro <b>&lt;contentFile&gt;</b>.
 </div>
-[tab title="XML"]
+<div id="squelch-taas-tab-content-2">
 Ejemplo petición:
 <pre>
 &lt;request&gt;
@@ -1598,8 +1630,12 @@ Debes implementar una funcionalidad que tome el contenido del archivo y lo pase 
 <span class="grey-text-13">Con esta funcionalidad puedes realizar la consulta de los Token de tarjetas de crédito previamente.</span>
 
 <!-- TABS CONSULTA TOKEN -->
-[tabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[tab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
 Ejemplo petición:
 <pre>
 {
@@ -1639,7 +1675,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[tab title="XML"]
+<div id="squelch-taas-tab-content-2">
 Ejemplo petición:
 <pre>
 &lt;request&gt;
@@ -1687,8 +1723,12 @@ Ejemplo respuesta:
 <span class="grey-text-13">Esta funcionalidad te permite eliminar un registro de tarjeta de crédito tokenizada.</span>
 
 <!-- TABS ELIMINACIÓN DE TOKEN -->
-[tabs title="" disabled="false" collapsible="true" active="0" event="click"]
-[tab title="JSON"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
 Ejemplo petición:
 <pre>
 {
@@ -1725,7 +1765,7 @@ Ejemplo respuesta:
 }
 </pre>
 </div>
-[tab title="XML"]
+<div id="squelch-taas-tab-content-2">
 Ejemplo petición:
 <pre>
 &lt;request&gt;

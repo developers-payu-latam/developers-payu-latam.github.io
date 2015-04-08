@@ -1,0 +1,2620 @@
+---
+layout: default
+title: Tokenizacíon API
+---
+
+<div>
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">INTEGRACIÓN API - <span style="color: #009cdd;">PAGOS RECURRENTES</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#como-funciona">¿Cómo funciona?</a></li>
+	<li class="leaf"><a href="#plan">Plan</a></li>
+	<li class="leaf"><a href="#cliente">Cliente</a></li>
+	<li class="leaf"><a href="#tarjeta-credito">Tarjeta de crédito</a></li>
+	<li class="leaf"><a href="#suscripcion">Suscripción</a></li>
+	<li class="leaf"><a href="#cargos-adicionales">Cargos adicionales</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api.html %}
+
+<div id="page-menu-column2">
+<div id="como-funciona" class="payu-fragment">
+&nbsp;<br>
+<span class="grey-text-13">Los pagos recurrentes son cobros automatizados que se realizan periódicamente (diario, mensual, anual), de aquellos cargos por consumo de productos o servicios como membresías, suscripciones, pólizas o recibos con valor fijo; que previamente fueron autorizados por el cliente.</span>
+&nbsp;<br>
+<p align="center"><img src="/images/pagos-recurrentes-1.jpg" alt="Pagos recurrentes" border="0"></p>
+&nbsp;<br>
+<div class="info-icon">Tener en cuenta:</div>
+Con el fin de garantizar el correcto uso del sistema, todas las peticiones deben contener el encabezado HTTP de autorización con las credenciales del comercio, de manera que pueda identificarse quién está realizando la petición. Para esta implementación se usará autorización básica, en donde se envía el nombre de usuario (API Login) y contraseña (API Key). <br />
+&nbsp;<br>
+Estos son los datos que deben ser enviados en el encabezado de la petición:
+Los datos pasan un cifrado base 64 con formato: <span class="highlight-txt">API Login : API Key</span>
+&nbsp;<br>
+<p>Ejemplo, si el API Login es <span class="highlight-txt">"0123ABCDEF"</span> y API Key es <span class="highlight-txt">"A1B2C3D4E5"</span>, entonces el encabezado de autorización sería el siguiente:</p>
+&nbsp;<br>
+Authorization: Basic <span class="highlight-txt">&lt;base64  of&nbsp;0123ABCDEF:A1B2C3D4E5&gt;</span>  
+Authorization: Basic <span class="highlight-txt">MDEyM0FCQ0RFRjpBMUIyQzNENEU1</span>
+&nbsp;<br>
+<pre>POST /payments-api/4.0/service.cgi HTTP/1.1
+Host: <span class="string">stg.api.payulatam.com</span>
+Content-Type: <span class="string">application/json; charset=utf-8</span>
+Accept: <span class="string">application/json</span>
+Accept-language: <span class="string">es</span>
+Content-Length: <span class="string">length</span>
+Authorization : <span class="string">Basic MDEyM0FCQ0RFRjpBMUIyQzNENEU1</span></pre>
+&nbsp;<br>
+Apuntando a las correspondientes URLs:
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click"><ul><li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">API</a></li></ul><div id="squelch-taas-tab-content-1">
+<span class="grey-text-13"><b>Pruebas</b>: <a href="https://stg.api.payulatam.com/payments-api/" target="_blank">https://stg.api.payulatam.com/payments-api/</a><br>
+<b>Producción</b>: <a href="https://api.payulatam.com/payments-api/" target="_blank">https://api.payulatam.com/payments-api/</a></span>
+</div></div>
+
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Los métodos disponibles para los pagos recurrentes son: <b>PLAN</b>, <b>CLIENTE</b>, <b>TARJETA DE CRÉDITO</b>, <b>SUSCRIPCIÓN</b> y <b>CARGOS ADICIONALES</b>. A continuación encontrarás la descripción de cada uno.</span>
+</div>
+<div id="plan" class="payu-fragment">
+&nbsp;<br>
+<div class="paso1"><span class="subtitle-page">PLAN</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Mediante esta funcionalidad puedes registrar los datos de la tarjeta de crédito de un cliente y así obtener un código secuencial token.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans</td>
+		<td>POST</td>
+		<td>Creación de un nuevo plan para suscripciones asociado al comercio.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans/{planCode}</td>
+		<td>PUT</td>
+		<td>Actualizar la información de un plan para suscripciones.<br>
+		{planCode} : Código de identificación del plan para el comercio.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans/{planCode}</td>
+		<td>GET</td>
+		<td>Consultar toda la información de un plan para suscripciones asociado al comercio.<br>
+		{planCode} : Código de identificación del plan para el comercio.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans/{planCode}</td>
+		<td>DELETE</td>
+		<td>Eliminar todo un plan para suscripciones asociado al comercio.<br>
+		{planCode} : Código de identificación del plan para el comercio.</td>
+	</tr>
+</table>
+
+<!-- TABS PLAN -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"accountId": "500538",
+"planCode": "sample-plan-code-001",
+"description": "Sample Plan 001",
+"interval": "MONTH",
+"intervalCount": "1",
+"maxPaymentsAllowed": "12",
+"paymentAttemptsDelay": "1",
+"additionalValues": [
+{
+"name": "PLAN_VALUE",
+"value": "20000",
+"currency": "COP"
+},
+{
+"name": "PLAN_TAX",
+"value": "1600",
+"currency": "COP"
+},
+{
+"name": "PLAN_TAX_RETURN_BASE",
+"value": "8400",
+"currency": "COP"
+}
+]
+} 
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+   "id": "b3d406d0-abd4-473c-a557-25aa81ff9032",
+   "planCode": "sample-plan-code-001",
+   "description": "Sample Plan 001",
+   "accountId": "500538",
+   "intervalCount": 1,
+   "interval": "MONTH",
+   "maxPaymentsAllowed": 12,
+   "maxPaymentAttempts": 0,
+   "paymentAttemptsDelay": 1,
+   "maxPendingPayments": 0,
+   "trialDays": 0,
+   "additionalValues":    [
+            {
+         "name": "PLAN_VALUE",
+         "value": 20000,
+         "currency": "COP"
+      },
+            {
+         "name": "PLAN_TAX",
+         "value": 1600,
+         "currency": "COP"
+      },
+            {
+         "name": "PLAN_TAX_RETURN_BASE",
+         "value": 8400,
+         "currency": "COP"
+      }
+   ]
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;plan&gt;
+&lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+&lt;description&gt;Sample Plan 001&lt;/description&gt;
+&lt;accountId&gt;500538&lt;/accountId&gt;
+&lt;intervalCount&gt;1&lt;/intervalCount&gt;
+&lt;interval&gt;MONTH&lt;/interval&gt;
+&lt;maxPaymentsAllowed&gt;12&lt;/maxPaymentsAllowed&gt;
+&lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+&lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+&lt;maxPendingPayments&gt;0&lt;/maxPendingPayments&gt;
+&lt;trialDays&gt;30&lt;/trialDays&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;10000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_TAX&lt;/name&gt;
+&lt;value&gt;1600&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+&lt;value&gt;8400&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/plan&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;plan&gt;
+   &lt;id&gt;0b63bd6d-9a2b-4c40-a314-a70a6bae27e3&lt;/id&gt;
+   &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+   &lt;description&gt;Sample Plan 001&lt;/description&gt;
+   &lt;accountId&gt;500538&lt;/accountId&gt;
+   &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+   &lt;interval&gt;MONTH&lt;/interval&gt;
+   &lt;maxPaymentsAllowed&gt;12&lt;/maxPaymentsAllowed&gt;
+   &lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+   &lt;maxPendingPayments&gt;0&lt;/maxPendingPayments&gt;
+   &lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+   &lt;trialDays&gt;30&lt;/trialDays&gt;
+   &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+         &lt;value&gt;10000&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;PLAN_TAX&lt;/name&gt;
+         &lt;value&gt;1600&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+         &lt;value&gt;8400&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+   &lt;/additionalValues&gt;
+&lt;/plan&gt;
+</pre>
+</div>
+</div>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"planCode": "sample-plan-code-001",
+"description": "New Sample Plan 001",
+"paymentAttemptsDelay": "3",
+"maxPendingPayments": "1",
+"maxPaymentAttempts": "1",
+"additionalValues": [
+{
+"name": "PLAN_VALUE",
+"value": "10000",
+"currency": "COP"
+},
+{
+"name": "PLAN_TAX",
+"value": "0",
+"currency": "COP"
+},
+{
+"name": "PLAN_TAX_RETURN_BASE",
+"value": "0",
+"currency": "COP"
+}
+]
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+   "id": "6b104e86-d6ca-41b5-ae39-834a55ed1565",
+   "planCode": "sample-plan-code-001",
+   "description": "New Sample Plan 001",
+   "accountId": "500538",
+   "intervalCount": 1,
+   "interval": "MONTH",
+   "maxPaymentsAllowed": 12,
+   "maxPaymentAttempts": 1,
+   "paymentAttemptsDelay": 3,
+   "maxPendingPayments": 1,
+   "trialDays": 0,
+   "additionalValues":    [
+            {
+         "name": "PLAN_VALUE",
+         "value": 10000,
+         "currency": "COP"
+      },
+            {
+         "name": "PLAN_TAX",
+         "value": 0,
+         "currency": "COP"
+      },
+            {
+         "name": "PLAN_TAX_RETURN_BASE",
+         "value": 0,
+         "currency": "COP"
+      }
+   ]
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;plan&gt;
+&lt;description&gt;New Sample Plan 001&lt;/description&gt;
+&lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+&lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+&lt;maxPendingPayments&gt;1&lt;/maxPendingPayments&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;10000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_TAX&lt;/name&gt;
+&lt;value&gt;0&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+&lt;value&gt;0&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/plan&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;plan&gt;
+   &lt;id&gt;6b104e86-d6ca-41b5-ae39-834a55ed1565&lt;/id&gt;
+   &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+   &lt;description&gt;New Sample Plan 001&lt;/description&gt;
+   &lt;accountId&gt;500538&lt;/accountId&gt;
+   &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+   &lt;interval&gt;MONTH&lt;/interval&gt;
+   &lt;maxPaymentsAllowed&gt;12&lt;/maxPaymentsAllowed&gt;
+   &lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+   &lt;maxPendingPayments&gt;1&lt;/maxPendingPayments&gt;
+   &lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+   &lt;trialDays&gt;0&lt;/trialDays&gt;
+   &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+         &lt;value&gt;10000&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;PLAN_TAX&lt;/name&gt;
+         &lt;value&gt;0&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+         &lt;value&gt;0&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+   &lt;/additionalValues&gt;
+&lt;/plan&gt;
+</pre>
+</div>
+</div>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/plans/sample-plan-code-001
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+"id": "2a852bf2-ce67-4920-b9a6-66af2c68b4ae",
+"planCode": "sample-plan-code-001",
+"description": "Sample Plan 001",
+"accountId": 1,
+"intervalCount": 1,
+"interval": "MONTH",
+"maxPaymentsAllowed": 12,
+"maxPaymentAttempts": 3,
+"paymentAttemptsDelay": 1,
+"maxPendingPayments": 0,
+"trialDays": 30,
+"additionalValues": [
+{
+"name": "PLAN_TAX",
+"value": 1600,
+"currency": "COP"
+},
+{
+"name": "PLAN_VALUE",
+"value": 20000,
+"currency": "COP"
+}
+]
+} 
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/plans/sample-plan-code-001
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;plan&gt;
+&lt;id&gt;2a852bf2-ce67-4920-b9a6-66af2c68b4ae&lt;/id&gt;
+&lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+&lt;description&gt;Sample Plan 001&lt;/description&gt;
+&lt;accountId&gt;1&lt;/accountId&gt;
+&lt;intervalCount&gt;1&lt;/intervalCount&gt;
+&lt;interval&gt;MONTH&lt;/interval&gt;
+&lt;maxPaymentsAllowed&gt;12&lt;/maxPaymentsAllowed&gt;
+&lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+&lt;maxPendingPayments&gt;0&lt;/maxPendingPayments&gt;
+&lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+&lt;trialDays&gt;30&lt;/trialDays&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;20000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/plan&gt;
+</pre>
+</div>
+</div>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">XML / JSON</a></li></ul><div id="squelch-taas-tab-content-1">
+
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/plans/sample-plan-code-001
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+HTTP STATUS: 200 OK
+</pre>
+</div>
+</div>
+<!-- FIN TABS PLAN -->
+</div>
+
+&nbsp;<br>
+<div id="cliente" class="payu-fragment">
+&nbsp;<br>
+<div class="paso2"><span class="subtitle-page">CLIENTE</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Un cliente es la unidad que identifica quien será el beneficiario de un producto o servicio prestado y que se encuentra asociado a un plan de pagos recurrentes.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/</td>
+		<td>POST</td>
+		<td>Creación de un cliente en el sistema.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerId}</td>
+		<td>PUT</td>
+		<td>Actualiza la información de un cliente en el sistema.<br>
+		{customerId} : Identificador del cliente que se desea actualizar.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerId}</td>
+		<td>GET</td>
+		<td>Consulta la información relacionada con el cliente<br>
+		{customerId} : Identificador del cliente del cual se desea conocer la información asociada.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerId}</td>
+		<td>DELETE</td>
+		<td>Elimina un usuario del sistema.<br>
+		{customerId} : Identificador del cliente que se desea eliminar.</td>
+	</tr>
+</table>
+
+<!-- TABS CLIENTE -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+{
+"fullName": "Pedro E. Perez",
+"email": "pperez@payulatam.com"
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"id": "6ahxar252",
+"fullName": "Pedro E. Perez",
+"email": "pperez@payulatam.com"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+&lt;customer&gt;
+&lt;fullName&gt;Pedro E. Perez&lt;/fullName&gt;
+&lt;email&gt;pperez@payulatam.com&lt;/email&gt;
+&lt;/customer&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;customer&gt;
+&lt;id&gt;6ahxar252&lt;/id&gt;
+&lt;fullName&gt;Pedro E. Pérez&lt;/fullName&gt;
+&lt;email&gt;pperez@payulatam.com&lt;/email&gt;
+&lt;/customer&gt;
+</pre>
+</div>
+</div>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+{
+"fullName": "Pedro E. Perez",
+"email": "pperez@payulatam.com"
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"id": "6ahxar252",
+"fullName": "Pedro E. Perez",
+"email": "pperez@payulatam.com"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+&lt;customer&gt;
+&lt;fullName&gt;Pedro E. Perez&lt;/fullName&gt;
+&lt;email&gt;pperez@payulatam.com&lt;/email&gt;
+&lt;/customer&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;customer&gt;
+&lt;id&gt;6ahxar252&lt;/id&gt;
+&lt;fullName&gt;Pedro E. Pérez&lt;/fullName&gt;
+&lt;email&gt;pperez@payulatam.com&lt;/email&gt;
+&lt;/customer&gt;
+</pre>
+</div>
+</div>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/customers/2mkls9xekm
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+"id": "2mkls9xekm",
+"fullName": "Pedro Perez",
+"email": "pperez@payulatam.com",
+"creditCards": [
+{
+"token": "da2224a9-58b7-482a-9866-199de911c23f",
+"customerId": "2mkls9xekm",
+"number": "************4242",
+"name": "Usuario Prueba",
+"type": "VISA",
+"address": {
+"line1": "Street 93B",
+"line2": "17 25",
+"line3": "Office 301",
+"city": "Bogota",
+"country": "CO",
+"postalCode": "00000",
+"phone": "300300300"
+}
+}
+],
+"subscriptions": [
+{
+"id": "2mlhk3qxji",
+"quantity": "1",
+"installments": "1",
+"currentPeriodStart": "2013-08-30T10:46:41.477-05:00",
+"currentPeriodEnd": "2013-09-29T10:46:41.477-05:00",
+"plan": {
+"id": "414215a2-c990-4525-ba84-072181988d09",
+"planCode": "PLAN-REST-16",
+"description": "Plan rest test",
+"accountId": "1",
+"intervalCount": "1",
+"interval": "MONTH",
+"additionalValues": [
+{
+"name": "PLAN_VALUE",
+"value": "20000",
+"currency": "COP"
+}
+]
+}
+}
+]
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/customers/2mkls9xekm
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;customer&gt;
+&lt;id&gt;2mkls9xekm&lt;/id&gt;
+&lt;fullName&gt;Pedro Perez&lt;/fullName&gt;
+&lt;email&gt;pperez@payulatam.com&lt;/email&gt;
+&lt;creditCards&gt;
+&lt;creditCard&gt;
+&lt;token&gt;da2224a9-58b7-482a-9866-199de911c23f&lt;/token&gt;
+&lt;customerId&gt;2mkls9xekm&lt;/customerId&gt;
+&lt;number&gt;************4242&lt;/number&gt;
+&lt;name&gt;Usuario Prueba&lt;/name&gt;
+&lt;type&gt;VISA&lt;/type&gt;
+&lt;address&gt;
+&lt;line1&gt;Calle 93B&lt;/line1&gt;
+&lt;line2&gt;17 25&lt;/line2&gt;
+&lt;line3&gt;Oficina 301&lt;/line3&gt;
+&lt;city&gt;Bogota&lt;/city&gt;
+&lt;country&gt;CO&lt;/country&gt;
+&lt;postalCode&gt;00000&lt;/postalCode&gt;
+&lt;phone&gt;300300300&lt;/phone&gt;
+&lt;/address&gt;
+&lt;/creditCard&gt;
+&lt;/creditCards&gt;
+&lt;subscriptions&gt;
+&lt;subscription&gt;
+&lt;id&gt;2mlhk3qxji&lt;/id&gt;
+&lt;quantity&gt;1&lt;/quantity&gt;
+&lt;installments&gt;1&lt;/installments&gt;
+&lt;currentPeriodStart&gt;2013-08-30T10:46:41.477-05:00&lt;/currentPeriodStart&gt;
+&lt;currentPeriodEnd&gt;2013-09-29T10:46:41.477-05:00&lt;/currentPeriodEnd&gt;
+&lt;plan&gt;
+&lt;id&gt;414215a2-c990-4525-ba84-072181988d09&lt;/id&gt;
+&lt;planCode&gt;PLAN-REST-16&lt;/planCode&gt;
+&lt;description&gt;Plan rest test&lt;/description&gt;
+&lt;accountId&gt;1&lt;/accountId&gt;
+&lt;intervalCount&gt;1&lt;/intervalCount&gt;
+&lt;interval&gt;MONTH&lt;/interval&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;20000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/plan&gt;
+&lt;/subscription&gt;
+&lt;/subscriptions&gt;
+&lt;/customer&gt;
+</pre>
+</div>
+</div>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/customers/7wp1r0atl
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"description": "El cliente [7wp1r0atl] ha sido eliminado."
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/customers/7wp1r0atl
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;response&gt;
+&lt;description&gt;El cliente [7wp1r0atl] ha sido eliminado&lt;/description&gt;
+&lt;/response&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS CLIENTE -->
+</div>
+&nbsp;<br>
+<div id="tarjeta-credito" class="payu-fragment">
+&nbsp;<br>
+<div class="paso3"><span class="subtitle-page">TARJETA DE CRÉDITO</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Es el medio de pago con el cual se relaciona un Plan y un Pagador, se encuentra compuesto por el número de tarjeta de crédito (el cual será tokenizado para almacenar los datos de forma segura), la fecha de vencimiento de la tarjeta y algunos datos adicionales de dirección.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerID}/creditCards</td>
+		<td>POST</td>
+		<td>Creación de una tarjeta de crédito (Token) y asociarla a un usuario.<br>
+		{customerId} : Identificador del cliente al cual se le va a asociar el token</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/creditCards/{creditCardId}</td>
+		<td>PUT</td>
+		<td>Actualizar la información de un token.<br>
+		{creditCardId} : Identificador del token que se desea actualizar.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/creditCards/{creditCardId}</td>
+		<td>GET</td>
+		<td>Consultar la información de una tarjeta de crédito (Token) dato su identificador.<br>
+		{creditCardId} : Token de la tarjeta de crédito que desea consultarse</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerID}/creditCards/{creditCardId}</td>
+		<td>DELETE</td>
+		<td>Eliminar una tarjeta de crédito (Token) asociado a un usuario.<br>
+		{customerId} : Identificador del cliente al cual se le va a eliminar el token<br>
+		{creditCardId} : Identificador del token que se desea eliminar</td>
+	</tr>
+</table>
+
+<!-- TABS TARJETA DE CREDITO -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"name": "Sample User Name",
+"document": "1020304050",
+"number": "4242424242424242",
+"expMonth": "01",
+"expYear": "2018",
+"type": "VISA",
+"address": {
+"line1": "Address Name",
+"line2": "17 25",
+"line3": "Of 301",
+"postalCode": "00000",
+"city": "City Name",
+"state": "State Name",
+"country": "CO",
+"phone": "300300300"
+}
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"token": "8186ca42-2f69-417b-94a0-208bd8e089af"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;creditCard&gt;
+&lt;name&gt;Sample User Name&lt;/name&gt;
+&lt;document&gt;1020304050&lt;/document&gt;
+&lt;number&gt;4242424242424242&lt;/number&gt;
+&lt;expMonth&gt;01&lt;/expMonth&gt;
+&lt;expYear&gt;2018&lt;/expYear&gt;
+&lt;type&gt;VISA&lt;/type&gt;
+&lt;address&gt;
+&lt;line1&gt;Address Name&lt;/line1&gt;
+&lt;line2&gt;17 25&lt;/line2&gt;
+&lt;line3&gt;Of 301&lt;/line3&gt;
+&lt;postalCode&gt;00000&lt;/postalCode&gt;
+&lt;city&gt;City Name&lt;/city&gt;
+&lt;state&gt;State Name&lt;/state&gt;
+&lt;country&gt;CO&lt;/country&gt;
+&lt;phone&gt;300300300&lt;/phone&gt;
+&lt;/address&gt;
+&lt;/creditCard&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;creditCard&gt;
+&lt;token&gt;8186ca42-2f69-417b-94a0-208bd8e089af&lt;/token&gt;
+&lt;/creditCard&gt;
+</pre>
+</div>
+</div>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"expMonth": "12",
+"expYear": "2016",
+"name": "Sample user name",
+"document": "65858645",
+"address": {
+"line1": "Sample Address",
+"line2": "Cll 93 B",
+"line3": "Ofic. 301",
+"postalCode": "00000",
+"city": "city",
+"country": "CO",
+"state": "state",
+"phone": "2266758"
+}
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+   "token": "a068e980-a6d7-4a19-b549-75c04f39ec22",
+   "customerId": "eab38z33hh2",
+   "number": "424242******4242",
+   "type": "VISA",
+   "name": "Sample user name",
+   "document": "65858645",
+   "address":    {
+      "line1": "Sample Address",
+      "line2": "Cll 93 B",
+      "line3": "Ofic. 301",
+      "city": "city",
+      "state": "state",
+      "country": "CO",
+      "postalCode": "00000",
+      "phone": "2266758"
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;creditCard&gt;
+&lt;expMonth&gt;12&lt;/expMonth&gt;
+&lt;expYear&gt;2016&lt;/expYear&gt;
+&lt;name&gt;Sample user name&lt;/name&gt;
+&lt;document&gt;65858645&lt;/document&gt;
+&lt;address&gt;
+&lt;line1&gt;Sample Address&lt;/line1&gt;
+&lt;line2&gt;Cll 93 B&lt;/line2&gt;
+&lt;line3&gt;Ofic. 301&lt;/line3&gt;
+&lt;postalCode&gt;00000&lt;/postalCode&gt;
+&lt;city&gt;city&lt;/city&gt;
+&lt;country&gt;CO&lt;/country&gt;
+&lt;state&gt;state&lt;/state&gt;
+&lt;phone&gt;2266758&lt;/phone&gt;
+&lt;/address&gt;
+&lt;/creditCard&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;creditCard&gt;
+   &lt;token&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/token&gt;
+   &lt;customerId&gt;eab38z33hh2&lt;/customerId&gt;
+   &lt;number&gt;424242******4242&lt;/number&gt;
+   &lt;name&gt;Sample user names&lt;/name&gt;
+   &lt;document&gt;65858645&lt;/document&gt;
+   &lt;type&gt;VISA&lt;/type&gt;
+   &lt;address&gt;
+      &lt;line1&gt;Sample Addresss&lt;/line1&gt;
+      &lt;line2&gt;Cll 93 B&lt;/line2&gt;
+      &lt;line3&gt;Ofic. 301&lt;/line3&gt;
+      &lt;city&gt;city&lt;/city&gt;
+      &lt;state&gt;state&lt;/state&gt;
+      &lt;country&gt;CO&lt;/country&gt;
+      &lt;postalCode&gt;00000&lt;/postalCode&gt;
+      &lt;phone&gt;2266758&lt;/phone&gt;
+   &lt;/address&gt;
+&lt;/creditCard&gt;
+</pre>
+</div>
+</div>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/customers/2mkls9xekm
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+"token": "256f8e39-e37c-4ff3-9b5f-63937ee5c69c",
+"customerId": "5whjhimjtpn",
+"number": "424242******4242",
+"type": "VISA",
+"name": "Sample User Name",
+"document": "1020304050",
+"address":    {
+"line1": "Address Name",
+"line2": "17 25",
+"line3": "Of 301",
+"city": "City Name",
+"state": "State Name",
+"country": "CO",
+"postalCode": "00000",
+"phone": "300300300"
+}
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/creditCards/{creditCardId}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;creditCard&gt;
+&lt;token&gt;8186ca42-2f69-417b-94a0-208bd8e089af&lt;/token&gt;
+&lt;customerId&gt;11sgnt8s19&lt;/customerId&gt;
+&lt;number&gt;************4242&lt;/number&gt;
+&lt;name&gt;Sample User Name&lt;/name&gt;
+&lt;type&gt;VISA&lt;/type&gt;
+&lt;address&gt;
+&lt;line1&gt;Address Name&lt;/line1&gt;
+&lt;line2&gt;17 25&lt;/line2&gt;
+&lt;line3&gt;Of 301&lt;/line3&gt;
+&lt;city&gt;City Name&lt;/city&gt;
+&lt;state&gt;State Name&lt;/state&gt;
+&lt;country&gt;CO&lt;/country&gt;
+&lt;postalCode&gt;00000&lt;/postalCode&gt;
+&lt;phone&gt;300300300&lt;/phone&gt;
+&lt;/address&gt;
+&lt;/creditCard&gt;
+</pre>
+</div>
+</div>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/rest/v4.3/customers/{customerID}/creditCards/{creditCardId}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"description": "La tarjeta de crédito f17e9c5c-c414-4dc0-a145-5b0647f7dbf8 se ha eliminado exitosamente" 
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/rest/v4.3/customers/{customerID}/creditCards/{creditCardId}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;response&gt;
+&lt;description&gt;La tarjeta de crédito f17e9c5c-c414-4dc0-a145-5b0647f7dbf8 se ha eliminado exitosamente&lt;/description&gt;
+&lt;/response&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS TARJETA DE CREDITO -->
+</div>
+
+&nbsp;<br>
+<div id="suscripcion" class="payu-fragment">
+&nbsp;<br>
+<div class="paso4"><span class="subtitle-page">SUSCRIPCIÓN</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Una suscripción es la relación entre un plan de pagos, un pagador y una tarjeta de crédito y es el elemento con el que se controla la ejecución de los cobros correspondientes.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/</td>
+		<td>POST</td>
+		<td>Creación de una nueva suscripción de un cliente a un plan.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}</td>
+		<td>PUT</td>
+		<td>Actualizar la información asociada a la suscripción indicada. En este momento sólo es posible actualizar el token de la tarjeta de crédito a la cual se realiza el cargo de la suscripción.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}</td>
+		<td>GET</td>
+		<td>Consultar la información básica asociada a la suscripción indicada.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}</td>
+		<td>DELETE</td>
+		<td>Eliminar la suscripción, es decir la relación del cliente al plan.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+</table>
+
+<!-- TABS SUSCRIPCION -->
+
+<!-- SUSCRIPCION CREACION -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+CON TODOS LOS ELEMENTOS NUEVOS</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"quantity": "1",
+"installments": "1",
+"trialDays": "15",
+"customer": {
+"fullName": "Pedro Perez",
+"email": "pperez@payulatam.com",
+"creditCards": [
+{
+"name": "Pedro Perez",
+"document": "101010123",
+"number": "4242424242424242",
+"expMonth": "01",
+"expYear": "2018",
+"type": "VISA",
+"address": {
+"line1": "Address Name",
+"line2": "17 25",
+"line3": "Of 301",
+"postalCode": "00000",
+"city": "City Name",
+"state": "State Name",
+"country": "CO",
+"phone": "300300300"
+}
+}
+]
+},
+"plan": {
+"planCode": "sample-plan-code-001",
+"description": "Sample Plan 001",
+"accountId": "500538",
+"intervalCount": "1",
+"interval": "MONTH",
+"maxPaymentsAllowed": "12",
+"maxPaymentAttempts": "3",
+"paymentAttemptsDelay": "1",
+"maxPendingPayments": "1",
+"trialDays": "30",
+"additionalValues": [
+{
+"name": "PLAN_TAX",
+"value": 1600,
+"currency": "COP"
+},
+{
+"name": "PLAN_VALUE",
+"value": 10000,
+"currency": "COP"
+}
+,
+{
+"name": "PLAN_TAX_RETURN_BASE",
+"value": 8400,
+"currency": "COP"
+}
+]
+}
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+   "id": "563cbd0o54z",
+   "plan":    {
+      "id": "145ad747-adeb-43db-80c0-447c8f7ad8b4",
+      "planCode": "sample-plan-code-001",
+      "description": "Sample Plan 001",
+      "accountId": "500538",
+      "intervalCount": 1,
+      "interval": "MONTH",
+      "additionalValues":       [
+                  {
+            "name": "PLAN_VALUE",
+            "value": 10000,
+            "currency": "COP"
+         },
+                  {
+            "name": "PLAN_TAX",
+            "value": 1600,
+            "currency": "COP"
+         },
+                  {
+            "name": "PLAN_TAX_RETURN_BASE",
+            "value": 8400,
+            "currency": "COP"
+         }
+      ]
+   },
+   "customer":    {
+      "id": "a39e3zvsru6",
+      "fullName": "Pedro Perez",
+      "email": "pperez@payulatam.com",
+      "creditCards": [{"token": "7b6d637a-6252-47ee-8d3b-ed91807b3146"}]
+   },
+   "quantity": "1",
+   "installments": "1",
+   "currentPeriodStart": 1402203600000,
+   "currentPeriodEnd": 1404795599000
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+    &lt;trialDays&gt;30&lt;/trialDays&gt;
+    &lt;installments&gt;1&lt;/installments&gt;
+    &lt;customer&gt;
+        
+        &lt;fullName&gt;Pedro Perez&lt;/fullName&gt;
+        &lt;email&gt;pperezz@payulatam.com&lt;/email&gt;
+        &lt;creditCards&gt;
+            &lt;creditCard&gt;
+                &lt;number&gt;4242424242424242&lt;/number&gt;
+                &lt;name&gt;Sample User Name&lt;/name&gt;
+                &lt;expMonth&gt;1&lt;/expMonth&gt;
+                &lt;expYear&gt;2018&lt;/expYear&gt;
+                &lt;type&gt;VISA&lt;/type&gt;
+                &lt;address&gt;
+                    &lt;line1&gt;Address Name&lt;/line1&gt;
+                    &lt;line2&gt;17 25&lt;/line2&gt;
+                    &lt;line3&gt;Of 301&lt;/line3&gt;
+                    &lt;city&gt;City Name&lt;/city&gt;
+                    &lt;state&gt;State Name&lt;/state&gt;
+                    &lt;country&gt;CO&lt;/country&gt;
+                    &lt;postalCode&gt;00000&lt;/postalCode&gt;
+                    &lt;phone&gt;300300300&lt;/phone&gt;
+                &lt;/address&gt;
+            &lt;/creditCard&gt;
+        &lt;/creditCards&gt;
+    &lt;/customer&gt;
+    &lt;plan&gt;
+        &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+        &lt;description&gt;Sample Plan 001&lt;/description&gt;
+        &lt;accountId&gt;500538&lt;/accountId&gt;
+        &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+        &lt;interval&gt;MONTH&lt;/interval&gt;
+        &lt;maxPaymentsAllowed&gt;12&lt;/maxPaymentsAllowed&gt;
+        &lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+        &lt;maxPendingPayments&gt;1&lt;/maxPendingPayments&gt;
+        &lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+        &lt;additionalValues&gt;
+            &lt;additionalValue&gt;
+                &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+                &lt;value&gt;10000&lt;/value&gt;
+                &lt;currency&gt;COP&lt;/currency&gt;
+            &lt;/additionalValue&gt;
+            &lt;additionalValue&gt;
+                &lt;name&gt;PLAN_TAX&lt;/name&gt;
+                &lt;value&gt;1600&lt;/value&gt;
+                &lt;currency&gt;COP&lt;/currency&gt;
+            &lt;/additionalValue&gt;
+            &lt;additionalValue&gt;
+                &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+                &lt;value&gt;8400&lt;/value&gt;
+                &lt;currency&gt;COP&lt;/currency&gt;
+            &lt;/additionalValue&gt;
+        &lt;/additionalValues&gt;
+    &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+  &lt;id&gt;26fb7yxfej0&lt;/id&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;installments&gt;1&lt;/installments&gt;
+  &lt;currentPeriodStart&gt;2014-06-23T00:00:00-05:00&lt;/currentPeriodStart&gt;
+  &lt;currentPeriodEnd&gt;2014-07-22T23:59:59-05:00&lt;/currentPeriodEnd&gt;
+  &lt;customer&gt;
+    &lt;id&gt;047dbnhsnx9&lt;/id&gt;
+    &lt;fullName&gt;Pedro Perez&lt;/fullName&gt;
+    &lt;email&gt;pperezz@payulatam.com&lt;/email&gt;
+    &lt;creditCards&gt;
+      &lt;creditCard&gt;
+        &lt;token&gt;daedc017-bd7d-4887-87b4-13913650c952&lt;/token&gt;
+      &lt;/creditCard&gt;
+    &lt;/creditCards&gt;
+  &lt;/customer&gt;
+  &lt;plan&gt;
+    &lt;id&gt;77e57940-e149-4f77-a190-271caa7ccb7b&lt;/id&gt;
+    &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+    &lt;description&gt;Sample Plan 001&lt;/description&gt;
+    &lt;accountId&gt;500538&lt;/accountId&gt;
+    &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+    &lt;interval&gt;MONTH&lt;/interval&gt;
+    &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX&lt;/name&gt;
+        &lt;value&gt;1600&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+        &lt;value&gt;10000&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+        &lt;value&gt;8400&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+    &lt;/additionalValues&gt;
+  &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+</div>
+</div>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+CON TODOS LOS ELEMENTOS EXISTENTES</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+{
+"quantity": "1",
+"installments": "1",
+"trialDays": "10",
+"customer": {
+"id": "eab38z33hh2",
+"creditCards": [
+{
+"token": "a068e980-a6d7-4a19-b549-75c04f39ec22"
+}
+]
+},
+"plan": {
+"planCode": "sample-plan-code-001"
+}
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+"id": "fb6d0m9nqb8",
+"plan": {
+"id": "6b104e86-d6ca-41b5-ae39-834a55ed1565",
+"planCode": "sample-plan-code-001",
+"description": "New Sample Plan 001",
+"accountId": 500538,
+"intervalCount": 1,
+"interval": "MONTH",
+"additionalValues": [
+{
+"name": "PLAN_VALUE",
+"value": 10000,
+"currency": "COP"
+},
+{
+"name": "PLAN_TAX_RETURN_BASE",
+"value": 0,
+"currency": "COP"
+}
+,
+{
+"name": "PLAN_TAX",
+"value": 0,
+"currency": "COP"
+}
+]
+ },
+"customer": {
+"id": "eab38z33hh2",
+"fullName": "Pedro Perez",
+"email": "pperez@payulatam.com",
+"creditCards": [
+{
+"token": "a068e980-a6d7-4a19-b549-75c04f39ec22"
+}
+]
+},
+"quantity": 1,
+"installments": 1,
+"trialDays": "30",
+"currentPeriodStart": 1397192400000,
+"currentPeriodEnd": 1428728399000
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+&lt;quantity&gt;1&lt;/quantity&gt;
+&lt;installments&gt;1&lt;/installments&gt;
+&lt;trialDays&gt;10&lt;/trialDays&gt;
+&lt;customer&gt;
+&lt;id&gt;eab38z33hh2&lt;/id&gt;
+&lt;creditCards&gt;
+&lt;creditCard&gt;
+&lt;token&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/token&gt;
+&lt;/creditCard&gt;
+&lt;/creditCards&gt;
+&lt;/customer&gt;
+&lt;plan&gt;
+&lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+&lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+  &lt;id&gt;fb6d0m9nqb8&lt;/id&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;installments&gt;1&lt;/installments&gt;
+  &lt;currentPeriodStart&gt;2014-06-03T00:00:00-05:00&lt;/currentPeriodStart&gt;
+  &lt;currentPeriodEnd&gt;2014-07-02T23:59:59-05:00&lt;/currentPeriodEnd&gt;
+  &lt;customer&gt;
+    &lt;id&gt;eab38z33hh2&lt;/id&gt;
+    &lt;fullName&gt;Pedro Perez&lt;/fullName&gt;
+    &lt;email&gt;pperezz@payulatam.com&lt;/email&gt;
+    &lt;creditCards&gt;
+      &lt;creditCard&gt;
+        &lt;token&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/token&gt;
+      &lt;/creditCard&gt;
+    &lt;/creditCards&gt;
+  &lt;/customer&gt;
+  &lt;plan&gt;
+    &lt;id&gt;6b104e86-d6ca-41b5-ae39-834a55ed1565&lt;/id&gt;
+    &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+    &lt;description&gt;New Sample Plan 001&lt;/description&gt;
+    &lt;accountId&gt;500538&lt;/accountId&gt;
+    &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+    &lt;interval&gt;MONTH&lt;/interval&gt;
+    &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+        &lt;value&gt;10000&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX&lt;/name&gt;
+        &lt;value&gt;0&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+        &lt;value&gt;0&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+    &lt;/additionalValues&gt;
+  &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+</div>
+</div>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+PLAN Y CLIENTE YA CREADOS, Y UNA TARJETA NUEVA</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"quantity": "1",
+"installments": "1",
+"trialDays": "10",
+"customer": {
+"id": "eab38z33hh2",
+"creditCards": [
+{
+"name": "Sample User Name",
+"document": "101010123",
+"number": "4242424242424242",
+"expMonth": "01",
+"expYear": "2018",
+"type": "VISA",
+"address": {
+"line1": "Address Name",
+"line2": "17 25",
+"line3": "Of 301",
+"postalCode": "00000",
+"city": "City Name",
+"state": "State Name",
+"country": "CO",
+"phone": "300300300"
+}
+}
+]
+},
+"plan": {
+"planCode": "sample-plan-code-001"
+}
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+   "id": "c50d94ge25d",
+   "plan":    {
+      "id": "6b104e86-d6ca-41b5-ae39-834a55ed1565",
+      "planCode": "sample-plan-code-001",
+      "description": "New Sample Plan 001",
+      "accountId": "500538",
+      "intervalCount": 1,
+      "interval": "MONTH",
+      "additionalValues":       [
+                  {
+            "name": "PLAN_VALUE",
+            "value": 10000,
+            "currency": "COP"
+         },
+                  {
+            "name": "PLAN_TAX",
+            "value": 0,
+            "currency": "COP"
+         },
+                  {
+            "name": "PLAN_TAX_RETURN_BASE",
+            "value": 0,
+            "currency": "COP"
+         }
+      ]
+   },
+   "customer":    {
+      "id": "eab38z33hh2",
+      "fullName": "Pedro Perez",
+      "email": "pperezz@payulatam.com",
+      "creditCards": [{"token": "508a715f-2feb-46ba-8945-c948821f080e"}]
+   },
+   "quantity": "1",
+   "installments": "1",
+   "currentPeriodStart": 1401771600000,
+   "currentPeriodEnd": 1404363599000
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+    &lt;trialDays&gt;10&lt;/trialDays&gt;
+    &lt;installments&gt;1&lt;/installments&gt;
+    &lt;customer&gt;
+        &lt;id&gt;eab38z33hh2&lt;/id&gt;
+        &lt;creditCards&gt;
+            &lt;creditCard&gt;
+                &lt;number&gt;4242424242424242&lt;/number&gt;
+                &lt;name&gt;Sample User Name&lt;/name&gt;
+                &lt;expMonth&gt;1&lt;/expMonth&gt;
+                &lt;expYear&gt;2018&lt;/expYear&gt;
+                &lt;type&gt;VISA&lt;/type&gt;
+                &lt;address&gt;
+                    &lt;line1&gt;Address Name&lt;/line1&gt;
+                    &lt;line2&gt;17 25&lt;/line2&gt;
+                    &lt;line3&gt;Of 301&lt;/line3&gt;
+                    &lt;city&gt;City Name&lt;/city&gt;
+                    &lt;state&gt;State Name&lt;/state&gt;
+                    &lt;country&gt;CO&lt;/country&gt;
+                    &lt;postalCode&gt;00000&lt;/postalCode&gt;
+                    &lt;phone&gt;300300300&lt;/phone&gt;
+                &lt;/address&gt;
+            &lt;/creditCard&gt;
+        &lt;/creditCards&gt;
+    &lt;/customer&gt;
+    &lt;plan&gt;
+        &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+    &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+  &lt;id&gt;40adcwryufe&lt;/id&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;installments&gt;1&lt;/installments&gt;
+  &lt;currentPeriodStart&gt;2014-06-03T00:00:00-05:00&lt;/currentPeriodStart&gt;
+  &lt;currentPeriodEnd&gt;2014-07-02T23:59:59-05:00&lt;/currentPeriodEnd&gt;
+  &lt;customer&gt;
+    &lt;id&gt;eab38z33hh2&lt;/id&gt;
+    &lt;fullName&gt;Pedro Perez&lt;/fullName&gt;
+    &lt;email&gt;pperezz@payulatam.com&lt;/email&gt;
+    &lt;creditCards&gt;
+      &lt;creditCard&gt;
+        &lt;token&gt;508a715f-2feb-46ba-8945-c948821f080e&lt;/token&gt;
+      &lt;/creditCard&gt;
+    &lt;/creditCards&gt;
+  &lt;/customer&gt;
+  &lt;plan&gt;
+    &lt;id&gt;6b104e86-d6ca-41b5-ae39-834a55ed1565&lt;/id&gt;
+    &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+    &lt;description&gt;New Sample Plan 001&lt;/description&gt;
+    &lt;accountId&gt;500538&lt;/accountId&gt;
+    &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+    &lt;interval&gt;MONTH&lt;/interval&gt;
+    &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+        &lt;value&gt;10000&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX&lt;/name&gt;
+        &lt;value&gt;0&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+        &lt;value&gt;0&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+    &lt;/additionalValues&gt;
+  &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+</div>
+</div>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+CLIENTE Y TARJETA YA CREADOS, Y CON PLAN NUEVO</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+{
+"installments": "1",
+"trialDays": "30",
+"customer": {
+"id": "eab38z33hh2",
+"creditCards": [
+{
+"token": "a068e980-a6d7-4a19-b549-75c04f39ec22"
+}
+]
+},
+"plan": {
+"planCode": "sample-plan-code-001",
+"description": "Sample Plan 001",
+"accountId": "500538",
+"intervalCount": "1",
+"interval": "MONTH",
+"maxPaymentsAllowed": "12",
+"maxPaymentAttempts": "3",
+"paymentAttemptsDelay": "1",
+"maxPendingPayments": "1",
+"trialDays": "30",
+"additionalValues": [
+{
+"name": "PLAN_TAX",
+"value": 1600,
+"currency": "COP"
+},
+{
+"name": "PLAN_VALUE",
+"value": 10000,
+"currency": "COP"
+}
+,
+{
+"name": "PLAN_TAX_RETURN_BASE",
+"value": 8400,
+"currency": "COP"
+}
+]
+}
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{
+   "id": "320756yk1x0",
+   "plan":    {
+      "id": "68ee02fa-8d1e-4bc3-88fb-b6e66586df3b",
+      "planCode": "sample-plan-code-001",
+      "description": "Sample Plan 001",
+      "accountId": "500538",
+      "intervalCount": 1,
+      "interval": "MONTH",
+      "additionalValues":       [
+                  {
+            "name": "PLAN_VALUE",
+            "value": 10000,
+            "currency": "COP"
+         },
+                  {
+            "name": "PLAN_TAX",
+            "value": 1600,
+            "currency": "COP"
+         },
+                  {
+            "name": "PLAN_TAX_RETURN_BASE",
+            "value": 8400,
+            "currency": "COP"
+         }
+      ]
+   },
+   "customer":    {
+      "id": "eab38z33hh2",
+      "fullName": "Pedro Perez",
+      "email": "pperezz@payulatam.com",
+      "creditCards": [{"token": "a068e980-a6d7-4a19-b549-75c04f39ec22"}]
+   },
+   "quantity": "1",
+   "installments": "1",
+   "currentPeriodStart": 1403499600000,
+   "currentPeriodEnd": 1406091599000
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+    &lt;trialDays&gt;30&lt;/trialDays&gt;
+    &lt;installments&gt;1&lt;/installments&gt;
+    &lt;customer&gt;
+        &lt;id&gt;eab38z33hh2&lt;/id&gt;
+        &lt;creditCards&gt;
+            &lt;creditCard&gt;
+                &lt;token&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/token&gt;
+            &lt;/creditCard&gt;
+        &lt;/creditCards&gt;
+    &lt;/customer&gt;
+    &lt;plan&gt;
+        &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+        &lt;description&gt;Sample Plan 001&lt;/description&gt;
+        &lt;accountId&gt;500538&lt;/accountId&gt;
+        &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+        &lt;interval&gt;MONTH&lt;/interval&gt;
+        &lt;maxPaymentsAllowed&gt;12&lt;/maxPaymentsAllowed&gt;
+        &lt;maxPaymentAttempts&gt;3&lt;/maxPaymentAttempts&gt;
+        &lt;maxPendingPayments&gt;1&lt;/maxPendingPayments&gt;
+        &lt;paymentAttemptsDelay&gt;1&lt;/paymentAttemptsDelay&gt;
+        &lt;additionalValues&gt;
+            &lt;additionalValue&gt;
+                &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+                &lt;value&gt;10000&lt;/value&gt;
+                &lt;currency&gt;COP&lt;/currency&gt;
+            &lt;/additionalValue&gt;
+            &lt;additionalValue&gt;
+                &lt;name&gt;PLAN_TAX&lt;/name&gt;
+                &lt;value&gt;1600&lt;/value&gt;
+                &lt;currency&gt;COP&lt;/currency&gt;
+            &lt;/additionalValue&gt;
+            &lt;additionalValue&gt;
+                &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+                &lt;value&gt;8400&lt;/value&gt;
+                &lt;currency&gt;COP&lt;/currency&gt;
+            &lt;/additionalValue&gt;
+        &lt;/additionalValues&gt;
+    &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;subscription&gt;
+  &lt;id&gt;17d11h3b2xs&lt;/id&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;installments&gt;1&lt;/installments&gt;
+  &lt;currentPeriodStart&gt;2014-06-23T00:00:00-05:00&lt;/currentPeriodStart&gt;
+  &lt;currentPeriodEnd&gt;2014-07-22T23:59:59-05:00&lt;/currentPeriodEnd&gt;
+  &lt;customer&gt;
+    &lt;id&gt;eab38z33hh2&lt;/id&gt;
+    &lt;fullName&gt;Pedro Perez&lt;/fullName&gt;
+    &lt;email&gt;pperezz@payulatam.com&lt;/email&gt;
+    &lt;creditCards&gt;
+      &lt;creditCard&gt;
+        &lt;token&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/token&gt;
+      &lt;/creditCard&gt;
+    &lt;/creditCards&gt;
+  &lt;/customer&gt;
+  &lt;plan&gt;
+    &lt;id&gt;c653e0ba-e0cb-49d9-9294-1d5617be8f6c&lt;/id&gt;
+    &lt;planCode&gt;sample-plan-code-001&lt;/planCode&gt;
+    &lt;description&gt;Sample Plan 001&lt;/description&gt;
+    &lt;accountId&gt;500538&lt;/accountId&gt;
+    &lt;intervalCount&gt;1&lt;/intervalCount&gt;
+    &lt;interval&gt;MONTH&lt;/interval&gt;
+    &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX&lt;/name&gt;
+        &lt;value&gt;1600&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_VALUE&lt;/name&gt;
+        &lt;value&gt;10000&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+        &lt;name&gt;PLAN_TAX_RETURN_BASE&lt;/name&gt;
+        &lt;value&gt;8400&lt;/value&gt;
+        &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+    &lt;/additionalValues&gt;
+  &lt;/plan&gt;
+&lt;/subscription&gt;
+</pre>
+</div>
+</div>
+</div></div>
+&nbsp;<br>
+<b>ACTUALIZACIÓN</b>: (tarjeta de crédito de una suscripción)
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+{ 
+"creditCardToken": "a068e980-a6d7-4a19-b549-75c04f39ec22" 
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+   "id": "320756yk1x0",
+   "plan": {"id": "68ee02fa-8d1e-4bc3-88fb-b6e66586df3b"},
+   "customer": {"id": "eab38z33hh2"},
+   "trialDays": "30",
+   "quantity": "1",
+   "installments": "1",
+   "currentPeriodStart": 1403499600000,
+   "currentPeriodEnd": 1406091599000,
+   "creditCardToken": "a068e980-a6d7-4a19-b549-75c04f39ec22"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+&lt;subscription&gt;
+    &lt;creditCardToken&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/creditCardToken&gt;
+&lt;/subscription&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;subscription&gt;
+  &lt;id&gt;320756yk1x0&lt;/id&gt;
+  &lt;trialDays&gt;30&lt;/trialDays&gt;
+  &lt;quantity&gt;1&lt;/quantity&gt;
+  &lt;installments&gt;1&lt;/installments&gt;
+  &lt;currentPeriodStart&gt;2014-06-23T00:00:00-05:00&lt;/currentPeriodStart&gt;
+  &lt;currentPeriodEnd&gt;2014-07-22T23:59:59-05:00&lt;/currentPeriodEnd&gt;
+  &lt;customer&gt;
+    &lt;id&gt;eab38z33hh2&lt;/id&gt;
+  &lt;/customer&gt;
+  &lt;plan&gt;
+    &lt;id&gt;68ee02fa-8d1e-4bc3-88fb-b6e66586df3b&lt;/id&gt;
+  &lt;/plan&gt;
+  &lt;creditCardToken&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/creditCardToken&gt;
+&lt;/subscription&gt;
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/subscriptions/1dhb51hfuu
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+   "id": "320756yk1x0",
+   "plan": {"id": "68ee02fa-8d1e-4bc3-88fb-b6e66586df3b"},
+   "customer": {"id": "eab38z33hh2"},
+   "trialDays": "30",
+   "quantity": "1",
+   "installments": "1",
+   "currentPeriodStart": 1403499600000,
+   "currentPeriodEnd": 1406091599000,
+   "creditCardToken": "a068e980-a6d7-4a19-b549-75c04f39ec22"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/subscriptions/1dhb51hfuu
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;subscription&gt;
+   &lt;id&gt;320756yk1x0&lt;/id&gt;
+   &lt;trialDays&gt;30&lt;/trialDays&gt;
+   &lt;quantity&gt;1&lt;/quantity&gt;
+   &lt;installments&gt;1&lt;/installments&gt;
+   &lt;currentPeriodStart&gt;2014-06-23T00:00:00-05:00&lt;/currentPeriodStart&gt;
+   &lt;currentPeriodEnd&gt;2014-07-22T23:59:59-05:00&lt;/currentPeriodEnd&gt;
+   &lt;customer&gt;
+      &lt;id&gt;eab38z33hh2&lt;/id&gt;
+   &lt;/customer&gt;
+   &lt;plan&gt;
+      &lt;id&gt;68ee02fa-8d1e-4bc3-88fb-b6e66586df3b&lt;/id&gt;
+   &lt;/plan&gt;
+   &lt;creditCardToken&gt;a068e980-a6d7-4a19-b549-75c04f39ec22&lt;/creditCardToken&gt;
+&lt;/subscription&gt;
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/subscriptions/3hpyu04ij
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"description": "La suscripción [3hpyu04ij] ha sido cancelada"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/subscriptions/3hpyu04ij
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;response&gt;
+&lt;description&gt;La suscripción [3hpyu04ij] ha sido cancelada&lt;/description&gt;
+&lt;/response&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS SUSCRIPCION -->
+</div>
+
+&nbsp;<br>
+<div id="cargos-adicionales" class="payu-fragment">
+&nbsp;<br>
+<div class="paso5"><span class="subtitle-page">CARGOS ADICIONALES</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Un cargo puede ser un cobro adicional o un descuento realizado sobre el valor de uno de los pagos que conforman el plan de pagos recurrentes. Estos solo afectan el siguiente cobro pendiente y se ejecutan una única vez.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}/recurringBillItems</td>
+		<td>POST</td>
+		<td>Adiciona cargos extras a la factura correspondiente al periodo actual.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/{recurringBillItemId}</td>
+		<td>PUT</td>
+		<td>Actualiza la información del cargo extra de una factura<br>
+		{recurringBillItemId} : Identificador del cargo extra</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/{recurringBillItemId}</td>
+		<td>GET</td>
+		<td>Consulta la información del cargo extra de una factura a partir de su identificador.<br>
+		{recurringBillItemId} : Identificador del cargo extra</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/{recurringBillItemId}</td>
+		<td>DELETE</td>
+		<td>Eliminar un cargo extra de una factura<br>
+		{recurringBillItemId} : Identificador del cargo extra</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/params</td>
+		<td>GET</td>
+		<td>Consulta de los cargos extras de las facturas del comercio que cumplen con los filtros estipulados. Los filtros disponibles se muestra a continuación y deben ser enviados como named parameters dentro de la URL:<br>
+		{subscriptionId} : Identificación de la suscripción<br>
+		{description} : Descripción ingresada en el cargo extra</td>
+	</tr>
+</table>
+
+<!-- TABS CARGOS ADICIONALES -->
+&nbsp;<br>
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+{
+"description": "Cargo extra de prueba",
+"additionalValues": [
+{
+"name": "ITEM_VALUE",
+"value": "20000",
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX",
+"value": "0",
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX_RETURN_BASE",
+"value": "0",
+"currency": "COP"
+}
+]
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+   "id": "522023su5xg",
+   "description": "Cargo extra de prueba",
+   "additionalValues":    [
+            {
+         "name": "ITEM_VALUE",
+         "value": 20000,
+         "currency": "COP"
+      },
+            {
+         "name": "ITEM_TAX",
+         "value": 0,
+         "currency": "COP"
+      },
+            {
+         "name": "ITEM_TAX_RETURN_BASE",
+         "value": 0,
+         "currency": "COP"
+      }
+   ],
+   "subscriptionId": "52b04sx2s6"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+&lt;recurringBillItem&gt;
+&lt;description&gt;Cargo extra de prueba&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_VALUE&lt;/name&gt;
+&lt;value&gt;20000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_TAX&lt;/name&gt;
+&lt;value&gt;0&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_TAX_RETURN_BASE&lt;/name&gt;
+&lt;value&gt;0&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;recurringBillItem&gt;
+   &lt;id&gt;5e174m7lgns&lt;/id&gt;
+   &lt;description&gt;Cargo extra de prueba&lt;/description&gt;
+   &lt;additionalValues&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;ITEM_VALUE&lt;/name&gt;
+         &lt;value&gt;20000&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;ITEM_TAX&lt;/name&gt;
+         &lt;value&gt;0&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+      &lt;additionalValue&gt;
+         &lt;name&gt;ITEM_TAX_RETURN_BASE&lt;/name&gt;
+         &lt;value&gt;0&lt;/value&gt;
+         &lt;currency&gt;COP&lt;/currency&gt;
+      &lt;/additionalValue&gt;
+   &lt;/additionalValues&gt;
+   &lt;subscriptionId&gt;52b04sx2s6&lt;/subscriptionId&gt;
+&lt;/recurringBillItem&gt;
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+{
+"description": "Cargo extra de prueba",
+"additionalValues": [
+{
+"name": "ITEM_VALUE",
+"value": "20000",
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX",
+"value": "0",
+"currency": "COP"
+},{
+"name": "ITEM_TAX_RETURN_BASE",
+"value": "0",
+"currency": "COP"
+}
+]
+}
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+   "id": "5e174m7lgns",
+   "description": "Cargo extra de prueba",
+   "additionalValues":    [
+            {
+         "name": "ITEM_VALUE",
+         "value": 20000,
+         "currency": "COP"
+      },
+            {
+         "name": "ITEM_TAX",
+         "value": 0,
+         "currency": "COP"
+      },
+            {
+         "name": "ITEM_TAX_RETURN_BASE",
+         "value": 0,
+         "currency": "COP"
+      }
+   ],
+   "subscriptionId": "52b04sx2s6"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+&lt;recurringBillItem&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+    &lt;id&gt;5e174m7lgns&lt;/id&gt;
+    &lt;description&gt;Cargo extra de prueba&lt;/description&gt;
+    &lt;additionalValues&gt;
+        &lt;additionalValue&gt;
+            &lt;name&gt;ITEM_VALUE&lt;/name&gt;
+            &lt;value&gt;20000&lt;/value&gt;
+            &lt;currency&gt;COP&lt;/currency&gt;
+        &lt;/additionalValue&gt;
+        &lt;additionalValue&gt;
+            &lt;name&gt;ITEM_TAX&lt;/name&gt;
+            &lt;value&gt;0&lt;/value&gt;
+            &lt;currency&gt;COP&lt;/currency&gt;
+        &lt;/additionalValue&gt;
+        &lt;additionalValue&gt;
+            &lt;name&gt;ITEM_TAX_RETURN_BASE&lt;/name&gt;
+            &lt;value&gt;0&lt;/value&gt;
+            &lt;currency&gt;COP&lt;/currency&gt;
+        &lt;/additionalValue&gt;
+    &lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&gt;recurringBillItem&gt;
+  &gt;id&gt;5e174m7lgns&gt;/id&gt;
+  &gt;description&gt;Cargo extra de prueba&gt;/description&gt;
+  &gt;additionalValues&gt;
+    &gt;additionalValue&gt;
+      &gt;name&gt;ITEM_VALUE&gt;/name&gt;
+      &gt;value&gt;20000&gt;/value&gt;
+      &gt;currency&gt;COP&gt;/currency&gt;
+    &gt;/additionalValue&gt;
+    &gt;additionalValue&gt;
+      &gt;name&gt;ITEM_TAX&gt;/name&gt;
+      &gt;value&gt;0&gt;/value&gt;
+      &gt;currency&gt;COP&gt;/currency&gt;
+    &gt;/additionalValue&gt;
+    &gt;additionalValue&gt;
+      &gt;name&gt;ITEM_TAX_RETURN_BASE&gt;/name&gt;
+      &gt;value&gt;0&gt;/value&gt;
+      &gt;currency&gt;COP&gt;/currency&gt;
+    &gt;/additionalValue&gt;
+  &gt;/additionalValues&gt;
+  &gt;subscriptionId&gt;52b04sx2s6&gt;/subscriptionId&gt;
+&gt;/recurringBillItem&gt;
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>CONSULTA</b>:
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+POR ID DEL CARGO ADICIONAL</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/2uww909obl
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"id": "5wm1pxmpiwq",
+"description": "Cargo extra de prueba",
+"additionalValues":    [
+{
+"name": "ITEM_TAX_RETURN_BASE",
+"value": 0,
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX",
+"value": 0,
+"currency": "COP"
+},
+{
+"name": "ITEM_VALUE",
+"value": 20000,
+"currency": "COP"
+}
+],
+"subscriptionId": "5wjxrja8mz9"
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/2uww909obl
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;recurringBillItem&gt;
+&lt;id&gt;2uww909obl&lt;/id&gt;
+&lt;description&gt;Cargo extra de prueba&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_VALUE&lt;/name&gt;
+&lt;value&gt;20000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_TAX_VALUE&lt;/name&gt;
+&lt;value&gt;0&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_TAX_RETURN_BASE&lt;/name&gt;
+&lt;value&gt;0&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+</pre>
+</div>
+</div>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+POR DESCRIPCIÓN DEL CARGO ADICIONAL</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/params?description=Cargo%20b
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{"recurringBillItemList": [
+{
+"id": "5vsags0qsdo",
+"description": "Cargo extra de prueba",
+"additionalValues": [      {
+"name": "ITEM_VALUE",
+"value": 20000,
+"currency": "COP"
+}],
+"subscriptionId": "5vsa272tek7"
+},
+{
+"id": "5wm1pxmpiwq",
+"description": "Cargo extra de prueba",
+"additionalValues":       [
+{
+"name": "ITEM_VALUE",
+"value": 20000,
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX",
+"value": 0,
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX_RETURN_BASE",
+"value": 0,
+"currency": "COP"
+}
+],
+"subscriptionId": "5wjxrja8mz9"
+}
+]}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/params?description=Cargo%20b
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;recurringBillItemResponse&gt;
+&lt;recurringBillItems&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2waez3h9ac&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;15000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;24e207ivi&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;10000.49&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;26gzctvub&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;10000.49&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2uxvargit1&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;10000.49&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2uy01uio7o&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;10000.49&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2ve0qtsjzz&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;15000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2w16yddd98&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;15000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;/recurringBillItems&gt;
+&lt;/recurringBillItemResponse&gt;
+</pre>
+</div>
+</div>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+POR SUSCRIPCIÓN</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/params?subscriptionId=26gyv192a
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+{"recurringBillItemList": [
+{
+"id": "5wjxrkgk7rc",
+"description": "Custo do plano",
+"additionalValues":       [
+{
+"name": "PLAN_TAX",
+"value": 1600,
+"currency": "COP"
+},
+{
+"name": "PLAN_VALUE",
+"value": 20000,
+"currency": "COP"
+}
+],
+"subscriptionId": "5wjxrja8mz9"
+},
+{
+"id": "5wm1pxmpiwq",
+"description": "Cargo extra de prueba",
+"additionalValues":       [
+{
+"name": "ITEM_VALUE",
+"value": 20000,
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX",
+"value": 0,
+"currency": "COP"
+},
+{
+"name": "ITEM_TAX_RETURN_BASE",
+"value": 0,
+"currency": "COP"
+}
+],
+"subscriptionId": "5wjxrja8mz9"
+}
+]}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/params?subscriptionId=26gyv192a
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre style="height:200px; overflow: auto;">
+&lt;recurringBillItemResponse&gt;
+&lt;recurringBillItems&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2waez3h9ac&lt;/id&gt;
+&lt;description&gt;Cargo básico&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;PLAN_VALUE&lt;/name&gt;
+&lt;value&gt;15000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;recurringBillItem&gt;
+&lt;id&gt;2uww909obl&lt;/id&gt;
+&lt;description&gt;Cargo extra de prueba&lt;/description&gt;
+&lt;additionalValues&gt;
+&lt;additionalValue&gt;
+&lt;name&gt;ITEM_VALUE&lt;/name&gt;
+&lt;value&gt;20000&lt;/value&gt;
+&lt;currency&gt;COP&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/additionalValues&gt;
+&lt;/recurringBillItem&gt;
+&lt;/recurringBillItems&gt;
+&lt;/recurringBillItemResponse&gt;
+</pre>
+</div>
+</div>
+</div></div>
+&nbsp;<br>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/ou8ru86nq
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{ 
+"description": "recurring bill item ou8ru86nq has been removed successfully" 
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+DELETE https://api.payulatam.com/payments-api/rest/v4.3/recurringBillItems/ou8ru86nq
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;response&gt;
+&lt;description&gt;recurring bill item ou8ru86nq has been removed successfully&lt;/description&gt;
+&lt;/response&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS CARGOS ADICIONALES -->
+</div>
+&nbsp;<br>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
