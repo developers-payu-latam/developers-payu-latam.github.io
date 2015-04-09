@@ -1,0 +1,1612 @@
+---
+title: Pagos recurrentes API
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">INTEGRACIÓN SDK - <span style="color: #009cdd;">PAGOS RECURRENTES</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#como-funciona">¿Cómo funciona?</a></li>
+	<li class="leaf"><a href="#plan">Plan</a></li>
+	<li class="leaf"><a href="#cliente">Cliente</a></li>
+	<li class="leaf"><a href="#tarjeta-credito">Tarjeta de crédito</a></li>
+	<li class="leaf"><a href="#suscripcion">Suscripción</a></li>
+	<li class="leaf"><a href="#cargos-adicionales">Cargos adicionales</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_sdk.html %}
+
+<div id="page-menu-column2">
+<div id="como-funciona" class="payu-fragment">
+&nbsp;<br>
+<span class="grey-text-13">Los pagos recurrentes son cobros automatizados que se realizan periódicamente (diario, mensual, anual), de aquellos cargos por consumo de productos o servicios como membresías, suscripciones, pólizas o recibos con valor fijo; que previamente fueron autorizados por el cliente.</span>
+&nbsp;<br>
+<p align="center"><img src="/images/pagos-recurrentes-1.jpg" border="0"></p>
+&nbsp;<br>
+Apuntando a las correspondientes URLs:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="grey-text-13"><b>PayU.paymentsUrl = “https://api.payulatam.com/payments-api/”;</b><br>
+PayU.reportsUrl = “https://api.payulatam.com/reports-api/”; </span>
+</div>
+<div id="squelch-taas-tab-content-2">
+<span class="grey-text-13">Environment::setPaymentsCustomUrl(“https://api.payulatam.com/payments-api/4.0/service.cgi”);/<br>
+Environment::setReportsCustomUrl(“https://api.payulatam.com/reports-api/4.0/service.cgi”); <br>
+<b>Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api/rest/v4.3/”);</b></span>
+</div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Los métodos disponibles para los pagos recurrentes son: <b>PLAN</b>, <b>CLIENTE</b>, <b>TARJETA DE CRÉDITO</b>, <b>SUSCRIPCIÓN</b> y <b>CARGOS ADICIONALES</b>. A continuación encontrarás la descripción de cada uno.</span>
+</div>
+<div id="plan" class="payu-fragment">
+&nbsp;<br>
+<div class="paso1"><span class="subtitle-page">PLAN</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Mediante esta funcionalidad puedes registrar los datos de la tarjeta de crédito de un cliente y así obtener un código secuencial token.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans</td>
+		<td>POST</td>
+		<td>Creación de un nuevo plan para suscripciones asociado al comercio.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans/{planCode}</td>
+		<td>PUT</td>
+		<td>Actualizar la información de un plan para suscripciones.<br>
+		{planCode} : Código de identificación del plan para el comercio.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans/{planCode}</td>
+		<td>GET</td>
+		<td>Consultar toda la información de un plan para suscripciones asociado al comercio.<br>
+		{planCode} : Código de identificación del plan para el comercio.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/plans/{planCode}</td>
+		<td>DELETE</td>
+		<td>Eliminar todo un plan para suscripciones asociado al comercio.<br>
+		{planCode} : Código de identificación del plan para el comercio.</td>
+	</tr>
+</table>
+
+<!-- TABS PLAN -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí la descripción del plan
+parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Basic Plan");
+// Ingresa aquí el código de identificación para el plan
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd456" + System.currentTimeMillis());
+// Ingresa aquí el intervalo del plan
+parameters.put(PayU.PARAMETERS.PLAN_INTERVAL, "MONTH");
+// Ingresa aquí la cantidad de intervalos
+parameters.put(PayU.PARAMETERS.PLAN_INTERVAL_COUNT, "12");
+// Ingresa aquí la moneda para el plan
+parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
+// Ingresa aquí el valor del plan
+parameters.put(PayU.PARAMETERS.PLAN_VALUE, "50000");
+//(OPCIONAL) Ingresa aquí el valor del impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX, "10000");
+//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "40000");
+// Ingresa aquí la cuenta Id del plan
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "2");
+// Ingresa aquí el intervalo de reintentos
+parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "2");
+// Ingresa aquí la cantidad de cobros que componen el plan
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENTS, "2");
+SubscriptionPlan response = PayUPlans.create(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí la descripción del plan
+	PayUParameters::PLAN_DESCRIPTION =&gt; "Sample Plan 001",
+	// Ingresa aquí el código de identificación para el plan
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+	// Ingresa aquí el intervalo del plan
+	//DAY||WEEK||MONTH||YEAR
+	PayUParameters::PLAN_INTERVAL =&gt; "MONTH",
+	// Ingresa aquí la cantidad de intervalos
+	PayUParameters::PLAN_INTERVAL_COUNT =&gt; "1",
+	// Ingresa aquí la moneda para el plan
+	PayUParameters::PLAN_CURRENCY =&gt; "COP",
+	// Ingresa aquí el valor del plan
+	PayUParameters::PLAN_VALUE =&gt; "10000",
+	//(OPCIONAL) Ingresa aquí el valor del impuesto
+	PayUParameters::PLAN_TAX =&gt; "1600",
+	//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "8400",
+	// Ingresa aquí la cuenta Id del plan
+	PayUParameters::ACCOUNT_ID =&gt; "500538",
+	// Ingresa aquí el intervalo de reintentos
+	PayUParameters::PLAN_ATTEMPS_DELAY =&gt; "1",
+	// Ingresa aquí la cantidad de cobros que componen el plan
+	PayUParameters::PLAN_MAX_PAYMENTS =&gt; "12",
+	// Ingresa aquí la cantidad total de reintentos para cada pago rechazado de la suscripción
+	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
+	// Ingresa aquí la cantidad máxima de pagos pendientes que puede tener una suscripción antes de ser cancelada.
+	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
+	// Ingresa aquí la cantidad de días de prueba de la suscripción.
+	PayUParameters::TRIAL_DAYS =&gt; "30",
+);
+
+$response = PayUSubscriptionPlans::create($parameters);
+if($response){
+	$response-&gt;id;
+}
+</pre>
+</div>
+</div>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingrese aquí la nueva descripción para el plan
+parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "New Basic Plan");
+// Ingrese aquí el código del plan (Debe ser un código de plan existente)
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd4561379351327982");
+// Ingrese aquí la moneda del plan (Debe ser el mismo que fue usado cuando el plan fue creado)
+parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
+// Ingrese aquí el nuevo valor del plan
+parameters.put(PayU.PARAMETERS.PLAN_VALUE, "100000");
+//(OPCIONAL) Ingrese aquí el valor del impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX, "10000");
+//(OPCIONAL) Ingrese aquí base de devolución del impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "40000");
+// Ingrese aquí la cantidad de reintentos
+parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "3");
+SubscriptionPlan response;
+response = PayUPlans.update(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí la descripción del plan
+	PayUParameters::PLAN_DESCRIPTION =&gt; "New Sample Plan 001",
+	// Ingresa aquí el código de identificación para el plan
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+	// Ingresa aquí la moneda para el plan
+	PayUParameters::PLAN_CURRENCY =&gt; "COP",
+	// Ingresa aquí el valor del plan
+	PayUParameters::PLAN_VALUE =&gt; "10000",
+	//(OPCIONAL) Ingresa aquí el valor del impuesto
+	PayUParameters::PLAN_TAX =&gt; "0",
+	//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "0",
+	// Ingresa aquí el intervalo de reintentos
+	PayUParameters::PLAN_ATTEMPS_DELAY =&gt; "1",
+	// Ingresa aquí la cantidad total de reintentos para cada pago rechazado de la suscripción
+	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
+	// Ingresa aquí la cantidad máxima de pagos pendientes que puede tener una suscripción antes de ser cancelada.
+	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
+);
+
+$response = PayUSubscriptionPlans::update($parameters);    
+if($response){
+}
+</pre>
+</div>
+</div>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Ingrese aquí el código del plan
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd4561379351327982");
+SubscriptionPlan response = PayUPlans.find(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el código de identificación para el plan
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+);
+
+$response = PayUSubscriptionPlans::find($parameters);
+if($response) {
+	 $response-&gt;id;
+	 $response-&gt;description;
+	 $response-&gt;accountId;
+	 $response-&gt;intervalCount;
+	 $response-&gt;interval;
+	 $response-&gt;maxPaymentsAllowed;
+	 $response-&gt;maxPaymentAttempts;
+	 $response-&gt;paymentAttemptsDelay;
+	 $response-&gt;maxPendingPayments;
+	 $response-&gt;trialDays;   
+}  
+</pre>
+</div>
+</div>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingrese aquí el código del plan
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd4561379351327982");
+boolean response = PayUPlans.delete(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el código de identificación para el plan
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+);
+
+$response = PayUSubscriptionPlans::delete($parameters);
+if($response) {
+}
+</pre>
+</div>
+</div>
+<!-- FIN TABS PLAN -->
+</div>
+
+&nbsp;<br>
+<div id="cliente" class="payu-fragment">
+&nbsp;<br>
+<div class="paso2"><span class="subtitle-page">CLIENTE</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Un cliente es la unidad que identifica quien será el beneficiario de un producto o servicio prestado y que se encuentra asociado a un plan de pagos recurrentes.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/</td>
+		<td>POST</td>
+		<td>Creación de un cliente en el sistema.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerId}</td>
+		<td>PUT</td>
+		<td>Actualiza la información de un cliente en el sistema.<br>
+		{customerId} : Identificador del cliente que se desea actualizar.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerId}</td>
+		<td>GET</td>
+		<td>Consulta la información relacionada con el cliente<br>
+		{customerId} : Identificador del cliente del cual se desea conocer la información asociada.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerId}</td>
+		<td>DELETE</td>
+		<td>Elimina un usuario del sistema.<br>
+		{customerId} : Identificador del cliente que se desea eliminar.</td>
+	</tr>
+</table>
+
+<!-- TABS CLIENTE -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Ingresa aquí el Nombre del cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
+//Ingresa aquí el E-mail del Cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "oscar.romero@payulatam.com");
+//Operación crear el cliente
+Customer response = PayUCustomers.create(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el nombre del cliente
+	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
+	// Ingresa aquí el correo del cliente
+	PayUParameters::CUSTOMER_EMAIL =&gt; "pperez@payulatam.com"
+);
+
+$response = PayUCustomers::create($parameters);
+
+if($response) {
+	$response-&gt;id;
+}
+</pre>
+</div>
+</div>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Ingresa aquí el Nombre del cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
+//Ingresa aquí el E-mail del Cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "oscar.romero@payulatam.com");
+//Operación crear el cliente
+Customer response = PayUCustomers.create(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el identificador del cliente,
+	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e",
+	// Ingresa aquí el nombre del cliente
+	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
+	// Ingresa aquí el correo del cliente
+	PayUParameters::CUSTOMER_EMAIL =&gt; "pperez@payulatam.com"
+);
+$response = PayUCustomers::update($parameters);
+
+if($response){
+	
+}
+</pre>
+</div>
+</div>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Ingresa aquí el Id del Cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz"); 
+Customer response = PayUCustomers.find(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el nombre del cliente
+	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e",
+);
+$response = PayUCustomers::find($parameters);
+
+if($response) {
+	$response-&gt;fullName;
+	$response-&gt;email;
+	$creditCards=$response-&gt;creditCards;
+	
+	foreach ($creditCards as $creditCard) {
+		$creditCard-&gt;token;
+		$creditCard-&gt;number;
+		$creditCard-&gt;type;
+		$creditCard-&gt;name;
+		$address=$creditCard-&gt;address;
+		$address-&gt;line1;
+		$address-&gt;line2;
+		$address-&gt;line3;
+		$address-&gt;city;
+		$address-&gt;state;
+		$address-&gt;country;
+		$address-&gt;postalCode;
+		$address-&gt;phone;
+	} 
+}
+</pre>
+</div>
+</div>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el Id del cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
+boolean response = PayUCustomers.delete(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el identificador del cliente,
+	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e"
+);
+
+$response = PayUCustomers::delete($parameters);
+
+if($response){
+	
+}
+</pre>
+</div>
+</div>
+<!-- FIN TABS CLIENTE -->
+
+</div>
+&nbsp;<br>
+<div id="tarjeta-credito" class="payu-fragment">
+&nbsp;<br>
+<div class="paso3"><span class="subtitle-page">TARJETA DE CRÉDITO</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Es el medio de pago con el cual se relaciona un Plan y un Pagador, se encuentra compuesto por el número de tarjeta de crédito (el cual será tokenizado para almacenar los datos de forma segura), la fecha de vencimiento de la tarjeta y algunos datos adicionales de dirección.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerID}/creditCards</td>
+		<td>POST</td>
+		<td>Creación de una tarjeta de crédito (Token) y asociarla a un usuario.<br>
+		{customerId} : Identificador del cliente al cual se le va a asociar el token</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/creditCards/{creditCardId}</td>
+		<td>PUT</td>
+		<td>Actualizar la información de un token.<br>
+		{creditCardId} : Identificador del token que se desea actualizar.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/creditCards/{creditCardId}</td>
+		<td>GET</td>
+		<td>Consultar la información de una tarjeta de crédito (Token) dato su identificador.<br>
+		{creditCardId} : Token de la tarjeta de crédito que desea consultarse</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/customers/{customerID}/creditCards/{creditCardId}</td>
+		<td>DELETE</td>
+		<td>Eliminar una tarjeta de crédito (Token) asociado a un usuario.<br>
+		{customerId} : Identificador del cliente al cual se le va a eliminar el token<br>
+		{creditCardId} : Identificador del token que se desea eliminar</td>
+	</tr>
+</table>
+
+<!-- TABS TARJETA DE CREDITO -->
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el identificador del pagador.
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "180oklk4o56");
+// Ingresa aquí el número de la tarjera.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4005580000029205");
+// Ingresa aquí la fecha de expiración de la tarjeta.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2015/01");
+// Ingresa aquí el tipo de la tarjeta.
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
+// Ingresa aquí el nombre del pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "Nombre");
+// -- Todos los parámetros que siguen son opcionales. --
+// Ingresa aquí la primera parte de la dirección.
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle falsa");
+// Ingresa aquí la segunda parte de la dirección (si aplica).
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "123");
+// Ingresa aquí la tercera parte de la dirección (si aplica).
+parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "patio trasero");
+// Ingresa aquí el departamento.
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Bogotá");
+// Ingresa aquí la ciudad.
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Bogotá D.C.");
+// Ingresa aquí el país.
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, PaymentCountry.CO.name());
+// Ingresa aquí el código postal.
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
+// Ingresa aquí el teléfono.
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
+CreditCard response = PayUCreditCard.create(parameters);
+LoggerUtil.info("{0}", response);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el identificador del cliente,
+	PayUParameters::CUSTOMER_ID =&gt; "6eb24tzp40", 
+	// Ingresa aquí el nombre del cliente
+	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
+	// Ingresa aquí el número de la tarjeta de crédito
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4242424242424242",
+	// Ingresa aquí la fecha de expiración de la tarjeta de crédito en formato AAAA/MM
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2018/01",
+	// Ingresa aquí el nombre de la franquicia de la tarjeta de crédito
+	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+	// (OPCIONAL) Ingresa aquí el documento de identificación del pagador
+	PayUParameters::PAYER_DNI =&gt; "101010123",
+	// (OPCIONAL) Ingresa aquí la primera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET =&gt; "Street 93B",
+	// (OPCIONAL) Ingresa aquí la segunda línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
+	// (OPCIONAL) Ingresa aquí la tercera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_3 =&gt; "Office 301",
+	// (OPCIONAL) Ingresa aquí la ciudad de la dirección del pagador
+	PayUParameters::PAYER_CITY =&gt; "Bogotá",
+	// (OPCIONAL) Ingresa aquí el estado o departamento de la dirección del pagador
+	PayUParameters::PAYER_STATE =&gt; "Bogotá D.C.",
+	// (OPCIONAL) Ingresa aquí el código del país de la dirección del pagador
+	PayUParameters::PAYER_COUNTRY =&gt; "CO",
+	// (OPCIONAL) Ingresa aquí el código postal de la dirección del pagador
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
+	// (OPCIONAL) Ingresa aquí el número telefónico del pagador
+	PayUParameters::PAYER_PHONE =&gt; "300300300"
+);
+
+$response = PayUCreditCards::create($parameters);
+
+if($response){
+	$response-&gt;token;
+}
+</pre>
+</div>
+</div>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el identificador del token de la tarjeta.
+parameters.put(PayU.PARAMETERS.TOKEN_ID, "180oklk4o56");
+// Ingresa aquí la fecha de expiración de la tarjeta.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2015/01");
+// Ingresa aquí el nombre del pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "Nombre");
+// -- Todos los parámetros que siguen son opcionales. --
+// Ingresa aquí la primera parte de la dirección.
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle 5476");
+// Ingresa aquí la segunda parte de la dirección (si aplica).
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "123");
+// Ingresa aquí la tercera parte de la dirección (si aplica).
+parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "patio trasero");
+// Ingresa aquí el departamento.
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Bogotá");
+// Ingresa aquí la ciudad.
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Bogotá D.C.");
+// Ingresa aquí el país.
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, PaymentCountry.CO.name());
+// Ingresa aquí el código postal.
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
+// Ingresa aquí el teléfono.
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
+CreditCard response = PayUCreditCard.update(parameters);
+LoggerUtil.info("{0}", response);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el identificador del token de la tarjeta.
+	PayUParameters::TOKEN_ID =&gt; "6f5f32d9-9c6f-4d57-97d7-68cde86f9266",
+	// Ingresa aquí el nombre del cliente
+	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
+	// Ingresa aquí la fecha de expiración de la tarjeta de crédito en formato AAAA/MM
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2018/01",
+	// (OPCIONAL) Ingresa aquí el documento de identificación del pagador
+	PayUParameters::PAYER_DNI =&gt; "101010123",
+	// (OPCIONAL) Ingresa aquí la primera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET =&gt; "Street 93B",
+	// (OPCIONAL) Ingresa aquí la segunda línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
+	// (OPCIONAL) Ingresa aquí la tercera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_3 =&gt; "Office 301",
+	// (OPCIONAL) Ingresa aquí la ciudad de la dirección del pagador
+	PayUParameters::PAYER_CITY =&gt; "Bogotá",
+	// (OPCIONAL) Ingresa aquí el estado o departamento de la dirección del pagador
+	PayUParameters::PAYER_STATE =&gt; "Bogotá D.C.",
+	// (OPCIONAL) Ingresa aquí el código del país de la dirección del pagador
+	PayUParameters::PAYER_COUNTRY =&gt; "CO",
+	// (OPCIONAL) Ingresa aquí el código postal de la dirección del pagador
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
+	// (OPCIONAL) Ingresa aquí el número telefónico del pagador
+	PayUParameters::PAYER_PHONE =&gt; "300300300"
+);
+
+$response= PayUCreditCards::update($parameters);
+
+if($response){
+
+}
+</pre>
+</div>
+</div>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el identificador del token de la tarjeta.
+parameters.put(PayU.PARAMETERS.TOKEN_ID, "25181bb1-b07f-4b9b-ae5d-6b13436c706d");
+CreditCard response = PayUCreditCard.find(parameters);
+LoggerUtil.info("{0}", response);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el identificador del token de la tarjeta.
+	PayUParameters::TOKEN_ID =&gt; "6f5f32d9-9c6f-4d57-97d7-68cde86f9266"
+);
+
+$response = PayUCreditCards::find($parameters);
+
+if($response){
+	$response-&gt;token;
+	$response-&gt;number;
+	$response-&gt;type;
+	$response-&gt;name;
+	$address=$response-&gt;address;
+	$address-&gt;line1;
+	$address-&gt;line2;
+	$address-&gt;line3;
+	$address-&gt;city;
+	$address-&gt;state;
+	$address-&gt;country;
+	$address-&gt;postalCode;
+	$address-&gt;phone;        
+}
+</pre>
+</div>
+</div>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el identificador del token de la tarjeta.
+parameters.put(PayU.PARAMETERS.TOKEN_ID, "25181bb1-b07f-4b9b-ae5d-6b13436c706d");
+// Ingresa aquí el Id del cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
+boolean response = PayUCreditCard.delete(parameters);
+LoggerUtil.info("{0}", response);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el identificador del token de la tarjeta.
+	PayUParameters::TOKEN_ID => "6f5f32d9-9c6f-4d57-97d7-68cde86f9266",
+	// Ingresa aquí el identificador del cliente,
+	PayUParameters::CUSTOMER_ID => "6eb24tzp40"
+);
+
+$response = PayUCreditCards::delete($parameters);
+
+if($response){
+
+}
+</pre>
+</div>
+</div>
+<!-- FIN TABS TARJETA DE CREDITO -->
+</div>
+
+&nbsp;<br>
+<div id="suscripcion" class="payu-fragment">
+&nbsp;<br>
+<div class="paso4"><span class="subtitle-page">SUSCRIPCIÓN</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Una suscripción es la relación entre un plan de pagos, un pagador y una tarjeta de crédito y es el elemento con el que se controla la ejecución de los cobros correspondientes.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/</td>
+		<td>POST</td>
+		<td>Creación de una nueva suscripción de un cliente a un plan.</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}</td>
+		<td>PUT</td>
+		<td>Actualizar la información asociada a la suscripción indicada. En este momento sólo es posible actualizar el token de la tarjeta de crédito a la cual se realiza el cargo de la suscripción.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}</td>
+		<td>GET</td>
+		<td>Consultar la información básica asociada a la suscripción indicada.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}</td>
+		<td>DELETE</td>
+		<td>Eliminar la suscripción, es decir la relación del cliente al plan.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+</table>
+
+<!-- TABS SUSCRIPCION -->
+
+<!-- SUSCRIPCION CREACION -->
+<b>CREACIÓN</b>:
+[toggles title="" speed="800"]
+[toggle title="CON TODOS LOS ELEMENTOS NUEVOS"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el número de cuotas a pagar.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+// Ingresa aquí la cantidad de días de prueba
+parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
+
+// -- Parámetros del cliente --
+// Ingresa aquí el nombre del cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Pedro Perez");
+// Ingresa aquí el email del cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "pperezz@payulatam.com");
+
+// -- Parámetros de la tarjeta de crédito --
+// Ingresa aquí el nombre del pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "Sample User Name");
+// Ingresa aquí el número de la tarjeta de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4242424242424242");
+// Ingresa aquí la fecha de expiración de la tarjeta de crédito en formato AAAA/MM
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2018/01");
+// Ingresa aquí el nombre de la franquicia de la tarjeta de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
+// (OPCIONAL) Ingresa aquí el documento de identificación del pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
+// (OPCIONAL) Ingresa aquí la primera línea de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Address Name");
+// (OPCIONAL) Ingresa aquí la segunda línea de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "17 25");
+// (OPCIONAL) Ingresa aquí la tercera línea de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "Of 301");
+// (OPCIONAL) Ingresa aquí la ciudad de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "City Name");
+// (OPCIONAL) Ingresa aquí el estado o departamento de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "State Name");
+// (OPCIONAL) Ingresa aquí el código del país de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
+// (OPCIONAL) Ingresa aquí el código postal de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
+// (OPCIONAL) Ingresa aquí el número telefónico del pagador
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
+
+// -- Parámetros del plan --
+// Ingresa aquí la descripción del plan
+parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Sample Plan 001");
+// Ingresa aquí el código de identificación para el plan
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
+// Ingresa aquí el intervalo del plan
+parameters.put(PayU.PARAMETERS.PLAN_INTERVAL, "MONTH");
+// Ingresa aquí la cantidad de intervalos
+parameters.put(PayU.PARAMETERS.PLAN_INTERVAL_COUNT, "1");
+// Ingresa aquí la moneda para el plan
+parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
+// Ingresa aquí el valor del plan
+parameters.put(PayU.PARAMETERS.PLAN_VALUE, "10000");
+//(OPCIONAL) Ingresa aquí el valor del impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX, "1600");
+//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "8400");
+// Ingresa aquí la cuenta Id del plan
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500538");
+// Ingresa aquí el intervalo de reintentos
+parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "1");
+// Ingresa aquí la cantidad de cobros que componen el plan
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENTS, "12");
+// Ingresa aquí la cantidad total de reintentos para cada pago rechazado de la suscripción
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "3");
+// Ingresa aquí la cantidad máxima de pagos pendientes que puede tener una suscripción antes de ser cancelada.
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "1");
+// Ingresa aquí la cantidad de días de prueba de la suscripción.
+parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "30");
+	
+Subscription response = PayUSubscription.create(parameters);
+		
+if(response!=null){
+	response.getId();
+	response.getCustomer().getId();
+	response.getCreditCardToken();
+	
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el número de cuotas a pagar.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	// Ingresa aquí la cantidad de días de prueba
+	PayUParameters::TRIAL_DAYS =&gt; "10",
+
+	// -- Parámetros del cliente --
+	// Ingresa aquí el nombre del cliente
+	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
+	// Ingresa aquí el email del cliente
+	PayUParameters::CUSTOMER_EMAIL =&gt; "pperezz@payulatam.com",
+
+	// -- Parámetros de la tarjeta de crédito --
+	// Ingresa aquí el nombre del pagador.
+	PayUParameters::PAYER_NAME =&gt; "Sample User Name",
+	// Ingresa aquí el número de la tarjeta de crédito
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4242424242424242",
+	// Ingresa aquí la fecha de expiración de la tarjeta de crédito en formato AAAA/MM
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	// Ingresa aquí el nombre de la franquicia de la tarjeta de crédito
+	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+	// (OPCIONAL) Ingresa aquí el documento de identificación del pagador
+	PayUParameters::PAYER_DNI =&gt; "1020304050",
+	// (OPCIONAL) Ingresa aquí la primera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET =&gt; "Address Name",
+	// (OPCIONAL) Ingresa aquí la segunda línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
+	// (OPCIONAL) Ingresa aquí la tercera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_3 =&gt; "Of 301",
+	// (OPCIONAL) Ingresa aquí la ciudad de la dirección del pagador
+	PayUParameters::PAYER_CITY =&gt; "City Name",
+	// (OPCIONAL) Ingresa aquí el estado o departamento de la dirección del pagador
+	PayUParameters::PAYER_STATE =&gt; "State Name",
+	// (OPCIONAL) Ingresa aquí el código del país de la dirección del pagador
+	PayUParameters::PAYER_COUNTRY =&gt; "CO",
+	// (OPCIONAL) Ingresa aquí el código postal de la dirección del pagador
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
+	// (OPCIONAL) Ingresa aquí el número telefónico del pagador
+	PayUParameters::PAYER_PHONE =&gt; "300300300",
+
+	// -- Parámetros del plan --
+	// Ingresa aquí la descripción del plan
+	PayUParameters::PLAN_DESCRIPTION =&gt; "Sample Plan 001",
+	// Ingresa aquí el código de identificación para el plan
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+	// Ingresa aquí el intervalo del plan
+	PayUParameters::PLAN_INTERVAL =&gt; "MONTH",
+	// Ingresa aquí la cantidad de intervalos
+	PayUParameters::PLAN_INTERVAL_COUNT =&gt; "1",
+	// Ingresa aquí la moneda para el plan
+	PayUParameters::PLAN_CURRENCY =&gt; "COP",
+	// Ingresa aquí el valor del plan
+	PayUParameters::PLAN_VALUE =&gt; "10000",
+	//(OPCIONAL) Ingresa aquí el valor del impuesto
+	PayUParameters::PLAN_TAX =&gt; "1600",
+	//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "8400",
+	// Ingresa aquí la cuenta Id del plan
+	PayUParameters::ACCOUNT_ID =&gt; "500538",
+	// Ingresa aquí el intervalo de reintentos
+	PayUParameters::PLAN_ATTEMPS_DELAY =&gt; "1",
+	// Ingresa aquí la cantidad de cobros que componen el plan
+	PayUParameters::PLAN_MAX_PAYMENTS =&gt; "12",
+	// Ingresa aquí la cantidad total de reintentos para cada pago rechazado de la suscripción
+	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
+	// Ingresa aquí la cantidad máxima de pagos pendientes que puede tener una suscripción antes de ser cancelada.
+	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
+	// Ingresa aquí la cantidad de días de prueba de la suscripción.
+	PayUParameters::TRIAL_DAYS =&gt; "30",
+);
+
+$response = PayUSubscriptions::createSubscription($parameters);
+
+if($response){
+	$response-&gt;id;   
+	$response-&gt;plan-&gt;id;
+	$response-&gt;customer-&gt;id;        	
+}
+</pre>
+</div>
+</div>
+[/toggle]
+[/toggles]
+[toggles title="" speed="800"]
+[toggle title="CON TODOS LOS ELEMENTOS EXISTENTES"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el código del plan a suscribirse.
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
+// Ingresa aquí el identificador del pagador.
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "eab38z33hh2");
+// Ingresa aquí el identificador del token de la tarjeta.
+parameters.put(PayU.PARAMETERS.TOKEN_ID, "a068e980-a6d7-4a19-b549-75c04f39ec22");
+// Ingresa aquí la cantidad de días de prueba de la suscripción.
+parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
+// Ingresa aquí el número de cuotas a pagar.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+Subscription response = PayUSubscription.create(parameters);
+		
+if(response!=null){
+	response.getId();
+	
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el código del plan a suscribirse.
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001s",
+	// Ingresa aquí el identificador del pagador.
+	PayUParameters::CUSTOMER_ID =&gt; "f03612gyte",
+	// Ingresa aquí el identificador del token de la tarjeta.
+	PayUParameters::TOKEN_ID =&gt; "79490437-d64a-4dc6-baeb-8d52492b0a00",
+	// Ingresa aquí la cantidad de días de prueba de la suscripción.
+	PayUParameters::TRIAL_DAYS =&gt; "10",
+	// Ingresa aquí el número de cuotas a pagar.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+);
+
+$response = PayUSubscriptions::createSubscription($parameters);
+
+if($response){
+	$response-&gt;id;   
+}
+</pre>
+</div>
+</div>
+[/toggle]
+[/toggles]
+[toggles title="" speed="800"]
+[toggle title="PLAN Y CLIENTE YA CREADOS, Y UNA TARJETA NUEVA"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí la cantidad de días de prueba de la suscripción.
+parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
+// Ingresa aquí el número de cuotas a pagar.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+
+// Ingresa aquí el código del plan a suscribirse.
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
+// Ingresa aquí el identificador del pagador.
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "eab38z33hh2");
+
+// -- Parámetros de la tarjeta de crédito --
+// Ingresa aquí el nombre del pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "Sample User Name");
+// Ingresa aquí el número de la tarjeta de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4242424242424242");
+// Ingresa aquí la fecha de expiración de la tarjeta de crédito en formato AAAA/MM
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2018/01");
+// Ingresa aquí el nombre de la franquicia de la tarjeta de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
+// (OPCIONAL) Ingresa aquí el documento de identificación del pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
+// (OPCIONAL) Ingresa aquí la primera línea de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Address Name");
+// (OPCIONAL) Ingresa aquí la segunda línea de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "17 25");
+// (OPCIONAL) Ingresa aquí la tercera línea de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "Of 301");
+// (OPCIONAL) Ingresa aquí la ciudad de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "City Name");
+// (OPCIONAL) Ingresa aquí el estado o departamento de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "State Name");
+// (OPCIONAL) Ingresa aquí el código del país de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
+// (OPCIONAL) Ingresa aquí el código postal de la dirección del pagador
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
+// (OPCIONAL) Ingresa aquí el número telefónico del pagador
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
+	
+Subscription response = PayUSubscription.create(parameters);
+		
+if(response!=null){
+	response.getId();
+	response.getCreditCardToken();
+	
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el número de cuotas a pagar.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	// Ingresa aquí la cantidad de días de prueba
+	PayUParameters::TRIAL_DAYS =&gt; "10",
+
+	// -- Parámetros del cliente --
+	// Ingresa aquí el identificador del pagador.
+	PayUParameters::CUSTOMER_ID =&gt; "f03612gyte",
+
+	// -- Parámetros de la tarjeta de crédito --
+	// Ingresa aquí el nombre del pagador.
+	PayUParameters::PAYER_NAME =&gt; "Sample User Name",
+	// Ingresa aquí el número de la tarjeta de crédito
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4242424242424242",
+	// Ingresa aquí la fecha de expiración de la tarjeta de crédito en formato AAAA/MM
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	// Ingresa aquí el nombre de la franquicia de la tarjeta de crédito
+	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+	// (OPCIONAL) Ingresa aquí el documento de identificación del pagador
+	PayUParameters::PAYER_DNI =&gt; "1020304050",
+	// (OPCIONAL) Ingresa aquí la primera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET =&gt; "Address Name",
+	// (OPCIONAL) Ingresa aquí la segunda línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
+	// (OPCIONAL) Ingresa aquí la tercera línea de la dirección del pagador
+	PayUParameters::PAYER_STREET_3 =&gt; "Of 301",
+	// (OPCIONAL) Ingresa aquí la ciudad de la dirección del pagador
+	PayUParameters::PAYER_CITY =&gt; "City Name",
+	// (OPCIONAL) Ingresa aquí el estado o departamento de la dirección del pagador
+	PayUParameters::PAYER_STATE =&gt; "State Name",
+	// (OPCIONAL) Ingresa aquí el código del país de la dirección del pagador
+	PayUParameters::PAYER_COUNTRY =&gt; "CO",
+	// (OPCIONAL) Ingresa aquí el código postal de la dirección del pagador
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
+	// (OPCIONAL) Ingresa aquí el número telefónico del pagador
+	PayUParameters::PAYER_PHONE =&gt; "300300300",
+
+	// -- Parámetros del plan --
+	// Ingresa aquí el código del plan a suscribirse.
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+ );
+
+$response = PayUSubscriptions::createSubscription($parameters);
+
+if($response){
+	$response-&gt;id;   
+}
+</pre>
+</div>
+</div>
+[/toggle]
+[/toggles]
+[toggles title="" speed="800"]
+[toggle title="CLIENTE Y TARJETA YA CREADOS, Y CON PLAN NUEVO"]
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el número de cuotas a pagar.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+// Ingresa aquí la cantidad de días de prueba
+parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
+
+// Ingresa aquí el identificador del pagador.
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "eab38z33hh2");
+// Ingresa aquí el identificador del token de la tarjeta.
+parameters.put(PayU.PARAMETERS.TOKEN_ID, "a068e980-a6d7-4a19-b549-75c04f39ec22");
+
+// -- Parámetros del plan --
+// Ingresa aquí la descripción del plan
+parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Sample Plan 001");
+// Ingresa aquí el código de identificación para el plan
+parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
+// Ingresa aquí el intervalo del plan
+parameters.put(PayU.PARAMETERS.PLAN_INTERVAL, "MONTH");
+// Ingresa aquí la cantidad de intervalos
+parameters.put(PayU.PARAMETERS.PLAN_INTERVAL_COUNT, "1");
+// Ingresa aquí la moneda para el plan
+parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
+// Ingresa aquí el valor del plan
+parameters.put(PayU.PARAMETERS.PLAN_VALUE, "10000");
+//(OPCIONAL) Ingresa aquí el valor del impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX, "1600");
+//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "8400");
+// Ingresa aquí la cuenta Id del plan
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500538");
+// Ingresa aquí el intervalo de reintentos
+parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "1");
+// Ingresa aquí la cantidad de cobros que componen el plan
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENTS, "12");
+// Ingresa aquí la cantidad total de reintentos para cada pago rechazado de la suscripción
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "3");
+// Ingresa aquí la cantidad máxima de pagos pendientes que puede tener una suscripción antes de ser cancelada.
+parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "1");
+// Ingresa aquí la cantidad de días de prueba de la suscripción.
+parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "30");
+	
+Subscription response = PayUSubscription.create(parameters);
+		
+if(response!=null){
+	response.getId();		
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:200px; overflow: auto;">
+$parameters = array(
+	// Ingresa aquí el número de cuotas a pagar.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	// Ingresa aquí la cantidad de días de prueba
+	PayUParameters::TRIAL_DAYS =&gt; "10",
+
+	// -- Parámetros de la tarjeta de crédito --
+	// Ingresa aquí el identificador del pagador.
+	PayUParameters::CUSTOMER_ID =&gt; "5131879lzbx",
+	// Ingresa aquí el identificador del token de la tarjeta.
+	PayUParameters::TOKEN_ID =&gt; "158e5bed-1e76-4bb2-83c2-97dc9bb1522d",
+
+	// -- Parámetros del plan --
+	// Ingresa aquí la descripción del plan
+	PayUParameters::PLAN_DESCRIPTION =&gt; "Sample Plan 001",
+	// Ingresa aquí el código de identificación para el plan
+	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
+	// Ingresa aquí el intervalo del plan
+	PayUParameters::PLAN_INTERVAL =&gt; "MONTH",
+	// Ingresa aquí la cantidad de intervalos
+	PayUParameters::PLAN_INTERVAL_COUNT =&gt; "1",
+	// Ingresa aquí la moneda para el plan
+	PayUParameters::PLAN_CURRENCY =&gt; "COP",
+	// Ingresa aquí el valor del plan
+	PayUParameters::PLAN_VALUE =&gt; "10000",
+	//(OPCIONAL) Ingresa aquí el valor del impuesto
+	PayUParameters::PLAN_TAX =&gt; "1600",
+	//(OPCIONAL) Ingresa aquí la base de devolución sobre el impuesto
+	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "8400",
+	// Ingresa aquí la cuenta Id del plan
+	PayUParameters::ACCOUNT_ID =&gt; "500538",
+	// Ingresa aquí el intervalo de reintentos
+	PayUParameters::PLAN_ATTEMPS_DELAY =&gt; "1",
+	// Ingresa aquí la cantidad de cobros que componen el plan
+	PayUParameters::PLAN_MAX_PAYMENTS =&gt; "12",
+	// Ingresa aquí la cantidad total de reintentos para cada pago rechazado de la suscripción
+	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
+	// Ingresa aquí la cantidad máxima de pagos pendientes que puede tener una suscripción antes de ser cancelada.
+	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
+	// Ingresa aquí la cantidad de días de prueba de la suscripción.
+	PayUParameters::TRIAL_DAYS =&gt; "30",
+);
+
+$response = PayUSubscriptions::createSubscription($parameters);
+
+if($response){
+	$response-&gt;id;   
+	$response-&gt;plan-&gt;id;  
+}
+</pre>
+</div>
+</div>
+[/toggle]
+[/toggles]
+&nbsp;<br>
+<b>ACTUALIZACIÓN</b>: (tarjeta de crédito de una suscripción)
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+// Ingresa aquí el ID de la suscripción.
+parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "320756yk1x0");
+// Ingresa aquí el identificador del token de la tarjeta.
+parameters.put(PayU.PARAMETERS.TOKEN_ID, "a068e980-a6d7-4a19-b549-75c04f39ec22");
+
+Subscription response = PayUSubscription.update(parameters);
+		
+if(response!=null){
+	
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+No disponible
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>CONSULTA</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el ID de la suscripción.
+parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "320756yk1x0");
+
+Subscription response = PayUSubscription.find(parameters);
+		
+if(response!=null){
+	response.getCreditCardToken();
+	response.getCustomer();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+No disponible
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Ingresa aquí el identifcador de la subscripción.
+parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "123");
+boolean response = PayUSubscription.cancel(parameters);
+LoggerUtil.info("{0}", response);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	// Ingresa aquí el ID de la suscripción.
+	PayUParameters::SUBSCRIPTION_ID =&gt; "03e481u9l13",
+);
+
+$response = PayUSubscriptions::cancel($parameters);
+
+if($response){
+}
+</pre>
+</div>
+</div>
+<!-- FIN TABS SUSCRIPCION -->
+</div>
+
+&nbsp;<br>
+<div id="cargos-adicionales" class="payu-fragment">
+&nbsp;<br>
+<div class="paso5"><span class="subtitle-page">CARGOS ADICIONALES</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Un cargo puede ser un cobro adicional o un descuento realizado sobre el valor de uno de los pagos que conforman el plan de pagos recurrentes. Estos solo afectan el siguiente cobro pendiente y se ejecutan una única vez.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se encuentran disponibles las siguientes operaciones:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">URL</span></td>
+		<td><span style="color: #fff; font-weight: bold;">METODO</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/subscriptions/{subscriptionId}/recurringBillItems</td>
+		<td>POST</td>
+		<td>Adiciona cargos extras a la factura correspondiente al periodo actual.<br>
+		{subscriptionId} : Identificación de la suscripción</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/{recurringBillItemId}</td>
+		<td>PUT</td>
+		<td>Actualiza la información del cargo extra de una factura<br>
+		{recurringBillItemId} : Identificador del cargo extra</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/{recurringBillItemId}</td>
+		<td>GET</td>
+		<td>Consulta la información del cargo extra de una factura a partir de su identificador.<br>
+		{recurringBillItemId} : Identificador del cargo extra</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/{recurringBillItemId}</td>
+		<td>DELETE</td>
+		<td>Eliminar un cargo extra de una factura<br>
+		{recurringBillItemId} : Identificador del cargo extra</td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBillItems/params</td>
+		<td>GET</td>
+		<td>Consulta de los cargos extras de las facturas del comercio que cumplen con los filtros estipulados. Los filtros disponibles se muestra a continuación y deben ser enviados como named parameters dentro de la URL:<br>
+		{subscriptionId} : Identificación de la suscripción<br>
+		{description} : Descripción ingresada en el cargo extra</td>
+	</tr>
+</table>
+
+<!-- TABS CARGOS ADICIONALES -->
+&nbsp;<br>
+<b>CREACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Descripción del item
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "Cargo extra de prueba");
+//Valor del item
+parameters.put(PayU.PARAMETERS.ITEM_VALUE, "20000");
+//Moneda
+parameters.put(PayU.PARAMETERS.CURRENCY, "COP");
+//Identificador de la subscripción
+parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "52b04sx2s6");
+//Impuestos - opcional
+parameters.put(PayU.PARAMETERS.ITEM_TAX, "0");
+//Base de devolución - opcional
+parameters.put(PayU.PARAMETERS.ITEM_TAX_RETURN_BASE, "0");
+RecurringBillItem response = PayURecurringBillItem.create(parameters);
+
+if(response!=null){
+	response.getId();		
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	//Descripción del item
+	PayUParameters::DESCRIPTION =&gt; "Cargo extra de prueba",
+	//Valor del item
+	PayUParameters::ITEM_VALUE =&gt; "20000",
+	//Moneda
+	PayUParameters::CURRENCY =&gt; "COP",
+	//Identificador de la subscripción
+	PayUParameters::SUBSCRIPTION_ID =&gt; "a9d01imeihk",
+	//Impuestos - opcional
+	PayUParameters::ITEM_TAX =&gt; "0",
+	//Base de devolución - opcional
+	PayUParameters::ITEM_TAX_RETURN_BASE =&gt; "0",
+);
+
+$response = PayURecurringBillItem::create($parameters);
+
+if($response){
+	$response-&gt;id;
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>ACTUALIZACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Identificador del item existente
+parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "15tolsvwz7l");
+//(OPCIONAL)Nuevo valor para la descripción del item existente
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test Item New");
+//(OPCIONAL)Nuevo valor para el valor del item existente
+parameters.put(PayU.PARAMETERS.ITEM_VALUE, "200.5");
+//(OPCIONAL)Nuevo valor para la moneda del item existente
+parameters.put(PayU.PARAMETERS.CURRENCY, "COP");
+//(OPCIONAL)Nuevo valor para el impuesto del item existente
+parameters.put(PayU.PARAMETERS.ITEM_TAX, "15");
+//(OPCIONAL)Nuevo valor para la base de retorno de impuesto del item existente
+parameters.put(PayU.PARAMETERS.ITEM_TAX_RETURN_BASE, "185.5");
+RecurringBillItem response = PayURecurringBillItem.update(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	//Identificador del cargo extra
+	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "cbb57ywul2l",
+	//Descripción del item
+	PayUParameters::DESCRIPTION =&gt; "Cargo extra de prueba",
+	//Valor del item
+	PayUParameters::ITEM_VALUE =&gt; "20000",
+	//Moneda
+	PayUParameters::CURRENCY =&gt; "COP",
+	//Impuestos - opcional
+	PayUParameters::ITEM_TAX =&gt; "0",
+	//Base de devolución - opcional
+	PayUParameters::ITEM_TAX_RETURN_BASE =&gt; "0",
+);
+
+$response = PayURecurringBillItem::update($parameters);
+
+if($response){
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<b>CONSULTA</b>: (POR ID DEL CARGO ADICIONAL)
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Identificador del cargo extra
+parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "5e174m7lgns");
+
+RecurringBillItem response = PayURecurringBillItem.find(parameters);
+
+if(response!=null){
+	
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	//Identificador del cargo extra
+	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "cbb57ywul2l",
+);
+
+$response = PayURecurringBillItem::find($parameters);
+
+if($response){
+	$response-&gt;description;
+	$response-&gt;subscriptionId;
+	$response-&gt;recurringBillId;	
+}
+</pre>
+</div>
+</div>
+
+&nbsp;<br>
+<b>ELIMINACIÓN</b>:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+//Identificador del item existente
+parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "15tolsvwz7l");
+boolean response = PayURecurringBillItem.delete(parameters);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$parameters = array(
+	//Identificador del cargo extra
+	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "228bdp236sy",
+);
+
+$response = PayURecurringBillItem::delete($parameters);
+
+if($response){
+
+}
+</pre>
+</div>
+</div>
+<!-- FIN TABS CARGOS ADICIONALES -->
+</div>
+&nbsp;<br>
+&nbsp;<br>
+
+</div>
+
+</div>
+</div>
+</div>
