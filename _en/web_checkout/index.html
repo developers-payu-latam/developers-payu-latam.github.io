@@ -1,7 +1,109 @@
 ---
-title: About
+title: Introduction
 ---
-
-<div>
-aca va todo el contenido </br>adsasd
+<section id="section-content" class="section section-content">
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">Webcheckout Integration</h1>
+<ul class="hidden-xs">
+	<li class="first leaf"><a class="active" href="#que-debes-saber">What should you know?</a></li>
+	<li class="leaf"><a href="#componentes-de-la-integracion">Integration components</a></li>
+	<li class="leaf"><a href="#como-funciona">How does it work?</a></li>
+</ul>
 </div>
+<div id="que-debes-saber" class="payu-fragment">
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+&nbsp;<br> 
+<div id="three-columns-column1">&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<span class="blue-text-16">This type of integration allows your customer to select the items he wishes to purchase and at the time of purchase to be redirected to our payment gateway (webcheckout).</span><br>
+<br>
+<span class="grey-text-13">You can include your company logo on this page. Data exchange is via the HTTP POST method.
+<br>
+<br>
+It is necessary that the developer has expertise integrating a dynamic programming language type like PHP, Java, etc.</span></div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/webcheckout-en.jpg" alt="" border="0" /></div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="componentes-de-la-integracion" class="payu-fragment">
+<div class="sh-container payu-white-bg" style="background-color: #f5f5f5;">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+<span class="subtitle-page">INTEGRATION COMPONENTS</span>
+&nbsp;<br>
+&nbsp;<br>
+<div id="three-columns-column1">
+<span class="blue-text-16">1. PAYMENT FORM</span>&nbsp;&nbsp;<span class="grey-text-13">With this HTML form you send the transaction request our gateway, including the purchase payment data, using the HTTP POST method.</span>
+&nbsp;<br>
+<span class="blue-text-16">2. RESPONSE PAGE</span>&nbsp;&nbsp;<span class="grey-text-13">It is a page that shows the result of the transaction to the payer. Our system will direct the payer to this page once the transaction is performed. The data with the payment results will be sent to your system via HTTP GET. This page is called with all states of transactions: approved, rejected, in validation, awaiting payment (for cash), etc. <b>This page is mandatory.</b></span>
+&nbsp;<br>
+<span class="blue-text-16">3. CONFIRMATION PAGE</span>&nbsp;&nbsp;<span class="grey-text-13">Through this page we confirm your system the end result of the transaction. At this point you can update your system’s inventories, orders, or databases. This page will never be visible to the buyer, since its goal is to enable communication between systems. The data are sent via the HTTP POST method. This page is only called for approved and rejected states. <b>This page is not mandatory</b>.</span>
+&nbsp;<br>
+</div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/integracion-en.gif" alt="" border="0" /></div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="como-funciona" class="payu-fragment">
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+<span class="subtitle-page">HOW DOES THE WEBCHECKOUT INTEGRATION WORK?</span>
+&nbsp;<br>
+&nbsp;<br>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span><span class="grey-text-13">The process starts when the buyer comes to your WEB page, selects the products or services he wishes to purchase and clicks the pay button. Your system must add up the value of the purchase and send a payment form to our system through the HTTP POST method with some purchase data.</span></div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso1-en.jpg" alt="" border="0" /></div>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span><span class="grey-text-13">The payer is directed to our <b>checkout</b>, there he can choose the payment means with which he wants to perform the transaction.</span></div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso2-en.jpg" alt="" border="0" /></div>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">03. </span><span class="grey-text-13">PayU processes the transaction and displays the result in the  <b>response page</b>.</span></div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso3-en.jpg" alt="" border="0" /></div>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">04. </span><span class="grey-text-13">PayU redirects the payer to your web page (response page) and sends the information of the result to your system via the HTTP GET method.</span></div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso4-en.jpg" alt="" border="0" /></div>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">05. </span><span class="grey-text-13">The system will notify the final status of the transaction through a <b>confirmation page</b> via the HTTP POST method, additionally the system will send you and each payer a confirmation email.</span></div>
+<div id="three-columns-column2">&nbsp;</div>
+<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso5-en.jpg" alt="" border="0" /></div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="grey-box">
+<div id="info-box">Consider:</div>
+<ol>
+<li class="bullet-box">The coding of your page should be UTF-8.</li>
+<li class="bullet-box">You must not enter our Web Checkout within an iframe</li>
+<li class="bullet-box">You must not mask the URL during the checkout process</li>
+<li class="bullet-box">If you have a SSL certificate on your confirmation page, it is important that you send it to sac@payulatam.com requesting that it be loaded into our bank of certificates.</li>
+</ol>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="section-strapline" class="section section-strapline">
+<div class="container">
+	<div class="row">
+		<div class="region region-strapline-first">
+			<div id="block-block-18" class="block block-block"></div>
+		</div>
+	</div>
+</div>
+</section>

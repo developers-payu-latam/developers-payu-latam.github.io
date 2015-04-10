@@ -1,0 +1,492 @@
+---
+title: Refunds API
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">API INTEGRATION - <span style="color: #009cdd;">REFUNDS MODULE</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#como">How does it work?</a></li>
+	<li class="leaf"><a href="#solicitar">Refund request</a></li>
+	<li class="leaf"><a href="#consultar">Query response</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api_en.html %}
+
+<div id="page-menu-column2">
+<div id="como" class="payu-fragment"></div>
+&nbsp;<br>
+&nbsp;<br>
+<span class="blue-text-16">This feature allows you to request the cancellation and refund of transactions that were paid with credit card; and which for reasons of dissatisfaction of the buyer, multiple charges in the same purchase, or when the buyer requires the refund because he did not receive the product or service.</span>
+
+<p>You can make the refund request using the Refund or Void method which is provided for this purpose. Once the request is made, a customer service agent from Pay<span style="color: #009cdd;">U</span> takes charge of validating the information and justification of the request to approve the request and to perform the refund or refuse the request if it does not meet the requirements.
+<br>
+Additionally, you can check the status of your refund request using the Query API available for that purpose.</p>
+<p align="center"><img border="0" alt="Modulo Reembolsos" src="/images/modulo-reembolsos-en.jpg"></p>
+<div class="info-icon">Consider:</div>
+<div class="list-arrow"><ul>
+<li>Captured state that have been made with a credit card. If the request refers to a different payment means (cash payment means, bank transfer), the application will be declined by Pay<span style="color: #009cdd;">U</span>´s customer service agent.</li>
+<br>
+<li>The system will only create one application for each refund request, if the request is repeatedly posted for the same transaction, the system will only record one request in the module and will indicate that the request is already registered.</li>
+<br>
+<li>If an order or transaction has already been <span class="highlight-txt2">refunded</span>, the system will indicate that it is not possible to make the request again. Pay<span style="color: #009cdd;">U</span> only accepts reimbursement requests of transactions that are in the <span class="highlight-txt2">Captured</span>state.</li>
+<br>
+<li>If a reimbursement request of an order or transaction was previously <span class="highlight-txt2">Declined</span>, you can retry the reimbursement request if you consider it necessary.</li>
+<br>
+<li>Once you make the request, the amount of the transaction becomes part of the <span class="highlight-txt2">Frozen Balance</span> of your Pay<span style="color: #009cdd;">U</span> account until response to the request is given. If your refund request is <span class="highlight-txt2">Approved</span>, since it is refunded to the payer. If the refund request is  <span class="highlight-txt2">Ddeclined</span>, the value of the transaction will be released from the Frozen Balance and will return to the available Balance of your Pay<span style="color: #009cdd;">U</span> account.</li>
+</ul></div>
+&nbsp;<br>
+<div id="solicitar" class="payu-fragment"></div>
+&nbsp;<br>
+<span class="subtitle-page">REQUEST REFUND</span>
+&nbsp;<br>
+<p align="center"><img border="0" alt="Solicitar reembolso" src="/images/solicitar-reembolso-en.jpg"></p>
+<p>If a transaction is in the <span class="highlight-txt2">“Captured”</span>, state, you can use the Refund method to perform the refund request.</p>
+It is compulsorily that you submit the following parameters:
+<div class="list-arrow"><ul><li><span class="highlight-txt2">1.</span> Order’s ID.</li>
+<li><span class="highlight-txt2">2.</span> Transaction’s ID.</li>
+<li><span class="highlight-txt2">3.</span> The type of request which will be REFUND.</li>
+<li><span class="highlight-txt2">4.</span> Reason for requesting the refund or cancellation of the transaction.</li></ul></div>
+Request example:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<pre>
+<code> 
+{
+	"language": "es",
+	"command": "SUBMIT_TRANSACTION",
+	"merchant": {
+		"apiKey": "P4yU*********L4t4mC0l",
+		"apiLogin": "CoM3r*******c1o5"
+	},
+	"transaction": {
+		"order": {
+			"id": "45678901"
+		},
+		"type": "REFUND",
+		"reason": "Reason for requesting the refund or cancellation of the transaction",
+		"parentTransactionId": "8795a432-12ab-34cd-1234-a9876bc54321"
+	},
+	"test": false
+}
+</code>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+<pre><code>&lt;request&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+  &lt;merchant&gt;
+  &lt;apiKey&gt;P4yU*********L4t4mC0l&lt;/apiKey&gt;
+  &lt;apiLogin&gt;CoM3r*******c1o5&lt;/apiLogin&gt;
+  &lt;/merchant&gt;
+  &lt;transaction&gt;
+  &lt;order&gt;
+  &lt;id&gt;<span style="color: #009cdd;">45678901</span>&lt;/id&gt;
+  &lt;/order&gt;
+  &lt;type&gt;<span style="color: #009cdd;">REFUND</span>&lt;/type&gt;
+  &lt;reason&gt;<span style="color: #009cdd;">Reason for requesting the refund or cancellation of the transaction.</span>&lt;/reason&gt;
+  &lt;parentTransactionId&gt;<span style="color: #009cdd;">8795a432-12ab-34cd-1234-a9876bc54321</span>&lt;/parentTransactionId&gt;
+  &lt;/transaction&gt;
+  &lt;isTest&gt;false&lt;/isTest&gt;
+  &lt;/request&gt;</code></pre>
+</div>
+</div>
+Response example:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<pre>
+<code>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 5831055,
+      "transactionId": null,
+      "state": "PENDING",
+      "paymentNetworkResponseCode": null,
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": "PENDING_REVIEW",
+      "responseCode": null,
+      "errorCode": null,
+      "responseMessage": "5831055",
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</code>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+<pre><code>&lt;paymentResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;transactionResponse&gt;
+  &lt;orderId&gt;45678901&lt;/orderId&gt;
+  &lt;state&gt;<span style="color: #009cdd;">PENDING</span>&lt;/state&gt;
+  &lt;pendingReason&gt;PENDING_REVIEW&lt;/pendingReason&gt;
+  &lt;responseMessage&gt;Mensaje de  respuesta&lt;/responseMessage&gt;
+  &lt;/transactionResponse&gt;
+  &lt;/paymentResponse&gt;</code></pre>
+</div>
+</div>
+&nbsp;<br>
+<div id="consultar" class="payu-fragment"></div>
+&nbsp;<br>
+<span class="subtitle-page">CHECK RESPONSE</span>
+&nbsp;<br>
+<p align="center"><img border="0" alt="Consultar resposta" src="/images/consultar-respuesta-pt.jpg"></p>
+&nbsp;<br>
+<span class="subtitle-page2">Browse through PayU’s Administrative Module.</span>
+<p>In order to perform the query using the administrative module, you must enter your username and password to access the <span class="highlight-txt2">Reportes</span> tab, access  <span class="highlight-txt2">Orders</span>, in the lateral menu, and enter the ID of the order to be consulted in the search filters.<br>
+
+The system will submit the order information, and display the associated transactions. Once your refund request is approved or declined, in the order a new record type Refund will be shown with its respective state, either Approved or Declined, according to the solution given by the customer Service agent.</p>
+&nbsp;<br>
+<span class="subtitle-page2">Query through the API</span>
+<p>To run the query about your cancellation request via the API, you must send the following request:</p>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<pre><code>
+{
+   "test":false,
+   "language":"en",
+   "command":"ORDER_DETAIL",
+   "merchant":{
+      "apiLogin":"P4yU*********L4t4mC0l",
+      "apiKey":"CoM3r*******c1o5"
+   },
+   "details":{
+      "orderId":45678901
+   }
+}
+
+</code></pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+<pre><code>&lt;request&gt;
+  &lt;language&gt;en&lt;/language&gt;
+  &lt;command&gt;ORDER_DETAIL&lt;/command&gt;
+  &lt;merchant&gt;
+  &lt;apiLogin&gt;P4yU*********L4t4mC0l&lt;/apiLogin&gt;
+  &lt;apiKey&gt;CoM3r*******c1o5&lt;/apiKey&gt;
+  &lt;/merchant&gt;
+  &lt;details  class=&quot;java.util.HashMap&quot;&gt;
+  &lt;entry&gt;
+  &lt;string&gt;orderId&lt;/string&gt;
+  &lt;object  class=&quot;java.lang.Integer&quot;&gt;45678901&lt;/object&gt;
+  &lt;/entry&gt;
+  &lt;/details&gt;
+  &lt;isTest&gt;false&lt;/isTest&gt;
+  &lt;/request&gt;</code></pre>
+</div>
+</div>
+There are three possible responses to your refund request:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Unresolved request</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Approved request</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Request declined</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+If the request has not been resolved, the system will return the last transaction associated with the Order as the response to, in this case, an Order with <span style="color: #009cdd;">CAPTURED</span>, state, and an <span style="color: #009cdd;">AUTHORIZATION AND CAPTURE</span> transaction type with <span style="color: #009cdd;">APPROVED</span> state.
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+<pre><code>
+{
+	"code": "SUCCESS",
+	"result": {
+		"payload": {
+			
+			"id": "45678901",
+			"accountId": "543210",
+			"status": "CAPTURED",
+			"referenceCode": "2014-05-29  12:59:59",
+			"description": "Sale description",
+			"language": "es",
+			"transactions": [   {
+					"id": "8366e912-11ac-41cd-8413-a4955ab44713",
+					"creditCard": {
+						"maskedNumber": "411111******1111",
+						"name": "Cardholder name",
+						"issuerBank": "bank 123"
+					},
+					"type": "AUTHORIZATION_AND_CAPTURE",
+					"paymentMethod": "VISA",
+					"paymentCountry": "CO",
+					"transactionResponse": {
+						"state": "APPROVED",
+						"paymentNetworkResponseCode": "1",
+						"trazabilityCode": "397985698",
+						"authorizationCode": "678901",
+						"responseCode": "APPROVED",
+						"operationDate": "2014-05-29T12:59:59"
+					}
+				 .
+				 .
+				 .
+				]
+			}
+		}
+	}
+}
+</code></pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+<pre><code>&lt;reportingResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;result&gt;
+  &lt;payload class=&quot;order&quot;&gt;
+  &lt;id&gt;45678901&lt;/id&gt;
+  &lt;accountId&gt;543210&lt;/accountId&gt;
+  &lt;status&gt;<span style="color: #009cdd;">CAPTURED</span>&lt;/status&gt;
+  &lt;referenceCode&gt;2014-05-29  12:59:59&lt;/referenceCode&gt;
+  &lt;description&gt;Descripción venta&lt;/description&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;transactions&gt;
+  &lt;transaction&gt;
+  &lt;id&gt;8366e912-11ac-41cd-8413-a4955ab44713&lt;/id&gt;
+  &lt;creditCard&gt;
+  &lt;maskedNumber&gt;411111******1111&lt;/maskedNumber&gt;
+  &lt;name&gt;Nombre del  tarjetahabiente&lt;/name&gt;
+  &lt;issuerBank&gt;Banco  Mundial&lt;/issuerBank&gt;
+  &lt;/creditCard&gt;
+  &lt;type&gt;<span style="color: #009cdd;">AUTHORIZATION_AND_CAPTURE</span>&lt;/type&gt;
+  &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;
+  &lt;transactionResponse&gt;
+  &lt;state&gt;APPROVED&lt;/state&gt;
+  &lt;paymentNetworkResponseCode&gt;1&lt;/paymentNetworkResponseCode&gt;
+  &lt;trazabilityCode&gt;397985698&lt;/trazabilityCode&gt;
+  &lt;authorizationCode&gt;678901&lt;/authorizationCode&gt;
+  &lt;responseCode&gt;<span style="color: #009cdd;">APPROVED</span>&lt;/responseCode&gt;
+  &lt;operationDate&gt;2014-05-29T12:59:59&lt;/operationDate&gt;
+  &lt;/transactionResponse&gt;
+  .
+  .
+  .
+  &lt;/payload&gt;
+  &lt;/result&gt;
+  &lt;/reportingResponse&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-2">
+If the refund request is approved by PayU’s customer service agent, the system will give as response all the information of the Order with a <span class="highlight-txt2">CANCELLED</span> or <span class="highlight-txt2">REFUNDED</span> state, and with a <span class="highlight-txt2">VOID or REFUND</span> transaction type and  <span class="highlight-txt2">APPROVED</span> status:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+<pre><code>
+{
+	"code": "SUCCESS",
+	"result": {
+		"payload": {
+			
+			"id": "3987200",
+			"accountId": "500538",
+			"status": "CAPTURED",
+			"referenceCode": "REF00123456",
+			"description": "Descripción venta",
+			"language": "es",
+			"transactions": [
+				{
+					"id": "e8421426-8519-4150-9f00-b22737b85719",
+					"type": "REFUND",
+					"parentTransactionId": "ab752190-84db-4dd4-b010-3c72a619363b",
+					"paymentMethod": "VISA",
+					"source": "CANCELLATION_MODULE",
+					"paymentCountry": "CO",
+					"transactionResponse": {
+						"state": "APPROVED",
+						"responseCode": "NOT_ACCEPTED_TRANSACTION"
+					}
+				"additionalValues":{
+					.
+					.
+					.
+					}
+				}
+				.
+				.
+				.
+			]
+		}
+	}
+}
+</code></pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+<pre><code>&lt;reportingResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;result&gt;
+  &lt;payload class=&quot;order&quot;&gt;
+  &lt;id&gt;3987200&lt;/id&gt;
+  &lt;accountId&gt;500538&lt;/accountId&gt;
+  &lt;status&gt;<span style="color: #009cdd;">CANCELLED</span>&lt;/status&gt;
+  &lt;referenceCode&gt;REF00123456&lt;/referenceCode&gt;
+  &lt;description&gt;Descripción venta&lt;/description&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;transactions&gt;
+  &lt;transaction&gt;
+  &lt;id&gt;57d6411a-9757-4ff5-81e0-e60522e4a1b5&lt;/id&gt;
+  &lt;type&gt;<span style="color: #009cdd;">REFUND</span>&lt;/type&gt;
+  &lt;parentTransactionId&gt;ffe0cdd1-fc6e-42d6-a431-44426999aa59&lt;/parentTransactionId&gt;
+  &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;
+  &lt;transactionResponse&gt;
+  &lt;state&gt;<span style="color: #009cdd;">APPROVED</span>&lt;/state&gt;
+  &lt;trazabilityCode&gt;00000000&lt;/trazabilityCode&gt;
+  &lt;authorizationCode&gt;00000000&lt;/authorizationCode&gt;
+  &lt;responseCode&gt;APPROVED&lt;/responseCode&gt;
+  &lt;operationDate&gt;2014-05-30T16:20:58&lt;/operationDate&gt;
+  &lt;/transactionResponse&gt;
+  &lt;additionalValues&gt;
+  .
+  .
+  .
+  &lt;/additionalValues&gt;
+  &lt;extraParameters&gt;
+  &lt;entry&gt;
+  &lt;string&gt;MANUAL_REFUND&lt;/string&gt;
+  &lt;string&gt;true&lt;/string&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+  &lt;string&gt;ORDER_CANCELLATION_CODE&lt;/string&gt;
+  &lt;string&gt;REQUESTED_BY_MERCHANT&lt;/string&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+  &lt;string&gt;REVERSAL_ACCOUNT_OPERATIONS&lt;/string&gt;
+  &lt;string&gt;false&lt;/string&gt;
+  &lt;/entry&gt;
+  &lt;/extraParameters&gt;
+  &lt;/transaction&gt;
+  .
+  .
+  .
+  &lt;/transactions&gt;
+  .
+  .
+  .
+  &lt;/payload&gt;
+  &lt;/result&gt;
+  &lt;/reportingResponse&gt;</code></pre>
+</div>
+</div></div>
+<div id="squelch-taas-tab-content-3">
+If the refund request is declined by PayU’s customer service agent, the system will give as response all transaction information, indicating that the order continues in a <span class="highlight-txt2">CAPTURED</span>, state, and reporting that now there is a <span class="highlight-txt2">REFUND or VOID</span> transaction type with <span class="highlight-txt2">DECLINED</span>, state, as follows:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+<pre><code>{
+    "reportingResponse": {
+        "code": "SUCCESS",
+        "result": {
+            "payload": {
+                "-class": "order",
+                "id": "3987200",
+                "accountId": "500538",
+                "status": "<span style="color: #009cdd;">CAPTURED</span>",
+                "referenceCode": "REF00123456",
+                "description": "Sale Description",
+                "language": "es",
+                "transactions": {
+                    "transaction": {
+                        "id": "e8421426-8519-4150-9f00-b22737b85719",
+                        "type": "<span style="color: #009cdd;">REFUND</span>",
+                        "parentTransactionId": "ab752190-84db-4dd4-b010-3c72a619363b",
+                        "paymentMethod": "VISA",
+                        "source": "CANCELLATION_MODULE",
+                        "paymentCountry": "CO",
+                        "transactionResponse": {
+                            "state": "<span style="color: #009cdd;">DECLINED</span>",
+                            "responseCode": "NOT_ACCEPTED_TRANSACTION"
+                        }
+                    "additionalValues":{
+.
+.
+.
+}
+}
+.
+.
+.
+}
+            }
+        }
+    }
+}</code></pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+<pre><code>&lt;reportingResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;result&gt;
+  &lt;payload class=&quot;order&quot;&gt;
+  &lt;id&gt;3987200&lt;/id&gt;
+  &lt;accountId&gt;500538&lt;/accountId&gt;
+  &lt;status&gt;<span style="color: #009cdd;">CAPTURED</span>&lt;/status&gt;
+  &lt;referenceCode&gt;REF00123456&lt;/referenceCode&gt;
+  &lt;description&gt;Descripción venta&lt;/description&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;transactions&gt;
+  &lt;transaction&gt;
+  &lt;id&gt;e8421426-8519-4150-9f00-b22737b85719&lt;/id&gt;
+  &lt;type&gt;<span style="color: #009cdd;">REFUND</span>&lt;/type&gt;
+  &lt;parentTransactionId&gt;ab752190-84db-4dd4-b010-3c72a619363b&lt;/parentTransactionId&gt;
+  &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+  &lt;source&gt;CANCELLATION_MODULE&lt;/source&gt;
+  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;
+  &lt;transactionResponse&gt;
+  &lt;state&gt;<span style="color: #009cdd;">DECLINED</span>&lt;/state&gt;
+  &lt;responseCode&gt;NOT_ACCEPTED_TRANSACTION&lt;/responseCode&gt;
+  &lt;/transactionResponse&gt;
+  &lt;/transaction&gt;
+  .
+  .
+  .
+  &lt;/transactions&gt;
+  &lt;additionalValues&gt;
+  .
+  .
+  .
+  &lt;/additionalValues&gt;
+  &lt;/payload&gt;
+  &lt;/result&gt;
+  &lt;/reportingResponse&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>

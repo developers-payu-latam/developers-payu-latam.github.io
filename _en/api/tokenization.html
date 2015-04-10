@@ -1,0 +1,1805 @@
+---
+title: Tokenization API
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">API INTEGRATION - <span style="color: #009cdd;">TOKENIZATION</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#como-funciona">How does it work?</a></li>
+	<li class="leaf"><a href="#registro-individual">Individual registration</a></li>
+	<li class="leaf"><a href="#registro-masivo">Massive registration</a></li>
+	<li class="leaf"><a href="#cobro-individual">Payment with token</a></li>
+	<li class="leaf"><a href="#cobro-masivo">Massive payments with tokens</a></li>
+	<li class="leaf"><a href="#consulta">Token query</a></li>
+	<li class="leaf"><a href="#eliminacion">Token removal</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api_en.html %}
+
+<div id="page-menu-column2">
+<div id="como-funciona" class="payu-fragment">
+&nbsp;<br>
+<span class="grey-text-13">The Tokenization product allows you to store your customers’ credit card data safely, through the creation of a token, with which you can make regular charges or implement 1 Click payment functionality, thus following PCI DSS (Payment Card Industry Data Security Standard)security standards handling credit card data.<br>
+In order to use the product’s tokenization functionalities from the API, you must have this service enabled on your PayU account, if you want to purchase it contact <a href="mailto:sac@payulatam.com">sac@payulatam.com</a>.</span>
+&nbsp;<br>
+&nbsp;<br>
+<span class="subtitle-page">How does it work?</span>
+&nbsp;<br>
+<span class="grey-text-13">The "Tokenization" product includes two separate processes:</span><br>
+<p align="center"><img src="/images/tokenizacion1-en.jpg" alt="generate token" border="0"></p>
+<p align="center"><img src="/images/tokenizacion2-en.jpg" alt="Charge with token" border="0"></p>
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Available methods for tokenization are: <b>INDIVIDUAL CREDIT CARD REGISTRATION</b>, <b>MASSIVE CREDIT CARD REGISTRATION</b>, <b>PAYMENT WITH TOKEN</b>, <b>MASSIVE PAYMENTS WITH TOKEN</b>, <b>TOKEN QUERY</b> and <b>TOKEN REMOVAL</b>. Below is a description of each.</span>
+&nbsp;<br>
+</div>
+&nbsp;<br>
+<div id="registro-individual" class="payu-fragment">
+&nbsp;<br>
+<div class="paso1"><span class="subtitle-page">INDIVIDUAL CREDIT CARD REGISTRATION</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Using this feature you can register a customer’s credit card data and get a token sequential number.</span>
+
+<!-- TABS REGISTRO INDIVIDUAL -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+{
+   "language":"es",
+   "command":"CREATE_TOKEN",
+   "merchant":{
+      "apiLogin":"11959c415b33d0c",
+      "apiKey":"6u39nqhq8ftd0hlvnjfs66eh8c"
+   },
+   "creditCardToken":{
+      "payerId":"10",
+      "name":"full name",
+      "identificationNumber":"32144457",
+      "paymentMethod":"VISA",
+      "number":"4111111111111111",
+      "expirationDate":"2017/01"
+   }
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "creditCardToken":    {
+      "creditCardTokenId": "32fa0a2d-ea79-40f3-8027-f9363296dd0e",
+      "name": "full name",
+      "payerId": "10",
+      "identificationNumber": "32144457",
+      "paymentMethod": "VISA",
+      "number": null,
+      "expirationDate": null,
+      "creationDate": null,
+      "maskedNumber": "411111******1111",
+      "errorDescription": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+&lt;request&gt;
+&lt;language&gt;es&lt;/language&gt;
+&lt;command&gt;CREATE_TOKEN&lt;/command&gt;
+&lt;merchant&gt;
+&lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+&lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+&lt;/merchant&gt;
+&lt;creditCardToken&gt;
+&lt;payerId&gt;10&lt;/payerId&gt;
+&lt;name&gt;full name&lt;/name&gt;
+&lt;identificationNumber&gt;32144457&lt;/identificationNumber&gt;
+&lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+&lt;number&gt;4111111111111111&lt;/number&gt;
+&lt;expirationDate&gt;2014/01&lt;/expirationDate&gt;
+&lt;/creditCardToken&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;creditCardTokenResponse&gt;
+&lt;code&gt;SUCCESS&lt;/code&gt;
+&lt;creditCardToken&gt;
+&lt;creditCardTokenId&gt;32fa0a2d-ea79-40f3-8027-f9363296dd0e&lt;/creditCardTokenId&gt;
+&lt;name&gt;full name&lt;/name&gt;
+&lt;payerId&gt;10&lt;/payerId&gt;
+&lt;identificationNumber&gt;32144457&lt;/identificationNumber&gt;
+&lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+&lt;maskedNumber&gt;411111******1111&lt;/maskedNumber&gt;
+&lt;/creditCardToken&gt;
+&lt;/creditCardTokenResponse&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS REGISTRO INDIVIDUAL -->
+</div>
+&nbsp;<br>
+<div id="registro-masivo" class="payu-fragment">
+&nbsp;<br>
+<div class="paso2"><span class="subtitle-page">MASSIVE CREDIT CARD REGISTRATION</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Using this feature you can register various customer’s credit card data and get token sequential numbers.<br>
+For massive credit card tokenization you must create a file with CSV format with the following conditions:</span>
+&nbsp;<br>
+<ol>
+<li class="bullet-box">Each credit card register to be tokenized must contain data for the registration of a credit card, separated by commas in the following order: Payer ID, full name, credit card number, expiration date, franchise, and identification number.</li>
+<li class="bullet-box">The file should have no header. The first line shows the first record.</li>
+<li class="bullet-box">The file must be encoded under the UTF-8 standard.</li>
+<li class="bullet-box">The file must not have more than 10,000 registers.</li>
+</ol>
+&nbsp;<br>
+<p align="center"><img src="/images/tokenizacion-masivo.jpg" border="0"></p>
+
+<!-- TABS REGISTRO MASIVO -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+{
+   "language":"es",
+   "command":"CREATE_BATCH_TOKENS",
+   "merchant":{
+      "apiLogin":"11959c415b33d0c",
+      "apiKey":"6u39nqhq8ftd0hlvnjfs66eh8c"
+   },
+      "contentFile":"MDAxLG5vbWJyZSBhcGVsbGlkbyAxLDQxMTExMTExMTExMTExMTEsMjAxNS8wMSxWSVNBLDEyMzQ1Ng=="
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "id": "edd187bb-067c-4016-b94d-3a4727cc86eb"
+}
+</pre>
+&nbsp;<br>
+You must implement a function that takes the contents of the file and pass it to <b>base 64</b> and send this file in the parameter <b>&lt;contentFile&gt;</b>.
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+&lt;request&gt;
+&lt;language&gt;es&lt;/language&gt;
+&lt;command&gt;CREATE_BATCH_TOKENS&lt;/command&gt;
+&lt;merchant&gt;
+&lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+&lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+&lt;/merchant&gt;
+&lt;contentFile&gt;
+MDAxLG5vbWJyZSBhcGVsbGlkbyAxLDQxMTExMTExMTExMTExMTEsMjAxNS8wMSxWSVNBLDEyMzQ1Ng==
+&lt;/contentFile&gt;
+&lt;/request&gt; 
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;creditCardTokenBatchResponse&gt;
+    &lt;code&gt;SUCCESS&lt;/code&gt;
+    &lt;id&gt;edd187bb-067c-4016-b94d-3a4727cc86eb&lt;/id&gt;
+&lt;/creditCardTokenBatchResponse&gt;
+</pre>
+&nbsp;<br>
+You must implement a function that takes the contents of the file and pass it to <b>base 64</b> and send this file in the parameter <b>&lt;contentFile&gt;</b>.
+</div>
+</div>
+<!-- FIN TABS REGISTRO MASIVO -->
+</div>
+&nbsp;<br>
+<div id="cobro-individual" class="payu-fragment">
+&nbsp;<br>
+<div class="paso3"><span class="subtitle-page">INDIVIDUAL PAYMENT WITH TOKEN</span></div>
+&nbsp;<br>
+<span class="grey-text-13">This feature allows you to make collections using a Token code that was previously created by our system, and which was used to store your customers’ credit cards data safely.</span>
+
+<!-- TABS COBRO INDIVIDUAL CON TOKEN -->
+
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+	<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Brazil</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Colombia</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">México</a></li>
+	</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="blue-text-13"><b>Credit cards</b> (Authorization)</span><br>
+<span class="grey-text-13">Available franchises: Visa, Mastercard, Amex, Diners and ELO</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Request example:
+<pre style="height:300px; overflow: auto;">
+{
+   "language": "es",
+   "command": "SUBMIT_TRANSACTION",
+   "merchant": {
+	  "apiKey": "676k86ks53la6tni6clgd30jf6",
+      "apiLogin": "403ba744e9827f3"
+   },
+   "transaction": {
+      "order": {
+         "accountId": "500719",
+         "referenceCode": "payment_test_00000001",
+         "description": "payment test",
+         "language": "es",
+         "signature": "3988c43a51f654a825bd7f203840d4a4",
+         "notifyUrl": "http://www.tes.com/confirmation",
+         "additionalValues": {
+            "TX_VALUE": {
+               "value": 100,
+               "currency": "BRL"
+            }
+         },
+         "buyer": {
+            "merchantBuyerId": "1",
+            "fullName": "First name and second buyer  name",
+            "emailAddress": "buyer_test@test.com",
+            "contactPhone": "(11)756312633",
+            "dniNumber": "811.807.405-64",
+			"cnpj":"32593371000110",
+            "shippingAddress": {
+               "street1": "calle 100",
+               "street2": "5555487",
+               "city": "Sao paulo",
+               "state": "SP",
+               "country": "BR",
+               "postalCode": "01019-030",
+               "phone": "(11)756312633"
+            }
+         },
+       <span style="color: #009cdd;">"creditCardTokenId": "8604789e-80ef-439d-9c3f-5d4a546bf637",</span>
+      "extraParameters": {
+         "INSTALLMENTS_NUMBER": 1
+      },
+      "type": "AUTHORIZATION",
+      "paymentMethod": "VISA",
+      "paymentCountry": "BR",
+
+      
+      "ipAddress": "127.0.0.1"
+      
+   },
+   "test": false
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 40049920,
+      "transactionId": "96535b36-99db-4c66-bd87-6ad5c59b25a8",
+      "state": "DECLINED",
+      "paymentNetworkResponseCode": null,
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": null,
+      "responseCode": "ANTIFRAUD_REJECTED",
+      "errorCode": null,
+      "responseMessage": null,
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Request example:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiKey&gt;676k86ks53la6tni6clgd30jf6&lt;/apiKey&gt;
+        &lt;apiLogin&gt;403ba744e9827f3&lt;/apiLogin&gt;
+    &lt;/merchant&gt;
+    &lt;transaction&gt;
+        &lt;order&gt;
+            &lt;accountId&gt;500719&lt;/accountId&gt;
+            &lt;referenceCode&gt;payment_test_00000001&lt;/referenceCode&gt;
+            &lt;description&gt;payment test&lt;/description&gt;
+            &lt;language&gt;es&lt;/language&gt;
+            &lt;signature&gt;3988c43a51f654a825bd7f203840d4a4&lt;/signature&gt;
+            &lt;notifyUrl&gt;http://www.tes.com/confirmation&lt;/notifyUrl&gt;
+            &lt;additionalValues&gt;
+                &lt;entry&gt;
+                    &lt;string&gt;TX_VALUE&lt;/string&gt;
+                    &lt;additionalValue&gt;
+                        &lt;value&gt;100&lt;/value&gt;
+                        &lt;currency&gt;BRL&lt;/currency&gt;
+                    &lt;/additionalValue&gt;
+                &lt;/entry&gt;
+            &lt;/additionalValues&gt;
+            &lt;buyer&gt;
+                &lt;merchantBuyerId&gt;1&lt;/merchantBuyerId&gt;
+                &lt;fullName&gt;First name and second buyer  name&lt;/fullName&gt;
+                &lt;emailAddress&gt;buyer_test@test.com&lt;/emailAddress&gt;
+                &lt;contactPhone&gt;(11)756312633&lt;/contactPhone&gt;
+                &lt;dniNumber&gt;811.807.405-64&lt;/dniNumber&gt;
+			 &lt;!--or--&gt;&lt;cnpj&gt;32593371000110&lt;/cnpj&gt;
+                &lt;shippingAddress&gt;
+                    &lt;street1&gt;calle 100&lt;/street1&gt;
+                    &lt;street2&gt;5555487&lt;/street2&gt;
+                    &lt;city&gt;Sao paulo&lt;/city&gt;
+                    &lt;state&gt;SP&lt;/state&gt;
+                    &lt;country&gt;BR&lt;/country&gt;
+                    &lt;postalCode&gt;01019-030&lt;/postalCode&gt;
+                    &lt;phone&gt;(11)756312633&lt;/phone&gt;
+                &lt;/shippingAddress&gt;
+            &lt;/buyer&gt;    
+        &lt;/order&gt;       
+        <span style="color: #009cdd;">&lt;creditCardTokenId&gt;8604789e-80ef-439d-9c3f-5d4a546bf637&lt;/creditCardTokenId&gt;</span>
+        &lt;extraParameters&gt;
+            &lt;entry&gt;
+                &lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+                &lt;string&gt;1&lt;/string&gt;
+            &lt;/entry&gt;
+        &lt;/extraParameters&gt;
+        &lt;type&gt;AUTHORIZATION&lt;/type&gt;
+        &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+        &lt;paymentCountry&gt;BR&lt;/paymentCountry&gt;
+		
+        
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        
+    &lt;/transaction&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;paymentResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;transactionResponse&gt;
+      &lt;orderId&gt;40049300&lt;/orderId&gt;
+      &lt;transactionId&gt;f1135022-a42f-41d6-aa47-d3f650e58dea&lt;/transactionId&gt;
+      &lt;state&gt;DECLINED&lt;/state&gt;
+      &lt;responseCode&gt;ANTIFRAUD_REJECTED&lt;/responseCode&gt;
+   &lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div>
+</div>
+&nbsp;<br>
+
+<div id="squelch-taas-tab-content-2">
+<span class="blue-text-13"><b>Credit cards</b> (Authorization and capture)</span><br>
+<span class="grey-text-13">Available franchises: Visa, Mastercard, Amex and Diners</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Request example:
+<pre style="height:300px; overflow: auto;">
+{
+   "language": "es",
+   "command": "SUBMIT_TRANSACTION",
+   "merchant": {
+	  "apiKey": "6u39nqhq8ftd0hlvnjfs66eh8c",
+      "apiLogin": "11959c415b33d0c"
+   },
+   "transaction": {
+      "order": {
+         "accountId": "500538",
+         "referenceCode": "payment_test_00000001",
+         "description": "payment test",
+         "language": "es",
+         "signature": "82c8f95480266da7fae0e84312b67a69",
+         "notifyUrl": "http://www.tes.com/confirmation",
+         "additionalValues": {
+            "TX_VALUE": {
+               "value": 10000,
+               "currency": "COP"
+            }
+         },
+         "buyer": {
+            "merchantBuyerId": "1",
+            "fullName": "First name and second buyer  name",
+            "emailAddress": "buyer_test@test.com",
+            "contactPhone": "7563126",
+            "dniNumber": "5415668464654",
+            "shippingAddress": {
+               "street1": "calle 100",
+               "street2": "5555487",
+               "city": "Medellin",
+               "state": "Antioquia",
+               "country": "CO",
+               "postalCode": "000000",
+               "phone": "7563126"
+            }
+         },
+         "shippingAddress": {
+            "street1": "calle 100",
+            "street2": "5555487",
+            "city": "Medellin",
+            "state": "Antioquia",
+            "country": "CO",
+            "postalCode": "0000000",
+            "phone": "7563126"
+         }
+      },
+      "payer": {
+         "merchantPayerId": "1",
+         "fullName": "First name and second payer name",
+         "emailAddress": "payer_test@test.com",
+         "contactPhone": "7563126",
+         "dniNumber":"5415668464654",
+         "billingAddress": {
+            "street1": "calle 93",
+            "street2": "125544",
+            "city": "Bogota",
+            "state": "Bogota DC",
+            "country": "CO",
+            "postalCode": "000000",
+            "phone": "7563126"
+         }
+      },
+  <span style="color: #009cdd;">"creditCardTokenId": "8604789e-80ef-439d-9c3f-5d4a546bf637",
+</span>
+      "extraParameters": {
+         "INSTALLMENTS_NUMBER": 1
+      },
+      "type": "AUTHORIZATION_AND_CAPTURE",
+      "paymentMethod": "VISA",
+      "paymentCountry": "CO",
+      "deviceSessionId": "vghs6tvkcle931686k1900o6e1",
+      "ipAddress": "127.0.0.1",
+      "cookie": "pt1t38347bs6jc9ruv2ecpv7o2",
+      "userAgent": "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+   },
+   "test": false
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 39579740,
+      "transactionId": "94e6208a-611f-44e6-81ab-2a230a8da66f",
+      "state": "DECLINED",
+      "paymentNetworkResponseCode": "4",
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": "374528230",
+      "authorizationCode": null,
+      "pendingReason": null,
+      "responseCode": "PAYMENT_NETWORK_REJECTED",
+      "errorCode": null,
+      "responseMessage": null,
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Request example:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+        &lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+    &lt;/merchant&gt;
+    &lt;transaction&gt;
+        &lt;order&gt;
+            &lt;accountId&gt;500538&lt;/accountId&gt;
+            &lt;referenceCode&gt;payment_test_00000001&lt;/referenceCode&gt;
+            &lt;description&gt;payment test&lt;/description&gt;
+            &lt;language&gt;es&lt;/language&gt;
+            &lt;signature&gt;82c8f95480266da7fae0e84312b67a69&lt;/signature&gt;
+            &lt;notifyUrl&gt;http://www.tes.com/confirmation&lt;/notifyUrl&gt;
+            &lt;additionalValues&gt;
+                &lt;entry&gt;
+                    &lt;string&gt;TX_VALUE&lt;/string&gt;
+                    &lt;additionalValue&gt;
+                        &lt;value&gt;10000&lt;/value&gt;
+                        &lt;currency&gt;COP&lt;/currency&gt;
+                    &lt;/additionalValue&gt;
+                &lt;/entry&gt;
+            &lt;/additionalValues&gt;
+            &lt;buyer&gt;
+                &lt;merchantBuyerId&gt;1&lt;/merchantBuyerId&gt;
+                &lt;fullName&gt;First name and second buyer  name&lt;/fullName&gt;
+                &lt;emailAddress&gt;buyer_test@test.com&lt;/emailAddress&gt;
+                &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+                &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+                &lt;shippingAddress&gt;
+                    &lt;street1&gt;calle 100&lt;/street1&gt;
+                    &lt;street2&gt;5555487&lt;/street2&gt;
+                    &lt;city&gt;Medellin&lt;/city&gt;
+                    &lt;state&gt;Antioquia&lt;/state&gt;
+                    &lt;country&gt;CO&lt;/country&gt;
+                    &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                    &lt;phone&gt;7563126&lt;/phone&gt;
+                &lt;/shippingAddress&gt;
+            &lt;/buyer&gt;
+            &lt;shippingAddress&gt;
+                &lt;street1&gt;calle 100&lt;/street1&gt;
+                &lt;street2&gt;5555487&lt;/street2&gt;
+                &lt;city&gt;Medellin&lt;/city&gt;
+                &lt;state&gt;Antioquia&lt;/state&gt;
+                &lt;country&gt;CO&lt;/country&gt;
+                &lt;postalCode&gt;0000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/shippingAddress&gt;
+        &lt;/order&gt;
+        &lt;payer&gt;
+            &lt;merchantPayerId&gt;1&lt;/merchantPayerId&gt;
+            &lt;fullName&gt;First name and second payer name&lt;/fullName&gt;
+			&lt;emailAddress&gt;payer_test@test.com&lt;/emailAddress&gt;
+            &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+            &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+            &lt;billingAddress&gt;
+                &lt;street1&gt;calle 93&lt;/street1&gt;
+                &lt;street2&gt;125544&lt;/street2&gt;
+                &lt;city&gt;Bogota&lt;/city&gt;
+                &lt;state&gt;Bogota DC&lt;/state&gt;
+                &lt;country&gt;CO&lt;/country&gt;
+                &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/billingAddress&gt;
+        &lt;/payer&gt;
+       <span style="color: #009cdd;">&lt;creditCardTokenId&gt;8604789e-80ef-439d-9c3f-5d4a546bf637&lt;/creditCardTokenId&gt;</span>
+        &lt;extraParameters&gt;
+            &lt;entry&gt;
+                &lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+                &lt;string&gt;1&lt;/string&gt;
+            &lt;/entry&gt;
+        &lt;/extraParameters&gt;
+        &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;
+        &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+        &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;		
+        &lt;deviceSessionId&gt;vghs6tvkcle931686k1900o6e1&lt;/deviceSessionId&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;cookie&gt;pt1t38347bs6jc9ruv2ecpv7o2&lt;/cookie&gt;
+        &lt;userAgent&gt;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&lt;/userAgent&gt;
+    &lt;/transaction&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;paymentResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;transactionResponse&gt;
+      &lt;orderId&gt;39559360&lt;/orderId&gt;
+      &lt;transactionId&gt;d499bc92-889a-4f8a-9ab1-4cf46d42f0e7&lt;/transactionId&gt;
+      &lt;state&gt;DECLINED&lt;/state&gt;
+      &lt;paymentNetworkResponseCode&gt;4&lt;/paymentNetworkResponseCode&gt;
+      &lt;trazabilityCode&gt;374470896&lt;/trazabilityCode&gt;
+      &lt;responseCode&gt;PAYMENT_NETWORK_REJECTED&lt;/responseCode&gt;
+   &lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="squelch-taas-tab-content-3">
+<span class="blue-text-13"><b>Credit cards</b> (Authorization and capture)</span><br>
+<span class="grey-text-13">Available franchises: Visa and Mastercard (AMEX is not yet available to process without validating the security code).</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Request example:
+<pre style="height:300px; overflow: auto;">
+{
+   "language": "es",
+   "command": "SUBMIT_TRANSACTION",
+   "merchant": {
+	  "apiKey": "6u39nqhq8ftd0hlvnjfs66eh8c",
+      "apiLogin": "11959c415b33d0c"
+   },
+   "transaction": {
+      "order": {
+         "accountId": "500547",
+         "referenceCode": "payment_test_00000001",
+         "description": "payment test",
+         "language": "es",
+         "signature": "2b241ad76d4e4eb37cf9113fa9aae8df",
+         "notifyUrl": "http://www.tes.com/confirmation",
+         "additionalValues": {
+            "TX_VALUE": {
+               "value": 100,
+               "currency": "MXN"
+            }
+         },
+         "buyer": {
+            "merchantBuyerId": "1",
+            "fullName": "First name and second buyer  name",
+            "emailAddress": "buyer_test@test.com",
+            "contactPhone": "7563126",
+            "dniNumber": "5415668464654",
+            "shippingAddress": {
+               "street1": "Calle Salvador Alvarado",
+               "street2": "8 int 103",
+               "city": "Guadalajara",
+               "state": "Jalisco",
+               "country": "MX",
+               "postalCode": "000000",
+               "phone": "7563126"
+            }
+         },
+         "shippingAddress": {
+            "street1": "Calle Salvador Alvarado",
+            "street2": "8 int 103",
+            "city": "Guadalajara",
+            "state": "Jalisco",
+            "country": "MX",
+            "postalCode": "0000000",
+            "phone": "7563126"
+         }
+      },
+      "payer": {
+         "merchantPayerId": "1",
+         "fullName": "First name and second payer name",
+         "emailAddress": "payer_test@test.com",
+         "birthdate": "1985-05-25",
+         "contactPhone": "7563126",
+         "dniNumber":"5415668464654",
+         "billingAddress": {
+            "street1": "Calle Zaragoza esquina",
+            "street2": "calle 5 de Mayo",
+            "city": "Monterrey",
+            "state": "Nuevo Leon",
+            "country": "MX",
+            "postalCode": "64000",
+            "phone": "7563126"
+         }
+      },
+     <span style="color: #009cdd;">"creditCardTokenId": "8604789e-80ef-439d-9c3f-5d4a546bf637",</span>
+      "extraParameters": {
+         "INSTALLMENTS_NUMBER": 1
+      },
+      "type": "AUTHORIZATION_AND_CAPTURE",
+      "paymentMethod": "VISA",
+      "paymentCountry": "MX",
+
+      "deviceSessionId": "vghs6tvkcle931686k1900o6e1",
+      "ipAddress": "127.0.0.1",
+      "cookie": "pt1t38347bs6jc9ruv2ecpv7o2",
+      "userAgent": "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+   },
+   "test": false
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 39841000,
+      "transactionId": "11d5e0af-7cc3-4d50-9452-7cd8970b43dd",
+      "state": "DECLINED",
+      "paymentNetworkResponseCode": null,
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": null,
+      "responseCode": "PAYMENT_NETWORK_REJECTED",
+      "errorCode": null,
+      "responseMessage": null,
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Request example:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+        &lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+    &lt;/merchant&gt;
+    &lt;transaction&gt;
+        &lt;order&gt;
+            &lt;accountId&gt;500547&lt;/accountId&gt;
+            &lt;referenceCode&gt;payment_test_00000001&lt;/referenceCode&gt;
+            &lt;description&gt;payment test&lt;/description&gt;
+            &lt;language&gt;es&lt;/language&gt;
+            &lt;signature&gt;2b241ad76d4e4eb37cf9113fa9aae8df&lt;/signature&gt;
+            &lt;notifyUrl&gt;http://www.tes.com/confirmation&lt;/notifyUrl&gt;
+            &lt;additionalValues&gt;
+                &lt;entry&gt;
+                    &lt;string&gt;TX_VALUE&lt;/string&gt;
+                    &lt;additionalValue&gt;
+                        &lt;value&gt;100&lt;/value&gt;
+                        &lt;currency&gt;MXN&lt;/currency&gt;
+                    &lt;/additionalValue&gt;
+                &lt;/entry&gt;
+            &lt;/additionalValues&gt;
+            &lt;buyer&gt;
+                &lt;merchantBuyerId&gt;1&lt;/merchantBuyerId&gt;
+                &lt;fullName&gt;First name and second buyer  name&lt;/fullName&gt;
+                &lt;emailAddress&gt;buyer_test@test.com&lt;/emailAddress&gt;
+                &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+                &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+                &lt;shippingAddress&gt;
+                    &lt;street1&gt;Calle Salvador Alvarado&lt;/street1&gt;
+                    &lt;street2&gt;8 int 103&lt;/street2&gt;
+                    &lt;city&gt;Guadalajara&lt;/city&gt;
+                    &lt;state&gt;Jalisco&lt;/state&gt;
+                    &lt;country&gt;MX&lt;/country&gt;
+                    &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                    &lt;phone&gt;7563126&lt;/phone&gt;
+                &lt;/shippingAddress&gt;
+            &lt;/buyer&gt;
+            &lt;shippingAddress&gt;
+                &lt;street1&gt;Calle Salvador Alvarado&lt;/street1&gt;
+                &lt;street2&gt;8 int 103&lt;/street2&gt;
+                &lt;city&gt;Guadalajara&lt;/city&gt;
+                &lt;state&gt;Jalisco&lt;/state&gt;
+                &lt;country&gt;MX&lt;/country&gt;
+                &lt;postalCode&gt;0000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/shippingAddress&gt;
+        &lt;/order&gt;
+        &lt;payer&gt;
+            &lt;merchantPayerId&gt;1&lt;/merchantPayerId&gt;
+            &lt;fullName&gt;First name and second payer name&lt;/fullName&gt;
+            &lt;birthdate&gt;1985-05-25&lt;/birthdate&gt;
+            &lt;emailAddress&gt;payer_test@test.com&lt;/emailAddress&gt;
+            &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+            &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+            &lt;billingAddress&gt;
+                &lt;street1&gt;Calle Zaragoza esquina&lt;/street1&gt;
+                &lt;street2&gt; calle 5 de Mayo&lt;/street2&gt;
+                &lt;city&gt;Monterrey &lt;/city&gt;
+                &lt;state&gt;Nuevo Leon&lt;/state&gt;
+                &lt;country&gt;MX&lt;/country&gt;
+                &lt;postalCode&gt;64000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/billingAddress&gt;
+        &lt;/payer&gt;
+        <span style="color: #009cdd;">&lt;creditCardTokenId&gt;8604789e-80ef-439d-9c3f-5d4a546bf637&lt;/creditCardTokenId&gt;</span>
+        &lt;extraParameters&gt;
+            &lt;entry&gt;
+                &lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+                &lt;string&gt;1&lt;/string&gt;
+            &lt;/entry&gt;
+        &lt;/extraParameters&gt;
+        &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;
+        &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+        &lt;paymentCountry&gt;MX&lt;/paymentCountry&gt;
+		
+        &lt;deviceSessionId&gt;vghs6tvkcle931686k1900o6e1&lt;/deviceSessionId&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;cookie&gt;pt1t38347bs6jc9ruv2ecpv7o2&lt;/cookie&gt;
+        &lt;userAgent&gt;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&lt;/userAgent&gt;
+    &lt;/transaction&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;paymentResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;transactionResponse&gt;
+      &lt;orderId&gt;39837920&lt;/orderId&gt;
+      &lt;transactionId&gt;a3abfbe9-e7e5-4c04-9276-b95b4e55a8b3&lt;/transactionId&gt;
+      &lt;state&gt;DECLINED&lt;/state&gt;
+      &lt;responseCode&gt;PAYMENT_NETWORK_REJECTED&lt;/responseCode&gt;
+   &lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+&nbsp;<br>
+
+
+<div class="note1">Note: It is impossible to process transactions without validation of the cvv2 security code for the following countries. You need to send the SecurityCode parameter in the request.</div>
+
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+	<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Argentina</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">México</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Panamá</a></li>
+	</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="blue-text-13"><b>Credit cards</b> (Authorization and capture)</span><br>
+<span class="grey-text-13">Available franchises: Visa, Mastercard, Amex, T. Naranja, T. Shopping, Cabal, Argencard and Cencosud</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Request example:
+<pre style="height:300px; overflow: auto;">
+{
+   "language": "es",
+   "command": "SUBMIT_TRANSACTION",
+   "merchant": {
+	  "apiKey": "6u39nqhq8ftd0hlvnjfs66eh8c",
+      "apiLogin": "11959c415b33d0c"
+   },
+   "transaction": {
+      "order": {
+         "accountId": "509171",
+         "referenceCode": "payment_test_00000001",
+         "description": "payment test",
+         "language": "es",
+         "signature": "6dcd21f14036ad057988089df9a28434",
+         "notifyUrl": "http://www.tes.com/confirmation",
+         "additionalValues": {
+            "TX_VALUE": {
+               "value": 100,
+               "currency": "ARS"
+            }
+         },
+         "buyer": {
+            "merchantBuyerId": "1",
+            "fullName": "First name and second buyer  name",
+            "emailAddress": "buyer_test@test.com",
+            "contactPhone": "7563126",
+            "dniNumber": "5415668464654",
+            "shippingAddress": {
+               "street1": "Viamonte",
+               "street2": "1366",
+               "city": "Buenos Aires",
+               "state": "Buenos Aires",
+               "country": "AR",
+               "postalCode": "000000",
+               "phone": "7563126"
+            }
+         },
+         "shippingAddress": {
+            "street1": "Viamonte",
+            "street2": "1366",
+            "city": "Buenos Aires",
+            "state": "Buenos Aires",
+            "country": "AR",
+            "postalCode": "0000000",
+            "phone": "7563126"
+         }
+      },
+      "payer": {
+         "merchantPayerId": "1",
+         "fullName": "First name and second payer name",
+         "emailAddress": "payer_test@test.com",
+         "contactPhone": "7563126",
+         "dniNumber":"5415668464654",
+         "billingAddress": {
+            "street1": "Avenida entre rios",
+            "street2": "452",
+            "city": "Plata",
+            "state": "Buenos Aires",
+            "country": "AR",
+            "postalCode": "64000",
+            "phone": "7563126"
+         }
+      },
+     <span style="color: #009cdd;">"creditCardTokenId": "8604789e-80ef-439d-9c3f-5d4a546bf637",
+     "creditCard": {
+        "securityCode": "321",
+      },</span>
+      "extraParameters": {
+         "INSTALLMENTS_NUMBER": 1
+      },
+      "type": "AUTHORIZATION_AND_CAPTURE",
+      "paymentMethod": "VISA",
+      "paymentCountry": "AR",
+
+      "deviceSessionId": "vghs6tvkcle931686k1900o6e1",
+      "ipAddress": "127.0.0.1",
+      "cookie": "pt1t38347bs6jc9ruv2ecpv7o2",
+      "userAgent": "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+   },
+   "test": false
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 39898440,
+      "transactionId": "34a18c64-749f-4e5b-84dc-95e646f848a2",
+      "state": "DECLINED",
+      "paymentNetworkResponseCode": null,
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": null,
+      "responseCode": "PAYMENT_NETWORK_REJECTED",
+      "errorCode": null,
+      "responseMessage": null,
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Request example:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+        &lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+    &lt;/merchant&gt;
+    &lt;transaction&gt;
+        &lt;order&gt;
+            &lt;accountId&gt;509171&lt;/accountId&gt;
+            &lt;referenceCode&gt;payment_test_00000001&lt;/referenceCode&gt;
+            &lt;description&gt;payment test&lt;/description&gt;
+            &lt;language&gt;es&lt;/language&gt;
+            &lt;signature&gt;6dcd21f14036ad057988089df9a28434&lt;/signature&gt;
+            &lt;notifyUrl&gt;http://www.tes.com/confirmation&lt;/notifyUrl&gt;
+            &lt;additionalValues&gt;
+                &lt;entry&gt;
+                    &lt;string&gt;TX_VALUE&lt;/string&gt;
+                    &lt;additionalValue&gt;
+                        &lt;value&gt;100&lt;/value&gt;
+                        &lt;currency&gt;ARS&lt;/currency&gt;
+                    &lt;/additionalValue&gt;
+                &lt;/entry&gt;
+            &lt;/additionalValues&gt;
+            &lt;buyer&gt;
+                &lt;merchantBuyerId&gt;1&lt;/merchantBuyerId&gt;
+                &lt;fullName&gt;First name and second buyer  name&lt;/fullName&gt;
+                &lt;emailAddress&gt;buyer_test@test.com&lt;/emailAddress&gt;
+                &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+                &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+                &lt;shippingAddress&gt;
+                    &lt;street1&gt;Viamonte&lt;/street1&gt;
+                    &lt;street2&gt;1366&lt;/street2&gt;
+                    &lt;city&gt;Buenos Aires&lt;/city&gt;
+                    &lt;state&gt;Buenos Aires&lt;/state&gt;
+                    &lt;country&gt;AR&lt;/country&gt;
+                    &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                    &lt;phone&gt;7563126&lt;/phone&gt;
+                &lt;/shippingAddress&gt;
+            &lt;/buyer&gt;
+            &lt;shippingAddress&gt;
+                &lt;street1&gt;Viamonte&lt;/street1&gt;
+                &lt;street2&gt;1366&lt;/street2&gt;
+                &lt;city&gt;Buenos Aires&lt;/city&gt;
+                &lt;state&gt;Buenos Aires&lt;/state&gt;
+                &lt;country&gt;AR&lt;/country&gt;
+                &lt;postalCode&gt;0000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/shippingAddress&gt;
+        &lt;/order&gt;
+        &lt;payer&gt;
+            &lt;merchantPayerId&gt;1&lt;/merchantPayerId&gt;
+            &lt;fullName&gt;First name and second payer name&lt;/fullName&gt;
+			&lt;emailAddress&gt;payer_test@test.com&lt;/emailAddress&gt;
+            &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+            &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+            &lt;billingAddress&gt;
+                &lt;street1&gt;Avenida entre rios&lt;/street1&gt;
+                &lt;street2&gt;452&lt;/street2&gt;
+                &lt;city&gt;La Plata &lt;/city&gt;
+                &lt;state&gt;Buenos Aires&lt;/state&gt;
+                &lt;country&gt;AR&lt;/country&gt;
+                &lt;postalCode&gt;64000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/billingAddress&gt;     
+        &lt;/payer&gt;
+        <span style="color: #009cdd;">&lt;creditCardTokenId&gt;8604789e-80ef-439d-9c3f-5d4a546bf637&lt;/creditCardTokenId&gt;
+         &lt;creditCard&gt;
+         &lt;securityCode&gt;123&lt;/securityCode&gt;
+         &lt;/creditCard&gt;</span>
+        &lt;extraParameters&gt;
+            &lt;entry&gt;
+                &lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+                &lt;string&gt;1&lt;/string&gt;
+            &lt;/entry&gt;
+        &lt;/extraParameters&gt;
+        &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;
+        &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+        &lt;paymentCountry&gt;AR&lt;/paymentCountry&gt;
+		
+        &lt;deviceSessionId&gt;vghs6tvkcle931686k1900o6e1&lt;/deviceSessionId&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;cookie&gt;pt1t38347bs6jc9ruv2ecpv7o2&lt;/cookie&gt;
+        &lt;userAgent&gt;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&lt;/userAgent&gt;
+    &lt;/transaction&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;paymentResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;transactionResponse&gt;
+      &lt;orderId&gt;39895260&lt;/orderId&gt;
+      &lt;transactionId&gt;815e39c0-9df0-4d0e-9402-af9a6347539a&lt;/transactionId&gt;
+      &lt;state&gt;DECLINED&lt;/state&gt;
+      &lt;responseCode&gt;PAYMENT_NETWORK_REJECTED&lt;/responseCode&gt;
+   &lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="squelch-taas-tab-content-2">
+<span class="blue-text-13"><b>Credit cards</b> (Authorization and capture)</span><br>
+<span class="grey-text-13">Available franchises: Amex</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Request example:
+<pre style="height:300px; overflow: auto;">
+{
+   "language": "es",
+   "command": "SUBMIT_TRANSACTION",
+   "merchant": {
+	  "apiKey": "6u39nqhq8ftd0hlvnjfs66eh8c",
+      "apiLogin": "11959c415b33d0c"
+   },
+   "transaction": {
+      "order": {
+         "accountId": "500547",
+         "referenceCode": "payment_test_00000001",
+         "description": "payment test",
+         "language": "es",
+         "signature": "2b241ad76d4e4eb37cf9113fa9aae8df",
+         "notifyUrl": "http://www.tes.com/confirmation",
+         "additionalValues": {
+            "TX_VALUE": {
+               "value": 100,
+               "currency": "MXN"
+            }
+         },
+         "buyer": {
+            "merchantBuyerId": "1",
+            "fullName": "First name and second buyer  name",
+            "emailAddress": "buyer_test@test.com",
+            "contactPhone": "7563126",
+            "dniNumber": "5415668464654",
+            "shippingAddress": {
+               "street1": "Calle Salvador Alvarado",
+               "street2": "8 int 103",
+               "city": "Guadalajara",
+               "state": "Jalisco",
+               "country": "MX",
+               "postalCode": "000000",
+               "phone": "7563126"
+            }
+         },
+         "shippingAddress": {
+            "street1": "Calle Salvador Alvarado",
+            "street2": "8 int 103",
+            "city": "Guadalajara",
+            "state": "Jalisco",
+            "country": "MX",
+            "postalCode": "0000000",
+            "phone": "7563126"
+         }
+      },
+      "payer": {
+         "merchantPayerId": "1",
+         "fullName": "First name and second payer name",
+         "emailAddress": "payer_test@test.com",
+         "birthdate": "1985-05-25",
+         "contactPhone": "7563126",
+         "dniNumber":"5415668464654",
+         "billingAddress": {
+            "street1": "Calle Zaragoza esquina",
+            "street2": "calle 5 de Mayo",
+            "city": "Monterrey",
+            "state": "Nuevo Leon",
+            "country": "MX",
+            "postalCode": "64000",
+            "phone": "7563126"
+         }
+      },
+     <span style="color: #009cdd;">"creditCardTokenId": "8604789e-80ef-439d-9c3f-5d4a546bf637",
+     "creditCard": {
+        "securityCode": "321",
+      },</span>
+      "extraParameters": {
+         "INSTALLMENTS_NUMBER": 1
+      },
+      "type": "AUTHORIZATION_AND_CAPTURE",
+      "paymentMethod": "VISA",
+      "paymentCountry": "MX",
+
+      "deviceSessionId": "vghs6tvkcle931686k1900o6e1",
+      "ipAddress": "127.0.0.1",
+      "cookie": "pt1t38347bs6jc9ruv2ecpv7o2",
+      "userAgent": "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+   },
+   "test": false
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 39841000,
+      "transactionId": "11d5e0af-7cc3-4d50-9452-7cd8970b43dd",
+      "state": "DECLINED",
+      "paymentNetworkResponseCode": null,
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": null,
+      "responseCode": "PAYMENT_NETWORK_REJECTED",
+      "errorCode": null,
+      "responseMessage": null,
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Request example:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+        &lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+    &lt;/merchant&gt;
+    &lt;transaction&gt;
+        &lt;order&gt;
+            &lt;accountId&gt;500547&lt;/accountId&gt;
+            &lt;referenceCode&gt;payment_test_00000001&lt;/referenceCode&gt;
+            &lt;description&gt;payment test&lt;/description&gt;
+            &lt;language&gt;es&lt;/language&gt;
+            &lt;signature&gt;2b241ad76d4e4eb37cf9113fa9aae8df&lt;/signature&gt;
+            &lt;notifyUrl&gt;http://www.tes.com/confirmation&lt;/notifyUrl&gt;
+            &lt;additionalValues&gt;
+                &lt;entry&gt;
+                    &lt;string&gt;TX_VALUE&lt;/string&gt;
+                    &lt;additionalValue&gt;
+                        &lt;value&gt;100&lt;/value&gt;
+                        &lt;currency&gt;MXN&lt;/currency&gt;
+                    &lt;/additionalValue&gt;
+                &lt;/entry&gt;
+            &lt;/additionalValues&gt;
+            &lt;buyer&gt;
+                &lt;merchantBuyerId&gt;1&lt;/merchantBuyerId&gt;
+                &lt;fullName&gt;First name and second buyer  name&lt;/fullName&gt;
+                &lt;emailAddress&gt;buyer_test@test.com&lt;/emailAddress&gt;
+                &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+                &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+                &lt;shippingAddress&gt;
+                    &lt;street1&gt;Calle Salvador Alvarado&lt;/street1&gt;
+                    &lt;street2&gt;8 int 103&lt;/street2&gt;
+                    &lt;city&gt;Guadalajara&lt;/city&gt;
+                    &lt;state&gt;Jalisco&lt;/state&gt;
+                    &lt;country&gt;MX&lt;/country&gt;
+                    &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                    &lt;phone&gt;7563126&lt;/phone&gt;
+                &lt;/shippingAddress&gt;
+            &lt;/buyer&gt;
+            &lt;shippingAddress&gt;
+                &lt;street1&gt;Calle Salvador Alvarado&lt;/street1&gt;
+                &lt;street2&gt;8 int 103&lt;/street2&gt;
+                &lt;city&gt;Guadalajara&lt;/city&gt;
+                &lt;state&gt;Jalisco&lt;/state&gt;
+                &lt;country&gt;MX&lt;/country&gt;
+                &lt;postalCode&gt;0000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/shippingAddress&gt;
+        &lt;/order&gt;
+        &lt;payer&gt;
+            &lt;merchantPayerId&gt;1&lt;/merchantPayerId&gt;
+            &lt;fullName&gt;First name and second payer name&lt;/fullName&gt;
+            &lt;birthdate&gt;1985-05-25&lt;/birthdate&gt;
+            &lt;emailAddress&gt;payer_test@test.com&lt;/emailAddress&gt;
+            &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+            &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+            &lt;billingAddress&gt;
+                &lt;street1&gt;Calle Zaragoza esquina&lt;/street1&gt;
+                &lt;street2&gt; calle 5 de Mayo&lt;/street2&gt;
+                &lt;city&gt;Monterrey &lt;/city&gt;
+                &lt;state&gt;Nuevo Leon&lt;/state&gt;
+                &lt;country&gt;MX&lt;/country&gt;
+                &lt;postalCode&gt;64000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/billingAddress&gt;
+        &lt;/payer&gt;
+        <span style="color: #009cdd;">&lt;creditCardTokenId&gt;8604789e-80ef-439d-9c3f-5d4a546bf637&lt;/creditCardTokenId&gt;
+         &lt;creditCard&gt;
+         &lt;securityCode&gt;123&lt;/securityCode&gt;
+         &lt;/creditCard&gt;</span>
+        &lt;extraParameters&gt;
+            &lt;entry&gt;
+                &lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+                &lt;string&gt;1&lt;/string&gt;
+            &lt;/entry&gt;
+        &lt;/extraParameters&gt;
+        &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;
+        &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+        &lt;paymentCountry&gt;MX&lt;/paymentCountry&gt;
+		
+        &lt;deviceSessionId&gt;vghs6tvkcle931686k1900o6e1&lt;/deviceSessionId&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;cookie&gt;pt1t38347bs6jc9ruv2ecpv7o2&lt;/cookie&gt;
+        &lt;userAgent&gt;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&lt;/userAgent&gt;
+    &lt;/transaction&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;paymentResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;transactionResponse&gt;
+      &lt;orderId&gt;39837920&lt;/orderId&gt;
+      &lt;transactionId&gt;a3abfbe9-e7e5-4c04-9276-b95b4e55a8b3&lt;/transactionId&gt;
+      &lt;state&gt;DECLINED&lt;/state&gt;
+      &lt;responseCode&gt;PAYMENT_NETWORK_REJECTED&lt;/responseCode&gt;
+   &lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div></div>
+
+<div id="squelch-taas-tab-content-3">
+<span class="blue-text-13"><b>Credit cards</b> (Authorization and capture)</span><br>
+<span class="grey-text-13">Available franchises: Visa and Mastercard</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Request example:
+<pre style="height:300px; overflow: auto;">
+{
+   "language": "es",
+   "command": "SUBMIT_TRANSACTION",
+   "merchant": {
+	  "apiKey": "6u39nqhq8ftd0hlvnjfs66eh8c",
+      "apiLogin": "11959c415b33d0c"
+   },
+   "transaction": {
+      "order": {
+         "accountId": "500537",
+         "referenceCode": "payment_test_00000001",
+         "description": "payment test",
+         "language": "es",
+         "signature": "82c8f95480266da7fae0e84312b67a69",
+         "notifyUrl": "http://www.tes.com/confirmation",
+         "additionalValues": {
+            "TX_VALUE": {
+               "value": 10000,
+               "currency": "COP"
+            }
+         },
+         "buyer": {
+            "merchantBuyerId": "1",
+            "fullName": "First name and second buyer  name",
+            "emailAddress": "buyer_test@test.com",
+            "contactPhone": "7563126",
+            "dniNumber": "5415668464654",
+            "shippingAddress": {
+               "street1": "Palacio de Las Garzas",
+               "street2": "Corregimiento de San Felipe",
+               "city": "Colon",
+               "state": "Colon",
+               "country": "PA",
+               "postalCode": "000000",
+               "phone": "7563126"
+            }
+         },
+         "shippingAddress": {
+            "street1": "Palacio de Las Garzas",
+            "street2": "Corregimiento de San Felipe",
+            "city": "Colon",
+            "state": "Colon",
+            "country": "PA",
+            "postalCode": "0000000",
+            "phone": "7563126"
+         }
+      },
+      "payer": {
+         "merchantPayerId": "1",
+         "fullName": "First name and second payer name",
+         "emailAddress": "payer_test@test.com",
+         "contactPhone": "7563126",
+         "dniNumber":"5415668464654",
+         "billingAddress": {
+            "street1": "Colon",
+            "street2": "2000",
+            "city": "Santiago",
+            "state": "Veraguas DC",
+            "country": "PA",
+            "postalCode": "000000",
+            "phone": "7563126"
+         }
+      },
+      <span style="color: #009cdd;">"creditCardTokenId": "8604789e-80ef-439d-9c3f-5d4a546bf637",
+      "creditCard": {
+        "securityCode": "321",
+      },</span>
+      "extraParameters": {
+         "INSTALLMENTS_NUMBER": 1
+      },
+      "type": "AUTHORIZATION_AND_CAPTURE",
+      "paymentMethod": "VISA",
+      "paymentCountry": "PA",
+
+      "deviceSessionId": "vghs6tvkcle931686k1900o6e1",
+      "ipAddress": "127.0.0.1",
+      "cookie": "pt1t38347bs6jc9ruv2ecpv7o2",
+      "userAgent": "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+   },
+   "test": false
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 39608980,
+      "transactionId": "ba0e198d-5c81-4ffc-b447-35baebb73ef8",
+      "state": "DECLINED",
+      "paymentNetworkResponseCode": "14",
+      "paymentNetworkResponseErrorMessage": "[2]: null",
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": null,
+      "responseCode": "PAYMENT_NETWORK_REJECTED",
+      "errorCode": null,
+      "responseMessage": null,
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Request example:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+        &lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+    &lt;/merchant&gt;
+    &lt;transaction&gt;
+        &lt;order&gt;
+            &lt;accountId&gt;500537&lt;/accountId&gt;
+            &lt;referenceCode&gt;payment_test_00000001&lt;/referenceCode&gt;
+            &lt;description&gt;payment test&lt;/description&gt;
+            &lt;language&gt;es&lt;/language&gt;
+            &lt;signature&gt;82c8f95480266da7fae0e84312b67a69&lt;/signature&gt;
+            &lt;notifyUrl&gt;http://www.tes.com/confirmation&lt;/notifyUrl&gt;
+            &lt;additionalValues&gt;
+                &lt;entry&gt;
+                    &lt;string&gt;TX_VALUE&lt;/string&gt;
+                    &lt;additionalValue&gt;
+                        &lt;value&gt;100&lt;/value&gt;
+                        &lt;currency&gt;USD&lt;/currency&gt;
+                    &lt;/additionalValue&gt;
+                &lt;/entry&gt;
+            &lt;/additionalValues&gt;
+            &lt;buyer&gt;
+                &lt;merchantBuyerId&gt;1&lt;/merchantBuyerId&gt;
+                &lt;fullName&gt;First name and second buyer  name&lt;/fullName&gt;
+                &lt;emailAddress&gt;buyer_test@test.com&lt;/emailAddress&gt;
+                &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+                &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+                &lt;shippingAddress&gt;
+                    &lt;street1&gt;Palacio de Las Garzas&lt;/street1&gt;
+                    &lt;street2&gt;Corregimiento de San Felipe&lt;/street2&gt;
+                    &lt;city&gt;Colon&lt;/city&gt;
+                    &lt;state&gt;Colon&lt;/state&gt;
+                    &lt;country&gt;PA&lt;/country&gt;
+                    &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                    &lt;phone&gt;7563126&lt;/phone&gt;
+                &lt;/shippingAddress&gt;
+            &lt;/buyer&gt;
+            &lt;shippingAddress&gt;
+                &lt;street1&gt;Palacio de Las Garzas&lt;/street1&gt;
+                &lt;street2&gt;Corregimiento de San Felipe&lt;/street2&gt;
+                &lt;city&gt;Colon&lt;/city&gt;
+                &lt;state&gt;Colon&lt;/state&gt;
+                &lt;country&gt;PA&lt;/country&gt;
+                &lt;postalCode&gt;0000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/shippingAddress&gt;
+        &lt;/order&gt;
+        &lt;payer&gt;
+            &lt;merchantPayerId&gt;1&lt;/merchantPayerId&gt;
+            &lt;fullName&gt;First name and second payer name&lt;/fullName&gt;
+			&lt;emailAddress&gt;payer_test@test.com&lt;/emailAddress&gt;
+            &lt;contactPhone&gt;7563126&lt;/contactPhone&gt;
+            &lt;dniNumber&gt;5415668464654&lt;/dniNumber&gt;
+            &lt;billingAddress&gt;
+                &lt;street1&gt;Colon&lt;/street1&gt;
+                &lt;street2&gt;2000&lt;/street2&gt;
+                &lt;city&gt;Santiago&lt;/city&gt;
+                &lt;state&gt;Veraguas DC&lt;/state&gt;
+                &lt;country&gt;PA&lt;/country&gt;
+                &lt;postalCode&gt;000000&lt;/postalCode&gt;
+                &lt;phone&gt;7563126&lt;/phone&gt;
+            &lt;/billingAddress&gt;
+        &lt;/payer&gt;
+       <span style="color: #009cdd;"> &lt;creditCardTokenId&gt;8604789e-80ef-439d-9c3f-5d4a546bf637&lt;/creditCardTokenId&gt;
+         &lt;creditCard&gt;
+         &lt;securityCode&gt;123&lt;/securityCode&gt;
+         &lt;/creditCard&gt;</span>
+        &lt;extraParameters&gt;
+
+            &lt;entry&gt;
+                &lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+                &lt;string&gt;1&lt;/string&gt;
+            &lt;/entry&gt;
+        &lt;/extraParameters&gt;
+        &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;
+        &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+        &lt;paymentCountry&gt;PA&lt;/paymentCountry&gt;		
+        &lt;deviceSessionId&gt;vghs6tvkcle931686k1900o6e1&lt;/deviceSessionId&gt;
+        &lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+        &lt;cookie&gt;pt1t38347bs6jc9ruv2ecpv7o2&lt;/cookie&gt;
+        &lt;userAgent&gt;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&lt;/userAgent&gt;
+    &lt;/transaction&gt;
+    &lt;isTest&gt;false&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:300px; overflow: auto;">
+&lt;paymentResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;transactionResponse&gt;
+      &lt;orderId&gt;39608320&lt;/orderId&gt;
+      &lt;transactionId&gt;145dbc19-56fb-4b70-980e-a527f8061dac&lt;/transactionId&gt;
+      &lt;state&gt;DECLINED&lt;/state&gt;
+      &lt;paymentNetworkResponseCode&gt;14&lt;/paymentNetworkResponseCode&gt;
+      &lt;paymentNetworkResponseErrorMessage&gt;[2]: null&lt;/paymentNetworkResponseErrorMessage&gt;
+      &lt;responseCode&gt;PAYMENT_NETWORK_REJECTED&lt;/responseCode&gt;
+   &lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div>
+</div></div>
+
+
+
+<!-- COBRO INDIVIDUAL CON TOKEN -->
+</div>
+&nbsp;<br>
+<div id="cobro-masivo" class="payu-fragment">
+&nbsp;<br>
+<div class="paso4"><span class="subtitle-page">MASSIVE PAYMENTS WITH TOKEN</span></div>
+&nbsp;<br>
+<span class="grey-text-13">This feature will allow you to make massive collections using the Token that were previously created by our system<br>
+For this functionality you need to create a CSV file under the following conditions:</span>
+&nbsp;<br>
+<ol>
+<li class="bullet-box">Each transaction register to be processed must contain its processing data separated by commas in the following order: Account ID (identifier of the virtual PayU Latam account), Token, security code, number of installments, sale description, buyer’s email, currency (ISO code), total (including tax), tax, base value of reimbursement, additional value, language (ISO code).</li>
+<li class="bullet-box">The file should have no header. The first line shows the first record.</li>
+<li class="bullet-box">The file must be encoded under the UTF-8 standard.</li>
+<li class="bullet-box">The file must not have more than 10,000 records.</li>
+</ol>
+&nbsp;<br>
+<p align="center"><img src="/images/tokenizacion-cobro-masivo.jpg" border="0"></p>
+
+<!-- TABS COBROS MASIVO CON TOKEN -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+{
+   "language":"es",
+   "command":"PROCESS_BATCH_TRANSACTIONS_TOKEN",
+   "merchant":{
+      "apiLogin":"11959c415b33d0c",
+      "apiKey":"6u39nqhq8ftd0hlvnjfs66eh8c"
+   },
+      "contentFile":"NTAwNTM4LGVhMDIwZTU5LWQ5NWEtNDk1ZC04OTAzLTM0ZTg0M2ZkN2ZlYywxMzIsMSxwcnVlYmEtMDQscHJ1ZWJhLHNlYmFzdGlhbi5xdWludGVyb0BwYWdvc29ubGluZS5jb20sQ09QLDEwMDAwLDAsMCwwLGVz=="  
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "id": "b85cfd29-4765-4502-98d7-5fd8c8b4cc84"
+}
+</pre>
+&nbsp;<br>
+You must implement a function that takes the contents of the file and pass it to <b>base 64</b> and send this file in the parameter <b>&lt;contentFile&gt;</b>.
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+&lt;request&gt;
+&lt;language&gt;es&lt;/language&gt;
+&lt;command&gt;PROCESS_BATCH_TRANSACTIONS_TOKEN&lt;/command&gt;
+&lt;merchant&gt;
+&lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+&lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+&lt;/merchant&gt;
+&lt;contentFile&gt;
+NTAwNTM4LGVhMDIwZTU5LWQ5NWEtNDk1ZC04OTAzLTM0ZTg0M2ZkN2ZlYywxMzIsMSxwcnVlYmEtMDQscHJ1ZWJhLHNlYmFzdGlhbi5xdWludGVyb0BwYWdvc29ubGluZS5jb20sQ09QLDEwMDAwLDAsMCwwLGVz==
+&lt;/contentFile&gt;
+&lt;/request&gt; 
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;transactionTokenBatchResponse&gt;
+&lt;code&gt;SUCCESS&lt;/code&gt;
+&lt;id&gt;b85cfd29-4765-4502-98d7-5fd8c8b4cc84&lt;/id&gt;
+&lt;/transactionTokenBatchResponse&gt;
+</pre>
+&nbsp;<br>
+You must implement a function that takes the contents of the file and pass it to <b>base 64</b> and send this file in the parameter <b>&lt;contentFile&gt;</b>.
+</div>
+</div>
+<!-- FIN TABS COBROS MASIVO CON TOKEN -->
+</div>
+&nbsp;<br>
+<div id="consulta" class="payu-fragment">
+&nbsp;<br>
+<div class="paso5"><span class="subtitle-page">QUERIES WITH API</span></div>
+&nbsp;<br>
+<span class="grey-text-13">With this functionality you can query previously the Credit Cards Token.</span>
+
+<!-- TABS CONSULTA TOKEN -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+{
+   "language":"es",
+   "command":"GET_TOKENS",
+   "merchant":{
+      "apiLogin":"11959c415b33d0c",
+      "apiKey":"6u39nqhq8ftd0hlvnjfs66eh8c"
+   },
+   "creditCardTokenInformation":{
+      "payerId":"10",
+	  "creditCardTokenId":"3ba2c031-a8c0-4c9f-9025-7eacf8dd14e2",
+      "startDate":"2010-01-01T12:00:00",
+      "endDate":"2012-01-01T12:00:00"
+	  
+   }
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "creditCardTokenList": [   {
+      "creditCardTokenId": "32fa0a2d-ea79-40f3-8027-f9363296dd0e",
+      "name": "full name",
+      "payerId": "10",
+      "identificationNumber": "32144457",
+      "paymentMethod": "VISA",
+      "number": null,
+      "expirationDate": null,
+      "creationDate": "2014-01-16T15:15:46",
+      "maskedNumber": "411111******1111",
+      "errorDescription": null
+   }]
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+&lt;request&gt;
+&lt;language&gt;es&lt;/language&gt;
+&lt;command&gt;GET_TOKENS&lt;/command&gt;
+&lt;merchant&gt;
+&lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+&lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+&lt;/merchant&gt;
+&lt;creditCardTokenInformation&gt;
+&lt;payerId&gt;10&lt;/payerId&gt;
+&lt;creditCardTokenId&gt;3ba2c031-a8c0-4c9f-9025-7eacf8dd14e2&lt;/creditCardTokenId&gt;
+&lt;startDate&gt;2010-01-01T12:00:00&lt;/startDate&gt;
+&lt;endDate&gt;2012-01-01T12:00:00&lt;/endDate&gt;
+&lt;/creditCardTokenInformation&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;creditCardTokenListResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;creditCardTokenList&gt;
+      &lt;creditCardToken&gt;
+         &lt;creditCardTokenId&gt;32fa0a2d-ea79-40f3-8027-f9363296dd0e&lt;/creditCardTokenId&gt;
+         &lt;name&gt;full name&lt;/name&gt;
+         &lt;payerId&gt;10&lt;/payerId&gt;
+         &lt;identificationNumber&gt;32144457&lt;/identificationNumber&gt;
+         &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+         &lt;creationDate&gt;2014-01-16T15:15:46&lt;/creationDate&gt;
+         &lt;maskedNumber&gt;411111******1111&lt;/maskedNumber&gt;
+      &lt;/creditCardToken&gt;
+   &lt;/creditCardTokenList&gt;
+&lt;/creditCardTokenListResponse&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS CONSULTA TOKEN -->
+</div>
+&nbsp;<br>
+<div id="eliminacion" class="payu-fragment">
+&nbsp;<br>
+<div class="paso6"><span class="subtitle-page">TOKEN REMOVAL</span></div>
+&nbsp;<br>
+<span class="grey-text-13">This feature allows you to delete a tokenized credit card register.</span>
+
+<!-- TABS ELIMINACIÓN DE TOKEN -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+{
+   "language":"es",
+   "command":"REMOVE_TOKEN",
+   "merchant":{
+      "apiLogin":"11959c415b33d0c",
+      "apiKey":"6u39nqhq8ftd0hlvnjfs66eh8c"
+   },
+   "removeCreditCardToken":{
+      "payerId":"10",
+      "creditCardTokenId":"32fa0a2d-ea79-40f3-8027-f9363296dd0e"
+   }
+}
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "creditCardToken":    {
+      "creditCardTokenId": "32fa0a2d-ea79-40f3-8027-f9363296dd0e",
+      "name": "full name",
+      "payerId": "10",
+      "identificationNumber": "32144457",
+      "paymentMethod": "VISA",
+      "number": null,
+      "expirationDate": null,
+      "creationDate": null,
+      "maskedNumber": "411111******1111",
+      "errorDescription": null
+   }
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+&lt;request&gt;
+    &lt;language&gt;es&lt;/language&gt;
+    &lt;command&gt;REMOVE_TOKEN&lt;/command&gt;
+    &lt;merchant&gt;
+        &lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+        &lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+    &lt;/merchant&gt;
+    &lt;removeCreditCardToken&gt;
+        &lt;payerId&gt;10&lt;/payerId&gt;
+        &lt;creditCardTokenId&gt;32fa0a2d-ea79-40f3-8027-f9363296dd0e&lt;/creditCardTokenId&gt;
+    &lt;/removeCreditCardToken&gt;
+&lt;/request&gt; 
+</pre>
+&nbsp;<br>
+Response example:
+<pre>
+&lt;creditCardTokenResponse&gt;
+   &lt;code&gt;SUCCESS&lt;/code&gt;
+   &lt;creditCardToken&gt;
+      &lt;creditCardTokenId&gt;32fa0a2d-ea79-40f3-8027-f9363296dd0e&lt;/creditCardTokenId&gt;
+      &lt;name&gt;full name&lt;/name&gt;
+      &lt;payerId&gt;10&lt;/payerId&gt;
+      &lt;identificationNumber&gt;32144457&lt;/identificationNumber&gt;
+      &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+      &lt;maskedNumber&gt;411111******1111&lt;/maskedNumber&gt;
+   &lt;/creditCardToken&gt;
+&lt;/creditCardTokenResponse&gt;
+</pre>
+</div>
+</div>
+<!-- FIN TABS ELIMINACIÓN DE TOKEN -->
+</div>
+</div>
+
+</div>
+</div>
+</div>
