@@ -1,58 +1,59 @@
 ---
-title: Reembolsos SDK
+title: Refunds SDK
 ---
 <div class="payu-page-header superhero-sticky">
-<h1 class="payu-title1">INTEGRACIÓN SDK - <span style="color: #009cdd;">MÓDULO DE REEMBOLSOS</span></h1>
+<h1 class="payu-title1">SDK INTEGRATION - <span style="color: #009cdd;">REFUNDS MODULE</span></h1>
 <ul class="hidden-xs">
-	<li class="leaf"><a class="active" href="#como">¿Cómo funciona?</a></li>
-	<li class="leaf"><a href="#solicitar">Solicitar Reembolso</a></li>
-	<li class="leaf"><a href="#consultar">Consultar respuesta</a></li>
+	<li class="leaf"><a class="active" href="#como">How does it work?</a></li>
+	<li class="leaf"><a href="#solicitar">Requesting Refund</a></li>
+	<li class="leaf"><a href="#consultar">Response query</a></li>
 </ul>
 </div>
 
 <div class="sh-container payu-white-bg">
 <div class="container">
 <div class="row" style="background-color: #f5f5f5;">
-{% include sidemenu_sdk.html %}
+
+{% include sidemenu_api_en.html %}
 
 <div id="page-menu-column2">
 <div id="como" class="payu-fragment"></div>
 &nbsp;<br>
 &nbsp;<br>
-<span class="blue-text-16">Esta funcionalidad te permite solicitar la cancelación y reembolso de transacciones que fueron pagadas con tarjeta de crédito; y que por motivos de insatisfacción del comprador, múltiples cargos en la misma compra, o en donde el comprador no ha recibido el producto o servicio, requieren la devolución del dinero.</span>
+<span class="blue-text-16">This feature allows you to request the cancellation and refund of transactions that were paid by credit card; and which require the refund because of the dissatisfaction of the buyer, multiple charges for the same purchase, or when the buyer has not received the product or service.</span>
 
-<p>Podrás realizar la solicitud de reembolso empleando el método Refund o Void que se encuentra dispuesto para este fin. Una vez se realiza la solicitud, un agente de servicio al cliente Pay<span style="color: #009cdd;">U</span> Latam se encargara de validar la información y la justificación de la petición para aprobar la solicitud y realizar el reembolso o declinar la solicitud en caso de que no cumpla los requisitos.
+<p>You can make the refund request using the Refund or Void method, which is provided for this purpose. Once the request is performed, a Pay<span style="color: #009cdd;">U</span> customer service agent will take charge of validating the request’s information and justification in order to approve the request and make the refund or refuse the request if it does not meet the requirements.
 <br>
-Adicionalmente, podrás consultar el estado de la solicitud de reembolso empleando la API de Consultas disponible para tal fin.</p>
-<p align="center"><img src="{{ site.baseurl }}/images/2014/08/modulo-cancelacion1-es.jpg" alt="Modulo de cancelaciones" width="700" height="464" class="aligncenter size-full wp-image-1178" /></p>
-<div class="info-icon">Tener en cuenta:</div>
+Additionally, you can query the status of your refund request using the Query API available for that purpose.</p>
+<p align="center"><img border="0" src="/images/modulo-reembolsos-en.jpg" alt="Modulo Reembolsos"></p>
+<div class="info-icon">Consider:</div>
 <div class="list-arrow"><ul>
-<li>Solo se podrán realizar solicitudes de reembolso para transacciones con <span class="highlight-txt2">Autorización y captura</span> con estado <span class="highlight-txt2">Capturada</span> que hayan sido realizadas con tarjeta de crédito. En caso de que la solicitud haga referencia a un medio de pago diferente (medios de pago en efectivo, transferencia bancaria), la solicitud será Declinada por el agente de servicio al cliente Pay<span style="color: #009cdd;">U</span> Latam.</li>
+<li>Only refund requests for <span class="highlight-txt2">Authorization and Capture </span> transactions with  <span class="highlight-txt2">Captured </span> qstatus that have been made by credit card can be performed. If the application refers to a different payment means (cash payment means, bank transfer), the application will be declined by Pay<span style="color: #009cdd;">U</span> customer service agent.</li>
 <br>
-<li>El sistema solo creará una solicitud para cada petición de reembolso, si envías varias veces la petición de una misma transacción, el sistema solo registrara una solicitud en el módulo y te indicará que la petición ya se encuentra registrada.</li>
+<li>The system will only create one request for each refund appeal, if the request is repeatedly posted for the same transaction, the system only will register one request in the module and will indicate that the request is already registered.</li>
 <br>
-<li>Si una orden o transacción ya fue <span class="highlight-txt2">reembolsada</span>, el sistema indicara que no es posible realizar nuevamente la petición. Pay<span style="color: #009cdd;">U</span> Latam solo acepta solicitudes de reembolso de transacciones que se encuentran con estado <span class="highlight-txt2">Capturada</span></li>
+<li>If an order or transaction already was <span class="highlight-txt2">refunded</span>, the system will indicate that it is not possible to make the request again. Pay<span style="color: #009cdd;">U</span> only accepts requests for transaction refunds that are in the <span class="highlight-txt2"> Captured</span> status.</li>
 <br>
-<li>Si una solicitud de reembolso de una orden o transacción fue previamente <span class="highlight-txt2">Declinada</span>, podrás volver a realizar la solicitud de reembolso si así lo consideras necesario.</li>
+<li>If a refund request of an order or transaction was previously <span class="highlight-txt2">Declined</span>, you can retry the refund request if you consider it necessary.</li>
 <br>
-<li>Una vez que realizas la solicitud, el monto de la transacción pasa a ser parte del <span class="highlight-txt2">Saldo Congelado</span> de tu cuenta Pay<span style="color: #009cdd;">U</span> Latam hasta que se dé la respuesta a la solicitud. Si la solicitud de reembolso es <span class="highlight-txt2">Aprobada</span>, el valor de la transacción será debitado del Saldo Congelado ya que es reembolsado al pagador. Si la solicitud de reembolso es <span class="highlight-txt2">Declinada</span>, el valor de la transacción se liberará del Saldo Congelado y retornara al Saldo disponible de tu cuenta Pay<span style="color: #009cdd;">U</span> Latam.</li>
+<li>•	Once you make the request, the amount of the transaction becomes part of your PayU Latam’s account <span class="highlight-txt2">Frozen Balance</span> until the response to the request is given. If your refund request is <span class="highlight-txt2">Approved</span>, the value of the transaction will be debited from the Frozen Balance, since it is refunded to the payer. If the refund request is <span class="highlight-txt2">Declined</span>, the value of the transaction will be released from the Frozen Balance and will return to the available Balance of your Pay<span style="color: #009cdd;">U</span> account.</li>
 </ul></div>
 &nbsp;<br>
 <div id="solicitar" class="payu-fragment"></div>
 &nbsp;<br>
-<span class="subtitle-page">SOLICITAR REEMBOLSO</span>
+<span class="subtitle-page">REQUESTING REFUND</span>
 &nbsp;<br>
-<img src="{{ site.baseurl }}/images/2014/08/solicitar-cancelacion-es1.jpg" alt="Solicitar cancelacion" width="700" height="300" class="aligncenter size-full wp-image-1190" />
-<p>Si una transacción se encuentra con estado <span class="highlight-txt2">“Capturada”</span>, podrás emplear el método Refund para realizar la solicitud de reembolso.</p>
+<p align="center"><img border="0" src="/images/solicitar-reembolso-en.jpg" alt="Modulo Reembolsos"></p>
+<p>If a transaction is in  <span class="highlight-txt2">“Captured”</span> status, you can use the Refund method to perform the refund request.</p>
 
-Debes enviar de manera obligatoria los siguientes parámetros:
-<div class="list-arrow"><ul><li><span class="highlight-txt2">1.</span> Id de la orden.</li>
-<li><span class="highlight-txt2">2.</span> Id de la transacción.</li>
-<li><span class="highlight-txt2">3.</span> Razón para solicitar el reembolso o cancelación de la transacción (PHP).</li>
+You must compulsorily submit the following parameters:
+<div class="list-arrow"><ul><li><span class="highlight-txt2">1.</span> Order ID.</li>
+<li><span class="highlight-txt2">2.</span> Transaction ID.</li>
+<li><span class="highlight-txt2">3.</span> Reason for requesting the refund or cancellation of the transaction (PHP).</li>
 </ul>
 </div>
 <br>&nbsp;
-Y utilizar el método <b>doVoid</b> o <b>doRefund</b>. Ejemplo petición:
+And use the <b>doVoid</b> or <b>doRefund</b> method. Example request:
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
@@ -63,16 +64,16 @@ Y utilizar el método <b>doVoid</b> o <b>doRefund</b>. Ejemplo petición:
 <code> 
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-//Ingrese aquí el identificador de la orden.
+// Insert the ID of the order here.
 parameters.put(PayU.PARAMETERS.ORDER_ID, "40049920");
 
-//Ingrese aquí el identificador de la transacción.
+// Insert the ID of the transaction here.
 parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "96535b36-99db-4c66-bd87-6ad5c59b25a8");
 
-//PayUPayments.doRefund(parameters);
+PayUPayments.doRefund(parameters);
 TransactionResponse response = PayUPayments.doVoid(parameters);
 
-//Respuesta
+//Response
 if (response != null){
     response.getOrderId();
     response.getState();
@@ -86,14 +87,14 @@ if (response != null){
 <pre>
 <code>
 $parameters = array(
-	//Ingrese aquí el identificador de la orden.
+	// Insert the ID of the order here.
 	PayUParameters::ORDER_ID =&gt; "40049920",
 
-	//Ingrese aquí el identificador de la transacción.
+	// Insert the ID of the transaction here.
 	PayUParameters::TRANSACTION_ID =&gt; "96535b36-99db-4c66-bd87-6ad5c59b25a8",
 
-	//Ingrese aquí el motivo del reembolso.
-	PayUParameters::REASON =&gt; "Razon o justificacion por la cual se solicita la cancelacion",
+	// Enter the refund reason here
+	PayUParameters::REASON =&gt; "Reason for requesting the refund of the transaction",
 );
 
 //PayUPayments::doRefund($parameters);
@@ -112,17 +113,17 @@ if ($response) {
 &nbsp;<br>
 <div id="consultar" class="payu-fragment"></div>
 &nbsp;<br>
-<span class="subtitle-page">CONSULTAR RESPUESTA</span>
+<span class="subtitle-page">RESPONSE QUERY</span>
 &nbsp;<br>
-<img src="{{ site.baseurl }}/images/2014/08/consultar-respuesta-es.jpg" alt="Consultar respuesta" width="700" height="321" class="aligncenter size-full wp-image-1180" />
+<p align="center"><img border="0" src="/images/consultar-respuesta-en.jpg" alt="Modulo Reembolsos"></p>
 &nbsp;<br>
-<span class="subtitle-page2">Consultar a través del Módulo Administrativo PayU Latam.</span>
-<p>Para realizar la consulta por medio del módulo administrativo, debes ingresar con su usuario y contraseña, acceder a la pestaña <span class="highlight-txt2">Reportes</span>, acceder en el menú lateral a <span class="highlight-txt2">Órdenes</span>, e ingresar el Id de la Orden que se desea consultar en los filtros de búsqueda.<br>
+<span class="subtitle-page2">Query through PayU’s Administrative Module.</span>
+<p>In order to make the query through the administrative module, you must enter your username and password to access the <span class="highlight-txt2">Reports</span> tab, in the side menu access the <span class="highlight-txt2">Orders</span> menu, and enter the ID of the order that you want to query in the search filters.<br>
 
-El sistema presentara la información de la orden, y mostrará las transacciones asociadas. Una vez la solicitud de reembolso sea aprobada o declinada, en la orden se mostrara un nuevo registro tipo Reembolso con su respectivo estado, ya sea Aprobada o Declinada, según la solución dada por el agente de Servicio al cliente.</p>
+The system will submit the order information, and display the associated transactions. Once the refund request is approved or declined, in the order a new Refund register type will be shown with its respective status, either Approved or Declined, according to the solution given by the customer service agent.</p>
 &nbsp;<br>
-<span class="subtitle-page2">Consultar a través del SDK</span>
-<p>Para ejecutar la consulta de tu solicitud de canelación por medio del SDK, debes enviar la siguiente petición:</p>
+<span class="subtitle-page2">Query through the SDK</span>
+<p>In order to execute the query of your cancelation request using the SDK, you must send the following request:</p>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
@@ -133,12 +134,12 @@ El sistema presentara la información de la orden, y mostrará las transacciones
 <code>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-// Ingresa aquí el código de referencia de la orden.
+// Insert the ID of the order here.
 parameters.put(PayU.PARAMETERS.ORDER_ID, "2637540");
 
 Order response = PayUReports.getOrderDetail(parameters); 
 
-// -- podrás obtener las propiedades de la orden --
+//-- You can obtain the properties of the order --
 if(response != null){
 	response.getAccountId();
 	<b>response.getStatus();</b>
@@ -151,7 +152,7 @@ if(response != null){
 	}
 }
 
-// -- recorrer las transacciones asociadas a la orden--
+// -- go through the transactions that are associated to the order--
 List&lt;Transaction&gt; transactions = response.getTransactions();
 Iterator&lt;Transaction&gt; transactions_iterator = transactions.iterator();
 
@@ -173,7 +174,7 @@ while(transactions_iterator.hasNext()){
 <div id="squelch-taas-tab-content-2">
 <pre>
 <code>
-//Ingresa aquí el código de referencia de la orden.
+// Insert the ID of the order here.
 $parameters = array(PayUParameters::ORDER_ID =&gt; "44469220");
 
 $order = PayUReports::getOrderDetail($parameters); 
@@ -205,21 +206,22 @@ if ($order) {
 </pre>
 </div>
 </div>
-Existen tres posibles respuestas a tu solicitud de reembolso:
+There are three possible answers to your refund request:
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="true" data-active="0" data-event="click">
 <ul>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Solicitud no resuelta</a></li>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Solicitud aprobada</a></li>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Solicitud declinada</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Unresolved request</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Approved request</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Request declined</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1">
-Si la solicitud no ha sido resuelta, el sistema retornara como respuesta la última transacción asociada a la Orden, en este caso, una Orden con estado <span style="color: #009cdd;">CAPTURED</span>, y una transacción tipo <span style="color: #009cdd;">AUTHORIZATION AND CAPTURE</span> con estado <span style="color: #009cdd;">APPROVED</span>.
+
+If the request has not been resolved, the system will return the last transaction associated with the Order as response, in this case, an Order <span style="color: #009cdd;">CAPTURED</span> status, and an  <span style="color: #009cdd;">AUTHORIZATION AND CAPTURE</span> transaction type with <span style="color: #009cdd;">APPROVED</span> status.
 </div>
 <div id="squelch-taas-tab-content-2">
-Una vez la solicitud es aprobada por parte del agente de servicio al cliente de PayU, el sistema dará como respuesta toda la información de la Orden con estado <span style="color: #009cdd;">CANCELLED</span> o <span style="color: #009cdd;">REFUNDED</span>, y con una transacción tipo <span style="color: #009cdd;">VOID</span> o <span style="color: #009cdd;">REFUND</span> con estado <span style="color: #009cdd;">APPROVED</span>.
+Once the application is approved by PayU’s customer service agent, the system will respond all the information in the <span style="color: #009cdd;">CANCELLED</span> or <span style="color: #009cdd;">REFUNDED</span> Order status, and a <span style="color: #009cdd;">VOID</span> or <span style="color: #009cdd;">REFUND</span> transaction type with <span style="color: #009cdd;">APPROVED</span> status.
 </div>
 <div id="squelch-taas-tab-content-3">
-Si la solicitud de reembolso es declinada por el agente de servicio al cliente PayU, el sistema dará como respuesta toda la información de la transacción indicando que la Orden sigue con estado <span style="color: #009cdd;">CAPTURADA</span>, e informando que ahora existe una transacción tipo <span style="color: #009cdd;">REFUND o <span style="color: #009cdd;">VOID</span> con estado <span style="color: #009cdd;">DECLINED</span>.
+If the refund request is declined by PayU’s customer service agent, the system will respond all transaction information indicating that the Order continues in the <span style="color: #009cdd;">CAPTURED</span> status, and report that there is now a <span style="color: #009cdd;">REFUND or <span style="color: #009cdd;">VOID</span> transaction type with <span style="color: #009cdd;">DECLINED</span> status.
 </div>
 </div>
 &nbsp;<br>
