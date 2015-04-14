@@ -1,0 +1,490 @@
+---
+title: Reembolsos API
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">INTEGRAÇÃO API - <span style="color: #009cdd;">MÓDULO DE REEMBOLSOS</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#como">Como funciona?</a></li>
+	<li class="leaf"><a href="#solicitar">Solicitar reembolso</a></li>
+	<li class="leaf"><a href="#consultar">Consultar resposta</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api_pt.html %}
+
+<div id="page-menu-column2">
+<div id="como" class="payu-fragment"></div>
+&nbsp;<br>
+&nbsp;<br>
+<span class="blue-text-16">Esta funcionalidade permite solicitar o cancelamento e reembolso de transações que foram pagas com cartão de crédito; e que por motivos de insatisfação do comprador, múltiplos encargos na mesma compra, ou quando o comprador não recebeu o produto ou serviço, requerem a devolução do dinheiro.</span>
+
+<p>Você poderá realizar a solicitação de reembolso empregando o método Refund ou Void, que se encontra disponível para este fim. Uma vez realizada a solicitação, um agente de serviço ao cliente Pay<span style="color: #009cdd;">U</span> Latam se encarregará de validar a informação e a justificativa do pedido para aprovar a solicitação e realizar o reembolso ou rejeitar a solicitação caso não cumpra os requisitos.
+<br>
+Adicionalmente, você poderá consultar o status da solicitação de reembolso empregando API de Consultas disponível para tal fim.</p>
+<p align="center"><img border="0" alt="Modulo Reembolsos" src="/images/modulo-reembolsos-pt.jpg"></p>
+<div class="info-icon">Considerar:</div>
+<div class="list-arrow"><ul>
+<li>Somente poderão ser realizadas solicitações de reembolso para transações com Autorização e captura com status Capturada realizadas com cartão de crédito. Caso a solicitação se refira a uma forma de pagamento diferente (formas de pagamento em dinheiro, transferência bancária), a solicitação será Rejeitada pelo agente de serviço ao cliente Pay<span style="color: #009cdd;">U</span> Latam.</li>
+<br>
+<li>O sistema somente criará uma solicitação para cada pedido de reembolso, se enviar várias vezes o pedido de uma mesma transação, o sistema somente registrará uma solicitação no módulo e indicará que o pedido já se encontra registrado.</li>
+<br>
+<li>Se uma ordem ou transação já foi <span class="highlight-txt2">reembolsada</span>, o sistema indicará que não é possível realizar novamente o pedido. Pay<span style="color: #009cdd;">U</span> Latam somente aceita solicitações de reembolso de transações que se encontram no status <span class="highlight-txt2">Capturada</span></li>
+<br>
+<li>Se uma solicitação de reembolso de uma ordem ou transação foi previamente <span class="highlight-txt2">Rejeitada</span>, você poderá fazer nova solicitação de reembolso se assim considerar necessário.</li>
+<br>
+<li>Uma vez realizada a solicitação o montante da transação passa a ser parte do <span class="highlight-txt2">Saldo Congelado</span> de sua conta Pay<span style="color: #009cdd;">U</span> Latam Se a solicitação de reembolso é <span class="highlight-txt2">Aprovada</span>, o valor da transação será debitado do Saldo Congelado, já que é reembolsado ao pagador. Se a solicitação de reembolso é <span class="highlight-txt2">Rejeitada</span>, o valor da transação será liberado do Saldo Congelado e retornará para o Saldo disponível de sua conta Pay<span style="color: #009cdd;">U</span> Latam.</li>
+</ul></div>
+&nbsp;<br>
+<div id="solicitar" class="payu-fragment"></div>
+&nbsp;<br>
+<span class="subtitle-page">SOLICITAR REEMBOLSO</span>
+&nbsp;<br>
+<p align="center"><img border="0" alt="Solicitar reembolso" src="/images/solicitar-reembolso-pt.jpg"></p>
+<p>Se uma transação está com status <span class="highlight-txt2">“Capturada”</span>, você poderá utilizar o método Refund para realizar a solicitação de reembolso.</p>
+Você deve enviar de maneira obrigatória os seguintes parâmetros:
+<div class="list-arrow"><ul><li><span class="highlight-txt2">1.</span> ID da ordem.</li>
+<li><span class="highlight-txt2">2.</span> ID da transação.</li>
+<li><span class="highlight-txt2">3.</span> O tipo de solicitação que será REFUND.</li>
+<li><span class="highlight-txt2">4.</span> Razão para solicitar o reembolso ou cancelamento da transação.</li></ul></div>
+Exemplo pedido:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<pre>
+<code> 
+{
+	"language": "es",
+	"command": "SUBMIT_TRANSACTION",
+	"merchant": {
+		"apiKey": "P4yU*********L4t4mC0l",
+		"apiLogin": "CoM3r*******c1o5"
+	},
+	"transaction": {
+		"order": {
+			"id": "45678901"
+		},
+		"type": "REFUND",
+		"reason": "Razon o justificacion por la cual se solicita la cancelacion",
+		"parentTransactionId": "8795a432-12ab-34cd-1234-a9876bc54321"
+	},
+	"test": false
+}
+</code>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+<pre><code>&lt;request&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+  &lt;merchant&gt;
+  &lt;apiKey&gt;P4yU*********L4t4mC0l&lt;/apiKey&gt;
+  &lt;apiLogin&gt;CoM3r*******c1o5&lt;/apiLogin&gt;
+  &lt;/merchant&gt;
+  &lt;transaction&gt;
+  &lt;order&gt;
+  &lt;id&gt;<span style="color: #009cdd;">45678901</span>&lt;/id&gt;
+  &lt;/order&gt;
+  &lt;type&gt;<span style="color: #009cdd;">REFUND</span>&lt;/type&gt;
+  &lt;reason&gt;<span style="color: #009cdd;">Razón o justificación por  la cual se solicita la cancelación</span>&lt;/reason&gt;
+  &lt;parentTransactionId&gt;<span style="color: #009cdd;">8795a432-12ab-34cd-1234-a9876bc54321</span>&lt;/parentTransactionId&gt;
+  &lt;/transaction&gt;
+  &lt;isTest&gt;false&lt;/isTest&gt;
+  &lt;/request&gt;</code></pre>
+</div>
+</div>
+Exemplo resposta:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<pre>
+<code>
+{
+   "code": "SUCCESS",
+   "error": null,
+   "transactionResponse":    {
+      "orderId": 5831055,
+      "transactionId": null,
+      "state": "PENDING",
+      "paymentNetworkResponseCode": null,
+      "paymentNetworkResponseErrorMessage": null,
+      "trazabilityCode": null,
+      "authorizationCode": null,
+      "pendingReason": "PENDING_REVIEW",
+      "responseCode": null,
+      "errorCode": null,
+      "responseMessage": "5831055",
+      "transactionDate": null,
+      "transactionTime": null,
+      "operationDate": null,
+      "extraParameters": null
+   }
+}
+</code>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+<pre><code>&lt;paymentResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;transactionResponse&gt;
+  &lt;orderId&gt;45678901&lt;/orderId&gt;
+  &lt;state&gt;<span style="color: #009cdd;">PENDING</span>&lt;/state&gt;
+  &lt;pendingReason&gt;PENDING_REVIEW&lt;/pendingReason&gt;
+  &lt;responseMessage&gt;Mensaje de  respuesta&lt;/responseMessage&gt;
+  &lt;/transactionResponse&gt;
+  &lt;/paymentResponse&gt;</code></pre>
+</div>
+</div>
+&nbsp;<br>
+<div id="consultar" class="payu-fragment"></div>
+&nbsp;<br>
+<span class="subtitle-page">CONSULTAR RESPOSTA</span>
+&nbsp;<br>
+<p align="center"><img border="0" alt="Consultar resposta" src="/images/consultar-respuesta-pt.jpg"></p>
+&nbsp;<br>
+<span class="subtitle-page2">Consultar por meio do Módulo Administrativo do PayU Latam.</span>
+<p>Para realizar a consulta por meio do módulo administrativo, você deve inserir seu nome de usuário e senha, acessar a aba <span class="highlight-txt2">Relatórios</span>, acessar no menu lateral Ordens, e inserir o ID da Ordem que se deseja consultar nos filtros de busca.<br>
+
+O sistema apresentará a informação da ordem, e mostrará as transações associadas. Uma vez a solicitação de reembolso seja aprovada ou rejeitada, na ordem, será mostrado um novo registro tipo Reembolso com seu respectivo status, seja Aprovado ou Rejeitado, de acordo com a solução dada pelo agente de Serviço ao cliente.</p>
+&nbsp;<br>
+<span class="subtitle-page2">Consultar através do API</span>
+<p>Para executar a consulta de sua solicitação de cancelamento por meio do API, você deve enviar o seguinte pedido:</p>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<pre><code>
+{
+   "test":false,
+   "language":"en",
+   "command":"ORDER_DETAIL",
+   "merchant":{
+      "apiLogin":"P4yU*********L4t4mC0l",
+      "apiKey":"CoM3r*******c1o5"
+   },
+   "details":{
+      "orderId":45678901
+   }
+}
+
+</code></pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+<pre><code>&lt;request&gt;
+  &lt;language&gt;en&lt;/language&gt;
+  &lt;command&gt;ORDER_DETAIL&lt;/command&gt;
+  &lt;merchant&gt;
+  &lt;apiLogin&gt;P4yU*********L4t4mC0l&lt;/apiLogin&gt;
+  &lt;apiKey&gt;CoM3r*******c1o5&lt;/apiKey&gt;
+  &lt;/merchant&gt;
+  &lt;details  class=&quot;java.util.HashMap&quot;&gt;
+  &lt;entry&gt;
+  &lt;string&gt;orderId&lt;/string&gt;
+  &lt;object  class=&quot;java.lang.Integer&quot;&gt;45678901&lt;/object&gt;
+  &lt;/entry&gt;
+  &lt;/details&gt;
+  &lt;isTest&gt;false&lt;/isTest&gt;
+  &lt;/request&gt;</code></pre>
+</div>
+</div>
+Existem três possíveis respostas para sua solicitação de reembolso:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul><li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Solicitação não resolvida</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Solicitação aprovada</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Solicitação rejeitada</a></li></ul>
+<div id="squelch-taas-tab-content-1">
+Se a solicitação não foi resolvida, o sistema retornará como resposta a última transação associada à Ordem, neste caso, uma Ordem com status <span style="color: #009cdd;">CAPTURED</span>, e uma transação tipo <span style="color: #009cdd;">AUTHORIZATION AND CAPTURE</span> com status <span style="color: #009cdd;">APPROVED</span>.
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+<pre><code>
+{
+	"code": "SUCCESS",
+	"result": {
+		"payload": {
+			
+			"id": "45678901",
+			"accountId": "543210",
+			"status": "CAPTURED",
+			"referenceCode": "2014-05-29  12:59:59",
+			"description": "Descripción venta",
+			"language": "es",
+			"transactions": [   {
+					"id": "8366e912-11ac-41cd-8413-a4955ab44713",
+					"creditCard": {
+						"maskedNumber": "411111******1111",
+						"name": "Nombre del  tarjetahabiente",
+						"issuerBank": "Banco  Mundial"
+					},
+					"type": "AUTHORIZATION_AND_CAPTURE",
+					"paymentMethod": "VISA",
+					"paymentCountry": "CO",
+					"transactionResponse": {
+						"state": "APPROVED",
+						"paymentNetworkResponseCode": "1",
+						"trazabilityCode": "397985698",
+						"authorizationCode": "678901",
+						"responseCode": "APPROVED",
+						"operationDate": "2014-05-29T12:59:59"
+					}
+				 .
+				 .
+				 .
+				]
+			}
+		}
+	}
+}
+</code></pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+<pre><code>&lt;reportingResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;result&gt;
+  &lt;payload class=&quot;order&quot;&gt;
+  &lt;id&gt;45678901&lt;/id&gt;
+  &lt;accountId&gt;543210&lt;/accountId&gt;
+  &lt;status&gt;<span style="color: #009cdd;">CAPTURED</span>&lt;/status&gt;
+  &lt;referenceCode&gt;2014-05-29  12:59:59&lt;/referenceCode&gt;
+  &lt;description&gt;Descripción venta&lt;/description&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;transactions&gt;
+  &lt;transaction&gt;
+  &lt;id&gt;8366e912-11ac-41cd-8413-a4955ab44713&lt;/id&gt;
+  &lt;creditCard&gt;
+  &lt;maskedNumber&gt;411111******1111&lt;/maskedNumber&gt;
+  &lt;name&gt;Nombre del  tarjetahabiente&lt;/name&gt;
+  &lt;issuerBank&gt;Banco  Mundial&lt;/issuerBank&gt;
+  &lt;/creditCard&gt;
+  &lt;type&gt;<span style="color: #009cdd;">AUTHORIZATION_AND_CAPTURE</span>&lt;/type&gt;
+  &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;
+  &lt;transactionResponse&gt;
+  &lt;state&gt;APPROVED&lt;/state&gt;
+  &lt;paymentNetworkResponseCode&gt;1&lt;/paymentNetworkResponseCode&gt;
+  &lt;trazabilityCode&gt;397985698&lt;/trazabilityCode&gt;
+  &lt;authorizationCode&gt;678901&lt;/authorizationCode&gt;
+  &lt;responseCode&gt;<span style="color: #009cdd;">APPROVED</span>&lt;/responseCode&gt;
+  &lt;operationDate&gt;2014-05-29T12:59:59&lt;/operationDate&gt;
+  &lt;/transactionResponse&gt;
+  .
+  .
+  .
+  &lt;/payload&gt;
+  &lt;/result&gt;
+  &lt;/reportingResponse&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-2">
+Uma vez a solicitação seja aprovada pelo agente de serviço ao cliente do PayU, o sistema dará como resposta toda a informação da Ordem com status <span class="highlight-txt2">CANCELLED</span> ou <span class="highlight-txt2">REFUNDED</span>, e com uma transação tipo <span class="highlight-txt2">VOID o REFUND</span>  com status <span class="highlight-txt2">APPROVED</span> assim:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+<pre><code>
+{
+	"code": "SUCCESS",
+	"result": {
+		"payload": {
+			
+			"id": "3987200",
+			"accountId": "500538",
+			"status": "CAPTURED",
+			"referenceCode": "REF00123456",
+			"description": "Descripción venta",
+			"language": "es",
+			"transactions": [
+				{
+					"id": "e8421426-8519-4150-9f00-b22737b85719",
+					"type": "REFUND",
+					"parentTransactionId": "ab752190-84db-4dd4-b010-3c72a619363b",
+					"paymentMethod": "VISA",
+					"source": "CANCELLATION_MODULE",
+					"paymentCountry": "CO",
+					"transactionResponse": {
+						"state": "APPROVED",
+						"responseCode": "NOT_ACCEPTED_TRANSACTION"
+					}
+				"additionalValues":{
+					.
+					.
+					.
+					}
+				}
+				.
+				.
+				.
+			]
+		}
+	}
+}
+</code></pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+<pre><code>&lt;reportingResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;result&gt;
+  &lt;payload class=&quot;order&quot;&gt;
+  &lt;id&gt;3987200&lt;/id&gt;
+  &lt;accountId&gt;500538&lt;/accountId&gt;
+  &lt;status&gt;<span style="color: #009cdd;">CANCELLED</span>&lt;/status&gt;
+  &lt;referenceCode&gt;REF00123456&lt;/referenceCode&gt;
+  &lt;description&gt;Descripción venta&lt;/description&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;transactions&gt;
+  &lt;transaction&gt;
+  &lt;id&gt;57d6411a-9757-4ff5-81e0-e60522e4a1b5&lt;/id&gt;
+  &lt;type&gt;<span style="color: #009cdd;">REFUND</span>&lt;/type&gt;
+  &lt;parentTransactionId&gt;ffe0cdd1-fc6e-42d6-a431-44426999aa59&lt;/parentTransactionId&gt;
+  &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;
+  &lt;transactionResponse&gt;
+  &lt;state&gt;<span style="color: #009cdd;">APPROVED</span>&lt;/state&gt;
+  &lt;trazabilityCode&gt;00000000&lt;/trazabilityCode&gt;
+  &lt;authorizationCode&gt;00000000&lt;/authorizationCode&gt;
+  &lt;responseCode&gt;APPROVED&lt;/responseCode&gt;
+  &lt;operationDate&gt;2014-05-30T16:20:58&lt;/operationDate&gt;
+  &lt;/transactionResponse&gt;
+  &lt;additionalValues&gt;
+  .
+  .
+  .
+  &lt;/additionalValues&gt;
+  &lt;extraParameters&gt;
+  &lt;entry&gt;
+  &lt;string&gt;MANUAL_REFUND&lt;/string&gt;
+  &lt;string&gt;true&lt;/string&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+  &lt;string&gt;ORDER_CANCELLATION_CODE&lt;/string&gt;
+  &lt;string&gt;REQUESTED_BY_MERCHANT&lt;/string&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+  &lt;string&gt;REVERSAL_ACCOUNT_OPERATIONS&lt;/string&gt;
+  &lt;string&gt;false&lt;/string&gt;
+  &lt;/entry&gt;
+  &lt;/extraParameters&gt;
+  &lt;/transaction&gt;
+  .
+  .
+  .
+  &lt;/transactions&gt;
+  .
+  .
+  .
+  &lt;/payload&gt;
+  &lt;/result&gt;
+  &lt;/reportingResponse&gt;</code></pre>
+</div>
+</div></div>
+<div id="squelch-taas-tab-content-3">
+Se a solicitação de reembolso é rejeitada pelo agente de serviço ao cliente PayU, o sistema dará como resposta toda a informação da transação indicando que a Ordem continua com status <span class="highlight-txt2">CAPTURADA</span>, e informando que agora existe uma transação tipo <span class="highlight-txt2">REFUND ou VOID</span> com status <span class="highlight-txt2">DECLINED</span>, assim:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+<pre><code>{
+    "reportingResponse": {
+        "code": "SUCCESS",
+        "result": {
+            "payload": {
+                "-class": "order",
+                "id": "3987200",
+                "accountId": "500538",
+                "status": "<span style="color: #009cdd;">CAPTURED</span>",
+                "referenceCode": "REF00123456",
+                "description": "Descripción venta",
+                "language": "es",
+                "transactions": {
+                    "transaction": {
+                        "id": "e8421426-8519-4150-9f00-b22737b85719",
+                        "type": "<span style="color: #009cdd;">REFUND</span>",
+                        "parentTransactionId": "ab752190-84db-4dd4-b010-3c72a619363b",
+                        "paymentMethod": "VISA",
+                        "source": "CANCELLATION_MODULE",
+                        "paymentCountry": "CO",
+                        "transactionResponse": {
+                            "state": "<span style="color: #009cdd;">DECLINED</span>",
+                            "responseCode": "NOT_ACCEPTED_TRANSACTION"
+                        }
+                    "additionalValues":{
+.
+.
+.
+}
+}
+.
+.
+.
+}
+            }
+        }
+    }
+}</code></pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+<pre><code>&lt;reportingResponse&gt;
+  &lt;code&gt;SUCCESS&lt;/code&gt;
+  &lt;result&gt;
+  &lt;payload class=&quot;order&quot;&gt;
+  &lt;id&gt;3987200&lt;/id&gt;
+  &lt;accountId&gt;500538&lt;/accountId&gt;
+  &lt;status&gt;<span style="color: #009cdd;">CAPTURED</span>&lt;/status&gt;
+  &lt;referenceCode&gt;REF00123456&lt;/referenceCode&gt;
+  &lt;description&gt;Descripción venta&lt;/description&gt;
+  &lt;language&gt;es&lt;/language&gt;
+  &lt;transactions&gt;
+  &lt;transaction&gt;
+  &lt;id&gt;e8421426-8519-4150-9f00-b22737b85719&lt;/id&gt;
+  &lt;type&gt;<span style="color: #009cdd;">REFUND</span>&lt;/type&gt;
+  &lt;parentTransactionId&gt;ab752190-84db-4dd4-b010-3c72a619363b&lt;/parentTransactionId&gt;
+  &lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+  &lt;source&gt;CANCELLATION_MODULE&lt;/source&gt;
+  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;
+  &lt;transactionResponse&gt;
+  &lt;state&gt;<span style="color: #009cdd;">DECLINED</span>&lt;/state&gt;
+  &lt;responseCode&gt;NOT_ACCEPTED_TRANSACTION&lt;/responseCode&gt;
+  &lt;/transactionResponse&gt;
+  &lt;/transaction&gt;
+  .
+  .
+  .
+  &lt;/transactions&gt;
+  &lt;additionalValues&gt;
+  .
+  .
+  .
+  &lt;/additionalValues&gt;
+  &lt;/payload&gt;
+  &lt;/result&gt;
+  &lt;/reportingResponse&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>

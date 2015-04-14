@@ -1,0 +1,597 @@
+---
+title: Tabelas de variáveis
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">INTEGRAÇÃO API - <span style="color: #009cdd;">TABELAS DE VARIÁVEIS</span></h1>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api_pt.html %}
+
+<div id="page-menu-column2">
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Nesta seção você encontrará para considerar durante a integração com a API, como tabelas de variáveis, linguagem e moedas admitidas pela plataforma.</span>
+&nbsp;<br>
+&nbsp;<br>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+CÓDIGO DE RESPOSTA DA TRANSAÇÃO</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">CÓDIGO DE RESPOSTA</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+	</tr>
+	<tr>
+		<td><i>ERROR</i></td>
+		<td>Ocorreu um erro geral.</td>
+		</tr>
+	<tr>
+		<td><i>APPROVED</i></td>
+		<td>A transação foi aprovada.</td>
+	</tr>
+	<tr>
+		<td><i>ANTIFRAUD_REJECTED</i></td>
+		<td>A transação foi rejeitada pelo sistema anti fraude.</td>
+	</tr>
+	<tr>
+		<td><i>PAYMENT_NETWORK_REJECTED</i></td>
+		<td>A rede financeira rejeitou a transação.</td>
+	</tr>
+	<tr>
+		<td><i>ENTITY_DECLINED</i></td>
+		<td>A transação foi rejeitada pelo banco ou pela rede financeira devido a um erro.</td>
+	</tr>
+	<tr>
+		<td><i>INTERNAL_PAYMENT_PROVIDER_ERROR</i></td>
+		<td>Ocorreu um erro no sistema tentando processar o pagamento.</td>
+	</tr>
+	<tr>
+		<td><i>INACTIVE_PAYMENT_PROVIDER</i></td>
+		<td>O fornecedor de pagamentos não estava ativo.</td>
+	</tr>
+	<tr>
+		<td><i>DIGITAL_CERTIFICATE_NOT_FOUND</i></td>
+		<td>A rede financeira relatou um erro na autenticação.</td>
+	</tr>
+	<tr>
+		<td><i>INVALID_EXPIRATION_DAT</i><br />
+		<i>E_OR_SECURITY_CODE</i></td>
+		<td>O código de segurança ou a data de expiração estava inválido.</td>
+	</tr>
+	<tr>
+		<td><i>INSUFFICIENT_FUNDS</i></td>
+		<td>A conta não tinha crédito suficiente.</td>
+		</tr>
+	<tr>
+		<td><i>CREDIT_CARD_NOT_AUTHORIZED</i><br />
+		<i>_FOR_INTERNET_TRANSACTIONS</i></td>
+		<td>O cartão de crédito não estava autorizado para transações pela Internet.</td>
+	</tr>
+	<tr>
+		<td><i>INVALID_TRANSACTION</i></td>
+		<td>A rede financeira relatou que a transação foi inválida.</td>
+	</tr>
+	<tr>
+		<td><i>INVALID_CARD</i></td>
+		<td>O cartão é inválido.</td>
+	</tr>
+	<tr>
+		<td><i>EXPIRED_CARD</i></td>
+		<td>O cartão já expirou.</td>
+	</tr>
+	<tr>
+		<td><i>RESTRICTED_CARD</i></td>
+		<td>O cartão apresenta uma restrição.</td>
+	</tr>
+	<tr>
+		<td><i>CONTACT_THE_ENTITY</i></td>
+		<td>Você deve entrar em contato com o banco.</td>
+	</tr>
+	<tr>
+		<td><i>REPEAT_TRANSACTION</i></td>
+		<td>Deve-se repetir a transação.</td>
+	</tr>
+	<tr>
+		<td><i>ENTITY_MESSAGING_ERROR</i></td>
+		<td>A rede financeira relatou um erro de comunicações com o banco.</td>
+	</tr>
+	<tr>
+		<td><i>BANK_UNREACHABLE</i></td>
+		<td>O banco não se encontrava disponível.</td>
+	</tr>
+	<tr>
+		<td><i>EXCEEDED_AMOUNT</i></td>
+		<td>A transação excede um montante estabelecido pelo banco.</td>
+	</tr>
+	<tr>
+		<td><i>NOT_ACCEPTED_TRANSACTION</i></td>
+		<td>A transação não foi aceita pelo banco por algum motivo.</td>
+	</tr>
+	<tr>
+		<td><i>ERROR_CONVERTING_TRANSACTION_AMOUNTS</i></td>
+		<td>Ocorreu um erro convertendo os montantes para a moeda de pagamento.</td>
+	</tr>
+	<tr>
+		<td><i>EXPIRED_TRANSACTION</i></td>
+		<td>A transação expirou.</td>
+	</tr>
+	<tr>
+		<td><i>PENDING_TRANSACTION_REVIEW</i></td>
+		<td>A transação foi parada e deve ser revista, isto pode ocorrer por filtros de segurança.</td>
+	</tr>
+	<tr>
+		<td><i>PENDING_TRANSACTION_CONFIRMATION</i></td>
+		<td>A transação está pendente de confirmação.</td>
+	</tr>
+	<tr>
+		<td><i>PENDING_TRANSACTION_TRANSMISSION</i></td>
+		<td>A transação está pendente para ser transmitida para a rede financeira. Normalmente isto se aplica para transações com formas de pagamento em dinheiro.</td>
+	</tr>
+	<tr>
+		<td><i>PAYMENT_NETWORK_BAD_RESPONSE</i></td>
+		<td>A mensagem retornada pela rede financeira é inconsistente.</td>
+		</tr>
+	<tr>
+		<td><i>PAYMENT_NETWORK_NO_CONNECTION</i></td>
+		<td>Não foi possível realizar a conexão com a rede financeira.</td>
+	</tr>
+	<tr>
+		<td><i>PAYMENT_NETWORK_NO_RESPONSE</i></td>
+		<td>A rede financeira não respondeu.</td>
+	</tr>
+	<tr>
+		<td><i>FIX_NOT_REQUIRED</i></td>
+		<td>Clínica de transações: Código de operação interna.</td>
+	</tr>
+	<tr>
+		<td><i>AUTOMATICALLY_FIXED_AND_SUCCESS_REVERSAL</i></td>
+		<td>Clínica de transações: Código de operação interna.<br />
+		<b>Somente aplicável para o API de consultas.</b></td>
+	</tr>
+	<tr>
+		<td><i>AUTOMATICALLY_FIXED_AND_UNSUCCESS_REVERSAL</i></td>
+		<td>Clínica de transações: Código de operação interna.<br />
+		<b>Somente aplicável para o API de consultas.</b></td>
+	</tr>
+	<tr>
+		<td><i>AUTOMATIC_FIXED_NOT_SUPPORTED</i></td>
+		<td>Clínica de transações: Código de operação interna.<br />
+		<b>Somente aplicável para o API de consultas.</b></td>
+	</tr>
+	<tr>
+		<td><i>NOT_FIXED_FOR_ERROR_STATE</i></td>
+		<td>Clínica de transações: Código de operação interna.<br />
+		<b>Somente aplicável para o API de consultas.</b></td>
+	</tr>
+	<tr>
+		<td><i>ERROR_FIXING_AND_REVERSING</i></td>
+		<td>Clínica de transações: Código de operação interna.<br />
+		<b>Somente aplicável para o API de consultas.</b></td>
+	</tr>
+	<tr>
+		<td><i>ERROR_FIXING_INCOMPLETE_DATA</i></td>
+		<td>Clínica de transações: Código de operação interna.<br />
+		<b>Somente aplicável para o API de consultas.</b></td>
+	</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+COMANDOS ADMITIDOS PELO API DE CONSULTAS</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">COMANDO</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td><i>PING</i></td>
+<td>Usado para realizar ping no serviço.</td>
+</tr>
+<tr>
+<td><i>ORDER_DETAIL</i></td>
+<td>Usado para consultar uma ordem usando seu identificador.</td>
+</tr>
+<tr>
+<td><i> ORDER_DETAIL_BY_REFERENCE_CODE</i></td>
+<td>Usado para consultar uma ordem usando seu código de referência.</td>
+</tr>
+<tr>
+<td><i>TRANSACTION_RESPONSE_DETAIL</i></td>
+<td>Usado para consultar a resposta de uma transação.</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+COMANDOS ADMITIDOS PELO API DE PAGAMENTOS</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">COMANDO</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td><i>PING</i></td>
+<td>Usado para realizar <i>ping</i> no serviço.</td>
+</tr>
+<tr>
+<td><i>SUBMIT_TRANSACTION</i></td>
+<td>Usado para enviar transações de qualquer tipo.</td>
+</tr>
+<tr>
+<td><i>GET_PAYMENT_METHODS</i></td>
+<td>Usado para consultar as formas de pagamento disponíveis para o comércio.</td>
+</tr>
+<tr>
+<td><i>GET_BANKS_LIST</i></td>
+<td>Usado para obter a lista de bancos para as transações com o PSE.</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+MOEDAS ADMITIDAS</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">MOEDA</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td>ARS</td>
+<td>Peso Argentino</td>
+</tr>
+<tr>
+<td>BRL</td>
+<td>Real Brasileño</td>
+</tr>
+<tr>
+<td>CLP</td>
+<td>Peso Chileno</td>
+</tr>
+<tr>
+<td>COP</td>
+<td>Peso Colombiano</td>
+</tr>
+<tr>
+<td>MXN</td>
+<td>Peso Mexicano</td>
+</tr>
+<tr>
+<td>PEN</td>
+<td>Novo Sol Peruano</td>
+</tr>
+<tr>
+<td>USD</td>
+<td valign="top">Dólar Americano</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+STATUS DA TRANSAÇÃO</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">ESTADO</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td>APPROVED</td>
+<td>Transação aprovada</td>
+</tr>
+<tr>
+<td>DECLINED</td>
+<td>Transação rejeitada</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>Erro processando a transação</td>
+</tr>
+<tr>
+<td>EXPIRED</td>
+<td>Transação expirada</td>
+</tr>
+<tr>
+<td>PENDING</td>
+<td>Transação pendente ou em validação</td>
+</tr>
+<tr>
+<td>SUBMITTED</td>
+<td>Transação enviada para a entidade financeira e por algum motivo não terminou seu processamento. <b>Somente aplicável para o API de consultas.</b></td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+STATUS DA ORDEM</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">STATUS</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td>NEW</td>
+<td>A ordem acaba de ser criada no sistema.</td>
+</tr>
+<tr>
+<td>IN_PROGRESS</td>
+<td>A ordem está sendo processada.</td>
+</tr>
+<tr>
+<td>AUTHORIZED</td>
+<td>A última transação da ordem foi una autorização aprovada.</td>
+</tr>
+<tr>
+<td>CAPTURED</td>
+<td>A última transação da ordem foi uma captura aprovada.</td>
+</tr>
+<tr>
+<td>CANCELLED</td>
+<td>A última transação da ordem foi um cancelamento aprovado.</td>
+</tr>
+<tr>
+<td>DECLINED</td>
+<td>A última transação da ordem foi rejeitada.</td>
+</tr>
+<tr>
+<td>REFUNDED</td>
+<td>A última transação da ordem foi um reembolso aprovado.</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+IDIOMAS ACEITOS</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">CÓDIGO ISO 639</span></td>
+<td><span style="color: #fff; font-weight: bold;">IDIOMA</span></td>
+</tr>
+<tr>
+<td>en</td>
+<td>Inglês</td>
+</tr>
+<tr>
+<td>es</td>
+<td>Espanhol</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>Português</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+MEIOS DE PAGAMENTO</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table border="1" bordercolor="#bebebe" cellpadding="4" cellspacing="2" style="font-size:11px"> 
+  <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+      <td width="40%">País</td>
+      <td width="60%">Meios de pagamento</td>
+    </tr>
+    <tr>
+      <td rowspan="13">Argentina</td>
+      <td>PAGOFACIL</td>
+    </tr>
+    <tr>
+      <td>CABAL</td>
+    </tr>
+    <tr>
+      <td>NARANJA</td>
+    </tr>
+    <tr>
+      <td>SHOPPING</td>
+    </tr>
+    <tr>
+      <td>COBRO_EXPRESS</td>
+    </tr>
+    <tr>
+      <td>VISA</td>
+    </tr>
+    <tr>
+      <td>RAPIPAGO</td>
+    </tr>
+    <tr>
+      <td>CENCOSUD</td>
+    </tr>
+    <tr>
+      <td>ARGENCARD</td>
+    </tr>
+    <tr>
+      <td>BAPRO</td>
+    </tr>
+    <tr>
+      <td>RIPSA</td>
+    </tr>
+    <tr>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td>AMEX</td>
+    </tr>
+    <tr>
+      <td rowspan="7">Brasil</td>
+      <td>VISA</td>
+    </tr>
+    <tr>
+      <td>AMEX</td>
+    </tr>
+    <tr>
+      <td>BOLETO_BANCARIO</td>
+    </tr>
+    <tr>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td>ELO</td>
+    </tr>
+    <tr>
+      <td>HIPERCARD</td>
+    </tr>
+    <tr>
+      <td>DINERS</td>
+    </tr>
+    <tr>
+      <td>Chile</td>
+      <td>TRANSBANK</td>
+    </tr>
+    <tr>
+      <td rowspan="8">Colômbia</td>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td>BALOTO</td>
+    </tr>
+    <tr>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td>PSE</td>
+    </tr>
+    <tr>
+      <td>VISA</td>
+    </tr>
+    <tr>
+      <td>EFECTY</td>
+    </tr>
+    <tr>
+      <td>DINERS</td>
+    </tr>
+    <tr>
+      <td>AMEX</td>
+    </tr>
+    <tr>
+      <td rowspan="9">México</td>
+      <td>VISA</td>
+    </tr>
+    <tr>
+      <td>SANTANDER</td>
+    </tr>
+    <tr>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td>BANCOMER</td>
+    </tr>
+    <tr>
+      <td>IXE</td>
+    </tr>
+    <tr>
+      <td>SCOTIABANK</td>
+    </tr>
+    <tr>
+      <td>AMEX</td>
+    </tr>
+    <tr>
+      <td>OXXO</td>
+    </tr>
+    <tr>
+      <td>SEVEN_ELEVEN</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Panamá</td>
+      <td>VISA</td>
+    </tr>
+    <tr>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Peru</td>
+      <td>MASTERCARD</td>
+    </tr>
+    <tr>
+      <td>BCP</td>
+    </tr>
+    <tr>
+      <td>VISA</td>
+    </tr>
+  </table>    
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+PAÍSES DE PAGAMENTO</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">PAÍS</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td>BR</td>
+<td>Brasil</td>
+</tr>
+<tr>
+<td>AR</td>
+<td>Argentina</td>
+</tr>
+<tr>
+<td>CO</td>
+<td>Colômbia</td>
+</tr>
+<tr>
+<td>MX</td>
+<td>México</td>
+</tr>
+<tr>
+<td>PA</td>
+<td>Panamá</td>
+</tr>
+<tr>
+<td>PE</td>
+<td>Peru</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+TIPOS DE TRANSAÇÃO</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">TIPO</span></td>
+<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td>AUTHORIZATION</td>
+<td>Transação de autorização</td>
+</tr>
+<tr>
+<td>AUTHORIZATION_AND_CAPTURE</td>
+<td>Transação de autorização e captura</td>
+</tr>
+<tr>
+<td>CAPTURE</td>
+<td>Transação de captura</td>
+</tr>
+<tr>
+<td>CANCELLATION</td>
+<td>Transação de cancelamento</td>
+</tr>
+<tr>
+<td>VOID</td>
+<td>Transação de cancelamento de uma autorização</td>
+</tr>
+<tr>
+<td>REFUND</td>
+<td>Transação de reembolso ou cancelamento de uma captura</td>
+</tr>
+</table>
+</div></div>
+&nbsp;<br>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>

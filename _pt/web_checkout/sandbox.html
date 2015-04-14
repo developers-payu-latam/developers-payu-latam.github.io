@@ -1,0 +1,149 @@
+---
+title: Sandbox
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">TESTES WEBCHECKOUT - <span style="color: #009cdd;">SANDBOX</span></h1>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_webcheckout_pt.html %}
+
+<div id="page-menu-column2">
+&nbsp;<br>
+<span class="subtitle-page">LEVAR EM CONTA</span>
+&nbsp;<br>
+<span class="grey-text-13">Para realizar testes por meio de sua conta PayU, já que o ambiente de testes não replica os dados de sua conta em produção, é importante que você gere um formulário HTML com os seguintes parâmetros dependendo do país de sua conta:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">merchantId</span></td>
+		<td><span style="color: #fff; font-weight: bold;">API Login</span></td>
+		<td><span style="color: #fff; font-weight: bold;">API Key</span></td>
+		<td><span style="color: #fff; font-weight: bold;">accountId</span></td>
+		<td><span style="color: #fff; font-weight: bold;">País</span></td>
+	</tr>
+	<tr>
+		<td rowspan="6">500238</td>
+		<td rowspan="6">11959c415b33d0c</td>
+		<td rowspan="6">6u39nqhq8ftd0hlvnjfs66eh8c</td>
+		<td>509171</td>
+		<td>Argentina</td>
+	</tr>
+	<tr>
+		<td>509666</td>
+		<td>Chile</td>
+	</tr>
+	<tr>
+		<td>500538</td>
+		<td>Colômbia</td>
+	</tr>
+	<tr>
+		<td>500547</td>
+		<td>México</td>
+	</tr>
+	<tr>
+		<td>500537</td>
+		<td>Panamá</td>
+	</tr>
+	<tr>
+		<td>500546</td>
+		<td>Perú</td>
+	</tr>
+	<tr>
+		<td rowspan="5">500365</td>
+		<td rowspan="5">403ba744e9827f3</td>
+		<td rowspan="5">676k86ks53la6tni6clgd30jf6</td>
+		<td>500719</td>
+		<td>Brasil</td>
+	</tr>
+</table>		
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Exemplo:</span>
+<pre>
+merchantId: 500238
+ApiKey: 6u39nqhq8ftd0hlvnjfs66eh8c
+referenceCode: TestPayU
+accountId: 500537
+description: Test PAYU
+amount: 3
+tax: 0
+taxReturnBase: 0
+currency: USD
+signature: be2f083cb3391c84fdf5fd6176801278
+test: 1
+buyerEmail: test@test.com
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Apontando para o seguinte URL:</span>
+<div id="blue-box">
+<span class="grey-text-13"><b>https://stg.gateway.payulatam.com/ppp-web-gateway</b></span>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="blue-box">
+<span class="info-icon">Nota:</span>
+<ol>
+<li>É importante que durante a realização dos testes não utilizar dados de cartões de crédito reais, você pode utilizar geradores de cartões de crédito.</li>
+<li>O campo teste = 1 é incluído para indicar ao sistema que é uma transação de teste.</li>
+<li>Os testes podem ser realizados somente com cartões de crédito, as formas de pagamento em dinheiro ou de transferência bancária não podem ser testados por meio deste método.</li>
+<li>Você não pode realizar testes com as formas de pagamento do Peru, já que através destas franquias opera-se o 3D security.</li>
+</ol>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Você obterá acesso à plataforma de pagamentos competente ao país da conta que selecionou, para realizar o teste você deve selecionar alguma das franquias de cartão de crédito disponíveis.</span>
+<p align="center"><img src="/images/webcheckout/sandbox2-pt.jpg" border="0" /></p>
+&nbsp;<br>
+<span class="grey-text-13">Uma vez você esteja no formulário de pagamento do cartão de crédito, e se certificando de conter a mensagem na parte superior da plataforma, Transação em modo de teste, você deve:</span>
+<ol>
+<li class="bullet-box">Inserir no campo Nomes e Sobrenomes, o texto APPROVED, se você deseja que a transação seja aprovada ou REJECTED, se deseja que seja rejeitada.</li>
+<li class="bullet-box">No campo Número de Cartão você deve inserir um número de cartão válido e que corresponda à franquia selecionada. Para isto você pode procurar um gerador de cartões de crédito na internet.</li>
+<li class="bullet-box">Os demais campos podem ser aleatórios</li>
+</ol>
+<p align="center"><img src="/images/webcheckout/sandbox3-pt.jpg" border="0" /></p>
+&nbsp;<br>
+<span class="grey-text-13">Uma resposta será obtida, neste caso de finalização bem-sucedida do movimento.</span>
+<p align="center"><img src="/images/webcheckout/sandbox4-pt.jpg" border="0" /></p>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+<span class="subtitle-page"> PASSO PARA A PRODUÇÃO</span>
+&nbsp;<br>
+<span class="grey-text-13">Depois de realizar todos os testes no sistema e verificado que tudo está funcionando corretamente, pode ser realizada a mudança para o servidor de produção; onde serão processadas as transações reais.</span>
+&nbsp;<br>
+<span class="grey-text-13">Para isto você deverá desmarcar a opção Transação em modo de teste, encontrado em seu módulo administrativo.</span>
+&nbsp;<br>
+<p align="center"><img src="/images/webcheckout/sandbox5-pt.jpg" border="0"></p>
+&nbsp;<br>
+<span class="grey-text-13">Adicionalmente, você deve gerar os formulários de pagamento com os seguintes parâmetros correspondentes a sua conta: </span>
+&nbsp;<br>
+<pre>
+merchantId: de sua conta
+ApiKey: de sua conta
+referenceCode: referência de venda única por cada transação
+accountId: de sua conta
+description: descrição da venda
+amount: valor da venda  
+tax: valor do imposto associado à venda
+taxReturnBase: valor de devolução do imposto
+currency: a moeda de sua conta
+signature: a assinatura gerada para cada transação
+test: 0
+buyerEmail: o e-mail do comprador
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Apontando para o URL de produção:</span>
+<div id="blue-box">
+<span class="grey-text-13"><b>https://gateway.payulatam.com/ppp-web-gateway</b></span>
+</div>
+&nbsp;<br>
+
+</div>
+
+</div>
+</div>
+</div>

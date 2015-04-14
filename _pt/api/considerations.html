@@ -1,0 +1,97 @@
+---
+title: Considerações sobre as variáveis
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">INTEGRAÇÃO API - <span style="color: #009cdd;">CONSIDERAÇÕES SOBRE VARIÁVEIS</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#apikey">ApiKey e ApiLogin</a></li>
+	<li class="leaf"><a href="#signature">Signature</a></li>
+	<li class="leaf"><a href="#device">deviceSessionID</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api_pt.html %}
+
+<div id="page-menu-column2">
+&nbsp;<br>
+<div id="apikey" class="payu-fragment">
+<span class="subtitle-page">COMO OBTER MINHA API KEY E API LOGIN?</span>
+&nbsp;<br>
+<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span>Para obter os dados necessários para realizar a autenticação você deve acessar <a href="http://www.payulatam.com" target="_blank">http://www.payulatam.com</a> com seu respectivo nome de usuário e senha.</p>
+<img border="0" alt="Módulo administrativo" src="/images/secure1-pt.jpg">
+&nbsp;<br>
+<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span>Entre no menu <span class="highlight-txt2 ">“Configuração”</span> na opção <span class="highlight-txt2 ">“Informação técnica”</span>, onde você encontrará os dados para se autenticar com o API: <span class="highlight-txt">API key</span> e <span class="highlight-txt">API login</span>. <br> Você deve considerar que estes dados são únicos por cada comércio do PayU Latam, portanto, você deve manter esta informação segura e é sua responsabilidade seu uso e/ou divulgação.</p>
+<img border="0" alt="Módulo administrativo" src="/images/tecnica3-pt.jpg">
+&nbsp;<br>
+&nbsp;<br>
+</div>
+<div id="signature" class="payu-fragment">
+<span class="subtitle-page">COMO GERAR A ASSINATURA DE AUTENTICAÇÃO?</span>
+&nbsp;<br>
+A <span class="highlight-txt">signature</span> é uma variável utilizada para validar os pagamentos realizados através da plataforma, garantindo sua autenticidade. Consiste em uma cadeia de caracteres à qual é aplicado algoritmo MD5 ou SHA para codificá-la. A cadeia é composta da seguinte forma: 
+&nbsp;<br>
+<div id="blue-box">“ApiKey~merchantId~referenceCode~tx_value ~currency".</div>
+&nbsp;<br>
+Ilustraremos da melhor maneira este conceito com um exemplo. Para isso, usaremos os seguintes dados de teste:
+<pre>
+<span class="string">ApiKey:</span> 6u39nqhq8ftd0hlvnjfs66eh8c
+<span class="string">merchantId:</span> 500238
+<span class="string">referenceCode:</span> TestPayU
+<span class="string">tx_value:</span> 3
+<span class="string">currency:</span> USD</pre>
+A assinatura estaria conformada pelos seguintes elementos:
+<pre>"6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD”</pre>
+A qual após ser aplicado o algoritmo md5 ficaria assim:
+<pre>“be2f083cb3391c84fdf5fd6176801278”</pre>
+Esta informação deverá ser enviada na variável:
+<div class="list-arrow"><ul><li> Para API: <span class="highlight-txt2">transaction.order.signature</span></li>
+<li> Para SDK Java: <span class="highlight-txt2">PayU.PARAMETERS.SIGNATURE</span></li></ul></div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+<div id="device" class="payu-fragment">
+<span class="subtitle-page">VARIABLE DEVICESESSIONID</span>
+&nbsp;<br>
+O <span class="highlight-txt">deviceSessionID</span> é um código que captura a informação do equipamento a partir de onde é gerada a transação e gera um identificador único para este. Esta ferramenta de segurança permite detectar atacantes. Para realizar a integração você deve incluir o seguinte script no site onde são capturados os dados para pagamentos com cartão de crédito (formulário de pagamento):
+<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span> Incluir o seguinte script no site onde são capturados os dados (formulário de pagamento) para pagamentos com cartão de crédito:</p>
+<pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId)</span>&quot;&gt;&lt;/p&gt;<br />
+  &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot;&gt;<br />
+  &lt;script src=&quot;https://maf.pagosonline.net/ws/fp/check.js?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot;&gt;&lt;/script&gt;<br />
+  &lt;object type=&quot;application/x-shockwave-flash&quot;<br />
+  data=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot; width=&quot;1&quot; height=&quot;1&quot;<br />
+  id=&quot;thm_fp&quot;&gt;<br />
+  &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot; /&gt;<br />
+&lt;/object&gt;</pre>
+&nbsp;<br>
+<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span>É importante gerar o <span class="highlight-txt">deviceSessionId</span> com o seguinte algoritmo para garantir que a identificação seja única. Adicionalmente, você deve gerar um novo deviceSessionId para cada transação. Selecionar o session_Id do cookie e concatená-lo com o timestamp incluídos os milissegundos. Em seguida, passá-lo pelo método MD5.
+Exemplo em php:</p>
+<pre>$ deviceSessionId = md5(session_id().microtime())</pre>
+&nbsp;<br>
+
+<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">03. </span>Este deviceSessionId deve se concatenar com o “usuarioId” 80200, como no exemplo a seguir: <span class="highlight-txt">4091057053</span>80200
+E enviá-lo em todos os ${deviceSessionId}usuarioId do escript como no exemplo a seguir.</p>
+<pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=<span class="highlight-txt2">409105705380200</span>&quot;)&gt;&lt;/p&gt;<br />
+  &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=<span class="highlight-txt2">409105705380200</span>&quot;&gt;<br />
+  &lt;script src=&quot;https://maf.pagosonline.net/ws/fp/check.js?id=<span class="highlight-txt2">409105705380200</span>&quot;&gt;&lt;/script&gt;<br />
+  &lt;object type=&quot;application/x-shockwave-flash&quot;<br />
+  data=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot; width=&quot;1&quot; height=&quot;1&quot;<br />
+  id=&quot;thm_fp&quot;&gt;<br />
+  &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot;/&gt;<br />
+&lt;/object&gt;</pre>
+&nbsp;<br>
+<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">04. </span> Finalmente, você deve enviar o <span class="highlight-txt">$deviceSessionId</span> (sem o “usuarioId”) no pedido do API na variável:</p>
+<div class="list-arrow"><ul><li> Para API:<span class="highlight-txt2 ">transaction.deviceSessionId.</span></li>
+<li> Para SDK JAVA: <span class="highlight-txt2 ">PayU.PARAMETERS.DEVICE_SESSION_ID</span></li>
+<li> Para SDK PHP: <span class="highlight-txt2 ">PayUParameters::DEVICE_SESSION_ID</span></li></ul></div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="grey-box"><b>Considerar</b>: Se você deseja incluir os logos das formas de pagamento disponíveis no seu site, você pode acessar <a href="http://www.payulatam.com/logos" target="_blank">http://www.payulatam.com/logos/</a> e fazer o download das imagens de cada país.</div>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>

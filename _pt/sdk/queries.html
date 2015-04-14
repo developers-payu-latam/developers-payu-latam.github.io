@@ -1,23 +1,23 @@
 ---
-title: Queries SDK
+title: Consultas SDK
 ---
 <div class="payu-page-header superhero-sticky">
-<h1 class="payu-title1">SDK INTEGRATION - <span style="color: #009cdd;">QUERIES</span></h1>
+<h1 class="payu-title1">INTEGRAÇÃO SDK - <span style="color: #009cdd;">CONSULTAS</span></h1>
 </div>
 
 <div class="sh-container payu-white-bg">
 <div class="container">
 <div class="row" style="background-color: #f5f5f5;">
 
-{% include sidemenu_sdk_en.html %}
+{% include sidemenu_sdk_pt.html %}
 
 <div id="page-menu-column2">
 &nbsp;<br>
-<span class="subtitle-page">QUERIES WITH THE API USING SDK</span>
+<span class="subtitle-page">CONSULTAS COM O API USANDO O SDK</span>
 &nbsp;<br>
-<span class="grey-text-13">PayU provides an API that allows you to check the status of transactions that are generated from placed orders.</span>
+<span class="grey-text-13">O PayU oferece um API que permite consultar o status das transações geradas a partir das ordens realizadas.</span>
 &nbsp;<br>
-<span class="grey-text-13">If you want to integrate with our API through the SDK you must point the requests to the following URLs:</span>
+<span class="grey-text-13">Se desejar se integrar com o nosso API você deverá apontar os pedidos para os seguintes URLs:</span>
 &nbsp;<br>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
@@ -36,18 +36,18 @@ Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api
 </div>
 </div>
 &nbsp;<br>
-<div id="blue-box"><div id="info-box">Consider:</div>
-<ul><li>	You must use the API to query when transactions remain in a pending <span class="highlight-txt">PENDING</span> status .</li>
-<li>You must perform the first query after 7 minutes of the transaction’s creation.</li>
-<li>Please not retry the query of an order or transaction if the system indicates that it does not exist.</li>
-<li>For cash payment means, you can perform only one query per hour.</li>
-<li>Transactions with payment means such as credit card or bank transfer may be queried only once every 10 minutes.</li></ul></div>
+<div id="blue-box"><div id="info-box">Considerar:</div>
+<ul><li>Você deve utilizar o API para consultas quando as transações fiquem com status pendente ou <span class="highlight-txt">PENDING</span>.</li>
+<li>Deve ser realizada a primeira consulta a partir de 7 minutos depois de criada a transação.</li>
+<li>Por favor não tentar novamente a consulta de uma ordem ou transação, se o sistema indicar que não existe.</li>
+<li>Para formas de pagamento em dinheiro, pode ser realizada somente uma consulta por hora.</li>
+<li>As transações realizadas com formas de pagamento como cartão de crédito ou transferência bancária, somente podem ser consultadas uma vez a cada 10 minutos.</li></ul></div>
 &nbsp;<br>
-<span class="grey-text-13">The available methods for the query API are: <b>PING</b>, <b>QUERY ORDER BY IDENTIFIER </b>, <b>QUERY ORDER BY REFERENCE</b> and <b>QUERY TRANSACTION RESPONSE</b>. Below is a description of each.</span>
+<span class="grey-text-13">Os métodos disponíveis para o API de consultas são: <b>PING</b>, <b>CONSULTA DE ORDEM POR IDENTIFICADOR</b>, <b>CONSULTA DE ORDEM POR REFERÊNCIA</b> e <b>CONSULTA DE RESPOSTA DE TRANSAÇÕES</b>. A seguir você encontrará a descrição de cada um.</span>
 &nbsp;<br>
 <div class="paso1"><span class="subtitle-page">PING</span></div>
 &nbsp;<br>
-<span class="grey-text-13">You can use the <b>doPing</b> method to verify the connectivity with our platform.</span>
+<span class="grey-text-13">Você pode utilizar o método <b>doPing</b> para verificar a conectividade com nossa plataforma.</span>
 
 <!-- TABS PING -->
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
@@ -56,14 +56,14 @@ Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1">
-Exemplo pedido:
+Ejemplo petición:
 <pre>
 boolean response = PayUPayments.doPing();
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
 <div id="squelch-taas-tab-content-2">
-Exemplo pedido:
+Ejemplo petición:
 <pre>
 $response = PayUReports::doPing();
 $response -&gt; code;
@@ -73,9 +73,9 @@ $response -&gt; code;
 <!-- FIN TABS PING -->
 
 &nbsp;<br>
-<div class="paso2"><span class="subtitle-page">QUERY THE ORDER BY IDENTIFIER </span></div>
+<div class="paso2"><span class="subtitle-page">CONSULTA DE ORDEM POR IDENTIFICADOR</span></div>
 &nbsp;<br>
-<span class="grey-text-13">You can use the <b>doOrderDetailReporting</b> to query an order by its identifier.</span>
+<span class="grey-text-13">Você pode utilizar o método <b>doOrderDetailReporting</b> para consultar uma ordem pelo seu identificador.</span>
 <!-- TABS doOrderDetailReporting -->
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
@@ -83,15 +83,15 @@ $response -&gt; code;
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1">
-Exemplo pedido:
+Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-// Enter the order’s reference code here.
+// Coloque aqui o código de referência da ordem
 parameters.put(PayU.PARAMETERS.ORDER_ID, "2637540");
 Order response = PayUReports.getOrderDetail(parameters); 
 
-//  -- you will be able to obtain the order’s properties --
+// -- Você pode obter as propriedades da ordem --
 if(response != null){
 	response.getAccountId();
 	response.getStatus();
@@ -102,7 +102,7 @@ if(response != null){
 		response.getBuyer().getEmailAddress();
 		response.getBuyer().getFullName();
 	}
-	// -- go through the transactions that are associated to the order--
+	// -- Listar as transações associadas à ordem --
 	List&lt;Transaction&gt; transactions = response.getTransactions();
 	Iterator&lt;Transaction&gt; transactions_iterator = transactions.iterator();
 	
@@ -122,7 +122,7 @@ if(response != null){
 </pre>
 </div>
 <div id="squelch-taas-tab-content-2">
-Exemplo pedido:
+Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 //Ingresa aquí el código de referencia de la orden.
 $parameters = array(PayUParameters::ORDER_ID =&gt; "44469220");
@@ -158,9 +158,9 @@ if ($order) {
 <!-- FIN TABS doOrderDetailReporting -->
 
 &nbsp;<br>
-<div class="paso3"><span class="subtitle-page">QUERY THE ORDER BY REFERENCE</span></div>
+<div class="paso3"><span class="subtitle-page">CONSULTA DE ORDEM POR REFERÊNCIA</span></div>
 &nbsp;<br>
-<span class="grey-text-13">You can use the <b>doOrderDetailByReferenceCodeReporting</b> method to query an order by its reference code.</span>
+<span class="grey-text-13">Você pode utilizar o método <b>doOrderDetailByReferenceCodeReporting</b> para consultar uma ordem pelo seu código de referência.</span>
 <!-- TABS doOrderDetailByReferenceCodeReporting -->
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
@@ -168,17 +168,17 @@ if ($order) {
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1">
-Exemplo pedido:
+Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-//Enter the order’s reference code here.
+//Insira aqui o código de referência da ordem.
 parameters.put(PayU.PARAMETERS.REFERENCE_CODE, "payment_test_00000001");
 
 List&lt;Order&gt; orders_response = PayUReports.getOrderDetailByReferenceCode(parameters);
 Iterator&lt;Order&gt; orders_iterator= orders_response.iterator();
 
-// -- go through the orders with the queried reference--
+// -- recorrer as ordens com a referência consultada--
 while(orders_iterator.hasNext()){
 	Order order= (Order) orders_iterator.next();
 
@@ -194,7 +194,7 @@ while(orders_iterator.hasNext()){
 			order.getBuyer().getFullName();
 		}
 
-		// -- go through the transactions associated to the order--
+		// -- recorrer as transações associadas à ordem--
 		List&lt;Transaction&gt; transactions=order.getTransactions();
 		Iterator&lt;Transaction&gt; transactions_iterator=transactions.iterator();
 
@@ -215,9 +215,9 @@ while(orders_iterator.hasNext()){
 </pre>
 </div>
 <div id="squelch-taas-tab-content-2">
-Exemplo pedido:
+Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
-// Ingresa aquí el código de referencia de la orden.
+//Insira aqui o código de referência da ordem.
 $parameters = array(PayUParameters::REFERENCE_CODE =&gt; "2014-05-06 06:14:19");
 
 $response = PayUReports::getOrderDetailByReferenceCode($parameters);
@@ -253,9 +253,9 @@ foreach ($response as $order) {
 <!-- FIN TABS doOrderDetailByReferenceCodeReporting -->
 
 &nbsp;<br>
-<div class="paso4"><span class="subtitle-page">QUERY THE RESPONSE OF THE TRANSACTIONS</span></div>
+<div class="paso4"><span class="subtitle-page">CONSULTA DE RESPOSTA DE TRANSAÇÕES</span></div>
 &nbsp;<br>
-<span class="grey-text-13">You can use the <b>doTransactionResponseReporting</b> method to query the response to of a transaction.</span>
+<span class="grey-text-13">Você pode utilizar o método <b>doTransactionResponseReporting</b> para consultar a resposta de uma transação.</span>
 <!-- TABS doTransactionResponseReporting -->
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
@@ -263,15 +263,15 @@ foreach ($response as $order) {
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1">
-Exemplo pedido:
+Ejemplo petición:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-//Enter the transaction identifier here.
+//Insira aqui o identificador da transação.
 parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "41bb0d7d-dc98-4eeb-a128-ce5b7366bcfa");
 
 TransactionResponse response = PayUReports.getTransactionResponse(parameters); 
-//  --you will be able to obtain the properties of the response --
+//  -- você poderá obter as propriedades da resposta --
 if(response != null){
 	response.getState();
 	response.getTrazabilityCode();
@@ -282,7 +282,7 @@ if(response != null){
 </pre>
 </div>
 <div id="squelch-taas-tab-content-2">
-Exemplo pedido:
+Ejemplo petición:
 <pre>
 $parameters = array(PayUParameters::TRANSACTION_ID =&gt; "960b1a5d-575d-4bd9-927e-0ffbf5dc4296");
 
@@ -299,10 +299,9 @@ if ($response) {
 </div>
 </div>
 <!-- FIN TABS doTransactionResponseReporting -->
-<div id="grey-box"><div class="title4">Note:</div> If you do not want to use the API to query, you can use the confirmation page, this page will help you to update the databases in your system, you can find more information on this page in the <a href="{{ site.baseurl }}/en/web_checkout/integration.html" title="Webcheckout – Integración">integration</a> section with the WebCheckout.</div>
+<div id="grey-box"><div class="title4">Nota:</div> Se não desejar usar o API para consultas é possível utilizar a página de confirmação, esta página  ajudará a atualizar os bancos de dados no seu sistema, você poderá encontrar mais informação sobre esta página na seção de <a href="{{ site.baseurl }}/pt/web_checkout/integration.html" title="Webcheckout – Integración">integração</a> com o WebCheckout.</div>
 &nbsp;<br>
 </div>
-
 </div>
 </div>
 </div>

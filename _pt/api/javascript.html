@@ -1,0 +1,285 @@
+---
+title: Javascript de Tokenização
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">JAVASCRIPT DE TOKENIZAÇÃO</h1>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+&nbsp;<br>
+&nbsp;<br>
+<div id="two-columns-column1">
+<span class="grey-text-13">O <span class="highlight-txt2">Javascript de Tokenização</span> permite cadastrar os cartões de crédito de seus clientes, de forma segura. Os clientes inserem os dados em seu site, e estes dados são enviados diretamente para os servidores do Pay<span style="color: #009cdd;">U</span>, ali serão tokenizados e armazenados para futuras compras.<br><br>
+Você poderá desenvolver funcionalidades como <b>“Pagamento em um clique”</b> ou cadastrar vários cartões de crédito para cada cliente. Uma vez instalado o Javascript e cadastrado os cartões de crédito de seus clientes, você poderá gerar cobranças enviando os dados da compra. Se desejar saber mais acerca das opções oferecidas pelo Pay<span style="color: #009cdd;">U</span> para realizar cobranças, refira-se a <a href="{{ site.baseurl }}/pt/sdk/tokenization.html" title="SDK – Tokenizacion">SDK de tokenização</a> ou <a href="{{ site.baseurl }}/pt/api/tokenization.html" title="API – Tokenización">API de tokenização</a> de acordo com seu tipo de integração.<br><br>
+Para instalar o <span class="highlight-txt2">Javascript de tokenização</span> siga os passos a seguir:</span>
+</div>
+<div id="two-columns-column2"><img src="/images/js-tokenizacion-pt.jpg" width="500" border="0" alt="Javascript de tokenização"/></div>
+&nbsp;<br>
+&nbsp;<br>
+
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span><span class="grey-text-13"><b>Declaração de instância</b>: Para começar a usar PayU.js, você deve adicionar a  seguinte tag em sua página web:</span></div>
+<div id="three-columns-column3">
+<pre>
+&lt;script type="text/javascript" src="https://gateway.payulatam.com/ppp-web-gateway/javascript/PayU.js"&gt;&lt;/script&gt;
+</pre>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span><span class="grey-text-13"><b>Configurações gerais</b>: Você deve realizar as seguintes configurações para poder realizar a conexão.</span></div>
+<div id="three-columns-column3">
+<span class="grey-text-13">Com a seguinte configuração, você muda a url para uma de desenvolvimento (Obrigatória):</span>
+<pre>
+payU.setURL('https://api.payulatam.com/payments-api/4.0/service');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Você deve configurar a chave pública por meio da instrução (Obrigatória)</span>
+<pre>
+payU.setPublicKey('SUA CHAVE PUBLICA');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Você deve configurar a conta com a qual você deseja utilizar a PayU.js empregando a seguinte linha  (Obrigatória): <br>
+Para conhecer sua Conta ID visite o <a href="{{ site.baseurl }}/pt/administrative_module/balance.html" target="_blank">Módulo administrativo PayU</a></span>
+<pre>
+payU.setAccountID('SEU NÚMERO DE CONTA');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">O ID do div utilizado para mostrar a bandeira, o texto opcional será mostrado para que o cliente selecione sua bandeira.</span>
+<pre>
+payU.setListBoxID('SEU LIST BOX ID', 'texto opcional');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Você deve empregar o seguinte método para obter os métodos de pagamento ativos:</span>
+<pre>
+payU.getPaymentMethods();
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Você pode definir o idioma no qual é mostrada a informação, por defeito é o idioma selecionado como espanhol (‘es’), mas é possível mudá-lo para inglês ‘en’ ou português ‘pt’:</span>
+<pre>
+payU.setLanguage("en"); //Ex. Se o idioma é mudado para inglês.
+</pre>
+</div>
+&nbsp;<br>
+Nota: Para conhecer sua chave pública e demais credenciais de autenticação visite a pagina <a href="{{ site.baseurl }}/pt/api/considerations.html" target="_blank">Como obter minha API KEY e API LOGIN?.</a>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">03. </span><span class="grey-text-13"><b>Obter dados do CARTÃO de crédito</b>: Para executar o processo de Tokenização, você deve empregar o método payU.setCardDetails. Este método converte os dados sensíveis do cartão em um token, o qual será usado para executar o processamento das transações sem necessidade que os dados sensíveis do cartão titular passem pelo seu servidor.</span></div>
+<div id="three-columns-column3">
+<pre>
+payU.setCardDetails(
+	{
+		number:'4111111111111111',
+		name_card:'NOME_CARTÃO',
+		payer_id:'PAYER_ID', 
+		exp_month:10,
+		exp_year:2015,
+		method:'VISA'
+	}
+);
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">No método payU.setCardDetails são completados os dados do cartão de crédito, no exemplo que está passando um objeto JSON, mas podem ser utilizados outros métodos como  jQuery.
+Os parâmetros são os seguintes:</span>
+<ol>
+<li class="bullet-box">number: O número do cartão como um string sem separadores. (Obrigatório) Exemplo: '4242424242424242'.</li>
+<li class="bullet-box">exp_month: O que o número representa no mês de expiração. (Obrigatório) Exemplo: 10</li>
+<li class="bullet-box">exp_year: Um número de quatro dígitos representando o ano de expiração do cartão. (Obrigatório)</li>
+<li class="bullet-box">name_card: O nome impresso no cartão. (Obrigatório)</li>
+<li class="bullet-box">payer_id: O id do pagador na loja. (Obrigatório)</li>
+<li class="bullet-box">cvv: O código de segurança do cartão:  Exemplo: ‘123’</li>
+<li class="bullet-box">document: O número do documento de identidade do pagador. </li>
+</ol>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">04. </span><span class="grey-text-13"><b>Criação de um token para cartão de crédito:</b> A criação de um token é feita por meio de uma função payU.createToken.</span></div>
+<div id="three-columns-column3">
+<pre>
+payU.createToken(responseHandler);
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Onde o parâmetro responseHandler é uma função definida para criar a resposta:</span>
+<pre>
+function responseHandler(response)
+{
+	if (response.error) {
+		// São mostradas mensagens de erro.
+		$(".create-errors").text(response.error);
+	}
+	else {
+		// Se obtém o token e é possível guardar ou enviar para algum pagamento.
+		var token = response.token;
+		var payer_id = response.payer_id;
+		var document = response.document;
+		var name = response.name;
+	}
+}
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">A função criar token também pode receber um segundo parâmetro, um formulário onde podem passar os dados sem a necessidade de usar o método setCardDetails:</span>
+<pre>
+jQuery(function($)
+{
+	$(‘#create-form’).submit(function(event)
+	{
+		var $form = $(this);
+		payU.createToken(responseHandler, $form);
+		return false;
+	});
+});
+</pre>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">05. </span><span class="grey-text-13"><b>Validações</b>: Estes são as validações que você pode fazer com o javaScript.</span></div>
+<div id="three-columns-column3">
+<span class="grey-text-13"><b>Validação de cartões de crédito</b>: A validação de cartões de crédito é realizada por meio da função payU.validateNumber, que não considera espaços ou outros sinais de pontuação que sejam inseridos. Como resposta, o método retorna ‘true’ se o cartão é válido, caso contrário o valor retornado será ‘false’.</span>
+<pre>
+payU.validateCard ('4242424242424242')
+payU.validateCard ('4242-42424242-4242')
+payU.validateCard ('4242 4242 4242 4242')
+payU.validateCard ('4242-1111-1111-1111')
+payU.validateCard ('12345678')
+</pre>
+&nbsp;<br>
+<span class="grey-text-13"><b>Validação da data de expiração do cartão de crédito</b>: A validação da data de expiração de um cartão, se realizará por meio da função  payU.validateExpiry, o qual realiza uma revisão do ano e o mês fornecidos e gera um alerta caso a data não seja válida.</span>
+<pre>
+payU.validateExpiry('2020','02') // True
+</pre>
+&nbsp;<br>
+<span class="grey-text-13"><b>Validação da bandeira ou tipo do cartão de crédito</b>: A validação da bandeira ou tipo de cartão de crédito é realizada por meio da função  payU.cardPaymentMethod. As possíveis bandeiras são VISA, MASTERCARD, AMEX, DINERS, e DISCOVER, em caso de que o número do cartão não seja identificado, o valor para o campo retornado será desconhecido.</span>
+<pre>
+payU.cardPaymentMethod ('4242-4242-4242-4242') // "VISA"
+payU.cardPaymentMethod ('378282246310005') // "AMEX"
+payU.cardPaymentMethod ('1234') // "desconhecido"
+</pre>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="three-columns-column1"><span class="grey-text-13"><b>Possíveis erros:</b> O sistema prevê múltiplas mensagens de erro quando são presentadas falhas ou existem informações incompletas. A seguir, confira a lista das mensagens possíveis:</span></div>
+<div id="three-columns-column3">
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+Mensagens que podem ser vistas pelos desenvolvedores</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+	<td nowrap><span style="color: #fff; font-weight: bold;">Cód. Erro</span></td>
+	<td><span style="color: #fff; font-weight: bold;">MENSAGEM</span></td>
+	<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td>Esta franquia não está disponível para ser utilizada.</td>
+<td>A conta configurada não conta com o meio de pagamento indicado. Você deve conversar com a equipe de suporte operacional para solicitar a ativação desse meio de pagamento para a sua conta.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Não está configurado o Id do pagador.</td>
+<td>Não foi enviado o campo payer_id.</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>Ocorreu um erro inesperado com PayU.js. Isso pode ser a causa de problemas de conectividade, por favor tente novamente. Se você ainda tem problemas, por favor avise.</td>
+<td>Erros de conexão. É possível verificar que o serviço esteja funcionando corretamente e enviar novamente o pedido.</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>Sua configuração inicial não é correta.</td>
+<td>Os dados configuráveis não estão corretos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>Tipo cartão de crédito desconhecido.</td>
+<td>O tipo de cartão não é conhecido você deve enviar/selecionar a bandeira.</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>A chave pública utilizada não é válida (Verifica payU.setPublicKey())</td>
+<td>Verifique se a chave pública seja igual á encontrada no Módulo Administrativo.</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>Sua chave pública não está configurada. Ex: payU.setPublicKey("SUA CHAVE PÚBLICA")</td>
+<td>Verifique se a chave pública é igual à que você encontra no Módulo Administrativo.</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>Sua conta iD não está configurada.</td>
+<td>Verifique se o número da conta está correto.</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td>Não está configurado o DIV da bandeira. </td>
+<td>Verifique se você tem um DIV para mostrar as bandeiras.</td>
+</tr>
+<tr>
+<td style="text-align: center;">16</td>
+<td>O identificador da conta utilizada não é válido.</td>
+<td>Verifique se o número da conta está correto.</td>
+</tr>
+<tr>
+<td style="text-align: center;">17</td>
+<td>Você deve utilizar um identificador da conta e uma chave pública válidos.</td>
+<td>Verifique se vocês estão empregando corretamente payU.setAccountID() e payU.setPublicKey()</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td>Verifica se você está enviando os parâmetros obrigatórios no Java Script (Nome, bandeira, No. cartão de crédito e data de validade).</td>
+<td>O cartão tem parâmetros obrigatórios que não estão sendo enviados.</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td>Você não tem cartão de crédito como meio de pagamento ativo para tokenizar (Verifique se você está utilizando payU.getPaymentMethods())</td>
+<td>Verifique se você está usando a função  payU.getPaymentMethods(), e que sua loja/conta tenha métodos de pagamento com os quais seja feita a tokenização.</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+Mensagens que podem ser vistas pelos Clientes</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+<tr bgcolor="#696a6c">
+	<td><span style="color: #fff; font-weight: bold;">Cód. Erro</span></td>
+	<td><span style="color: #fff; font-weight: bold;">MENSAGEM</span></td>
+	<td><span style="color: #fff; font-weight: bold;">DESCRIÇÃO</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Verifique se todos os dados do seu cartão de crédito são corretos.</td>
+<td>Os dados do cartão são incorretos: Você deve verificar que todos os dados do cartão sejam corretos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>O documento deve ter entre 5 e 30 dígitos.</td>
+<td>No campo opcional do documento não tem os dígitos requisitados.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Verifica se a data de expiração é válida.</td>
+<td>Você deve verificar a data de validade se é válida.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Você deve selecionar um método de pagamento.</td>
+<td>Você deve selecionar um método de pagamento.</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td>O cartão de crédito não pertence à bandeira selecionada.</td>
+<td>O cartão inserido e a bandeira selecionada não coincidem.</td>
+</tr>
+</table>
+</div></div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="blue-box">
+<span class="grey-text-13">NOTA: O javascript de tokenização se encontra disponível para Chrome, Firefox, Safari, Opera e Internet Explorer 10 ou superior. <br>
+Você pode descarregar o seguinte exemplo sobre como implementar o JavaScript de tokenização no seu website. Considere que com o JavaScript você pode registrar os cartões de credito de seus clientes, mas se você deseja fazer uma cobrança deve utilizar o API ou SDK de tokenização. </span>
+&nbsp;<br>
+<a href="{{ site.baseurl }}/javascript/token-pt.zip" class="payu-btn payu-btn-blue" style="float: left;">Download exemplo</a>
+</div>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>

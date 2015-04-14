@@ -1,12 +1,12 @@
 ---
-title: Tests SDK
+title: Testes SDK
 ---
 <div class="payu-page-header superhero-sticky">
-<h1 class="payu-title1">SDK INTEGRATION - <span style="color: #009cdd;">TESTS</span></h1>
+<h1 class="payu-title1">INTEGRAÇÃO SDK - <span style="color: #009cdd;">TESTES</span></h1>
 <ul class="hidden-xs">
-	<li class="leaf"><a class="active" href="#tener-en-cuenta">Consider</a></li>
-	<li class="leaf"><a href="#ejemplos">Examples</a></li>
-	<li class="leaf"><a href="#paso-a-produccion">Change to production</a></li>
+	<li class="leaf"><a class="active" href="#tener-en-cuenta">Considerar</a></li>
+	<li class="leaf"><a href="#ejemplos">Exemplos</a></li>
+	<li class="leaf"><a href="#paso-a-produccion">Passo para a produção</a></li>
 </ul>
 </div>
 
@@ -14,14 +14,14 @@ title: Tests SDK
 <div class="container">
 <div class="row" style="background-color: #f5f5f5;">
 
-{% include sidemenu_sdk_en.html %}
+{% include sidemenu_sdk_pt.html %}
 
 <div id="page-menu-column2">
 <div id="tener-en-cuenta" class="payu-fragment">
 &nbsp;<br>
-<span class="subtitle-page">TO CONSIDER</span>
+<span class="subtitle-page">CONSIDERAR</span>
 &nbsp;<br>
-<span class="grey-text-13">If you want to make tests through PayU because the test environment does not replicate the data from your production account, it is important that you use the following credentials in the request, depending on the country of your account:</span>
+<span class="grey-text-13">Se você deseja realizar testes através do PayU, já que o ambiente de testes não replica os dados de sua conta em produção, é importante utilizar as seguintes credenciais no pedido dependendo do país de sua conta:</span>
 &nbsp;<br>
 <table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
 	<tr bgcolor="#696a6c">
@@ -29,7 +29,7 @@ title: Tests SDK
 		<td><span style="color: #fff; font-weight: bold;">API Login</span></td>
 		<td><span style="color: #fff; font-weight: bold;">API Key</span></td>
 		<td><span style="color: #fff; font-weight: bold;">accountId</span></td>
-		<td><span style="color: #fff; font-weight: bold;">Country</span></td>
+		<td><span style="color: #fff; font-weight: bold;">País</span></td>
 	</tr>
 	<tr>
 		<td rowspan="5">500238</td>
@@ -40,31 +40,31 @@ title: Tests SDK
 	</tr>
 	<tr>
 		<td>500538</td>
-		<td>Colombia</td>
+		<td>Colômbia</td>
 	</tr>
 	<tr>
 		<td>500547</td>
-		<td>Mexico</td>
+		<td>México</td>
 	</tr>
 	<tr>
 		<td>500537</td>
-		<td>Panama</td>
+		<td>Panamá</td>
 	</tr>
 	<tr>
 		<td>500546</td>
-		<td>Peru</td>
+		<td>Perú</td>
 	</tr>
 	<tr>
 		<td rowspan="5">500365</td>
 		<td rowspan="5">403ba744e9827f3</td>
 		<td rowspan="5">676k86ks53la6tni6clgd30jf6</td>
 		<td>500719</td>
-		<td>Brazil</td>
+		<td>Brasil</td>
 	</tr>
 </table>		
 &nbsp;<br>
 &nbsp;<br>
-<span class="grey-text-13">Aiming at the following URLs:</span>
+<span class="grey-text-13">Apontando para os seguintes URLs:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://stg.api.payulatam.com/payments-api/";&nbsp;<br>
@@ -78,11 +78,11 @@ Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-a
 </div>
 &nbsp;<br>
 <div id="blue-box">
-<span class="info-icon">Note:</span>
+<span class="info-icon">Nota:</span>
 <ol>
-<li>It is important that you do not use real credit card data during the performance of the tests, you can use credit card generators.</li>
-<li>Tests may be done only with credit cards, payment means such as cash or bank transfers cannot be tested by this method.</li>
-<li>Payment means in Peru cannot be tested, since these franchises handle 3D security.</li>
+<li>É importante que durante a realização dos testes não utilize dados de cartões de crédito reais, você pode utilizar geradores de cartões de crédito.</li>
+<li>Os testes somente podem ser realizados com cartões de crédito, as formas de pagamento como dinheiro ou transferência bancária não podem ser testados através deste método.</li>
+<li>Com as formas de pagamento do Peru você não pode realizar testes, já que através destas franquias opera-se 3D security.</li>
 </ol>
 </div>
 </div>
@@ -90,18 +90,18 @@ Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-a
 &nbsp;<br>
 <div id="ejemplos" class="payu-fragment">
 &nbsp;<br>
-<span class="subtitle-page">EXAMPLES</span>
+<span class="subtitle-page">EXEMPLOS</span>
 &nbsp;<br>
-<span class="grey-text-13">In the Authorization and Capture request you must:</span>
+<span class="grey-text-13">No pedido de Autorização ou Autorização y captura você deve:</span>
 <ol>
-<li class="bullet-box">Ensure to send the <b>prueba</b> as <b>true</b>.
+<li class="bullet-box">Certificar de enviar o parâmetro <b>Teste</b> em <b>true</b>.
 <b>Java</b>: PayU.isTest = true;
 <b>PHP</b>: PayU::$isTest = true;</li>
-<li class="bullet-box">Enter the <b>APPROVED</b> value in the name of the <b>cardholder</b> if you want the transaction to be approved or <b>REJECTED</b> if you want it to be rejected.
+<li class="bullet-box">Inserir no nome do <b>cartão do proprietário</b> o valor <b>APPROVED</b> se desejar que a transação seja aprovado ou <b>REJECTED</b> se desejar que seja rejeitado.
 <b>Java</b>: parameters.put(PayU.PARAMETERS.PAYER_NAME, "APPROVED");
 <b>PHP</b>:  PayUParameters::PAYER_NAME => "APPROVED"
 </li>
-<li class="bullet-box">In the <b>card number</b> you must enter a valid card number, corresponding to the franchise sent in the request.</li>
+<li class="bullet-box">No <b>número do cartão</b> você deve inserir um número de cartão válido e que corresponda com a franquia enviada no pedido.</li>
 </ol>
 &nbsp;<br>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
@@ -117,33 +117,33 @@ String value = "10000";
 
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-// Enter the account identifier here.
+//Insira aqui o identificador da conta.
 parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500538");
-// Enter the reference code here.
+//Insira aqui o código de referência.
 parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
-// Enter the description here.
+//Insira aqui a descrição.
 parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
-// Enter the language of the order here.
+//Insira aqui o idioma da ordem.
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
-// - Values -
-// Enter the value here.
+// -- Valores --
+//Insira aqui o valor.
 parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
-// Enter the currency here.
+//Insira aqui a moeda.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
-// - Buyer -
-// Enter the id of the buyer here.
+// -- Comprador --
+//Insira aqui o ID do comprador.
 parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
-// Enter the name of the buyer here.
+//Insira aqui o nome do comprador.
 parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer name");
-// Enter the email of the buyer here.
+//Insira aqui o e-mail do comprador.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
-// Enter the telephone number of the buyer here.
+//Insira aqui o telefone de contato do comprador.
 parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
-// Enter the contact document of the buyer here.
+//Insira aqui o documento de contato do comprador.
 parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
-// Enter the address of the buyer here.
+//Insira aqui o endereço do comprador.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
 parameters.put(PayU.PARAMETERS.BUYER_CITY, "Medellin");
@@ -152,18 +152,18 @@ parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "CO");
 parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
 
-// - Payer -
-// Enter the id of the payer here.
+// -- Pagador --
+//Insira aqui o ID do pagador.
 parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
-// Enter the name of the payer here.
+//Insira aqui o nome do pagador.
 <b>parameters.put(PayU.PARAMETERS.PAYER_NAME, "APPROVED");</b>
-// Enter the email payer here.
+//Insira aqui o e-mail do pagador.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
-// Enter the telephone number of the payer here.
+//Insira aqui o telefone de contato do pagador.
 parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
-// Enter the contact document of the payer here.
+//Insira aqui o documento de contato do pagador.
 parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
-// Enter the address of the payer here.
+//Insira aqui o endereço do pagador.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "calle 93");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "125544");
 parameters.put(PayU.PARAMETERS.PAYER_CITY, "Bogota");
@@ -172,34 +172,33 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// - Credit card data -
-// Enter the number of credit card here
+// -- Dados do cartão de crédito --  
+//Insira aqui o número do cartão de crédito
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
-// Enter the expiration date of the credit card here
+//Insira aqui a data de vencimento do cartão de crédito
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
-// Enter the security code of the credit card here
+//Insira aqui o código de segurança do cartão de crédito
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
-// Enter the credit card name here. 
+// Insira aqui o nome do cartão de credito
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
-
-// Enter the number of installments here.
+//Insira aqui o número de parcelas.
 parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
-// Enter the name of the country here.
+//Insira aqui o nome do pais.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
 
-// Session id of the device.
+//Session id do device.
 parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
-// IP of the payer
+//IP do pagador
 parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
-// Cookie of the current session.
+//Cookie da sessão atual.
 parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
-// Cookie of the current session.
+//Cookie da sessão atual.
 parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
 
-// Authorization and capture request
+//Solicitação de autorização e captura
 TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
 
-// Response
+//Resposta
 if(response != null){
 	response.getOrderId();
 	response.getTransactionId();
@@ -221,32 +220,31 @@ if(response != null){
 $reference = "payment_test_00000001";
 $value = "10000";
 
-//--To make a credit card payment--
+// -- Para realizar um pagamento com cartão de credito --
 $parameters = array(
-	// Enter the account identifier here.
+	//Insira aqui o identificador da conta.
 	PayUParameters::ACCOUNT_ID =&gt; "500538",
-	/// Enter the reference code here.
+	//Insira aqui o código de referência.
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
-	//Ingrese aquí la descripción.
-        // Enter the description here.
+	//Insira aqui a descrição.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 
-	// - Values -
-        // Enter the value here.
+	// -- Valores --
+        //Insira aqui o valor
 	PayUParameters::VALUE =&gt; $value,
-	// Enter the currency here.
+	//Insira aqui a moeda.
 	PayUParameters::CURRENCY =&gt; "COP",
 
-	// - Buyer -
-        // Enter the name of the buyer here.
+	// -- Comprador 
+	//Insira aqui o nome do comprador.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
-	// Enter the email of the buyer here.
+	//Insira aqui o e-mail do comprador.
 	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
-	// Enter the telephone number of the buyer here.
+	//Insira aqui o telefone de contato do comprador.
 	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
-	// Enter the contact document of the buyer here.
+	//Insira aqui o documento de contato do comprador.
 	PayUParameters::BUYER_DNI =&gt; "5415668464654",
-	// Enter the address of the buyer here.
+	//Insira aqui o endereço do comprador.
 	PayUParameters::BUYER_STREET =&gt; "calle 100",
 	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
 	PayUParameters::BUYER_CITY =&gt; "Medellin",
@@ -255,16 +253,16 @@ $parameters = array(
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
 
-	// -- Payer --
-	// Enter the name of the payer here.
+	// -- pagador --
+	//Insira aqui o nome do pagador.
 	<b>PayUParameters::PAYER_NAME =&gt; "APPROVED",</b>
-	//Ingrese aquí el email del pagador.
+	/Insira aqui o e-mail do pagador.
 	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
-	//Ingrese aquí el teléfono de contacto del pagador.
+	/Insira aqui o telefone de contato do pagador.
 	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
-	// Enter the contact document of the payer here.
+	//Insira aqui o documento de contato do pagador.
 	PayUParameters::PAYER_DNI =&gt; "5415668464654",
-	// Enter the address of the payer here.
+	//Insira aqui o endereço do pagador.
 	PayUParameters::PAYER_STREET =&gt; "calle 93",
 	PayUParameters::PAYER_STREET_2 =&gt; "125544",
 	PayUParameters::PAYER_CITY =&gt; "Bogota",
@@ -273,43 +271,36 @@ $parameters = array(
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
 
-	// -- Credit card data --
-        // Enter the number of credit card here
-        PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
-	// Enter the expiration date of the credit card here
+	// -- Dados do cartão de crédito -- 
+	//Insira aqui o número do cartão de crédito
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
+	//Insira aqui a data de vencimento do cartão de crédito
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
-	// Enter the security code of the credit card here
+	//Insira aqui o código de segurança do cartão de crédito
 	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
-	// Enter the credit card name here. 
+	// Insira aqui o nome do cartão de credito 
 	//PaymentMethods::VISA||PaymentMethods::MASTERCARD||PaymentMethods::AMEX||PaymentMethods::DINERS
 	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA,
 
-	// Enter the number of installments here.
+	//Insira aqui o número de parcelas.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
-	// Enter the name of the country here.
+	//Insira aqui o nome do pais.
 	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
 
-
-
-
-x
-// Response
-
-	
-        // Session id of the device.
+	//Session id do device.
 	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
-	// IP of the payer
+	//IP do pagador
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
-	// Cookie of the current session.
+	//Cookie da sessão atual
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// Cookie of the current session.     
+	//Cookie da sessão atual    
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 );
 	
-// Cookie of the current session.
+//Solicitação de autorização e captura
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
-//  --  You can obtain the properties in the response --
+// -- Você pode obter as propriedades da resposta –
 if($response){
 	$response-&gt;transactionResponse-&gt;orderId;
 	$response-&gt;transactionResponse-&gt;transactionId;
@@ -331,25 +322,25 @@ if($response){
 &nbsp;<br>
 <div id="paso-a-produccion" class="payu-fragment">
 &nbsp;<br>
-<span class="subtitle-page">CHANGE TO PRODUCTION</span>
+<span class="subtitle-page">PASSO PARA A PRODUÇÃO</span>
 &nbsp;<br>
-<span class="grey-text-13">After you make all system testing and you verify that everything is working properly, you can make the change to the production server; where the actual transactions are processed.</span>
+<span class="grey-text-13">Em seguida de realizar todos os testes do sistema e verificado que tudo está funcionando corretamente, pode-se realizar a mudança para o servidor de produção; onde são processadas as transações reais.</span>
 &nbsp;<br>
-<span class="grey-text-13">For this you should uncheck the transaction in test mode option which you will find in your administrative module.</span>
+<span class="grey-text-13">Para isto você deverá desmarcar a opção Transação em modo de testes encontrado no seu módulo administrativo.</span>
 &nbsp;<br>
-<p align="center"><img border="0" src="/images/api/test-en.jpg"></p>
+<p align="center"><img border="0" src="/images/api/test-pt.jpg"></p>
 &nbsp;<br>
-<span class="grey-text-13">Additionally you must create payment forms with the following parameters relative to your account:</span>
+<span class="grey-text-13">Adicionalmente, você deve gerar os formulários de pagamento com os seguintes parâmetros correspondentes na sua conta:</span>
 &nbsp;<br>
 <pre>
-merchantId: of your account
-ApiKey: of your account
-ApiLogin: of your account
-accountId: of your account
+merchantId: de sua conta
+ApiKey: de sua conta
+ApiLogin: de sua conta
+accountId: de sua conta
 test: false
 </pre>
 &nbsp;<br>
-<span class="grey-text-13">Pointing to the production URLs:</span>
+<span class="grey-text-13">Apontando para os URLs de produção:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://api.payulatam.com/payments-api/";&nbsp;<br>

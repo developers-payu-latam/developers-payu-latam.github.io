@@ -1,0 +1,311 @@
+---
+title: Integraçao SDK
+---
+<section id="section-content" class="section section-content">
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">Integración SDK</h1>
+<ul class="hidden-xs">
+	<li class="first leaf"><a class="active" href="#que-debes-saber">O que você deve saber?</a></li>
+	<li class="leaf"><a href="#operaciones">Funcionalidades disponíveis</a></li>
+	<li class="leaf"><a href="#configuraciones-iniciales">Configurações iniciais</a></li>
+</ul>
+</div>
+<div id="que-debes-saber" class="payu-fragment">
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+&nbsp;<br>
+&nbsp;<br>
+<div id="two-columns-column1">
+<span class="blue-text-16">O PayU Latam oferece um SDK que permite a você se conectar a nosso API de maneira mais simples.</span><br>
+<br>
+<span class="grey-text-13">O vídeo a seguir explica em 6 simples passos como você poderá integrar seu comércio com o nosso SDK (seja em Java ou PHP).<br><br>
+Como qualquer integração API, você poderá personalizar seu checkout, de acordo às necessidades de seu negócio e o cliente permanecerá em seu site durante a compra./span></div>
+<div id="two-columns-column2"><iframe src="//player.vimeo.com/video/109881033" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="operaciones" class="payu-fragment">
+<div class="sh-container payu-white-bg" style="background-color: #f5f5f5;">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+<span class="subtitle-page">FUNCIONALIDADES DISPONÍVEIS PARA A INTEGRAÇÃO SDK</span>
+&nbsp;<br>
+&nbsp;<br>
+<div class="five-columns" align="center"><a href="{{ site.baseurl }}/pt/sdk/payments.html"><img src="/images/cart.png" alt="" border="0" /><br>
+<span style="font-weight: bold; color: #5c5c5c;">PAGAMENTOS</span></a></div>
+<div class="five-columns" align="center"><a href="{{ site.baseurl }}/pt/sdk/queries.html"><img src="/images/search.png" alt="" border="0" /><br>
+<span style="font-weight: bold; color: #5c5c5c;">CONSULTAS</span></a></div>
+<div class="five-columns" align="center"><a href="{{ site.baseurl }}/pt/sdk/recurring_payments.html"><img src="/images/recurring.png" alt="" border="0" /><br>
+<span style="font-weight: bold; color: #5c5c5c;">PAGAMENTOS RECORRENTES</span></a></div>
+<div class="five-columns" align="center"><a href="{{ site.baseurl }}/pt/sdk/tokenization.html"><img src="/images/token.png" alt="" border="0" /><br>
+<span style="font-weight: bold; color: #5c5c5c;">TOKENIZAÇÃO</span></a></div>
+<div class="five-columns" align="center"><a href="{{ site.baseurl }}/pt/sdk/refunds.html"><img src="/images/refund.png" alt="" border="0" /><br>
+<span style="font-weight: bold; color: #5c5c5c;">REEMBOLSOS</span></a></div>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="configuraciones-iniciales" class="payu-fragment">
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+<span class="subtitle-page">CONFIGURAÇÕES INICIAIS POR TIPO DE INTEGRAÇÃO</span>
+&nbsp;<br>
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="grey-text-13">Para realizar o processo de conexão com o API, o SDK depende da biblioteca HttpClient do apache, que por sua vez depende das bibliotecas HttpCore, CommonsLoggin e CommonsCodec. Em geral, para poder usar o SDK devem estar incluídas no classpath as bibliotecas a seguir:</span>
+<ol>
+<li class="bullet-box">HttpClient-4.2.5.jar</li>
+<li class="bullet-box">HttpCore-4.2.4.jar</li>
+<li class="bullet-box">Commons-loggin-1.1.1.jar</li>
+<li class="bullet-box">Commons-codec-1.6.jar</li>
+<li class="bullet-box">PayU-sdk-1.1.jar</li>
+</ol>
+&nbsp;<br>
+<a href="{{ site.baseurl }}/sdk/java/payu-java-sdk-1.1.2.zip" class="payu-btn payu-btn-blue" style="float: left;">Fazer download do SDK Java 1.1.2</a>
+&nbsp;<br>
+&nbsp;<br>
+<p>Antes de realizar qualquer operação com o SDK do Pay<span style="color: #009cdd;">U</span>, devem ser atribuídos certos valores iniciais à classe Pay<span style="color: #009cdd;">U</span>, os quais são comuns para todas as operações suportadas pelo SDK e são configurados dependendo do comércio. A seguir, apresenta-se um exemplo da configuração desta classe e posteriormente, são relacionados os valores em uma tabela:</p>
+<div class="Table1">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr bgcolor="#1c3a85">
+<td>Nome do parâmetro</td>
+<td>Tamanho</td>
+<td>Tipo</td>
+<td>Requerido</td>
+<td>Descrição</td>
+</tr>
+<tr>
+<td><em>language</em></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Language</td>
+<td style="text-align: center;">SIM</td>
+<td>A linguagem usada para as mensagens de erro do sistema e nos e-mails enviados ao comprador e vendedor. Atualmente são suportados en (Inglês), es (Espanhol) e pt (Português).</td>
+</tr>
+<tr bgcolor="#f5f5f5">
+<td><em>isTest</em></td>
+<td></td>
+<td style="text-align: center;">boolean</td>
+<td style="text-align: center;">SIM</td>
+<td>"true" se tratando de um pedido de teste, "false" de lo contrario. caso contrário. Dependendo do tipo de transação ou operação, o comportamento varia de acordo com o valor deste campo.</td>
+</tr>
+<tr>
+<td><em>apiLogin</em></td>
+<td style="text-align: center;">Mín: 12 Máx: 32</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">SIM</td>
+<td>O apiLogin do comércio.</td>
+</tr>
+<tr bgcolor="#f5f5f5">
+<td><em>apiKey</em></td>
+<td style="text-align: center;">Mín: 6 Máx: 32</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">SIM</td>
+<td >O apiKey ou chave do comércio.</td>
+</tr>
+<tr>
+<td><em>merchantId</em></td>
+<td></td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">NÃO*</td>
+<td>O identificador do comércio é usado gerando as assinaturas para verificar as transações de pagamentos. *É obrigatório se desejar que seja verificada a transação (a menos que seja enviada a assinatura).</td>
+</tr>
+<tr bgcolor="#f5f5f5">
+<td><em>paymentsUrl</em></td>
+<td style="text-align: center;">Mín: 1</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">NÃO</td>
+<td width="331">O endereço web do site ao qual vai enviar os pedidos relacionados com os pagamentos. Na falta usar o url de produção.</td>
+</tr>
+<tr>
+<td width="96"><em>reportsUrl</em></td>
+<td style="text-align: center;">Mín: 1</td>
+<td style="text-align: center;">String</td>
+<td style="text-align: center;">NÃO</td>
+<td width="331">O endereço web do site ao qual vai enviar os pedidos relacionados com os pagamentos. Na falta usar o url de produção.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="clear10a"></div>
+&nbsp;<br>
+&nbsp;<br>
+<b>Exemplo</b>
+<pre>
+<code>
+<span class="string">PayU.apiKey</span> = "xxxxxxxxxxxx"; //Insira aqui sua apiKey.
+<span class="string">PayU.apiLogin</span> = "xxxxxxxxxxxx"; //Insira aqui sua apiLogin.
+<span class="string">PayU.language</span> = Language.en; //Insira aqui o idioma de sua preferência.
+<span class="string">PayU.isTest</span> = false; //Deixá-lo em verdadeiro quando testes.
+<span class="string">LoggerUtil.setLogLevel</span>(Level.ALL); //Incluí-lo somente se deseja ver todo o rastreio do log; se somente desejar ver a resposta, pode apagar.
+<span class="string">PayU.paymentsUrl</span> = "https://api.payulatam.com/payments-api/"; //Incluí-lo somente se desejar testar em um servidor de pagamentos específico, e indicar o caminho do mesmo.
+<span class="string">PayU.reportsUrl</span> = "https://api.payulatam.com/reports-api/"; //Incluí-lo somente se desejar testar em um servidor de relatórios específico, e indicar o caminho do mesmo.</code></pre>
+&nbsp;<br>
+Para a execução de cada uma das operações fornecidas pelo SDK do Pay<span style="color: #009cdd;">U</span>, deve-se enviar como argumento um Mapa de parâmetros ao método correspondente, que contém toda a informação da transação a processar.
+<pre><code><span class="string">Map</span>&lt;String, String&gt;<strong> </strong> <span class="string">parameters</span> = new HashMap &lt;String, String&gt;<strong> </strong>();
+
+<span class="string">parameters.put</span>(PayU.PARAMETERS.TRANSACTION_ID, transactionId);
+
+<span class="string">parameters.put</span>(PayU.PARAMETERS.ORDER_ID, orderId.toString());</code></pre>
+<p>Para facilitar seu uso, será proporcionada uma série de constantes na interface <strong>PayU.PARAMETERS</strong>, que contém os nomes dos parâmetros utilizados nos métodos do SDK e os quais serão referenciados em cada operação disponível do manual.</p>
+</div>
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="grey-text-13">Para realizar o processo de conexão com o API, o SDK pode ser executada em máquinas que tenham versões superiores ou iguais a 5.2.1 do PHP.
+&nbsp;<br>
+Adicionalmente, são requeridas as seguintes extensões do PHP em seu servidor:</span>
+<ol>
+<li class="bullet-box">curl</li>
+<li class="bullet-box">xml</li>
+<li class="bullet-box">mbstring</li>
+<li class="bullet-box">json</li>
+</ol>
+&nbsp;<br>
+<a href="{{ site.baseurl }}/sdk/php/payu-php-sdk-4.5.5.zip" class="payu-btn payu-btn-blue" style="float: left;">Fazer o download SDK PHP 4.5.5</a>
+&nbsp;<br>
+&nbsp;<br>
+<b>Configuração inicial:</b>&nbsp;<br>
+Para ter acesso às funcionalidades do SDK deve ser incluída a classe PayU localizada em <i><b>[ruta/a/payu-php-sdk]/lib/PayU.php</b></i>.
+&nbsp;<br>
+<pre>
+&lt;?php
+require_once '[ruta/payu-php-sdk]/lib/PayU.php';
+...
+?&gt;
+</pre>
+&nbsp;<br>
+Antes de realizar qualquer operação com o SDK PHP, devem ser atribuídos certos valores iniciais à classe PayU, os quais são comuns para todas as operações suportadas pelo SDK e são configurados dependendo do comércio. A seguir, apresenta-se um exemplo da configuração desta classe e posteriormente, são relacionados os valores em uma tabela:
+&nbsp;<br>
+<pre>
+&lt;?php
+PayU::$apiKey = "xxxxxxxxxxxx"; //Insira aqui sua própria apiKey.
+PayU::$apiLogin = "xxxxxxxxxxxx"; //Insira aqui sua própria apiLogin
+PayU::$merchantId = "1"; //Insira aqui sua ID de Comércio.
+PayU::$language = SupportedLanguages::ES; //Selecione o idioma
+PayU::$isTest = false; //Deixá-lo em True quando em testes.
+...
+?&gt;
+</pre>
+&nbsp;<br>
+<div class="Table1">
+<table border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr bgcolor="#1c3a85">
+			<td>Nome do parâmetro</td>
+			<td>Tamanho</td>
+			<td>Tipo</td>
+			<td>Requerido</td>
+			<td>Descrição</td>
+		</tr>
+		<tr>		
+		<td width="96"><em>PayU::$language</em></td>
+		<td style="text-align: center;" width="66">2</td>
+		<td style="text-align: center;" width="66">Language</td>
+		<td style="text-align: center;" width="95">SI</td>
+		<td width="331">A linguagem usada para as mensagens de erro do sistema e nos e-mails enviados ao comprador e vendedor. Atualmente são suportados en (Inglês), es (Espanhol) e pt (Português).</td>
+		</tr>
+		<tr bgcolor="#f5f5f5">
+		<td width="96"><em>PayU::$isTest</em></td>
+		<td width="66"></td>
+		<td style="text-align: center;" width="66">boolean</td>
+		<td style="text-align: center;" width="95">SI</td>
+		<td width="331">&#8220;true&#8221; se tratando de um pedido de teste, &#8220;false&#8221; ”, em caso contrário. Dependendo do tipo de transação ou operação, o comportamento varia de acordo com o valor deste campo.</td>
+		</tr>
+		<tr>
+		<td width="96"><em>PayU::$apiLogin</em></td>
+		<td style="text-align: center;" width="66">Mín: 12</p>
+		<p>Máx: 32</td>
+		<td style="text-align: center;" width="66">String</td>
+		<td style="text-align: center;" width="95">SI</td>
+		<td width="331">A apiLogin do comércio.</td>
+		</tr>
+		<tr bgcolor="#f5f5f5">
+		<td width="96"><em>PayU::$apiKey</em></td>
+		<td style="text-align: center;" width="66">Mín: 6</p>
+		<p>Máx: 32</td>
+		<td style="text-align: center;" width="66">String</td>
+		<td style="text-align: center;" width="95">SI</td>
+		<td width="331">A apiKey ou chave do comércio.</td>
+		</tr>
+		<tr>
+		<td width="96"><em>PayU::$merchantId</em></td>
+		<td width="66"></td>
+		<td style="text-align: center;" width="66">String</td>
+		<td style="text-align: center;" width="95">NO*</td>
+		<td width="331">O identificador do comércio é usado gerando as assinaturas para verificar as transações de pagamentos. *É obrigatório se desejar que seja verificada a transação (a menos que seja enviada a firma)</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+&nbsp;<br>
+Adicionalmente, deve ser configurada a API para direcionar os pedidos para o URL correspondentes utilizando a classe Environment como mostrado a seguir:
+&nbsp;<br>
+<pre>
+&lt;?php
+// URL de Pagamentos
+Environment::setPaymentsCustomUrl("https://stg.api.payulatam.com/payments-api/4.0/service.cgi");
+// URL de Consultas
+Environment::setReportsCustomUrl("https://stg.api.payulatam.com/reports-api/4.0/service.cgi");
+// URL de Assinaturas para Pagamentos Recorrentes
+Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-api/rest/v4.3/");
+...
+?&gt;
+</pre>
+</div>
+
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="blue-box">
+<div id="info-box">Considerar:</div>
+<ol>
+<li>Você deve ter uma conta ativa no PayU.</li>
+<li>Você deve instalar o certificado <b>SSL</b> válido no seu servidor e seu site deve estar capacitado a realizar conexões <b>SSL</b> motivo pelo qual a máquina virtual deve contar com as extensões de segurança apropriadas.</li>
+<li>Você deve contar com linguagens de servidor ou CGI, tais como <b>Java</b>, <b>C#</b>, <b>VB</b>, <b>PHP</b>, etc.</li>
+<li>Você deve estar em capacidade de armazenar de forma segura suas credenciais de autenticação (<b>API Key</b> e <b>API Login</b>).</li>
+<li>A codificação para as mensagens deve ser <b>UTF-8</b>.</li>
+<li>As datas com hora têm o formato <b>yyyy-MM-ddTHH:mm:ss</b>, o formato da hora é 24 horas. Ex. <b>2015-08-22T21:35:12</b>.</li>
+<li>Em condições normais a conexão garante tempo de resposta, em média, de 3 segundos, se há uma situação anormal, o tempo máximo de resposta será de 1 minuto. É altamente recomendável que você configure os “<b>timeouts</b>” quando se conectar com o PayU.</li>
+<li>É importante <b>validar</b> a extensão e os números de cartões de crédito por franquia junto com os códigos de segurança.</li>
+</ol>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="section-strapline" class="section section-strapline">
+<div class="container">
+	<div class="row">
+		<div class="region region-strapline-first">
+			<div id="block-block-18" class="block block-block"></div>
+		</div>
+	</div>
+</div>
+</section>

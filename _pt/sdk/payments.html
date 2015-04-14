@@ -1,0 +1,3079 @@
+---
+title: Pagamentos SDK
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1"> INTEGRAÇÃO SDK - <span style="color: #009cdd;">PAGAMENTOS</span></h1>
+<ul class="hidden-xs">
+        <li class="leaf"><a class="active" href="#intro">Introdução</a></li>
+        <li class="leaf"><a href="#4minutos">Fazer uma integração sdk php em 4 minutos</a></li>
+        <li class="leaf"><a href="#procesamiento" class="#procesamiento">Exemplos de pagamento por pais</a></li>
+	<li class="leaf"><a href="#ping">Ping</a></li>
+	<li class="leaf"><a href="#consulta">Consulta de meios de pagamento</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_sdk_pt.html %}
+
+<div id="page-menu-column2">
+<div id="intro" class="payu-fragment">
+&nbsp;<br>
+<span class="subtitle-page">MÉTODOS DE PAGAMENTO COM O API USANDO SDK</span>
+&nbsp;<br>
+<span class="grey-text-13">O PayU oferece um API que permite a seu comércio processar diversos tipos de transações com múltiplas formas de pagamento dependendo do país selecionado.</span>
+&nbsp;<br>
+<span class="grey-text-13">Se desejar se integrar com nosso API você deverá apontar os pedidos para os seguintes URLs:</span>
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="grey-text-13"><b>PayU.paymentsUrl = “https://api.payulatam.com/payments-api/”;</b><br>
+PayU.reportsUrl = “https://api.payulatam.com/reports-api/”;</span>
+</div>
+<div id="squelch-taas-tab-content-2">
+<span class="grey-text-13"><b>Environment::setPaymentsCustomUrl(“https://api.payulatam.com/payments-api/4.0/service.cgi”);</b><br>
+Environment::setReportsCustomUrl(“https://api.payulatam.com/reports-api/4.0/service.cgi”); <br>
+Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api/rest/v4.3/”);</span>
+</div>
+</div>
+&nbsp;<br>
+<span class="grey-text-13">LOs métodos disponíveis para o API de pagamentos são: <b>PING</b>, <b>CONSULTA DE MEDIOS DE PAGOS ACTIVOS</b>, e <b>PROCESAMIENTO DE TRANSACCIONES</b>. A seguir, você encontrará a descrição de cada um.</span>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+
+<div id="4minutos" class="payu-fragment">
+&nbsp;<br>
+<span class="subtitle-page">FAZER UMA INTEGRAÇÃO SDK PHP EM 4 MINUTOS</span>
+&nbsp;<br>
+<iframe src="//player.vimeo.com/video/109948813" width="500" height="280" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+
+<div id="procesamiento" class="payu-fragment">
+&nbsp;<br>
+<div class="paso1"><span class="subtitle-page">PROCESSAMENTO DE TRANSAÇÕES</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Contamos com diversos métodos para o processamento de transações:</span><br><br>
+<img src="{{ site.baseurl }}/images//2014/06/autorizacion-y-captura-pt.jpg" alt="Autorización y captura" width="600" height="493" class="aligncenter size-full wp-image-640" />
+<p>Todas as operações disponíveis são:</p>
+<div class="list-arrow"><ul><li><b>Autorização</b>: usada para verificar se um cartão de crédito se encontra ativa, se possui crédito, etc. A transação não é finalizada até que seja enviada uma transação de captura (somente disponível para contas do Brasil).<br></li>
+<li><b>Captura</b>: finaliza uma transação previamente autorizada. É aqui quando se realiza o débito da conta do cartão (somente disponível para contas do Brasil).<br></li>
+<li><b>Autorização e captura</b>: este é o tipo de transação mais utilizada. Com esta opção é enviada a autorização o montante da transação e se for aprovada realiza-se imediatamente a captura.<br></li>
+<li><b>Anulação:</b>: Usada para reverter uma transação previamente autorizada (somente disponível para contas do Brasil).<br></li>
+<li><b>Reembolso</b>: Usada para reverter uma transação previamente capturada.</span></li></ul></div>
+
+&nbsp;<br>
+&nbsp;<br>
+
+<!-- TABS PROCESAMIENTO DE TRANSACCIONES -->
+<div class="credit-card">Cartões de crédito</div>
+<div  class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul><li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Argentina</a></li>
+	<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Brasil</a></li>
+	<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Colômbia</a></li>
+	<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-4">México</a></li>
+	<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-5">Panamá</a></li>
+	<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-6">Perú</a></li></ul>
+<div id="squelch-taas-tab-content-1">
+<span class="blue-text-13"><b>Cartões de crédito</b> (Autorização e captura)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa, Mastercard, Amex, T. Naranja, T. Shopping, Cabal, Argencard e Cencosud.</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "509171");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.ARS.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "Viamonte");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "1366");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Buenos Aires");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "Buenos Aires");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "AR");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+// -- Pagador --
+//Coloque aqui o ID do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Avenida entre rios");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "452");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "La Plata");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Buenos Aires");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "AR");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4850110000000000");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.AR.name());
+
+
+//Session id del device.
+parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//-- Você pode obter as propriedades na resposta--
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "509171",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.    
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "ARS",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "Viamonte",
+	PayUParameters::BUYER_STREET_2 =&gt; "1366",
+	PayUParameters::BUYER_CITY =&gt; "Buenos Aires",
+	PayUParameters::BUYER_STATE =&gt; "Buenos Aires",
+	PayUParameters::BUYER_COUNTRY =&gt; "AR",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador.
+	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do pagador.
+	PayUParameters::PAYER_STREET =&gt; "Avenida entre rios",
+	PayUParameters::PAYER_STREET_2 =&gt; "452",
+	PayUParameters::PAYER_CITY =&gt; "La Plata",
+	PayUParameters::PAYER_STATE =&gt; "Buenos Aires",
+	PayUParameters::PAYER_COUNTRY =&gt; "AR",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::PAYER_PHONE =&gt; "7563126",
+	
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4850110000000000",
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	//Coloque aqui o código de segurança do cartão de crédito.
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
+	//Coloque aqui o nome do cartão de crédito
+	// PaymentMethods::MASTERCARD || PaymentMethods::AMEX || "ARGENCARD" || "CABAL" || "NARANJA" || "CENCOSUD" || "SHOPPING"
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA, 
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::AR,
+	
+	//Session id del device.
+	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual.      
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+	);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if ($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if ($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;	
+	}
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;   
+	
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-2">
+<span class="blue-text-13"><b>Cartões de crédito</b> (Autorização)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa, Mastercard, Amex, Diners, ELO, Hipercard.</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500719");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.BRL.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "(11)756312633");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "811.807.405-64");
+// or 
+//parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "32593371000110");
+
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Sao paulo");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "SP");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "BR");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "01019-030");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "(11)756312633");
+
+
+// -- pagador --
+//Coloque aqui o nome do pagador
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.BR.name());
+	
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// -- Pedido de autorização -- 
+TransactionResponse response = PayUPayments.doAuthorization(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID => "500719",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE => $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION => "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.        
+	PayUParameters::VALUE => $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY => "BRL",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME => "First name and second buyer  name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL => "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE => "(11)756312633",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI => "811.807.405-64",
+	// or 
+	//PayUParameters::BUYER_CNPJ => "32593371000110",
+
+	
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET => "calle 100",
+	PayUParameters::BUYER_STREET_2 => "5555487",
+	PayUParameters::BUYER_CITY => "Sao paulo",
+	PayUParameters::BUYER_STATE => "SP",
+	PayUParameters::BUYER_COUNTRY => "BR",
+	PayUParameters::BUYER_POSTAL_CODE => "01019-030",
+	PayUParameters::BUYER_PHONE => "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME => "First name and second payer  name",  
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER => "4097440000000004",
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE => "2014/12",
+	//Coloque aqui o código de segurança do cartão de crédito.
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=> "321",
+	//Coloque aqui o nome do cartão de crédito
+	//PaymentMethods::VISA||PaymentMethods::MASTERCARD||PaymentMethods::AMEX||PaymentMethods::DINERS||PaymentMethods::ELO||"HIPERCARD"
+	PayUParameters::PAYMENT_METHOD => PaymentMethods::VISA,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER => "1",
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY => PayUCountries::BR, 
+	
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS => "127.0.0.1",	
+	);
+
+$response = PayUPayments::doAuthorization($parameters);
+
+if ($response) {
+	$response->transactionResponse->orderId;
+	$response->transactionResponse->transactionId;
+	$response->transactionResponse->state;
+	if ($response->transactionResponse->state=="PENDING") {
+		$response->transactionResponse->pendingReason;	
+	}
+	$response->transactionResponse->paymentNetworkResponseCode;
+	$response->transactionResponse->paymentNetworkResponseErrorMessage;
+	$response->transactionResponse->trazabilityCode;
+	$response->transactionResponse->responseCode;
+	$response->transactionResponse->responseMessage;
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<span class="blue-text-13"><b>Cartões de crédito</b> (Captura)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa, Mastercard, Amex, Diners, ELO, Hipercard.</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+// Coloque aqui o identificador da ordem.
+parameters.put(PayU.PARAMETERS.ORDER_ID, "40049920");
+//Coloque aqui o identificador da transação.
+parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "96535b36-99db-4c66-bd87-6ad5c59b25a8");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+	
+// -- Pedido de captura --
+TransactionResponse response = PayUPayments.doCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500719",
+	// Coloque aqui o identificador da ordem.
+	PayUParameters::ORDER_ID =&gt; "40049920",
+	//Coloque aqui o identificador da transação.
+	PayUParameters::TRANSACTION_ID =&gt; "96535b36-99db-4c66-bd87-6ad5c59b25a8",
+	);
+
+$response = PayUPayments::doCapture($parameters);
+
+if ($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;        
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<span class="blue-text-13"><b>Cartões de crédito</b>(Autorização e captura)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa, Mastercard, Amex, Diners, ELO, Hipercard</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500719");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.BRL.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "(11)756312633");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "811.807.405-64");
+// ou
+//parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "32593371000110");
+
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Sao paulo");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "SP");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "BR");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "01019-030");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "(11)756312633");
+
+// -- Pagador --
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.BR.name());
+	
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500719",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.     
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "BRL",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "(11)756312633",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "811.807.405-64",
+	// or 
+	//PayUParameters::BUYER_CNPJ =&gt; "32593371000110",
+
+	
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "calle 100",
+	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
+	PayUParameters::BUYER_CITY =&gt; "Sao paulo",
+	PayUParameters::BUYER_STATE =&gt; "SP",
+	PayUParameters::BUYER_COUNTRY =&gt; "BR",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "01019-030",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer  name",  
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	//Coloque aqui o código de segurança do cartão de crédito
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
+	//Coloque aqui o nome do cartão de crédito
+	//PaymentMethods::VISA||PaymentMethods::MASTERCARD||PaymentMethods::AMEX||PaymentMethods::DINERS||PaymentMethods::ELO||"HIPERCARD"
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::BR, 
+	
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",	
+	);
+
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;	
+	}
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;   
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<span class="blue-text-13"><b>Anulação</b></span><br>
+<span class="grey-text-13">Usada para reverter uma transação previamente autorizada (somente disponível para contas do Brasil).</span>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+// Coloque aqui o identificador da ordem.
+parameters.put(PayU.PARAMETERS.ORDER_ID, "40049920");
+//Coloque aqui o identificador da transação.
+parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "96535b36-99db-4c66-bd87-6ad5c59b25a8");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+	
+TransactionResponse response = PayUPayments.doVoid(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500719",
+	// Coloque aqui o identificador da ordem.
+	PayUParameters::ORDER_ID =&gt; "40049920",
+	//Coloque aqui o identificador da transação.
+	PayUParameters::TRANSACTION_ID =&gt; "96535b36-99db-4c66-bd87-6ad5c59b25a8",
+);
+
+$response = PayUPayments::doVoid($parameters);
+
+if ($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;        
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-3">
+<span class="blue-text-13"><b>Cartões de crédito</b>(Autorização e captura)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa, Mastercard, Amex e Diners.</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "10000";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500538");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Medellin");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "Antioquia");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "CO");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+// -- Pagador --
+//Coloque aqui o ID do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "calle 93");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "125544");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Bogota");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Bogota");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
+
+//Session id del device.
+parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "10000";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500538",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.        
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "COP",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "calle 100",
+	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
+	PayUParameters::BUYER_CITY =&gt; "Medellin",
+	PayUParameters::BUYER_STATE =&gt; "Antioquia",
+	PayUParameters::BUYER_COUNTRY =&gt; "CO",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador
+	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do pagador
+	PayUParameters::PAYER_STREET =&gt; "calle 93",
+	PayUParameters::PAYER_STREET_2 =&gt; "125544",
+	PayUParameters::PAYER_CITY =&gt; "Bogota",
+	PayUParameters::PAYER_STATE =&gt; "Bogota",
+	PayUParameters::PAYER_COUNTRY =&gt; "CO",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::PAYER_PHONE =&gt; "7563126",
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	//Coloque aqui o código de segurança do cartão de crédito
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
+	//Coloque aqui o nome do cartão de crédito
+	//PaymentMethods::VISA||PaymentMethods::MASTERCARD||PaymentMethods::AMEX||PaymentMethods::DINERS
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
+	
+	//Session id del device.
+	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual.       
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if ($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if ($response-&gt;transactionResponse-&gt;state=="PENDING") {
+		$response-&gt;transactionResponse-&gt;pendingReason;	
+	}
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;   	
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-4">
+<span class="blue-text-13"><b>Cartões de crédito</b>(Autorização e captura)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa, Mastercard e Amex.</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500547");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.MXN.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "Calle Salvador Alvarado");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "8 int 103");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Guadalajara");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "Jalisco");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "MX");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+// -- Pagador --
+//Coloque aqui o ID do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
+//Coloque aqui o nome do pagador
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle Zaragoza esquina");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "calle 5 de Mayo");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Monterrey");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Nuevo Leon");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "MX");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "64000");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4772910000000008");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.MX.name());
+
+//Session id del device.
+parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500547",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.   
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "MXN",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "Calle Salvador Alvarado",
+	PayUParameters::BUYER_STREET_2 =&gt; "8 int 103",
+	PayUParameters::BUYER_CITY =&gt; "Guadalajara",
+	PayUParameters::BUYER_STATE =&gt; "Jalisco",
+	PayUParameters::BUYER_COUNTRY =&gt; "MX",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador.
+	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "5415668464654",
+	//OPCIONAL fecha de nacimiento del pagador YYYY-MM-DD, importante para autorización de pagos en México.
+	PayUParameters::PAYER_BIRTHDATE =&gt; '1980-06-22',
+
+	//Coloque aqui o endereço do pagador
+	PayUParameters::PAYER_STREET =&gt; "Calle Zaragoza esquina",
+	PayUParameters::PAYER_STREET_2 =&gt; "calle 5 de Mayo",
+	PayUParameters::PAYER_CITY =&gt; "calle 5 de Mayo",
+	PayUParameters::PAYER_STATE =&gt; "Nuevo Leon",
+	PayUParameters::PAYER_COUNTRY =&gt; "MX",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "64000",
+	PayUParameters::PAYER_PHONE =&gt; "7563126",
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4772910000000008",
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	//Coloque aqui o código de segurança do cartão de crédito
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
+	//Coloque aqui o nome do cartão de crédito
+	//PaymentMethods::VISA||PaymentMethods::MASTERCARD||PaymentMethods::AMEX    
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::MX,
+	
+	//Session id del device.
+	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual. 
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if ($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if ($response-&gt;transactionResponse-&gt;state=="PENDING") {
+		$response-&gt;transactionResponse-&gt;pendingReason;	
+	}
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;authorizationCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;   	
+}    
+</pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-5">
+<span class="blue-text-13"><b>Cartões de crédito</b> (Autorização e captura)</span><br>
+<span class="grey-text-13">Franquias disponíveis: Visa e Mastercard.</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String  reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500537");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.USD.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "Palacio de Las Garzas");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "Corregimiento de San Felipe");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Colon");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "Colon");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "PA");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+// -- Pagador --
+//Coloque aqui o ID do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "Colon");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "2000");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Santiago");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Veraguas DC");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "PA");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
+
+// -- Dados do cartão de crédito -- 
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4519860000000003");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PA.name());
+
+
+//Session id del device.
+parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500537",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.     
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "USD",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
+        //Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "Palacio de Las Garzas",
+	PayUParameters::BUYER_STREET_2 =&gt; "Corregimiento de San Felipe",
+	PayUParameters::BUYER_CITY =&gt; "Colon",
+	PayUParameters::BUYER_STATE =&gt; "Colon",
+	PayUParameters::BUYER_COUNTRY =&gt; "PA",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador
+	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "5415668464654",
+	// OPCIONAL a data de nascimento do pagador YYYY-MM-DD, importante para autorização de pagamentos no México. 
+	PayUParameters::PAYER_BIRTHDATE =&gt; '1980-06-22',
+
+	//Coloque aqui o endereço do pagador
+	PayUParameters::PAYER_STREET =&gt; "Colon",
+	PayUParameters::PAYER_STREET_2 =&gt; "2000",
+	PayUParameters::PAYER_CITY =&gt; "2000",
+	PayUParameters::PAYER_STATE =&gt; "Veraguas DC",
+	PayUParameters::PAYER_COUNTRY =&gt; "PA",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
+	PayUParameters::PAYER_PHONE =&gt; "7563126",
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4519860000000003",
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
+	//Coloque aqui o código de segurança do cartão de crédito
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
+	//Coloque aqui o nome do cartão de crédito
+	//PaymentMethods::VISA||PaymentMethods::MASTERCARD    
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::PA,
+	
+	//Session id del device.
+	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual.    
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING") {
+		$response-&gt;transactionResponse-&gt;pendingReason;	
+	}
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
+	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
+	$response-&gt;transactionResponse-&gt;trazabilityCode;
+	$response-&gt;transactionResponse-&gt;authorizationCode;
+	$response-&gt;transactionResponse-&gt;responseCode;
+	$response-&gt;transactionResponse-&gt;responseMessage;   	
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="squelch-taas-tab-content-6">
+<span class="blue-text-13"><b>Cartão de crédito Visa </b>(Autorização e captura)</span><br>
+&nbsp;<br>
+<span class="grey-text-13">Você deve direcionar o pagador no URL da VisaNET que será entregue na resposta, enviando no formulário um input denominado “Eticket”, que obtemos no <b>trazabilityCode</b>, através do método HTTP POST:</span><br>
+<pre>
+&lt;form action="https://www.multimerchantvisanet.com/formularioweb/formulariopago.asp" method="post"&gt;
+&lt;input type="hidden" value="0500560091711308150853133360" name="Eticket"&gt;
+&lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500546");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.PEN.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "Avenida de la poesia");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "160");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Cuzco");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "Cuzco");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "PE");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+// -- Pagador --
+//Coloque aqui o ID do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "av abancay");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "cra 4");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Iquitos");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Loreto");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "PE");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
+
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.VISA.name());
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4519860000000003");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PE.name());
+
+
+//Session id del device.
+parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+		
+		Map&gt;String,Object&lt; extraParameters = response.getExtraParameters();
+		//Obter a URL de recibo de pagamento.  
+		String url=(String)extraParameters.get("VISANET_PE_URL");
+		
+		//obtener el Eticket 
+		String Eticket=response.getTrazabilityCode();	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500546",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.      
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "PEN",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "calle 100",
+	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
+	PayUParameters::BUYER_CITY =&gt; "Medellin",
+	PayUParameters::BUYER_STATE =&gt; "Antioquia",
+	PayUParameters::BUYER_COUNTRY =&gt; "CO",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador
+	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do pagador
+	PayUParameters::PAYER_STREET =&gt; "calle 93",
+	PayUParameters::PAYER_STREET_2 =&gt; "125544",
+	PayUParameters::PAYER_CITY =&gt; "Bogota",
+	PayUParameters::PAYER_STATE =&gt; "Bogota",
+	PayUParameters::PAYER_COUNTRY =&gt; "CO",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::PAYER_PHONE =&gt; "7563126",
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",//quemado
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",//quemado
+	//Coloque aqui o código de segurança do cartão de crédito
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",//quemado
+	//Coloque aqui o nome do cartão de crédito
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::VISA,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",//quemado
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::PE,
+	
+	//Session id del device.
+	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual.     
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response) {
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING") {
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		//Obter a URL de recibo de pagamento.  
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_REDIRECT;
+		//obtener el Eticket 
+		$response-&gt;transactionResponse-&gt;trazabilityCode;
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<span class="blue-text-13"><b>Cartão de crédito Mastercard</b>(Autorização e captura)</span><br>
+&nbsp;<br>
+<span class="grey-text-13">Você deve direcionar o pagador para o URL de Processos MC Peru, que será entregue na resposta <b>PROCESOS_MC_PE_URL</b>, enviando no formulário vários input denominados “<b>I1</b>”, “<b>I2</b>” , “<b>I3</b>” , “<b>I4</b>” , “<b>I5</b>” , “<b>I6</b>” , “<b>I7</b>” , “<b>I8</b>” , “<b>I9</b>” , “<b>I10</b>” que obtemos na resposta do API, através do método HTTP POST:</span><br>
+<pre>
+&lt;form action="https://www.punto-web.com/gateway/PagoWebHd.asp" method="post"&gt;
+&lt;input type="hidden" value="4001851" name="I1"/&gt;
+&lt;input type="hidden" value="082928046045afc" name="I2"/&gt;
+&lt;input type="hidden" value="10.00" name="I3"/&gt;
+&lt;input type="hidden" value="PEN" name="I4"/&gt;
+&lt;input type="hidden" value="20140116" name="I5"/&gt;
+&lt;input type="hidden" value="133841" name="I6"/&gt;
+&lt;input type="hidden" value="45afc8f9e42f409d8933" name="I7"/&gt;
+&lt;input type="hidden" value="4001851" name="I8"/&gt;
+&lt;input type="hidden" value="PER" name="I9"/&gt;
+&lt;input type="hidden" value="Ce8V3b3jsB4u0VG7AGcFzUQgRbc%3D" name="I10"/&gt;
+&lt;input type="submit"&gt;
+&lt;/form&gt;
+</pre>
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500546");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.PEN.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "Avenida de la poesia");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "160");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Cuzco");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "Cuzco");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "PE");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+
+// -- pagador --
+//Coloque aqui o ID do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
+//Coloque aqui o nome do pagador
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+//Coloque aqui o documento de identificação do pagador
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+//Coloque aqui o endereço do pagador
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "av abancay");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "cra 4");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Iquitos");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "Loreto");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "PE");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
+
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.MASTERCARD.name());
+
+// -- Dados do cartão de crédito --
+//Coloque aqui o número do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4519860000000003");
+//Coloque aqui a data de vencimento do cartão de crédito.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2014/12");
+//Coloque aqui o código de segurança do cartão de crédito
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_SECURITY_CODE, "321");
+//Coloque aqui o número de parcelas.
+parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PE.name());
+
+
+//Session id del device.
+parameters.put(PayU.PARAMETERS.DEVICE_SESSION_ID, "vghs6tvkcle931686k1900o6e1");
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().toString().equalsIgnoreCase("PENDING")){
+		response.getPendingReason();	
+		
+		Map&lt;String,Object&gt; extraParameters = response.getExtraParameters();
+		
+		//Obter a URL de recibo de pagamento.  
+		String url=(String)extraParameters.get("PROCESOS_MC_PE_URL");
+		//obter os Ix parámetros
+		String I1=(String)extraParameters.get("I1");
+		String I2=(String)extraParameters.get("I2");
+		String I3=(String)extraParameters.get("I3");
+		String I4=(String)extraParameters.get("I4");
+		String I5=(String)extraParameters.get("I5");
+		String I6=(String)extraParameters.get("I6");
+		String I7=(String)extraParameters.get("I7");
+		String I8=(String)extraParameters.get("I8");
+		String I9=(String)extraParameters.get("I9");
+		String I10=(String)extraParameters.get("I10");
+	
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500546",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.        
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "PEN",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "Avenida de la poesia",
+	PayUParameters::BUYER_STREET_2 =&gt; "160",
+	PayUParameters::BUYER_CITY =&gt; "Cuzco",
+	PayUParameters::BUYER_STATE =&gt; "Cuzco",
+	PayUParameters::BUYER_COUNTRY =&gt; "PE",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- Pagador --
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador
+	PayUParameters::PAYER_CONTACT_PHONE =&gt; "7563126",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "5415668464654",
+	//Coloque aqui o endereço do pagador
+	PayUParameters::PAYER_STREET =&gt; "av abancay",
+	PayUParameters::PAYER_STREET_2 =&gt; "cra 4",
+	PayUParameters::PAYER_CITY =&gt; "Iquitos",
+	PayUParameters::PAYER_STATE =&gt; "Loreto",
+	PayUParameters::PAYER_COUNTRY =&gt; "PE",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
+	PayUParameters::PAYER_PHONE =&gt; "7563126",
+	
+	// -- Dados do cartão de crédito --
+	//Coloque aqui o número do cartão de crédito.
+	PayUParameters::CREDIT_CARD_NUMBER =&gt; "5471300000000003",//quemado
+	//Coloque aqui a data de vencimento do cartão de crédito.
+	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",//quemado
+	//Coloque aqui o código de segurança do cartão de crédito
+	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",//quemado
+	//Coloque aqui o nome do cartão de crédito
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::MASTERCARD,
+	
+	//Coloque aqui o número de parcelas.
+	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",//quemado
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::PE,
+	
+	//Session id del device.
+	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual.     
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		//Obter a URL de recibo de pagamento.  
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;PROCESOS_MC_PE_URL;
+		//obter os Ix parámetros
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I1;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I2;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I3;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I4;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I5;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I6;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I7;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I8;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I9;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;I10;
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;	
+}    
+</pre>
+</div>
+</div>
+</div>
+</div>
+<!-- FIN TABS PROCESAMIENTO DE TRANSACCIONES -->
+
+<div class="cash">Pagamentos em dinheiro</div>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul><li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Argentina</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">Brasil</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Colômbia</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-4">Mexico</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-5">Perú</a></li></ul>
+<div id="squelch-taas-tab-content-1">
+&nbsp;<br>
+<span class="blue-text-13"><b>Pagamentos em dinheiro</b></span><br>
+<span class="grey-text-13">Meios de pagamento disponíveis: Pago fácil, Rapipago, Cobroexpress, BAPRO e RIPSA</span>
+&nbsp;<br>
+<span class="grey-text-13">Para integrar estas formas de pagamento em dinheiro, você deve direcionar o pagador para o URL, encontrado na resposta do pedido, o pagador poderá visualizar um recibo de pagamento como este:</span>
+<p align="center"><img src="/images/api/efectivo.jpg" border="0">
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "509171");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.ARS.name());
+
+
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+
+//Coloque aqui o nome do pagador
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+	
+//Coloque aqui o nome do meio de pagamento em dinheiro.
+//PaymentMethod.PAGOFACIL.name()||PaymentMethod.BAPRO.name()||PaymentMethod.COBRO_EXPRESS.name()||PaymentMethod.RAPIPAGO.name()||"RIPSA"
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.PAGOFACIL.name());
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.AR.name());
+
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().equals(TransactionState.PENDING)){
+		response.getPendingReason();	
+		Map<String,Object> extraParameters = response.getExtraParameters();
+		
+		//Obter a URL de recibo de pagamento.  
+		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
+					
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div> 
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "509171",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.       
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "ARS",
+	
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o nome do pagador
+	PayUParameters::PAYER_NAME =&gt; "First name and second buyer name",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI=&gt; "5415668464654",
+	
+	//Coloque aqui o nome do meio de pagamento
+	//PaymentMethods::COBRO_EXPRESS || PaymentMethods::PAGOFACIL || PaymentMethods::RAPIPAGO || PaymentMethods::BAPRO || PaymentMethods::RIPSA
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::COBRO_EXPRESS,
+   
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::AR,
+	
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		$response-&gt;transactionResponse-&gt;trazabilityCode;
+		$response-&gt;transactionResponse-&gt;authorizationCode;		
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BAR_CODE;
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;		  
+} 
+</pre>
+</div> 
+</div> 
+</div>
+<div id="squelch-taas-tab-content-2">
+&nbsp;<br>
+<span class="blue-text-13"><b>Pagos em dinheiro</b></span><br>
+<span class="grey-text-13">Integração da forma de pagamento “Boleto Bancário”</span>
+&nbsp;<br>
+<span class="grey-text-13">Para integrar estas formas de pagamento em dinheiro, você deve direcionar o pagador para o URL encontrado na resposta do pedido, o pagador poderá ver um recibo de pagamento como este:</span>
+<p align="center"><img src="/images/api/efectivo-br.jpg" border="0">
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500719");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.BRL.name());
+
+// -- Comprador --
+//Coloque aqui o ID do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_ID, "1");
+//Coloque aqui o nome do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+//Coloque aqui o telefone de contato do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "(11)756312633");	
+//Coloque aqui o documento de identificação do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "811.807.405-64");
+// or 
+//parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "32593371000110");
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
+parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
+parameters.put(PayU.PARAMETERS.BUYER_CITY, "Sao paulo");
+parameters.put(PayU.PARAMETERS.BUYER_STATE, "SP");
+parameters.put(PayU.PARAMETERS.BUYER_COUNTRY, "BR");
+parameters.put(PayU.PARAMETERS.BUYER_POSTAL_CODE, "01019-030");
+parameters.put(PayU.PARAMETERS.BUYER_PHONE, "7563126");
+
+// -- Pagador --
+//Coloque aqui o nome do pagador
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Ingrese aquí el nombre del pagador.
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "811.807.405-64");
+//Coloque aqui o endereço do comprador.
+parameters.put(PayU.PARAMETERS.PAYER_STREET, "calle 100");
+parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "5555487");
+parameters.put(PayU.PARAMETERS.PAYER_CITY, "Sao paulo");
+parameters.put(PayU.PARAMETERS.PAYER_STATE, "SP");
+parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "BR");
+parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "01019-030");
+parameters.put(PayU.PARAMETERS.PAYER_PHONE, "(11)756312633");
+
+//Coloque aqui a data de expiração. 
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.BOLETO_BANCARIO.name());
+
+//Ingrese aquí la fecha de expiración. 
+parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-20T00:00:00");
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.BR.name());
+	
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().equals(TransactionState.PENDING)){
+		response.getPendingReason();	
+		Map<String,Object> extraParameters = response.getExtraParameters();
+		
+		//Obter a URL de recibo de pagamento.
+		String url=(String)extraParameters.get("URL_BOLETO_BANCARIO");
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500719",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.    
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "BRL",
+	
+	// -- Comprador 
+	//Coloque aqui o nome do comprador.
+	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o telefone de contato do comprador.
+	PayUParameters::BUYER_CONTACT_PHONE =&gt; "(11)756312633",
+	//Coloque aqui o documento de identificação do comprador.
+	PayUParameters::BUYER_DNI =&gt; "811.807.405-64",
+	// or 
+	//PayUParameters::BUYER_CNPJ =&gt; "32593371000110",
+	
+	//Coloque aqui o endereço do comprador.
+	PayUParameters::BUYER_STREET =&gt; "calle 100",
+	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
+	PayUParameters::BUYER_CITY =&gt; "Sao paulo",
+	PayUParameters::BUYER_STATE =&gt; "SP",
+	PayUParameters::BUYER_COUNTRY =&gt; "BR",
+	PayUParameters::BUYER_POSTAL_CODE =&gt; "01019-030",
+	PayUParameters::BUYER_PHONE =&gt; "7563126",
+	
+	// -- pagador --
+	//Coloque aqui o nome do pagador
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
+	//Coloque aqui o endereço do pagador
+	PayUParameters::PAYER_STREET =&gt; "calle 100",
+	PayUParameters::PAYER_STREET_2 =&gt; "5555487",
+	PayUParameters::PAYER_CITY =&gt; "Sao paulo",
+	PayUParameters::PAYER_STATE =&gt; "SP",
+	PayUParameters::PAYER_COUNTRY =&gt; "BR",
+	PayUParameters::PAYER_POSTAL_CODE =&gt; "(11)756312633",
+   
+	//Coloque aqui o meio de pagamento
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::BOLETO_BANCARIO,
+	
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::BR, 
+	
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;EXPIRATION_DATE;
+		//Obter a URL de recibo de pagamento.  
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_BOLETO_BANCARIO;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BAR_CODE;		
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;
+}
+</pre>
+</div>
+</div> 
+</div>
+<div id="squelch-taas-tab-content-3">
+<span class="blue-text-13"><b>Pagos em dinheiro</b></span><br>
+<span class="grey-text-13">Integração das formas de pagamento Baloto e Efecty</span>
+&nbsp;<br>
+<span class="grey-text-13">Você deve direcionar o pagador para o URL encontrado na resposta do pedido, o pagador poderá visualizar um recibo de pagamento como este, onde encontrará o logo da forma de pagamento escolhido, Baloto ou Efecty:</span>
+<p align="center"><img src="/images/api/efectivo-co.jpg" border="0">
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "10000";
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500538");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
+
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+	
+//Coloque aqui o nome do meio de pagamento em dinheiro.
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.BALOTO.name());
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
+
+//Coloque aqui a data de expiração. 
+parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-20T00:00:00");
+
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().equals(TransactionState.PENDING)){
+		response.getPendingReason();	
+		Map<String,Object> extraParameters = response.getExtraParameters();
+		
+		//Obter a URL de recibo de pagamento.  
+		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "10000";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500538",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.       
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "COP",
+	
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI=&gt; "5415668464654",
+
+	//Coloque aqui o nome do meio de pagamento
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::BALOTO,//EFECTY
+   
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
+	
+	//Coloque aqui a data de expiração.
+	PayUParameters::EXPIRATION_DATE =&gt; "2014-09-26T00:00:00",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",   
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;		  
+} 
+</pre>
+</div>
+</div> 
+</div>
+<div id="squelch-taas-tab-content-4">
+<span class="blue-text-13"><b>Pagos em dinheiro</b></span><br>
+<span class="grey-text-13">Integração das formas de pagamento OXXO, BANCOMER, IXE, SCOTIABANK, SANTANDER e 7ELEVEN</span>
+&nbsp;<br>
+<span class="grey-text-13">Você deve direcionar o pagador para o URL encontrado na resposta do pedido, o pagador poderá visualizar um recibo de pagamento como este:</span>
+<p align="center"><img src="/images/api/efectivo-mx.jpg" border="0">
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+//Para realizar um pagamento em dinheiro ---------------------------------
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500547");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.MXN.name());
+
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+	
+//Coloque aqui o nome do meio de pagamento em dinheiro.
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.OXXO.name());//or PaymentMethod.SEVEN_ELEVEN.name() or PaymentMethod.SCOTIABANK.name() or PaymentMethod.IXE.name() or PaymentMethod.SANTANDER.name() or PaymentMethod.BANCOMER.name()
+	
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.MX.name());
+
+//Ingrese aquí la fecha de expiración. Sólo para OXXO y SEVEN_ELEVEN 
+parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-20T00:00:00");
+
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().equals(TransactionState.PENDING)){
+		response.getPendingReason();	
+		Map<String,Object> extraParameters = response.getExtraParameters();
+		
+		//Obter a URL do recibo de pagamento.  
+		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500547",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.       
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "MXN",
+	
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI=&gt; "5415668464654",
+	
+	//Coloque aqui o nome do meio de pagamento
+	//"SANTANDER"||"SCOTIABANK"||"IXE"||"BANCOMER"||PaymentMethods::OXXO||PaymentMethods::SEVEN_ELEVEN
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::OXXO,
+   
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::MX,
+	
+	//Coloque aqui a data de expiração. Somente para OXXO y SEVEN_ELEVEN
+	PayUParameters::EXPIRATION_DATE =&gt; "2014-09-27T00:00:00",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+   
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;		  
+}   
+</pre>
+</div>
+</div> 
+</div>
+<div id="squelch-taas-tab-content-5">
+&nbsp;<br>
+<span class="blue-text-13"><b>Pagos em dinheiro</b></span><br>
+<span class="grey-text-13">Integração da forma de pagamento BCP</span>
+&nbsp;<br>
+<span class="grey-text-13">Para integrar esta forma de pagamento você deve direcionar o pagador para o URL encontrado na resposta do pedido, o pagador poderá visualizar um recibo de pagamento como este:</span>
+<p align="center"><img src="/images/api/efectivo-pe.jpg" border="0">
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "100";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500546");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.PEN.name());
+
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+	
+//Coloque aqui o nome do cartão de crédito
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.BCP.name());
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PE.name());
+
+//Ingrese aquí la fecha de expiración. 
+parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-21T00:00:00");
+
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().equals(TransactionState.PENDING)){
+		response.getPendingReason();	
+		Map<String,Object> extraParameters = response.getExtraParameters();
+		
+		//Obter a URL de recibo de pagamento.  
+		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
+					
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "100";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500546",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.      
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "PEN",
+	
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI=&gt; "5415668464654",
+	
+	//Coloque aqui o nome do meio de pagamento
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::BCP,
+   
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::PE,
+	
+	//Ingrese aquí la fecha de expiración.
+	PayUParameters::EXPIRATION_DATE =&gt; "2014-10-02T04:00:00",
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+   
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;EXPIRATION_DATE;      
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;		  
+}  
+</pre>
+</div>
+</div> 
+</div>
+</div>
+&nbsp;<br>
+<div class="bank-transfer">Transferência bancária</div>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul><li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Colombia</a></li></ul>
+<div id="squelch-taas-tab-content-1">
+&nbsp;<br>
+<span class="blue-text-13"><b>Transferência bancária</b></span><br>
+<span class="grey-text-13">Na Colômbia os pagamentos com transferências bancárias são realizadas através do PSE, para realizar a integração desta forma de pagamento você deve:</span>
+&nbsp;<br>
+<span class="grey-text-13"><b>1</b>. Consultar a lista de bancos disponíveis, com o objetivo de mostrá-los ao pagador e permitir ao mesmo selecionar o banco onde será debitado o dinheiro:</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o nome do meio de pagamento
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.PSE.name());
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
+
+//Obtener el listado de bancos disponibles
+List<Bank> banks = PayUPayments.getPSEBanks(parameters);
+Iterator<Bank> banks_iterator=banks.iterator();
+
+while(banks_iterator.hasNext()){
+	Bank bank = banks_iterator.next();
+	bank.getPseCode();
+	bank.getDescription();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+//Ingrese aquí el nombre del medio de pago
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::PSE,
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
+);
+$array=PayUPayments::getPSEBanks($parameters);
+$banks=$array-&gt;banks;
+
+foreach ($banks as $bank) {
+	$bank-&gt;description;
+	$bank-&gt;pseCode;
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<span class="grey-text-13"><b>2</b>. A lista obtida deve ser mostrada ao pagador da seguinte maneira:</span><br>
+<p align="center"><img src="/images/api/pse-1-pt.jpg" border="0"></p>
+&nbsp;<br>
+<span class="grey-text-13"><b>3</b>. Abrir uma lista, onde o pagador escolha se é uma “pessoa física” ou uma “pessoa jurídica”.
+
+<span class="highlight-txt2">Para Java:</span> deve ser enviado no parâmetro <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> com o valor <span class="highlight-txt">PersonType.NATURAL.toString()</span> o <span class="highlight-txt">PersonType.LEGAL.toString()</span>, dependendo da escolha do pagador.<br>
+
+<span class="highlight-txt2">Para PHP:</span> deve ser enviado no parâmetro <span class="highlight-txt2">PayUParameters::PAYER_PERSON_TYPE</span> com o valor <br><span class="highlight-txt">N</span> ou <span class="highlight-txt">J</span>, dependendo da escolha do pagador.
+</span><br>
+<p align="center"><img src="/images/api/pse-2-pt.jpg" border="0"></p>
+&nbsp;<br>
+<span class="grey-text-13"><b>4</b>. Abrir outra lista no formulário, que permita ao pagador escolher o tipo de documento, o ISO do documento escolhido deve ser enviado no parâmetro:
+Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
+para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
+<br>
+Os códigos ISO aceitos são:</span><br>
+<div class="Table1">
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="text-align: center;">ISO</td>
+    <td style="text-align: center;">Descrição</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CC</td>
+    <td style="text-align: center;">Cédula de identidade.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CE</td>
+    <td style="text-align: center;">Cédula de extranjería.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">NIT</td>
+    <td style="text-align: center;">No caso de  empresa./td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">TI</td>
+    <td style="text-align: center;">Cartão de Identidade.</td>
+  </tr>
+   <tr>
+    <td style="text-align: center;">PP</td>
+    <td style="text-align: center;">Passaporte.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">IDC</td>
+    <td style="text-align: center;">Identificador único de cliente, no caso de IDs únicos de clientes/usuários de serviços públicos.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CEL</td>
+    <td style="text-align: center;">No caso de se identificar através da linha do celular.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">RC</td>
+    <td style="text-align: center;">Registro civil de nascimento.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">DE</td>
+    <td style="text-align: center;">Documento de identificação de estrangeiro.</td>
+  </tr>
+</table></div>
+&nbsp;<br>
+<p align="center"><img src="/images/api/pse-3-pt.jpg" border="0"></p>
+&nbsp;<br>
+<span class="grey-text-13"><b>5</b>. Por último, deve ser capturado o número de identificação do pagador e enviá-lo no parâmetro:
+Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
+Para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
+<br>
+
+A seguir, é relacionado o exemplo do pedido, enviando toda a informação previamente capturada:</span><br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+String reference = "payment_test_00000001";
+String value= "10000";
+
+Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+
+//Coloque aqui o identificador da conta.
+parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "500538");
+//Coloque aqui o código de referência.
+parameters.put(PayU.PARAMETERS.REFERENCE_CODE, ""+reference);
+//Coloque aqui a descrição.
+parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
+//Coloque aqui a linguagem da ordem.
+parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
+
+// -- Valores --
+//Coloque aqui o valor.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Coloque aqui a moeda.
+parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
+
+//Coloque aqui o email do comprador.
+parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
+
+// -- pagador --
+//Coloque aqui o nome do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
+//Coloque aqui o email do pagador.
+parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
+//Coloque aqui o telefone de contato do pagador
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+
+// Dados obrigatórios para PSE.
+// Coloque aqui o código PSE do banco.
+parameters.put(PayU.PARAMETERS.PSE_FINANCIAL_INSTITUTION_CODE, "1007");
+/ Coloque aqui o tipo de pessoa (Física ou legal).
+parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.NATURAL.toString() );	
+//o parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.LEGAL.toString() );	
+// Coloque aqui o tipo de documento do pagador: CC, CE, NIT, PP, IDC, CEL, RC, DE.
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "123456789");	
+//Ingrese aquí el tipo de documento del pagador.
+parameters.put(PayU.PARAMETERS.PAYER_DOCUMENT_TYPE, DocumentType.CC.toString());
+//O IP do pagador. 
+parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
+
+// Coloque aqui o nome do meio de pagamento
+parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, PaymentMethod.PSE.name());
+
+//Coloque aqui o nome do pais.
+parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
+
+//Coloque aqui a Cookie da sessão atual. 
+parameters.put(PayU.PARAMETERS.COOKIE, "pt1t38347bs6jc9ruv2ecpv7o2");
+//Coloque aqui o User Agent da sessão atual.
+parameters.put(PayU.PARAMETERS.USER_AGENT, "Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0");
+
+// "Authorization and capture" request
+TransactionResponse response = PayUPayments.doAuthorizationAndCapture(parameters);
+
+//Resposta
+if(response != null){
+	response.getOrderId();
+	response.getTransactionId();
+	response.getState();
+	if(response.getState().equals(TransactionState.PENDING)){
+		response.getPendingReason();	
+		Map<String,Object> extraParameters = response.getExtraParameters();
+		
+		//obtener la url del banco
+		String url=(String)extraParameters.get("BANK_URL");
+					
+	}
+	response.getPaymentNetworkResponseCode();
+	response.getPaymentNetworkResponseErrorMessage();
+	response.getTrazabilityCode();
+	response.getResponseCode();
+	response.getResponseMessage();
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Exemplo pedido:
+<pre style="height:300px; overflow: auto;">
+$reference = "payment_test_00000001";
+$value = "10000";
+
+$parameters = array(
+	//Coloque aqui o identificador da conta.
+	PayUParameters::ACCOUNT_ID =&gt; "500538",
+	//Coloque aqui o código de referência.
+	PayUParameters::REFERENCE_CODE =&gt; $reference,
+	//Coloque aqui a descrição.
+	PayUParameters::DESCRIPTION =&gt; "payment test",
+	
+	// -- Valores --
+	//Coloque aqui o valor.      
+	PayUParameters::VALUE =&gt; $value,
+	//Coloque aqui a moeda.
+	PayUParameters::CURRENCY =&gt; "COP",
+	
+	//Coloque aqui o email do comprador.
+	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
+	//Coloque aqui o nome do pagador.
+	PayUParameters::PAYER_NAME =&gt; "First name and second buyer  name",
+	//Coloque aqui o email do pagador.
+	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
+	//Coloque aqui o telefone de contato do pagador
+	PayUParameters::PAYER_CONTACT_PHONE=&gt; "7563126",
+		   
+	// -- infarmación obligatoria para PSE --
+	//Ingrese aquí el código pse del banco.
+	PayUParameters::PSE_FINANCIAL_INSTITUTION_CODE =&gt; "1007",
+	//Ingrese aquí el tipo de persona (N natural o J jurídica)
+	PayUParameters::PAYER_PERSON_TYPE =&gt; "N",
+	//Coloque aqui o documento de identificação do pagador
+	PayUParameters::PAYER_DNI =&gt; "123456789",
+	//Ingrese aquí el tipo de documento del pagador: CC, CE, NIT, TI, PP,IDC, CEL, RC, DE.
+	PayUParameters::PAYER_DOCUMENT_TYPE =&gt; "CC",
+
+	//Coloque aqui o nome do meio de pagamento
+	PayUParameters::PAYMENT_METHOD =&gt; PaymentMethods::PSE,
+   
+	//Coloque aqui o nome do pais.
+	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
+	
+	//O IP do pagador. 
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
+	//Coloque aqui a Cookie da sessão atual. 
+	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
+	//Coloque aqui o User Agent da sessão atual.     
+	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
+   
+);
+	
+$response = PayUPayments::doAuthorizationAndCapture($parameters);
+
+if($response){
+	$response-&gt;transactionResponse-&gt;orderId;
+	$response-&gt;transactionResponse-&gt;transactionId;
+	$response-&gt;transactionResponse-&gt;state;
+	if($response-&gt;transactionResponse-&gt;state)
+	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
+		$response-&gt;transactionResponse-&gt;pendingReason;
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BANK_URL;		
+	}
+	$response-&gt;transactionResponse-&gt;responseCode;		  
+}
+</pre>
+</div>
+</div>
+&nbsp;<br>
+<span class="grey-text-13">Deve ser redirecionado o pagador para o URL retornado pelo PayU no parâmetro BANK_URL</span>
+&nbsp;<br>
+<span class="grey-text-13"><b>6</b>. Quando o pagador finalizar a transação no escritório virtual de seu banco, será direcionado para a página de resposta configurada no módulo administrativo e deve ser mostrada a seguinte informação: <br>
+Os campos com o caractere "$" no início, são parâmetros enviados pelo GET e que devem capturar</span>
+&nbsp;<br>
+<p align="center"><img src="/images/api/pse-4-pt.jpg" border="0"></p>
+<span class="grey-text-13">Nota:</span><br>
+<ol>
+<li class="bullet-box">A página deve ter um link de “nova tentativa”, que permitirá ao pagador tentar novamente o pagamento se a transação não foi bem-sucedida.</li>
+<li class="bullet-box">A página deve ter um link para “finalizar a transação” o qual direcione o pagador para um local de seu site.</li>
+<li class="bullet-box">Você deve incluir uma opção para imprimir um comprovante de pagamento caso o pagador deseje realizar uma reclamação.</li>
+<li class="bullet-box">O campo “Status” deve conter a informação de acordo com a tabela a seguir. Devem ser revistas as variáveis polTransactionState e polResponseCode, dependendo da combinação, escolhe-se o texto a mostrar na tabela.</li>
+</ol>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">polTransactionState</span></td>
+		<td><span style="color: #fff; font-weight: bold;">polResponseCode</span></td>
+		<td><span style="color: #fff; font-weight: bold;">Status</span></td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">4</td>
+		<td style="text-align: center;">1</td>
+		<td>Transação aprovada</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">6</td>
+		<td style="text-align: center;">5</td>
+		<td>Transação falhada</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">6</td>
+		<td style="text-align: center;">4</td>
+		<td>Transação rejeitada</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">12</td>
+		<td style="text-align: center;">9994</td>
+		<td>ransação pendente, por favor rever se o débito foi realizado junto ao banco.</td>
+	</tr>
+</table>	
+&nbsp;<br></div></div>
+
+&nbsp;<br>
+<div class="info-icon">Considerar: </div><p></p>
+
+<ol><li class="bullet-box">As variáveis obrigatórias <span class="highlight-txt2">PayU.PARAMETERS.DEVICE_SESSION_ID</span>  o <span class="highlight-txt2"> PayUParameters::DEVICE_SESSION_ID</span> precisam de alguns passos adicionais, para saber mais sobre seu funcionamento acesse: <a href="{{ site.baseurl }}/pt/api/considerations.html" title="API – Consideraciones sobre las variables">considerações sobre as variáveis.</a></li>
+&nbsp;
+<li class="bullet-box"> Se desejar confirmar o status de uma transação conta com duas opções:<br>
+<span class="highlight-txt2">A.</span> Com a <b>página de confirmação</b> configurada no módulo administrativo na seção <a href="{{ site.baseurl }}/pt/administrative_module/configuration.html" title="Soluciones adicionales – Configurar integración">Configurar integração</a>, se desejar saber mais sobre a página de confirmação acesse <a href="{{ site.baseurl }}/pt/web_checkout/integration.html#pagina-confirmacion" title="Webcheckout – Integración">Integração Webcheckout</a>
+<span class="highlight-txt2">B.</span> Com o <b>API de consultas</b>, que permitirá programar uma tarefa de consulta do status das transações em um intervalo de tempo determinado, para mais informações acesse <a href="{{ site.baseurl }}/pt/api/queries.html" title="API – Consultas">API de Consultas.</a></div></li></ol>
+
+&nbsp;<br>
+<div id="blue-box"><b>Nota:</b>Em algumas variáveis são adicionados os termos “Payer” e “Buyer” (comprador e pagador, respectivamente).
+O comprador é a pessoa que deseja adquirir um produto ou serviço, enquanto que o pagador é a pessoa que realiza o pagamento em dinheiro. Em alguns casos, os dados do comprador e do pagador podem diferir, já que a pessoa que ordena a compra através do site não é a mesma que aquela que realiza o pagamento.
+Exemplo: Um jovem deseja adquirir um videogame através da internet (comprador), mas no momento de realizar o pagamento seu pai insere os dados do seu cartão de crédito (pagador).
+</div>
+&nbsp;<br>
+<div id="grey-box"><b>Considerar</b>: Se desejar incluir os logos das formas de pagamento disponíveis no seu site, você pode acessar <a href="http://www.payulatam.com/logos" target="_blank">http://www.payulatam.com/logos/</a> e fazer o download das imagens de cada país.</div>
+
+&nbsp;<br>
+<div id="ping" class="payu-fragment"></div>
+&nbsp;<br>
+<div class="paso2"><span class="subtitle-page">PING</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Você pode utilizar o método <b>doPing</b> para verificar a conectividade com a nossa plataforma.</span>
+
+<!-- TABS PING -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Exemplo pedido:
+<pre>
+boolean response = PayUPayments.doPing();
+LoggerUtil.info("{0}", response);
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Exemplo pedido:
+<pre>
+$response = PayUPayments::doPing();
+$response-&gt;code;
+</pre>
+</div>
+</div>
+<!-- FIN TABS PING -->
+&nbsp;<br>
+<div id="consulta" class="payu-fragment"></div>
+&nbsp;<br>
+<div class="paso3"><span class="subtitle-page">CONSULTA DE FORMAS DE PAGAMENTOS ATIVAS</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Você pode utilizar o método <b>getPaymentMethods</b> para obter uma lista de formas de pagamentos ativas em nossa plataforma.</span>
+
+<!-- TABS MEDIOS DE PAGOS ACTIVOS -->
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+List&lt;PaymentMethodComplete&gt; response = PayUPayments.getPaymentMethods();
+LoggerUtil.info("{0}", response);;
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+$array=PayUPayments::getPaymentMethods();
+$payment_methods=$array-&gt;paymentMethods;
+foreach ($payment_methods as $payment_method){
+	$payment_method-&gt;country;
+	$payment_method-&gt;description;
+	$payment_method-&gt;id;
+}
+</pre>
+</div>
+</div>
+<!-- FIN TABS MEDIOS DE PAGOS ACTIVOS -->
+&nbsp;<br>
+&nbsp;<br>
+</div>
+</div>
+
+</div>
+</div>
+</div>

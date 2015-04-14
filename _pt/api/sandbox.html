@@ -1,0 +1,318 @@
+---
+title: Testes API
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1">INTEGRAÇÃO API - <span style="color: #009cdd;">TESTES</span></h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="active" href="#tener-en-cuenta">Considerar</a></li>
+	<li class="leaf"><a href="#ejemplos">Exemplos</a></li>
+	<li class="leaf"><a href="#paso-a-produccion">Passo para a produção</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f5f5f5;">
+
+{% include sidemenu_api_pt.html %}
+
+<div id="page-menu-column2">
+<div id="tener-en-cuenta" class="payu-fragment">
+&nbsp;<br>
+<span class="subtitle-page">CONSIDERAR</span>
+&nbsp;<br>
+<span class="grey-text-13">Se você deseja realizar testes através do PayU, já que o ambiente de testes não replica os dados de sua conta em produção, é importante utilizar as seguintes credenciais no pedido dependendo do país de sua conta:</span>
+&nbsp;<br>
+<table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">merchantId</span></td>
+		<td><span style="color: #fff; font-weight: bold;">API Login</span></td>
+		<td><span style="color: #fff; font-weight: bold;">API Key</span></td>
+		<td><span style="color: #fff; font-weight: bold;">accountId</span></td>
+		<td><span style="color: #fff; font-weight: bold;">País</span></td>
+	</tr>
+	<tr>
+		<td rowspan="5">500238</td>
+		<td rowspan="5">11959c415b33d0c</td>
+		<td rowspan="5">6u39nqhq8ftd0hlvnjfs66eh8c</td>
+		<td>509171</td>
+		<td>Argentina</td>
+	</tr>
+	<tr>
+		<td>500538</td>
+		<td>Colômbia</td>
+	</tr>
+	<tr>
+		<td>500547</td>
+		<td>México</td>
+	</tr>
+	<tr>
+		<td>500537</td>
+		<td>Panamá</td>
+	</tr>
+	<tr>
+		<td>500546</td>
+		<td>Peru</td>
+	</tr>
+	<tr>
+		<td rowspan="5">500365</td>
+		<td rowspan="5">403ba744e9827f3</td>
+		<td rowspan="5">676k86ks53la6tni6clgd30jf6</td>
+		<td>500719</td>
+		<td>Brasil</td>
+	</tr>
+</table>		
+&nbsp;<br>
+&nbsp;<br>
+<span class="grey-text-13">Apontando para os seguintes URLs:</span>
+<div id="blue-box">
+<span class="grey-text-13">Consultas: <b>https://stg.api.payulatam.com/reports-api/4.0/service.cgi</b><br><br>
+Pagamentos: <b>https://stg.api.payulatam.com/payments-api/4.0/service.cgi</b></span>
+</div>
+&nbsp;<br>
+<div id="blue-box">
+<span class="info-icon">Nota:</span>
+<ol>
+<li>É importante que durante a realização dos testes não utilize dados de cartões de crédito reais, você pode utilizar geradores de cartões de crédito.</li>
+<li>Os testes somente podem ser realizados com cartões de crédito, as formas de pagamento como dinheiro ou transferência bancária não podem ser testados através deste método.</li>
+<li>Com as formas de pagamento do Peru você não pode realizar testes, já que através destas franquias opera-se 3D security.</li>
+</ol>
+</div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="ejemplos" class="payu-fragment">
+&nbsp;<br>
+<span class="subtitle-page">EXEMPLOS</span>
+&nbsp;<br>
+<span class="grey-text-13">No pedido de Autorização ou Autorização y captura você deve:</span>
+<ol>
+<li class="bullet-box">Certificar de enviar o parâmetro <b>teste</b> em <b>true</b>.</li>
+<li class="bullet-box">Inserir no nome do <b>cartão do proprietário</b> o valor <b>APPROVED</b> se deseja que a transação seja aprovada ou <b>REJECTED</b> se desejar que fique rejeitada.</li>
+<li class="bullet-box">No <b>número do cartão</b> você deve inserir um número de cartão válido e que corresponda à franquia enviada no pedido.</li>
+</ol>
+&nbsp;<br>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre style="height:300px; overflow: auto;">
+{
+"language":"es",
+"command":"SUBMIT_TRANSACTION",
+"merchant":{
+"apiLogin":"11959c415b33d0c",
+"apiKey":"6u39nqhq8ftd0hlvnjfs66eh8c"
+},
+"transaction":{
+"order":{
+"accountId":"500537",
+"referenceCode":"testPanama1",
+"description":"Test order Panama",
+"language":"en",
+"notifyUrl":"http://pruebaslap.xtrweb.com/lap/pruebconf.php",
+"signature":"a18a628692737c3aeaf474bb588d07ee",
+"shippingAddress":{
+"country":"PA"
+},
+"buyer":{
+"fullName":"APPROVED",
+"emailAddress":"test@payulatam.com",
+"dniNumber":"1155255887",
+"shippingAddress":{
+"street1":"Calle 93 B 17 – 25",
+"city":"Panama",
+"state":"Panama",
+"country":"PA",
+"postalCode":"000000",
+"phone":"5582254"
+}
+},
+"additionalValues":{
+"TX_VALUE":{
+"value":5,
+"currency":"USD"
+}
+}
+},
+"creditCard":{
+"number":"4111111111111111",
+"securityCode":"123",
+"expirationDate":"2018/08",
+"name":"test"
+},
+"type":"AUTHORIZATION_AND_CAPTURE",
+"paymentMethod":"VISA",
+"paymentCountry":"PA",
+"payer":{
+"fullName":"APPROVED",
+"emailAddress":"test@payulatam.com"
+},
+"ipAddress":"127.0.0.1",
+"cookie":"cookie_52278879710130",
+"userAgent":"Firefox",
+"extraParameters":{
+"INSTALLMENTS_NUMBER":1,
+"RESPONSE_URL":"http://www.misitioweb.com/respuesta.php"
+}
+},
+"test":true
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+{
+"code": "SUCCESS",
+"error": null,
+"transactionResponse":    {
+"orderId": 3018500,
+"transactionId": "b5369274-4b51-4cd3-a634-61db79b3eb9c",
+"state": "APPROVED",
+"paymentNetworkResponseCode": null,
+"paymentNetworkResponseErrorMessage": null,
+"trazabilityCode": "00000000",
+"authorizationCode": "00000000",
+"pendingReason": null,
+"responseCode": "APPROVED",
+"errorCode": null,
+"responseMessage": null,
+"transactionDate": null,
+"transactionTime": null,
+"operationDate": 1393966959622,
+"extraParameters": null
+}
+}
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre style="height:300px; overflow: auto;">
+&lt;request&gt;
+&lt;language&gt;en&lt;/language&gt;
+&lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
+&lt;merchant&gt;
+&lt;apiLogin&gt;11959c415b33d0c&lt;/apiLogin&gt;
+&lt;apiKey&gt;6u39nqhq8ftd0hlvnjfs66eh8c&lt;/apiKey&gt;
+&lt;/merchant&gt;
+&lt;transaction&gt;
+&lt;order&gt;
+&lt;accountId&gt;500537&lt;/accountId&gt;
+&lt;referenceCode&gt;testPanama1&lt;/referenceCode&gt;
+&lt;description&gt;Test order Panama&lt;/description&gt;
+&lt;language&gt;en&lt;/language&gt;
+&lt;notifyUrl&gt;http://pruebaslap.xtrweb.com/lap/pruebconf.php&lt;/notifyUrl&gt;
+&lt;signature&gt;a18a628692737c3aeaf474bb588d07ee&lt;/signature&gt;
+&lt;shippingAddress&gt;
+&lt;country&gt;PA&lt;/country&gt;
+&lt;/shippingAddress&gt;
+&lt;buyer&gt;
+&lt;fullName&gt;APPROVED&lt;/fullName&gt;
+&lt;emailAddress&gt;test@payulatam.com&lt;/emailAddress&gt;
+&lt;dniNumber&gt;1155255887&lt;/dniNumber&gt;
+&lt;shippingAddress&gt;
+&lt;street1&gt;Calle 93 B 17 – 25&lt;/street1&gt;
+&lt;city&gt;Panama&lt;/city&gt;
+&lt;state&gt;Panama&lt;/state&gt;
+&lt;country&gt;PA&lt;/country&gt;
+&lt;postalCode&gt;000000&lt;/postalCode&gt;
+&lt;phone&gt;5582254&lt;/phone&gt;
+&lt;/shippingAddress&gt;
+&lt;/buyer&gt;
+&lt;additionalValues class="java.util.HashMap"&gt;
+&lt;entry&gt;
+&lt;string&gt;TX_VALUE&lt;/string&gt;
+&lt;additionalValue&gt;
+&lt;value&gt;5&lt;/value&gt;
+&lt;currency&gt;USD&lt;/currency&gt;
+&lt;/additionalValue&gt;
+&lt;/entry&gt;
+&lt;/additionalValues&gt;
+&lt;/order&gt;
+&lt;creditCard&gt;
+&lt;number&gt;4111111111111111&lt;/number&gt;
+&lt;securityCode&gt;123&lt;/securityCode&gt;
+&lt;expirationDate&gt;2018/08&lt;/expirationDate&gt;
+&lt;name&gt;Test&lt;/name&gt;
+&lt;/creditCard&gt;
+&lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;
+&lt;paymentMethod&gt;VISA&lt;/paymentMethod&gt;
+&lt;paymentCountry&gt;PA&lt;/paymentCountry&gt;
+&lt;payer&gt;
+&lt;fullName&gt;APPROVED&lt;/fullName&gt;
+&lt;emailAddress&gt;test@payulatam.com&lt;/emailAddress&gt;
+&lt;/payer&gt;
+&lt;ipAddress&gt;127.0.0.1&lt;/ipAddress&gt;
+&lt;cookie&gt;cookie_52278879710130&lt;/cookie&gt;
+&lt;userAgent&gt;Firefox&lt;/userAgent&gt;
+&lt;extraParameters class="java.util.HashMap"&gt;
+&lt;entry&gt;
+&lt;string&gt;RESPONSE_URL&lt;/string&gt;
+&lt;string&gt;http://www.misitioweb.com/respuesta.php&lt;/string&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;
+&lt;string&gt;1&lt;/string&gt;
+&lt;/entry&gt;
+&lt;/extraParameters&gt;
+&lt;/transaction&gt;
+&lt;isTest&gt;true&lt;/isTest&gt;
+&lt;/request&gt;
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+&lt;paymentResponse&gt;
+&lt;code&gt;SUCCESS&lt;/code&gt;
+&lt;transactionResponse&gt;
+&lt;orderId&gt;3018560&lt;/orderId&gt;
+&lt;transactionId&gt;4a4003e1-1738-423f-b01e-361a4bfe1afd&lt;/transactionId&gt;
+&lt;state&gt;APPROVED&lt;/state&gt;
+&lt;trazabilityCode&gt;00000000&lt;/trazabilityCode&gt;
+&lt;authorizationCode&gt;00000000&lt;/authorizationCode&gt;
+&lt;responseCode&gt;APPROVED&lt;/responseCode&gt;
+&lt;operationDate&gt;2014-03-04T16:08:28&lt;/operationDate&gt;
+&lt;/transactionResponse&gt;
+&lt;/paymentResponse&gt;
+</pre>
+</div>
+</div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="paso-a-produccion" class="payu-fragment">
+&nbsp;<br>
+<span class="subtitle-page">PASSO PARA A PRODUÇÃO</span>
+&nbsp;<br>
+<span class="grey-text-13">Em seguida de realizar todos os testes do sistema e verificado que tudo está funcionando corretamente, pode-se realizar a mudança para o servidor de produção; onde são processadas as transações reais.</span>
+&nbsp;<br>
+<span class="grey-text-13">Para isto você deverá desmarcar a opção Transação em modo de testes encontrado no seu módulo administrativo.</span>
+&nbsp;<br>
+<p align="center"><img src="/images/api/test-pt.jpg" border="0"></p>
+&nbsp;<br>
+<span class="grey-text-13">Adicionalmente, você deve gerar os formulários de pagamento com os seguintes parâmetros correspondentes na sua conta:</span>
+&nbsp;<br>
+<pre>
+merchantId: de sua conta
+ApiKey: de sua conta
+ApiLogin: de sua conta
+accountId: de sua conta
+signature: a assinatura gerada para cada transação
+test: false
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Apontando os URLs de produção:</span>
+<div id="blue-box">
+<span class="grey-text-13">Consultas: <b>https://api.payulatam.com/reports-api/4.0/service.cgi</b><br><br>
+Pagamentos: <b>https://api.payulatam.com/payments-api/4.0/service.cgi</b></span>
+</div>
+&nbsp;<br>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
