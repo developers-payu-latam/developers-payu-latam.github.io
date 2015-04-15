@@ -10,11 +10,22 @@
   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 
-  {% include head.html %}
+  
+  
+{% assign rutas = page.url | split:"/" %}
+
+{% capture lang %}{{"/"}}{{ rutas[1] }}{{"/" }}{% endcapture %}
+
+{% assign url= page.url | replace:lang,''  %}
+
+{% include head.html %}
 
   <body >
-
-    {% include header.html %}
+{% if rutas[1] == "en" %}      {% include header_en.html %}
+{% elsif rutas[1] == "pt"  %} {% include header_pt.html %}
+{% else %}      			   {% include header.html %} 
+{% endif %}
+    
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 
