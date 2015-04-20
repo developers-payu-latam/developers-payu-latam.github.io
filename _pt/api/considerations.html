@@ -21,10 +21,10 @@ title: Considerações sobre as variáveis
 <div id="apikey" class="payu-fragment">
 <span class="subtitle-page">COMO OBTER MINHA API KEY E API LOGIN?</span>
 &nbsp;<br>
-<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span>Para obter os dados necessários para realizar a autenticação você deve acessar <a href="http://www.payulatam.com" target="_blank">http://www.payulatam.com</a> com seu respectivo nome de usuário e senha.</p>
+<p><span class="number">01. </span>Para obter os dados necessários para realizar a autenticação você deve acessar <a href="http://www.payulatam.com" target="_blank">http://www.payulatam.com</a> com seu respectivo nome de usuário e senha.</p>
 <img border="0" alt="Módulo administrativo" src="/images/secure1-pt.jpg">
 &nbsp;<br>
-<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span>Entre no menu <span class="highlight-txt2 ">“Configuração”</span> na opção <span class="highlight-txt2 ">“Informação técnica”</span>, onde você encontrará os dados para se autenticar com o API: <span class="highlight-txt">API key</span> e <span class="highlight-txt">API login</span>. <br> Você deve considerar que estes dados são únicos por cada comércio do PayU Latam, portanto, você deve manter esta informação segura e é sua responsabilidade seu uso e/ou divulgação.</p>
+<p><span class="number">02. </span>Entre no menu <span class="highlight-txt2 ">“Configuração”</span> na opção <span class="highlight-txt2 ">“Informação técnica”</span>, onde você encontrará os dados para se autenticar com o API: <span class="highlight-txt">API key</span> e <span class="highlight-txt">API login</span>. <br> Você deve considerar que estes dados são únicos por cada comércio do PayU Latam, portanto, você deve manter esta informação segura e é sua responsabilidade seu uso e/ou divulgação.</p>
 <img border="0" alt="Módulo administrativo" src="/images/tecnica3-pt.jpg">
 &nbsp;<br>
 &nbsp;<br>
@@ -57,7 +57,7 @@ Esta informação deverá ser enviada na variável:
 <span class="subtitle-page">VARIABLE DEVICESESSIONID</span>
 &nbsp;<br>
 O <span class="highlight-txt">deviceSessionID</span> é um código que captura a informação do equipamento a partir de onde é gerada a transação e gera um identificador único para este. Esta ferramenta de segurança permite detectar atacantes. Para realizar a integração você deve incluir o seguinte script no site onde são capturados os dados para pagamentos com cartão de crédito (formulário de pagamento):
-<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span> Incluir o seguinte script no site onde são capturados os dados (formulário de pagamento) para pagamentos com cartão de crédito:</p>
+<p><span class="number">01. </span> Incluir o seguinte script no site onde são capturados os dados (formulário de pagamento) para pagamentos com cartão de crédito:</p>
 <pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId)</span>&quot;&gt;&lt;/p&gt;<br />
   &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot;&gt;<br />
   &lt;script src=&quot;https://maf.pagosonline.net/ws/fp/check.js?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot;&gt;&lt;/script&gt;<br />
@@ -67,12 +67,12 @@ O <span class="highlight-txt">deviceSessionID</span> é um código que captura a
   &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot; /&gt;<br />
 &lt;/object&gt;</pre>
 &nbsp;<br>
-<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span>É importante gerar o <span class="highlight-txt">deviceSessionId</span> com o seguinte algoritmo para garantir que a identificação seja única. Adicionalmente, você deve gerar um novo deviceSessionId para cada transação. Selecionar o session_Id do cookie e concatená-lo com o timestamp incluídos os milissegundos. Em seguida, passá-lo pelo método MD5.
+<p><span class="number">02. </span>É importante gerar o <span class="highlight-txt">deviceSessionId</span> com o seguinte algoritmo para garantir que a identificação seja única. Adicionalmente, você deve gerar um novo deviceSessionId para cada transação. Selecionar o session_Id do cookie e concatená-lo com o timestamp incluídos os milissegundos. Em seguida, passá-lo pelo método MD5.
 Exemplo em php:</p>
 <pre>$ deviceSessionId = md5(session_id().microtime())</pre>
 &nbsp;<br>
 
-<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">03. </span>Este deviceSessionId deve se concatenar com o “usuarioId” 80200, como no exemplo a seguir: <span class="highlight-txt">4091057053</span>80200
+<p><span class="number">03. </span>Este deviceSessionId deve se concatenar com o “usuarioId” 80200, como no exemplo a seguir: <span class="highlight-txt">4091057053</span>80200
 E enviá-lo em todos os ${deviceSessionId}usuarioId do escript como no exemplo a seguir.</p>
 <pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=<span class="highlight-txt2">409105705380200</span>&quot;)&gt;&lt;/p&gt;<br />
   &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=<span class="highlight-txt2">409105705380200</span>&quot;&gt;<br />
@@ -83,7 +83,7 @@ E enviá-lo em todos os ${deviceSessionId}usuarioId do escript como no exemplo a
   &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot;/&gt;<br />
 &lt;/object&gt;</pre>
 &nbsp;<br>
-<p><span style="font-size: 25px; color: #009cdd; font-weight: bold;">04. </span> Finalmente, você deve enviar o <span class="highlight-txt">$deviceSessionId</span> (sem o “usuarioId”) no pedido do API na variável:</p>
+<p><span class="number">04. </span> Finalmente, você deve enviar o <span class="highlight-txt">$deviceSessionId</span> (sem o “usuarioId”) no pedido do API na variável:</p>
 <div class="list-arrow"><ul><li> Para API:<span class="highlight-txt2 ">transaction.deviceSessionId.</span></li>
 <li> Para SDK JAVA: <span class="highlight-txt2 ">PayU.PARAMETERS.DEVICE_SESSION_ID</span></li>
 <li> Para SDK PHP: <span class="highlight-txt2 ">PayUParameters::DEVICE_SESSION_ID</span></li></ul></div>
