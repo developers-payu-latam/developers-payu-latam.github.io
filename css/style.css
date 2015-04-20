@@ -878,9 +878,8 @@ td {
 }
 
 .pull-right {
-  float: right;
-  position: fixed;
-  right: 40px;
+  position: absolute;
+  right: 20px;
 }
 
 header #site-nav a {
@@ -1020,6 +1019,18 @@ li a.active {
   font-weight: 600;
   color: #54BBAB;
 }
+.bullet-box ol li{
+  color: #262626;
+  padding-left: 1.5em;
+}
+.bullet-box ol li:before{
+ content: '\f0da'; 
+  font-family: FontAwesome; 
+  display: inline-block;
+  width: 1.5em;
+  margin-left: -1.5em;
+  color: #00AEBA;
+}
 .grey-bg {
     background: #edf2f2;
     border-top: 1px #dfe3e3 solid;
@@ -1078,12 +1089,14 @@ li a.active {
     text-align: left;
 }
 
+.card h4 {
+  font-size: 20px;
+}
+
 #news .image-wrapper {
-  margin: 0;
-  max-height: 470px;
-  overflow: hidden;
-  -o-border-radius: 16px;
-  border-radius: 16px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0;
 }
 
 .quote {
@@ -1091,6 +1104,15 @@ li a.active {
     border-radius: 10px;
     display: block;
     padding: 20px;
+    height: 240px;
+}
+
+.quote.blue {
+  margin-bottom: 15px;
+}
+
+.quote.purple, .quote.green {
+  margin-top: 10px;
 }
 
 .quote h3 {
@@ -1103,9 +1125,56 @@ li a.active {
     color: #fff;
 }
 
+.quote.green:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #54BBAB;
+  position: absolute;
+  left: 30%;
+  top: -4%;
+}
+
+.quote.blue:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #00AEBA;
+  position: absolute;
+  left: 30%;
+  bottom: -4%;
+}
+.quote.purple:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #831F82;
+  position: absolute;
+  left: 30%;
+  top: -4%;
+}
+
 .quote span.date, .quote a.news-link {
     color: #fff;
-    font-weight: 300;
+    font-weight: 600;
+}
+
+span.date {
+  position: absolute;
+  left: 22px;
+bottom:20px;
+}
+
+a.news-link {
+  position: absolute;
+  right: 22px;
+    bottom:20px;
 }
 
 .quote span.date:before {
@@ -1134,7 +1203,7 @@ li a.active {
   width: 135px;
   height: 135px;
   padding: 0;
-  border: 1px solid #dfe7e9;
+  border: 1px solid #D1D4D4;
   vertical-align: middle;
   margin: 15px 0;
 }
@@ -1347,7 +1416,7 @@ div.ui-widget-content {
 pre {
   background-color: #fff;
   padding: 15px;
-      color: #333;
+    color: #333;
     max-height: 300px;
   overflow: auto;
 }
@@ -1399,13 +1468,35 @@ pre {
 /* End accordion styles */
 
 .highlight-txt {
-  font-style: italic;
-  font-weight: 600;
   background: none repeat scroll 0px 0px #eDF2F2;
   border-radius: 8px;
   font-weight: normal;
   padding: 2px 5px;
   color: #262626;
+}
+.highlight-txt2 {
+  font-style: italic;
+  font-weight: 600;
+  color: #262626;
+}
+.blue-text-13 {
+  font-size: 14px;
+  line-height: 20px;
+  color: #262626;
+  font-weight: 600;
+}
+.info-icon {
+  background-image: url(../images/info_icon.png);
+  background-repeat: no-repeat;
+  font-family: amplesoft-medium;
+  padding-left: 55px;
+  color: #262626;
+  font-size: 1.5em;
+  height: 50px;
+  padding-top: 6px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+  margin-top: 10px;
 }
 #blue-box, .blue-box {
   float: left;
@@ -1515,7 +1606,7 @@ div.row-image img {
     padding: 25px 0px 5px;
 }
 .bank-transfer:before {
-        content: "\f19c";
+    content: "\f045";
   font-family: FontAwesome;
   padding-right: 1em;
     font-size:24px;
