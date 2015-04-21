@@ -18,11 +18,11 @@ title: Tests SDK
 
 <div id="page-menu-column2">
 <div id="tener-en-cuenta" class="payu-fragment">
-&nbsp;<br>
+
 <span class="subtitle-page">To consider</span>
-&nbsp;<br>
+
 <span class="grey-text-13">If you want to make tests through PayU because the test environment does not replicate the data from your production account, it is important that you use the following credentials in the request, depending on the country of your account:</span>
-&nbsp;<br>
+
 <table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
 	<tr bgcolor="#696a6c">
 		<td><span style="color: #fff; font-weight: bold;">merchantId</span></td>
@@ -62,36 +62,34 @@ title: Tests SDK
 		<td>Brazil</td>
 	</tr>
 </table>		
-&nbsp;<br>
-&nbsp;<br>
+
 <span class="grey-text-13">Aiming at the following URLs:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://stg.api.payulatam.com/payments-api/";&nbsp;<br>
 PayU.reportsUrl = "https://stg.api.payulatam.com/reports-api/";&nbsp;<br>
-&nbsp;<br>
+
 <b>PHP</b>&nbsp;<br>
 Environment::setPaymentsCustomUrl("https://stg.api.payulatam.com/payments-api/4.0/service.cgi");&nbsp;<br>
 Environment::setReportsCustomUrl("https://stg.api.payulatam.com/reports-api/4.0/service.cgi");&nbsp;<br>
 Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-api/rest/v4.3/");&nbsp;<br>
 </span>
 </div>
-&nbsp;<br>
+
 <div id="blue-box">
 <span class="info-icon">Note:</span>
 <ol>
-<li>It is important that you do not use real credit card data during the performance of the tests, you can use credit card generators.</li>
-<li>Tests may be done only with credit cards, payment means such as cash or bank transfers cannot be tested by this method.</li>
-<li>Payment means in Peru cannot be tested, since these franchises handle 3D security.</li>
+<li class="bullet-box">It is important that you do not use real credit card data during the performance of the tests, you can use credit card generators.</li>
+<li class="bullet-box">Tests may be done only with credit cards, payment means such as cash or bank transfers cannot be tested by this method.</li>
+<li class="bullet-box">Payment means in Peru cannot be tested, since these franchises handle 3D security.</li>
 </ol>
 </div>
 </div>
-&nbsp;<br>
-&nbsp;<br>
+
 <div id="ejemplos" class="payu-fragment">
-&nbsp;<br>
+
 <span class="subtitle-page">Examples</span>
-&nbsp;<br>
+
 <span class="grey-text-13">In the Authorization and Capture request you must:</span>
 <ol>
 <li class="bullet-box">Ensure to send the <b>prueba</b> as <b>true</b>.
@@ -103,7 +101,7 @@ Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-a
 </li>
 <li class="bullet-box">In the <b>card number</b> you must enter a valid card number, corresponding to the franchise sent in the request.</li>
 </ol>
-&nbsp;<br>
+
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
@@ -327,20 +325,18 @@ if($response){
 </div>
 </div>
 </div>
-&nbsp;<br>
-&nbsp;<br>
 <div id="paso-a-produccion" class="payu-fragment">
-&nbsp;<br>
+
 <span class="subtitle-page">Change to production</span>
-&nbsp;<br>
+
 <span class="grey-text-13">After you make all system testing and you verify that everything is working properly, you can make the change to the production server; where the actual transactions are processed.</span>
-&nbsp;<br>
+
 <span class="grey-text-13">For this you should uncheck the transaction in test mode option which you will find in your administrative module.</span>
-&nbsp;<br>
+
 <p align="center"><img border="0" src="/images/api/test-en.jpg"></p>
-&nbsp;<br>
+
 <span class="grey-text-13">Additionally you must create payment forms with the following parameters relative to your account:</span>
-&nbsp;<br>
+
 <pre>
 merchantId: of your account
 ApiKey: of your account
@@ -348,20 +344,20 @@ ApiLogin: of your account
 accountId: of your account
 test: false
 </pre>
-&nbsp;<br>
+
 <span class="grey-text-13">Pointing to the production URLs:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://api.payulatam.com/payments-api/";&nbsp;<br>
 PayU.reportsUrl = "https://api.payulatam.com/reports-api/";&nbsp;<br>
-&nbsp;<br>
+
 <b>PHP</b>&nbsp;<br>
 Environment::setPaymentsCustomUrl("https://api.payulatam.com/payments-api/4.0/service.cgi");&nbsp;<br>
 Environment::setReportsCustomUrl("https://api.payulatam.com/reports-api/4.0/service.cgi");&nbsp;<br>
 Environment::setSubscriptionsCustomUrl("https://api.payulatam.com/payments-api/rest/v4.3/");&nbsp;<br>
 </span>
 </div>
-&nbsp;<br>
+
 </div>
 
 </div>

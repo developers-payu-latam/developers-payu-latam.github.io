@@ -18,11 +18,13 @@ title: Pruebas SDK
 
 <div id="page-menu-column2">
 <div id="tener-en-cuenta" class="payu-fragment">
+
 &nbsp;<br>
 <span class="subtitle-page">Para tener en cuenta</span>
 &nbsp;<br>
+
 <span class="grey-text-13">Si deseas realizar pruebas a través de PayU, ya que el ambiente de pruebas no replica los datos de tu cuenta en producción, es importante que utilices las siguientes credenciales en la petición dependiendo del país de tu cuenta:</span>
-&nbsp;<br>
+
 <table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
 	<tr bgcolor="#696a6c">
 		<td><span style="color: #fff; font-weight: bold;">merchantId</span></td>
@@ -62,36 +64,35 @@ title: Pruebas SDK
 		<td>Brasil</td>
 	</tr>
 </table>		
-&nbsp;<br>
-&nbsp;<br>
 <span class="grey-text-13">Apuntando a las siguientes URLs:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://stg.api.payulatam.com/payments-api/";&nbsp;<br>
 PayU.reportsUrl = "https://stg.api.payulatam.com/reports-api/";&nbsp;<br>
-&nbsp;<br>
+
 <b>PHP</b>&nbsp;<br>
 Environment::setPaymentsCustomUrl("https://stg.api.payulatam.com/payments-api/4.0/service.cgi");&nbsp;<br>
 Environment::setReportsCustomUrl("https://stg.api.payulatam.com/reports-api/4.0/service.cgi");&nbsp;<br>
 Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-api/rest/v4.3/");&nbsp;<br>
 </span>
 </div>
-&nbsp;<br>
+
 <div id="blue-box">
 <span class="info-icon">Tener en cuenta:</span>
 <ol>
-<li>Es importante que durante la realización de las pruebas no utilices datos de tarjetas de crédito reales, puedes utilizar generadores de tarjetas de crédito.</li>
-<li>Las pruebas pueden realizarse sólo con tarjetas de crédito, los medios de pago como efectivo o trasferencia bancaria no pueden ser probados a través de este método.</li>
-<li>Con los medios de pago de Perú no puedes realizar pruebas ya que a través de estas franquicias se maneja 3D security.</li>
+<li class="bullet-box">Es importante que durante la realización de las pruebas no utilices datos de tarjetas de crédito reales, puedes utilizar generadores de tarjetas de crédito.</li>
+<li class="bullet-box">Las pruebas pueden realizarse sólo con tarjetas de crédito, los medios de pago como efectivo o trasferencia bancaria no pueden ser probados a través de este método.</li>
+<li class="bullet-box">Con los medios de pago de Perú no puedes realizar pruebas ya que a través de estas franquicias se maneja 3D security.</li>
 </ol>
 </div>
 </div>
-&nbsp;<br>
-&nbsp;<br>
+
 <div id="ejemplos" class="payu-fragment">
+
 &nbsp;<br>
 <span class="subtitle-page">Ejemplos</span>
 &nbsp;<br>
+
 <span class="grey-text-13">En la petición de Autorización o Autorización y captura debes:</span>
 <ol>
 <li class="bullet-box">Asegurarte de enviar el parámetro <b>prueba</b> en <b>true</b>.
@@ -103,7 +104,7 @@ Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-a
 </li>
 <li class="bullet-box">En el <b>número de la tarjeta</b> debes ingresar un número de tarjeta válido y que corresponda a la franquicia enviada en la petición.</li>
 </ol>
-&nbsp;<br>
+
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
@@ -319,20 +320,20 @@ if($response){
 </div>
 </div>
 </div>
-&nbsp;<br>
-&nbsp;<br>
 <div id="paso-a-produccion" class="payu-fragment">
+
 &nbsp;<br>
 <span class="subtitle-page">Paso a producción</span>
 &nbsp;<br>
+
 <span class="grey-text-13">Luego de que realices todas las pruebas del sistema y verifiques que todo está funcionando correctamente, se puede realizar el cambio al servidor de producción; en donde se procesaran las transacciones reales.</span>
-&nbsp;<br>
+
 <span class="grey-text-13">Para esto deberás desmarcar la opción Transacción en modo de pruebas que encontrarás en tu módulo administrativo.</span>
-&nbsp;<br>
+
 <p align="center"><img src="/images/api-pruebas-1.jpg" border="0"></p>
-&nbsp;<br>
+
 <span class="grey-text-13">Adicionalmente debes generar los formularios de pago con los siguientes parámetros correspondientes a tu cuenta:</span>
-&nbsp;<br>
+
 <pre>
 merchantId: de tu cuenta
 ApiKey: de tu cuenta
@@ -340,20 +341,20 @@ ApiLogin: de tu cuenta
 accountId: de tu cuenta
 test: false
 </pre>
-&nbsp;<br>
+
 <span class="grey-text-13">Apuntando a las URLs de producción:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://api.payulatam.com/payments-api/";&nbsp;<br>
 PayU.reportsUrl = "https://api.payulatam.com/reports-api/";&nbsp;<br>
-&nbsp;<br>
+
 <b>PHP</b>&nbsp;<br>
 Environment::setPaymentsCustomUrl("https://api.payulatam.com/payments-api/4.0/service.cgi");&nbsp;<br>
 Environment::setReportsCustomUrl("https://api.payulatam.com/reports-api/4.0/service.cgi");&nbsp;<br>
 Environment::setSubscriptionsCustomUrl("https://api.payulatam.com/payments-api/rest/v4.3/");&nbsp;<br>
 </span>
 </div>
-&nbsp;<br>
+
 </div>
 
 </div>
