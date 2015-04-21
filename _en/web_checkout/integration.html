@@ -18,12 +18,12 @@ title: Integration
 
 <div id="page-menu-column2">
 <div id="formulario-de-pago" class="payu-fragment">
-&nbsp;<br>
+
 <span class="subtitle-page">Payment form</span>
-&nbsp;<br>
+
 <span class="grey-text-13">In this section you will see how to send data from one transaction to PayU.
 You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.</span><br>
-&nbsp;<br>
+
  Sample <b>HTML</b> with some of the parameters you can send:
 <pre><code>
  &lt;form method=&quot;post&quot; action=&quot;https://stg.gateway.payulatam.com/ppp-web-gateway/&quot;&gt;
@@ -43,17 +43,15 @@ You must generate an HTML form with the transaction data using the HTTP POST met
 &nbsp;&nbsp;&lt;input name=&quot;<span style="color: #009cdd;">Submit</span>&quot;        type=&quot;submit&quot;  value=&quot;<span style="color: #009cdd;">Enviar</span>&quot; &gt;
 &lt;/form&gt;
 </code></pre>
-&nbsp;<br>
 <span class="grey-text-13">Once you generate the HTML form you should aim at the following URL:</span>
 <div id="blue-box">
 <span class="grey-text-13">Test: <b>https://stg.gateway.payulatam.com/ppp-web-gateway/</b><br><br>
 Live: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
-</div><p>
-&nbsp;<br>
+</div>
+&nbsp;<br>    
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
-<a href="">
-Minimum data you must send in the form</a>
+<a href="">Minimum data you must send in the form</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
@@ -411,17 +409,15 @@ All variables that you can send in the form</a>
 </tr>
 </table>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
 <span class="blue-text-13"><b>Considerations about the Variables</b></span>
 <ol>
 <li class="bullet-box">The <b>tax</b> is a value added tax that may be used in some countries and the <b>taxReturnBase</b> is the base value on which VAT is calculated. If your product does not just apply for this tax, simply both variables take the value 0 <b>(tax=0, taxReturnBase=0)</b>. Conversely, if some elements have the tax and it does not apply to others, you must perform the following calculation to find out how to send the values to the payment platform.</li>
-&nbsp;<br>
+
 <li class="bullet-box">If the <b>tax</b> value is not sent, the system automatically will calculate it as 16%.</li>
-&nbsp;<br>
+
 <li class="bullet-box">For businesses registered in Colombia that belong to the common program (régimen común), if you do not send the <b>tax</b>, value, the system will automatically calculate the value. If your business belongs to the simplified program (regimen simplificado) and you do not send the tax value, the system will assign the value as zero (0).<br>
 <span class="blue-text-13">Note: The amount of tax + taxReturnBase cannot be greater than the Total Value.</span>
-&nbsp;<br>
+
 <table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
 <tr bgcolor="#696a6c">
 <td><span style="color: #fff; font-weight: bold;">Product</span></td>
@@ -455,15 +451,15 @@ All variables that you can send in the form</a>
 </tr>
 </table>
 </li>
-&nbsp;<br>
+
 <li class="bullet-box">The <b>signature</b> is a unique way to validate payments made through the platform, ensuring its authenticity. It consists of a character string to which the MD5 or SHA algorithm is applied for encryption. The string is composed as follows:
-&nbsp;<br>
+
 <pre>
 “ApiKey~merchantId~referenceCode~amount~currency”.
 </pre>
-&nbsp;<br>
+
 <span class="grey-text-13">For example:</span>
-&nbsp;<br>
+
 <pre>
 merchantId: 500238
 ApiKey: 6u39nqhq8ftd0hlvnjfs66eh8c
@@ -473,30 +469,27 @@ currency: USD
 accountId: 500537
 buyerEmail: test@test.com
 </pre>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature would be:</span>
-&nbsp;<br>
+
 <pre>
 "6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"
 </pre>
-&nbsp;<br>
 <span class="grey-text-13">To this signature <b>MD5</b> is applied:</span>
-&nbsp;<br>
+
 <pre>
 "be2f083cb3391c84fdf5fd6176801278"
 </pre>
 </li>
 </ol>
-&nbsp;<br>
-&nbsp;<br>
 </div>
 
 <div id="pagina-respuesta" class="payu-fragment">
-&nbsp;<br>
+
 <span class="subtitle-page">Response page</span>
-&nbsp;<br>
+
 <span class="grey-text-13">At the end of a transaction our system will send the payer to the response page. Our system sends information about the state of a transaction to this page via the HTTP GET method.</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The following is an example in <b>PHP</b> of how you can integrate the response page:</span>
 <pre style="height:350px; overflow: auto;">
 &lt;?php
@@ -598,8 +591,6 @@ else
 ?&gt;
 </pre>
 <span class="blue-text-13">Note: In the above example, replace the <b>APIKEY</b> code for the one you will find in your Administrative Module.</span>
-&nbsp;<br>
-&nbsp;<br>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
 <a href="">
@@ -948,31 +939,29 @@ _</i></i>FEE_RETURN_BASE</td>
 </tr>
 </table>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
 <span class="blue-text-13"><b>Signature validation</b></span>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature validation allows you to check data integrity, you must generate the signature with the information you will find on the response page and compare it with the information from the signature parameter.<br>
 To validate the signature on the response page, you should consider:</span>
-&nbsp;<br>
+
 <ol>
 <li class="bullet-box">In order to get the new value new_value you always should approximate the
 TX_VALUE to a decimal, using the rounding method Round half to even:<br>
 * If the first decimal is even and the second is 5, round it to the lower value.<br>
 * If the first decimal is odd and the second is 5, round it to the higher value.<br>
 * Otherwise you must round it to the nearest decimal.</li>
-&nbsp;<br>
+
 <li class="bullet-box">You must obtain the parameters to generate the signature: merchantId, 
 referenceCode, TX_VALUE, currency and transactionState from the response page, not from your database.</li>
-&nbsp;<br>
+
 <li class="bullet-box">You must store your ApiKey safely.</li>
-&nbsp;<br>
+
 <li class="bullet-box">Outline of the signature:
-&nbsp;<br>
+
 <pre>
 "ApiKey~merchantId~referenceCode~new_value~currency~transactionState"
 </pre>
-&nbsp;<br>
+
 Examples:
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -981,7 +970,7 @@ First decimal as even number and second 5</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
+
 <span class="grey-text-13">Parameters obtained from the response page:<br>
 merchantId = 500238<br>
 referenceCode = TestPayU04<br>
@@ -989,9 +978,9 @@ TX_VALUE = 150.25<br>
 currency = USD<br>
 transactionState = 6<br>
 signature = 8eebb5af1f32f7a9f930a1038810b854</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature is generated in the following way:</span>
-&nbsp;<br>
+
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.2~USD~6) = <b>8eebb5af1f32f7a9f930a1038810b854</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -1001,7 +990,7 @@ First decimal as odd number and second 5</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
+
 <span class="grey-text-13">Parameters obtained from the response page:
 merchantId = 500238<br>
 referenceCode = TestPayU05<br>
@@ -1009,9 +998,9 @@ TX_VALUE = 150.35<br>
 currency = USD<br>
 transactionState = 6<br>
 signature = ce2285970f17bb6ce049b56e6b41a255</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature is generated in the following way:</span>
-&nbsp;<br>
+
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.4~USD~6) = <b>ce2285970f17bb6ce049b56e6b41a255</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -1021,7 +1010,7 @@ Other cases</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
+
 <span class="grey-text-13">Parameters obtained from the response page:
 merchantId = 500238<br>
 referenceCode = TestPayU05<br>
@@ -1029,25 +1018,23 @@ TX_VALUE = 150.34<br>
 currency = USD<br>
 transactionState = 6<br>
 signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature is generated in the following way:</span>
-&nbsp;<br>
+
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.3~USD~6) = <b>01899cb431dd51623f5c94a62b1d2dc7</b></span>
 </div></div>
 </li>
-&nbsp;<br>
-&nbsp;<br>
+
 </div>
 
 <div id="pagina-confirmacion" class="payu-fragment">
-&nbsp;<br>
+
 <span class="subtitle-page">Confirmation page</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The confirmation page lets you update the databases on your system. Because of this, it should not include HTML code and will never be visible to the buyer. This page is optional. When a transaction is complete (i.e. when approved, rejected or when it is canceled) our platform sends the variables via the HTTP POST method.</span>
-&nbsp;<br>
+
 <span class="grey-text-13">In the confirmation page, you must capture the data that you want stored in the database. This capture will depend on the programming language used.</span>
-&nbsp;<br>
-&nbsp;<br>
+
 </div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1407,29 +1394,28 @@ Variables sent with the confirmation page</a>
 </tr>
 </table>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
+
 <span class="blue-text-13"><b>Signature validation</b></span>
-&nbsp;<br>
+
 <span class="grey-text-13"> The signature validation allows you to check data integrity, you must generate the signature with the information you'll find on the confirmation page and compare it with the information from the sign parameter.<br>
 To validate the signature on the confirmation page, you should consider:</span>
-&nbsp;<br>
+
 <ol>
 <li class="bullet-box">If the second decimal of the value parameter is zero, e.g. 150.00<br>
 the parameter new_value to generate the signature should only have one decimal, as follows: 150.0</li>
-&nbsp;<br>
+
 <li class="bullet-box">If the second decimal of the value parameter is different from zero, e.g.  150.26<br> 
 the parameter new_value to generate the signature should have two decimals, as follows: 150.26</li>
 <li class="bullet-box">You must obtain the parameters to generate the signature: merchant_id, reference_sale, value, currency and state_pol from your confirmation page, not from your database.</li>
-&nbsp;<br>
+
 <li class="bullet-box">You must store your ApiKey safely.</li>
-&nbsp;<br>
+
 <li class="bullet-box">Outline of the signature:
-&nbsp;<br>
+
 <pre>
 "ApiKey~merchant_id~reference_sale~new_value~currency~state_pol"
 </pre>
-&nbsp;<br>
+
 Examples:
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1438,7 +1424,7 @@ With one decimal</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
+
 <span class="grey-text-13">Parameters obtained from the confirmation page<br>
 merchant_id = 500238<br>
 reference_sale = TestPayU04<br>
@@ -1446,9 +1432,9 @@ value = 150.00<br>
 currency = USD<br>
 state_pol = 6<br>
 sign = 43e44ad9149e23ee4c16ab0646b4c83b</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature is generated in the following way:</span>
-&nbsp;<br>
+
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.0~USD~6) = <b>43e44ad9149e23ee4c16ab0646b4c83b</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -1458,7 +1444,7 @@ With two decimals</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
+
 <span class="grey-text-13">Parameters obtained from the confirmation page:<br>
 merchant_id = 500238<br>
 reference_sale = TestPayU05<br>
@@ -1466,18 +1452,16 @@ value = 150.26<br>
 currency = USD<br>
 state_pol = 4<br>
 sign = 91382296898d3937ed36cd125d696452</span>
-&nbsp;<br>
+
 <span class="grey-text-13">The signature is generated in the following way:</span>
-&nbsp;<br>
+
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU05~150.26~USD~4) = <b>91382296898d3937ed36cd125d696452</b></span>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
+
 <div id="blue-box">
 <b>Note:</b> PayU tries to send the confirmation page to your system 3 times.  After that, if it is unable to receive a HTTP response code 200, you will receive a notification email. 
 </div>
-&nbsp;<br>
-&nbsp;<br>
+
 </div>
 
 </div>

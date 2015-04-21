@@ -19,15 +19,14 @@ title: Introduction
 <div class="payu-section">
 &nbsp;<br>
 &nbsp;<br>
-<div id="three-columns-column1">&nbsp;<br>&nbsp;<br>&nbsp;<br>
+<div class="two-columns-column1">&nbsp;<br>&nbsp;<br>&nbsp;<br>
 <span class="blue-text-16">Este tipo de integración permite que tu cliente pueda seleccionar los artículos que desea adquirir y al momento de realizar la compra sea redirigido a nuestra pasarela de pagos (webcheckout).</span><br>
 <br>
 <span class="grey-text-13">Podrás incluir el logo de tu compañía en esta página. El intercambio de datos se realiza a través del método HTTP POST.
 <br>
 <br>
 Es necesario que el desarrollador de la integración cuente con conocimientos de un lenguaje de programación dinámico tipo PHP, Java, etc.</span></div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/webcheckout.jpg" alt="" border="0" /></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/webcheckout.jpg" alt="" border="0" /></div>
 &nbsp;<br>
 &nbsp;<br>
 </div>
@@ -43,7 +42,7 @@ Es necesario que el desarrollador de la integración cuente con conocimientos de
 <span class="subtitle-page">COMPONENTES DE LA INTEGRACIÓN</span>
 &nbsp;<br>
 &nbsp;<br>
-<div id="three-columns-column1">
+<div class="two-columns-column1">
 <span class="blue-text-16">1. FORMULARIO DE PAGO</span>&nbsp;&nbsp;<span class="grey-text-13">Con este formulario HTML envías la petición de la transacción a nuestra pasarela de pagos incluyendo los datos de la compra, utilizando el método HTTP POST.</span>
 &nbsp;<br>
 <span class="blue-text-16">2. PÁGINA DE RESPUESTA</span>&nbsp;&nbsp;<span class="grey-text-13">Es una página que permite mostrar al pagador el resultado de la transacción. Nuestro sistema dirigirá al pagador a esta página una vez haya realizado la transacción. Los datos con el resultado del pago serán enviados a tu sistema a través de HTTP GET. Esta página se llama con todos los estados de transacciones: aprobada, rechazada, en validación, esperando pago (para pagos en efectivo), etc. <b>Esta página es obligatoria.</b></span>
@@ -51,8 +50,7 @@ Es necesario que el desarrollador de la integración cuente con conocimientos de
 <span class="blue-text-16">3. PÁGINA DE CONFIRMACIÓN</span>&nbsp;&nbsp;<span class="grey-text-13">A través de esta página le confirmamos a tu sistema el resultado final de la transacción. En este punto puedes actualizar tus sistemas de inventarios, pedidos o bases de datos. Esta página nunca será visible al comprador ya que su objetivo es permitir la comunicación entre sistemas. Los datos son enviados por método HTTP POST. Esta página solo se llama para los estados aprobada y rechazada. <b>Esta página no es obligatoria</b>.</span>
 &nbsp;<br>
 </div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/integracion.gif" alt="" border="0" /></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/integracion.gif" alt="" border="0" /></div>
 &nbsp;<br>
 &nbsp;<br>
 </div>
@@ -68,25 +66,20 @@ Es necesario que el desarrollador de la integración cuente con conocimientos de
 <span class="subtitle-page">¿CÓMO FUNCIONA LA INTEGRACIÓN CON EL WEBCHECKOUT?</span>
 &nbsp;<br>
 &nbsp;<br>
-<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">01. </span><span class="grey-text-13">El proceso empieza cuando el comprador entra a tu página WEB, selecciona los productos o servicios que desea adquirir y presiona el botón pagar. Tu sistema debe totalizar el valor de la compra y enviar a nuestro sistema un formulario de pago por método HTTP POST con algunos datos de la compra.</span></div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso1.jpg" alt="" border="0" /></div>
-<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">02. </span><span class="grey-text-13">El pagador es dirigido a nuestro <b>checkout</b>, allí él puede escoger el medio de pago con el que desea realizar la transacción.</span></div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso2.jpg" alt="" border="0" /></div>
-<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">03. </span><span class="grey-text-13">PayU procesa la transacción y muestra el resultado en la <b>página de respuesta</b>.</span></div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso3.jpg" alt="" border="0" /></div>
-<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">04. </span><span class="grey-text-13">PayU redirige al pagador a tu página web (página de respuesta) y envía la información del resultado a tu sistema a través del método HTTP GET.</span></div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso4.jpg" alt="" border="0" /></div>
-<div id="three-columns-column1"><span style="font-size: 25px; color: #009cdd; font-weight: bold;">05. </span><span class="grey-text-13">El sistema te notificara el estado final de la transacción a través de una <b>página de confirmación</b> por el método HTTP POST, adicionalmente el sistema te enviará un correo electrónico de confirmación y uno al pagador.</span></div>
-<div id="three-columns-column2">&nbsp;</div>
-<div id="three-columns-column3"><p align="center"><img src="/images/webcheckout/como-funciona-paso5.jpg" alt="" border="0" /></div>
+<div class="two-columns-column1"><span class="number">01. </span><span class="grey-text-13">El proceso empieza cuando el comprador entra a tu página WEB, selecciona los productos o servicios que desea adquirir y presiona el botón pagar. Tu sistema debe totalizar el valor de la compra y enviar a nuestro sistema un formulario de pago por método HTTP POST con algunos datos de la compra.</span></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/como-funciona-paso1.jpg" alt="" border="0" /></div>
+<div class="two-columns-column1"><span class="number">02. </span><span class="grey-text-13">El pagador es dirigido a nuestro <b>checkout</b>, allí él puede escoger el medio de pago con el que desea realizar la transacción.</span></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/como-funciona-paso2.jpg" alt="" border="0" /></div>
+<div class="two-columns-column1"><span class="number">03. </span><span class="grey-text-13">PayU procesa la transacción y muestra el resultado en la <b>página de respuesta</b>.</span></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/como-funciona-paso3.jpg" alt="" border="0" /></div>
+<div class="two-columns-column1"><span class="number">04. </span><span class="grey-text-13">PayU redirige al pagador a tu página web (página de respuesta) y envía la información del resultado a tu sistema a través del método HTTP GET.</span></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/como-funciona-paso4.jpg" alt="" border="0" /></div>
+<div class="two-columns-column1"><span class="number">05. </span><span class="grey-text-13">El sistema te notificara el estado final de la transacción a través de una <b>página de confirmación</b> por el método HTTP POST, adicionalmente el sistema te enviará un correo electrónico de confirmación y uno al pagador.</span></div>
+<div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/como-funciona-paso5.jpg" alt="" border="0" /></div>
 &nbsp;<br>
 &nbsp;<br>
-<div id="grey-box">
-<div id="info-box">Tener en cuenta:</div>
+<div class="grey-box">
+<div class="info-box">Tener en cuenta:</div>
 <ol>
 <li class="bullet-box">La codificación de tu página debe ser UTF-8.</li>
 <li class="bullet-box">No debes ingresar nuestro Web Checkout dentro de un iframe.</li>
