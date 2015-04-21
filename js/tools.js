@@ -11,7 +11,7 @@ window.onload = function() {
 			}
 
 		},
-		offset: (  69 ) * -1
+		offset: 0
 	});
 
 }
