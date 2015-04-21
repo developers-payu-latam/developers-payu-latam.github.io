@@ -415,17 +415,12 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 </tr>
 </table>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
 <span class="blue-text-13"><b>Consideraciones sobre las Variables</b></span>
 <ol>
 <li class="bullet-box">El <b>tax</b> es un impuesto al valor agregado que pueden utilizar algunos países y el <b>taxReturnBase</b> es el valor base sobre el cual se calcula el IVA. En caso que tu producto no aplique este impuesto simplemente ambas variables tomaran el valor 0 <b>(tax=0, taxReturnBase=0)</b>. Por el contrario, si algunos elementos tienen el impuesto y para otros no se aplica, tendrás que realizar el siguiente cálculo para saber cómo enviar los valores a la plataforma de pagos.</li>
-&nbsp;<br>
 <li class="bullet-box">Si no se envía el valor de <b>tax</b> el sistema lo calculará automáticamente como 16%.</li>
-&nbsp;<br>
 <li class="bullet-box">Para comercios registrados en Colombia que pertenecen al régimen común, si no envías el valor de <b>tax</b>, el sistema calculará automáticamente el valor. Si tu comercio pertenece al régimen simplificado y no envías el valor del <b>tax</b>, el sistema asignará el valor como Cero (0).<br>
 <span class="blue-text-13">Nota: El monto de tax + taxReturnBase no puede ser mayor que el Valor Total</span>
-&nbsp;<br>
 <table cellpadding="4" cellspacing="2" border="1" bordercolor="#bebebe">
 <tr bgcolor="#696a6c">
 <td><span style="color: #fff; font-weight: bold;">Producto</span></td>
@@ -459,15 +454,11 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 </tr>
 </table>
 </li>
-&nbsp;<br>
 <li class="bullet-box">El <b>signature</b> es una forma única de validar los pagos realizados a través de la plataforma, garantizando su autenticidad. Consiste en una cadena de caracteres a la cual se le aplica algoritmo MD5 o SHA para encriptarla. La cadena está compuesta de la siguiente forma:
-&nbsp;<br>
 <pre>
 “ApiKey~merchantId~referenceCode~amount~currency”.
 </pre>
-&nbsp;<br>
 <span class="grey-text-13">Por ejemplo:</span>
-&nbsp;<br>
 <pre>
 merchantId: 500238
 ApiKey: 6u39nqhq8ftd0hlvnjfs66eh8c
@@ -477,30 +468,22 @@ currency: USD
 accountId: 500537
 buyerEmail: test@test.com
 </pre>
-&nbsp;<br>
 <span class="grey-text-13">La firma sería:</span>
-&nbsp;<br>
 <pre>
 "6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"
 </pre>
-&nbsp;<br>
 <span class="grey-text-13">A esta firma se le aplica el <b>MD5</b>:</span>
-&nbsp;<br>
 <pre>
 "be2f083cb3391c84fdf5fd6176801278"
 </pre>
 </li>
 </ol>
-&nbsp;<br>
-&nbsp;<br>
 </div>
-
+&nbsp;<br>
+&nbsp;<br>
 <div id="pagina-respuesta" class="payu-fragment">
-&nbsp;<br>
 <span class="subtitle-page">PÁGINA DE RESPUESTA</span>
-&nbsp;<br>
 <span class="grey-text-13">Al finalizar una transacción nuestro sistema enviará al pagador a la página de respuesta. A esta página nuestro sistema envía información sobre el estado de una transacción a través del método HTTP GET.</span>
-&nbsp;<br>
 <span class="grey-text-13">El siguiente es un ejemplo en <b>PHP</b> de como puedes integrar la página de respuesta</span>
 <pre style="height:350px; overflow: auto;">
 &lt;?php
@@ -602,8 +585,6 @@ else
 ?&gt;
 </pre>
 <span class="blue-text-13">Nota: En el ejemplo anterior reemplaza el código <b>APIKEY</b> por el que encontrarás en tu Módulo Administrativo</span>
-&nbsp;<br>
-&nbsp;<br>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
 <a href="">VARIABLES QUE SE ENVÍAN A LA PÁGINA DE RESPUESTA</a>
@@ -951,29 +932,20 @@ _</i></i>FEE_RETURN_BASE</td>
 </tr>
 </table>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
 <span class="blue-text-13"><b>Validación de la firma</b></span>
-&nbsp;<br>
 <span class="grey-text-13">La validación de la firma te permite comprobar la integridad de los datos, deberás generar la firma con los datos que encontrarás en la página de respuesta y compararla con la información del parámetro signature.<br>
 Para validar la firma en la página de respuesta debes tener en cuenta:</span>
-&nbsp;<br>
 <ol>
 <li class="bullet-box">Para obtener el nuevo valor new_value se debe aproximar TX_VALUE siempre a un decimal con el método de redondeo Round half to even:<br>
 * Si el primer decimal es par y el segundo es 5, se redondeará hacia el menor valor.<br>
 * Si el primer decimal es impar y el segundo es 5, se redondeará hacia el valor mayor.<br>
 * En cualquier otro caso se redondeará al decimal más cercano.</li>
-&nbsp;<br>
 <li class="bullet-box">Los parámetros para generar la firma merchantId, referenceCode, TX_VALUE, currency y transactionState debes obtenerlos de la página de respuesta, no de tu base de datos.</li>
-&nbsp;<br>
 <li class="bullet-box">Debes tener almacenada tu ApiKey de forma segura.</li>
-&nbsp;<br>
 <li class="bullet-box">Esquema de la firma:
-&nbsp;<br>
 <pre>
 "ApiKey~merchantId~referenceCode~new_value~currency~transactionState"
 </pre>
-&nbsp;<br>
 Ejemplos:
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -981,7 +953,6 @@ Ejemplos:
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Tu apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
 <span class="grey-text-13">Parámetros que se obtienen en la página de respuesta:<br>
 merchantId = 500238<br>
 referenceCode = TestPayU04<br>
@@ -989,9 +960,7 @@ TX_VALUE = 150.25<br>
 currency = USD<br>
 transactionState = 6<br>
 signature = 8eebb5af1f32f7a9f930a1038810b854</span>
-&nbsp;<br>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
-&nbsp;<br>
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.2~USD~6) = <b>8eebb5af1f32f7a9f930a1038810b854</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -1000,7 +969,6 @@ signature = 8eebb5af1f32f7a9f930a1038810b854</span>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Tu apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
 <span class="grey-text-13">Parámetros que se obtienen en la página de respuesta:
 merchantId = 500238<br>
 referenceCode = TestPayU05<br>
@@ -1008,9 +976,7 @@ TX_VALUE = 150.35<br>
 currency = USD<br>
 transactionState = 6<br>
 signature = ce2285970f17bb6ce049b56e6b41a255</span>
-&nbsp;<br>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
-&nbsp;<br>
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.4~USD~6) = <b>ce2285970f17bb6ce049b56e6b41a255</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -1019,7 +985,6 @@ signature = ce2285970f17bb6ce049b56e6b41a255</span>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Tu apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
 <span class="grey-text-13">Parámetros que se obtienen en la página de respuesta:
 merchantId = 500238<br>
 referenceCode = TestPayU05<br>
@@ -1027,25 +992,17 @@ TX_VALUE = 150.34<br>
 currency = USD<br>
 transactionState = 6<br>
 signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
-&nbsp;<br>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
-&nbsp;<br>
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.3~USD~6) = <b>01899cb431dd51623f5c94a62b1d2dc7</b></span>
 </div></div>
 </li>
-&nbsp;<br>
-&nbsp;<br>
 </div>
-
+&nbsp;<br>
+&nbsp;<br>
 <div id="pagina-confirmacion" class="payu-fragment">
-&nbsp;<br>
 <span class="subtitle-page">PÁGINA DE CONFIRMACIÓN</span>
-&nbsp;<br>
 <span class="grey-text-13">La página de confirmación te permite actualizar las bases de datos de tu sistema;  por esto, no debe incluir código HTML ya que nunca será visible al comprador. Esta página es opcional; cuando una transacción finaliza, es decir cuando se aprueba, se rechaza o cuando es cancelada, nuestra plataforma envía las variables por medio del método HTTP POST.</span>
-&nbsp;<br>
 <span class="grey-text-13">En la página de confirmación, debes realizar la captura de los datos que se deseen guardar en la base de datos. Esta captura dependerá del lenguaje de programación utilizado.</span>
-&nbsp;<br>
-&nbsp;<br>
 </div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1404,29 +1361,20 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 </tr>
 </table>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
 <span class="blue-text-13"><b>Validación de la firma</b></span>
-&nbsp;<br>
 <span class="grey-text-13">La validación de la firma te permite comprobar la integridad de los datos, deberás generar la firma con los datos que encontrarás en la página de confirmación y compararla con la información del parámetro sign.<br>
 Para validar la firma en la página de confirmación debes tener en cuenta:</span>
-&nbsp;<br>
 <ol>
 <li class="bullet-box">Si el segundo decimal del parámetro value es cero, ejemplo: 150,00<br>
 El nuevo valor new_value para generar la firma debe ir con sólo un decimal así: 150,0.</li>
-&nbsp;<br>
 <li class="bullet-box">Si el segundo decimal del parámetro value es diferente a cero, ejemplo: 150,26<br> 
 El nuevo valor new_value para generar la firma debe ir con los dos decimales así: 150,26.</li>
 <li class="bullet-box">Los parámetros para generar la firma merchant_id, reference_sale, value, currency y state_pol debes obtenerlos de la página de confirmación, no de tu base de datos.</li>
-&nbsp;<br>
 <li class="bullet-box">Debes tener almacenada tu ApiKey de forma segura.</li>
-&nbsp;<br>
 <li class="bullet-box">Esquema de la firma:
-&nbsp;<br>
 <pre>
 "ApiKey~merchant_id~reference_sale~new_value~currency~state_pol"
 </pre>
-&nbsp;<br>
 Ejemplos:
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1434,7 +1382,6 @@ Ejemplos:
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Tu apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
 <span class="grey-text-13">Parámetros que se obtienen en la página de confirmación:<br>
 merchant_id = 500238<br>
 reference_sale = TestPayU04<br>
@@ -1442,9 +1389,7 @@ value = 150.00<br>
 currency = USD<br>
 state_pol = 6<br>
 sign = 43e44ad9149e23ee4c16ab0646b4c83b</span>
-&nbsp;<br>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
-&nbsp;<br>
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.0~USD~6) = <b>43e44ad9149e23ee4c16ab0646b4c83b</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -1453,7 +1398,6 @@ sign = 43e44ad9149e23ee4c16ab0646b4c83b</span>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <span class="grey-text-13">Tu apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
-&nbsp;<br>
 <span class="grey-text-13">Parámetros que se obtienen en la página de confirmación:<br>
 merchant_id = 500238<br>
 reference_sale = TestPayU05<br>
@@ -1461,18 +1405,12 @@ value = 150.26<br>
 currency = USD<br>
 state_pol = 4<br>
 sign = 91382296898d3937ed36cd125d696452</span>
-&nbsp;<br>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
-&nbsp;<br>
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU05~150.26~USD~4) = <b>91382296898d3937ed36cd125d696452</b></span>
 </div></div>
-&nbsp;<br>
-&nbsp;<br>
 <div id="blue-box">
 <b>Tener en cuenta:</b> PayU realiza tres intentos de enviar la página de confirmación a tu sistema. Si después de estos intentos no se recibe un código de respuesta HTTP 200, el sistema envía un email de alerta.
 </div>
-&nbsp;<br>
-&nbsp;<br>
 </div>
 
 </div>
