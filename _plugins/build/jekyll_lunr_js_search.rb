@@ -2,7 +2,7 @@ require 'fileutils'
 require 'net/http'
 require 'json'
 require 'uri'
-#require 'v8'
+require 'v8'
 
 module Jekyll
   module LunrJsSearch
@@ -142,7 +142,6 @@ module Jekyll
     end
   end
 end
-=begin
 require "v8"
 require "json"
 
@@ -155,7 +154,6 @@ class V8::Object
     JSON.parse(to_json, :max_nesting => 150)
   end
 end
-=end
 require 'nokogiri'
 
 module Jekyll
