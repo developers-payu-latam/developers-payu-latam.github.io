@@ -38,10 +38,10 @@ Como cualquier integración API, podrás personalizar tu checkout de acuerdo a l
 <div class="payu-section">
 <div class="main-text col s12 m12 l12"><h3>Funcionalidades disponibles para la integración SDK</h3></div>
       <div class="col s1 m1 l1">&nbsp;</div>
-<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/payments.html"><img src="/images/icon/payment-icon.png" alt="Pagos" border="0"></a></div><h4>Pagos</h4></div>
-<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/queries.html"><img src="/images/icon/query-icon.png" alt="Consultas" border="0"></a></div><h4>Consultas</h4></div>
-<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/recurring_payments.html"><img src="/images/icon/recurring-icon.png" alt="Pagos recurrentes" border="0"></a></div><h4>Pagos recurrentes</h4></h4></div>
-<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/tokenization.html"><img src="/images/icon/token-icon.png" alt="Tokenización" border="0"></a></div><h4>Tokenización</h4></div>
+<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/sdk/payments.html"><img src="/images/icon/payment-icon.png" alt="Pagos" border="0"></a></div><h4>Pagos</h4></div>
+<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/sdk/queries.html"><img src="/images/icon/query-icon.png" alt="Consultas" border="0"></a></div><h4>Consultas</h4></div>
+<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/sdk/recurring_payments.html"><img src="/images/icon/recurring-icon.png" alt="Pagos recurrentes" border="0"></a></div><h4>Pagos recurrentes</h4></h4></div>
+<div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/sdk/tokenization.html"><img src="/images/icon/token-icon.png" alt="Tokenización" border="0"></a></div><h4>Tokenización</h4></div>
 <div class="card col s6 m2 l2"><div class="icon-circle"><a href="{{ site.baseurl }}/es/sdk/refunds.html"><img src="/images/icon/refunds-icon.png" alt="Reembolsos" border="0"></a></div><h4>Reembolsos</h4></div>
      <div class="col s1 m1 l1">&nbsp;</div>
 </div>
@@ -73,7 +73,7 @@ Como cualquier integración API, podrás personalizar tu checkout de acuerdo a l
 </ol>
 &nbsp;<br>
 <a href="{{ site.baseurl }}/sdk/java/payu-java-sdk-1.1.3.zip" class="payu-btn payu-btn-blue" >Descargar SDK Java 1.1.3</a><br/>
-<p>Antes de realizar cualquier operación con el SDK de Pay<span style="color: #009cdd;">U</span>, se deben asignar ciertos valores iniciales a la clase Pay<span style="color: #009cdd;">U</span>, los cuales son comunes para todas las operaciones soportadas por el SDK y se configuran dependiendo del comercio. A continuación se presenta un ejemplo de la configuración de esta clase y posteriormente se relacionan los valores en una tabla:</p>
+<p>Antes de realizar cualquier operación con el SDK, se deben asignar ciertos valores iniciales a la clase PayU, los cuales son comunes para todas las operaciones soportadas por el SDK y se configuran dependiendo del comercio. A continuación se presenta un ejemplo de la configuración de esta clase y posteriormente se relacionan los valores en una tabla:</p>
 <div class="Table1">
 <table class="table-d" >
 
@@ -150,7 +150,7 @@ Como cualquier integración API, podrás personalizar tu checkout de acuerdo a l
 <span class="string">PayU.paymentsUrl</span> = "https://api.payulatam.com/payments-api/"; //Incluirlo únicamente si desea probar en un servidor de pagos específico, e indicar la ruta del mismo.
 <span class="string">PayU.reportsUrl</span> = "https://api.payulatam.com/reports-api/"; //Incluirlo únicamente si desea probar en un servidor de reportes específico, e indicar la ruta del mismo.</code></pre>
 &nbsp;<br>
-Para la ejecución de cada una de las operaciones provistas por el SDK de Pay<span style="color: #009cdd;">U</span>, se debe enviar como argumento un Mapa de parámetros al método correspondiente, que contiene toda la información de la transacción a procesar.
+Para la ejecución de cada una de las operaciones provistas por el SDK de PayU, se debe enviar como argumento un Mapa de parámetros al método correspondiente, que contiene toda la información de la transacción a procesar.
 <pre><code><span class="string">Map</span>&lt;String, String&gt;<strong> </strong> <span class="string">parameters</span> = new HashMap &lt;String, String&gt;<strong> </strong>();
 
 <span class="string">parameters.put</span>(PayU.PARAMETERS.TRANSACTION_ID, transactionId);
@@ -265,14 +265,14 @@ Environment::setSubscriptionsCustomUrl("https://stg.api.payulatam.com/payments-a
 <div id="blue-box">
 <div id="info-box">Tener en cuenta:</div>
 <ol>
-<li>Debes tener una cuenta activa en PayU.</li>
-<li>Debes instalar el certificado <b>SSL</b> válido en tu servidor y tu sitio debe estar en capacidad de realizar conexiones <b>SSL</b> por lo cual la máquina virtual debe contar con las extensiones de seguridad apropiadas.</li>
-<li>Debes contar con lenguajes de servidor o CGI tales como <b>Java</b>, <b>C#</b>, <b>VB</b>, <b>PHP</b>, etc.</li>
-<li>Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (<b>API Key</b> y <b>API Login</b>).</li>
-<li>La codificación para los mensajes debe ser <b>UTF-8</b>.</li>
-<li>Las fechas con hora tienen el formato <b>yyyy-MM-ddTHH:mm:ss</b>, el formato de la hora es 24 horas. Ej. <b>2015-08-22T21:35:12</b>.</li>
-<li>En condiciones normales la conexión garantiza tiempos de respuesta de 3 segundos en promedio, si hay una situación anormal el tiempo máximo de respuesta será de 1 minuto. Es altamente recomendable que configures los “<b>timeouts</b>” cuando te conectes con PayU.</li>
-<li>Es importante <b>validar</b> la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.</li>
+<li> Debes tener una cuenta activa en PayU.</li>
+<li> Debes instalar el certificado <b>SSL</b> válido en tu servidor y tu sitio debe estar en capacidad de realizar conexiones <b>SSL</b> por lo cual la máquina virtual debe contar con las extensiones de seguridad apropiadas.</li>
+<li> Debes contar con lenguajes de servidor o CGI tales como <b>Java</b>, <b>C#</b>, <b>VB</b>, <b>PHP</b>, etc.</li>
+<li> Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (<b>API Key</b> y <b>API Login</b>).</li>
+<li> La codificación para los mensajes debe ser <b>UTF-8</b>.</li>
+<li> Las fechas con hora tienen el formato <b>yyyy-MM-ddTHH:mm:ss</b>, el formato de la hora es 24 horas. Ej. <b>2015-08-22T21:35:12</b>.</li>
+<li> En condiciones normales la conexión garantiza tiempos de respuesta de 3 segundos en promedio, si hay una situación anormal el tiempo máximo de respuesta será de 1 minuto. Es altamente recomendable que configures los “<b>timeouts</b>” cuando te conectes con PayU.</li>
+<li> Es importante <b>validar</b> la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.</li>
 </ol>
 </div>
 &nbsp;<br>
