@@ -18,8 +18,8 @@ subcategory: intro
 <p class="col s12 m6 l6">&nbsp;<br>&nbsp;<br>&nbsp;<br>
 <span class="blue-text-16">PayU ofrece una API que le permite a tu comercio procesar transacciones desde diferentes tipos de aplicaciones (web, móvil, IVR, entre otras).</span><br>
 <br>
-<span class="grey-text-13">Tendrás disponibles diferentes medios de pago dependiendo del país, entre los que se encuentran tarjetas de crédito, transferencias bancarias o pagos en efectivo.<br><br>
-Podrás personalizar el checkout de acuerdo a las necesidades de tu negocio y el cliente permanecerá en tu sitio web durante la compra.</span></p>
+<span class="grey-text-13">Dependiendo del país donde registres tu comercio, tendrás acceso a diferentes medios de pago, incluyendo tarjetas de crédito, transferencias bancarias y pagos en efectivo.<br><br>
+Podrás personalizar el checkout de acuerdo a las necesidades de tu negocio y lo mejor de todo, tu cliente permanecerá en tu sitio web durante la compra.</span></p>
 <img class="col s12 m6 l6" src="/images/api/api1-es.png" alt="API checkout" border="0" />
 </div>
 &nbsp;<br>
@@ -29,7 +29,7 @@ Podrás personalizar el checkout de acuerdo a las necesidades de tu negocio y el
 <div class="container">
 <div class="row">
 <div class="payu-section">
-<div class="main-text col s12 m12 l12"><h3>Funcionalidades disponibles para la integración con la API PayU:</h3></div>
+<div class="main-text col s12 m12 l12"><h3>Funcionalidades disponibles para la integración con la API PayU</h3></div>
 <div class="card col s6 m3 l3"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/payments.html"><img src="/images/icon/payment-icon.png" alt="Integración API" border="0"></a></div><h4>Pagos</h4></div>
 <div class="card col s6 m3 l3"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/queries.html"><img src="/images/icon/query-icon.png" alt="Integración API" border="0"></a></div><h4>Consultas</h4></div>
 <div class="card col s6 m3 l3"><div class="icon-circle"><a href="{{ site.baseurl }}/es/api/recurring_payments.html"><img src="/images/icon/recurring-icon.png" alt="Integración API" border="0"></a></div><h4>Pagos recurrentes</h4></div>
@@ -43,7 +43,7 @@ Podrás personalizar el checkout de acuerdo a las necesidades de tu negocio y el
 <div class="container">
 <div class="row">
 <h3>Configuraciones iniciales</h3>
-<p>PayU te permite realizar la integración con nuestra pasarela transaccional y las herramientas disponibles de pago y consultas desarrollando un cliente HTTPS para transferir la información de las transacciones a través de SSL. Es de suma importancia que no se almacenen los datos sensibles de la transacciones como el número de tarjeta de crédito, fecha de expiración, etc. Se recomienda seguir las práctias de PCI DSS (Payment Card Industry Data Security Standard).
+<p>Con PayU puedes realizar integraciones usando nuestra pasarela transaccional, la cual te de acceso a herramientas de pago y consultas, desarrollando un cliente HTTPS para transferir la información de las transacciones a través de SSL. Es dimportante que no se almacenen los datos sensibles de la transacciones como el número de tarjeta de crédito, fecha de expiración, etc. Se recomienda seguir las práctias de PCI DSS (Payment Card Industry Data Security Standard).
 &nbsp;<br>
 La transmisión de las transacciones es asegurada a través de una conexión TLS (Transport Layer Security) de 256 bits desde el servidor del comercio hasta nuestro Gateway de pagos. El intercambio de mensajes se realiza a través de cadenas XML o JSON, las operaciones se distinguen a través de un comando que se envía en la petición. Un ejemplo de una petición en XML y una en JSON se pueden ver en los siguientes listados:</p>
 
@@ -93,7 +93,7 @@ Content-Length: length
 </div></div>
 &nbsp;<br>
 &nbsp;<br>
-<p>Puedes definir en la petición que lenguajes deseas usar a través de las cabeceras HTTP
+<p>Puedes definir en la petición qué lenguajes deseas usar a través de las cabeceras HTTP
 <span class="highlight-txt">Content-type</span> y <span class="highlight-txt">Accept</span>. Se pueden usar todas las combinaciones posibles:</p>
 &nbsp;<br>
 <table class="table-d" >
@@ -124,14 +124,14 @@ Content-Length: length
 <div id="blue-box">
 <div id="info-box">Tener en cuenta:</div>
 <ol>
-<li>Debes tener una cuenta activa en PayU.</li>
-<li>Debes instalar el certificado <b>SSL</b> válido en tu servidor y tu sitio debe estar en capacidad de realizar conexiones <b>SSL</b> por lo cual la máquina virtual debe contar con las extensiones de seguridad apropiadas.</li>
-<li>Debes contar con lenguajes de servidor o CGI tales como <b>Java</b>, <b>C#</b>, <b>VB</b>, <b>PHP</b>, etc.</li>
-<li>Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (<b>API Key</b> y <b>API Login</b>).</li>
-<li>La codificación para los mensajes debe ser <b>UTF-8</b>.</li>
-<li>Las fechas con hora tienen el formato <b>yyyy-MM-ddTHH:mm:ss</b>, el formato de la hora es 24 horas. Ej. <b>2015-08-22T21:35:12</b>.</li>
-<li>En condiciones normales la conexión garantiza tiempos de respuesta de 3 segundos en promedio, si hay una situación anormal el tiempo máximo de respuesta será de 1 minuto. Es altamente recomendable que configures los “<b>timeouts</b>” cuando te conectes con PayU.</li>
-<li>Es importante <b>validar</b> la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.</li>
+<li> Debes tener una cuenta activa en PayU.</li>
+<li> Debes instalar el certificado <b>SSL</b> válido en tu servidor y tu sitio debe estar en capacidad de realizar conexiones <b>SSL</b> por lo cual la máquina virtual debe contar con las extensiones de seguridad apropiadas.</li>
+<li> Debes contar con lenguajes de servidor o CGI tales como <b>Java</b>, <b>C#</b>, <b>VB</b>, <b>PHP</b>, etc.</li>
+<li> Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (<b>API Key</b> y <b>API Login</b>).</li>
+<li> La codificación para los mensajes debe ser <b>UTF-8</b>.</li>
+<li> Las fechas con hora deben seguir el formato <b>yyyy-MM-ddTHH:mm:ss</b>, el formato de la hora es 24 horas. Ej. <b>2015-08-22T21:35:12</b>.</li>
+<li> En condiciones normales la conexión garantiza tiempos de respuesta de 3 segundos en promedio, si hay una situación anormal, el tiempo máximo de respuesta será de 1 minuto. Es altamente recomendable que configures los “<b>timeouts</b>” cuando te conectes con PayU.</li>
+<li> Es importante <b>validar</b> la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.</li>
 </ol>
 </div>
 </div>
