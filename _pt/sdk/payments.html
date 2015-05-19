@@ -2715,16 +2715,18 @@ foreach ($banks as $bank) {
 <span class="grey-text-13"><b>2</b>. A lista obtida deve ser mostrada ao pagador da seguinte maneira:</span><br>
 <p align="center"><img src="/images/api/pse-1-pt.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>3</b>. Abrir uma lista, onde o pagador escolha se é uma “pessoa física” ou uma “pessoa jurídica”.
+<span class="grey-text-13"><b>3</b>. Abrir uma lista, onde o pagador escolha se é uma “pessoa física” ou uma “pessoa jurídica”.<br/>
 
-<span class="highlight-txt2">Para Java:</span> deve ser enviado no parâmetro <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> com o valor <span class="highlight-txt">PersonType.NATURAL.toString()</span> o <span class="highlight-txt">PersonType.LEGAL.toString()</span>, dependendo da escolha do pagador.<br>
+<span class="highlight-txt2">Para Java:</span> deve ser enviado no parâmetro <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> com o valor <span class="highlight-txt">PersonType.NATURAL.toString()</span> o <span class="highlight-txt">PersonType.LEGAL.toString()</span>, dependendo da escolha do pagador.
+<br>
 
 <span class="highlight-txt2">Para PHP:</span> deve ser enviado no parâmetro <span class="highlight-txt2">PayUParameters::PAYER_PERSON_TYPE</span> com o valor <br><span class="highlight-txt">N</span> ou <span class="highlight-txt">J</span>, dependendo da escolha do pagador.
 </span><br>
 <p align="center"><img src="/images/api/pse-2-pt.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>4</b>. Abrir outra lista no formulário, que permita ao pagador escolher o tipo de documento, o ISO do documento escolhido deve ser enviado no parâmetro:
+<span class="grey-text-13"><b>4</b>. Abrir outra lista no formulário, que permita ao pagador escolher o tipo de documento, o ISO do documento escolhido deve ser enviado no parâmetro:<br/>
 Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
+<br/>
 para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
 <br>
 Os códigos ISO aceitos são:</span><br>
@@ -2774,9 +2776,10 @@ Os códigos ISO aceitos são:</span><br>
 &nbsp;<br>
 <p align="center"><img src="/images/api/pse-3-pt.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>5</b>. Por último, deve ser capturado o número de identificação do pagador e enviá-lo no parâmetro:
-Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
-Para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
+<span class="grey-text-13"><b>5</b>. Por último, deve ser capturado o número de identificação do pagador e enviá-lo no parâmetro:<br/>
+Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DNI</span>
+<br/>
+Para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DNI</span>
 <br>
 
 A seguir, é relacionado o exemplo do pedido, enviando toda a informação previamente capturada:</span><br>
@@ -2939,7 +2942,7 @@ if($response){
 </div>
 &nbsp;<br>
 <span class="grey-text-13">Deve ser redirecionado o pagador para o URL retornado pelo PayU no parâmetro BANK_URL</span>
-&nbsp;<br>
+&nbsp;<br><br>
 <span class="grey-text-13"><b>6</b>. Quando o pagador finalizar a transação no escritório virtual de seu banco, será direcionado para a página de resposta configurada no módulo administrativo e deve ser mostrada a seguinte informação: <br>
 Os campos com o caractere "$" no início, são parâmetros enviados pelo GET e que devem capturar</span>
 &nbsp;<br>

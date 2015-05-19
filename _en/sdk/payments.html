@@ -2719,16 +2719,17 @@ foreach ($banks as $bank) {
 <span class="grey-text-13"><b>2</b>.	The obtained list should be shown to the payer as follows:</span><br>
 <p align="center"><img src="/images/api/pse-1-en.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>3</b>.	You must display a list where the payer chooses whether he is a "natural person" or a "legal person".
+<span class="grey-text-13"><b>3</b>.	You must display a list where the payer chooses whether he is a "natural person" or a "legal person".<br/>
 
-<span class="highlight-txt2">For Java:</span> must be sent in the <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> parameter with the <span class="highlight-txt">PersonType.NATURAL.toString()</span> or <span class="highlight-txt">PersonType.LEGAL.toString()</span>, depending on the payer’s choice.<br>
-
+<span class="highlight-txt2">For Java:</span> must be sent in the <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> parameter with the <span class="highlight-txt">PersonType.NATURAL.toString()</span> or <span class="highlight-txt">PersonType.LEGAL.toString()</span>, depending on the payer’s choice.
+<br>
 <span class="highlight-txt2">For PHP:</span> must be sent in the <span class="highlight-txt2">PayUParameters::PAYER_PERSON_TYPE</span> parameter with the <br><span class="highlight-txt">N</span> or <span class="highlight-txt">J</span>, depending on the payer’s choice.
 </span><br>
 <p align="center"><img src="/images/api/pse-2-en.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>4</b>. You should display another list on the form that allows the payer to choose the type of document, the ISO of the chosen document should be submitted in the parameter: 
+<span class="grey-text-13"><b>4</b>. You should display another list on the form that allows the payer to choose the type of document, the ISO of the chosen document should be submitted in the parameter: <br/>
 For Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
+<br/>
 for PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
 <br>
 The supported ISO codes are: </span><br>
@@ -2778,9 +2779,10 @@ The supported ISO codes are: </span><br>
 &nbsp;<br>
 <p align="center"><img src="/images/api/pse-3-en.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>5</b>. Finally, we must capture the payer’s identification number and send it in the parameter:
-For Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
-For PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
+<span class="grey-text-13"><b>5</b>. Finally, we must capture the payer’s identification number and send it in the parameter:<br/>
+For Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DNI</span>
+<br/>
+For PHP: <span class="highlight-txt2">PayUParameters::PAYER_DNI</span>
 <br>
 Below we show the  example of the petition, sending all previously captured information:</span><br>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
@@ -2943,6 +2945,7 @@ if($response){
 &nbsp;<br>
 <span class="grey-text-13">The payer should be redirected to the URL that PayU returns in the BANK_URL parameter.</span>
 &nbsp;<br>
+<br>
 <span class="grey-text-13"><b>6</b>. When the transaction in the virtual office of his bank is complete, the payer will be directed to the response page that is configured in the administrative module and it should show the following information:<br>
 Fields with a "$" character at the beginning are parameters that are sent by GET and should be captured.</span>
 &nbsp;<br>

@@ -2720,18 +2720,19 @@ foreach ($banks as $bank) {
 </div>
 &nbsp;<br>
 <span class="grey-text-13"><b>2</b>. El listado obtenido, se debe mostrar al pagador de la siguiente manera:</span><br>
-<p align="center"><img src="/images/api/pse-2.jpg" border="0"></p>
+<p align="center"><img src="/images/api/pse-1.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>3</b>. Se debe desplegar una lista, Se debe desplegar una lista, donde el pagador escoja si es una “persona natural” o una “persona jurídica”.
-
-<span class="highlight-txt2">Para Java:</span> debe ser enviado en el parámetro <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> con el valor <span class="highlight-txt">PersonType.NATURAL.toString()</span> o <span class="highlight-txt">PersonType.LEGAL.toString()</span>, dependiendo de la selección del pagador.<br>
-
+<span class="grey-text-13"><b>3</b>. Se debe desplegar una lista, donde el pagador escoja si es una “persona natural” o una “persona jurídica”.
+<br/>
+<span class="highlight-txt2">Para Java:</span> debe ser enviado en el parámetro <span class="highlight-txt2">PayU.PARAMETERS.PAYER_PERSON_TYPE</span> con el valor <span class="highlight-txt">PersonType.NATURAL.toString()</span> o <span class="highlight-txt">PersonType.LEGAL.toString()</span>, dependiendo de la selección del pagador.
+<br/>
 <span class="highlight-txt2">Para PHP:</span> debe ser enviado en el parámetro <span class="highlight-txt2">PayUParameters::PAYER_PERSON_TYPE</span> con el valor <br><span class="highlight-txt">N</span> o <span class="highlight-txt">J</span>, dependiendo de la selección del pagador.
 </span><br>
-<p align="center"><img src="/images/api/pse-3.jpg" border="0"></p>
+<p align="center"><img src="/images/api/pse-2.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>4</b>. Se debe desplegar otra lista en el formulario, que le permita al pagador escoger el tipo de documento, el ISO del documento escogido se debe enviar en el parámetro:
+<span class="grey-text-13"><b>4</b>. Se debe desplegar otra lista en el formulario, que le permita al pagador escoger el tipo de documento, el ISO del documento escogido se debe enviar en el parámetro:<br/>
 Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
+<br/>
 para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
 <br>
 Los códigos ISO admitidos son:</span><br>
@@ -2779,11 +2780,12 @@ Los códigos ISO admitidos son:</span><br>
   </tr>
 </table></div>
 &nbsp;<br>
-<p align="center"><img src="/images/api/pse-4.jpg" border="0"></p>
+<p align="center"><img src="/images/api/pse-3.jpg" border="0"></p>
 &nbsp;<br>
-<span class="grey-text-13"><b>5</b>. Por último, se debe capturar el número de identificación del pagador y enviarlo en el parámetro:
-Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DOCUMENT_TYPE</span>
-Para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DOCUMENT_TYPE</span>
+<span class="grey-text-13"><b>5</b>. Por último, se debe capturar el número de identificación del pagador y enviarlo en el parámetro:<br/>
+Para Java: <span class="highlight-txt2">PayU.PARAMETERS.PAYER_DNI</span>
+<br/>
+Para PHP: <span class="highlight-txt2">PayUParameters::PAYER_DNI</span>
 <br>
 A continuación se relaciona el ejemplo de la petición, enviando toda la información previamente capturada:</span><br>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
@@ -2946,6 +2948,7 @@ if($response){
 &nbsp;<br>
 <span class="grey-text-13">Se debe redireccionar al pagador a la url que retorna PayU en el parámetro BANK_URL</span>
 &nbsp;<br>
+<br>
 <span class="grey-text-13"><b>6</b>. Cuando el pagador finalice la transacción en la oficina virtual de su banco, será direccionado a la página de respuesta que está configurada en el módulo administrativo y se debe mostrar la siguiente información:<br>
 Los campos con el caracter "$" al comienzo, son parámetros que se envían por GET y que deben capturar</span>
 &nbsp;<br>
