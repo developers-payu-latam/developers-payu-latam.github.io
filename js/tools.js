@@ -14,4 +14,20 @@ window.onload = function() {
 		offset: 0
 	});
 
+	
+	$et_search_icon = $( '#et_search_icon' );
+	$et_search_icon.click( function() {
+			var $this_el = $(this),
+				$form = $this_el.siblings( '.et-search-form' );
+
+			if ( $form.hasClass( 'et-hidden' ) ) {
+				$form.css( { 'display' : 'block', 'opacity' : 0 } ).animate( { opacity : 1 }, 500 );
+			} else {
+				$form.animate( { opacity : 0 }, 500 );
+			}
+
+			$form.toggleClass( 'et-hidden' );
+		} );
+	
+	
 }
