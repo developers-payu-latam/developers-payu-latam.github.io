@@ -23,7 +23,9 @@ window.onload = function() {
 			if ( $form.hasClass( 'et-hidden' ) ) {
 				$form.css( { 'display' : 'block', 'opacity' : 0 } ).animate( { opacity : 1 }, 500 );
 			} else {
-				$form.animate( { opacity : 0 }, 500 );
+
+				$form.css( { 'display' : 'none'} );
+				
 			}
 
 			$form.toggleClass( 'et-hidden' );
