@@ -33,3 +33,18 @@ window.onload = function() {
 	
 	
 }
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+jQuery(document).ready(function() {
+	var prodId = getParameterByName('opened_div');
+	if(prodId!=''){
+	$('#varstableid_'+prodId ).click();
+	$('html,body').animate({scrollTop: $('#varstableid_'+prodId).offset().top-80},'slow');
+	}
+});

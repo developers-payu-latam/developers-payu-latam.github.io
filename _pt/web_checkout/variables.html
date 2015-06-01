@@ -20,342 +20,7 @@ subcategory: tables
 &nbsp;<br>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
-<a href="">
-Variáveis enviadas para o gateway</a></h3><div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Campo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tamanho</span></td>
-<td><span style="color: #fff; font-weight: bold;">Descrição</span></td>
-<td><span style="color: #fff; font-weight: bold;">Requerido em</span></td>
-</tr>
-<tr>
-<td><i>amount</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14</td>
-<td>É o montante total da transação. Pode conter dois dígitos decimais. Por exemplo: 10000.00 ou 10000.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>merchantId</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">12</td>
-<td>É o número identificador de seu comércio no sistema do PayU, este número é encontrado no e-mail de criação da conta.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>referenceCode</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>É a referência da venda ou pedido. Deve ser único por cada transação enviada ao sistema.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>accountId</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">6</td>
-<td>Identificador da conta do usuário para cada país associado ao comércio, ao enviá-la somente abre-se as formas de pagamento pertencentes ao referido país.</td>
-<td align="center">Todos os países</td>
-</tr>
-<tr>
-<td><i>description</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>É a descrição da venda.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>tax</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>É o valor do IVA da transação, se for enviado o IVA nulo, o sistema aplicará automaticamente 16%. Pode conter dois dígitos decimais. Por exemplo: 16000.00. Caso não incida IVA deve ser enviado como 0.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><em>taxReturnBase</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>É o valor base sobre o qual se calcula o IVA. Caso não incida IVA, deve ser enviado como 0</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>signature</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">32</td>
-<td>É a assinatura digital criada para cada uma das transações.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><em>currency</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">3</td>
-<td>A respectiva moeda na qual se realiza o pagamento. O processo de conciliação é feito em pesos à taxa representativa do dia.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>test</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">1</td>
-<td>Variável para poder utilizar cartões de crédito de testes, os valores podem ser 1 ou 0.</td>
-<td style="text-align: center;" valign="top" width="80">&#8212;</td>
-</tr>
-<tr>
-<td><i>buyerEmail</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo que contém o e-mail do comprador para notificar o resultado da transação por e-mail. Recomenda-se fazer uma validação se usar este dado em um formulário.</td>
-<td>Todos os países</td>
-</tr>
-<tr>
-<td><i>adicionalValue</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Valor Adicional não comissionável.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>lng</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">3</td>
-<td>Idioma no qual deseja utilizar a plataforma de pagamentos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra1 </i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar informação sobre a compra. Por exemplo: Descrição da compra no caso de querer visualizá-la na página de resposta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra2</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar informação sobre a compra. Por exemplo: Códigos internos dos produtos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>responseUrl</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>O url da página de resposta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>confirmationUrl</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>O url da página de confirmação.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerFullName</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>O nome do comprador. Este valor será utilizado para preencher o formulário de cartões de crédito.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerDocument</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">25</td>
-<td>O número de identificação do comprador. Este valor será utilizado para preencher o formulário de cartões de crédito.</td>
-<td style="text-align: center;" width="80">&#8212;</td>
-</tr>
-<tr>
-<td><i>mobilePhone</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>O número do celular do comprador. Este valor será utilizado para preencher o formulário de cartões de crédito e será o telefone de contato.</td>
-<td style="text-align: center;" width="80">&#8212;</td>
-</tr>
-<tr>
-<td><i>billingAddress</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>O endereço de correspondência.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>shippingAddress</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>O endereço de entrega da mercadoria.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>telephone</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>O telefone de residência do comprador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>officeTelephone</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>O telefone diurno do comprador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>discount</i></td>
-<td>Decimal (#.00)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Valor do desconto sobre a venda</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>algorithmSignature</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>Algoritmo de criptografia da assinatura digital (signature). Os dois algoritmos disponíveis são: MD5 e SHA.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra3</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar informação sobre a compra. Por exemplo, Códigos internos dos produtos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>billingCity</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>Cidade associada ao endereço de faturamento.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>shippingCity</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">50</td>
-<td>A Cidade de entrega da mercadoria.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>zipCode</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">20</td>
-<td>Código postal.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>billingCountry</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">2</td>
-<td>O código ISO do país associado ao endereço de faturamento.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>shippingCountry</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">2</td>
-<td>O código ISO do país de entrega da mercadoria.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>buyerFullName</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">150</td>
-<td>Nome completo do comprador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerEmail</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">255</td>
-<td>E-mail do pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerPhone</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">20</td>
-<td>Número de telefone do pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerOfficePhone</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">20</td>
-<td>Número de telefone do local de trabalho do pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerMobilePhone</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">20</td>
-<td>Número de telefone celular do pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-</table>
-</div></div>
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="">
-Códigos de moedas admitidas (currency)</a></h3><div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Codigo ISO 4217</span></td>
-<td><span style="color: #fff; font-weight: bold;">Moeda</span></td>
-</tr>
-<tr>
-<td>ARS</td>
-<td>Pesos Argentinos</td>
-</tr>
-<tr>
-<td>BRL</td>
-<td>Reais  Brasileiros</td>
-</tr>
-<tr>
-<td>CLP</td>
-<td>Pesos Chilenos</td>
-</tr>
-<tr>
-<td>COP</td>
-<td>Pesos  Colombianos</td>
-</tr>
-<tr>
-<td>MXN</td>
-<td>Pesos  Mexicanos</td>
-</tr>
-<tr>
-<td>PEN</td>
-<td>Soles  Peruanos</td>
-</tr>
-<tr>
-<td>USD</td>
-<td valign="top">U.S. Dólar</td>
-</tr>
-</table>
-</div></div>
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="">
-Idiomas admitidos (lng)</a></h3><div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Código ISO 639</span></td>
-<td><span style="color: #fff; font-weight: bold;">Idioma</span></td>
-</tr>
-<tr>
-<td>en</td>
-<td>Inglês</td>
-</tr>
-<tr>
-<td>es</td>
-<td>Espanhol</td>
-</tr>
-<tr>
-<td>pt</td>
-<td>Português</td>
-</tr>
-</table>
-</div></div>
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="">
+<a href="" id="varstableid_01">
 Códigos de resposta da página de resposta</a></h3><div class="squelch-taas-toggle-shortcode-content" >
 
 <div ><table class="table-d" >
@@ -633,7 +298,7 @@ Códigos de resposta da página de resposta</a></h3><div class="squelch-taas-tog
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
-<a href="">
+<a href="" id="varstableid_02">
 Códigos de resposta da página de confirmação</a></h3><div class="squelch-taas-toggle-shortcode-content" >
 
 <table class="table-d" >
@@ -850,57 +515,283 @@ Códigos de resposta da página de confirmação</a></h3><div class="squelch-taa
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
-<a href="">
-Códigos de formas de pagamento</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<a href="" id="varstableid_03">
+Variáveis enviadas para o gateway</a></h3><div class="squelch-taas-toggle-shortcode-content" >
 <table class="table-d" >
-  <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
-    <td >payment_method_type<br>(Página de  confirmação)</td>
-    <td rowspan="3" >lapPaymentMethodType <br>(Página de resposta)</td>
-    <td rowspan="3" >Descrição</td>
-  </tr>
-   <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
-    <td >payment_method_id <br>(Página de  confirmação)</td>
-  </tr>
-   <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
-    <td >polPaymentMethodType<br>(Página de resposta)</td>
-  </tr>
-  <tr>
-    <td >2</td>
-    <td >CREDIT_CARD</td>
-    <td >Cartões de Crédito</td>
-  </tr>
-  <tr>
-    <td >4</td>
-    <td >PSE</td>
-    <td >pse-Transferências bancárias</td>
-  </tr>
-  <tr>
-    <td >5</td>
-    <td >ACH</td>
-    <td >Débitos ACH</td>
-  </tr>
-  <tr>
-    <td >6</td>
-    <td >DEBIT_CARD</td>
-    <td>Cartões de débito</td>
-  </tr>
-  <tr>
-    <td >7</td>
-    <td >CASH</td>
-    <td >Pagamento em dinheiro</td>
-  </tr>
-  <tr>
-    <td >8</td>
-    <td >REFERENCED</td>
-    <td >Pagamento Referenciado</td>
-  </tr>
-  <tr>
-    <td >10</td>
-    <td>BANK_REFERENCED</td>
-    <td >Pagamento em bancos</td>
-  </tr>
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">Campo</span></td>
+<td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
+<td><span style="color: #fff; font-weight: bold;">Tamanho</span></td>
+<td><span style="color: #fff; font-weight: bold;">Descrição</span></td>
+<td><span style="color: #fff; font-weight: bold;">Requerido em</span></td>
+</tr>
+<tr>
+<td><i>amount</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">14</td>
+<td>É o montante total da transação. Pode conter dois dígitos decimais. Por exemplo: 10000.00 ou 10000.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>merchantId</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">12</td>
+<td>É o número identificador de seu comércio no sistema do PayU, este número é encontrado no e-mail de criação da conta.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>referenceCode</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>É a referência da venda ou pedido. Deve ser único por cada transação enviada ao sistema.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>accountId</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">6</td>
+<td>Identificador da conta do usuário para cada país associado ao comércio, ao enviá-la somente abre-se as formas de pagamento pertencentes ao referido país.</td>
+<td align="center">Todos os países</td>
+</tr>
+<tr>
+<td><i>description</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>É a descrição da venda.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>tax</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">14,2</td>
+<td>É o valor do IVA da transação, se for enviado o IVA nulo, o sistema aplicará automaticamente 16%. Pode conter dois dígitos decimais. Por exemplo: 16000.00. Caso não incida IVA deve ser enviado como 0.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><em>taxReturnBase</em></td>
+<td>Numérico</td>
+<td style="text-align: center;">14,2</td>
+<td>É o valor base sobre o qual se calcula o IVA. Caso não incida IVA, deve ser enviado como 0</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>signature</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">32</td>
+<td>É a assinatura digital criada para cada uma das transações.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><em>currency</em></td>
+<td>Numérico</td>
+<td style="text-align: center;">3</td>
+<td>A respectiva moeda na qual se realiza o pagamento. O processo de conciliação é feito em pesos à taxa representativa do dia.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>test</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">1</td>
+<td>Variável para poder utilizar cartões de crédito de testes, os valores podem ser 1 ou 0.</td>
+<td style="text-align: center;" valign="top" width="80">&#8212;</td>
+</tr>
+<tr>
+<td><i>buyerEmail</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>Campo que contém o e-mail do comprador para notificar o resultado da transação por e-mail. Recomenda-se fazer uma validação se usar este dado em um formulário.</td>
+<td>Todos os países</td>
+</tr>
+<tr>
+<td><i>adicionalValue</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">14,2</td>
+<td>Valor Adicional não comissionável.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>lng</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">3</td>
+<td>Idioma no qual deseja utilizar a plataforma de pagamentos.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>extra1 </i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>Campo adicional para enviar informação sobre a compra. Por exemplo: Descrição da compra no caso de querer visualizá-la na página de resposta.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>extra2</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>Campo adicional para enviar informação sobre a compra. Por exemplo: Códigos internos dos produtos.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>responseUrl</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>O url da página de resposta.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>confirmationUrl</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>O url da página de confirmação.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>payerFullName</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>O nome do comprador. Este valor será utilizado para preencher o formulário de cartões de crédito.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>payerDocument</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">25</td>
+<td>O número de identificação do comprador. Este valor será utilizado para preencher o formulário de cartões de crédito.</td>
+<td style="text-align: center;" width="80">&#8212;</td>
+</tr>
+<tr>
+<td><i>mobilePhone</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>O número do celular do comprador. Este valor será utilizado para preencher o formulário de cartões de crédito e será o telefone de contato.</td>
+<td style="text-align: center;" width="80">&#8212;</td>
+</tr>
+<tr>
+<td><i>billingAddress</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>O endereço de correspondência.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>shippingAddress</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>O endereço de entrega da mercadoria.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>telephone</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>O telefone de residência do comprador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>officeTelephone</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>O telefone diurno do comprador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>discount</i></td>
+<td>Decimal (#.00)</td>
+<td style="text-align: center;">&#8212;</td>
+<td>Valor do desconto sobre a venda</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>algorithmSignature</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>Algoritmo de criptografia da assinatura digital (signature). Os dois algoritmos disponíveis são: MD5 e SHA.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>extra3</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>Campo adicional para enviar informação sobre a compra. Por exemplo, Códigos internos dos produtos.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>billingCity</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>Cidade associada ao endereço de faturamento.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>shippingCity</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">50</td>
+<td>A Cidade de entrega da mercadoria.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>zipCode</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">20</td>
+<td>Código postal.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>billingCountry</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">2</td>
+<td>O código ISO do país associado ao endereço de faturamento.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>shippingCountry</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">2</td>
+<td>O código ISO do país de entrega da mercadoria.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>buyerFullName</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">150</td>
+<td>Nome completo do comprador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>payerEmail</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">255</td>
+<td>E-mail do pagador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>payerPhone</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">20</td>
+<td>Número de telefone do pagador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>payerOfficePhone</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">20</td>
+<td>Número de telefone do local de trabalho do pagador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>payerMobilePhone</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">20</td>
+<td>Número de telefone celular do pagador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
 </table>
-</div></div><div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" ><h3 ><a href="">Variáveis enviadas para a página de resposta</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+</div></div>
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="" id="varstableid_04">Variáveis enviadas para a página de resposta</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
 <table class="table-d" >
 <tr bgcolor="#696a6c">
 <td><span style="color: #fff; font-weight: bold;">Campo</span></td>
@@ -1245,7 +1136,7 @@ _</i></i>FEE_RETURN_BASE</td>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
-<a href="">
+<a href="" id="varstableid_05">
 Variáveis enviadas para a página de confirmação</a></h3><div class="squelch-taas-toggle-shortcode-content" >
 <table class="table-d" >
 <tr bgcolor="#696a6c">
@@ -1605,6 +1496,125 @@ Variáveis enviadas para a página de confirmação</a></h3><div class="squelch-
 </tr>
 </table>
 </div></div>
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="" id="varstableid_06">
+Códigos de moedas admitidas (currency)</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table class="table-d" >
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">Codigo ISO 4217</span></td>
+<td><span style="color: #fff; font-weight: bold;">Moeda</span></td>
+</tr>
+<tr>
+<td>ARS</td>
+<td>Pesos Argentinos</td>
+</tr>
+<tr>
+<td>BRL</td>
+<td>Reais  Brasileiros</td>
+</tr>
+<tr>
+<td>CLP</td>
+<td>Pesos Chilenos</td>
+</tr>
+<tr>
+<td>COP</td>
+<td>Pesos  Colombianos</td>
+</tr>
+<tr>
+<td>MXN</td>
+<td>Pesos  Mexicanos</td>
+</tr>
+<tr>
+<td>PEN</td>
+<td>Soles  Peruanos</td>
+</tr>
+<tr>
+<td>USD</td>
+<td valign="top">U.S. Dólar</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="" id="varstableid_07">
+Idiomas admitidos (lng)</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table class="table-d" >
+<tr bgcolor="#696a6c">
+<td><span style="color: #fff; font-weight: bold;">Código ISO 639</span></td>
+<td><span style="color: #fff; font-weight: bold;">Idioma</span></td>
+</tr>
+<tr>
+<td>en</td>
+<td>Inglês</td>
+</tr>
+<tr>
+<td>es</td>
+<td>Espanhol</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>Português</td>
+</tr>
+</table>
+</div></div>
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="" id="varstableid_08">
+Códigos de formas de pagamento</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table class="table-d" >
+  <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+    <td >payment_method_type<br>(Página de  confirmação)</td>
+    <td rowspan="3" >lapPaymentMethodType <br>(Página de resposta)</td>
+    <td rowspan="3" >Descrição</td>
+  </tr>
+   <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+    <td >payment_method_id <br>(Página de  confirmação)</td>
+  </tr>
+   <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+    <td >polPaymentMethodType<br>(Página de resposta)</td>
+  </tr>
+  <tr>
+    <td >2</td>
+    <td >CREDIT_CARD</td>
+    <td >Cartões de Crédito</td>
+  </tr>
+  <tr>
+    <td >4</td>
+    <td >PSE</td>
+    <td >pse-Transferências bancárias</td>
+  </tr>
+  <tr>
+    <td >5</td>
+    <td >ACH</td>
+    <td >Débitos ACH</td>
+  </tr>
+  <tr>
+    <td >6</td>
+    <td >DEBIT_CARD</td>
+    <td>Cartões de débito</td>
+  </tr>
+  <tr>
+    <td >7</td>
+    <td >CASH</td>
+    <td >Pagamento em dinheiro</td>
+  </tr>
+  <tr>
+    <td >8</td>
+    <td >REFERENCED</td>
+    <td >Pagamento Referenciado</td>
+  </tr>
+  <tr>
+    <td >10</td>
+    <td>BANK_REFERENCED</td>
+    <td >Pagamento em bancos</td>
+  </tr>
+</table>
+</div></div>
+
+
 &nbsp;<br>
 &nbsp;<br>
 </div>

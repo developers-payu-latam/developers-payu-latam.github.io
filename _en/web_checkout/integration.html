@@ -4,11 +4,7 @@ subcategory: payments
 ---
 <div class="payu-page-header superhero-sticky">
 <h1 class="payu-title1 bgreen">Webcheckout integration</h1>
-<ul class="hidden-xs">
-	<li class="leaf"><a class="active" href="#formulario-de-pago">Payment form</a></li>
-	<li class="leaf"><a href="#pagina-respuesta">Response page</a></li>
-	<li class="leaf"><a href="#pagina-confirmacion">Confirmation page</a></li>
-</ul>
+
 </div>
 
 <div class="sh-container payu-white-bg">
@@ -18,13 +14,42 @@ subcategory: payments
 {% include sidemenu_webcheckout_en.html %}
 
 <div id="page-menu-column2">
+
+
+<br>
+To know the general working of the Webcheckout integration components go to the  <a href="{{ site.baseurl }}/en/web_checkout/">introduction page</a>.
+<br><br>
+Below, you will find the components to perform the Webcheckout integration.
+
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+	<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">1. Payment form</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">2. Response page</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">3. Confirmation page</a></li>
+		
+	</ul>
+<div id="squelch-taas-tab-content-1">
 <div id="formulario-de-pago" class="payu-fragment">
 
 <span class="subtitle-page">Payment form</span>
 
 <span class="grey-text-13">In this section you will see how to send data from one transaction to PayU.
 You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.</span><br>
+<div id="blue-box">
+<div id="info-box">Consider:</div> 
+<ol>
 
+<li class="bullet-box">Make sure you have the correct merchantId, accountId and apikey.</li>
+<li class="bullet-box">Be careful not to include spaces in parameter values.</li>
+<li class="bullet-box">No envíes los valores con más de dos decimales.</li>
+<li class="bullet-box">Do not send values with more than two decimal places.</li>
+<li class="bullet-box">Do not use special characters in the "referenceCode" parameter.</li>
+
+
+</ol>
+</div>
+&nbsp;<br>
  Sample <b>HTML</b> with some of the parameters you can send:
 <pre><code>
  &lt;form method=&quot;post&quot; action=&quot;https://stg.gateway.payulatam.com/ppp-web-gateway/&quot;&gt;
@@ -120,7 +145,7 @@ Live: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 <td align="center">All countries</td>
 </tr>
 <tr>
-<td><em>currency</em></td>
+<td><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=06">currency</a></em></td>
 <td>Alfa Numeric</td>
 <td style="text-align: center;">255</td>
 <td>The respective currency in which the payment is made. The reconciliation process is performed in pesos at the representative rate of the day.</td>
@@ -206,7 +231,7 @@ All variables that you can send in the form</a>
 <td>All countries</td>
 </tr>
 <tr>
-<td><em>currency</em></td>
+<td><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=06">currency</a></em></td>
 <td>Numeric</td>
 <td style="text-align: center;">3</td>
 <td>The respective currency in which the payment is made. The reconciliation process is performed in pesos at the representative rate of the day.</td>
@@ -234,7 +259,7 @@ All variables that you can send in the form</a>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
-<td><i>lng</i></td>
+<td><i><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=07">lng</a></i></td>
 <td>Alfa Numeric</td>
 <td style="text-align: center;">3</td>
 <td>Language in which the payment gateway is wished to be displayed.</td>
@@ -410,13 +435,14 @@ All variables that you can send in the form</a>
 </tr>
 </table>
 </div></div>
+<br/>
 <span class="blue-text-13"><b>Considerations about the Variables</b></span>
 <ol>
 <li class="bullet-box">The <b>tax</b> is a value added tax that may be used in some countries and the <b>taxReturnBase</b> is the base value on which VAT is calculated. If your product does not just apply for this tax, simply both variables take the value 0 <b>(tax=0, taxReturnBase=0)</b>. Conversely, if some elements have the tax and it does not apply to others, you must perform the following calculation to find out how to send the values to the payment platform.</li>
 
 <li class="bullet-box">If the <b>tax</b> value is not sent, the system automatically will calculate it as 16%.</li>
 
-<li class="bullet-box">For businesses registered in Colombia that belong to the common program (régimen común), if you do not send the <b>tax</b>, value, the system will automatically calculate the value. If your business belongs to the simplified program (regimen simplificado) and you do not send the tax value, the system will assign the value as zero (0).<br>
+<li class="bullet-box">For businesses registered in Colombia that belong to the common program (régimen común), if you do not send the <b>tax</b>, value, the system will automatically calculate the value. If your business belongs to the simplified program (regimen simplificado) and you do not send the tax value, the system will assign the value as zero (0).<br><br/>
 <span class="blue-text-13">Note: The amount of tax + taxReturnBase cannot be greater than the Total Value.</span>
 
 <table class="table-d" >
@@ -485,13 +511,38 @@ buyerEmail: test@test.com
 </ol>
 </div>
 
-&nbsp;<br>
-&nbsp;<br>
+</div>
+<!--fin integracion -->
+
+<!--pagina de respuesta -->
+<div id="squelch-taas-tab-content-2">
 <div id="pagina-respuesta" class="payu-fragment">
 
 <span class="subtitle-page">Response page</span>
 
 <span class="grey-text-13">At the end of a transaction our system will send the payer to the response page. Our system sends information about the state of a transaction to this page via the HTTP GET method.</span>
+<br/><br/>
+If you want PayU to display always the information of the transaction, be sure not to send anything in the "responseUrl" parameter in the payment form and <a href="{{ site.baseurl }}/en/administrative_module/configuration.html" class="green-link">leave it blank in PayU Biz</a>. Note that in this case, the user will have the option of returning to your website.
+</span>
+
+
+
+
+<div id="blue-box">
+<div id="info-box">Consider:</div> 
+<ol>
+
+<li class="bullet-box">Some hosting providers have settings that do not allow sending URLs as URLs parameter values. example: &amp;merchant_url=http%3A%2F%2Fwww.lamiradaoptica.com </li>
+<li class="bullet-box">For Brazil accounts, there is not redirection to the response page.</li>
+<li class="bullet-box">Do not depend on the response page to update your database or execute processes because it is possible that the user does not return to it; use the confirmation page.</li>
+<li class="bullet-box">If you want to display information related to the transaction we suggest to show at least the following: status, reference value, currency and date.</li>
+<li class="bullet-box">You must send the "responseURL" parameter in the payment form or <a class="green-link" href="{{ site.baseurl }}/en/administrative_module/configuration.html">set it PayU Biz</a>; it has priority the one sent in the parameter. If PayU does not find any, the payment process ends at the Webcheckout. </li>
+
+
+</ol>
+</div>
+
+&nbsp;<br>
 
 <span class="grey-text-13">The following is an example in <b>PHP</b> of how you can integrate the response page:</span>
 <pre style="height:350px; overflow: auto;">
@@ -616,7 +667,7 @@ Variables sent to the response page</a>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
-<td><i>transactionState</i></td>
+<td><i><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=01">transactionState</a></i></td>
 <td>Numeric</td>
 <td style="text-align: center;">2</td>
 <td>Indicates the transaction’s status in the system.</td>
@@ -630,7 +681,7 @@ Variables sent to the response page</a>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
-<td><i>polResponseCode</i></td>
+<td><i><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=01">polResponseCode</a></i></td>
 <td>Alfa Numeric</td>
 <td style="text-align: center;">64</td>
 <td>The response code.</td>
@@ -667,7 +718,7 @@ Variables sent to the response page</a>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
-<td><i>polPaymentMethodType</i></td>
+<td><i><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=08">polPaymentMethodType</a></i></td>
 <td>Numeric</td>
 <td style="text-align: center;">2</td>
 <td>The type of payment means used for payment.</td>
@@ -744,7 +795,7 @@ Variables sent to the response page</a>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
-<td><i>lapResponseCode</i></td>
+<td><i><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=01">lapResponseCode</a></i></td>
 <td>Alfa numéric</td>
 <td style="text-align: center;">64</td>
 <td>Response code that PayU delivers.</td>
@@ -765,7 +816,7 @@ Variables sent to the response page</a>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
-<td><i>lapTransactionState</i></td>
+<td><i><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=01">lapTransactionState</a></i></td>
 <td>Alfa Numeric</td>
 <td style="text-align: center;">32</td>
 <td>-</td>
@@ -942,17 +993,31 @@ _</i></i>FEE_RETURN_BASE</td>
 </tr>
 </table>
 </div></div>
-<span class="blue-text-13"><b>Signature validation</b></span>
+
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">GET example sent to the response page</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<pre style="overflow: auto;">
+http://mytestsite.com/respuesta.php?&merchantId=500238&merchant_name=Test+PayU+Test&merchant_address=Av+123+Calle+12&telephone=7512354&merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&transactionState=6&lapTransactionState=DECLINED&message=Declinada&referenceCode=2015-05-27+13%3A04%3A37&reference_pol=7069375&transactionId=f5e668f1-7ecc-4b83-a4d1-0aaa68260862&description=test_payu_01&trazabilityCode=&cus=&orderLanguage=es&extra1=&extra2=&extra3=&polTransactionState=6&signature=e1b0939bbdc99ea84387bee9b90e4f5c&polResponseCode=5&lapResponseCode=ENTITY_DECLINED&risk=1.00&polPaymentMethod=10&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=100.00&TX_TAX=.00&amp;currency=USD&lng=es&pseCycle=&buyerEmail=test%40payulatam.com&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00
+</pre>
+</div>
+</div>
+
+<br/>
+<span class="blue-text-13"><b>Signature validation</b></span><br/><br/>
 
 <span class="grey-text-13">The signature validation allows you to check data integrity, you must generate the signature with the information you will find on the response page and compare it with the information from the signature parameter.<br>
-To validate the signature on the response page, you should consider:</span>
+To validate the signature on the response page, you should consider:</span><br/><br/>
 
 <ol>
 <li class="bullet-box">In order to get the new value new_value you always should approximate the
-TX_VALUE to a decimal, using the rounding method Round half to even:<br>
-* If the first decimal is even and the second is 5, round it to the lower value.<br>
-* If the first decimal is odd and the second is 5, round it to the higher value.<br>
-* Otherwise you must round it to the nearest decimal.</li>
+TX_VALUE to a decimal, using the rounding method "Round half to even":<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* If the first decimal is even and the second is 5, round it to the lower value.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* If the first decimal is odd and the second is 5, round it to the higher value.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* Otherwise you must round it to the nearest decimal.</li>
 
 <li class="bullet-box">You must obtain the parameters to generate the signature: merchantId, 
 referenceCode, TX_VALUE, currency and transactionState from the response page, not from your database.</li>
@@ -1029,8 +1094,11 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 </li>
 
 </div>
-&nbsp;<br>
-&nbsp;<br>
+</div>
+<!--fin pagina de respuesta -->
+<div id="squelch-taas-tab-content-3">
+
+<!--pagina de confirmacion -->
 <div id="pagina-confirmacion" class="payu-fragment">
 
 <span class="subtitle-page">Confirmation page</span>
@@ -1040,6 +1108,22 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 <span class="grey-text-13">In the confirmation page, you must capture the data that you want stored in the database. This capture will depend on the programming language used.</span>
 
 </div>
+
+
+<div id="blue-box">
+<div id="info-box">Consider:</div> 
+<ol>
+
+<li class="bullet-box">If youre site is restricted with "basic access authentication" or similar, disable it for the confirmation url.</li>
+<li class="bullet-box">The IP associated with the confirmation URL should be public; no access from intranet or localhost.</li>
+<li class="bullet-box">If you're using https, you must make sure you have a valid certificate.</li>
+<li class="bullet-box">PayU assumes that the confirmation page is reported correctly if you receive the HTTP 200 code; otherwise, it will make three attempts to send the confirmation page to your system. If, after these attempts, HTTP 200 code is received, the system sends an email alert.</li>
+<li class="bullet-box">PayU reports the confirmation page once the transaction has a final status, ie, when approved, rejected or expired. If a transaction is in progress (waiting for payment or analysis), it will not report until it has a final status.</li>
+</ol>
+</div>
+
+&nbsp;<br>
+
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
 <a href="">
@@ -1060,7 +1144,7 @@ Variables sent with the confirmation page</a>
 <td width="648">Is your unique identifier number in the PAYU system, this number can be found in the creation account email or in the administrative module.</td>
 </tr>
 <tr>
-<td width="181"><em>state_pol</em></td>
+<td width="181"><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=02">state_pol</a></em></td>
 <td width="185">Alfa Numeric</td>
 <td style="text-align: center;" width="63">32</td>
 <td width="648">The transaction state in the system.</td>
@@ -1072,7 +1156,7 @@ Variables sent with the confirmation page</a>
 <td width="648">The risk associated to the transaction. Takes a value between 0 and 1. The bigger the number is, the higher the risk. Comes with a format ###.00</td>
 </tr>
 <tr>
-<td width="181"><em>response_code_pol</em></td>
+<td width="181"><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=02">response_code_pol</a></em></td>
 <td width="185">Alfa Numeric</td>
 <td style="text-align: center;" width="63">255</td>
 <td width="648">The response code of PAYU.</td>
@@ -1114,7 +1198,7 @@ Variables sent with the confirmation page</a>
 <td width="648">The internal identifier of the payment method used.</td>
 </tr>
 <tr>
-<td width="181"><em>payment_method_type</em></td>
+<td width="181"><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=08">payment_method_type</a></em></td>
 <td width="185">Numeric</td>
 <td style="text-align: center;" width="63">&#8212;</td>
 <td width="648">The type of payment method used</td>
@@ -1150,7 +1234,7 @@ Variables sent with the confirmation page</a>
 <td width="648">The date the transaction was made.</td>
 </tr>
 <tr>
-<td width="181"><em>currency</em></td>
+<td width="181"><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=06">currency</a></em></td>
 <td width="185">Alfa Numeric</td>
 <td style="text-align: center;" width="63">3</td>
 <td width="648">The currency in which the payment is made. The reconciliation process is in pesos at the representative rate of the day.</td>
@@ -1337,7 +1421,7 @@ Variables sent with the confirmation page</a>
 <td width="648">Short name of the seller.</td>
 </tr>
 <tr>
-<td valign="bottom" width="181"><em>payment_method_id</em></td>
+<td valign="bottom" width="181"><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=08">payment_method_id</a></em></td>
 <td width="185">Numeric</td>
 <td style="text-align: center;" width="63">&#8212;</td>
 <td width="648">Identifier of the payment method.</td>
@@ -1367,7 +1451,7 @@ Variables sent with the confirmation page</a>
 <td valign="top" width="648">Reference no. 3 for PSE payments.</td>
 </tr>
 <tr>
-<td valign="bottom" width="181"><em>response_message_pol</em></td>
+<td valign="bottom" width="181"><em><a class="green-link" href="{{ site.baseurl }}/en/web_checkout/variables.html?opened_div=02">response_message_pol</a></em></td>
 <td width="185">Alfa Numeric</td>
 <td style="text-align: center;" width="63">255</td>
 <td width="648">The response message of PAYU.</td>
@@ -1407,10 +1491,87 @@ Variables sent with the confirmation page</a>
 </table>
 </div></div>
 
-<span class="blue-text-13"><b>Signature validation</b></span>
+
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">POST example set to the confirmation page</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<pre style="overflow: auto;">
+response_code_pol=5
+phone=
+additional_value=0.00
+test=1
+transaction_date=2015-05-27 13:07:35
+cc_number=************0004
+cc_holder=test_buyer
+error_code_bank=
+billing_country=CO
+bank_referenced_name=
+description=test_payu_01
+administrative_fee_tax=0.00
+value=100.00
+administrative_fee=0.00
+payment_method_type=2
+office_phone=
+email_buyer=test@payulatam.com
+response_message_pol=ENTITY_DECLINED
+error_message_bank=
+shipping_city=
+transaction_id=f5e668f1-7ecc-4b83-a4d1-0aaa68260862
+sign=e1b0939bbdc99ea84387bee9b90e4f5c
+tax=0.00
+payment_method=10
+billing_address=cll 93
+payment_method_name=VISA
+pse_bank=
+state_pol=6
+date=2015.05.27 01:07:35
+nickname_buyer=
+reference_pol=7069375
+currency=USD
+risk=1.0
+shipping_address=
+bank_id=10
+payment_request_state=R
+customer_number=
+administrative_fee_base=0.00
+attempts=1
+merchant_id=500238
+exchange_rate=2541.15
+shipping_country=
+installments_number=1
+franchise=VISA
+payment_method_id=2
+extra1=
+extra2=
+antifraudMerchantId=
+extra3=
+nickname_seller=
+ip=190.242.116.98
+airline_code=
+billing_city=Bogota
+pse_reference1=
+reference_sale=2015-05-27 13:04:37
+pse_reference3=
+pse_reference2=
+</pre>
+</div>
+</div>
+<div id="blue-box">
+<span class="grey-text-13">
+<span class="blue-text-13">Note:</span>
+<br/>
+If your business model is subject to inventory or reservations, we recommend you to use the query API as an alternative confirmation mechanism: <a href="{{ site.baseurl }}/en/api/queries.html" class="green-link" >API</a> or <a href="{{ site.baseurl }}/en/sdk/queries.html" class="green-link">SDK</a>.
+</span>
+</div>
+<br/>
+<br/>
+<span class="blue-text-13"><b>Signature validation</b></span><br/><br/>
 
 <span class="grey-text-13"> The signature validation allows you to check data integrity, you must generate the signature with the information you'll find on the confirmation page and compare it with the information from the sign parameter.<br>
-To validate the signature on the confirmation page, you should consider:</span>
+To validate the signature on the confirmation page, you should consider:</span><br/><br/>
 
 <ol>
 <li class="bullet-box">If the second decimal of the value parameter is zero, e.g. 150.00<br>
@@ -1470,10 +1631,34 @@ sign = 91382296898d3937ed36cd125d696452</span>
 <span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU05~150.26~USD~4) = <b>91382296898d3937ed36cd125d696452</b></span>
 </div></div>
 
-<div id="blue-box">
-<b>Note:</b> PayU tries to send the confirmation page to your system 3 times.  After that, if it is unable to receive a HTTP response code 200, you will receive a notification email. 
-</div>
 
+<br/>
+
+<span class="blue-text-13"><b>Payment retries</b></span><br/><br/>
+<span class="grey-text-13">When a transaction is rejected, it will give the option to the payer to retry the payment with the same payment method or another, so keep in mind that for every attempt the system will make the call to the confirmation page with the corresponding transaction status.
+<br>
+<br>
+Each of these calls will be made with the same payment reference (reference_sale) and with the same order identifier (reference_pol) but with different transaction identifier (transaction_id). Therefore you can receive several calls to the confirmation page for the same sale.
+<br>
+<br>
+Below, an example of a rejected attempt and its approved retry:
+
+<pre>
+reference_sale=2015-05-27 13:04:37
+reference_pol=7069375
+transaction_id=f5e668f1-7ecc-4b83-a4d1-0aaa68260862
+state_pol=6
+
+reference_sale=2015-05-27 13:04:37
+reference_pol=7069375
+transaction_id=01cfdce8-68d5-4a4c-aabf-d89370a0b92f
+state_pol=4
+</pre>
+
+Note that if one of those calls to the confirmation page indicates that a payment reference (reference_sale) was approved, you can be certain you will not receive more reports to the same reference.
+</span>
+
+</div>
 </div>
 
 </div>

@@ -45,13 +45,15 @@ Es necesario que el desarrollador de la integración cuente con conocimientos de
 &nbsp;<br>
 
 <div id="three-columns-column1">
-<span class="blue-text-16">1. Formulario de pago</span><span class="grey-text-13">Con este formulario HTML envías la petición de la transacción a nuestra pasarela de pagos incluyendo los datos de la compra, utilizando el método HTTP POST.</span>
+<span class="blue-text-16">1. Formulario de pago</span><span class="grey-text-13"><br/>Con este formulario HTML envías la petición de la transacción a nuestra pasarela de pagos incluyendo los datos de la compra, utilizando el método HTTP POST.</span>
 
 &nbsp;<br>
-<span class="blue-text-16">2. Página de respuesta</span><span class="grey-text-13">Es una página que permite mostrar al pagador el resultado de la transacción. Nuestro sistema dirigirá al pagador a esta página una vez haya realizado la transacción. Los datos con el resultado del pago serán enviados a tu sistema a través de HTTP GET. Esta página se llama para todos los estados de transacciones: aprobada, rechazada, en validación, esperando pago (para pagos en efectivo), etc. <b>Esta página es obligatoria.</b></span>
+<span class="blue-text-16">2. Página de respuesta</span><span class="grey-text-13"><br/>Es una página que permite mostrar al pagador el resultado de la transacción. Nuestro sistema dirigirá al pagador a esta página una vez haya realizado la transacción. Los datos con el resultado del pago serán enviados a tu sistema a través de HTTP GET. Esta página se llama para todos los estados de transacciones: aprobada, rechazada, en validación, esperando pago (para pagos en efectivo), etc. <b>Esta página es obligatoria.</b></span>
 &nbsp;<br>
-<span class="blue-text-16">3. Página de confirmación</span><span class="grey-text-13">A través de esta página le confirmamos a tu sistema el resultado final de la transacción. En este punto puedes actualizar tus sistemas de inventarios, pedidos o bases de datos. Esta página nunca será visible al comprador ya que su objetivo es permitir la comunicación entre sistemas. Los datos son enviados por método HTTP POST. PayU solo envía páginas de confirmación para los estados de transacción aprobado y rechazado. <b>Esta página no es obligatoria</b>.</span>
+<span class="blue-text-16">3. Página de confirmación</span><span class="grey-text-13"><br/>A través de esta página le confirmamos a tu sistema el resultado final de la transacción. En este punto puedes actualizar tus sistemas de inventarios, pedidos o bases de datos. Esta página nunca será visible al comprador ya que su objetivo es permitir la comunicación entre sistemas. Los datos son enviados por método HTTP POST. Si el pagador genera reintentos de pago durante la compra, se generarán las páginas de confirmación correspondientes a cada transacción. PayU solo envía páginas de confirmación para los estados de transacción aprobado y rechazado. <b>Esta página no es obligatoria</b>.</span>
 &nbsp;<br>
+&nbsp;<br>
+Si quieres saber cómo integrarte Webcheckout haz <a href="{{ site.baseurl }}/es/web_checkout/integration.html">clic aquí.</a>
 </div>
 <div class="two-columns-column2"><p align="center"><img src="/images/webcheckout/integracion.gif" alt="" border="0" /></div>
 &nbsp;<br>
