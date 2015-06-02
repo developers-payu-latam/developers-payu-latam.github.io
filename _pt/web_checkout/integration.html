@@ -528,14 +528,14 @@ Se você quiser que a PayU sempre exiba as informações da operação, certifiq
 <span class="grey-text-13">A seguir um exemplo em <b>PHP</b> com a integração através de método HTTP GET. </span>
 <pre style="height:350px; overflow: auto;">
 &lt;?php
-$ApiKey = "6u39nqhq8ftd0hlvnjfs66eh8c";
+$ApiKey = &quot;6u39nqhq8ftd0hlvnjfs66eh8c&quot;;
 $merchant_id = $_REQUEST['merchantId'];
 $referenceCode = $_REQUEST['referenceCode'];
 $TX_VALUE = $_REQUEST['TX_VALUE'];
 $New_value = number_format($TX_VALUE, 1, '.', '');
 $currency = $_REQUEST['currency'];
 $transactionState = $_REQUEST['transactionState'];
-$firma_cadena = "$ApiKey~$merchant_id~$referenceCode~$New_value~$currency~$transactionState";
+$firma_cadena = &quot;$ApiKey~$merchant_id~$referenceCode~$New_value~$currency~$transactionState&quot;;
 $firmacreada = md5($firma_cadena);
 $firma = $_REQUEST['signature'];
 $reference_pol = $_REQUEST['reference_pol'];
@@ -545,18 +545,22 @@ $pseBank = $_REQUEST['pseBank'];
 $lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
 $transactionId = $_REQUEST['transactionId'];
 
-if ($_REQUEST['polTransactionState'] == 6 && $_REQUEST['polResponseCode'] == 5) {
-	$estadoTx = "Transacci&oacute;n fallida";
+if ($_REQUEST['transactionState'] == 4 ) {
+	$estadoTx = &quot;Transa&ccedil;&atilde;o aprovada&quot;;
 }
-else if ($_REQUEST['polTransactionState'] == 6 && $_REQUEST['polResponseCode'] == 4) {
-	$estadoTx = "Transacci&oacute;n rechazada";
+
+else if ($_REQUEST['transactionState'] == 6 ) {
+	$estadoTx = &quot;Transa&ccedil;&atilde;o rejeitada&quot;;
 }
-else if ($_REQUEST['polTransactionState'] == 12 && $_REQUEST['polResponseCode'] == 9994) {
-	$estadoTx = "Pendiente, Por favor revisar si el d&eacute;bito fue realizado en el Banco";
+
+else if ($_REQUEST['transactionState'] == 104 ) {
+	$estadoTx = &quot;Erro&quot;;
 }
-else if ($_REQUEST['polTransactionState'] == 4 && $_REQUEST['polResponseCode'] == 1) {
-	$estadoTx = "Transacci&oacute;n aprobada";
+
+else if ($_REQUEST['transactionState'] == 7 ) {
+	$estadoTx = &quot;Transa&ccedil;&atilde;o em andamento&quot;;
 }
+
 else {
 	$estadoTx=$_REQUEST['mensaje'];
 }
@@ -564,28 +568,28 @@ else {
 
 if (strtoupper($firma) == strtoupper($firmacreada)) {
 ?&gt;
-	&lt;h2&gt;Resumen Transacción&lt;/h2&gt;
+	&lt;h2&gt;Resumo da transa&ccedil;&atilde;o&lt;/h2&gt;
 	&lt;table&gt;
 	&lt;tr&gt;
-	&lt;td&gt;Estado de la transaccion&lt;/td&gt;
+	&lt;td&gt;Status da Transa&ccedil;&atilde;o&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo $estadoTx; ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
 	&lt;tr&gt;
-	&lt;td&gt;ID de la transaccion&lt;/td&gt;
+	&lt;td&gt;ID da transa&ccedil;&atilde;o&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo $transactionId; ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
-	&lt;td&gt;Referencia de la venta&lt;/td&gt;
+	&lt;td&gt;Refer&ecirc;ncia da venda&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo $reference_pol; ?&gt;&lt;/td&gt; 
 	&lt;/tr&gt;
 	&lt;tr&gt;
-	&lt;td&gt;Referencia de la transaccion&lt;/td&gt;
+	&lt;td&gt;Refer&ecirc;ncia da transa&ccedil;&atilde;o&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo $referenceCode; ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
 	&lt;?php
-	if($banco_pse != null) {
+	if($pseBank != null) {
 	?&gt;
 		&lt;tr&gt;
 		&lt;td&gt;cus &lt;/td&gt;
@@ -603,24 +607,24 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	&lt;td&gt;$&lt;?php echo number_format($TX_VALUE); ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
-	&lt;td&gt;Moneda&lt;/td&gt;
+	&lt;td&gt;Moeda&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo $currency; ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
-	&lt;td&gt;Descripción&lt;/td&gt;
+	&lt;td&gt;Descri&ccedil;&atilde;o&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo ($extra1); ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
-	&lt;td&gt;Entidad:&lt;/td&gt;
+	&lt;td&gt;Entidade:&lt;/td&gt;
 	&lt;td&gt;&lt;?php echo ($lapPaymentMethod); ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;/table&gt;
-&lt;?
+&lt;?php
 }
 else
 {
 ?&gt;
-	&lt;h1&gt;Error validando firma digital.&lt;/h1&gt;
+	&lt;h1&gt;Erro ao validar a assinatura digital.&lt;/h1&gt;
 &lt;?php
 }
 ?&gt;
