@@ -26,7 +26,7 @@ subcategory: considerations
 <p><span class="number">01. </span>Para obtener los datos necesarios para realizar la autenticación debes ingresar a <a href="http://www.payulatam.com" target="_blank">http://www.payulatam.com</a> con tu respectivo usuario y contraseña.</p>
 <img src="{{ site.baseurl }}/images/2014/07/secure1b.jpg" alt="Móduloa administrativo " width="650" height="232" class="alignnone size-full wp-image-619" />
 &nbsp;<br>
-<p><span class="number">02. </span>Ingresa al menú <span class="highlight-txt2 ">“Configuración”</span> en la opción <span class="highlight-txt2 ">“Información técnica”</span>, donde encontrarás los datos para autenticarse con el API: <span class="highlight-txt">API key</span> y <span class="highlight-txt">API login</span>. <br> Debes tener en cuenta que estos datos son únicos por cada comercio de PayU, por lo tanto debes mantener esta información asegurada y es tu responsabilidad su uso y/o divulgación.</p>
+<p><span class="number">02. </span>Ingresa al menú <span class="highlight-txt2 ">"Configuración"</span> en la opción <span class="highlight-txt2 ">"Información técnica"</span>, donde encontrarás los datos para autenticarse con el API: <span class="highlight-txt">API key</span> y <span class="highlight-txt">API login</span>. <br> Debes tener en cuenta que estos datos son únicos por cada comercio de PayU, por lo tanto debes mantener esta información asegurada y es tu responsabilidad su uso y/o divulgación.</p>
 <img src="http://docs.payulatam.com/wp-content/uploads/2013/08/instrucciones-secure-es.jpg" alt="como obtener mi API KEY" width="650" height="474" class="aligncenter size-full wp-image-4727" />
 &nbsp;<br>
 &nbsp;<br>
@@ -36,7 +36,7 @@ subcategory: considerations
 &nbsp;<br>
 <span class="highlight-txt">signature</span> es una variable utilizada para validar los pagos realizados a través de la plataforma, garantizando su autenticidad. Consiste en una cadena de caracteres a la cual se le aplica algoritmo MD5 o SHA para encriptarla. La cadena está compuesta de la siguiente forma:
 &nbsp;<br>
-<div id="blue-box">“ApiKey~merchantId~referenceCode~tx_value~currency".</div>
+<div id="blue-box">"ApiKey~merchantId~referenceCode~tx_value~currency"</div>
 &nbsp;<br>
 Ilustraremos de mejor manera este concepto con un ejemplo. Para ello usaremos los siguientes datos de prueba:
 <pre>
@@ -46,12 +46,12 @@ Ilustraremos de mejor manera este concepto con un ejemplo. Para ello usaremos lo
 <span class="string">tx_value:</span> 3
 <span class="string">currency:</span> USD</pre>
 La firma la conformarían los siguientes elementos:
-<pre>"6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD”</pre>
+<pre>"6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"</pre>
 La cual tras aplicársele algoritmo md5 quedaría así:
-<pre>“be2f083cb3391c84fdf5fd6176801278”</pre>
+<pre>"be2f083cb3391c84fdf5fd6176801278"</pre>
 Esta información deberás enviarla en la variable:
 <div class="list-arrow"><ul><li> Para API: <span class="highlight-txt2">transaction.order.signature</span></li>
-<li> Para SDK Java: <span class="highlight-txt2">PayU.PARAMETERS.SIGNATURE</span></li></ul></div>
+</ul></div>
 &nbsp;<br>
 &nbsp;<br>
 </div>
@@ -74,7 +74,7 @@ Ejemplo en php:</p>
 <pre>$ deviceSessionId = md5(session_id().microtime())</pre>
 &nbsp;<br>
 
-<p><span class="number">03. </span>Este deviceSessionId debe concatenarse con el “usuarioId” 80200 como en el siguiente ejemplo. 
+<p><span class="number">03. </span>Este deviceSessionId debe concatenarse con el "usuarioId" 80200 como en el siguiente ejemplo. 
 Ejemplo: <span class="highlight-txt">4091057053</span>80200
 Y enviarlo en todos los ${deviceSessionId}usuarioId del escript como en el siguiente ejemplo.</p>
 <pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=<span class="highlight-txt2">409105705380200</span>&quot;)&gt;&lt;/p&gt;<br />
@@ -86,10 +86,12 @@ Y enviarlo en todos los ${deviceSessionId}usuarioId del escript como en el sigui
   &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot;/&gt;<br />
 &lt;/object&gt;</pre>
 &nbsp;<br>
-<p><span class="number">04. </span> Finalmente debes enviar el <span class="highlight-txt">$deviceSessionId</span>(sin el “usuarioId”) en la petición del API en la variable:</p>
+<p><span class="number">04. </span> Finalmente debes enviar el <span class="highlight-txt">$deviceSessionId</span>(sin el "usuarioId") en la petición del API en la variable:</p>
 <div class="list-arrow"><ul><li> Para API:<span class="highlight-txt2 ">transaction.deviceSessionId.</span></li>
 <li> Para SDK JAVA: <span class="highlight-txt2 ">PayU.PARAMETERS.DEVICE_SESSION_ID</span></li>
-<li> Para SDK PHP: <span class="highlight-txt2 ">PayUParameters::DEVICE_SESSION_ID</span></li></ul></div>
+<li> Para SDK PHP: <span class="highlight-txt2 ">PayUParameters::DEVICE_SESSION_ID</span></li>
+</ul>
+</div>
 &nbsp;<br>
 &nbsp;<br>
 <div id="grey-box"><b>Tener en cuenta</b>: Si deseas incluir los logos de los medios de pago disponibles en tu página web, puedes ingresar a <a href="http://www.payulatam.com/logos" target="_blank">http://www.payulatam.com/logos/</a> y descargar las imágenes de cada país.</div>

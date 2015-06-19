@@ -25,7 +25,7 @@ subcategory: considerations
 <p><span class="number">01. </span>Para obter os dados necessários para realizar a autenticação você deve acessar <a href="http://www.payulatam.com" target="_blank">http://www.payulatam.com</a> com seu respectivo nome de usuário e senha.</p>
 <img border="0" alt="Módulo administrativo" src="/images/secure1-pt.jpg">
 &nbsp;<br>
-<p><span class="number">02. </span>Entre no menu <span class="highlight-txt2 ">“Configuração”</span> na opção <span class="highlight-txt2 ">“Informação técnica”</span>, onde você encontrará os dados para se autenticar com o API: <span class="highlight-txt">API key</span> e <span class="highlight-txt">API login</span>. <br> Você deve considerar que estes dados são únicos por cada comércio do PayU, portanto, você deve manter esta informação segura e é sua responsabilidade seu uso e/ou divulgação.</p>
+<p><span class="number">02. </span>Entre no menu <span class="highlight-txt2 ">"Configuração"</span> na opção <span class="highlight-txt2 ">"Informação técnica"</span>, onde você encontrará os dados para se autenticar com o API: <span class="highlight-txt">API key</span> e <span class="highlight-txt">API login</span>. <br> Você deve considerar que estes dados são únicos por cada comércio do PayU, portanto, você deve manter esta informação segura e é sua responsabilidade seu uso e/ou divulgação.</p>
 <img border="0" alt="Módulo administrativo" src="/images/tecnica3-pt.jpg">
 &nbsp;<br>
 &nbsp;<br>
@@ -35,7 +35,7 @@ subcategory: considerations
 &nbsp;<br>
 A <span class="highlight-txt">signature</span> é uma variável utilizada para validar os pagamentos realizados através da plataforma, garantindo sua autenticidade. Consiste em uma cadeia de caracteres à qual é aplicado algoritmo MD5 ou SHA para codificá-la. A cadeia é composta da seguinte forma: 
 &nbsp;<br>
-<div id="blue-box">“ApiKey~merchantId~referenceCode~tx_value~currency".</div>
+<div id="blue-box">"ApiKey~merchantId~referenceCode~tx_value~currency"</div>
 &nbsp;<br>
 Ilustraremos da melhor maneira este conceito com um exemplo. Para isso, usaremos os seguintes dados de teste:
 <pre>
@@ -45,12 +45,12 @@ Ilustraremos da melhor maneira este conceito com um exemplo. Para isso, usaremos
 <span class="string">tx_value:</span> 3
 <span class="string">currency:</span> USD</pre>
 A assinatura estaria conformada pelos seguintes elementos:
-<pre>"6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD”</pre>
+<pre>"6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"</pre>
 A qual após ser aplicado o algoritmo md5 ficaria assim:
-<pre>“be2f083cb3391c84fdf5fd6176801278”</pre>
+<pre>"be2f083cb3391c84fdf5fd6176801278"</pre>
 Esta informação deverá ser enviada na variável:
 <div class="list-arrow"><ul><li> Para API: <span class="highlight-txt2">transaction.order.signature</span></li>
-<li> Para SDK Java: <span class="highlight-txt2">PayU.PARAMETERS.SIGNATURE</span></li></ul></div>
+</ul></div>
 &nbsp;<br>
 &nbsp;<br>
 </div>
@@ -73,7 +73,7 @@ Exemplo em php:</p>
 <pre>$ deviceSessionId = md5(session_id().microtime())</pre>
 &nbsp;<br>
 
-<p><span class="number">03. </span>Este deviceSessionId deve se concatenar com o “usuarioId” 80200, como no exemplo a seguir: <span class="highlight-txt">4091057053</span>80200
+<p><span class="number">03. </span>Este deviceSessionId deve se concatenar com o "usuarioId" 80200, como no exemplo a seguir: <span class="highlight-txt">4091057053</span>80200
 E enviá-lo em todos os ${deviceSessionId}usuarioId do escript como no exemplo a seguir.</p>
 <pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=<span class="highlight-txt2">409105705380200</span>&quot;)&gt;&lt;/p&gt;<br />
   &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=<span class="highlight-txt2">409105705380200</span>&quot;&gt;<br />
@@ -84,7 +84,7 @@ E enviá-lo em todos os ${deviceSessionId}usuarioId do escript como no exemplo a
   &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot;/&gt;<br />
 &lt;/object&gt;</pre>
 &nbsp;<br>
-<p><span class="number">04. </span> Finalmente, você deve enviar o <span class="highlight-txt">$deviceSessionId</span> (sem o “usuarioId”) no pedido do API na variável:</p>
+<p><span class="number">04. </span> Finalmente, você deve enviar o <span class="highlight-txt">$deviceSessionId</span> (sem o "usuarioId") no pedido do API na variável:</p>
 <div class="list-arrow"><ul><li> Para API:<span class="highlight-txt2 ">transaction.deviceSessionId.</span></li>
 <li> Para SDK JAVA: <span class="highlight-txt2 ">PayU.PARAMETERS.DEVICE_SESSION_ID</span></li>
 <li> Para SDK PHP: <span class="highlight-txt2 ">PayUParameters::DEVICE_SESSION_ID</span></li></ul></div>
