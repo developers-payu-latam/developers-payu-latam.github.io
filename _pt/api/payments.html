@@ -2449,14 +2449,8 @@ Exemplo resposta:
 </div>
 </div>
 <div id="squelch-taas-tab-content-6">
-<span class="blue-text-13"><b>Cartões de crédito Visa</b> (Autorização e captura)</span>
-
-<span class="grey-text-13">Você deve direcionar o pagador para o URL da VisaNET que se entregue na resposta, enviando no formulário um input denominado “Eticket”, que obtemos no <b>trazabilityCode</b>, através do método HTTP POST:</span>
-<pre>&lt;form action="https://www.multimerchantvisanet.com/formularioweb/formulariopago.asp" method="post"&gt;
-&lt;input type="hidden" value="0500560091711308150853133360" name="Eticket"&gt;
-&lt;input type="submit"&gt;
-&lt;/form&gt;
-</pre>
+<span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span>
+<span class="grey-text-13">Franquicias disponibles: Visa y Mastercard</span>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
@@ -2528,8 +2522,14 @@ Exemplo pedido:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-12">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"RESPONSE_URL"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.test.com/response"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"creditCard"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-12">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"number"</span><span class="json-semi-colon">: </span><span class="json-value">"4907840000000005"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"securityCode"</span><span class="json-semi-colon">: </span><span class="json-value">"321"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"expirationDate"</span><span class="json-semi-colon">: </span><span class="json-value">"2014/12"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"REJECTED"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-13">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"INSTALLMENTS_NUMBER"</span><span class="json-semi-colon">: </span><span class="json-value">1</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION_AND_CAPTURE"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"VISA"</span><span class="json-comma">,</span>
@@ -2548,23 +2548,21 @@ Exemplo resposta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"code"</span><span class="json-semi-colon">: </span><span class="json-value">"SUCCESS"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"error"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionResponse"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">43840400</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"66d25b6b-c73a-4fb2-8841-58f3b9e319a6"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">"0500560091701405081512225130"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">39608980</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"ba0e198d-5c81-4ffc-b447-35baebb73ef8"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"DECLINED"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"14"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">"[2]: null"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"authorizationCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">"AWAITING_NOTIFICATION"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSACTION_CONFIRMATION"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PAYMENT_NETWORK_REJECTED"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"errorCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionTime"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"operationDate"</span><span class="json-semi-colon">: </span><span class="json-value">1399579976495</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"VISANET_PE_URL"</span><span class="json-semi-colon">: </span><span class="json-value">"https://www.multimerchantvisanet.com/formularioweb/formulariopago.asp"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"operationDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-value">null</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent"></span></span><span class="json-close-bracket">}</span>
 </pre>
@@ -2604,7 +2602,7 @@ Exemplo pedido:
             </span><span class="tag">&lt;dniNumber&gt;</span><span class="pln">5415668464654</span><span class="tag">&lt;/dniNumber&gt;</span><span class="pln">
             </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
                </span><span class="tag">&lt;street1&gt;</span><span class="pln">Avenida de la poesia</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
-               </span><span class="tag">&lt;street2&gt;</span><span class="pln">160</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
+               </span><span class="tag">&lt;street2&gt;</span><span class="pln">106</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
                </span><span class="tag">&lt;city&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/city&gt;</span><span class="pln">
                </span><span class="tag">&lt;state&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/state&gt;</span><span class="pln">
                </span><span class="tag">&lt;country&gt;</span><span class="pln">PE</span><span class="tag">&lt;/country&gt;</span><span class="pln">
@@ -2614,7 +2612,7 @@ Exemplo pedido:
          </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
          </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
             </span><span class="tag">&lt;street1&gt;</span><span class="pln">Avenida de la poesia</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
-            </span><span class="tag">&lt;street2&gt;</span><span class="pln">160</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
+            </span><span class="tag">&lt;street2&gt;</span><span class="pln">106</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
             </span><span class="tag">&lt;city&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/city&gt;</span><span class="pln">
             </span><span class="tag">&lt;state&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/state&gt;</span><span class="pln">
             </span><span class="tag">&lt;country&gt;</span><span class="pln">PE</span><span class="tag">&lt;/country&gt;</span><span class="pln">
@@ -2634,14 +2632,20 @@ Exemplo pedido:
             </span><span class="tag">&lt;city&gt;</span><span class="pln">Iquitos</span><span class="tag">&lt;/city&gt;</span><span class="pln">
             </span><span class="tag">&lt;state&gt;</span><span class="pln">Loreto</span><span class="tag">&lt;/state&gt;</span><span class="pln">
             </span><span class="tag">&lt;country&gt;</span><span class="pln">PE</span><span class="tag">&lt;/country&gt;</span><span class="pln">
-            </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">00000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
+            </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">64000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
             </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
          </span><span class="tag">&lt;/billingAddress&gt;</span><span class="pln">
       </span><span class="tag">&lt;/payer&gt;</span><span class="pln">
+      </span><span class="tag">&lt;creditCard&gt;</span><span class="pln">
+         </span><span class="tag">&lt;number&gt;</span><span class="pln">4907840000000005</span><span class="tag">&lt;/number&gt;</span><span class="pln">
+         </span><span class="tag">&lt;securityCode&gt;</span><span class="pln">321</span><span class="tag">&lt;/securityCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2014/12</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;name&gt;</span><span class="pln">REJECTED</span><span class="tag">&lt;/name&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/creditCard&gt;</span><span class="pln">
       </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
          </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">RESPONSE_URL</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">http://www.test.com/response</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">INSTALLMENTS_NUMBER</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">1</span><span class="tag">&lt;/string&gt;</span><span class="pln">
          </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
       </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
       </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
@@ -2660,307 +2664,12 @@ Exemplo resposta:
 <span class="tag">&lt;paymentResponse&gt;</span><span class="pln">
    </span><span class="tag">&lt;code&gt;</span><span class="pln">SUCCESS</span><span class="tag">&lt;/code&gt;</span><span class="pln">
    </span><span class="tag">&lt;transactionResponse&gt;</span><span class="pln">
-      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">43840100</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
-      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">6d2ca5d8-001f-4ee3-bc50-54417dfa4fa8</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
-      </span><span class="tag">&lt;state&gt;</span><span class="pln">PENDING</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-      </span><span class="tag">&lt;trazabilityCode&gt;</span><span class="pln">0500560091701405081510267460</span><span class="tag">&lt;/trazabilityCode&gt;</span><span class="pln">
-      </span><span class="tag">&lt;pendingReason&gt;</span><span class="pln">AWAITING_NOTIFICATION</span><span class="tag">&lt;/pendingReason&gt;</span><span class="pln">
-      </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PENDING_TRANSACTION_CONFIRMATION</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
-      </span><span class="tag">&lt;operationDate&gt;</span><span class="pln">2014-05-08T15:11:00</span><span class="tag">&lt;/operationDate&gt;</span><span class="pln">
-      </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">VISANET_PE_URL</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://www.multimerchantvisanet.com/formularioweb/formulariopago.asp</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
-   </span><span class="tag">&lt;/transactionResponse&gt;</span><span class="pln">
-</span><span class="tag">&lt;/paymentResponse&gt;</span>
-</pre>
-</div>
-</div>
-
-<span class="blue-text-13"><b>Cartão de crédito Mastercard</b> (Autorização e captura)</span>
-
-<span class="grey-text-13">Você deve direcionar o pagador para o URL de Processos MC Peru que será entregue na resposta <b>PROCESOS_MC_PE_URL</b>, enviando no formulário vários input denominados “<b>I1</b>”, “<b>I2</b>” , “<b>I3</b>” , “<b>I4</b>” , “<b>I5</b>” , “<b>I6</b>” , “<b>I7</b>” , “<b>I8</b>” , “<b>I9</b>” , “<b>I10</b>”  que obtemos na resposta do API, através do método HTTP POST:</span>
-<pre>&lt;form action="https://www.punto-web.com/gateway/PagoWebHd.asp" method="post"&gt;
-&lt;input type="hidden" value="4001851" name="I1"/&gt;
-&lt;input type="hidden" value="082928046045afc" name="I2"/&gt;
-&lt;input type="hidden" value="10.00" name="I3"/&gt;
-&lt;input type="hidden" value="PEN" name="I4"/&gt;
-&lt;input type="hidden" value="20140116" name="I5"/&gt;
-&lt;input type="hidden" value="133841" name="I6"/&gt;
-&lt;input type="hidden" value="45afc8f9e42f409d8933" name="I7"/&gt;
-&lt;input type="hidden" value="4001851" name="I8"/&gt;
-&lt;input type="hidden" value="PER" name="I9"/&gt;
-&lt;input type="hidden" value="Ce8V3b3jsB4u0VG7AGcFzUQgRbc%3D" name="I10"/&gt;
-&lt;input type="submit"&gt;
-&lt;/form&gt;
-</pre>
-<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
-<ul>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
-</ul>
-<div id="squelch-taas-tab-content-1-1">
-Exemplo pedido:
-<pre style="height: 300px; overflow: auto;">
-<span class="json-open-bracket">{</span><span class="json-collapse-1">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"command"</span><span class="json-semi-colon">: </span><span class="json-value">"SUBMIT_TRANSACTION"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchant"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiKey"</span><span class="json-semi-colon">: </span><span class="json-value">"6u39nqhq8ftd0hlvnjfs66eh8c"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiLogin"</span><span class="json-semi-colon">: </span><span class="json-value">"11959c415b33d0c"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"500546"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"52f7ec062ed47c3c9ad5ab38f6ccf1a5"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">100</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"PEN"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchantBuyerId"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and second buyer  name"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"contactPhone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dniNumber"</span><span class="json-semi-colon">: </span><span class="json-value">"5415668464654"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"shippingAddress"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-8">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street1"</span><span class="json-semi-colon">: </span><span class="json-value">"Avenida de la poesia"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street2"</span><span class="json-semi-colon">: </span><span class="json-value">"106"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"city"</span><span class="json-semi-colon">: </span><span class="json-value">"Cuzco"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"Cuzco"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"country"</span><span class="json-semi-colon">: </span><span class="json-value">"PE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"postalCode"</span><span class="json-semi-colon">: </span><span class="json-value">"000000"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"shippingAddress"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-9">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street1"</span><span class="json-semi-colon">: </span><span class="json-value">"Avenida de la poesia"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street2"</span><span class="json-semi-colon">: </span><span class="json-value">"106"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"city"</span><span class="json-semi-colon">: </span><span class="json-value">"Cuzco"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"Cuzco"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"country"</span><span class="json-semi-colon">: </span><span class="json-value">"PE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"postalCode"</span><span class="json-semi-colon">: </span><span class="json-value">"0000000"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"payer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-10">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchantPayerId"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and second payer name"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"payer_test@test.com"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"contactPhone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dniNumber"</span><span class="json-semi-colon">: </span><span class="json-value">"5415668464654"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"billingAddress"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-11">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street1"</span><span class="json-semi-colon">: </span><span class="json-value">"av abancay"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street2"</span><span class="json-semi-colon">: </span><span class="json-value">"cra 4"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"city"</span><span class="json-semi-colon">: </span><span class="json-value">"Iquitos"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"Loreto"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"country"</span><span class="json-semi-colon">: </span><span class="json-value">"PE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"postalCode"</span><span class="json-semi-colon">: </span><span class="json-value">"64000"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-12">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"RESPONSE_URL"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.test.com/response"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION_AND_CAPTURE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"MASTERCARD"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentCountry"</span><span class="json-semi-colon">: </span><span class="json-value">"PE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"deviceSessionId"</span><span class="json-semi-colon">: </span><span class="json-value">"vghs6tvkcle931686k1900o6e1"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"cookie"</span><span class="json-semi-colon">: </span><span class="json-value">"pt1t38347bs6jc9ruv2ecpv7o2"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"userAgent"</span><span class="json-semi-colon">: </span><span class="json-value">"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"test"</span><span class="json-semi-colon">: </span><span class="json-value">false</span>
-<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
-</pre>
-Exemplo resposta:
-<pre style="height: 300px; overflow: auto;">
-<span class="json-open-bracket">{</span><span class="json-collapse-1">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"code"</span><span class="json-semi-colon">: </span><span class="json-value">"SUCCESS"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"error"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionResponse"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">39883000</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"542e1e8a-db64-4914-a32c-19db3e8b1800"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"authorizationCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">"AWAITING_NOTIFICATION"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSACTION_CONFIRMATION"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"errorCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionTime"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"operationDate"</span><span class="json-semi-colon">: </span><span class="json-value">1397074155110</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I9"</span><span class="json-semi-colon">: </span><span class="json-value">"PER"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"PROCESOS_MC_PE_URL"</span><span class="json-semi-colon">: </span><span class="json-value">"https://www.punto-web.com/gateway/PagoWebHd.asp"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I3"</span><span class="json-semi-colon">: </span><span class="json-value">"100.00"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I4"</span><span class="json-semi-colon">: </span><span class="json-value">"PEN"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I10"</span><span class="json-semi-colon">: </span><span class="json-value">"ARLRCYvUAW1FC1C6p%2Bz3RhgCz8Q%3D"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I1"</span><span class="json-semi-colon">: </span><span class="json-value">"4001851"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I2"</span><span class="json-semi-colon">: </span><span class="json-value">"0839883000542e1"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I7"</span><span class="json-semi-colon">: </span><span class="json-value">"542e1e8adb644914a32c"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I8"</span><span class="json-semi-colon">: </span><span class="json-value">"4001851"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I5"</span><span class="json-semi-colon">: </span><span class="json-value">"20140409"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"I6"</span><span class="json-semi-colon">: </span><span class="json-value">"150913"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
-</pre>
-</div>
-<div id="squelch-taas-tab-content-1-2">
-Exemplo pedido:
-<pre style="height: 300px; overflow: auto;">
-<span class="tag">&lt;request&gt;</span><span class="pln">
-   </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
-   </span><span class="tag">&lt;command&gt;</span><span class="pln">SUBMIT_TRANSACTION</span><span class="tag">&lt;/command&gt;</span><span class="pln">
-   </span><span class="tag">&lt;merchant&gt;</span><span class="pln">
-      </span><span class="tag">&lt;apiKey&gt;</span><span class="pln">6u39nqhq8ftd0hlvnjfs66eh8c</span><span class="tag">&lt;/apiKey&gt;</span><span class="pln">
-      </span><span class="tag">&lt;apiLogin&gt;</span><span class="pln">11959c415b33d0c</span><span class="tag">&lt;/apiLogin&gt;</span><span class="pln">
-   </span><span class="tag">&lt;/merchant&gt;</span><span class="pln">
-   </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
-      </span><span class="tag">&lt;order&gt;</span><span class="pln">
-         </span><span class="tag">&lt;accountId&gt;</span><span class="pln">500546</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
-         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
-         </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
-         </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
-         </span><span class="tag">&lt;signature&gt;</span><span class="pln">52f7ec062ed47c3c9ad5ab38f6ccf1a5</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
-         </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.tes.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
-         </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
-            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">100</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">PEN</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
-         </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
-            </span><span class="tag">&lt;merchantBuyerId&gt;</span><span class="pln">1</span><span class="tag">&lt;/merchantBuyerId&gt;</span><span class="pln">
-            </span><span class="tag">&lt;fullName&gt;</span><span class="pln">First name and second buyer  name</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
-            </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">buyer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
-            </span><span class="tag">&lt;contactPhone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/contactPhone&gt;</span><span class="pln">
-            </span><span class="tag">&lt;dniNumber&gt;</span><span class="pln">5415668464654</span><span class="tag">&lt;/dniNumber&gt;</span><span class="pln">
-            </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
-               </span><span class="tag">&lt;street1&gt;</span><span class="pln">Avenida de la poesia</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
-               </span><span class="tag">&lt;street2&gt;</span><span class="pln">160</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
-               </span><span class="tag">&lt;city&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/city&gt;</span><span class="pln">
-               </span><span class="tag">&lt;state&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-               </span><span class="tag">&lt;country&gt;</span><span class="pln">PE</span><span class="tag">&lt;/country&gt;</span><span class="pln">
-               </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">000000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
-               </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
-            </span><span class="tag">&lt;/shippingAddress&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
-         </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
-            </span><span class="tag">&lt;street1&gt;</span><span class="pln">Avenida de la poesia</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
-            </span><span class="tag">&lt;street2&gt;</span><span class="pln">160</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
-            </span><span class="tag">&lt;city&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/city&gt;</span><span class="pln">
-            </span><span class="tag">&lt;state&gt;</span><span class="pln">Cuzco</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-            </span><span class="tag">&lt;country&gt;</span><span class="pln">PE</span><span class="tag">&lt;/country&gt;</span><span class="pln">
-            </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">0000000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
-            </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/shippingAddress&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/order&gt;</span><span class="pln">
-      </span><span class="tag">&lt;payer&gt;</span><span class="pln">
-         </span><span class="tag">&lt;merchantPayerId&gt;</span><span class="pln">1</span><span class="tag">&lt;/merchantPayerId&gt;</span><span class="pln">
-         </span><span class="tag">&lt;fullName&gt;</span><span class="pln">First name and second payer name</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
-         </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">payer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
-         </span><span class="tag">&lt;contactPhone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/contactPhone&gt;</span><span class="pln">
-         </span><span class="tag">&lt;dniNumber&gt;</span><span class="pln">5415668464654</span><span class="tag">&lt;/dniNumber&gt;</span><span class="pln">
-         </span><span class="tag">&lt;billingAddress&gt;</span><span class="pln">
-            </span><span class="tag">&lt;street1&gt;</span><span class="pln">av abancay</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
-            </span><span class="tag">&lt;street2&gt;</span><span class="pln">cra 4</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
-            </span><span class="tag">&lt;city&gt;</span><span class="pln">Iquitos</span><span class="tag">&lt;/city&gt;</span><span class="pln">
-            </span><span class="tag">&lt;state&gt;</span><span class="pln">Loreto</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-            </span><span class="tag">&lt;country&gt;</span><span class="pln">PE</span><span class="tag">&lt;/country&gt;</span><span class="pln">
-            </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">00000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
-            </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/billingAddress&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/payer&gt;</span><span class="pln">
-      </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">RESPONSE_URL</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">http://www.test.com/response</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
-      </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
-      </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">MASTERCARD</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
-      </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">PE</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
-      </span><span class="tag">&lt;deviceSessionId&gt;</span><span class="pln">vghs6tvkcle931686k1900o6e1</span><span class="tag">&lt;/deviceSessionId&gt;</span><span class="pln">
-      </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
-      </span><span class="tag">&lt;cookie&gt;</span><span class="pln">pt1t38347bs6jc9ruv2ecpv7o2</span><span class="tag">&lt;/cookie&gt;</span><span class="pln">
-      </span><span class="tag">&lt;userAgent&gt;</span><span class="pln">Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0</span><span class="tag">&lt;/userAgent&gt;</span><span class="pln">
-   </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
-   </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
-</span><span class="tag">&lt;/request&gt;</span>
-</pre>
-Exemplo resposta:
-<pre style="height: 300px; overflow: auto;">
-<span class="tag">&lt;paymentResponse&gt;</span><span class="pln">
-   </span><span class="tag">&lt;code&gt;</span><span class="pln">SUCCESS</span><span class="tag">&lt;/code&gt;</span><span class="pln">
-   </span><span class="tag">&lt;transactionResponse&gt;</span><span class="pln">
-      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">39882260</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
-      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">3063eb76-d924-4018-b15e-6c6b153fcea5</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
-      </span><span class="tag">&lt;state&gt;</span><span class="pln">PENDING</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-      </span><span class="tag">&lt;pendingReason&gt;</span><span class="pln">AWAITING_NOTIFICATION</span><span class="tag">&lt;/pendingReason&gt;</span><span class="pln">
-      </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PENDING_TRANSACTION_CONFIRMATION</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
-      </span><span class="tag">&lt;operationDate&gt;</span><span class="pln">2014-04-09T15:04:27</span><span class="tag">&lt;/operationDate&gt;</span><span class="pln">
-      </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I9</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">PER</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">PROCESOS_MC_PE_URL</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://www.punto-web.com/gateway/PagoWebHd.asp</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I3</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">100.00</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I4</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">PEN</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I10</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">zuvrIEZcOqTAxtRevML10LCVkUM%3D</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I1</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">4001851</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I2</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">08398822603063e</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I7</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">3063eb76d9244018b15e</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I8</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">4001851</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I5</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">20140409</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">I6</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">150426</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">39608320</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">145dbc19-56fb-4b70-980e-a527f8061dac</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;state&gt;</span><span class="pln">DECLINED</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentNetworkResponseCode&gt;</span><span class="pln">14</span><span class="tag">&lt;/paymentNetworkResponseCode&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentNetworkResponseErrorMessage&gt;</span><span class="pln">[2]: null</span><span class="tag">&lt;/paymentNetworkResponseErrorMessage&gt;</span><span class="pln">
+      </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PAYMENT_NETWORK_REJECTED</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
    </span><span class="tag">&lt;/transactionResponse&gt;</span><span class="pln">
 </span><span class="tag">&lt;/paymentResponse&gt;</span>
 </pre>
