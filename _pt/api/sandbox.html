@@ -6,7 +6,7 @@ subcategory: sandbox
 <h1 class="payu-title1 bgreen">Integração API - testes</h1>
 <ul class="hidden-xs">
 	<li class="leaf"><a class="active" href="#tener-en-cuenta">Considerar</a></li>
-	<li class="leaf"><a href="#ejemplos">Exemplos</a></li>
+	<li class="leaf"><a href="#ejemplos">Testando estados</a></li>
 	<li class="leaf"><a href="#paso-a-produccion">Passo para a produção</a></li>
 </ul>
 </div>
@@ -24,45 +24,9 @@ subcategory: sandbox
 &nbsp;<br>
 <span class="grey-text-13">Se você deseja realizar testes através do PayU, já que o ambiente de testes não replica os dados de sua conta em produção, é importante utilizar as seguintes credenciais no pedido dependendo do país de sua conta:</span>
 &nbsp;<br>
-<table class="table-d" >
-	<tr bgcolor="#696a6c">
-		<td><span style="color: #fff; font-weight: bold;">merchantId</span></td>
-		<td><span style="color: #fff; font-weight: bold;">API Login</span></td>
-		<td><span style="color: #fff; font-weight: bold;">API Key</span></td>
-		<td><span style="color: #fff; font-weight: bold;">accountId</span></td>
-		<td><span style="color: #fff; font-weight: bold;">País</span></td>
-	</tr>
-	<tr>
-		<td rowspan="5">500238</td>
-		<td rowspan="5">11959c415b33d0c</td>
-		<td rowspan="5">6u39nqhq8ftd0hlvnjfs66eh8c</td>
-		<td>509171</td>
-		<td>Argentina</td>
-	</tr>
-	<tr>
-		<td>500538</td>
-		<td>Colômbia</td>
-	</tr>
-	<tr>
-		<td>500547</td>
-		<td>México</td>
-	</tr>
-	<tr>
-		<td>500537</td>
-		<td>Panamá</td>
-	</tr>
-	<tr>
-		<td>500546</td>
-		<td>Peru</td>
-	</tr>
-	<tr>
-		<td rowspan="5">500365</td>
-		<td rowspan="5">403ba744e9827f3</td>
-		<td rowspan="5">676k86ks53la6tni6clgd30jf6</td>
-		<td>500719</td>
-		<td>Brasil</td>
-	</tr>
-</table>		
+
+{% include test_credentials_pt.html %}
+		
 &nbsp;<br>
 &nbsp;<br>
 <span class="grey-text-13">Apontando para os seguintes URLs:</span>
@@ -84,12 +48,12 @@ Pagamentos: <b>https://stg.api.payulatam.com/payments-api/4.0/service.cgi</b></s
 &nbsp;<br>
 <div id="ejemplos" class="payu-fragment">
 &nbsp;<br>
-<span class="subtitle-page">Exemplos</span>
+<span class="subtitle-page">Testando estados</span>
 &nbsp;<br>
 <span class="grey-text-13">No pedido de Autorização ou Autorização y captura você deve:</span>
 <ol>
 <li class="bullet-box">Certificar de enviar o parâmetro <b>teste</b> em <b>true</b>.</li>
-<li class="bullet-box">Inserir no nome do <b>cartão do proprietário</b> o valor <b>APPROVED</b> se deseja que a transação seja aprovada ou <b>REJECTED</b> se desejar que fique rejeitada.</li>
+<li class="bullet-box">Inserir no nome do <b>cartão do proprietário</b> o valor <span class="highlight-txt2">APPROVED</span> se deseja que a transação seja aprovada, <span class="highlight-txt2">REJECTED</span>, se deseja que seja rejeitada, ou <span class="highlight-txt2">PENDING</span>, se deseja que fique em andamento.</li>
 <li class="bullet-box">No <b>número do cartão</b> você deve inserir um número de cartão válido e que corresponda à franquia enviada no pedido.</li>
 </ol>
 &nbsp;<br>

@@ -6,7 +6,7 @@ subcategory: sandbox
 <h1 class="payu-title1 bgreen">API integration - test</h1>
 <ul class="hidden-xs">
 	<li class="leaf"><a class="active" href="#tener-en-cuenta">Consider</a></li>
-	<li class="leaf"><a href="#ejemplos">Examples</a></li>
+	<li class="leaf"><a href="#ejemplos">Testing statuses</a></li>
 	<li class="leaf"><a href="#paso-a-produccion">Stepping over to production</a></li>
 </ul>
 </div>
@@ -24,45 +24,9 @@ subcategory: sandbox
 &nbsp;<br>
 <span class="grey-text-13">If you want to make tests through PayU, since the test environment does not replicate data from your account in production, it is important that you use the following credentials in the request, depending on the country of your account:</span>
 &nbsp;<br>
-<table class="table-d" >
-	<tr bgcolor="#696a6c">
-		<td><span style="color: #fff; font-weight: bold;">merchantId</span></td>
-		<td><span style="color: #fff; font-weight: bold;">API Login</span></td>
-		<td><span style="color: #fff; font-weight: bold;">API Key</span></td>
-		<td><span style="color: #fff; font-weight: bold;">accountId</span></td>
-		<td><span style="color: #fff; font-weight: bold;">Country</span></td>
-	</tr>
-	<tr>
-		<td rowspan="5">500238</td>
-		<td rowspan="5">11959c415b33d0c</td>
-		<td rowspan="5">6u39nqhq8ftd0hlvnjfs66eh8c</td>
-		<td>509171</td>
-		<td>Argentina</td>
-	</tr>
-	<tr>
-		<td>500538</td>
-		<td>Colombia</td>
-	</tr>
-	<tr>
-		<td>500547</td>
-		<td>Mexico</td>
-	</tr>
-	<tr>
-		<td>500537</td>
-		<td>Panama</td>
-	</tr>
-	<tr>
-		<td>500546</td>
-		<td>Peru</td>
-	</tr>
-	<tr>
-		<td rowspan="5">500365</td>
-		<td rowspan="5">403ba744e9827f3</td>
-		<td rowspan="5">676k86ks53la6tni6clgd30jf6</td>
-		<td>500719</td>
-		<td>Brazil</td>
-	</tr>
-</table>		
+
+{% include test_credentials_en.html %}
+		
 &nbsp;<br>
 &nbsp;<br>
 <span class="grey-text-13">Aiming at the following URLs:</span>
@@ -84,12 +48,12 @@ Payments: <b>https://stg.api.payulatam.com/payments-api/4.0/service.cgi</b></spa
 &nbsp;<br>
 <div id="ejemplos" class="payu-fragment">
 &nbsp;<br>
-<span class="subtitle-page">Examples</span>
+<span class="subtitle-page">Testing statuses</span>
 &nbsp;<br>
 <span class="grey-text-13">When using the Authorization or Authorization and capture request you must:</span>
 <ol>
 <li class="bullet-box">Ensure sending the <b>test</b> parameter as <b>true</b>.</li>
-<li class="bullet-box">For the <b>cardholder</b> value enter the name <b>APPROVED</b> if you want the transaction to be approved or <b>REJECTED</b> if you want it to be rejected.</li>
+<li class="bullet-box">For the <b>cardholder</b> value enter the name <span class="highlight-txt2">APPROVED</span> if you want the transaction to be approved, <span class="highlight-txt2">REJECTED</span> if you want it to be rejected or <span class="highlight-txt2">PENDING</span> if you want it to be pending.</li>
 <li class="bullet-box">For the <b>card number</b> you must enter a valid card number, corresponding to the franchise sent in the request.</li>
 </ol>
 &nbsp;<br>
