@@ -2455,12 +2455,12 @@ Ejemplo respuesta:
 </div>
 <div id="squelch-taas-tab-content-6">
 <span class="blue-text-13"><b>Tarjetas de crédito</b> (Autorización y captura)</span>
-<span class="grey-text-13">Franquicias disponibles: Visa, Mastercard y AMEX</span>
+<span class="grey-text-13">Franquicias disponibles: Visa, Mastercard y Amex</span>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 	<ul>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
-	</ul>
+	</ul>	
 <div id="squelch-taas-tab-content-1-1">
 Ejemplo petición:
 <pre style="height: 300px; overflow: auto;">
@@ -2686,7 +2686,7 @@ Ejemplo respuesta:
 
 
 
-<div class="cash">Pagos en efectivo / Pago en bancos</div>
+<div class="cash">Pagos en efectivo</div>
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 	<ul>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Argentina</a></li>
@@ -3020,10 +3020,10 @@ Ejemplo respuesta:
 </div>
 </div>
 <div id="squelch-taas-tab-content-3">
-<span class="blue-text-13"><b>Pagos en efectivo</b><br></span>
-<span class="grey-text-13">Integración de los medios de pago Baloto y Efecty.<br>
+<span class="blue-text-13"><b>Pagos en efectivo</b></span>
+<span class="grey-text-13">Integración de los medios de pago Baloto y Efecty</span>
 
-Debes dirigir al pagador a la URL que encontrarás en la respuesta de la petición, el pagador podrá ver un recibo de pago como este en donde encontrará el logo del medio de pago elegido, Baloto o Efecty:</span>
+<span class="grey-text-13">Debes dirigir al pagador a la URL que encontrarás en la respuesta de la petición, el pagador podrá ver un recibo de pago como este en donde encontrará el logo del medio de pago elegido, Baloto o Efecty:</span>
 <p align="center"><img src="/images/api/efectivo-co.jpg" alt="" border="0" />
 
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
@@ -3165,196 +3165,6 @@ Ejemplo respuesta:
    </span><span class="tag">&lt;/transactionResponse&gt;</span><span class="pln">
 </span><span class="tag">&lt;/paymentResponse&gt;</span>
 </pre>
-</div></div>    
-    
-    
-    <span class="blue-text-13"><b>Pagos en bancos</b><br></span>
-<span class="grey-text-13">Integración de los medios de pago Bancolombia y Banco de Bogotá.<br>
-
-Debes dirigir al pagador a la URL que encontrarás en la respuesta de la petición, el pagador podrá ver un recibo de pago como este en donde encontrará el logo del medio de pago elegido, Bancolombia y Banco de Bogotá:</span>
-<p align="center"><img src="/images/api/efectivo-bancolombia.png" alt="" border="0" />
-
-<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
-<ul>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
-<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
-</ul>
-<div id="squelch-taas-tab-content-1-1">
-Ejemplo petición:</p>
-
-<pre style="height: 300px; overflow: auto;">
-"request": {
-    "isTest": "false",
-    "language": "en",
-    "command": "SUBMIT_TRANSACTION",
-    "merchant": {
-        "apiLogin": "012345678901",
-        "apiKey": "012345678901"
-       },
-    "transaction": {
-        "order": {
-           "accountId": "1",
-           "referenceCode": "REFTEST00000001",
-           "description": "Compra Prueba 01",
-           "language": "es",
-           "additionalValues": {
-                    "entry": {
-                    "string": "TX_VALUE",
-                    "additionalValue": {
-                    "value": "10000.00",
-                    "currency": "COP"
-                        }
-                    }
-                }
-            },
-        "type": "AUTHORIZATION_AND_CAPTURE",
-        "paymentMethod": "BANK_REFERENCED",
-        "paymentCountry": "CO",
-        "payer": {
-            "fullName": "Juan Perez",
-            "billingAddress": "Avenida 1 # 1 - 1 Barrio Grande"
-            }}}
-</pre>
-Ejemplo respuesta:
-<pre style="height: 300px; overflow: auto;">
- "paymentResponse": {
-    "code": "SUCCESS",
-    "transactionResponse": {
-        "orderId": "6939485",
-        "transactionId": "58f840d2-b761-40ba-b306-33e6a6bbb1e1",
-        "state": "PENDING",
-        "pendingReason": "AWAITING_NOTIFICATION",
-        "responseCode": "PENDING_TRANSACTION_CONFIRMATION",
-        "extraParameters": {
-            "entry": [{
-                "string": "EXPIRATION_DATE",
-                "date": "2015-06-10T23:59:59"
-                },
-                {
-                "string": [
-                    "BANK_REFERENCED_NAME",
-                    "bank_referenced.bancolombia"
-                ]},
-                {
-                "string": [
-                    "BANCOLOMBIA_SERVICE_CODE",
-                    "34616"
-                ]},
-                {
-                "string": [
-                    "BANK_REFERENCED_NAME",
-                    "bank_referenced.bancobogota"
-                ]},
-                {
-                "string": [
-                    "BANCO_BOGOTA_SERVICE_CODE",
-                    "123456789"
-                ]},
-                {
-                "string": [
-                    "BAR_CODE",
-                    "(415)7709998013377(8020)0006939485(3900)00000000238765(96)20150610"
-                ]},
-                {
-                "string": "REFERENCE",
-                    "int": "6939485"
-                },
-                {
-                "string": [
-                    "URL_PAYMENT_RECEIPT_HTML",
-                    "https://gateway.payulatam.com/ppp-web-gateway/voucher.zul?vid=6939485Y58f840d2b76140bY5c7d92789b9e3b1"
-                ]
-               }]}}}
-</pre>
-</div>
-<div id="squelch-taas-tab-content-1-2">
-Ejemplo petición:
-<pre style="height: 300px; overflow: auto;">
-&lt;request&gt; 
-&lt;isTest&gt;false&lt;/isTest&gt; 
- &lt;language&gt;en&lt;/language&gt; 
- &lt;command&gt;SUBMIT_TRANSACTION&lt;/command&gt;
- &lt;merchant&gt;
- &lt;apiLogin&gt;012345678901&lt;/apiLogin&gt;   
- &lt;apiKey&gt;012345678901&lt;/apiKey&gt;  
- &lt;/merchant&gt;  
- &lt;transaction&gt;    
- &lt;order&gt;        
- &lt;accountId&gt;1&lt;/accountId&gt;        
- &lt;referenceCode&gt;REFTEST00000001&lt;/referenceCode&gt;       
- &lt;description&gt;Compra Prueba 01&lt;/description&gt;       
- &lt;language&gt;es&lt;/language&gt;        
- &lt;additionalValues&gt;          
-  &lt;entry&gt;               
-  &lt;string&gt;TX_VALUE&lt;/string&gt;               
-  &lt;additionalValue&gt;                   
-  &lt;value&gt;10000.00&lt;/value&gt;                    
-  &lt;currency&gt;COP&lt;/currency&gt;                
-  &lt;/additionalValue&gt;            
-  &lt;/entry&gt;        
-  &lt;/additionalValues&gt;   
-  &lt;/order&gt;    
-  &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;    
-  &lt;paymentMethod&gt;BANK_REFERENCED&lt;/paymentMethod&gt;    
-  &lt;paymentCountry&gt;CO&lt;/paymentCountry&gt;  
-  &lt;payer&gt;       
-  &lt;fullName&gt;Juan Perez&lt;/fullName&gt;        
-  &lt;billingAddress/&gt;Avenida 1 # 1 - 1 Barrio Grande&lt;billingAddress/&gt;   
-  &lt;/payer&gt;  
-  &lt;/transaction&gt;
-  &lt;/request&gt;
-
-</pre>
-Ejemplo respuesta:
-<pre style="height: 300px; overflow: auto;">
-&lt;paymentResponse&gt;
-  &lt;code&gt;SUCCESS&lt;/code&gt;
-  &lt;transactionResponse&gt;
-  &lt;orderId&gt;6939485&lt;/orderId&gt;
-  &lt;transactionId&gt;58f840d2-b761-40ba-b306-33e6a6bbb1e1&lt;/transactionId&gt; 
-  &lt;state&gt;PENDING&lt;/state&gt;
-  &lt;pendingReason&gt;AWAITING_NOTIFICATION&lt;/pendingReason&gt;
-  &lt;responseCode&gt;PENDING_TRANSACTION_CONFIRMATION&lt;/responseCode&gt;
-  &lt;extraParameters&gt;
-  &lt;entry&gt;
-  &lt;string&gt;EXPIRATION_DATE&lt;/string&gt;
-  &lt;date&gt;2015-06-10T23:59:59&lt;/date&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;BANK_REFERENCED_NAME&lt;/string&gt;
-  &lt;string&gt;bank_referenced.bancolombia&lt;/string&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;BANCOLOMBIA_SERVICE_CODE&lt;/string&gt
-  &lt;string&gt;34616&lt;/string&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;BANK_REFERENCED_NAME&lt;/string&gt;
-  &lt;string&gt;bank_referenced.bancobogota&lt;/string&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;BANCO_BOGOTA_SERVICE_CODE&lt;/string&gt;
-  &lt;string&gt;123456789&lt;/string&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;BAR_CODE&lt;/string&gt;
-  &lt;string&gt;(415)7709998013377(8020)0006939485(3900)00000000238765(96)20150610&lt;/string&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;REFERENCE&lt;/string&gt;
-  &lt;int&gt;6939485&lt;/int&gt;
-  &lt;/entry&gt;
-  &lt;entry&gt;
-  &lt;string&gt;URL_PAYMENT_RECEIPT_HTML&lt;/string&gt;
-  &lt;string&gt;<u>https://gateway.payulatam.com/ppp-web-gateway/voucher.zul?vid=6939485Y58f840d2b76140bY5c7d92789b9e3b1</u>&lt;/string&gt;
-  &lt;/entry&gt; 
-  &lt;/extraParameters&gt; 
-  &lt;/transactionResponse&gt; 
-  &lt;/paymentResponse&gt;
-</pre>
-    
-    
-    
 </div>
 </div>
 </div>
