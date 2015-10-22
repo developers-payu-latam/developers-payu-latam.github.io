@@ -932,6 +932,194 @@ Ejmplo de Respuesta:
 </div>
 </div>
 <br>
+
+<div class="paso3">
+    <span class="subtitle-page">Ejecución de transacción con Promoción</span>
+</div>
+<span class="grey-text-13">
+    Una vez seleccionada una promoción, se debe enviar en la petición API el ID de esta en la transacción. El ID de la promoción se envía como un extra parámetro <extraParameters> dentro de la petición API de la siguiente forma:    
+</span>
+<div id="blue-box"> 
+
+    &lt;extraParameters&gt;<br/>
+      <span class="tab">&lt;entry&gt;</span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;</span></span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;Número de cuota&lt;/string&gt;</span></span><br/>
+      <span class="tab">&lt;/entry&gt;</span><br/>
+      <span class="tab">&lt;entry&gt;</span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;PROMOTION_ID&lt;/string&gt;</span></span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;ID de la promoción&lt;/string&gt;</span></span><br/>
+      <span class="tab">&lt;/entry&gt;</span><br/>
+    &lt;/extraParameters&gt;<br/>
+    
+</div>
+<br/>
+A continuación se muestra un ejemplo completo de una petición:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+		<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">XML</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">JSON</a></li>
+		</ul>
+		
+<div id="squelch-taas-tab-content-1-1">
+<pre>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; ">
+    </span><span class="tag">&lt;request&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+      </span><span class="tag">&lt;command&gt;</span><span class="pln">SUBMIT_TRANSACTION</span><span class="tag">&lt;/command&gt;</span><span class="pln">
+      </span><span class="tag">&lt;merchant&gt;</span><span class="pln">
+       </span><span class="tag">&lt;apiLogin&gt;</span><span class="pln">11959c415b33d0c</span><span class="tag">&lt;/apiLogin&gt;</span><span class="pln">
+       </span><span class="tag">&lt;apiKey&gt;</span><span class="pln">6u39nqhq8ftd0hlvnjfs66eh8c</span><span class="tag">&lt;/apiKey&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/merchant&gt;</span><span class="pln">
+       </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
+          </span><span class="tag">&lt;order&gt;</span><span class="pln">
+             </span><span class="tag">&lt;accountId&gt;</span><span class="pln">509171</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
+             </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">REF201500102-0001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+             </span><span class="tag">&lt;description&gt;</span><span class="pln">Combo multiproductos</span><span class="tag">&lt;/description&gt;</span><span class="pln">
+             </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+             </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://payu.com/Confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
+             </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
+                </span><span class="tag">&lt;country&gt;</span><span class="pln">AR</span><span class="tag">&lt;/country&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/shippingAddress&gt;</span><span class="pln">
+             </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
+                </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">email@correo.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
+             </span><span class="tag">&lt;additionalValues class="java.util.HashMap"&gt;</span><span class="pln">
+                </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+                   </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                   </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                      </span><span class="tag">&lt;value&gt;</span><span class="pln">500</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                      </span><span class="tag">&lt;currency&gt;</span><span class="pln">ARS</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+                   </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+                </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/order&gt;</span><span class="pln">
+          </span><span class="tag">&lt;creditCard&gt;</span><span class="pln">
+             </span><span class="tag">&lt;number&gt;</span><span class="pln">4916********2266/number</span><span class="tag">&gt;</span><span class="pln">
+             </span><span class="tag">&lt;securityCode&gt;</span><span class="pln">***</span><span class="tag">&lt;/securityCode&gt;</span><span class="pln">
+             </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2019/03</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+             </span><span class="tag">&lt;name&gt;</span><span class="pln">Juan Perez S.</span><span class="tag">&lt;/name&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/creditCard&gt;</span><span class="pln">
+          </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
+          </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">VISA</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+          </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">AR</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
+          </span><span class="tag">&lt;payer&gt;</span><span class="pln">
+             </span><span class="tag">&lt;fullName&gt;</span><span class="pln">Juan Perez S.</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
+             </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">email@correo.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/payer&gt;</span><span class="pln">
+          </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">200.150.5.152</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
+          </span><span class="tag">&lt;cookie&gt;</span><span class="pln">cookie_a1b2c3d4</span><span class="tag">&lt;/cookie&gt;</span><span class="pln">
+          </span><span class="tag">&lt;userAgent&gt;</span><span class="pln">Chrome</span><span class="tag">&lt;/userAgent&gt;</span><span class="pln">
+          </span><span class="tag">&lt;extraParameters class="java.util.HashMap"</span><span class="tag">&gt;</span><span class="pln">
+             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">INSTALLMENTS_NUMBER</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">3</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+                </span><span class="tag" style="font-weight: bolder;">&lt;string&gt;</span><span class="pln" style="font-weight: bolder;">PROMOTION_ID</span><span class="tag"style="font-weight: bolder;">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag" style="font-weight: bolder;">&lt;string&gt;</span><span class="pln" style="font-weight: bolder;">16</span><span class="tag" style="font-weight: bolder;">&lt;/string&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+       </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
+       </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/request&gt;</span><span class="pln">
+    
+</div>
+</pre>
+</div>
+
+<div id="squelch-taas-tab-content-1-2">
+<pre style="height: 300px; overflow: auto;">
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; ">
+   <span class="sc10">{</span><span class="sc0">
+   </span><span class="json-indent">"language"</span><span class="sc10">:</span><span class="sc4">"es"</span><span class="sc10">,</span><span class="sc0">
+   </span><span class="json-indent">"command"</span><span class="sc10">:</span><span class="sc4">"SUBMIT_TRANSACTION"</span><span class="sc10">,</span><span class="sc0">
+   </span><span class="json-indent">"merchant"</span><span class="sc10">: {</span><span class="sc4">
+      </span><span class="json-indent">"apiKey"</span><span class="sc10">:</span><span class="sc4">"6u39nqhq8ftd0hlvnjfs66eh8c"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"apiLogin"</span><span class="sc10">:</span><span class="sc4">"11959c415b33d0c"
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"transaction"</span><span class="sc10">: {</span><span class="sc4">
+      </span><span class="json-indent">"order"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"accountId"</span><span class="sc10">:</span><span class="sc4">"509171"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"referenceCode"</span><span class="sc10">:</span><span class="sc4">"payment_test_00000001"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"description"</span><span class="sc10">:</span><span class="sc4">"payment test"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"language"</span><span class="sc10">:</span><span class="sc4">"es"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"signature"</span><span class="sc10">:</span><span class="sc4">"6dcd21f14036ad057988089df9a28434"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"notifyUrl"</span><span class="sc10">:</span><span class="sc4">"http://www.tes.com/confirmation"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"additionalValues"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"TX_VALUE"</span><span class="sc10">: {</span><span class="sc4">
+               </span><span class="json-indent">"value"</span><span class="sc10">:</span><span class="sc4">100</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"currency"</span><span class="sc10">:</span><span class="sc4">"ARS"</span><span class="sc0">
+             </span><span class="sc10">}</span><span class="sc0">
+         </span><span class="sc10">},</span><span class="sc0">
+         </span><span class="json-indent">"buyer"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"merchantBuyerId"</span><span class="sc10">:</span><span class="sc4">"1"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"fullName"</span><span class="sc10">:</span><span class="sc4">"First name and second buyer  name"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"emailAddress"</span><span class="sc10">:</span><span class="sc4">"buyer_test@test.com"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"contactPhone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"dniNumber"</span><span class="sc10">:</span><span class="sc4">"5415668464654"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"shippingAddress"</span><span class="sc10">: {</span><span class="sc4">
+               </span><span class="json-indent">"street1"</span><span class="sc10">:</span><span class="sc4">"Viamonte"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"street2"</span><span class="sc10">:</span><span class="sc4">"1366"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"city"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"state"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"country"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"postalCode"</span><span class="sc10">:</span><span class="sc4">"000000"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"phone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc0">
+             </span><span class="sc10">}</span><span class="sc0">
+         </span><span class="sc10">},</span><span class="sc0">
+         </span><span class="json-indent">"shippingAddress"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"street1"</span><span class="sc10">:</span><span class="sc4">"Viamonte"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"street2"</span><span class="sc10">:</span><span class="sc4">"1366"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"city"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"state"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"country"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"postalCode"</span><span class="sc10">:</span><span class="sc4">"0000000"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"phone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc0">
+          </span><span class="sc10">}</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"payer"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"merchantPayerId"</span><span class="sc10">:</span><span class="sc4">"1"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"fullName"</span><span class="sc10">:</span><span class="sc4">"First name and second payer name"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"emailAddress"</span><span class="sc10">:</span><span class="sc4">"payer_test@test.com"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"contactPhone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"dniNumber"</span><span class="sc10">:</span><span class="sc4">"5415668464654"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"billingAddress"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"street1"</span><span class="sc10">:</span><span class="sc4">"Avenida entre rios"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"street2"</span><span class="sc10">:</span><span class="sc4">"452"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"city"</span><span class="sc10">:</span><span class="sc4">"Plata"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"state"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"country"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"postalCode"</span><span class="sc10">:</span><span class="sc4">"64000"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"phone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc0">
+          </span><span class="sc10">}</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"creditCard"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"number"</span><span class="sc10">:</span><span class="sc4">"4850110000000000"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"securityCode"</span><span class="sc10">:</span><span class="sc4">"321"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"expirationDate"</span><span class="sc10">:</span><span class="sc4">"2014/12"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"name"</span><span class="sc10">:</span><span class="sc4">"REJECTED"</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"extraParameters"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"INSTALLMENTS_NUMBER"</span><span class="sc10">:</span><span class="sc4">1</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent" style="font-weight: bolder;">"PROMOTION_ID"</span><span class="sc10">:</span><span class="sc4" style="font-weight: bolder;">16</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"type"</span><span class="sc10">:</span><span class="sc4">"AUTHORIZATION_AND_CAPTURE"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"paymentMethod"</span><span class="sc10">:</span><span class="sc4">"VISA"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"paymentCountry"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"deviceSessionId"</span><span class="sc10">:</span><span class="sc4">"vghs6tvkcle931686k1900o6e1"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"ipAddress"</span><span class="sc10">:</span><span class="sc4">"127.0.0.1"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"cookie"</span><span class="sc10">:</span><span class="sc4">"pt1t38347bs6jc9ruv2ecpv7o2"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"userAgent"</span><span class="sc10">:</span><span class="sc4">"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"</span><span class="sc0">
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"test"</span><span class="sc10">:</span><span class="sc4">false</span><span class="sc0">
+ </span><span class="sc10">}</span><span class="sc0">
+
+</div>
+</pre>
+</div>
+</div>
+
 <span class="blue-text-16">Hemos creado ejemplos de la construcción y envío de la petición de consulta de promociones en código PHP y JAVA.</span>
 <div class="simple-box">    
 	<div class="simple-box">    
