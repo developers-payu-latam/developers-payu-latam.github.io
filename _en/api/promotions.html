@@ -1,0 +1,1129 @@
+---
+title: Promotions
+subcategory: promotions
+---
+<div>
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1 bgreen bgreen">API Promotions - Argentina</h1>
+<ul class="hidden-xs">
+	<li class="leaf"><a class="#autenticacion" href="#autenticacion">Authentication</a></li>
+	<li class="leaf"><a class="#metodosdisp" href="#metodosdisp">Available methods</a></li>
+</ul>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row" style="background-color: #f9f9f9;">
+
+{% include sidemenu_api_en.html %}
+
+<div id="page-menu-column2">
+<span class="subtitle-page">API Promotions in Argentina</span>
+<span class="grey-text-13">This function will allow you to consult via API the valid promotions, their associate costs, characteristics and further relevant information that you may show to your clients.</span>
+&nbsp;<br>
+
+<div id="autenticacion" class="payu-fragment">
+<span class="subtitle-page">Authentication</span>
+</div>
+<span class="grey-text-13">We suggest to use a HMAC based mechanism to authenticate and authorize the petitions received by your server.  In order to make the authentication, you need to know your MerchantPublicKey whose information may be found in the tab "Settings", option "technical information" under the name "Public Key".</span>
+<br>
+<br>
+<span class="grey-text-13">The header should have the following structure:</span>
+&nbsp;<br>
+<div id="blue-box">Authorization Header: "Hmac" + " " + MerchantPublicKey + ":" + Signature"</div>
+<br>
+<span class="grey-text-13">Where the Signature is created as follows:</span>
+&nbsp;<br>
+<div id="blue-box">Signature = Base64(HMAC-SHA256(MerchantApiKey,ContentToSign))</div>
+<br>
+<span class="grey-text-13">The ContentToSign corresponds to: </span> 
+&nbsp;<br>
+<div id="blue-box">
+	HTTP-Verb + "\n" + "\n" + "\n" +<br> Date + "\n" + <br> URI <br> <br>
+	<span class="info-icon">Note:</span>
+		<ol>
+		<li>It is necessary to leave 3 spaces in the example line!</li>
+		</ol>
+	</span>	
+</div>
+<br>
+<span class="grey-text-13">Next, you may see an example with the following test data:</span>
+<pre>
+<span class="string"><strong>ContentToSign:</strong></span>
+<span class="string">GET</span> 
+<span class="string"></span> 
+<span class="string"></span>
+<span class="string">Tue, 05 Ago 2015 18:32:01 GMT</span>
+<span class="string">/payments-api/rest/v4.3/pricing</span>
+</pre>
+<pre><strong>MerchantApiKey:</strong> 6u39nqhq8ftd0hlvnjfs66eh8c</pre>
+<pre><strong>MerchantPublicKey:</strong> PK18e9t2p6k56Xe31o5jrv4Nft</pre>
+<span class="grey-text-13">The above information is related and the HMAC function is applied as it follows:</span>
+<br>
+<pre><strong>Authorization:</strong> Hmac PK18e9t2p6k56Xe31o5jrv4Nft:QCtnCLaYGpI7djR22o9aqBAzL3ysaS1xZMTv0HaX+N0= </pre>
+<br>
+<span class="grey-text-13">To avoid Replay attacks, you have to send the header "Date". Because of the restrictions seen in some REST clients, you may also send the header "x-hmac-date" to comply with the security requirements, as shown in this example:</span>
+<pre>Date =	 Mon, 11 May 2015 21:14:41 GMT</pre>
+<span class="grey-text-13">In the event that the REST client has any restriction you may send:</span>
+<pre>x-hmac-date = Mon, 11 May 2015 21:14:41 GMT</pre>
+
+<span class="grey-text-13">Next, we will describe the attributes and types of fields for each variable returned from PayU in case of consulting the API of Pricing and Promotions.</span>
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Pricing model variables</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+	<tr bgcolor="#696a6c">
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Ownership</td>
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Lenght</td>
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Type</td>
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="45%">Description</td>
+	</tr>
+	<tr>
+		<td><i>paymentMethodFeeDetail.paymentMethod</i></td>
+		<td></td>
+		<td>String</td>
+		<td>Name of means of payment.  Possible values MASTERCARD, VISA, AMEX, etc.</td>
+	</tr>
+	<tr>
+		<td><i>fee</i></td>
+		<td></td>
+		<td>Fee</td>
+		<td>Object that has all the pricing for a means of payment and installment, or all the installment (for countries that have a installment-based system).</td>
+	</tr>
+	<tr>
+		<td><i>fee.installments</i></td>
+		<td></td>
+		<td>String</td>
+		<td>Installment (1) or set of installments (1-36 for countries with installment-based ranges).</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing</i></td>
+		<td></td>
+		<td>Pricing</td>
+		<td>It has the Pricing values by default for the transaction.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.payerDetail</i></td>
+		<td></td>
+		<td>PayerDetail</td>
+		<td>It has the values of interests and fees that will be applied to the payer.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.payerDetail.commission</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Total fees to be applied to the payer, includes fees and taxes, if applicable.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.payerDetail.interests</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Total interests to be applied to the payer, includes fees and taxes, if applicable.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.payerDetail.total</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>The total value to be paid by the payer for fees and interests.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.merchantDetail.commission</i></td>
+		<td></td>
+		<td>Merchant Detail</td>
+		<td>Total fees to be applied to the business, includes fees and taxes, if applicable.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.merchantDetail.interests</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Total interests to be applied to the business, includes fees and taxes, if applicable.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.merchantDetail.total</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>The total value to be paid by the business because of fees and interests.</td>
+	</tr>
+	<tr>
+		<td><i>fee.pricing.totalValue</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Payment total, is the value submitted by the business plus the fees and interests that may correspond to the payer.</td>
+	</tr>
+	<tr>
+		<td><i>amount.value</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Corresponds to the value sent by the business with the purchase value, it may be in a currency other than that of the account.</td>
+	</tr>
+	<tr>
+		<td><i>amount.tax</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Corresponds to the value sent by the business with the tax value, it may be in a currency other than that of the account.</td>
+	</tr>
+	<tr>
+		<td><i>amount.taxableBase</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Corresponds to the value sent by the business with the taxable base, it may be in a currency other than that of the account.  This value is normally used in Colombia.</td>
+	</tr>
+	<tr>
+		<td><i>amount.currency</i></td>
+		<td>3</td>
+		<td>String</td>
+		<td>It is the currency that the business sends the transaction with (COP, USR, BRL, ARS).</td>
+	</tr>
+	<tr>
+		<td><i>convertedAmount</i></td>
+		<td></td>
+		<td>Converted Amount</td>
+		<td>The incoming amounts are related converted into the local currency.  These values are shown only os the currency sent is different to the currency of the country.</td>
+	</tr>
+	<tr>
+		<td><i>convertedAmount.value</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Amount of the transaction, in the currency used by the account.</td>
+	</tr>
+	<tr>
+		<td><i>cconvertedAmount.tax</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Tax value.</td>
+	</tr>
+	<tr>
+		<td><i>convertedAmount.taxableBase</i></td>
+		<td></td>
+		<td>Decimal</td>
+		<td>Taxable base.  In Colombia this is used a tax refund.</td>
+	</tr>
+	<tr>
+		<td><i>convertedAmount.currency</i></td>
+		<td>3</td>
+		<td>String</td>
+		<td>It is the currency corresponding to the account sent (COP, USR, BRL, ARS)</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Promotions model variables</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+	<tr bgcolor="#696a6c">
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Ownership</td>
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Lenght</td>
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Type</td>
+		<td style="text-align: center;" bgcolor="#cdf0ff" width="45%">Description</td>
+	</tr>
+	<tr>
+		<td><i>promotion.id</i></td>
+		<td></td>
+		<td>Integer</td>
+		<td>Identifier of promotion in PayU platform.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.title</i></td>
+		<td>50</td>
+		<td>String</td>
+		<td>Promotion title.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.termsAndConditions</i></td>
+		<td>250</td>
+		<td>String</td>
+		<td>Description of the terms and promotions that apply to the promotion.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.paymentMethod</i></td>
+		<td></td>
+		<td>String</td>
+		<td>Name of means of payments applied to the promotion.  Possible values MASTERCARD, VISA, AMEX, etc.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.subFranchise</i></td>
+		<td></td>
+		<td>String</td>
+		<td>Name of sub-brand/sub-franchise the promotion is made for.  Some sub-brands/sub-franchises are:  Nativa, Naranja, Cencosud.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.banks</i></td>
+		<td></td>
+		<td>List</td>
+		<td>List of banks where the promotion is valid. </td>
+	</tr>
+	<tr>
+		<td><i>promotion.iins</i></td>
+		<td></td>
+		<td>List</td>
+		<td>List with IIN/BINES of the banks, that the promotion applies to.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.days</i></td>
+		<td></td>
+		<td>List</td>
+		<td>List of days where the promotion is valid.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.startDate</i></td>
+		<td></td>
+		<td>Datetime</td>
+		<td>Date when promotion starts.</td>
+	</tr>
+	<tr>
+		<td><i>promotion.endDate</i></td>
+		<td></td>
+		<td>Datetime</td>
+		<td>Date when promotion ends.</td>
+	</tr>
+</table>
+</div>
+</div>
+</div>
+&nbsp;
+<div id="metodosdisp" class="payu-fragment">
+<span class="subtitle-page">Available methods in API</span>
+</div>
+<div id="blue-box">
+<span class="info-icon">Note:</span>
+	<ol>
+		<li>As this is a RESTful service, we advise you not to validate the scheme, by doing so, whenever updates are introduced on the webservice, the integration will not be affected, and only small adjustments to implement the new functions will be required.</li>
+	</ol>
+</div>
+
+<span class="grey-text-13">The API Pricing and Promotions has the following methods available to consult information:</span>
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click"><ul><li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">API</a></li></ul>
+	<div id="squelch-taas-tab-content-1">
+		<span class="grey-text-13"><b>Tests </b>: GET  <a href="https://stg.api.payulatam.com/payments-api/rest/v4.3/pricing" target="_blank">https://stg.api.payulatam.com/payments-api/rest/v4.3/pricing</a><br>
+		<b>Production </b>: GET  <a href="https://api.payulatam.com/payments-api/rest/v4.3/pricing" target="_blank">https://api.payulatam.com/payments-api/rest/v4.3/pricing</a></span>
+	</div>
+</div>
+
+<table class="table-d" >
+	<tr>
+		<td bgcolor="#696a6c" rowspan="6" width= "20%"><span style= "color: #fff;" font-weight: bold;><strong> Parámetros </strong></span></td>
+		<td width= "40%"> accountId </td>
+		<td width= "40&">Mandatory field</td>
+	</tr>
+	<tr>
+		<td>currency</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>amount</td>
+		<td>Mandatory field</td>
+	</tr>
+	<tr>
+		<td>tax</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>taxableBase</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>paymentMethod</td>
+		<td></td>
+	</tr>
+</table>
+<br>
+<p>In the petition you may define what languages you need to use by the headers HTTP
+<span class="highlight-txt">Content-type</span> and <span class="highlight-txt">Accept</span></p>
+<table class="table-d" >
+	<tr bgcolor="#00AEBA">
+		<td><span style="color: #fff; font-weight: bold;">CONTENT-TYPE</span></td>
+		<td><span style="color: #fff; font-weight: bold;">ACCEPT</span></td>
+	</tr>
+	<tr>
+		<td>application/xml</td>
+		<td>application/xml</td>
+	</tr>
+	<tr bgcolor="#f5f5f5">
+		<td>application/json</td>
+		<td>application/json</td>
+	</tr>
+</table>
+<br>
+<div class="paso1"><span class="subtitle-page">You may consult by sending only the value of the transaction</span></div>
+<div id="blue-box">
+	<span> GET </span><br>
+	<span> https://api.payulatam.com/payments-api/rest/v4.3/pricing?accountId={accountId}&amp;currency={currency}&amp;amount={amount} </span>
+</div>
+&nbsp;<br>
+
+
+Petition example: 
+<pre>
+	GET https://stg.api.payulatam.com/payments-api/rest/v4.3/pricing?accountId=509171&amp;currency=ARS&amp;amount=100
+</pre>
+Answer example: 
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+		<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">XML</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">JSON</a></li>
+		</ul>
+		
+<div id="squelch-taas-tab-content-1-1">
+
+<pre>
+	<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="tag2">&lt;?</span><span class="tag">xml</span><span class="sc8"> </span><span class="sc3">version</span><span class="sc8">=</span><span class="sc6">"1.0"</span><span class="sc8"> </span><span class="sc3">encoding</span><span class="sc8">=</span><span class="sc6">"UTF-8"</span><span class="tag3">?&gt;</span><span class="pln">
+</span><span class="tag">&lt;consultPriceListResponse</span><span class="sc8"> </span><span class="sc3">xmlns:atom</span><span class="sc8">=</span><span class="sc6">"http://www.w3.org/2005/Atom"</span><span class="sc8"> </span><span class="sc3">xmlns:ns3</span><span class="sc8">=</span><span class="sc6">"http://wadl.dev.java.net/2009/02"</span><span class="tag">&gt;</span><span class="pln">
+   </span><span class="tag">&lt;amount&gt;</span><span class="pln">
+      </span><span class="tag">&lt;value&gt;</span><span class="pln">500</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+      </span><span class="tag">&lt;tax&gt;</span><span class="pln">0</span><span class="tag">&lt;/tax&gt;</span><span class="pln">
+      </span><span class="tag">&lt;purchaseValue&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/purchaseValue&gt;</span><span class="pln">
+      </span><span class="tag">&lt;currency&gt;</span><span class="pln">ARS</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/amount&gt;</span><span class="pln">
+   </span><span class="tag">&lt;convertedAmount&gt;</span><span class="pln">
+      </span><span class="tag">&lt;value&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+      </span><span class="tag">&lt;tax&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/tax&gt;</span><span class="pln">
+      </span><span class="tag">&lt;purchaseValue&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/purchaseValue&gt;</span><span class="pln">
+      </span><span class="tag">&lt;currency&gt;</span><span class="pln">ARS</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/convertedAmount&gt;</span><span class="pln">
+   </span><span class="tag">&lt;promotions&gt;</span><span class="pln">
+      </span><span class="tag">&lt;promotion</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"38"</span><span class="sc8"> </span><span class="sc3">title</span><span class="sc8">=</span><span class="sc6">"Prueba subfranquicia"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;priority&gt;</span><span class="pln">10</span><span class="tag">&lt;/priority&gt;</span><span class="pln">
+         </span><span class="tag">&lt;type&gt;</span><span class="pln">MSI</span><span class="tag">&lt;/type&gt;</span><span class="pln">
+         </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">SHOPPING</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+         </span><span class="tag">&lt;termsAndConditions&gt;</span><span class="pln">Prueba subfranquicia</span><span class="tag">&lt;/termsAndConditions&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subFranchise&gt;</span><span class="pln">TARJETA NATIVA</span><span class="tag">&lt;/subFranchise&gt;</span><span class="pln">
+         </span><span class="tag">&lt;startDate&gt;</span><span class="pln">2015-09-21 18:47:00</span><span class="tag">&lt;/startDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;endDate&gt;</span><span class="pln">2015-09-26 18:47:00</span><span class="tag">&lt;/endDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;days&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">SUNDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">MONDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">TUESDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">WEDNESDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">THURSDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">FRIDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">SATURDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/days&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/promotion&gt;</span><span class="pln">
+      </span><span class="tag">&lt;promotion</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"37"</span><span class="sc8"> </span><span class="sc3">title</span><span class="sc8">=</span><span class="sc6">"Prueba sub franquicia"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;priority&gt;</span><span class="pln">10</span><span class="tag">&lt;/priority&gt;</span><span class="pln">
+         </span><span class="tag">&lt;type&gt;</span><span class="pln">MSI</span><span class="tag">&lt;/type&gt;</span><span class="pln">
+         </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">CABAL</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+         </span><span class="tag">&lt;termsAndConditions&gt;</span><span class="pln">Prueba sub franquicia</span><span class="tag">&lt;/termsAndConditions&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subFranchise&gt;</span><span class="pln">CENCOSUD</span><span class="tag">&lt;/subFranchise&gt;</span><span class="pln">
+         </span><span class="tag">&lt;startDate&gt;</span><span class="pln">2015-09-21 18:45:00</span><span class="tag">&lt;/startDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;endDate&gt;</span><span class="pln">2015-09-26 18:45:00</span><span class="tag">&lt;/endDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;days&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">SUNDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">MONDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">TUESDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">WEDNESDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">THURSDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">FRIDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+            </span><span class="tag">&lt;day&gt;</span><span class="pln">SATURDAY</span><span class="tag">&lt;/day&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/days&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/promotion&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/promotions&gt;</span><span class="pln">
+   </span><span class="tag">&lt;paymentMethodFee&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentMethodFeeDetail</span><span class="sc8"> </span><span class="sc3">paymentMethod</span><span class="sc8">=</span><span class="sc6">"SHOPPING"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;pricingFees&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fee</span><span class="sc8"> </span><span class="sc3">installments</span><span class="sc8">=</span><span class="sc6">"1"</span><span class="tag">&gt;</span><span class="pln">
+               </span><span class="tag">&lt;pricing&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;payerDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;totalValue&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/totalValue&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/pricing&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/fee&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fee</span><span class="sc8"> </span><span class="sc3">installments</span><span class="sc8">=</span><span class="sc6">"3"</span><span class="tag">&gt;</span><span class="pln">
+               </span><span class="tag">&lt;pricing&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;payerDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">75.01</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">75.01</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;totalValue&gt;</span><span class="pln">575.01</span><span class="tag">&lt;/totalValue&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/pricing&gt;</span><span class="pln">
+               </span><span class="tag">&lt;promos&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;promo</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"38"</span><span class="tag">&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;priority&gt;</span><span class="pln">10</span><span class="tag">&lt;/priority&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;pricing&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;payerDetail&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;commission&gt;</span><span class="pln">25.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;total&gt;</span><span class="pln">25.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;totalValue&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/totalValue&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/pricing&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/promo&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/promos&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/fee&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/pricingFees&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/paymentMethodFeeDetail&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentMethodFeeDetail</span><span class="sc8"> </span><span class="sc3">paymentMethod</span><span class="sc8">=</span><span class="sc6">"CABAL"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;pricingFees&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fee</span><span class="sc8"> </span><span class="sc3">installments</span><span class="sc8">=</span><span class="sc6">"1"</span><span class="tag">&gt;</span><span class="pln">
+               </span><span class="tag">&lt;pricing&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;payerDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;totalValue&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/totalValue&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/pricing&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/fee&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fee</span><span class="sc8"> </span><span class="sc3">installments</span><span class="sc8">=</span><span class="sc6">"3"</span><span class="tag">&gt;</span><span class="pln">
+               </span><span class="tag">&lt;pricing&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;payerDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">75.01</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">75.01</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;totalValue&gt;</span><span class="pln">575.01</span><span class="tag">&lt;/totalValue&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/pricing&gt;</span><span class="pln">
+               </span><span class="tag">&lt;promos&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;promo</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"37"</span><span class="tag">&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;priority&gt;</span><span class="pln">10</span><span class="tag">&lt;/priority&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;pricing&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;payerDetail&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;commission&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;total&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;commission&gt;</span><span class="pln">10.00</span><span class="tag">&lt;/commission&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;interests&gt;</span><span class="pln">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pln">
+                           </span><span class="tag">&lt;total&gt;</span><span class="pln">10.00</span><span class="tag">&lt;/total&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pln">
+                        </span><span class="tag">&lt;totalValue&gt;</span><span class="pln">500.00</span><span class="tag">&lt;/totalValue&gt;</span><span class="pln">
+                     </span><span class="tag">&lt;/pricing&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;/promo&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/promos&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/fee&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/paymentMethodFee&gt;</span><span class="pln">
+</span><span class="tag">&lt;/consultPriceListResponse&gt;</span>
+</div>
+</pre>	
+</div>
+
+<div id="squelch-taas-tab-content-1-2">
+<pre style="height: 300px; overflow: auto;">
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc10">{</span><span class="sc0">
+   </span><span class="json-indent">"amount"</span><span class="sc10">:{</span><span class="sc0">
+      </span><span class="json-indent">"value"</span><span class="sc10">:</span><span class="json-indent">500</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"tax"</span><span class="sc10">:</span><span class="json-indent">0</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"purchaseValue"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"currency"</span><span class="sc10">:</span><span class="json-indent">"ARS"</span><span class="sc0">
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"convertedAmount"</span><span class="sc10">:{</span><span class="sc0">
+      </span><span class="json-indent">"value"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"tax"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"purchaseValue"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"currency"</span><span class="sc10">:</span><span class="json-indent">"ARS"</span><span class="sc0">
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"paymentMethodFee"</span><span class="sc10">:[</span><span class="sc0">
+      </span><span class="sc10">{</span><span class="sc0">
+         </span><span class="json-indent">"paymentMethod"</span><span class="sc10">:</span><span class="json-indent">"SHOPPING"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"pricingFees"</span><span class="sc10">:[</span><span class="sc0">
+            </span><span class="sc10">{</span><span class="sc0">
+               </span><span class="json-indent">"installments"</span><span class="sc10">:</span><span class="json-indent">"1"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                  </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc0">
+               </span><span class="sc10">}</span><span class="sc0">
+            </span><span class="sc10">},</span><span class="sc0">
+            </span><span class="sc10">{</span><span class="sc0">
+               </span><span class="json-indent">"installments"</span><span class="sc10">:</span><span class="json-indent">"3"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                  </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">75.01</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">75.01</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="json-indent">575.01</span><span class="sc0">
+               </span><span class="sc10">},</span><span class="sc0">
+               </span><span class="json-indent">"promos"</span><span class="sc10">:[</span><span class="sc0">
+                  </span><span class="sc10">{</span><span class="sc0">
+                     </span><span class="json-indent">"id"</span><span class="sc10">:</span><span class="json-indent">38</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                        </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                           </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                        </span><span class="sc10">},</span><span class="sc0">
+                        </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                           </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">25.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">25.00</span><span class="sc0">
+                        </span><span class="sc10">},</span><span class="sc0">
+                        </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc0">
+                     </span><span class="sc10">},</span><span class="sc0">
+                     </span><span class="json-indent">"priority"</span><span class="sc10">:</span><span class="json-indent">10</span><span class="sc0">
+                  </span><span class="sc10">}</span><span class="sc0">
+               </span><span class="sc10">]</span><span class="sc0">
+            </span><span class="sc10">}</span><span class="sc0">
+         </span><span class="sc10">]</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="sc10">{</span><span class="sc0">
+         </span><span class="json-indent">"paymentMethod"</span><span class="sc10">:</span><span class="json-indent">"CABAL"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"pricingFees"</span><span class="sc10">:[</span><span class="sc0">
+            </span><span class="sc10">{</span><span class="sc0">
+               </span><span class="json-indent">"installments"</span><span class="sc10">:</span><span class="json-indent">"1"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                  </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc0">
+               </span><span class="sc10">}</span><span class="sc0">
+            </span><span class="sc10">},</span><span class="sc0">
+            </span><span class="sc10">{</span><span class="sc0">
+               </span><span class="json-indent">"installments"</span><span class="sc10">:</span><span class="json-indent">"3"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                  </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">75.01</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">75.01</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="json-indent">575.01</span><span class="sc0">
+               </span><span class="sc10">},</span><span class="sc0">
+               </span><span class="json-indent">"promos"</span><span class="sc10">:[</span><span class="sc0">
+                  </span><span class="sc10">{</span><span class="sc0">
+                     </span><span class="json-indent">"id"</span><span class="sc10">:</span><span class="json-indent">37</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                        </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                           </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc0">
+                        </span><span class="sc10">},</span><span class="sc0">
+                        </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                           </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="json-indent">10.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="json-indent">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="json-indent">10.00</span><span class="sc0">
+                        </span><span class="sc10">},</span><span class="sc0">
+                        </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="json-indent">500.00</span><span class="sc0">
+                     </span><span class="sc10">},</span><span class="sc0">
+                     </span><span class="json-indent">"priority"</span><span class="sc10">:</span><span class="json-indent">10</span><span class="sc0">
+                  </span><span class="sc10">}</span><span class="sc0">
+               </span><span class="sc10">]</span><span class="sc0">
+            </span><span class="sc10">}</span><span class="sc0">
+         </span><span class="sc10">]</span><span class="sc0">
+      </span><span class="sc10">}</span><span class="sc0">
+   </span><span class="sc10">],</span><span class="sc0">
+   </span><span class="json-indent">"promotions"</span><span class="sc10">:[</span><span class="sc0">
+      </span><span class="sc10">{</span><span class="sc0">
+         </span><span class="json-indent">"id"</span><span class="sc10">:</span><span class="json-indent">38</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"title"</span><span class="sc10">:</span><span class="json-indent">"Prueba subfranquicia"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"termsAndConditions"</span><span class="sc10">:</span><span class="json-indent">"Prueba subfranquicia"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"paymentMethodMain"</span><span class="sc10">:</span><span class="json-indent">"SHOPPING"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"subFranchise"</span><span class="sc10">:</span><span class="json-indent">"TARJETA NATIVA"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"startDate"</span><span class="sc10">:</span><span class="json-indent">"2015-09-21 18:47:00"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"endDate"</span><span class="sc10">:</span><span class="json-indent">"2015-09-26 18:47:00"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"days"</span><span class="sc10">:[</span><span class="sc0">
+            </span><span class="json-indent">"SUNDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"MONDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"TUESDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"WEDNESDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"THURSDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"FRIDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"SATURDAY"</span><span class="sc0">
+         </span><span class="sc10">],</span><span class="sc0">
+         </span><span class="json-indent">"priority"</span><span class="sc10">:</span><span class="json-indent">10</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"type"</span><span class="sc10">:</span><span class="json-indent">"MSI"</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="sc10">{</span><span class="sc0">
+         </span><span class="json-indent">"id"</span><span class="sc10">:</span><span class="json-indent">37</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"title"</span><span class="sc10">:</span><span class="json-indent">"Prueba sub franquicia"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"termsAndConditions"</span><span class="sc10">:</span><span class="json-indent">"Prueba sub franquicia"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"paymentMethodMain"</span><span class="sc10">:</span><span class="json-indent">"CABAL"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"subFranchise"</span><span class="sc10">:</span><span class="json-indent">"CENCOSUD"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"startDate"</span><span class="sc10">:</span><span class="json-indent">"2015-09-21 18:45:00"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"endDate"</span><span class="sc10">:</span><span class="json-indent">"2015-09-26 18:45:00"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"days"</span><span class="sc10">:[</span><span class="sc0">
+            </span><span class="json-indent">"SUNDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"MONDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"TUESDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"WEDNESDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"THURSDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"FRIDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"SATURDAY"</span><span class="sc0">
+         </span><span class="sc10">],</span><span class="sc0">
+         </span><span class="json-indent">"priority"</span><span class="sc10">:</span><span class="json-indent">10</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"type"</span><span class="sc10">:</span><span class="json-indent">"MSI"</span><span class="sc0">
+      </span><span class="sc10">}</span><span class="sc0">
+   </span><span class="sc10">]</span><span class="sc0">
+</span><span class="sc10">}</span>
+</div>
+</pre>
+</div>
+</div>
+
+
+<div class="paso2"><span class="subtitle-page">Consult sending the value of the transaction and the means of payment</span></div>
+<div id="blue-box">
+	<span> GET </span><br>
+	<span>https://api.payulatam.com/payments-api/rest/v4.3/pricing?accountId={accountId}&currency={currency}&amp;amount={amount}&amp;paymentMethod={paymentMethod} </span>
+</div>
+&nbsp;<br>
+
+Petition example: 
+<pre>
+	GET https://stg.api.payulatam.com/payments-api/rest/v4.3/pricing?accountId=509171&amp;currency=ARS&amp;amount=100&paymentMethod=CABAL
+</pre>
+<span class="grey-text-13">The values that you may send the PaymentMethod parameter are: VISA, MASTERCARD, DINERS, ARGENCARD, NARANJA, AMEX.</span>
+<br>
+<br>
+Answer example: 
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+		<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">XML</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">JSON</a></li>
+		</ul>
+		
+<div id="squelch-taas-tab-content-1-1">
+<pre>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="tag2">&lt;?</span><span class="tag">xml</span><span class="sc8"> </span><span class="sc3">version</span><span class="sc8">=</span><span class="sc6">"1.0"</span><span class="sc8"> </span><span class="sc3">encoding</span><span class="sc8">=</span><span class="sc6">"UTF-8"</span><span class="tag3">?&gt;</span><span class="pnl">
+</span><span class="tag">&lt;consultPriceListResponse</span><span class="sc8"> </span><span class="sc3">xmlns:atom</span><span class="sc8">=</span><span class="sc6">"http://www.w3.org/2005/Atom"</span><span class="sc8"> </span><span class="sc3">xmlns:ns3</span><span class="sc8">=</span><span class="sc6">"http://wadl.dev.java.net/2009/02"</span><span class="tag">&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;amount&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;value&gt;</span><span class="pnl">500</span><span class="tag">&lt;/value&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;tax&gt;</span><span class="pnl">0</span><span class="tag">&lt;/tax&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;purchaseValue&gt;</span><span class="pnl">500.00</span><span class="tag">&lt;/purchaseValue&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;currency&gt;</span><span class="pnl">ARS</span><span class="tag">&lt;/currency&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;/amount&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;convertedAmount&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;value&gt;</span><span class="pnl">500.00</span><span class="tag">&lt;/value&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;tax&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/tax&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;purchaseValue&gt;</span><span class="pnl">500.00</span><span class="tag">&lt;/purchaseValue&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;currency&gt;</span><span class="pnl">ARS</span><span class="tag">&lt;/currency&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;/convertedAmount&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;promotions&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;promotion</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"37"</span><span class="sc8"> </span><span class="sc3">title</span><span class="sc8">=</span><span class="sc6">"Prueba sub franquicia"</span><span class="tag">&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;priority&gt;</span><span class="pnl">10</span><span class="tag">&lt;/priority&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;type&gt;</span><span class="pnl">MSI</span><span class="tag">&lt;/type&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pnl">CABAL</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;termsAndConditions&gt;</span><span class="pnl">Prueba sub franquicia</span><span class="tag">&lt;/termsAndConditions&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;subFranchise&gt;</span><span class="pnl">CENCOSUD</span><span class="tag">&lt;/subFranchise&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;startDate&gt;</span><span class="pnl">2015-09-21 18:45:00</span><span class="tag">&lt;/startDate&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;endDate&gt;</span><span class="pnl">2015-09-26 18:45:00</span><span class="tag">&lt;/endDate&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;days&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">SUNDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">MONDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">TUESDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">WEDNESDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">THURSDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">FRIDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;day&gt;</span><span class="pnl">SATURDAY</span><span class="tag">&lt;/day&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;/days&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;/promotion&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;/promotions&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;paymentMethodFee&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;paymentMethodFeeDetail</span><span class="sc8"> </span><span class="sc3">paymentMethod</span><span class="sc8">=</span><span class="sc6">"CABAL"</span><span class="tag">&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;pricingFees&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;fee</span><span class="sc8"> </span><span class="sc3">installments</span><span class="sc8">=</span><span class="sc6">"1"</span><span class="tag">&gt;</span><span class="pnl">
+               </span><span class="tag">&lt;pricing&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;payerDetail&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;totalValue&gt;</span><span class="pnl">500.00</span><span class="tag">&lt;/totalValue&gt;</span><span class="pnl">
+               </span><span class="tag">&lt;/pricing&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;/fee&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;fee</span><span class="sc8"> </span><span class="sc3">installments</span><span class="sc8">=</span><span class="sc6">"3"</span><span class="tag">&gt;</span><span class="pnl">
+               </span><span class="tag">&lt;pricing&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;payerDetail&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pnl">75.01</span><span class="tag">&lt;/interests&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pnl">75.01</span><span class="tag">&lt;/total&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;commission&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;interests&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;total&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;totalValue&gt;</span><span class="pnl">575.01</span><span class="tag">&lt;/totalValue&gt;</span><span class="pnl">
+               </span><span class="tag">&lt;/pricing&gt;</span><span class="pnl">
+               </span><span class="tag">&lt;promos&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;promo</span><span class="sc8"> </span><span class="sc3">id</span><span class="sc8">=</span><span class="sc6">"37"</span><span class="tag">&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;priority&gt;</span><span class="pnl">10</span><span class="tag">&lt;/priority&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;pricing&gt;</span><span class="pnl">
+                        </span><span class="tag">&lt;payerDetail&gt;</span><span class="pnl">
+                           </span><span class="tag">&lt;commission&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/commission&gt;</span><span class="pnl">
+                           </span><span class="tag">&lt;interests&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pnl">
+                           </span><span class="tag">&lt;total&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/total&gt;</span><span class="pnl">
+                        </span><span class="tag">&lt;/payerDetail&gt;</span><span class="pnl">
+                        </span><span class="tag">&lt;merchantDetail&gt;</span><span class="pnl">
+                           </span><span class="tag">&lt;commission&gt;</span><span class="pnl">10.00</span><span class="tag">&lt;/commission&gt;</span><span class="pnl">
+                           </span><span class="tag">&lt;interests&gt;</span><span class="pnl">0.00</span><span class="tag">&lt;/interests&gt;</span><span class="pnl">
+                           </span><span class="tag">&lt;total&gt;</span><span class="pnl">10.00</span><span class="tag">&lt;/total&gt;</span><span class="pnl">
+                        </span><span class="tag">&lt;/merchantDetail&gt;</span><span class="pnl">
+                        </span><span class="tag">&lt;totalValue&gt;</span><span class="pnl">500.00</span><span class="tag">&lt;/totalValue&gt;</span><span class="pnl">
+                     </span><span class="tag">&lt;/pricing&gt;</span><span class="pnl">
+                  </span><span class="tag">&lt;/promo&gt;</span><span class="pnl">
+               </span><span class="tag">&lt;/promos&gt;</span><span class="pnl">
+            </span><span class="tag">&lt;/fee&gt;</span><span class="pnl">
+         </span><span class="tag">&lt;/pricingFees&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;/paymentMethodFeeDetail&gt;</span><span class="pnl">
+   </span><span class="tag">&lt;/paymentMethodFee&gt;</span><span class="pnl">
+</span><span class="tag">&lt;/consultPriceListResponse&gt;</span>
+</div>
+</pre>
+</div>
+
+<div id="squelch-taas-tab-content-1-2">
+<pre style="height: 300px; overflow: auto;">
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; "><span class="sc10">{</span><span class="sc0">
+   </span><span class="json-indent">"amount"</span><span class="sc10">:{</span><span class="sc0">
+      </span><span class="json-indent">"value"</span><span class="sc10">:</span><span class="sc4">500</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"tax"</span><span class="sc10">:</span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"purchaseValue"</span><span class="sc10">:</span><span class="sc4">500.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"currency"</span><span class="sc10">:</span><span class="json-indent">"ARS"</span><span class="sc0">
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"convertedAmount"</span><span class="sc10">:{</span><span class="sc0">
+      </span><span class="json-indent">"value"</span><span class="sc10">:</span><span class="sc4">500.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"tax"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"purchaseValue"</span><span class="sc10">:</span><span class="sc4">500.00</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"currency"</span><span class="sc10">:</span><span class="json-indent">"ARS"</span><span class="sc0">
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"paymentMethodFee"</span><span class="sc10">:[</span><span class="sc0">
+      </span><span class="sc10">{</span><span class="sc0">
+         </span><span class="json-indent">"paymentMethod"</span><span class="sc10">:</span><span class="json-indent">"CABAL"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"pricingFees"</span><span class="sc10">:[</span><span class="sc0">
+            </span><span class="sc10">{</span><span class="sc0">
+               </span><span class="json-indent">"installments"</span><span class="sc10">:</span><span class="json-indent">"1"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                  </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="sc4">500.00</span><span class="sc0">
+               </span><span class="sc10">}</span><span class="sc0">
+            </span><span class="sc10">},</span><span class="sc0">
+            </span><span class="sc10">{</span><span class="sc0">
+               </span><span class="json-indent">"installments"</span><span class="sc10">:</span><span class="json-indent">"3"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                  </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="sc4">75.01</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="sc4">75.01</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                     </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc0">
+                  </span><span class="sc10">},</span><span class="sc0">
+                  </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="sc4">575.01</span><span class="sc0">
+               </span><span class="sc10">},</span><span class="sc0">
+               </span><span class="json-indent">"promos"</span><span class="sc10">:[</span><span class="sc0">
+                  </span><span class="sc10">{</span><span class="sc0">
+                     </span><span class="json-indent">"id"</span><span class="sc10">:</span><span class="sc4">37</span><span class="sc10">,</span><span class="sc0">
+                     </span><span class="json-indent">"pricing"</span><span class="sc10">:{</span><span class="sc0">
+                        </span><span class="json-indent">"payerDetail"</span><span class="sc10">:{</span><span class="sc0">
+                           </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc0">
+                        </span><span class="sc10">},</span><span class="sc0">
+                        </span><span class="json-indent">"merchantDetail"</span><span class="sc10">:{</span><span class="sc0">
+                           </span><span class="json-indent">"commission"</span><span class="sc10">:</span><span class="sc4">10.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"interests"</span><span class="sc10">:</span><span class="sc4">0.00</span><span class="sc10">,</span><span class="sc0">
+                           </span><span class="json-indent">"total"</span><span class="sc10">:</span><span class="sc4">10.00</span><span class="sc0">
+                        </span><span class="sc10">},</span><span class="sc0">
+                        </span><span class="json-indent">"totalValue"</span><span class="sc10">:</span><span class="sc4">500.00</span><span class="sc0">
+                     </span><span class="sc10">},</span><span class="sc0">
+                     </span><span class="json-indent">"priority"</span><span class="sc10">:</span><span class="sc4">10</span><span class="sc0">
+                  </span><span class="sc10">}</span><span class="sc0">
+               </span><span class="sc10">]</span><span class="sc0">
+            </span><span class="sc10">},</span><span class="sc0">
+         </span><span class="sc10">]</span><span class="sc0">
+      </span><span class="sc10">}</span><span class="sc0">
+   </span><span class="sc10">],</span><span class="sc0">
+   </span><span class="json-indent">"promotions"</span><span class="sc10">:[</span><span class="sc0">
+      </span><span class="sc10">{</span><span class="sc0">
+         </span><span class="json-indent">"id"</span><span class="sc10">:</span><span class="sc4">37</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"title"</span><span class="sc10">:</span><span class="json-indent">"Prueba sub franquicia"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"termsAndConditions"</span><span class="sc10">:</span><span class="json-indent">"Prueba sub franquicia"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"paymentMethodMain"</span><span class="sc10">:</span><span class="json-indent">"CABAL"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"subFranchise"</span><span class="sc10">:</span><span class="json-indent">"CENCOSUD"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"startDate"</span><span class="sc10">:</span><span class="json-indent">"2015-09-21 18:45:00"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"endDate"</span><span class="sc10">:</span><span class="json-indent">"2015-09-26 18:45:00"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"days"</span><span class="sc10">:[</span><span class="sc0">
+            </span><span class="json-indent">"SUNDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"MONDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"TUESDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"WEDNESDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"THURSDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"FRIDAY"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"SATURDAY"</span><span class="sc0">
+         </span><span class="sc10">],</span><span class="sc0">
+         </span><span class="json-indent">"priority"</span><span class="sc10">:</span><span class="sc4">10</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"type"</span><span class="sc10">:</span><span class="json-indent">"MSI"</span><span class="sc0">
+      </span><span class="sc10">}</span><span class="sc0">
+   </span><span class="sc10">]</span><span class="sc0">
+</span><span class="sc10">}</span></div>
+</pre>
+</div>
+</div>
+<br>
+
+<div class="paso3">
+    <span class="subtitle-page">Execution of the transaction with promotion</span>
+</div>
+<span class="grey-text-13">
+    Once you have selected a promotion, you need to send the API description on the ID of this transaction. The promotion ID is sent as an additional parameter  <extraParameters> within the API petition, as it follows:    
+</span>
+<div id="blue-box"> 
+
+    &lt;extraParameters&gt;<br/>
+      <span class="tab">&lt;entry&gt;</span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;</span></span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;Número de cuota&lt;/string&gt;</span></span><br/>
+      <span class="tab">&lt;/entry&gt;</span><br/>
+      <span class="tab">&lt;entry&gt;</span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;PROMOTION_ID&lt;/string&gt;</span></span><br/>
+        <span class="tab"><span class="tab">&lt;string&gt;ID de la promoción&lt;/string&gt;</span></span><br/>
+      <span class="tab">&lt;/entry&gt;</span><br/>
+    &lt;/extraParameters&gt;<br/>
+    
+</div>
+<br/>
+We show a complete examble of a petition next:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+		<ul>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">XML</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">JSON</a></li>
+		</ul>
+		
+<div id="squelch-taas-tab-content-1-1">
+<pre>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; ">
+    </span><span class="tag">&lt;request&gt;</span><span class="pnl">
+      </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+      </span><span class="tag">&lt;command&gt;</span><span class="pln">SUBMIT_TRANSACTION</span><span class="tag">&lt;/command&gt;</span><span class="pln">
+      </span><span class="tag">&lt;merchant&gt;</span><span class="pln">
+       </span><span class="tag">&lt;apiLogin&gt;</span><span class="pln">11959c415b33d0c</span><span class="tag">&lt;/apiLogin&gt;</span><span class="pln">
+       </span><span class="tag">&lt;apiKey&gt;</span><span class="pln">6u39nqhq8ftd0hlvnjfs66eh8c</span><span class="tag">&lt;/apiKey&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/merchant&gt;</span><span class="pln">
+       </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
+          </span><span class="tag">&lt;order&gt;</span><span class="pln">
+             </span><span class="tag">&lt;accountId&gt;</span><span class="pln">509171</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
+             </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">REF201500102-0001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+             </span><span class="tag">&lt;description&gt;</span><span class="pln">Combo multiproductos</span><span class="tag">&lt;/description&gt;</span><span class="pln">
+             </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+             </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://payu.com/Confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
+             </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
+                </span><span class="tag">&lt;country&gt;</span><span class="pln">AR</span><span class="tag">&lt;/country&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/shippingAddress&gt;</span><span class="pln">
+             </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
+                </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">email@correo.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
+             </span><span class="tag">&lt;additionalValues class="java.util.HashMap"&gt;</span><span class="pln">
+                </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+                   </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                   </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                      </span><span class="tag">&lt;value&gt;</span><span class="pln">500</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                      </span><span class="tag">&lt;currency&gt;</span><span class="pln">ARS</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+                   </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+                </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/order&gt;</span><span class="pln">
+          </span><span class="tag">&lt;creditCard&gt;</span><span class="pln">
+             </span><span class="tag">&lt;number&gt;</span><span class="pln">4916********2266/number</span><span class="tag">&gt;</span><span class="pln">
+             </span><span class="tag">&lt;securityCode&gt;</span><span class="pln">***</span><span class="tag">&lt;/securityCode&gt;</span><span class="pln">
+             </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2019/03</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+             </span><span class="tag">&lt;name&gt;</span><span class="pln">Juan Perez S.</span><span class="tag">&lt;/name&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/creditCard&gt;</span><span class="pln">
+          </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
+          </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">VISA</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+          </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">AR</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
+          </span><span class="tag">&lt;payer&gt;</span><span class="pln">
+             </span><span class="tag">&lt;fullName&gt;</span><span class="pln">Juan Perez S.</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
+             </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">email@correo.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/payer&gt;</span><span class="pln">
+          </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">200.150.5.152</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
+          </span><span class="tag">&lt;cookie&gt;</span><span class="pln">cookie_a1b2c3d4</span><span class="tag">&lt;/cookie&gt;</span><span class="pln">
+          </span><span class="tag">&lt;userAgent&gt;</span><span class="pln">Chrome</span><span class="tag">&lt;/userAgent&gt;</span><span class="pln">
+          </span><span class="tag">&lt;extraParameters class="java.util.HashMap"</span><span class="tag">&gt;</span><span class="pln">
+             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">INSTALLMENTS_NUMBER</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag">&lt;string&gt;</span><span class="pln">3</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+                </span><span class="tag" style="font-weight: bolder;">&lt;string&gt;</span><span class="pln" style="font-weight: bolder;">PROMOTION_ID</span><span class="tag"style="font-weight: bolder;">&lt;/string&gt;</span><span class="pln">
+                </span><span class="tag" style="font-weight: bolder;">&lt;string&gt;</span><span class="pln" style="font-weight: bolder;">16</span><span class="tag" style="font-weight: bolder;">&lt;/string&gt;</span><span class="pln">
+             </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+          </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+       </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
+       </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/request&gt;</span><span class="pln">
+    
+</div>
+</pre>
+</div>
+
+<div id="squelch-taas-tab-content-1-2">
+<pre style="height: 300px; overflow: auto;">
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; ">
+   <span class="sc10">{</span><span class="sc0">
+   </span><span class="json-indent">"language"</span><span class="sc10">:</span><span class="sc4">"es"</span><span class="sc10">,</span><span class="sc0">
+   </span><span class="json-indent">"command"</span><span class="sc10">:</span><span class="sc4">"SUBMIT_TRANSACTION"</span><span class="sc10">,</span><span class="sc0">
+   </span><span class="json-indent">"merchant"</span><span class="sc10">: {</span><span class="sc4">
+      </span><span class="json-indent">"apiKey"</span><span class="sc10">:</span><span class="sc4">"6u39nqhq8ftd0hlvnjfs66eh8c"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"apiLogin"</span><span class="sc10">:</span><span class="sc4">"11959c415b33d0c"
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"transaction"</span><span class="sc10">: {</span><span class="sc4">
+      </span><span class="json-indent">"order"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"accountId"</span><span class="sc10">:</span><span class="sc4">"509171"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"referenceCode"</span><span class="sc10">:</span><span class="sc4">"payment_test_00000001"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"description"</span><span class="sc10">:</span><span class="sc4">"payment test"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"language"</span><span class="sc10">:</span><span class="sc4">"es"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"signature"</span><span class="sc10">:</span><span class="sc4">"6dcd21f14036ad057988089df9a28434"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"notifyUrl"</span><span class="sc10">:</span><span class="sc4">"http://www.tes.com/confirmation"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"additionalValues"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"TX_VALUE"</span><span class="sc10">: {</span><span class="sc4">
+               </span><span class="json-indent">"value"</span><span class="sc10">:</span><span class="sc4">100</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"currency"</span><span class="sc10">:</span><span class="sc4">"ARS"</span><span class="sc0">
+             </span><span class="sc10">}</span><span class="sc0">
+         </span><span class="sc10">},</span><span class="sc0">
+         </span><span class="json-indent">"buyer"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"merchantBuyerId"</span><span class="sc10">:</span><span class="sc4">"1"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"fullName"</span><span class="sc10">:</span><span class="sc4">"First name and second buyer  name"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"emailAddress"</span><span class="sc10">:</span><span class="sc4">"buyer_test@test.com"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"contactPhone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"dniNumber"</span><span class="sc10">:</span><span class="sc4">"5415668464654"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"shippingAddress"</span><span class="sc10">: {</span><span class="sc4">
+               </span><span class="json-indent">"street1"</span><span class="sc10">:</span><span class="sc4">"Viamonte"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"street2"</span><span class="sc10">:</span><span class="sc4">"1366"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"city"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"state"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"country"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"postalCode"</span><span class="sc10">:</span><span class="sc4">"000000"</span><span class="sc10">,</span><span class="sc0">
+               </span><span class="json-indent">"phone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc0">
+             </span><span class="sc10">}</span><span class="sc0">
+         </span><span class="sc10">},</span><span class="sc0">
+         </span><span class="json-indent">"shippingAddress"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"street1"</span><span class="sc10">:</span><span class="sc4">"Viamonte"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"street2"</span><span class="sc10">:</span><span class="sc4">"1366"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"city"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"state"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"country"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"postalCode"</span><span class="sc10">:</span><span class="sc4">"0000000"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"phone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc0">
+          </span><span class="sc10">}</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"payer"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"merchantPayerId"</span><span class="sc10">:</span><span class="sc4">"1"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"fullName"</span><span class="sc10">:</span><span class="sc4">"First name and second payer name"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"emailAddress"</span><span class="sc10">:</span><span class="sc4">"payer_test@test.com"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"contactPhone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"dniNumber"</span><span class="sc10">:</span><span class="sc4">"5415668464654"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"billingAddress"</span><span class="sc10">: {</span><span class="sc4">
+            </span><span class="json-indent">"street1"</span><span class="sc10">:</span><span class="sc4">"Avenida entre rios"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"street2"</span><span class="sc10">:</span><span class="sc4">"452"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"city"</span><span class="sc10">:</span><span class="sc4">"Plata"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"state"</span><span class="sc10">:</span><span class="sc4">"Buenos Aires"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"country"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"postalCode"</span><span class="sc10">:</span><span class="sc4">"64000"</span><span class="sc10">,</span><span class="sc0">
+            </span><span class="json-indent">"phone"</span><span class="sc10">:</span><span class="sc4">"7563126"</span><span class="sc0">
+          </span><span class="sc10">}</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"creditCard"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"number"</span><span class="sc10">:</span><span class="sc4">"4850110000000000"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"securityCode"</span><span class="sc10">:</span><span class="sc4">"321"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"expirationDate"</span><span class="sc10">:</span><span class="sc4">"2014/12"</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent">"name"</span><span class="sc10">:</span><span class="sc4">"REJECTED"</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"extraParameters"</span><span class="sc10">: {</span><span class="sc4">
+         </span><span class="json-indent">"INSTALLMENTS_NUMBER"</span><span class="sc10">:</span><span class="sc4">1</span><span class="sc10">,</span><span class="sc0">
+         </span><span class="json-indent" style="font-weight: bolder;">"PROMOTION_ID"</span><span class="sc10">:</span><span class="sc4" style="font-weight: bolder;">16</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="sc10">},</span><span class="sc0">
+      </span><span class="json-indent">"type"</span><span class="sc10">:</span><span class="sc4">"AUTHORIZATION_AND_CAPTURE"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"paymentMethod"</span><span class="sc10">:</span><span class="sc4">"VISA"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"paymentCountry"</span><span class="sc10">:</span><span class="sc4">"AR"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"deviceSessionId"</span><span class="sc10">:</span><span class="sc4">"vghs6tvkcle931686k1900o6e1"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"ipAddress"</span><span class="sc10">:</span><span class="sc4">"127.0.0.1"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"cookie"</span><span class="sc10">:</span><span class="sc4">"pt1t38347bs6jc9ruv2ecpv7o2"</span><span class="sc10">,</span><span class="sc0">
+      </span><span class="json-indent">"userAgent"</span><span class="sc10">:</span><span class="sc4">"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"</span><span class="sc0">
+   </span><span class="sc10">},</span><span class="sc0">
+   </span><span class="json-indent">"test"</span><span class="sc10">:</span><span class="sc4">false</span><span class="sc0">
+ </span><span class="sc10">}</span><span class="sc0">
+
+</div>
+</pre>
+</div>
+</div>
+
+<span class="blue-text-16">We have created examples of the construction and delivery of a petition of promotions in PHP and JAVA code.</span>
+<div class="simple-box">    
+	<div class="simple-box">    
+		<a href="{{ site.baseurl }}/plugins/Ejemplo PHP.pdf" class="payu-btn-green" target="_blank" >PHP</a>
+		<a href="{{ site.baseurl }}/plugins/Ejemplo JAVA.pdf" class="payu-btn-green" >JAVA</a>
+	</div> 
+</div>
