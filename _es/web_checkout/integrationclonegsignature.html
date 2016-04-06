@@ -515,27 +515,30 @@ buyerEmail: test@test.com
 <span class="grey-text-13">
 
 	<div>
-			<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script> -->
+                <!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script> -->
+                
           	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
           	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+                <script src="../../js/jquery-validate.bootstrap-tooltip.min.js"></script>
           	<script src="../../js/signature-generator/validations.js"></script>           
          	<script src="../../js/signature-generator/md5.js"></script>
          	<script src="../../js/signature-generator/sha1.js"></script>
          	<script src="../../js/signature-generator/sha256.js"></script>         
-            <script src="../../js/signature-generator/md5generator.js"></script>
+                <script src="../../js/signature-generator/md5generator.js"></script>
 
 <form method="POST" id="form" >
                <table>           
-                       <select id = "algoritmo">  
+                       <select id = "algoritmo" class="calc_selector form_control">  
                            <option  value="md5">MD5</option>
                            <option  value="sha1">SHA1</option>  
                            <option  value="sha256">SHA256</option>
                         </select>
-                        <input TYPE="text" style="width: 230px;" id ="apikey" name = "apikey" placeholder="6u39nqhq8ftd0hlvnjfs66eh8c" maxlength="26"> ~ 
-                        <input TYPE="number" style="width: 90px;"  id ="merchanId" name = "merchanId" placeholder="500238" maxlength="6"> ~ 
-                        <input TYPE="text" style="width: 100px;"  id ="referenceCode" name = "referenceCode" placeholder="TestPayU" maxlength="255"> ~ 
-                        <input TYPE="number" style="width: 100px;"  id ="amount" name = "amount" placeholder="3" maxlength="14"> ~
-                       <select id = "currency">  
+                        <span class="calc_text">&nbsp;(</span>
+                        <input class="form_control" TYPE="text"  id ="apikey" name = "apikey" placeholder="6u39nqhq8ftd0hlvnjfs66eh8c" maxlength="26"> ~ 
+                        <input class="form_control" TYPE="number"  id ="merchanId" name = "merchanId" placeholder="500238" maxlength="6"> ~ 
+                        <input class="form_control" TYPE="text"  id ="referenceCode" name = "referenceCode" placeholder="TestPayU" maxlength="255"> ~ 
+                        <input class="form_control" TYPE="number" id ="amount" name = "amount" placeholder="3" maxlength="14"> ~
+                       <select id = "currency" class="calc_selector form_control" >  
                            <option  value="USD">USD</option>
                            <option  value="COP">COP</option>
                            <option  value="MXN">MXN</option>
@@ -544,19 +547,17 @@ buyerEmail: test@test.com
                            <option  value="BRL">BRL</option>
                            <option  value="CLP">CLP</option>                    
                         </select>
+                        <span class="calc_text">)</span>
                      <br>
                      <br>
                      <br>   
-                    <b>Resultado   </b><input style="width: 600px;"  id ="signature" name = "signature" value = ""  readonly />
-                    
-                                  
+                    <span class="blue-text-13"><b>Resultado:&nbsp;</b></span><input class="form_control" id ="signature" style="width: 600px;"  name = "signature" value = ""  readonly />
+                                                      
                </table>
-               <br>
                <br>
                <table width="50%"  border="0" cellspacing="2" cellpadding="2">
                   <input type="button" name="generar" id="generar" value="Generar firma" >
-                  <input type="button" name=myButton id= "generarnuevo" value="Generar nueva firma" style="visibility: hidden">             
-
+                  <input type="button" name="myButton" id="generarnuevo" value="Generar nueva firma" >
                </table>
             </form>
         </div>
