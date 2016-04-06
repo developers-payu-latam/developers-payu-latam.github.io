@@ -359,7 +359,7 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 <td><i>algorithmSignature</i></td>
 <td>Alfa numérico</td>
 <td style="text-align: center;">255</td>
-<td>Algoritmo de cifrado de la firma digital (signature). Los dos algoritmos disponibles son: MD5 y SHA.</td>
+<td>Algoritmo de cifrado de la firma digital (signature). Los tres algoritmos disponibles son: MD5, SHA y SHA256.</td>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
@@ -483,7 +483,7 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 </tr>
 </table>
 </li>
-<li class="bullet-box">El <b>signature</b> es una forma única de validar los pagos realizados a través de la plataforma, garantizando su autenticidad. Consiste en una cadena de caracteres a la cual se le aplica algoritmo MD5 o SHA para encriptarla. La cadena está compuesta de la siguiente forma:
+<li class="bullet-box">El <b>signature</b> es una forma única de validar los pagos realizados a través de la plataforma, garantizando su autenticidad. Consiste en una cadena de caracteres a la cual se le aplica algoritmo MD5, SHA1 O SHA256 para encriptarla. La cadena está compuesta de la siguiente forma:
 <pre>
 “ApiKey~merchantId~referenceCode~amount~currency”.
 </pre>
@@ -501,9 +501,17 @@ buyerEmail: test@test.com
 <pre>
 "6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"
 </pre>
-<span class="grey-text-13">A esta firma se le aplica el <b>MD5</b>:</span>
+<span class="grey-text-13">A esta firma se le aplica el algoritmo <b>MD5</b>:</span>
 <pre>
 "be2f083cb3391c84fdf5fd6176801278"
+</pre>
+<span class="grey-text-13">A esta firma se le aplica el algoritmo <b>SHA1</b>:</span>
+<pre>
+"8b78706599842845825752781a888699abaa48ed"
+</pre>
+<span class="grey-text-13">A esta firma se le aplica el algoritmo <b>SHA256</b>:</span>
+<pre>
+"8ec904e8ae3853793a25af1dde73c9237904c4cf5ba9820f8ea8daa4e1b37ea7"
 </pre>
 </li>
 </ol>

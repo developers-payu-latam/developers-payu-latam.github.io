@@ -353,7 +353,7 @@ All variables that you can send in the form</a>
 <td><i>algorithmSignature</i></td>
 <td>Alfa Numeric</td>
 <td style="text-align: center;">255</td>
-<td>Encryption algorithm of the digital signature (signature). The two available algorithms are: MD5 and SHA.</td>
+<td>Encryption algorithm of the digital signature (signature). The three available algorithms are: MD5, SHA and SHA256.</td>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
@@ -479,7 +479,7 @@ All variables that you can send in the form</a>
 </table>
 </li>
 
-<li class="bullet-box">The <b>signature</b> is a unique way to validate payments made through the platform, ensuring its authenticity. It consists of a character string to which the MD5 or SHA algorithm is applied for encryption. The string is composed as follows:
+<li class="bullet-box">The <b>signature</b> is a unique way to validate payments made through the platform, ensuring its authenticity. It consists of a character string to which the MD5, SHA1 or SHA256 algorithm is applied for encryption. The string is composed as follows:
 
 <pre>
 “ApiKey~merchantId~referenceCode~amount~currency”.
@@ -503,9 +503,16 @@ buyerEmail: test@test.com
 "6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"
 </pre>
 <span class="grey-text-13">To this signature <b>MD5</b> is applied:</span>
-
 <pre>
 "be2f083cb3391c84fdf5fd6176801278"
+</pre>
+<span class="grey-text-13">To this signature <b>SHA1</b> is applied:</span>
+<pre>
+"8b78706599842845825752781a888699abaa48ed"
+</pre>
+<span class="grey-text-13">To this signature <b>SHA256</b> is applied:</span>
+<pre>
+"8ec904e8ae3853793a25af1dde73c9237904c4cf5ba9820f8ea8daa4e1b37ea7"
 </pre>
 </li>
 </ol>

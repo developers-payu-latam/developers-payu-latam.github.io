@@ -348,7 +348,7 @@ Todas as variáveis que podem ser enviadas no formulário</a></h3><div class="sq
 <td><i>algorithmSignature</i></td>
 <td>Alfa numérico</td>
 <td style="text-align: center;">255</td>
-<td>Algorítmo decifrado da assinatura digital (signature). Los dos algoritmos disponibles son: MD5 y SHA.</td>
+<td>Algorítmo decifrado da assinatura digital (signature). Os três algoritmos disponíveis são MD5, SHA e SHA256.</td>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
@@ -470,7 +470,7 @@ Todas as variáveis que podem ser enviadas no formulário</a></h3><div class="sq
 </tr>
 </table>
 </li>
-<li class="bullet-box">O <b>signature</b> é uma forma única de validação dos pagamentos realizados através da plataforma, garantindo sua autenticidade. Consiste em uma cadeia de caracteres para a qual é aplicado o algoritmo MD5 ou SHA para criptografá-la. A cadeia está composta da seguinte forma:
+<li class="bullet-box">O <b>signature</b> é uma forma única de validação dos pagamentos realizados através da plataforma, garantindo sua autenticidade. Consiste em uma cadeia de caracteres para a qual é aplicado o algoritmo MD5, SHA ou SHA256 para criptografá-la. A cadeia está composta da seguinte forma:
 <pre>
 “ApiKey~merchantId~referenceCode~amount~currency”.
 </pre>
@@ -488,9 +488,17 @@ buyerEmail: test@test.com
 <pre>
 "6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"
 </pre>
-<span class="grey-text-13">Caso o algoritmo <b>md5</b> fosse aplicado, ficaria assim:</span>
+<span class="grey-text-13">Caso o algoritmo <b>MD5</b> fosse aplicado, ficaria assim:</span>
 <pre>
 "be2f083cb3391c84fdf5fd6176801278"
+</pre>
+<span class="grey-text-13">Caso o algoritmo <b>SHA1</b> fosse aplicado, ficaria assim:</span>
+<pre>
+"8b78706599842845825752781a888699abaa48ed"
+</pre>
+<span class="grey-text-13">Caso o algoritmo <b>SHA256</b> fosse aplicado, ficaria assim:</span>
+<pre>
+"8ec904e8ae3853793a25af1dde73c9237904c4cf5ba9820f8ea8daa4e1b37ea7"
 </pre>
 </li>
 </ol>
