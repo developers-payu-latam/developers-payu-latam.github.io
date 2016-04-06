@@ -23,13 +23,13 @@ $(document).ready(function() {
 
         
         document.getElementById('signature').value = signature;
-        confirm("Algoritmo: "+ algoritmo + "\nFirma digital: " + signature);
         console.log(algoritmo);
         console.log(signature);
         document.getElementById("generar").style.display = "none"; // Se deshabilita el botón con id "generar"
         document.getElementById("generarnuevo").style.visibility = "visible"; // Se habilita el boton con id "generarnuevo"
     }
 
+/*
     function limpiar() {
         console.log("limpiar");
         document.getElementById('apikey').value = "";
@@ -41,6 +41,8 @@ $(document).ready(function() {
         document.getElementById("generar").style.display = ""; // Se habilita el botón con id "generar"
         document.getElementById("generarnuevo").style.visibility = "hidden"; // Se  oculta el boton con id "generarnuevo"
     }
+
+*/
 
     // Función validar campos, captura de parámetros y ejecución de Hash
     $('#generar').click(function() {
@@ -54,7 +56,7 @@ $(document).ready(function() {
 
     // Función para limpiar campos y ejecución de la función inicial
     $("#generarnuevo").click(function() {
-        limpiar();
+        generar();
     });
 
 });
