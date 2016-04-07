@@ -22,7 +22,7 @@ $(document).ready(function() {
 }
 
         
-        document.getElementById('signature').value = signature;
+        document.getElementById('signature_generated').value = signature;
         console.log(algoritmo);
         console.log(signature);
         document.getElementById("signature_generate").style.display = "none"; // Se deshabilita el botón con id "generar"
