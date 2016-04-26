@@ -52,16 +52,16 @@ You must generate an HTML form with the transaction data using the HTTP POST met
 &nbsp;<br>
  Sample <b>HTML</b> with some of the parameters you can send:
 <pre><code>
- &lt;form method=&quot;post&quot; action=&quot;https://stg.gateway.payulatam.com/ppp-web-gateway/&quot;&gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">merchantId</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">500238</span>&quot;   &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">accountId</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">500538</span>&quot; &gt;
+ &lt;form method=&quot;post&quot; action=&quot;https://sandbox.gateway.payulatam.com/ppp-web-gateway/&quot;&gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">merchantId</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">508029</span>&quot;   &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">accountId</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">512321</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">description</span>&quot;   type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">Test PAYU</span>&quot;  &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">referenceCode</span>&quot; type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">TestPayU</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">amount</span>&quot;        type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">3</span>&quot;   &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">tax</span>&quot;           type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">0</span>&quot;  &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">taxReturnBase</span>&quot; type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">0</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">currency</span>&quot;      type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">USD</span>&quot; &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">signature</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">be2f083cb3391c84fdf5fd6176801278</span>&quot;  &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">signature</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">ba9ffa71559580175585e45ce70b6c37</span>&quot;  &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">test</span>&quot;          type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">1</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">buyerEmail</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">test@test.com</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">responseUrl</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">http://www.test.com/response</span>&quot; &gt;
@@ -71,7 +71,7 @@ You must generate an HTML form with the transaction data using the HTTP POST met
 </code></pre>
 <span class="grey-text-13">Once you generate the HTML form you should aim at the following URL:</span>
 <div id="blue-box">
-<span class="grey-text-13">Test: <b>https://stg.gateway.payulatam.com/ppp-web-gateway/</b><br><br>
+<span class="grey-text-13">Test: <b>https://sandbox.gateway.payulatam.com/ppp-web-gateway/</b><br><br>
 Live: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 </div>
 <p>&nbsp;<br>
@@ -481,31 +481,31 @@ All variables that you can send in the form</a>
 <span class="grey-text-13">For example:</span>
 
 <pre>
-merchantId: 500238
-ApiKey: 6u39nqhq8ftd0hlvnjfs66eh8c
+merchantId: 508029
+ApiKey: 4Vj8eK4rloUd272L48hsrarnUA
 referenceCode: TestPayU
 amount: 3
 currency: USD
-accountId: 500537
+accountId: 512326
 buyerEmail: test@test.com
 </pre>
 
 <span class="grey-text-13">The signature would be:</span>
 
 <pre>
-"6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU~3~USD"
+"4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU~3~USD"
 </pre>
 <span class="grey-text-13">To this signature <b>MD5</b> is applied:</span>
 <pre>
-"be2f083cb3391c84fdf5fd6176801278"
+"ba9ffa71559580175585e45ce70b6c37"
 </pre>
 <span class="grey-text-13">With <b>SHA1</b>:</span>
 <pre>
-"8b78706599842845825752781a888699abaa48ed"
+"9790fc9c38b7a9af7383e03ff410f308b6ef4c0f"
 </pre>
 <span class="grey-text-13">With <b>SHA256</b>:</span>
 <pre>
-"8ec904e8ae3853793a25af1dde73c9237904c4cf5ba9820f8ea8daa4e1b37ea7"
+"e43ad790765c4ef8d355dc40782241b76cbd57764b9ebb58d6241b88ff3f5164"
 </pre>
 </li>
 </ol>
@@ -547,7 +547,7 @@ If you want PayU to display always the information of the transaction, be sure n
 <span class="grey-text-13">The following is an example in <b>PHP</b> of how you can integrate the response page:</span>
 <pre style="height:350px; overflow: auto;">
 &lt;?php
-$ApiKey = &quot;6u39nqhq8ftd0hlvnjfs66eh8c&quot;;
+$ApiKey = &quot;4Vj8eK4rloUd272L48hsrarnUA&quot;;
 $merchant_id = $_REQUEST['merchantId'];
 $referenceCode = $_REQUEST['referenceCode'];
 $TX_VALUE = $_REQUEST['TX_VALUE'];
@@ -1005,7 +1005,7 @@ _</i></i>FEE_RETURN_BASE</td>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
 <pre style="overflow: auto;">
-http://mytestsite.com/respuesta.php?&merchantId=500238&merchant_name=Test+PayU+Test&merchant_address=Av+123+Calle+12&telephone=7512354&merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&transactionState=6&lapTransactionState=DECLINED&message=Declinada&referenceCode=2015-05-27+13%3A04%3A37&reference_pol=7069375&transactionId=f5e668f1-7ecc-4b83-a4d1-0aaa68260862&description=test_payu_01&trazabilityCode=&cus=&orderLanguage=es&extra1=&extra2=&extra3=&polTransactionState=6&signature=e1b0939bbdc99ea84387bee9b90e4f5c&polResponseCode=5&lapResponseCode=ENTITY_DECLINED&risk=1.00&polPaymentMethod=10&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=100.00&TX_TAX=.00&amp;currency=USD&lng=es&pseCycle=&buyerEmail=test%40payulatam.com&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00
+http://mytestsite.com/respuesta.php?&merchantId=508029&merchant_name=Test+PayU+Test&merchant_address=Av+123+Calle+12&telephone=7512354&merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&transactionState=6&lapTransactionState=DECLINED&message=Declinada&referenceCode=2015-05-27+13%3A04%3A37&reference_pol=7069375&transactionId=f5e668f1-7ecc-4b83-a4d1-0aaa68260862&description=test_payu_01&trazabilityCode=&cus=&orderLanguage=es&extra1=&extra2=&extra3=&polTransactionState=6&signature=e1b0939bbdc99ea84387bee9b90e4f5c&polResponseCode=5&lapResponseCode=ENTITY_DECLINED&risk=1.00&polPaymentMethod=10&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=100.00&TX_TAX=.00&amp;currency=USD&lng=es&pseCycle=&buyerEmail=test%40payulatam.com&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00
 </pre>
 </div>
 </div>
@@ -1041,10 +1041,10 @@ Examples:
 First decimal as even number and second 5</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
-<span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
+<span class="grey-text-13">Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA</span>
 
 <span class="grey-text-13">Parameters obtained from the response page:<br>
-merchantId = 500238<br>
+merchantId = 508029<br>
 referenceCode = TestPayU04<br>
 TX_VALUE = 150.25<br>
 currency = USD<br>
@@ -1053,7 +1053,7 @@ signature = 8eebb5af1f32f7a9f930a1038810b854</span>
 
 <span class="grey-text-13">The signature is generated in the following way:</span>
 
-<span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.2~USD~6) = <b>8eebb5af1f32f7a9f930a1038810b854</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.2~USD~6) = <b>8eebb5af1f32f7a9f930a1038810b854</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1061,10 +1061,10 @@ signature = 8eebb5af1f32f7a9f930a1038810b854</span>
 First decimal as odd number and second 5</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
-<span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
+<span class="grey-text-13">Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA</span>
 
 <span class="grey-text-13">Parameters obtained from the response page:
-merchantId = 500238<br>
+merchantId = 508029<br>
 referenceCode = TestPayU04<br>
 TX_VALUE = 150.35<br>
 currency = USD<br>
@@ -1073,7 +1073,7 @@ signature = ce2285970f17bb6ce049b56e6b41a255</span>
 
 <span class="grey-text-13">The signature is generated in the following way:</span>
 
-<span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.4~USD~6) = <b>ce2285970f17bb6ce049b56e6b41a255</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.4~USD~6) = <b>ce2285970f17bb6ce049b56e6b41a255</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1081,10 +1081,10 @@ signature = ce2285970f17bb6ce049b56e6b41a255</span>
 Other cases</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
-<span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
+<span class="grey-text-13">Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA</span>
 
 <span class="grey-text-13">Parameters obtained from the response page:
-merchantId = 500238<br>
+merchantId = 508029<br>
 referenceCode = TestPayU04<br>
 TX_VALUE = 150.34<br>
 currency = USD<br>
@@ -1093,7 +1093,7 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 
 <span class="grey-text-13">The signature is generated in the following way:</span>
 
-<span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.3~USD~6) = <b>01899cb431dd51623f5c94a62b1d2dc7</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = <b>01899cb431dd51623f5c94a62b1d2dc7</b></span>
 </div></div>
 </li>
 
@@ -1542,7 +1542,7 @@ payment_request_state=R
 customer_number=
 administrative_fee_base=0.00
 attempts=1
-merchant_id=500238
+merchant_id=508029
 exchange_rate=2541.15
 shipping_country=
 installments_number=1
@@ -1600,10 +1600,10 @@ Examples:
 With one decimal</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
-<span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
+<span class="grey-text-13">Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA</span>
 
 <span class="grey-text-13">Parameters obtained from the confirmation page<br>
-merchant_id = 500238<br>
+merchant_id = 508029<br>
 reference_sale = TestPayU04<br>
 value = 150.00<br>
 currency = USD<br>
@@ -1612,7 +1612,7 @@ sign = 43e44ad9149e23ee4c16ab0646b4c83b</span>
 
 <span class="grey-text-13">The signature is generated in the following way:</span>
 
-<span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU04~150.0~USD~6) = <b>43e44ad9149e23ee4c16ab0646b4c83b</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.0~USD~6) = <b>43e44ad9149e23ee4c16ab0646b4c83b</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1620,10 +1620,10 @@ sign = 43e44ad9149e23ee4c16ab0646b4c83b</span>
 With two decimals</a>
 </h3>
 <div class="squelch-taas-toggle-shortcode-content" >
-<span class="grey-text-13">Your apiKey: 6u39nqhq8ftd0hlvnjfs66eh8c</span>
+<span class="grey-text-13">Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA</span>
 
 <span class="grey-text-13">Parameters obtained from the confirmation page:<br>
-merchant_id = 500238<br>
+merchant_id = 508029<br>
 reference_sale = TestPayU05<br>
 value = 150.26<br>
 currency = USD<br>
@@ -1632,7 +1632,7 @@ sign = 91382296898d3937ed36cd125d696452</span>
 
 <span class="grey-text-13">The signature is generated in the following way:</span>
 
-<span class="blue-text-13">MD5(6u39nqhq8ftd0hlvnjfs66eh8c~500238~TestPayU05~150.26~USD~4) = <b>91382296898d3937ed36cd125d696452</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU05~150.26~USD~4) = <b>91382296898d3937ed36cd125d696452</b></span>
 </div></div>
 
 
