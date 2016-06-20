@@ -54,33 +54,35 @@ $(function() {
             },
 
             messages: {
+
                 signature_apikey: {
-                    required: "Ingresa un Apikey",
-                    minlength: "Ingresa un Apikey de minimo 18 digitos",
-                    maxlength: "Ingresa un Apikey de maximo 32 digitos",
+                    required: errApiKeyReq,
+                    minlength: errApiKeyMin,
+                    maxlength: errApiKeyMax,
                 },
                 signature_merchanId: {
-                    required: "Ingresa el id de comercio",
-                    minlength: "Ingresa un id de comercio de minimo 6 digitos",
-                    maxlength: "Ingresa un id de comercio de maximo 7 digitos",
-                    number: "Ingresar solo numeros",
+                    required: errMerchantReq,
+                    minlength: errMerchantMin,
+                    maxlength: errMerchantMax,
+                    number: errMerchantNum,
                 },
                 signature_referenceCode: {
-                    required: "Ingresa una referencia",
-                    minlength: "Ingresa una referencia",
-                    maxlength: "Ingresa una referencia de maximo 255 digitos",
+                    required: errReferenceReq,
+                    minlength: errReferenceMin,
+                    maxlength: errReferenceMax,
                 },
                 signature_amount: {
-                    required: "Ingresa un monto",
-                    minlength: "Ingresa un monto",
-                    maxlength: "Ingresa un monto de maximo 14 digitos",
-                    number: "Ingresar solo numeros",
+                    required: errAmountReq,
+                    minlength: errAmountMin,
+                    maxlength: errAmountMax,
+                    number: errAmountNum,
                 },
                 signature_currency: {
-                    required: "Ingresa el codigo de la moneda en formato ISO 4217",
-                    minlength: "Ingresa un codigo de minimo 3 digitos",
-                    maxlength: "Ingresa un codigo de maximo 3 digitos"
+                    required: errCurrReq,
+                    minlength: errCurrMin,
+                    maxlength: errCurrMax
                 }
+
             },
             tooltip_options: {
                 thefield: { placement: 'center' }

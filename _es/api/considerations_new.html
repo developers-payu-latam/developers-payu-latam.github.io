@@ -6,229 +6,310 @@ subcategory: considerations
 <div class="payu-page-header superhero-sticky">
     <h1 class="payu-title1 bgreen bgreen">Integración API - consideraciones sobre variables</h1>
     <ul class="hidden-xs">
-            <li class="leaf"><a class="active" href="#apikey">ApiKey y ApiLogin</a></li>
-            <li class="leaf"><a href="#signature">Signature</a></li>
-            <li class="leaf"><a href="#device">deviceSessionID</a></li>
+        <li class="leaf"><a class="active" href="#apikey">ApiKey y ApiLogin</a></li>
+        <li class="leaf"><a href="#signature">Signature</a></li>
+        <li class="leaf"><a href="#device">deviceSessionID</a></li>
     </ul>
 </div>
 
 <div class="sh-container payu-white-bg">
     <div class="container">
         <div class="row" style="background-color: #f5f5f5;">
-            
+
             {% include sidemenu_api.html %}
 
             <div id="page-menu-column2">
                 &nbsp;<br>
-                
-                <div id="best_practices">
-                    <span class="subtitle-page">Mejores practicas de Integración</span>
-                    <p><span class="grey-text-13">Para iniciar el procesamiento de tus peticiones de pago debes enviar estas variables, independientemente de tu modelo de negocio.</span></p>
-                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-                        <h3 >
-                            <a href="">Variables Peticiones de Pago</a>
-                        </h3>
-                        <div class="list-arrow">
-                            <ul>
-                                <li title="Idioma de la petición">language</li>
-                                <li title="Comando PayU de la petición">command</li>
-                                <li title="ApiKey del comercio">merchant.apiKey</li>
-                                <li title="ApiLogin del comercio">merchant.apiLogin</li>
-                                <li title="Tipo de transacción">transaction.type</li>
-                                <li title="Nombre del medio de pago">transaction.paymentMethod</li>
-                                <li title="País del medio de pago">transaction.paymentCountry</li>
-                                <li title="CuentaId del comercio">transaction.order.accountId</li>
-                                <li title="Referencia única de la petición">transaction.order.referenceCode</li>
-                                <li title="Descripción de la petición">transaction.order.description</li>
-                                <li title="Idioma del comprador y vendedor">transaction.order.language</li>
-                                <li title="Firma digital de la petición">transaction.order.signature</li>
-                                <li title="Valor de la petición">transaction.order.additionalValues.entry.additionalValue.value</li>
-                                <li title="Moneda usada en la petición">transaction.order.additionalValues.entry.additionalValue.currency</li>
-                                <li title="Número de la tarjeta de crédito">transaction.creditCard.number</li>
-                                <li title="Código de seguridad de la tarjeta de crédito">transaction.creditCard.securityCode</li>
-                                <li title="Fecha de expiración de la tarjeta de crédito">transaction.creditCard.expirationDate</li>
-                                <li title="Nombre del tarjetabiente">transaction.creditCard.name</li>                     
-                            </ul>
-                        </div>
+
+                <div id="best_practices_wrapper">
+
+                    <span class="subtitle-page">Mejores practicas para una Integración API </span>
+                    <p><span class="grey-text-13">Ten en cuenta las siguientes recomendaciones para llevar a cabo el desarrollo de una integracion exitosa con PayU.</span></p>
+
+                    <div id="blue-box">
+                        <ul>                            
+                            <li><span class="grey-text-13"> Para iniciar el procesamiento de tus peticiones de pago debes enviar estas variables, independientemente de tu modelo de negocio.</span>
+                                <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+                                    <h3 >
+                                        <a href="">Variables Peticiones de Pago</a>
+                                    </h3>
+                                    <div class="list-arrow">
+                                        <ul>
+                                            <li title="Idioma de la petición">language</li>
+                                            <li title="Comando PayU de la petición">command</li>
+                                            <li title="ApiKey del comercio">merchant.apiKey</li>
+                                            <li title="ApiLogin del comercio">merchant.apiLogin</li>
+                                            <li title="Tipo de transacción">transaction.type</li>
+                                            <li title="Nombre del medio de pago">transaction.paymentMethod</li>
+                                            <li title="País del medio de pago">transaction.paymentCountry</li>
+                                            <li title="CuentaId del comercio">transaction.order.accountId</li>
+                                            <li title="Referencia única de la petición">transaction.order.referenceCode</li>
+                                            <li title="Descripción de la petición">transaction.order.description</li>
+                                            <li title="Idioma del comprador y vendedor">transaction.order.language</li>
+                                            <li title="Firma digital de la petición">transaction.order.signature</li>
+                                            <li title="Valor de la petición">transaction.order.additionalValues.entry.additionalValue.value</li>
+                                            <li title="Moneda usada en la petición">transaction.order.additionalValues.entry.additionalValue.currency</li>
+                                            <li title="Número de la tarjeta de crédito">transaction.creditCard.number</li>
+                                            <li title="Código de seguridad de la tarjeta de crédito">transaction.creditCard.securityCode</li>
+                                            <li title="Fecha de expiración de la tarjeta de crédito">transaction.creditCard.expirationDate</li>
+                                            <li title="Nombre del tarjetabiente">transaction.creditCard.name</li>                     
+                                        </ul>
+                                        <div class="blue-box-2">                                        
+                                            Para mayor información, puedes consultar nuestra <a href="{{ site.baseurl }}/es/api/payments.html#apivariables">tabla de variables</a> completa.
+                                        </div>
+
+                                    </div>
+                            </li>
+                            <li>
+                                <span class="grey-text-13"> Según tu modelo de negocio y canal de integración, debes enviar las siguientes variables en tus peticiones de pago.</span>  
+
+                                <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+                                    <h3 >
+                                        <a href="">Tiendas WEB</a>
+                                    </h3>
+                                    <div class="squelch-taas-toggle-shortcode-content" >            
+                                        <table class="table-d" >
+                                            <tr bgcolor="#696a6c">
+                                                <td><span style="color: #fff; font-weight: bold;">Tienda de Servicios</span></td>
+                                                <td><span style="color: #fff; font-weight: bold;">Tienda Retail (Entrega de Productos)</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Para tiendas que ofrecen servicios adicionalmente deben enviar los siguinetes campos:</p>
+                                                    <ol>
+                                                        <li class="bullet-box" title="Identificador de la sesión del dispositivo">transaction.<a href="{{ site.baseurl }}/es/api/considerations.html#device">deviceSessionId</a></li>
+                                                        <li class="bullet-box" title="User agent del navegador">transaction.userAgent</li>
+                                                        <li class="bullet-box" title="Cookie almacenada en el dispositivo ">transaction.cookie</li>
+                                                        <li class="bullet-box" title="Dirección ip">transaction.ipAddress</li>
+                                                        <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
+                                                        <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
+                                                        <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
+                                                        <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li> 
+                                                    </ol>                     
+                                                </td>
+                                                <td>
+                                                    <p>Para tiendas que venden y realizan envío de productos, adicionalmente deben enviar los siguinetes campos:</p>
+                                                    <ol>
+                                                        <li class="bullet-box" title="Identificador de la sesión del dispositivo">transaction.<a href="{{ site.baseurl }}/es/api/considerations.html#device">deviceSessionId</a></li>
+                                                        <li class="bullet-box" title="User agent del navegador">transaction.userAgent</li>
+                                                        <li class="bullet-box" title="Cookie almacenada en el dispositivo ">transaction.cookie</li>
+                                                        <li class="bullet-box" title="Dirección ip">transaction.ipAddress</li>
+                                                        <li class="bullet-box" title="Nombre completo del comprador">transaction.order.buyer.fullName</li>
+                                                        <li class="bullet-box" title="Email del comprador">transaction.order.buyer.emailAddress</li>
+                                                        <li class="bullet-box" title="Teléfono del comprador">transaction.order.buyer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del comprador (Cédula, DNI)">transaction.buyer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de envío">transaction.order.buyer.shippingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de envío">transaction.order.buyer.shippingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de envío">transaction.order.buyer.shippingAddress.state</li>
+                                                        <li class="bullet-box" title="País de envío">transaction.order.buyer.shippingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de envío">transaction.order.buyer.shippingAddress.phone</li>
+                                                        <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
+                                                        <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
+                                                        <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
+                                                        <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li>                            
+                                                    </ol>                     
+                                                </td>
+                                            </tr>                
+                                        </table>
+                                        <div class="blue-box-2">                                        
+                                            Para mayor información, puedes consultar nuestra <a href="{{ site.baseurl }}/es/api/payments.html#apivariables">tabla de variables</a> completa.
+                                        </div>                                        
+                                    </div>
+                                </div>
+
+                                <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+                                    <h3 >
+                                        <a href="">Aplicación Móvil</a>
+                                    </h3>
+                                    <div class="squelch-taas-toggle-shortcode-content" >            
+                                        <table class="table-d" >
+                                            <tr bgcolor="#696a6c">
+                                                <td><span style="color: #fff; font-weight: bold;">Tienda de Servicios</span></td>
+                                                <td><span style="color: #fff; font-weight: bold;">Tienda Retail (Entrega de Productos)</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Para tiendas que ofrecen servicios adicionalmente deben enviar los siguinetes campos:</p>
+                                                    <ol>
+                                                        <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
+                                                        <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
+                                                        <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
+                                                        <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li> 
+                                                    </ol>                     
+                                                </td>
+                                                <td>
+                                                    <p>Para tiendas que venden y realizan envío de productos, adicionalmente deben enviar los siguinetes campos:</p>
+                                                    <ol>
+                                                        <li class="bullet-box" title="Dirección ip">transaction.ipAddress</li>
+                                                        <li class="bullet-box" title="Nombre completo del comprador">transaction.order.buyer.fullName</li>
+                                                        <li class="bullet-box" title="Email del comprador">transaction.order.buyer.emailAddress</li>
+                                                        <li class="bullet-box" title="Teléfono del comprador">transaction.order.buyer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del comprador (Cédula, DNI)">transaction.buyer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de envío">transaction.order.buyer.shippingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de envío">transaction.order.buyer.shippingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de envío">transaction.order.buyer.shippingAddress.state</li>
+                                                        <li class="bullet-box" title="País de envío">transaction.order.buyer.shippingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de envío">transaction.order.buyer.shippingAddress.phone</li>
+                                                        <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
+                                                        <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
+                                                        <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
+                                                        <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li>                            
+                                                    </ol>                     
+                                                </td>
+                                            </tr>                
+                                        </table>
+                                        <div class="blue-box-2">                                        
+                                            Para mayor información, puedes consultar nuestra <a href="{{ site.baseurl }}/es/api/payments.html#apivariables">tabla de variables</a> completa.
+                                        </div>                                        
+                                    </div>
+                                </div>
+
+                                <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+                                    <h3 >
+                                        <a href="">IVR y Pagos Recurrentes</a>
+                                    </h3>
+                                    <div class="squelch-taas-toggle-shortcode-content" >            
+                                        <table class="table-d" >
+                                            <tr bgcolor="#696a6c">
+                                                <td><span style="color: #fff; font-weight: bold;">Tienda de Servicios</span></td>
+                                                <td><span style="color: #fff; font-weight: bold;">Tienda Retail (Entrega de Productos)</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Para tiendas que ofrecen servicios adicionalmente deben enviar los siguinetes campos:</p>
+                                                    <ol>
+                                                        <li class="bullet-box" title="Dirección ip">transaction.ipAddress: 127.0.0.1</li>
+                                                        <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
+                                                        <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
+                                                        <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
+                                                        <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li> 
+                                                    </ol>                     
+                                                </td>
+                                                <td>
+                                                    <p>Para tiendas que venden y realizan envío de productos, adicionalmente deben enviar los siguinetes campos:</p>
+                                                    <ol>
+                                                        <li class="bullet-box" title="Dirección ip">transaction.ipAddress: 127.0.0.1</li>
+                                                        <li class="bullet-box" title="Nombre completo del comprador">transaction.order.buyer.fullName</li>
+                                                        <li class="bullet-box" title="Email del comprador">transaction.order.buyer.emailAddress</li>
+                                                        <li class="bullet-box" title="Teléfono del comprador">transaction.order.buyer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del comprador (Cédula, DNI)">transaction.buyer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de envío">transaction.order.buyer.shippingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de envío">transaction.order.buyer.shippingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de envío">transaction.order.buyer.shippingAddress.state</li>
+                                                        <li class="bullet-box" title="País de envío">transaction.order.buyer.shippingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de envío">transaction.order.buyer.shippingAddress.phone</li>
+                                                        <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
+                                                        <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
+                                                        <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
+                                                        <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
+                                                        <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
+                                                        <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
+                                                        <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
+                                                        <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
+                                                        <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li>                            
+                                                    </ol>                     
+                                                </td>
+                                            </tr>                
+                                        </table>
+                                        <div class="blue-box-2">                                        
+                                            Para mayor información, puedes consultar nuestra <a href="{{ site.baseurl }}/es/api/payments.html#apivariables">tabla de variables</a> completa.
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </li>
+                            <li> Es importante que en la petición XML/JSON, envies los datos del usuario que está realizando la compra. Con esta información, nuestro módulo antifraude tendrá mayores criterios para realizar la correcta validación de las transacciones.</li>
+                            <li> La variable <strong>dniNumber</strong> hace referencia al documento público que contiene datos de identificación personal de los ciudadanos en cada país.</li>
+                            <li> No solo existe la <a href="{{ site.baseurl }}/es/web_checkout/integration.html">página de confirmación</a> para recibir los estados finales de las transacciones. También puedes usar nuestra <a href="{{ site.baseurl }}/es/api/queries.html">API Reportes</a> para consultar los estados de las transacciones enviadas a PayU.
+                            <li> Para validar tu formulario de captura de datos de tarjeta de crédito debes tener en cuenta lo siguiente: 
+                                
+                                <ul class="sub-list">
+                                    <li class="bullet-box">Las tarjetas VISA comienzan con el número 4 y tienen una longitud de 16 dígitos</li>
+                                    <li class="bullet-box">Las tarjetas MASTERCARD comienzan con el número 5 y tienen una longitud de 16 dígitos</li>
+                                    <li class="bullet-box">Las tarjetas AMEX comienzan con el número 3 y tienen una longitud de 15 dígitos</li>
+                                    <li class="bullet-box">La tarjeta de crédito debe ser real, esto lo puede validar con el algoritmo de luhn</li>
+                                    <li class="bullet-box">La fecha de expiración de las tarjetas debe ser mayor a la fecha actual</li>
+                                    <li class="bullet-box">Validar el formato del correo electrónico</li>
+                                    <li class="bullet-box">La opción de autocompletar no debe estar habilitada para dicho formulario</li>
+                                    <li class="bullet-box">El campo de número de tarjeta de crédito y código de seguridad no debe permitir el ingreso de letras o caracteres especiales</li>                                                                            
+                                </ul>
+                                
+                            </li>
+                            <li> El comprador es la persona que desea adquirir un producto o servicio, mientras que el pagador es la persona que realiza el abono de dinero. Ejemplo: Un joven desea adquirir un videojuego a través de internet (comprador), pero al momento de realizar el pago su padre ingresa los datos de su tarjeta de crédito (pagador).</li>
+                        </ul>
+                    </div>
+                     &nbsp;<br>           
+                    <span class="subtitle-page">Mejores practicas por país</span>
+                    <p><span class="grey-text-13">Ten en cuenta las siguientes recomendaciones de acuerdo al país en el que llevarás a cabo el desarrollo de tu integracion PayU.</span></p>                
+                    
+                    <div id="blue-box">
+                        <span class="blue-text-13"><i class="icon-flag argentina"></i>Argentina</span>
+                        <ul>
+                            <li>Medios de integración disponibles: Web Checkout, API, SDK.</li>
+                        </ul>
+                        &nbsp;<br> 
+                        <span class="blue-text-13"><i class="icon-flag brasil"></i>Brasil</span>
+                        <ul>
+                            <li>Medios de integración disponibles: Web Checkout, API, SDK.</li>
+                        </ul>
+                        &nbsp;<br> 
+                        <span class="blue-text-13"><i class="icon-flag colombia"></i>Colombia</span>
+                        <ul>
+                            <li> Medios de integración disponibles: Web Checkout, API, SDK.</li>
+                            <li> Para pagos PSE (Transferencia Bancaria) ten en cuenta la siguiente información:
+                                <ul class="sub-list">
+                                    <li class="bullet-box"><b>CUS</b>: Codigo Unico de Seguimiento. Es una variable que se envía en la página de respuesta; este campo indica la referencia de pago que emplea el banco para identificar la transacción.</li>
+                                    <li class="bullet-box"><b>pseBank</b>: Este campo indica el nombre del banco a través del cual PSE procesará la transacción. Se envía en la página de respuesta.</li>
+                                    <li class="bullet-box"><b>pseCycle</b>: Es una variable que se envía en la página de respuesta, es el Identificador generado por PSE.</li>
+                                    <li class="bullet-box"><b>pseReference1 / pseReference2 / pseReference3</b>: Son variables que se envían en la página de respuesta, son los números de referencias para pagos con PSE.</li>
+                                </ul>
+                            </li>
+                        </ul>                                
+                        &nbsp;<br> 
+                        <span class="blue-text-13"><i class="icon-flag mexico"></i>México</span>           
+                        <ul>
+                            <li> Medios de integración disponibles: Web Checkout, API, SDK.</li>
+                            <li> Para usar meses sin intereses debes hacer uso de nuestra API de promociones.</li>
+                            <li> Debes enviar la variable BirthDate.</li>
+                            <li> Para PayU es importante que envíes el código postal junto con las direcciones de facturación y de envío.</li>
+                            <li> Como comercio debes tener dirección física en México para poder usar nuestra API de promociones, procesamiento sin CVV2 y meses sin intereses.</li>
+                        </ul>
+                        &nbsp;<br> 
+                        <span class="blue-text-13"><i class="icon-flag panama"></i>Panamá</span>          
+                        <ul>
+                            <li>Medios de integración disponibles: Web Checkout, API, SDK.</li>
+                        </ul>
+                        &nbsp;<br> 
+                        <span class="blue-text-13"><i class="icon-flag peru"></i>Perú</span>           
+                        <ul>
+                            <li>Medios de integración disponibles: Web Checkout, API, SDK.</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div id="practices_model" class="payu-fragment">
-                    <span class="subtitle-page">Mejores practicas según modelo de negocio</span>    
-
-                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-                        <h3 >
-                            <a href="">Tiendas WEB</a>
-                        </h3>
-                        <div class="squelch-taas-toggle-shortcode-content" >            
-                            <table class="table-d" >
-                                <tr bgcolor="#696a6c">
-                                    <td><span style="color: #fff; font-weight: bold;">Tienda de Servicios</span></td>
-                                    <td><span style="color: #fff; font-weight: bold;">Tienda Retail (Entrega de Productos)</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Para tiendas que ofrecen servicios adicionalmente deben enviar los siguinetes campos:</p>
-                                        <ol>
-                                            <li class="bullet-box" title="Identificador de la sesión del dispositivo">transaction.<a href="{{ site.baseurl }}/es/api/considerations.html#device">deviceSessionId</a></li>
-                                            <li class="bullet-box" title="User agent del navegador">transaction.userAgent</li>
-                                            <li class="bullet-box" title="Cookie almacenada en el dispositivo ">transaction.cookie</li>
-                                            <li class="bullet-box" title="Dirección ip">transaction.ipAddress</li>
-                                            <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
-                                            <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
-                                            <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
-                                            <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li> 
-                                        </ol>                     
-                                    </td>
-                                    <td>
-                                        <p>Para tiendas que venden y realizan envío de productos, adicionalmente deben enviar los siguinetes campos:</p>
-                                        <ol>
-                                            <li class="bullet-box" title="Identificador de la sesión del dispositivo">transaction.<a href="{{ site.baseurl }}/es/api/considerations.html#device">deviceSessionId</a></li>
-                                            <li class="bullet-box" title="User agent del navegador">transaction.userAgent</li>
-                                            <li class="bullet-box" title="Cookie almacenada en el dispositivo ">transaction.cookie</li>
-                                            <li class="bullet-box" title="Dirección ip">transaction.ipAddress</li>
-                                            <li class="bullet-box" title="Nombre completo del comprador">transaction.order.buyer.fullName</li>
-                                            <li class="bullet-box" title="Email del comprador">transaction.order.buyer.emailAddress</li>
-                                            <li class="bullet-box" title="Teléfono del comprador">transaction.order.buyer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del comprador (Cédula, DNI)">transaction.buyer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de envío">transaction.order.buyer.shippingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de envío">transaction.order.buyer.shippingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de envío">transaction.order.buyer.shippingAddress.state</li>
-                                            <li class="bullet-box" title="País de envío">transaction.order.buyer.shippingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de envío">transaction.order.buyer.shippingAddress.phone</li>
-                                            <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
-                                            <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
-                                            <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
-                                            <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li>                            
-                                        </ol>                     
-                                    </td>
-                                </tr>                
-                            </table>        
-                        </div>
-                    </div>
-
-                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-                        <h3 >
-                            <a href="">Aplicación Móvil</a>
-                        </h3>
-                        <div class="squelch-taas-toggle-shortcode-content" >            
-                            <table class="table-d" >
-                                <tr bgcolor="#696a6c">
-                                    <td><span style="color: #fff; font-weight: bold;">Tienda de Servicios</span></td>
-                                    <td><span style="color: #fff; font-weight: bold;">Tienda Retail (Entrega de Productos)</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Para tiendas que ofrecen servicios adicionalmente deben enviar los siguinetes campos:</p>
-                                        <ol>
-                                            <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
-                                            <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
-                                            <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
-                                            <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li> 
-                                        </ol>                     
-                                    </td>
-                                    <td>
-                                        <p>Para tiendas que venden y realizan envío de productos, adicionalmente deben enviar los siguinetes campos:</p>
-                                        <ol>
-                                            <li class="bullet-box" title="Dirección ip">transaction.ipAddress</li>
-                                            <li class="bullet-box" title="Nombre completo del comprador">transaction.order.buyer.fullName</li>
-                                            <li class="bullet-box" title="Email del comprador">transaction.order.buyer.emailAddress</li>
-                                            <li class="bullet-box" title="Teléfono del comprador">transaction.order.buyer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del comprador (Cédula, DNI)">transaction.buyer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de envío">transaction.order.buyer.shippingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de envío">transaction.order.buyer.shippingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de envío">transaction.order.buyer.shippingAddress.state</li>
-                                            <li class="bullet-box" title="País de envío">transaction.order.buyer.shippingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de envío">transaction.order.buyer.shippingAddress.phone</li>
-                                            <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
-                                            <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
-                                            <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
-                                            <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li>                            
-                                        </ol>                     
-                                    </td>
-                                </tr>                
-                            </table>        
-                        </div>
-                    </div>
-
-                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-                        <h3 >
-                            <a href="">IVR y Pagos Recurrentes</a>
-                        </h3>
-                        <div class="squelch-taas-toggle-shortcode-content" >            
-                            <table class="table-d" >
-                                <tr bgcolor="#696a6c">
-                                    <td><span style="color: #fff; font-weight: bold;">Tienda de Servicios</span></td>
-                                    <td><span style="color: #fff; font-weight: bold;">Tienda Retail (Entrega de Productos)</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Para tiendas que ofrecen servicios adicionalmente deben enviar los siguinetes campos:</p>
-                                        <ol>
-                                            <li class="bullet-box" title="Dirección ip">transaction.ipAddress: 127.0.0.1</li>
-                                            <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
-                                            <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
-                                            <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
-                                            <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li> 
-                                        </ol>                     
-                                    </td>
-                                    <td>
-                                        <p>Para tiendas que venden y realizan envío de productos, adicionalmente deben enviar los siguinetes campos:</p>
-                                        <ol>
-                                            <li class="bullet-box" title="Dirección ip">transaction.ipAddress: 127.0.0.1</li>
-                                            <li class="bullet-box" title="Nombre completo del comprador">transaction.order.buyer.fullName</li>
-                                            <li class="bullet-box" title="Email del comprador">transaction.order.buyer.emailAddress</li>
-                                            <li class="bullet-box" title="Teléfono del comprador">transaction.order.buyer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del comprador (Cédula, DNI)">transaction.buyer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de envío">transaction.order.buyer.shippingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de envío">transaction.order.buyer.shippingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de envío">transaction.order.buyer.shippingAddress.state</li>
-                                            <li class="bullet-box" title="País de envío">transaction.order.buyer.shippingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de envío">transaction.order.buyer.shippingAddress.phone</li>
-                                            <li class="bullet-box" title="Nompre completo del tarjetabiente">transaction.payer.fullName</li>
-                                            <li class="bullet-box" title="Email del tarjetabiente">transaction.payer.emailAddress</li>
-                                            <li class="bullet-box" title="Telefono del tarjetabiente">transaction.payer.contactPhone</li>
-                                            <li class="bullet-box" title="Identificación del tarjetabiente (Cédula, DNI)">transaction.payer.dniNumber</li>
-                                            <li class="bullet-box" title="Dirección de acturación">transaction.payer.billingAddress.street1</li>
-                                            <li class="bullet-box" title="Ciudad de facturación">transaction.payer.billingAddress.city</li>
-                                            <li class="bullet-box" title="Estado o departamento de facturación">transaction.payer.billingAddress.state</li>
-                                            <li class="bullet-box" title="País de facturación">transaction.payer.billingAddress.country</li>
-                                            <li class="bullet-box" title="Teléfono de facturación">transaction.payer.billingAddress.phone</li>                            
-                                        </ol>                     
-                                    </td>
-                                </tr>                
-                            </table>        
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
             </div>
         </div>
     </div>
