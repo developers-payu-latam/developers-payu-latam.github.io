@@ -3,6 +3,44 @@ title: Integración
 subcategory: payments
 ---
 
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+          	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+                <script src="../../js/jquery-validate.bootstrap-tooltip.min.js"></script>
+          	<script src="../../js/signature-generator/validations.js"></script>           
+         	<script src="../../js/signature-generator/md5.js"></script>
+         	<script src="../../js/signature-generator/sha1.js"></script>
+         	<script src="../../js/signature-generator/sha256.js"></script>         
+                <script src="../../js/signature-generator/signature-generator.js"></script>
+                <script>
+                    
+                    var errApiKeyReq = "Ingresa un Apikey"
+                    var errApiKeyMin = "Ingresa un Apikey de mínimo 18 digitos"
+                    var errApiKeyMax = "Ingresa un Apikey de máximo 32 digitos"
+                    var errMerchantReq = "Ingresa el id de comercio"
+                    var errMerchantMin = "Ingresa un id de comercio de mínimo 6 digitos"
+                    var errMerchantMax = "Ingresa un id de comercio de máximo 7 digitos"
+                    var errMerchantPosi = "Ingresa un valor positivo"
+                    var errMerchantNum = "Ingresar solo números"
+                    var errReferenceReq = "Ingresa una referencia"
+                    var errReferenceMin = "Ingresa una referencia"
+                    var errReferenceMax = "Ingresa una referencia de máximo 255 digitos"
+                    var errAmountReq = "Ingresa un monto"
+                    var errAmountMin = "Ingresa un monto"
+                    var errAmountMax = "Ingresa un monto de máximo 14 digitos"
+                    var errAmountPosi = "Ingresa un valor positivo"
+                    var errAmountNum = "Ingresar solo números"
+                    var errCurrReq = "Ingresa el codigo de la moneda en formato ISO 4217"
+                    var errCurrMin = "Ingresa un codigo de mínimo 3 digitos"
+                    var errCurrMax = "Ingresa un codigo de máximo 3 digitos"
+                    var errTsReq = "Ingresa el codigo de transacción"
+                    var errTsMin = "Ingresa el codigo de transacción"
+                    var errTsMax = "Ingresa un codigo de transacción de máximo 3 digitos"
+                    var errSpReq = "Ingresa el codigo de transacción"
+                    var errSpMin = "Ingresa el codigo de transacción"
+                    var errSpMax = "Ingresa un codigo de transacción de máximo 1 digito" 
+                    
+                </script> 
+
 <div >
 
 <div class="payu-page-header superhero-sticky">
@@ -170,11 +208,46 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 <td>Todos los países</td>
 </tr>
 <tr>
+<td><i>buyerFullName</i></td>
+<td>Alfa numérico</td>
+<td style="text-align: center;">150</td>
+<td>Nombre completo del comprador.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
 <td><em>buyerEmail</em></td>
 <td>Alfa numérico</td>
 <td style="text-align: center;">255</td>
 <td>Campo que contiene el correo electrónico del comprador para notificarle el resultado de la transacción por correo electrónico. Se recomienda hacer una validación si se toma este dato en un formulario.</td>
 <td>Todos los países</td>
+</tr>
+<tr>
+<td><i>shippingAddress</i></td>
+<td>Alfa numérico</td>
+<td style="text-align: center;">255</td>
+<td>La dirección de entrega de la mercancía.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>shippingCity</i></td>
+<td>Alfa numérico</td>
+<td style="text-align: center;">50</td>
+<td>La Ciudad de entrega de la mercancía.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>shippingCountry</i></td>
+<td>Alfa numérico</td>
+<td style="text-align: center;">2</td>
+<td>El código ISO del país de entrega de la mercancía.</td>
+<td style="text-align: center;">&#8212;</td>
+</tr>
+<tr>
+<td><i>telephone</i></td>
+<td>Alfa numérico</td>
+<td style="text-align: center;">50</td>
+<td>El teléfono de residencia del comprador.</td>
+<td style="text-align: center;">&#8212;</td>
 </tr>
 </table>
 
@@ -523,6 +596,56 @@ buyerEmail: test@test.com
 </li>
 </ol>
 </div>
+    
+<!-- Generador de firmas -->
+<div id="blue-box">
+<span class="subtitle-page">Compara tu firma</span>
+<br>
+<br>
+<span class="grey-text-13">
+<div id = "div_generador" >                      
+
+<form method="POST" id="signature_form" >
+    <table> 
+        <span class="blue-text-13"><b>Algoritmo: &nbsp;</b></span>
+        <select id = "signature_algorithm" class="calc_selector form_control"> 
+            <option  value="md5">MD5</option>
+            <option  value="sha1">SHA1</option>                          
+            <option  value="sha256">SHA256</option>
+        </select>
+        <br>
+        <br>
+        <span class="calc_text">&nbsp;(</span>
+        <input class="form_control" type="text"  id ="signature_apikey" name = "signature_apikey" placeholder="ApiKey" maxlength="26"> ~ 
+        <input class="form_control number" type="text"  id ="signature_merchanId" name = "signature_merchanId" placeholder="MerchantId" maxlength="7"> ~ 
+        <input class="form_control" type="text"  id ="signature_referenceCode" name = "signature_referenceCode" placeholder="Referencia" maxlength="255"> ~ 
+        <input class="form_control  number" type="text" id ="signature_amount" name = "signature_amount" placeholder="Valor" maxlength="14"> ~
+        <select id = "signature_currency" class="calc_selector form_control" >
+            <option  value="USD">USD</option>
+            <option  value="COP">COP</option>
+            <option  value="MXN">MXN</option>
+            <option  value="ARS">ARS</option>
+            <option  value="PEN">PEN</option>
+            <option  value="BRL">BRL</option>
+            <option  value="CLP">CLP</option>
+        </select>
+        <span class="calc_text">)</span>
+        <br>
+        <br>
+        <br>
+        <span class="blue-text-13"><b>Resultado:&nbsp;</b></span><input class="form_control" id ="signature_generated" name = "signature_generated" value = ""  readonly />                                                
+    </table>
+    <br>
+    <table width="50%"  border="0" cellspacing="2" cellpadding="2">
+        <input type="button" name="signature_generate" id="signature_generate" value="Generar firma" >
+        <input type="button" name="signature_generate_again" id="signature_generate_again" value="Generar nueva firma" >
+    </table>
+</form>
+</div>
+</span>
+</div>
+<!-- Fin del generador de firmas--> 
+    
 </div>
 <!--fin integracion -->
 
@@ -1049,9 +1172,9 @@ referenceCode = TestPayU04<br>
 TX_VALUE = 150.25<br>
 currency = USD<br>
 transactionState = 6<br>
-signature = 8eebb5af1f32f7a9f930a1038810b854</span><br/><br/>
+signature = 00286dc735bd9eaa8ae3a3a4cbb40688</span><br/><br/>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
-<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.2~USD~6) = <b>8eebb5af1f32f7a9f930a1038810b854</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.2~USD~6) = <b>00286dc735bd9eaa8ae3a3a4cbb40688</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1065,9 +1188,9 @@ referenceCode = TestPayU04<br>
 TX_VALUE = 150.35<br>
 currency = USD<br>
 transactionState = 6<br>
-signature = ce2285970f17bb6ce049b56e6b41a255</span><br/><br/>
+signature = 9df2bb60e2838170009040982967923f</span><br/><br/>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span><br/>
-<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.4~USD~6) = <b>ce2285970f17bb6ce049b56e6b41a255</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.4~USD~6) = <b>9df2bb60e2838170009040982967923f</b></span>
 </div></div>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
@@ -1081,12 +1204,68 @@ referenceCode = TestPayU04<br>
 TX_VALUE = 150.34<br>
 currency = USD<br>
 transactionState = 6<br>
-signature = 01899cb431dd51623f5c94a62b1d2dc7</span><br/><br/>
+signature = 779f163be9347a691bcdb25064644795</span><br/><br/>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span><br/>
-<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = <b>01899cb431dd51623f5c94a62b1d2dc7</b></span>
+<span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = <b>779f163be9347a691bcdb25064644795</b></span>
 </div></div>
 </li>
 </div>
+  
+<!-- Generador de firmas pagina de respuesta -->
+<div id="blue-box">
+<span class="subtitle-page">Compara tu firma</span>
+<br>
+<br>
+<span class="grey-text-13">
+<div>                          
+<form method="POST" id="signature_form_response_page" >
+    <table>
+        <span class="blue-text-13"><b>Algoritmo: &nbsp;</b></span>
+        <select id = "signature_algorithm_response_page" class="calc_selector form_control">
+            <option  value="md5">MD5</option>
+            <option  value="sha1">SHA1</option>
+            <option  value="sha256">SHA256</option>
+        </select>
+        <br>
+        <br>
+        <span class="calc_text">&nbsp;(</span>
+        <input class="form_control" type="text"  id ="signature_apikey_response_page" name = "signature_apikey_response_page" placeholder="ApiKey" maxlength="26"> ~ 
+        <input class="form_control number" type="text"  id ="signature_merchanId_response_page" name = "signature_merchanId_response_page" placeholder="MerchantId" maxlength="7"> ~ 
+        <input class="form_control" type="text"  id ="signature_referenceCode_response_page" name = "signature_referenceCode_response_page" placeholder="Referencia" maxlength="255"> ~ 
+        <input class="form_control  number" type="text" id ="signature_amount_response_page" name = "signature_amount_response_page" placeholder="Valor" maxlength="14"> ~
+        <select id = "signature_currency_response_page" class="calc_selector form_control" >
+            <option  value="USD">USD</option>
+            <option  value="COP">COP</option>
+            <option  value="MXN">MXN</option>
+            <option  value="ARS">ARS</option>
+            <option  value="PEN">PEN</option>
+            <option  value="BRL">BRL</option>
+            <option  value="CLP">CLP</option> 
+        </select> ~
+        <select id = "signature_transaction_state_response_page" class="calc_selector form_control" >  
+            <option  value="4">4 (Aprobada)</option>
+            <option  value="6">6 (Rechazada)</option>
+            <option  value="104">104 (Error)</option>
+            <option  value="5">5 (Expirada)</option>
+            <option  value="7">7 (Pendiente)</option> 
+        </select>
+        <span class="calc_text">)</span>
+        <br>
+        <br>
+        <br>   
+        <span class="blue-text-13"><b>Resultado:&nbsp;</b></span><input class="form_control" id ="signature_generated_response_page" name = "signature_generated_response_page" value = ""  readonly />                                                
+    </table>
+    <br>
+    <table width="50%"  border="0" cellspacing="2" cellpadding="2">
+        <input type="button" name="signature_generate_response_page" id="signature_generate_response_page" value="Generar firma" >
+        <input type="button" name="signature_generate_again_response_page" id="signature_generate_again_response_page" value="Generar nueva firma" >
+    </table>
+</form>
+</div>
+</span>
+</div>
+<!-- Fin del generador de firmas pagina de respuesta-->
+
 </div>
 <!--fin pagina de respuesta -->
 <div id="squelch-taas-tab-content-3">
@@ -1605,6 +1784,59 @@ sign = 1d95778a651e11a0ab93c2169a519cd6</span>
 <span class="grey-text-13">Se genera la firma de la siguiente forma:</span>
 <span class="blue-text-13">MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU05~150.26~USD~4) = <b>1d95778a651e11a0ab93c2169a519cd6</b></span>
 </div></div>
+
+<!-- Generador de firmas pagina de confirmación -->
+<div id="blue-box">
+<span class="subtitle-page">Compara tu firma</span>
+<br>
+<br>
+<span class="grey-text-13">
+<div>                          
+<form method="POST" id="signature_form_confirmation_page" >
+    <table>
+        <span class="blue-text-13"><b>Algoritmo: &nbsp;</b></span>
+        <select id = "signature_algorithm_confirmation_page" class="calc_selector form_control">
+            <option  value="md5">MD5</option>
+            <option  value="sha1">SHA1</option>
+            <option  value="sha256">SHA256</option>
+        </select>
+        <br>
+        <br>
+        <span class="calc_text">&nbsp;(</span>
+        <input class="form_control" type="text"  id ="signature_apikey_confirmation_page" name = "signature_apikey_confirmation_page" placeholder="ApiKey" maxlength="26"> ~ 
+        <input class="form_control number" type="text"  id ="signature_merchanId_confirmation_page" name = "signature_merchanId_confirmation_page" placeholder="MerchantId" maxlength="7"> ~ 
+        <input class="form_control" type="text"  id ="signature_referenceCode_confirmation_page" name = "signature_referenceCode_confirmation_page" placeholder="Referencia" maxlength="255"> ~ 
+        <input class="form_control  number" type="text" id ="signature_amount_confirmation_page" name = "signature_amount_confirmation_page" placeholder="Valor" maxlength="14"> ~
+        <select id = "signature_currency_confirmation_page" class="calc_selector form_control" >
+            <option  value="USD">USD</option>
+            <option  value="COP">COP</option>
+            <option  value="MXN">MXN</option>
+            <option  value="ARS">ARS</option>
+            <option  value="PEN">PEN</option>
+            <option  value="BRL">BRL</option>
+            <option  value="CLP">CLP</option> 
+        </select> ~
+        <select id = "signature_state_pol_confirmation_page" class="calc_selector form_control" >  
+            <option  value="4">4 (Aprobada)</option>
+            <option  value="6">6 (Rechazada)</option>           
+            <option  value="5">5 (Expirada)</option>           
+        </select>
+        <span class="calc_text">)</span>
+        <br>
+        <br>
+        <br>   
+        <span class="blue-text-13"><b>Resultado:&nbsp;</b></span><input class="form_control" id ="signature_generated_confirmation_page" name = "signature_generated_confirmation_page" value = ""  readonly />                                                
+    </table>
+    <br>
+    <table width="50%"  border="0" cellspacing="2" cellpadding="2">
+        <input type="button" name="signature_generate_confirmation_page" id="signature_generate_confirmation_page" value="Generar firma" >
+        <input type="button" name="signature_generate_again_confirmation_page" id="signature_generate_again_confirmation_page" value="Generar nueva firma" >
+    </table>
+</form>
+</div>
+</span>
+</div>
+<!-- Fin del generador de firmas pagina de confirmación-->
 
 <br/>
 
