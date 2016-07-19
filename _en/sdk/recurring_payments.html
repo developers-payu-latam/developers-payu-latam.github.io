@@ -7,7 +7,7 @@ subcategory: recurring
 <ul class="hidden-xs">
 	<li class="leaf"><a class="active" href="#como-funciona">How does it work?</a></li>
 	<li class="leaf"><a href="#plan">Plan</a></li>
-	<li class="leaf"><a href="#cliente">Costumer</a></li>
+	<li class="leaf"><a href="#cliente">Customer</a></li>
 	<li class="leaf"><a href="#tarjeta-credito">Credit card</a></li>
 	<li class="leaf"><a href="#suscripcion">Susbcription</a></li>
 	<li class="leaf"><a href="#cargos-adicionales">Additional Charges</a></li>
@@ -552,12 +552,14 @@ parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2015/01");
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 //Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "Nombre");
+//Enter the payer's identification document related to the credit card here.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // -- The following parameters are optional --
 // Enter the first part of the address here 
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle falsa");
-// Ingresa aquí la segunda parte de la dirección (si aplica).
+// Enter the second part of the address here (if required).
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "123");
-// Ingresa aquí la tercera parte de la dirección (si aplica).
+// Enter the third part of the address here (if required).
 parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "patio trasero");
 // Enter the city here.
 parameters.put(PayU.PARAMETERS.PAYER_CITY, "Bogotá");
@@ -587,6 +589,8 @@ $parameters = array(
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2018/01",
 	// Enter the credit card’s franchise  
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+        //Enter the payer's identification document related to the credit card here.
+        PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "101010123",
 	// (OPTIONAL) Enter the first part of the address here 
@@ -629,8 +633,10 @@ Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "180oklk4o56");
 //Enter the expiration date of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2015/01");
-//Enter the buyer's name here.
+//Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "Nombre");
+//Enter the payer's identification document related to the credit card here.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // -- The following parameters are optional –
 // Enter the first part of the address here.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle 5476");
@@ -662,6 +668,8 @@ $parameters = array(
 	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
 	Enter the expiration date of the credit card here with format YYYY/MM
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2018/01",
+        //Enter the payer's identification document related to the credit card here.
+        PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "101010123",
 	// (OPTIONAL) Enter the first part of the address here 
@@ -721,6 +729,7 @@ if($response){
 	$response-&gt;number;
 	$response-&gt;type;
 	$response-&gt;name;
+        $response-&gt;document;
 	$address=$response-&gt;address;
 	$address-&gt;line1;
 	$address-&gt;line2;
@@ -850,6 +859,8 @@ Enter the expiration date of the credit card here with format YYYY/MM
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2018/01");
 // Enter the credit card’s franchise  
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
+//Enter the payer's identification document related to the credit card here.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // (OPTIONAL) Enter the payer's identification document here.
 parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
 // (OPTIONAL) Enter the first part of the address here 
@@ -933,6 +944,8 @@ $parameters = array(
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
 	// Enter the credit card’s franchise  
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+        //Enter the payer's identification document related to the credit card here.
+        PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "1020304050",
 	// (OPTIONAL) Enter the first part of the address here 
@@ -1082,6 +1095,8 @@ parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4242424242424242");
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2018/01");
 // Enter the credit card’s franchise  
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
+//Enter the payer's identification document related to the credit card here.
+parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // (OPTIONAL) Enter the payer's identification document here.
 parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
 // (OPTIONAL) Enter the first part of the address here 
@@ -1132,6 +1147,8 @@ $parameters = array(
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
 	// Enter the credit card’s franchise  
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+        //Enter the payer's identification document related to the credit card here.
+        PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "1020304050",
 	// (OPTIONAL) Enter the first part of the address here 
