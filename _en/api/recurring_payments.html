@@ -11,6 +11,7 @@ subcategory: recurring
 	<li class="leaf"><a href="#tarjeta-credito">Credit card</a></li>
 	<li class="leaf"><a href="#suscripcion">Subscription</a></li>
 	<li class="leaf"><a href="#cargos-adicionales">Additional charges</a></li>
+        <li class="leaf"><a href="#factura">Billing</a></li>
 </ul>
 </div>
 <div class="sh-container payu-white-bg">
@@ -60,9 +61,128 @@ Pointing to the relevant URLs:
 </div>
 <div id="plan" class="payu-fragment">
 &nbsp;<br>
-<div class="paso1"><span class="subtitle-page">PLAN</span></div>
-&nbsp;<br>
-<span class="grey-text-13">Using this feature you can register a customer’s credit card data and thus get a sequential  token code.</span>
+<div class="paso1"><span class="subtitle-page">Plan</span></div>
+<!-- Inclusión de variables para el plan -->
+<div class="squelch-taas-toggle squelch-taas-override" id="planvariables" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Variables used for the creation of a plan</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+
+
+<tr>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="25%">Field name</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Format</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Size</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Description</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="20%">Mandatory</td>
+</tr>
+<tr>
+<td><i>planCode</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 255</td>
+<td>Unique code assigned by the merchant to the plan in order to identify it.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>description</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 255</td>
+<td>Plan description.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>accountId</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>The identifier of the account to which the plan will be associated.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>interval</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 3
+Max: 5</td>
+<td>Interval that defines how often the suscription payment is performed. The possible values are: DAY, WEEK, MONTH y YEAR.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>intervalCount</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Interval count that defines how often the suscription payment is performed.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>maxPaymentsAllowed</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of payments for the suscription.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>maxPaymentAttempts</i></td>
+<td>Numeric</td>
+<td style="text-align: center;">Max: 3</td>
+<td>Total amount of payment attempts performed when a suscription payment is declined.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>paymentAttemptsDelay</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of waiting days between the payment attempts of the suscription.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>maxPendingPayments</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of pending payments that a suscription can have before it is cancelled.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>trialDays</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of trial days of the suscription.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>additionalValues.entry.name</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 255</td>
+<td>The type of amount associated to the plan. The possible values are:<br>
+PLAN_VALUE: total value of the plan.<br>
+PLAN_TAX_VALUE: tax value associated to the value of the plan.<br>
+PLAN_TAX_RETURN_BASE: tax return base value associated to the value of the plan.
+</td>
+<td style="text-align: center;">A node for each type. All countries</td>
+</tr>
+<tr>
+<td><i>additionalValues.entry.value</i></td>
+<td>Numeric</td>
+<td style="text-align: center;">19, 2</td>
+<td>Plan value, tax or tax return base according to the additionalValue.entry.name.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>additionalValues.entry.currency</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">3</td>
+<td>The ISO currency code associated with the amount. <a title="API – tablas de variables" href="{{ site.baseurl }}/en/api/variables_table.html"> See "Accepted currencies".</a></td>
+<td style="text-align: center;">All countries</td>
+</tr>
+</table>
+</div>
+</div></div>
+<!-- Finalización de variables para el plan -->
+<span class="grey-text-13">Using this feature you can register a recurring plan and thus get its identifier.</span>
 &nbsp;<br>
 <span class="grey-text-13">The following operations are available:</span>
 &nbsp;<br>
@@ -464,7 +584,41 @@ HTTP STATUS: 200 OK
 <div id="cliente" class="payu-fragment">
 &nbsp;<br>
 <div class="paso2"><span class="subtitle-page">Customer</span></div>
-&nbsp;<br>
+<!-- Inclusión de variables para el cliente -->
+<div class="squelch-taas-toggle squelch-taas-override" id="clientvariables" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Variables used for the creation of a customer</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+
+
+<tr>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="25%">Field name</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Format</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Size</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Description</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="20%">Mandatory</td>
+</tr>
+<tr>
+<td><i>fullName</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Max: 255</td>
+<td>Customer's complete name.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>email</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Max: 255</td>
+<td>Customer's email address.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+</table>
+</div>
+</div></div>
+<!-- Finalización de variables para el cliente -->
 <span class="grey-text-13">A customer is the unit that identifies who will be the beneficiary of a provided product or service and who is associated with a recurring payment plan.</span>
 &nbsp;<br>
 <span class="grey-text-13">The following operations are available:</span>
@@ -746,9 +900,148 @@ Response example:
 &nbsp;<br>
 <div id="tarjeta-credito" class="payu-fragment">
 &nbsp;<br>
-<div class="paso3"><span class="subtitle-page">CREDIT CARD</span></div>
-&nbsp;<br>
-<span class="grey-text-13">It is the payment method with which a Plan and a Payer relate, it is composed of the credit card number (which will be tokenized to store data securely), the expiration date of the card and some additional address data.</span>
+<div class="paso3"><span class="subtitle-page">Credit card</span></div>
+<!-- Inclusión de variables para la tarjeta de crédito -->
+<div class="squelch-taas-toggle squelch-taas-override" id="cardvariables" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Variables used for the creation of a credit card</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+
+
+<tr>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="25%">Field name</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Format</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Size</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Description</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="20%">Mandatory</td>
+</tr>
+<tr>
+<td><i>number</i></td>
+<td>Numeric</td>
+<td style="text-align: center;">Min: 13
+Max: 20</td>
+<td>Credit card number.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>name</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 255</td>
+<td>Full name of the credit card holder as shown in the credit card.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>document</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 5
+Max: 30</td>
+<td>Identification number of the credit card holder.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>expMonth</i></td>
+<td>Numeric</td>
+<td style="text-align: center;">Min: 1
+Max: 12</td>
+<td>Credit card’s expiration month.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>expYear</i></td>
+<td>Numeric</td>
+<td style="text-align: center;">Min: 00
+Max: 2999</td>
+<td>Credit card’s expiration year. 
+If it is a two digit value, it represents the years between 2000 (00) and 2099 (99).
+It the value has more than two digits it is used literally, being 2000 the minimum value.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>type</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;"></td>
+<td>The franchise or credit card type. <a title="API – tablas de variables" href="{{ site.baseurl }}/en/api/variables_table.html"> See "Payment method".</a></td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>address</i></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td>Credit card holder's billing address, associated to the credit card.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>address.line1</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 100</td>
+<td>First line of the address.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>address.line2</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 100</td>
+<td>Second line of the address or street number.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>address.line3</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 100</td>
+<td>Third line of the address.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>address.city</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 50</td>
+<td>City.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>address.state</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 40</td>
+<td>State or department. *For Brazil send only 2 characters. Example: If it is Sao Paulo then send SP.</td>
+<td style="text-align: center;">Brazil</td>
+</tr>
+<tr>
+<td><i>address.country</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">2</td>
+<td>Country of the address in format ISO 3166 Alfa 2 code.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>address.postalCode</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 20</td>
+<td>Postal code of the address. *For Brazil use the format XXXXX-XXX or XXXXXXXX, for example: 09210-710 o 09210710.</td>
+<td style="text-align: center;">Mexico, Brazil</td>
+</tr>
+<tr>
+<td><i>address.phone</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 20</td>
+<td>Phone associated to the address. *For Brazil use the format ddd(2)+number(7-9), for example: (11)756312633.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+</table>
+</div>
+</div></div>
+<!-- Finalización de variables para la tarjeta de crédito -->
+<span class="grey-text-13">It is the payment method that relates a customer to a plan. It is composed of the credit card number (that will be tokenized to store data securely), the expiration date of the card and some additional address data.</span>
 &nbsp;<br>
 <span class="grey-text-13">The following operations are available:</span>
 &nbsp;<br>
@@ -1048,8 +1341,70 @@ Response example:
 <div id="suscripcion" class="payu-fragment">
 &nbsp;<br>
 <div class="paso4"><span class="subtitle-page">Subscription</span></div>
-&nbsp;<br>
-<span class="grey-text-13">A subscription is the relationship between a payment plan, a payer and a credit card and it is the element that controls the execution of the respective collections.</span>
+<!-- Inclusión de variables para la suscripción -->
+<div class="squelch-taas-toggle squelch-taas-override" id="suscripcionvariables" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Variables used for the creation of a subscription</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+
+
+<tr>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="25%">Field name</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Format</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Size</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Description</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="20%">Mandatory</td>
+</tr>
+<tr>
+<td><i>quantity</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of plans that will be acquired with the subscription.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>installments</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of installments to defer the payment.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>trialDays</i></td>
+<td>Numeric</td>
+<td style="text-align: center;"></td>
+<td>Total amount of trial days of the subscription. This variable has preference over the plan's trial days.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td><i>customer</i></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td>Customer that will be associated to the subscription. You can find more information in the "Customer" section of this page.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>customer.creditCards</i></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td>Customer's credit card that is selected to make the payment. You can find more information in the "Credit card" section of this page.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>plan</i></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td>Plan that will be associated to the subscription. You can find more information in the "Plan" section of this page.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+</table>
+</div>
+</div></div>
+<!-- Finalización de variables para la suscripción -->
+<span class="grey-text-13">A subscription is the relationship between a payment plan, a payer and a credit card. It is the element that controls the execution of the respective collections.</span>
 &nbsp;<br>
 <span class="grey-text-13">The following operations are available:</span>
 &nbsp;<br>
@@ -1091,7 +1446,7 @@ Response example:
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
 <h3 >
 <a href="">
-with all new items</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+With all new items</a></h3><div class="squelch-taas-toggle-shortcode-content" >
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
@@ -1828,7 +2183,7 @@ Response example:
 </div>
 </div></div>
 &nbsp;<br>
-<b>Update</b>: (tarjeta de crédito de una suscripción)
+<b>Update</b>: (Credit card of a subscription)
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
@@ -1988,7 +2343,61 @@ Response example:
 <div id="cargos-adicionales" class="payu-fragment">
 &nbsp;<br>
 <div class="paso5"><span class="subtitle-page">Additional charges</span></div>
-&nbsp;<br>
+<!-- Inclusión de variables para el cobro adicional -->
+<div class="squelch-taas-toggle squelch-taas-override" id="chargevariables" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Variables used for the creation of an additional charge</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
+
+
+<tr>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="25%">Field name</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Format</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Size</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Description</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="20%">Mandatory</td>
+</tr>
+<tr>
+<td><i>descripcion</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 255</td>
+<td>Description of the additional charge associated to the payment.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>additionalValues.entry.name</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">Min: 1
+Max: 255</td>
+<td>The type of amount associated to the additional charge. The possible values are:<br>
+ITEM_VALUE: total value of the additional charge.<br>
+ITEM_TAX: tax value associated to the value of the additional charge.<br>
+ITEM_TAX_RETURN_BASE: tax return base value associated to the value of the additional charge.
+</td>
+<td style="text-align: center;">A node for each type. All countries</td>
+</tr>
+<tr>
+<td><i>additionalValues.entry.value</i></td>
+<td>Numeric</td>
+<td style="text-align: center;">19, 2</td>
+<td>Charge value, tax or tax return base according to the additionalValue.entry.name.</td>
+<td style="text-align: center;">All countries</td>
+</tr>
+<tr>
+<td><i>additionalValues.entry.currency</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">3</td>
+<td>The ISO currency code associated to the amount. <a title="API – tablas de variables" href="{{ site.baseurl }}/en/api/variables_table.html"> See "Accepted currencies".</a></td>
+<td style="text-align: center;">All countries</td>
+</tr>
+</table>
+</div>
+</div></div>
+<!-- Finalización de variables para el cargo adicional -->
 <span class="grey-text-13">A charge may be an additional charge or a discount realized on the value of one of the payments that comprise the recurring payment plan. These only affect the next pending item and run once.</span>
 &nbsp;<br>
 <span class="grey-text-13">The following operations are available:</span>
@@ -2618,7 +3027,298 @@ Response example:
 <!-- FIN TABS CARGOS ADICIONALES -->
 </div>
 &nbsp;<br>
+<div id="factura" class="payu-fragment">
+&nbsp;<br>
+<div class="paso6"><span class="subtitle-page">Billing</span></div>
+<!-- Inclusión de variables para la factura -->
+<div class="squelch-taas-toggle squelch-taas-override" id="billvariables" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+	<a href="">Associated attributes to the bills</a>
+</h3>
+<div class="squelch-taas-toggle-shortcode-content" >
+<div class="Table1">
+<table class="table-d" >
 
+
+<tr>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="25%">Field name</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="10%">Format</td>
+<td style="text-align: center;" bgcolor="#cdf0ff" width="35%">Description</td>
+</tr>
+<tr>
+<td><i>recurringBill.id</i></td>
+<td>Alphanumeric</td>
+<td>Bill id in the PayU platform.</td>
+</tr>
+<tr>
+<td><i>recurringBill.orderId</i></td>
+<td>Numeric</td>
+<td>Id of the order that is associated to the bill in the PayU platform.</td>
+</tr>
+<tr>
+<td><i>recurringBill.subscriptionId</i></td>
+<td>Alphanumeric</td>
+<td>Id of the subscription that is associated to the bill in the PayU platform.</td>
+</tr>
+<tr>
+<td><i>recurringBill.state</i></td>
+<td>Alphanumeric</td>
+<td>State of the payment. The possible values are: <br>
+NOT_PAID - Declined payment.<br>
+PAYMENT_IN_PROGRESS - Payment in progress of charge.<br>
+PENDING - The next payment to charge.<br>
+RETRYING_PAYMENT - Retrying payment.<br>
+PAID - Approved payment.<br>
+CANCELLED - Cancelled subscription.<br>
+PENDING_REVIEW - Payment in process of validation.<br></td>
+</tr>
+<tr>
+<td><i>recurringBill.amount</i></td>
+<td>Numeric</td>
+<td>Total amount of the payment.</td>
+</tr>
+<tr>
+<td><i>recurringBill.currency</i></td>
+<td>Alphanumeric</td>
+<td>The ISO currency code associated to the amount. <a title="API – tablas de variables" href="{{ site.baseurl }}/en/api/variables_table.html"> See "Accepted currencies".</a></td>
+</tr>
+<tr>
+<td><i>recurringBill.dateCharge</i></td>
+<td>Date</td>
+<td>Date of the payment. When the json format is used the value structure is Epoch/Unix, therefore it is necessary to convert it.</td>
+</tr>
+</table>
+</div>
+</div></div>
+<!-- Finalización de variables para la factura -->
+<span class="grey-text-13">A bill is a payment attempt performed over a subscription, or its execution is pending.
+    Una factura es un intento de pago que se realizó sobre una suscripción, o está pendiente por ejecutarse.</span>
+&nbsp;<br>
+<span class="grey-text-13">Las facturas solo tienen el método de consulta disponible:</span>
+&nbsp;<br>
+<table class="table-d" >
+	<tr bgcolor="#696a6c">
+		<td><span style="color: #fff; font-weight: bold;">Url</span></td>
+		<td><span style="color: #fff; font-weight: bold;">Metodo</span></td>
+		<td><span style="color: #fff; font-weight: bold;">DESCRIPCIÓN</span></td>
+	</tr>
+	<tr>
+		<td>/rest/v4.3/recurringBill</td>
+		<td>GET</td>
+		<td>Consulta de las facturas que están pagadas o pendientes por pagar. Se puede consultar por cliente, por suscripción o por rango de fechas:<br>
+		/rest/v4.3/recurringBill?customerId={customerId}<br>
+                /rest/v4.3/recurringBill?subscriptionId={subscriptionId}<br>
+		/rest/v4.3/recurringBill?customerId={customerId}&dateBegin={dateBegin}&dateFinal={dateFinal}</td>
+	</tr>
+</table>
+
+<!-- TABS FACTURA -->
+<b>Consulta</b>:
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+By id of the client</a>
+</h3>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBill?customerId=6dtc2i97hw5
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:200px; overflow: auto;">
+<span class="json-open-bracket">{ </span><span class="json-property">"recurringBillList"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"id"</span><span class="json-semi-colon">: </span><span class="json-value">"cc522b0e-af0b-4ece-978d-f5c5632caa52"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">71516840</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"subscriptionId"</span><span class="json-semi-colon">: </span><span class="json-value">"6dtg51j09cr"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PAID"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"amount"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dateCharge"</span><span class="json-semi-colon">: </span><span class="json-value">1391490000000</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"id"</span><span class="json-semi-colon">: </span><span class="json-value">"56f0f5ca-cf29-437e-8920-7bc35578a39f"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"subscriptionId"</span><span class="json-semi-colon">: </span><span class="json-value">"6dtf4q8v451"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"CANCELLED"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"amount"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dateCharge"</span><span class="json-semi-colon">: </span><span class="json-value">1392786000000</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-close-bracket">] </span><span class="json-close-bracket">}</span>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBill?customerId=6dtc2i97hw5
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:200px; overflow: auto;">
+<span class="tag">&lt;recurringBillListResponse&gt;</span><span class="pln">
+   </span><span class="tag">&lt;recurringBills&gt;</span><span class="pln">
+      </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
+         </span><span class="tag">&lt;id&gt;</span><span class="pln">cc522b0e-af0b-4ece-978d-f5c5632caa52</span><span class="tag">&lt;/id&gt;</span><span class="pln">
+         </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71516840</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+         </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-04T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln"> 
+      </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
+         </span><span class="tag">&lt;id&gt;</span><span class="pln">56f0f5ca-cf29-437e-8920-7bc35578a39f</span><span class="tag">&lt;/id&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtf4q8v451</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;state&gt;</span><span class="pln">CANCELLED</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+         </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-19T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/recurringBills&gt;</span><span class="pln">
+</span><span class="tag">&lt;/recurringBillListResponse&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+By id of the subscription</a>
+</h3>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBill?subscriptionId=6dtg51j09cr
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:200px; overflow: auto;">
+<span class="json-open-bracket">{ </span><span class="json-property">"recurringBillList"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"id"</span><span class="json-semi-colon">: </span><span class="json-value">"cc522b0e-af0b-4ece-978d-f5c5632caa52"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">71516840</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"subscriptionId"</span><span class="json-semi-colon">: </span><span class="json-value">"6dtg51j09cr"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PAID"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"amount"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dateCharge"</span><span class="json-semi-colon">: </span><span class="json-value">1391490000000</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"id"</span><span class="json-semi-colon">: </span><span class="json-value">"528a91a5-19bf-4db5-9a4a-4ecd2f07056b"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">71651340</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"subscriptionId"</span><span class="json-semi-colon">: </span><span class="json-value">"6dtg51j09cr"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PAID"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"amount"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dateCharge"</span><span class="json-semi-colon">: </span><span class="json-value">1391576400000</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-close-bracket">] </span><span class="json-close-bracket">}</span>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBill?subscriptionId=6dtg51j09cr
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:200px; overflow: auto;">
+<span class="tag">&lt;recurringBillListResponse&gt;</span><span class="pln">
+   </span><span class="tag">&lt;recurringBills&gt;</span><span class="pln">
+      </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
+         </span><span class="tag">&lt;id&gt;</span><span class="pln">cc522b0e-af0b-4ece-978d-f5c5632caa52</span><span class="tag">&lt;/id&gt;</span><span class="pln">
+         </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71516840</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+         </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-04T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln"> 
+      </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
+         </span><span class="tag">&lt;id&gt;</span><span class="pln">56f0f5ca-cf29-437e-8920-7bc35578a39f</span><span class="tag">&lt;/id&gt;</span><span class="pln">
+         </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71651340</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+         </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-19T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/recurringBills&gt;</span><span class="pln">
+</span><span class="tag">&lt;/recurringBillListResponse&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+By id of the client and a range of dates</a>
+</h3>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Request example:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBill?customerId=6dtc2i97hw5&dateBegin=2014-02-03&dateFinal=2014-02-04
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:200px; overflow: auto;">
+<span class="json-open-bracket">{ </span><span class="json-property">"recurringBillList"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"id"</span><span class="json-semi-colon">: </span><span class="json-value">"cc522b0e-af0b-4ece-978d-f5c5632caa52"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">71516840</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"subscriptionId"</span><span class="json-semi-colon">: </span><span class="json-value">"6dtg51j09cr"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PAID"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"amount"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dateCharge"</span><span class="json-semi-colon">: </span><span class="json-value">1391490000000</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}
+<span class="json-close-bracket">] </span><span class="json-close-bracket">}</span>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-2">
+Request example:
+<pre>
+GET https://api.payulatam.com/payments-api/rest/v4.3/recurringBill?customerId=6dtc2i97hw5&dateBegin=2014-02-03&dateFinal=2014-02-04
+</pre>
+&nbsp;<br>
+Response example:
+<pre style="height:200px; overflow: auto;">
+<span class="tag">&lt;recurringBillListResponse&gt;</span><span class="pln">
+   </span><span class="tag">&lt;recurringBills&gt;</span><span class="pln">
+      </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
+         </span><span class="tag">&lt;id&gt;</span><span class="pln">cc522b0e-af0b-4ece-978d-f5c5632caa52</span><span class="tag">&lt;/id&gt;</span><span class="pln">
+         </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71516840</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+         </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-04T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln"> 
+   </span><span class="tag">&lt;/recurringBills&gt;</span><span class="pln">
+</span><span class="tag">&lt;/recurringBillListResponse&gt;</span>
+</pre>
+</div>
+</div>
+</div>
+<!-- FIN TABS FACTURA -->
+</div>
+&nbsp;<br>
 </div>
 
 </div>
