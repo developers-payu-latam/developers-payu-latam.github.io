@@ -8,7 +8,6 @@ $(document).ready(function() {
         
         if (id == "signature_form")
         {   
-            var tipo = String(document.getElementById('tipo').value);
             var algoritmo = String(document.getElementById('signature_algorithm').value);
             var apikey = document.getElementById('signature_apikey').value;
             var merchanId = document.getElementById('signature_merchanId').value;
@@ -18,23 +17,8 @@ $(document).ready(function() {
             
             switch(algoritmo)
             {                
-                case "md5":
-                    // firmaT = Firma Tradicional
-                    if (tipo == "firmaT"){
+                case "md5":                    
                     var signature = String(CryptoJS.MD5(apikey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency));
-                    }
-                    // firmaMP = Firma Tracional + medio de pago
-                    else if (tipo == "firmaMP")
-                    {
-                    var paymentMethod = document.getElementById('paymentMethod').value;
-                    var signature = String(CryptoJS.MD5(apikey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency + "~" + paymentMethod));
-                    }
-                     // firmaMP = Firma Tracional + medio de pago + bin
-                    else if (tipo == "firmaMPB") {
-                    var paymentMethod = document.getElementById('paymentMethod').value;
-                    var iin = document.getElementById('iin').value;
-                    var signature = String(CryptoJS.MD5(apikey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency + "~" + paymentMethod+ "~" + iin));   
-                    }
                     break;
                 
                 case "sha1":                    
