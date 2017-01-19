@@ -26,7 +26,7 @@ $(function() {
         rules: {
             signature_apikey: {
                 required: true,
-                minlength: 18,
+                minlength: 5,
                 maxlength: 32
             },
             signature_merchanId: {

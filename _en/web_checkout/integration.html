@@ -172,7 +172,7 @@ Live: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 <td><em>tax </em></td>
 <td>Numeric</td>
 <td style="text-align: center;">14,2</td>
-<td>It is the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, if no VAT is sent, the system will apply 16% automatically. It can contain two decimal digits. Example 16000.00. In case you have no VAT you should fill out 0.</td>
+<td>It is the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. Example 19000.00. In case you have no VAT you should fill out 0.</td>
 <td>All countries</td>
 </tr>
 <tr>
@@ -300,7 +300,7 @@ All variables that you can send in the form</a>
 <td><i>tax</i></td>
 <td>Numeric</td>
 <td style="text-align: center;">14,2</td>
-<td>It is the value of the VAT of the transaction, if no VAT is sent, the system will apply 16% automatically. It can contain two decimal digits. For example 16000.00. In case you have no VAT you should fill out 0.</td>
+<td>It is the value of the VAT of the transaction, if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. For example 19000.00. In case you have no VAT you should fill out 0.</td>
 <td>All countries</td>
 </tr>
 <tr>
@@ -513,7 +513,7 @@ All variables that you can send in the form</a>
 <ol>
 <li class="bullet-box">The <b>tax</b> is a value added tax that may be used in some countries and the <b>taxReturnBase</b> is the base value on which VAT is calculated. If your product does not just apply for this tax, simply both variables take the value 0 <b>(tax=0, taxReturnBase=0)</b>. Conversely, if some elements have the tax and it does not apply to others, you must perform the following calculation to find out how to send the values to the payment platform.</li>
 
-<li class="bullet-box">If the <b>tax</b> value is not sent, the system automatically will calculate it as 16%.</li>
+<li class="bullet-box">If the <b>tax</b> value is not sent, the system automatically will calculate it as 19%.</li>
 
 <li class="bullet-box">For businesses registered in Colombia that belong to the common program (régimen común), if you do not send the <b>tax</b>, value, the system will automatically calculate the value. If your business belongs to the simplified program (regimen simplificado) and you do not send the tax value, the system will assign the value as zero (0).<br><br/>
 <span class="blue-text-13">Note: The amount of tax + taxReturnBase cannot be greater than the Total Value.</span>
@@ -528,7 +528,7 @@ All variables that you can send in the form</a>
 <tr>
 <td><i>A</i></td>
 <td>100,000</td>
-<td>16,000 (16%)</td>
+<td>19,000 (19%)</td>
 <td>116,000</td>
 </tr>
 <tr>
@@ -875,7 +875,7 @@ Variables sent to the response page</a>
 <td><i>TX_TAX</i></td>
 <td>Numeric</td>
 <td style="text-align: center;">14,2</td>
-<td>It is the value of the VAT of the transaction, if no VAT is sent, the system will apply 16% automatically. It can contain two decimal digits. Example 16000.00. In case you have no VAT you should fill out 0.</td>
+<td>It is the value of the VAT of the transaction, if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. Example 19000.00. In case you have no VAT you should fill out 0.</td>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
@@ -1305,6 +1305,7 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 <li class="bullet-box">If youre site is restricted with "basic access authentication" or similar, disable it for the confirmation url.</li>
 <li class="bullet-box">The IP associated with the confirmation URL should be public; no access from intranet or localhost.</li>
 <li class="bullet-box">If you're using https, you must make sure you have a valid certificate.</li>
+<li class="bullet-box">Temporarily, do not use security certificates elliptic curve or those who have the suite of encryption TLS_ECDHE_ECDSA_WITH_RC4_128_SHA in your payment requests.</li>
 <li class="bullet-box">PayU assumes that the confirmation page is reported correctly if the system receives the HTTP 200 code; otherwise, it will make a maximum of nine (9) attempts to send the confirmation page to your system. If, after these attempts, HTTP 200 code is received, the system sends an email alert.</li>
 <li class="bullet-box">PayU reports the confirmation page once the transaction has a final status, ie, when approved, rejected or expired. If a transaction is in progress (waiting for payment or analysis), it will not report until it has a final status.</li>
 </ol>
@@ -1407,7 +1408,7 @@ Variables sent with the confirmation page</a>
 <td width="181"><em>tax</em></td>
 <td width="185">Numeric</td>
 <td style="text-align: center;" width="63">14,2</td>
-<td width="648">It is the transaction VAT. If no VAT % is sent, the system will apply the 16 % automatically . It can contain two decimal digits. Eg 16000.00 . In case you have no VAT, the percentage should be set as 0.</td>
+<td width="648">It is the transaction VAT. If no VAT % is sent, the system will apply the 16 % automatically . It can contain two decimal digits. Eg 19000.00 . In case you have no VAT, the percentage should be set as 0.</td>
 </tr>
 <tr>
 <td width="181"><em>additional_value</em></td>

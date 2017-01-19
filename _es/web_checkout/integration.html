@@ -176,7 +176,7 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 <td><em>tax </em></td>
 <td>Numérico</td>
 <td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, si se envía el IVA nulo el sistema aplicará el 16% automáticamente. Puede contener dos dígitos decimales. Ej: 16000.00. En caso de no tener IVA debe enviarse en 0.</td>
+<td>Es el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
 <td>Todos los países</td>
 </tr>
 <tr>
@@ -305,7 +305,7 @@ Producción: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
 <td><em>tax</em></td>
 <td>Numérico</td>
 <td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA (Impuesto al Valor Agregado solo valido para ) de la transacción, si se envía el IVA nulo el sistema aplicará el 16% automáticamente. Puede contener dos dígitos decimales. Ej: 16000.00. En caso de no tener IVA debe enviarse en 0.</td>
+<td>Es el valor del IVA (Impuesto al Valor Agregado solo valido para ) de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
 <td><center>Si</center></td>
 </tr>
 <tr>
@@ -646,7 +646,7 @@ Si el valor de este campo es mayor a cero, se interpreta que el comercio asume e
 <td><i>tax</i></td>
 <td>Numérico</td>
 <td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 16% automáticamente. Puede contener dos dígitos decimales. Ej: 16000.00. En caso de no tener IVA debe enviarse en 0.</td>
+<td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
 <td>Todos Los países</td>
 </tr>
 <tr>
@@ -859,7 +859,7 @@ Si el valor de este campo es mayor a cero, se interpreta que el comercio asume e
 <span class="blue-text-13"><b>Consideraciones sobre las Variables</b></span>
 <ol>
 <li class="bullet-box">El <b>tax</b> es un impuesto al valor agregado que pueden utilizar algunos países y el <b>taxReturnBase</b> es el valor base sobre el cual se calcula el IVA. En caso que tu producto no aplique este impuesto simplemente ambas variables tomaran el valor 0 <b>(tax=0, taxReturnBase=0)</b>. Por el contrario, si algunos elementos tienen el impuesto y para otros no se aplica, tendrás que realizar el siguiente cálculo para saber cómo enviar los valores a la plataforma de pagos.</li>
-<li class="bullet-box">Si no se envía el valor de <b>tax</b> el sistema lo calculará automáticamente como 16%.</li>
+<li class="bullet-box">Si no se envía el valor de <b>tax</b> el sistema lo calculará automáticamente como 19%.</li>
 <li class="bullet-box">Para comercios registrados en Colombia que pertenecen al régimen común, si no envías el valor de <b>tax</b>, el sistema calculará automáticamente el valor. Si tu comercio pertenece al régimen simplificado y no envías el valor del <b>tax</b>, el sistema asignará el valor como Cero (0).<br>
 <br/>
 <span class="blue-text-13">Nota: El monto de tax + taxReturnBase no puede ser mayor que el Valor Total</span>
@@ -873,7 +873,7 @@ Si el valor de este campo es mayor a cero, se interpreta que el comercio asume e
 <tr>
 <td><i>A</i></td>
 <td>100,000</td>
-<td>16,000 (16%)</td>
+<td>19,000 (19%)</td>
 <td>116,000</td>
 </tr>
 <tr>
@@ -1221,7 +1221,7 @@ else
 <td><i>TX_TAX</i></td>
 <td>Numérico</td>
 <td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 16% automáticamente. Puede contener dos dígitos decimales. Ej: 16000.00. En caso de no tener IVA debe enviarse en 0.</td>
+<td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
 <td style="text-align: center;">&#8212;</td>
 </tr>
 <tr>
@@ -1627,6 +1627,7 @@ signature = 779f163be9347a691bcdb25064644795</span><br/><br/>
 <li class="bullet-box">Si tienes restringido el sitio con "basic access authentication" o algo similar, deshabilítalo para la url de confirmación.</li>
 <li class="bullet-box">La IP asociada a la URL de confirmación debe ser pública; no de acceso desde intranet o localhost.</li>
 <li class="bullet-box">Si utilizas protocolo https, debes asegurarte de tener un certificado válido.</li>
+<li class="bullet-box">Temporalmente NO utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de cifrado TLS_ECDHE_ECDSA_WITH_RC4_128_SHA en tus peticiones de pago.</li>
 <li class="bullet-box">PayU asumirá que la página de confirmación se reportó correctamente si el sistema recibe el código HTTP 200; de lo contrario, realizará máximo nueve (9) intentos de enviar la página de confirmación a tu sistema. Si después de estos intentos no se recibe el código HTTP 200, el sistema envía un email de alerta.</li>
 <li class="bullet-box">PayU reportará la página de confirmación una vez la transacción tenga un estado final, es decir, cuando es aprobada, rechazada o expirada. Si una transacción queda en progreso (en espera de pago o de análisis), no se reportará hasta tener un estado final.</li>
 </ol>
@@ -1729,7 +1730,7 @@ signature = 779f163be9347a691bcdb25064644795</span><br/><br/>
 <td width="181"><em>tax</em></td>
 <td width="185">Numérico</td>
 <td style="text-align: center;" width="63">14,2</td>
-<td width="648">Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 16% automáticamente. Puede contener dos dígitos decimales. Ej: 16000.00. En caso de no tener IVA debe enviarse en 0.</td>
+<td width="648">Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
 </tr>
 <tr>
 <td width="181"><em>additional_value</em></td>
