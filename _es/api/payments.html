@@ -48,10 +48,10 @@ subcategory: payments
 Todas las operaciones disponibles son:
 <div class="list-arrow">
 <ul>
-	<li><b>Autorización</b>: se usa para verificar si una tarjeta de crédito se encuentra activa, si posee fondos, etc. La transacción no se finaliza hasta que se envíe una transacción de captura (solo disponible para cuentas de Brasil).</li>
-	<li><b>Captura</b>: finaliza una transacción previamente autorizada. Es aquí cuando se realiza el débito de la cuenta de la tarjeta (solo disponible para cuentas de Brasil).</li>
+	<li><b>Autorización</b>: se usa para verificar si una tarjeta de crédito se encuentra activa, si posee fondos, etc. La transacción no se finaliza hasta que se envíe una transacción de captura.</li>
+	<li><b>Captura</b>: finaliza una transacción previamente autorizada. Es aquí cuando se realiza el débito de la cuenta de la tarjeta.</li>
 	<li><b>Autorización y captura</b>: este es el tipo de transacción más usada. Con esta opción se envía a autorización el monto de la transacción y si es aprobada, inmediatamente se realiza la captura.</li>
-	<li><b>Anulación</b>: Se usa para reversar una transacción previamente autorizada (solo disponible para cuentas de Brasil).</li>
+	<li><b>Anulación</b>: Se usa para reversar una transacción previamente autorizada.</li>
 	<li><b>Reembolso</b>: Se usa para reversar una transacción previamente capturada.</li>
 </ul>
 </div>
@@ -4299,7 +4299,7 @@ Ejemplo respuesta:
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1-1">
-Ejemplo petición:</p>
+Ejemplo petición:
 
 <pre style="height: 300px; overflow: auto;">
 <span class="json-open-bracket">{</span><span class="json-collapse-1">
@@ -4612,6 +4612,7 @@ Ejemplo respuesta:
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 	<ul>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Colombia</a></li>
+                <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">México</a></li>
 	</ul>
 <div id="squelch-taas-tab-content-1">
 <span class="blue-text-13"><b>Transferencias bancarias</b></span>
@@ -5139,7 +5140,210 @@ Los campos con el caracter "$" al comienzo, son parámetros que se envían por G
 
 </table>
 &nbsp;<br>
-</div></div>
+</div>
+<!-- SPEI -->
+<div id="squelch-taas-tab-content-2">
+<span class="blue-text-13"><b>Transferencias bancarias</b></span>
+<span class="grey-text-13">El medio de pago STP-SPEI para México es un medio de pago de tipo electrónico en el cuál el pagador hace una transferencia bancaria desde la sucursal electrónica de su banco hacia a una cuenta CLABE propia de PayU. STP consume un servicio SOAP expuesto por PayU para actualizar la transacción.</span>
+<br><br>
+<ol>
+	<li class="bullet-box">Cuando el pagador selecciona el medio de pago SPEI, PayU crea una orden en estado “en progreso” y una transacción en estado “pendiente”.</li>
+	<li class="bullet-box">Para completar el pago, el pagador deberá ingresar a la sucursal virtual de su banco (su banco debe hacer parte del listado de bancos soportados por SPEI). Primero el pagador deberá registrar el campo cuenta CLABE de PayU en su sucursal bancaria. Una vez la cuenta CLABE de PayU quede habilitada para realizar transferencias, el pagador debe desde su sucursal virtual ingresar la referencia devuelta por PayU dentro del campo código de trazabilidad igualmente debe ingresar el monto tal cuál como PayU lo retorne.</li>
+</ol>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Ejemplo petición:
+<pre style="height: 300px; overflow: auto;">
+<span class="json-open-bracket">{</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"command"</span><span class="json-semi-colon">: </span><span class="json-value">"SUBMIT_TRANSACTION"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchant"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiKey"</span><span class="json-semi-colon">: </span><span class="json-value">"4Vj8eK4rloUd272L48hsrarnUA"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiLogin"</span><span class="json-semi-colon">: </span><span class="json-value">"pRRXKOl8ikMmt9u"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"512324"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"a88cba16c6fc54a4d31f696cfcbd41fc"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.test.com/confirmation"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">100</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"MXN"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"MXN"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX_RETURN_BASE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"MXN"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and last name"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION_AND_CAPTURE"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"SPEI"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"expirationDate"</span><span class="json-semi-colon">: </span><span class="json-value">"2017-05-10T00:00:00"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentCountry"</span><span class="json-semi-colon">: </span><span class="json-value">"MX"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"test"</span><span class="json-semi-colon">: </span><span class="json-value">false</span>
+<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
+</pre>
+Ejemplo respuesta:
+<pre style="height: 300px; overflow: auto;">
+<span class="json-open-bracket">{</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"code"</span><span class="json-semi-colon">: </span><span class="json-value">"SUCCESS"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"error"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionResponse"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">935295297</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"8c0fc22d-13cc-4d75-9fd5-5998844bd6b6"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">"724"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"authorizationCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">"AWAITING_NOTIFICATION"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSACTION_CONFIRMATION"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"errorCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionTime"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"operationDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceQuestionnaire"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"URL_PAYMENT_RECEIPT_HTML"</span><span class="json-semi-colon">: </span><span class="json-value">"https://checkout.payulatam.com/ppp-web-gateway-payu/app?vid=935295297Y8c0fc22d13cc4d7Yc5e8cc6804cfbba"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"SPEI_CLABE_ACCOUNT_NUMBER"</span><span class="json-semi-colon">: </span><span class="json-value">"646180132800000009"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"URL_PAYMENT_RECEIPT_PDF"</span><span class="json-semi-colon">: </span><span class="json-value">"https://checkout.payulatam.com/ppp-web-gateway-payu/receipt?vid=935295297Y8c0fc22d13cc4d7Yc5e8cc6804cfbba"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"SPEI_BANK_NAME"</span><span class="json-semi-colon">: </span><span class="json-value">"STP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalInfo"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetwork"</span><span class="json-semi-colon">: </span><span class="json-value">"STP"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"rejectionType"</span><span class="json-semi-colon">: </span><span class="json-value">"none"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseNetworkMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Ejemplo petición:
+<pre style="height: 300px; overflow: auto;">
+<span class="tag">&lt;request&gt;</span><span class="pln">
+   </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+   </span><span class="tag">&lt;command&gt;</span><span class="pln">SUBMIT_TRANSACTION</span><span class="tag">&lt;/command&gt;</span><span class="pln">
+   </span><span class="tag">&lt;merchant&gt;</span><span class="pln">
+      </span><span class="tag">&lt;apiKey&gt;</span><span class="pln">4Vj8eK4rloUd272L48hsrarnUA</span><span class="tag">&lt;/apiKey&gt;</span><span class="pln">
+      </span><span class="tag">&lt;apiLogin&gt;</span><span class="pln">pRRXKOl8ikMmt9u</span><span class="tag">&lt;/apiLogin&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/merchant&gt;</span><span class="pln">
+   </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
+      </span><span class="tag">&lt;order&gt;</span><span class="pln">
+         </span><span class="tag">&lt;accountId&gt;</span><span class="pln">512324</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
+         </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+         </span><span class="tag">&lt;signature&gt;</span><span class="pln">a88cba16c6fc54a4d31f696cfcbd41fc</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
+         </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.test.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
+         </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">100</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">MXN</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">MXN</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">  
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX_RETURN_BASE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">MXN</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+         </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
+         </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fullName&gt;</span><span class="pln">First name and last name</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
+            </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">buyer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/order&gt;</span><span class="pln">
+      </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">SPEI</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+      </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2017-05-10T00:00:00</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">MX</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
+      </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
+   </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
+</span><span class="tag">&lt;/request&gt;</span>
+</pre>
+Ejemplo respuesta:
+<pre style="height: 300px; overflow: auto;">
+<span class="tag">&lt;paymentResponse&gt;</span><span class="pln">
+   </span><span class="tag">&lt;code&gt;</span><span class="pln">SUCCESS</span><span class="tag">&lt;/code&gt;</span><span class="pln">
+   </span><span class="tag">&lt;transactionResponse&gt;</span><span class="pln">
+      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">935316458</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">2a76c54b-8a0e-4727-b2c5-49383f44e351</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;state&gt;</span><span class="pln">PENDING</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+      </span><span class="tag">&lt;trazabilityCode&gt;</span><span class="pln">735</span><span class="tag">&lt;/trazabilityCode&gt;</span><span class="pln">
+      </span><span class="tag">&lt;pendingReason&gt;</span><span class="pln">AWAITING_NOTIFICATION</span><span class="tag">&lt;/pendingReason&gt;</span><span class="pln">
+      </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PENDING_TRANSACTION_CONFIRMATION</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
+      </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">URL_PAYMENT_RECEIPT_HTML</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://checkout.payulatam.com/ppp-web-gateway-payu/app?vid=935316458Y2a76c54b8a0e472Y64b372a690f292f</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">          
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">SPEI_CLABE_ACCOUNT_NUMBER</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">646180132800000009</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">URL_PAYMENT_RECEIPT_PDF</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://checkout.payulatam.com/ppp-web-gateway-payu/receipt?vid=935316458Y2a76c54b8a0e472Y64b372a690f292f</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">SPEI_BANK_NAME</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">STP</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+      </span><span class="tag">&lt;additionalInfo&gt;</span><span class="pln">
+         </span><span class="tag">&lt;paymentNetwork&gt;</span><span class="pln">STP</span><span class="tag">&lt;/paymentNetwork&gt;</span><span class="pln">
+         </span><span class="tag">&lt;rejectionType&gt;</span><span class="pln">NONE</span><span class="tag">&lt;/rejectionType&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/additionalInfo&gt;</span><span class="pln">          
+   </span><span class="tag">&lt;/transactionResponse&gt;</span><span class="pln">
+</span><span class="tag">&lt;/paymentResponse&gt;</span>
+</pre>
+</div>
+</div>
+<span class="grey-text-13">Nota: En la respuesta se devuelven las variables necesarias para que se elabore el voucher de pago (si así se desea) o se retornan las URL con el voucher que genera PayU en formatos HTML y pdf.
+<br>
+Si se desea elaborar el comprobante de pago, se deben utilizar las siguientes variables:
+</span>
+<ol>
+	<li class="bullet-box">trazabilityCode: Identificador único de máximo 7 digitos; corresponde a la referencia de pago que el pagador debe registrar en su sucursal virtual. Para que el pago sea exitoso es importante que el pagador digite exactamente este valor dentro del campo referencia de su sucursal bancaria (virtual).</li>
+	<li class="bullet-box">value: El pagador debe digitar como monto de la transferencia en su sucursal bancaria exactamente el mismo valor que se informa en el request para que el pago pueda ser exitoso.</li>
+	<li class="bullet-box">SPEI_CLABE_ACCOUNT_NUMBER: Corresponde a la CLABE interbancaria de PayU, es decir, la cuenta beneficiaria del pago. Para que un pago pueda ser exitoso el pagador debe registrar dicha CLABE como beneficiaria desde su banco y posteriormente realizar la transferencia a esta cuenta.</li>
+	<li class="bullet-box">SPEI_BANK_NAME: Nombre del banco asociado a la cuenta CLABE de PayU. La cuenta beneficiaria está asociada al banco STP y para PayU siempre es el mismo banco.</li>
+</ol>
+&nbsp;<br>
+</div>
+<!-- FIN SPEI -->
+</div>
 <div class="info-icon">Tener en cuenta:</div>
 <ol><li class="bullet-box">Las variables obligatorias <span class="highlight-txt2">transaction.order.signature</span> y <span class="highlight-txt2">transaction.deviceSessionId </span> requieren de algunos pasos adicionales, para conocer más sobre su funcionamiento visita la página: <a title="API – Consideraciones sobre las variables" href="{{ site.baseurl }}/es/api/considerations.html">consideraciones sobre las variables.</a></li>
 &nbsp;
