@@ -4137,10 +4137,11 @@ Ejemplo respuesta:
 </div>
 <div id="squelch-taas-tab-content-3">
 <span class="blue-text-13"><b>Pagos en efectivo</b></span>
-<span class="grey-text-13">Integración de los medios de pago Baloto y Efecty</span>
+<span class="grey-text-13">Integración de los medios de pago BALOTO, EFECTY, pago en bancos (BANK_REFERENCED) y otros medios de pago (OTHERS_CASH) como Apuestas Cucuta 75, Gana, Gana Gana, Su Chance, Acertemos, La Perla, Apuestas Unidas y Paga Todo.</span>
 
-<span class="grey-text-13">Debes dirigir al pagador a la URL que encontrarás en la respuesta de la petición, el pagador podrá ver un recibo de pago como este en donde encontrará el logo del medio de pago elegido, Baloto o Efecty:</span>
-<p align="center"><img src="{{ site.baseurl }}/images/api/efectivo-co.jpg" alt="" border="0" />
+<span class="grey-text-13">Debes dirigir al pagador a la URL que encontrarás en la respuesta de la petición, el pagador podrá ver un recibo de pago como este en donde encontrará el logo del medio de pago elegido:</span>
+<p align="center"><img src="{{ site.baseurl }}/images/api/efectivo-co.jpg" alt="" border="0" /></p>
+<p align="center"><img src="/images/efectivo_matrix.png" alt="" border="0"/></p>
 
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 <ul>
@@ -4148,7 +4149,7 @@ Ejemplo respuesta:
 <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
 </ul>
 <div id="squelch-taas-tab-content-1-1">
-Ejemplo petición:</p>
+Ejemplo petición:
 
 <pre style="height: 300px; overflow: auto;">
 <span class="json-open-bracket">{</span><span class="json-collapse-1">
@@ -4165,20 +4166,29 @@ Ejemplo petición:</p>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"971dd1f8bd4c7b43eae2233464d4c97e"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.test.com/confirmation"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX_RETURN_BASE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and last name"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION_AND_CAPTURE"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"BALOTO"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"expirationDate"</span><span class="json-semi-colon">: </span><span class="json-value">"2014-04-10T00:00:00"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"expirationDate"</span><span class="json-semi-colon">: </span><span class="json-value">"2017-05-10T00:00:00"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentCountry"</span><span class="json-semi-colon">: </span><span class="json-value">"CO"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
@@ -4191,12 +4201,12 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"code"</span><span class="json-semi-colon">: </span><span class="json-value">"SUCCESS"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"error"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionResponse"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">39585440</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">120192000</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"4ff1f223-e4f7-4a99-8b7e-7ffaa0544fcb"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">"0f884d41-76be-4e44-b957-5568b230b971"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"authorizationCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">"AWAITING_NOTIFICATION"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSACTION_CONFIRMATION"</span><span class="json-comma">,</span>
@@ -4205,11 +4215,15 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionTime"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"operationDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceQuestionnaire"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"URL_PAYMENT_RECEIPT_HTML"</span><span class="json-semi-colon">: </span><span class="json-value">"https://gateway.payulatam.com/ppp-web-gateway/voucher.zul?vid=39585440Y4ff1f223e4f74a9Y7be65dc3e9884dc"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"EXPIRATION_DATE"</span><span class="json-semi-colon">: </span><span class="json-value">1397088000000</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"REFERENCE"</span><span class="json-semi-colon">: </span><span class="json-value">39585440</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"EXPIRATION_DATE"</span><span class="json-semi-colon">: </span><span class="json-value">1491886799999</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"URL_PAYMENT_RECEIPT_PDF"</span><span class="json-semi-colon">: </span><span class="json-value">"https://checkout.payulatam.com/ppp-web-gateway-payu/receipt?vid=120192000Y63b4165ddf7a46bY1a83d3bfbc987c5"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"REFERENCE"</span><span class="json-semi-colon">: </span><span class="json-value">120192000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"CHECKOUT_VERSION"</span><span class="json-semi-colon">: </span><span class="json-value">"V2"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"URL_PAYMENT_RECEIPT_HTML"</span><span class="json-semi-colon">: </span><span class="json-value">"https://checkout.payulatam.com/ppp-web-gateway-payu/app/v2?vid=120192000Y63b4165ddf7a46bY1a83d3bfbc987c5"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalInfo"</span><span class="json-semi-colon">: </span><span class="json-value">null</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent"></span></span><span class="json-close-bracket">}</span>
 </pre>
@@ -4231,7 +4245,7 @@ Ejemplo petición:
          </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
          </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
          </span><span class="tag">&lt;signature&gt;</span><span class="pln">971dd1f8bd4c7b43eae2233464d4c97e</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
-         </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.tes.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
+         </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.test.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
          </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
                </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
@@ -4240,14 +4254,29 @@ Ejemplo petición:
                   </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
                </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
             </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">  
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX_RETURN_BASE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
          </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
          </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fullName&gt;</span><span class="pln">First name and last name</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
             </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">buyer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
          </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
       </span><span class="tag">&lt;/order&gt;</span><span class="pln">
       </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
-      </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">BALOTO</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
-      </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2014-04-10T00:00:00</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">OTHERS_CASH</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+      </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2017-05-10T00:00:00</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
       </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">CO</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
       </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
    </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
@@ -4259,25 +4288,33 @@ Ejemplo respuesta:
 <span class="tag">&lt;paymentResponse&gt;</span><span class="pln">
    </span><span class="tag">&lt;code&gt;</span><span class="pln">SUCCESS</span><span class="tag">&lt;/code&gt;</span><span class="pln">
    </span><span class="tag">&lt;transactionResponse&gt;</span><span class="pln">
-      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">39584960</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
-      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">93cf2a02-27ed-4a5f-a93d-f30d01b88ff4</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">935352861</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">5b9fe524-d783-463e-91fa-9ba01e9e1f81</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
       </span><span class="tag">&lt;state&gt;</span><span class="pln">PENDING</span><span class="tag">&lt;/state&gt;</span><span class="pln">
       </span><span class="tag">&lt;pendingReason&gt;</span><span class="pln">AWAITING_NOTIFICATION</span><span class="tag">&lt;/pendingReason&gt;</span><span class="pln">
       </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PENDING_TRANSACTION_CONFIRMATION</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
       </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
          </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">URL_PAYMENT_RECEIPT_HTML</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://gateway.payulatam.com/ppp-web-gateway/voucher.zul?vid=39584960Y93cf2a0227ed4a5Yd08a798b2a561ef</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">EXPIRATION_DATE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;date&gt;</span><span class="pln">2017-04-12T23:59:59</span><span class="tag">&lt;/date&gt;</span><span class="pln">
          </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
          </span><span class="tag">&lt;entry&gt;</span><span class="pln">
-            </span><span class="tag">&lt;string&gt;</span><span class="pln">EXPIRATION_DATE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;date&gt;</span><span class="pln">2014-04-10T00:00:00</span><span class="tag">&lt;/date&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">URL_PAYMENT_RECEIPT_PDF</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://checkout.payulatam.com/ppp-web-gateway-payu/receipt?vid=935353375Yb5c9a22aadf4480Ya4658280243503d</span><span class="tag">&lt;/string&gt;</span><span class="pln">
          </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
          </span><span class="tag">&lt;entry&gt;</span><span class="pln">
             </span><span class="tag">&lt;string&gt;</span><span class="pln">REFERENCE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
-            </span><span class="tag">&lt;int&gt;</span><span class="pln">39584960</span><span class="tag">&lt;/int&gt;</span><span class="pln">
+            </span><span class="tag">&lt;int&gt;</span><span class="pln">935353375</span><span class="tag">&lt;/int&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">             
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">URL_PAYMENT_RECEIPT_HTML</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://checkout.payulatam.com/ppp-web-gateway-payu/app?vid=935353375Yb5c9a22aadf4480Ya4658280243503d</span><span class="tag">&lt;/string&gt;</span><span class="pln">
          </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
       </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+      </span><span class="tag">&lt;additionalInfo&gt;</span><span class="pln"> 
+         </span><span class="tag">&lt;paymentNetwork&gt;</span><span class="pln">MATRIX</span><span class="tag">&lt;/paymentNetwork&gt;</span><span class="pln">
+         </span><span class="tag">&lt;rejectionType&gt;</span><span class="pln">NONE</span><span class="tag">&lt;/rejectionType&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/additionalInfo&gt;</span><span class="pln">  
    </span><span class="tag">&lt;/transactionResponse&gt;</span><span class="pln">
 </span><span class="tag">&lt;/paymentResponse&gt;</span>
 </pre>
