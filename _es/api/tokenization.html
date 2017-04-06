@@ -1,5 +1,5 @@
 ---
-title: Tokenizacíon API
+title: Tokenización API
 subcategory: tokenization
 ---
 
@@ -13,7 +13,8 @@ subcategory: tokenization
 	<li class="leaf"><a href="#cobro-individual">Cobro individual</a></li>
 	<li class="leaf"><a href="#cobro-masivo">Cobros masivos</a></li>
 	<li class="leaf"><a href="#consulta">Consulta</a></li>
-	<li class="leaf"><a href="#eliminacion">Eliminación</a></li>
+	<li class="leaf"><a href="#eliminacion">Eliminación individual</a></li>
+        <li class="leaf"><a href="#eliminacion_masiva">Eliminación masiva</a></li>
 </ul>
 </div>
 
@@ -2326,6 +2327,87 @@ Ejemplo respuesta:
 </div>
 <!-- FIN TABS ELIMINACIÓN DE TOKEN -->
 </div>
+
+<!-- INICIO TAB ELIMINACIÓN MASIVA -->
+&nbsp;<br>
+<div id="eliminacion_masiva" class="payu-fragment">
+&nbsp;<br>
+<div class="paso7"><span class="subtitle-page">Eliminación masiva de tokens</span></div>
+&nbsp;<br>
+<span class="grey-text-13">Esta funcionalidad te permitirá eliminar masivamente los tokens que fueron creados previamente en el sistema.<br>
+Para esta funcionalidad debes crear un archivo con formato CSV bajo las siguientes condiciones:</span>
+&nbsp;<br>
+<ol>
+<li class="bullet-box">Cada registro de token a eliminar, debe contener los datos para su procesamiento separados por coma y en el siguiente orden: PayerId, TokenId.</li>
+<li class="bullet-box">El archivo no debe tener encabezado. En la primera línea va el primer registro.</li>
+<li class="bullet-box">El archivo debe estar codificado bajo el estándar UTF-8.</li>
+<li class="bullet-box">El archivo no debe tener más de 10.000 registros.</li>
+<li class="bullet-box">Debes implementar una funcionalidad que tome el contenido del archivo y lo pase a <b>base 64</b>, el resultado de este procedimiento es el que se envía en el parámetro <b>&lt;contentFile&gt;</b>.</li>
+</ol>
+&nbsp;<br>
+<p align="center"><img src="/images/eliminacion_masiva.PNG" border="0"></p>
+
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+Ejemplo petición:
+<pre>
+<span class="json-open-bracket">{</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"command"</span><span class="json-semi-colon">: </span><span class="json-value">"REMOVE_BATCH_TOKENS"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchant"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiLogin"</span><span class="json-semi-colon">: </span><span class="json-value">"pRRXKOl8ikMmt9u"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiKey"</span><span class="json-semi-colon">: </span><span class="json-value">"4Vj8eK4rloUd272L48hsrarnUA"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"contentFile"</span><span class="json-semi-colon">: </span><span class="json-value">"UGF5ZXJJZDEsYWQ4NGQ2NzEtYjZiOC00YjEyLWFkNTktZmYxZDJhNjQ0M2NhDQpQYXllcklkMiw0ZGYxNjMwYy03MDkyLTRhNjgtODE3MC0yYzI2YzZjOTUyMDg="</span>
+<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+<span class="json-open-bracket">{</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"code"</span><span class="json-semi-colon">: </span><span class="json-value">"SUCCESS"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"error"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"id"</span><span class="json-semi-colon">: </span><span class="json-value">"37233713-9c0c-49ae-b412-30e6e0ddabf4"</span>
+<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
+</pre>
+&nbsp;
+</div>
+<div id="squelch-taas-tab-content-2">
+Ejemplo petición:
+<pre>
+<span class="tag">&lt;request&gt;</span><span class="pln">
+   </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+   </span><span class="tag">&lt;command&gt;</span><span class="pln">REMOVE_BATCH_TOKENS</span><span class="tag">&lt;/command&gt;</span><span class="pln">
+   </span><span class="tag">&lt;merchant&gt;</span><span class="pln">
+      </span><span class="tag">&lt;apiLogin&gt;</span><span class="pln">pRRXKOl8ikMmt9u</span><span class="tag">&lt;/apiLogin&gt;</span><span class="pln">
+      </span><span class="tag">&lt;apiKey&gt;</span><span class="pln">4Vj8eK4rloUd272L48hsrarnUA</span><span class="tag">&lt;/apiKey&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/merchant&gt;</span><span class="pln">
+   </span><span class="tag">&lt;contentFile&gt;</span><span class="pln">UGF5ZXJJZDEsYWQ4NGQ2NzEtYjZiOC00YjEyLWFkNTktZmYxZDJhNjQ0M2NhDQpQYXllcklkMiw0ZGYxNjMwYy03MDkyLTRhNjgtODE3MC0yYzI2YzZjOTUyMDg=</span><span class="tag">&lt;/contentFile&gt;</span><span class="pln">
+</span><span class="tag">&lt;/request&gt;</span>
+</pre>
+&nbsp;<br>
+Ejemplo respuesta:
+<pre>
+<span class="tag">&lt;transactionTokenBatchResponse&gt;</span><span class="pln">
+   </span><span class="tag">&lt;code&gt;</span><span class="pln">SUCCESS</span><span class="tag">&lt;/code&gt;</span><span class="pln">
+   </span><span class="tag">&lt;id&gt;</span><span class="pln">de4d99cf-a5c2-4d7d-9bc9-482d537b6169</span><span class="tag">&lt;/id&gt;</span><span class="pln">
+</span><span class="tag">&lt;/transactionTokenBatchResponse&gt;</span>
+</pre>
+&nbsp;
+</div>
+</div>
+<br>
+Ten en cuenta que el proceso de eliminación de tokens masivo es asíncrono y requiere un tiempo de procesamiento. El valor retornado en el parámetro <b>&lt;id&gt;</b> se podrá utilizar para validar en el <a title="Tokenización" href="{{ site.baseurl }}/es/solutions/tokenization.html">Módulo Administrativo</a> el resultado de este procedimiento, a través de la opción "Reg masivo tarjeta crédito".
+<p align="center"><img src="/images/elim_mas_tc.PNG" alt="" border="0" /></p>
+<br>
+</div>
+&nbsp;<br>
+<!-- FIN TAB ELIMINACIÓN MASIVA -->
+
 </div>
 
 </div>
