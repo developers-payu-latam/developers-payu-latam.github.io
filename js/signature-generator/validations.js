@@ -97,12 +97,12 @@ $(function() {
         rules: {
             signature_apikey_response_page: {
                 required: true,
-                minlength: 18,
+                minlength: 5,
                 maxlength: 32
             },
             signature_merchanId_response_page: {
                 required: true,
-                minlength: 6,
+                minlength: 5,
                 maxlength: 7,
                 positiveNumber: true,
                 number: true
@@ -177,12 +177,12 @@ $(function() {
         rules: {
             signature_apikey_confirmation_page: {
                 required: true,
-                minlength: 18,
+                minlength: 5,
                 maxlength: 32
             },
             signature_merchanId_confirmation_page: {
                 required: true,
-                minlength: 6,
+                minlength: 5,
                 maxlength: 7,
                 positiveNumber: true,
                 number: true
