@@ -31,7 +31,7 @@ $(function() {
             },
             signature_merchanId: {
                 required: true,
-                minlength: 6,
+                minlength: 5,
                 maxlength: 7,
                 positiveNumber: true,
                 number: true
