@@ -96,11 +96,11 @@ You must generate an HTML form with the transaction data using the HTTP POST met
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">accountId</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">512321</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">description</span>&quot;   type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">Test PAYU</span>&quot;  &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">referenceCode</span>&quot; type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">TestPayU</span>&quot; &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">amount</span>&quot;        type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">3</span>&quot;   &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">tax</span>&quot;           type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">0</span>&quot;  &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">taxReturnBase</span>&quot; type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">0</span>&quot; &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">currency</span>&quot;      type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">USD</span>&quot; &gt;
-&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">signature</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">ba9ffa71559580175585e45ce70b6c37</span>&quot;  &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">amount</span>&quot;        type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">20000</span>&quot;   &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">tax</span>&quot;           type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">3193</span>&quot;  &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">taxReturnBase</span>&quot; type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">16806</span>&quot; &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">currency</span>&quot;      type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">COP</span>&quot; &gt;
+&nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">signature</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">7ee7cf808ce6a39b17481c54f2c57acc</span>&quot;  &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">test</span>&quot;          type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">1</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">buyerEmail</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">test@test.com</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">responseUrl</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">http://www.test.com/response</span>&quot; &gt;
@@ -527,27 +527,27 @@ All variables that you can send in the form</a>
 </tr>
 <tr>
 <td><i>A</i></td>
-<td>100,000</td>
-<td>19,000 (19%)</td>
-<td>116,000</td>
+<td>84.033</td>
+<td>15.966 (19%)</td>
+<td>100.000</td>
 </tr>
 <tr>
 <td><i>B</i></td>
-<td>200,000</td>
-<td>20,000 (10%)</td>
-<td>220,000</td>
+<td>181.818</td>
+<td>18.181 (10%)</td>
+<td>200.000</td>
 </tr>
 <tr>
 <td><i>C</i></td>
 <td>0</td>
 <td>0 (0%)</td>
-<td>150,000</td>
+<td>150.000</td>
 </tr>
 <tr>
 <td><i>Total</i></td>
-<td>300,000</td>
-<td>36,000</td>
-<td>486,000</td>
+<td>268.851</td>
+<td>34.147</td>
+<td>450.000</td>
 </tr>
 </table>
 </li>
@@ -564,8 +564,8 @@ All variables that you can send in the form</a>
 merchantId: 508029
 ApiKey: 4Vj8eK4rloUd272L48hsrarnUA
 referenceCode: TestPayU
-amount: 3
-currency: USD
+amount: 20000
+currency: COP
 accountId: 512326
 buyerEmail: test@test.com
 </pre>
@@ -573,19 +573,19 @@ buyerEmail: test@test.com
 <span class="grey-text-13">The signature would be:</span>
 
 <pre>
-"4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU~3~USD"
+"4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU~20000~COP"
 </pre>
 <span class="grey-text-13">To this signature <b>MD5</b> is applied:</span>
 <pre>
-"ba9ffa71559580175585e45ce70b6c37"
+"7ee7cf808ce6a39b17481c54f2c57acc"
 </pre>
 <span class="grey-text-13">With <b>SHA1</b>:</span>
 <pre>
-"9790fc9c38b7a9af7383e03ff410f308b6ef4c0f"
+"fa890d3f94e12b5cdb62e8771453b99b78e7ccdc"
 </pre>
 <span class="grey-text-13">With <b>SHA256</b>:</span>
 <pre>
-"e43ad790765c4ef8d355dc40782241b76cbd57764b9ebb58d6241b88ff3f5164"
+"af3899a22336b79db46006491d15813158826f944599bf3bf601e2327f898022"
 </pre>
 </li>
 </ol>
