@@ -356,33 +356,42 @@ shippingAddress.phone</i></td>
 <td style="text-align: center;" align="center" valign="middle"><img title="Brasil" src="http://docs.payulatam.com/wp-content/uploads/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
 </tr>
 <tr>
-<td><i>transaction.order.
-additionalValues</i></td>
+<td><a><i>transaction.order.
+        additionalValues.entry.string</i></a></td>
 <td></td>
 <td style="text-align: center;"></td>
-<td>Values or amounts associated with the order. In this field one amount per entry is sent.</td>
+<td>Values or amounts associated with the order. In this field, one amount per entry is sent.</td>
 <td style="text-align: center;">All countries</td>
 </tr>
 <tr>
 <td><i>transaction.order.
-additionalValues.entry</i></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td>Contains a particular amount.</td>
-<td style="text-align: center;">NO</td>
-</tr>
-<tr>
-<td><i>transaction.order.
-additionalValues.entry.string</i></td>
+        additionalValues.entry.string</i></td>
 <td>Alphanumeric</td>
 <td style="text-align: center;">64</td>
-<td>The type of amount: TX_VALUE, TX_TAX, TX_TAX_RETURN_BASE.</td>
+<td>TX_VALUE, it is the total amount of the transaction. It can contain two decimal digits. For example 10000.00 and 10000. This value is sent it on <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
 <td style="text-align: center;">All countries</td>
 </tr>
 <tr>
 <td><i>transaction.order.
+        additionalValues.entry.string</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">64</td>
+<td>TX_TAX, it is the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. Example 19000.00.<br/> 
+    In case you have no VAT you should fill out 0. This value is sent it on <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+<tr>
+<td><i>transaction.order.
+        additionalValues.entry.string</i></td>
+<td>Alphanumeric</td>
+<td style="text-align: center;">64</td>
+<td>TX_TAX_RETURN_BASE, it is the base value on which VAT (only valid for Colombia) is calculated. If you do not have VAT should be sent to 0. This value is sent it on <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+<tr>
+<td><a><i>transaction.order.
 additionalValues.entry.
-additionalValue</i></td>
+additionalValue</i></a></td>
 <td></td>
 <td style="text-align: center;"></td>
 <td>Contains the value in their currency</td>
@@ -1010,6 +1019,10 @@ Request example:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"95d7e92b23cae0cae6a98e34cc54be39"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">100</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"ARS"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">100</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"ARS"</span>
@@ -1918,7 +1931,7 @@ Request example:
       </span><span class="tag">&lt;creditCard&gt;</span><span class="pln">
          </span><span class="tag">&lt;number&gt;</span><span class="pln">4097440000000004</span><span class="tag">&lt;/number&gt;</span><span class="pln">
          </span><span class="tag">&lt;securityCode&gt;</span><span class="pln">321</span><span class="tag">&lt;/securityCode&gt;</span><span class="pln">
-         </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2014/12</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2022/12</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">REJECTED</span><span class="tag">&lt;/name&gt;</span><span class="pln">
       </span><span class="tag">&lt;/creditCard&gt;</span><span class="pln">
       </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
@@ -2061,16 +2074,24 @@ Request example:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"512321"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"TestPayU"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"971dd1f8bd4c7b43eae2233464d4c97e"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"7ee7cf808ce6a39b17481c54f2c57acc"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">20000</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX_RETURN_BASE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchantBuyerId"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
@@ -2117,7 +2138,7 @@ Request example:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"creditCard"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-12">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"number"</span><span class="json-semi-colon">: </span><span class="json-value">"4097440000000004"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"securityCode"</span><span class="json-semi-colon">: </span><span class="json-value">"321"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"expirationDate"</span><span class="json-semi-colon">: </span><span class="json-value">"2014/12"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"expirationDate"</span><span class="json-semi-colon">: </span><span class="json-value">"2022/12"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"REJECTED"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-13">
@@ -2172,19 +2193,33 @@ Request example:
    </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
       </span><span class="tag">&lt;order&gt;</span><span class="pln">
          </span><span class="tag">&lt;accountId&gt;</span><span class="pln">512321</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
-         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">TestPayU</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
          </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
          </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
-         </span><span class="tag">&lt;signature&gt;</span><span class="pln">971dd1f8bd4c7b43eae2233464d4c97e</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
+         </span><span class="tag">&lt;signature&gt;</span><span class="pln">7ee7cf808ce6a39b17481c54f2c57acc</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
          </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.tes.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
          </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
                </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
                </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">10000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">20000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
                   </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
                </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX_RETURN_BASE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln"></span>
          </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
          </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
             </span><span class="tag">&lt;merchantBuyerId&gt;</span><span class="pln">1</span><span class="tag">&lt;/merchantBuyerId&gt;</span><span class="pln">
@@ -2231,7 +2266,7 @@ Request example:
       </span><span class="tag">&lt;creditCard&gt;</span><span class="pln">
          </span><span class="tag">&lt;number&gt;</span><span class="pln">4097440000000004</span><span class="tag">&lt;/number&gt;</span><span class="pln">
          </span><span class="tag">&lt;securityCode&gt;</span><span class="pln">321</span><span class="tag">&lt;/securityCode&gt;</span><span class="pln">
-         </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2014/12</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
+         </span><span class="tag">&lt;expirationDate&gt;</span><span class="pln">2022/12</span><span class="tag">&lt;/expirationDate&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">REJECTED</span><span class="tag">&lt;/name&gt;</span><span class="pln">
       </span><span class="tag">&lt;/creditCard&gt;</span><span class="pln">
       </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
@@ -3772,18 +3807,25 @@ Request example:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"512321"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"TestPayU"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"971dd1f8bd4c7b43eae2233464d4c97e"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"7ee7cf808ce6a39b17481c54f2c57acc"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">20000</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX_RETURN_BASE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span><span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchantBuyerId"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and second buyer  name"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span><span class="json-comma">,</span>
@@ -3883,19 +3925,33 @@ Request example:
    </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
       </span><span class="tag">&lt;order&gt;</span><span class="pln">
          </span><span class="tag">&lt;accountId&gt;</span><span class="pln">512321</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
-         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">TestPayU</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
          </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
          </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
-         </span><span class="tag">&lt;signature&gt;</span><span class="pln">971dd1f8bd4c7b43eae2233464d4c97e</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
+         </span><span class="tag">&lt;signature&gt;</span><span class="pln">7ee7cf808ce6a39b17481c54f2c57acc</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
          </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.tes.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
          </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
                </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
                </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">10000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">20000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
                   </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
                </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX_RETURN_BASE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln"></span>
          </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
          </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
             </span><span class="tag">&lt;merchantBuyerId&gt;</span><span class="pln">1</span><span class="tag">&lt;/merchantBuyerId&gt;</span><span class="pln">
@@ -4352,16 +4408,24 @@ Request example:</p>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"512321"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"TestPayU"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"971dd1f8bd4c7b43eae2233464d4c97e"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"7ee7cf808ce6a39b17481c54f2c57acc"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">20000</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX_RETURN_BASE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span>
@@ -4418,19 +4482,33 @@ Request example:
    </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
       </span><span class="tag">&lt;order&gt;</span><span class="pln">
          </span><span class="tag">&lt;accountId&gt;</span><span class="pln">512321</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
-         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">TestPayU</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
          </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
          </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
-         </span><span class="tag">&lt;signature&gt;</span><span class="pln">971dd1f8bd4c7b43eae2233464d4c97e</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
+         </span><span class="tag">&lt;signature&gt;</span><span class="pln">7ee7cf808ce6a39b17481c54f2c57acc</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
          </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.tes.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
          </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
                </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
                </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">10000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">20000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
                   </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
                </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX_RETURN_BASE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln"></span>
          </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
          </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
             </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">buyer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
@@ -4508,14 +4586,18 @@ Request example:</p>
            "description": "Compra Prueba 01",
            "language": "es",
            "additionalValues": {
-                    "entry": {
-                    "string": "TX_VALUE",
-                    "additionalValue": {
-                    "value": "10000.00",
-                    "currency": "COP"
-                        }
-                    }
-                }
+             "TX_VALUE": {
+               "value": 20000,
+               "currency": "COP"
+             },
+             "TX_TAX": {
+               "value": 3193,
+               "currency": "COP"
+             },
+             "TX_TAX_RETURN_BASE": {
+               "value": 16806,
+               "currency": "COP"
+             }
             },
         "type": "AUTHORIZATION_AND_CAPTURE",
         "paymentMethod": "BANK_REFERENCED",
@@ -4598,10 +4680,24 @@ Request example:
   &lt;entry&gt;               
   &lt;string&gt;TX_VALUE&lt;/string&gt;               
   &lt;additionalValue&gt;                   
-  &lt;value&gt;10000.00&lt;/value&gt;                    
+  &lt;value&gt;20000.00&lt;/value&gt;                    
   &lt;currency&gt;COP&lt;/currency&gt;                
   &lt;/additionalValue&gt;            
-  &lt;/entry&gt;        
+  &lt;/entry&gt;
+  &lt;entry&gt;               
+  &lt;string&gt;TX_TAX&lt;/string&gt;               
+  &lt;additionalValue&gt;                   
+  &lt;value&gt;3193.00&lt;/value&gt;                    
+  &lt;currency&gt;COP&lt;/currency&gt;                
+  &lt;/additionalValue&gt;            
+  &lt;/entry&gt;
+&lt;entry&gt;               
+  &lt;string&gt;TX_TAX_RETURN_BASE&lt;/string&gt;               
+  &lt;additionalValue&gt;                   
+  &lt;value&gt;16806.00&lt;/value&gt;                    
+  &lt;currency&gt;COP&lt;/currency&gt;                
+  &lt;/additionalValue&gt;            
+  &lt;/entry&gt;
   &lt;/additionalValues&gt;   
   &lt;/order&gt;    
   &lt;type&gt;AUTHORIZATION_AND_CAPTURE&lt;/type&gt;    
@@ -5325,16 +5421,24 @@ Request example:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"512321"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"TestPayU"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"971dd1f8bd4c7b43eae2233464d4c97e"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"7ee7cf808ce6a39b17481c54f2c57acc"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">10000</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">20000</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_TAX_RETURN_BASE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span>
@@ -5403,19 +5507,33 @@ Request example:
    </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
       </span><span class="tag">&lt;order&gt;</span><span class="pln">
          </span><span class="tag">&lt;accountId&gt;</span><span class="pln">512321</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
-         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">TestPayU</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
          </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
          </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
-         </span><span class="tag">&lt;signature&gt;</span><span class="pln">971dd1f8bd4c7b43eae2233464d4c97e</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
+         </span><span class="tag">&lt;signature&gt;</span><span class="pln">7ee7cf808ce6a39b17481c54f2c57acc</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
          </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.test.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
-         </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
+</span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
             </span><span class="tag">&lt;entry&gt;</span><span class="pln">
                </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
                </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">10000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">20000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
                   </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
                </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">                
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_TAX_RETURN_BASE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln"></span>
          </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
          </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
             </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">buyer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">

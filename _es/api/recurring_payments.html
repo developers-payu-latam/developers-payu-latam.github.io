@@ -160,18 +160,39 @@ DAY, WEEK, MONTH y YEAR.</td>
 <td>Cantidad de días de prueba de la suscripción.</td>
 <td style="text-align: center;">No</td>
 </tr>
+
 <tr>
-<td><i>additionalValues.entry.name</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">Mín: 1
-Máx: 255</td>
-<td>Nombre del campo del valor asociado al plan. Los valores posibles son:<br>
-PLAN_VALUE: valor total de plan.<br>
-PLAN_TAX_VALUE: valor de los impuestos asociados al valor del plan.<br>
-PLAN_TAX_RETURN_BASE: valor base para el retorno de impuestos asociados al plan.
-</td>
-<td style="text-align: center;">Un nodo para cada valor. Todos los países</td>
+    <td><a><i>additionalValues.entry.name</i></a></td>
+<td></td>
+<td style="text-align: center;">64</td>
+<td>Valor o monto asociado al plan. En este campo se envía un monto por entrada.</td>
+<td style="text-align: center;">Todos los países</td>
 </tr>
+<tr>
+<td><i>transaction.order.
+additionalValues.entry.string</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">64</td>
+<td>PLAN_VALUE, es el monto total del plan. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000. Este valor debe ser enviado en <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+<tr>
+<td><i>transaction.order.
+additionalValues.entry.string</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">64</td>
+<td>PLAN_TAX_VALUE, es el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) del plan, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0. Este valor debe ser enviado en <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+<tr>
+<td><i>transaction.order.
+additionalValues.entry.string</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">64</td>
+<td>PLAN_TAX_RETURN_BASE, Es el valor base sobre el cual se calcula el IVA (solo valido para Colombia). En caso de que no tenga IVA debe enviarse en 0. Este valor debe ser enviado en <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+
 <tr>
 <td><i>additionalValues.entry.value</i></td>
 <td>Numérico</td>
@@ -251,12 +272,12 @@ Ejemplo petición:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"PLAN_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"1600"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"3193"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"PLAN_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"8400"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"16806"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span>
@@ -2683,18 +2704,39 @@ Máx: 255</td>
 <td>Descripción del cargo adicional asociado al cobro.</td>
 <td style="text-align: center;">Todos los países</td>
 </tr>
+
 <tr>
-<td><i>additionalValues.entry.name</i></td>
-<td>Alfanumérico</td>
-<td style="text-align: center;">Mín: 1
-Máx: 255</td>
-<td>Nombre del campo del valor asociado al cargo adicional. Los valores posibles son:<br>
-ITEM_VALUE: valor total del cobro adicional.<br>
-ITEM_TAX: valor de los impuestos asociados al valor del cobro adicional.<br>
-ITEM_TAX_RETURN_BASE: valor base para el retorno de impuestos asociados al cobro adicional.
-</td>
-<td style="text-align: center;">Un nodo para cada valor. Todos los países</td>
+    <td><a><i>additionalValues.entry.name</i></a></td>
+<td></td>
+<td style="text-align: center;">64</td>
+<td>Valor o monto asociado al cargo adicional. En este campo se envía un monto por entrada.</td>
+<td style="text-align: center;">Todos los países</td>
 </tr>
+<tr>
+<td><i>transaction.order.
+additionalValues.entry.string</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">64</td>
+<td>ITEM_VALUE, es el monto total del cargo adicional. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000. Este valor debe ser enviado en <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+<tr>
+<td><i>transaction.order.
+additionalValues.entry.string</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">64</td>
+<td>ITEM_TAX, es el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) del cargo adicional, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0. Este valor debe ser enviado en <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+<tr>
+<td><i>transaction.order.
+additionalValues.entry.string</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">64</td>
+<td>ITEM_TAX_RETURN_BASE, Es el valor base sobre el cual se calcula el IVA (solo valido para Colombia). En caso de que no tenga IVA debe enviarse en 0. Este valor debe ser enviado en <a>transaction.order.additionalValues.<br/>entry.additionalValue.value</a></td>
+<td style="text-align: center;">Colombia</td>
+</tr>
+
 <tr>
 <td><i>additionalValues.entry.value</i></td>
 <td>Numérico</td>
@@ -2777,12 +2819,12 @@ Ejemplo petición:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"3193"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"16806"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span>
@@ -2802,12 +2844,12 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span><span class="json-comma">,</span>
@@ -2828,12 +2870,12 @@ Ejemplo petición:
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
    </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
@@ -2853,12 +2895,12 @@ Ejemplo respuesta:
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
    </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
@@ -2887,12 +2929,12 @@ Ejemplo petición:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"3193"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"16806"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span>
@@ -2912,12 +2954,12 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span><span class="json-comma">,</span>
@@ -2940,12 +2982,12 @@ Ejemplo petición:
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
    </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
@@ -2965,12 +3007,12 @@ Ejemplo respuesta:
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
    </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
@@ -3006,12 +3048,12 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-2">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-3">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
@@ -3043,12 +3085,12 @@ Ejemplo respuesta:
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_VALUE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">3193</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
       </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
          </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-         </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+         </span><span class="tag">&lt;value&gt;</span><span class="pln">16806</span><span class="tag">&lt;/value&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
       </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
    </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
@@ -3101,12 +3143,12 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-9">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-10">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span><span class="json-comma">,</span>
@@ -3236,7 +3278,7 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-4">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"PLAN_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">1600</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-6">
@@ -3258,12 +3300,12 @@ Ejemplo respuesta:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-10">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">3193</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-11">
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">0</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">16806</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span><span class="json-comma">,</span>

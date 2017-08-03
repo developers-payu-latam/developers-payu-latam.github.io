@@ -787,7 +787,7 @@ if ($response) {
 Request example:
 <pre style="height:300px; overflow: auto;">
 String reference = "payment_test_00000001";
-String value= "10000";
+String value= "20000";
 
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
@@ -802,7 +802,14 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
+// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
+// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
+// Example 19000.00. In case you have no VAT you should fill out 0.  
+parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");
+// Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
+// If you do not have VAT should be sent to 0. 
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -893,7 +900,7 @@ if(response != null){
 Request example:
 <pre style="height:300px; overflow: auto;">
 $reference = "payment_test_00000001";
-$value = "10000";
+$value = "20000";
 
 $parameters = array(
 	// Enter the account’s identifier here.
@@ -906,6 +913,13 @@ $parameters = array(
 	// -- Values --
         // Enter the value here.       
 	PayUParameters::VALUE =&gt; $value,
+        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
+        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
+        // Example 19000.00. In case you have no VAT you should fill out 0.  
+	PayUParameters::TAX_VALUE =&gt; "3193",
+        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
+        // If you do not have VAT should be sent to 0. 
+        PayUParameters::TAX_RETURN_BASE =&gt; "16806",
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "COP",
 	
@@ -2007,7 +2021,7 @@ if($response){
 Request example:
 <pre style="height:300px; overflow: auto;">
 String reference = "payment_test_00000001";
-String value= "10000";
+String value= "20000";
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
 // Enter the account’s identifier here.
@@ -2021,7 +2035,14 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
+// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
+// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
+// Example 19000.00. In case you have no VAT you should fill out 0.  
+parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");
+// Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
+// If you do not have VAT should be sent to 0. 
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -2070,7 +2091,7 @@ if(response != null){
 Request example:
 <pre style="height:300px; overflow: auto;">
 $reference = "payment_test_00000001";
-$value = "10000";
+$value = "20000";
 
 $parameters = array(
 	// Enter the account’s identifier here.
@@ -2081,8 +2102,15 @@ $parameters = array(
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 	
 	// -- Values --
-        // Enter the value here.        
+        // Enter the value here.       
 	PayUParameters::VALUE =&gt; $value,
+        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
+        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
+        // Example 19000.00. In case you have no VAT you should fill out 0.  
+	PayUParameters::TAX_VALUE =&gt; "3193",
+        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
+        // If you do not have VAT should be sent to 0. 
+        PayUParameters::TAX_RETURN_BASE =&gt; "16806",
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "COP",
 	
@@ -2534,7 +2562,7 @@ Below we show the  example of the petition, sending all previously captured info
 Request example:
 <pre style="height:300px; overflow: auto;">
 String reference = "payment_test_00000001";
-String value= "10000";
+String value= "20000";
 
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
@@ -2549,7 +2577,14 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
+// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
+// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
+// Example 19000.00. In case you have no VAT you should fill out 0.  
+parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");
+// Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
+// If you do not have VAT should be sent to 0. 
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -2619,7 +2654,7 @@ if(response != null){
 Request example:
 <pre style="height:300px; overflow: auto;">
 $reference = "payment_test_00000001";
-$value = "10000";
+$value = "20000";
 
 $parameters = array(
 	// Enter the account’s identifier here.
@@ -2630,8 +2665,15 @@ $parameters = array(
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 	
 	// -- Values --
-        // Enter the value here.      
+        // Enter the value here.       
 	PayUParameters::VALUE =&gt; $value,
+        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
+        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
+        // Example 19000.00. In case you have no VAT you should fill out 0.  
+	PayUParameters::TAX_VALUE =&gt; "3193",
+        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
+        // If you do not have VAT should be sent to 0. 
+        PayUParameters::TAX_RETURN_BASE =&gt; "16806",
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "COP",
 	

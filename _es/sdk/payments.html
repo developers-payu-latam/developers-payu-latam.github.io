@@ -789,7 +789,7 @@ if ($response) {
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 String reference = "payment_test_00000001";
-String value= "10000";
+String value= "20000";
 
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
@@ -803,8 +803,15 @@ parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Valores --
-//Ingrese aquí el valor.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Ingrese aquí el valor de la transacción.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
+//Ingrese aquí el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, 
+//si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. 
+//Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");	
+//Ingrese aquí el valor base sobre el cual se calcula el IVA (solo valido para Colombia). 
+//En caso de que no tenga IVA debe enviarse en 0.
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");
 //Ingrese aquí la moneda.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -895,7 +902,7 @@ if(response != null){
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 $reference = "payment_test_00000001";
-$value = "10000";
+$value = "20000";
 
 $parameters = array(
 	//Ingrese aquí el identificador de la cuenta.
@@ -905,9 +912,16 @@ $parameters = array(
 	//Ingrese aquí la descripción.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 	
-	// -- Valores --
-	//Ingrese aquí el valor.        
-	PayUParameters::VALUE =&gt; $value,
+        // -- Valores --
+        //Ingrese aquí el valor de la transacción.
+        PayUParameters::VALUE => $value,
+        //Ingrese aquí el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, 
+        //si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. 
+        //Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+        PayUParameters::TAX_VALUE => "3193",
+        //Ingrese aquí el valor base sobre el cual se calcula el IVA (solo valido para Colombia). 
+        //En caso de que no tenga IVA debe enviarse en 0.
+        PayUParameters::TAX_RETURN_BASE => "16806",
 	//Ingrese aquí la moneda.
 	PayUParameters::CURRENCY =&gt; "COP",
 	
@@ -2009,7 +2023,7 @@ if($response){
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 String reference = "payment_test_00000001";
-String value= "10000";
+String value= "20000";
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
 //Ingrese aquí el identificador de la cuenta.
@@ -2022,8 +2036,15 @@ parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Valores --
-//Ingrese aquí el valor.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Ingrese aquí el valor de la transacción.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
+//Ingrese aquí el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, 
+//si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. 
+//Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");	
+//Ingrese aquí el valor base sobre el cual se calcula el IVA (solo valido para Colombia). 
+//En caso de que no tenga IVA debe enviarse en 0.
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
 //Ingrese aquí la moneda.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -2072,7 +2093,7 @@ if(response != null){
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 $reference = "payment_test_00000001";
-$value = "10000";
+$value = "20000";
 
 $parameters = array(
 	//Ingrese aquí el identificador de la cuenta.
@@ -2083,8 +2104,15 @@ $parameters = array(
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 	
 	// -- Valores --
-	//Ingrese aquí el valor.        
-	PayUParameters::VALUE =&gt; $value,
+        //Ingrese aquí el valor de la transacción.
+        PayUParameters::VALUE => $value,
+        //Ingrese aquí el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, 
+        //si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. 
+        //Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+        PayUParameters::TAX_VALUE => "3193",
+        //Ingrese aquí el valor base sobre el cual se calcula el IVA (solo valido para Colombia). 
+        //En caso de que no tenga IVA debe enviarse en 0.
+        PayUParameters::TAX_RETURN_BASE => "16806",
 	//Ingrese aquí la moneda.
 	PayUParameters::CURRENCY =&gt; "COP",
 	
@@ -2537,7 +2565,7 @@ A continuación se relaciona el ejemplo de la petición, enviando toda la inform
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 String reference = "payment_test_00000001";
-String value= "10000";
+String value= "20000";
 
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
@@ -2551,8 +2579,15 @@ parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Valores --
-//Ingrese aquí el valor.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+//Ingrese aquí el valor de la transacción.
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
+//Ingrese aquí el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, 
+//si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. 
+//Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");	
+//Ingrese aquí el valor base sobre el cual se calcula el IVA (solo valido para Colombia). 
+//En caso de que no tenga IVA debe enviarse en 0.
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
 //Ingrese aquí la moneda.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -2622,7 +2657,7 @@ if(response != null){
 Ejemplo petición:
 <pre style="height:300px; overflow: auto;">
 $reference = "payment_test_00000001";
-$value = "10000";
+$value = "20000";
 
 $parameters = array(
 	//Ingrese aquí el identificador de la cuenta.
@@ -2633,8 +2668,15 @@ $parameters = array(
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 	
 	// -- Valores --
-	//Ingrese aquí el valor.        
-	PayUParameters::VALUE =&gt; $value,
+        //Ingrese aquí el valor de la transacción.
+        PayUParameters::VALUE => $value,
+        //Ingrese aquí el valor del IVA (Impuesto al Valor Agregado solo valido para Colombia) de la transacción, 
+        //si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. 
+        //Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+        PayUParameters::TAX_VALUE => "3193",
+        //Ingrese aquí el valor base sobre el cual se calcula el IVA (solo valido para Colombia). 
+        //En caso de que no tenga IVA debe enviarse en 0.
+        PayUParameters::TAX_RETURN_BASE => "16806",
 	//Ingrese aquí la moneda.
 	PayUParameters::CURRENCY =&gt; "COP",
 	
