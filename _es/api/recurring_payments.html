@@ -34,7 +34,7 @@ subcategory: recurring
 <div class="list-arrow">
     <ul>
         <li>Pagos recurrentes sólo está disponible para cuentas de <span class="blue-text-16">Brasil, Colombia y México.</span></li>
-    </ul>  
+    </ul>
 </div>
 &nbsp;<br>
 Con el fin de garantizar el correcto uso del sistema, todas las peticiones deben contener el encabezado HTTP de autorización con las credenciales del comercio, de manera que pueda identificarse quién está realizando la petición. Para esta implementación se usará autorización básica, en donde se envía el nombre de usuario (API Login) y contraseña (API Key). <br />
@@ -44,7 +44,7 @@ Los datos pasan un cifrado base 64 con formato: <span class="highlight-txt">API 
 &nbsp;<br>
 <p>Ejemplo, si el API Login es <span class="highlight-txt">"0123ABCDEF"</span> y API Key es <span class="highlight-txt">"A1B2C3D4E5"</span>, entonces el encabezado de autorización sería el siguiente:</p>
 &nbsp;<br>
-Authorization: Basic <span class="highlight-txt">&lt;base64  of&nbsp;0123ABCDEF:A1B2C3D4E5&gt;</span><br/>  
+Authorization: Basic <span class="highlight-txt">&lt;base64  of&nbsp;0123ABCDEF:A1B2C3D4E5&gt;</span><br/>
 Authorization: Basic <span class="highlight-txt">MDEyM0FCQ0RFRjpBMUIyQzNENEU1</span>
 &nbsp;<br>
 <pre>POST /payments-api/4.0/service.cgi HTTP/1.1
@@ -985,7 +985,7 @@ Máx: 12</td>
 <td>Numérico</td>
 <td style="text-align: center;">Mín: 00
 Máx: 2999</td>
-<td>Año de expiración de la tarjeta de crédito. 
+<td>Año de expiración de la tarjeta de crédito.
 Si el valor es de dos dígitos corresponde al año comprendido entre 2000 (00) y 2099 (99).
 Si el valor es de más de dos dígitos se toma literal, siendo el año 2000 como mínimo posible.</td>
 <td style="text-align: center;">Todos los países</td>
@@ -1041,7 +1041,7 @@ Máx: 50</td>
 <td>Alfanumérico</td>
 <td style="text-align: center;">Mín: 1
 Máx: 40</td>
-<td>Estado o departamento de la dirección. 
+<td>Estado o departamento de la dirección.
 *Para Brasil enviar únicamente 2 caracteres. Ejemplo: Si es Sao Paulo enviar SP.</td>
 <td style="text-align: center;">Brasil</td>
 </tr>
@@ -1057,7 +1057,7 @@ Máx: 40</td>
 <td>Alfanumérico</td>
 <td style="text-align: center;">Mín: 1
 Máx: 20</td>
-<td>Código postal de la dirección. 
+<td>Código postal de la dirección.
 *Para Brasil utilizar el formato XXXXX-XXX o XXXXXXXX ejemplo: 09210-710 o 09210710.</td>
 <td style="text-align: center;">México, Brasil</td>
 </tr>
@@ -1066,7 +1066,7 @@ Máx: 20</td>
 <td>Alfanumérico</td>
 <td style="text-align: center;">Mín: 1
 Máx: 20</td>
-<td>Teléfono asociado a la dirección. 
+<td>Teléfono asociado a la dirección.
 *Para Brasil usar el formato ddd(2)+numero(7-9) ejemplo: (11)756312633.</td>
 <td style="text-align: center;">Todos los países</td>
 </tr>
@@ -1445,7 +1445,7 @@ False: Se realiza el primer cobro al siguiente día o de acuerdo a los dias de p
 <tr>
 <td><i>extra1</i></td>
 <td>Alfanumérico</td>
-<td style="text-align: center;">Mín: 0 
+<td style="text-align: center;">Mín: 0
 Máx: 255</td>
 <td>Campo adicional para enviar información sobre la compra. Ej: Descripción de la compra.
 </td>
@@ -1454,7 +1454,7 @@ Máx: 255</td>
 <tr>
 <td><i>extra2</i></td>
 <td>Alfanumérico</td>
-<td style="text-align: center;">Mín: 0 
+<td style="text-align: center;">Mín: 0
 Máx: 255</td>
 <td>Campo adicional para enviar información sobre la compra. Ej: Códigos internos de los productos.
 </td>
@@ -1504,7 +1504,7 @@ Máx: 50</td>
 <td>Alfanumérico</td>
 <td style="text-align: center;">Mín: 0
 Máx: 40</td>
-<td>Estado o departamento de la dirección. 
+<td>Estado o departamento de la dirección.
 *Para Brasil enviar únicamente 2 caracteres. Ejemplo: Si es Sao Paulo enviar SP.</td>
 <td style="text-align: center;">Brasil (Todos los comercios con envío físico de productos)</td>
 </tr>
@@ -1520,7 +1520,7 @@ Máx: 40</td>
 <td>Alfanumérico</td>
 <td style="text-align: center;">Mín: 0
 Máx: 20</td>
-<td>Código postal de la dirección. 
+<td>Código postal de la dirección.
 *Para Brasil utilizar el formato XXXXX-XXX o XXXXXXXX ejemplo: 09210-710 o 09210710.</td>
 <td style="text-align: center;">México, Brasil (Todos los comercios con envío físico de productos)</td>
 </tr>
@@ -1529,7 +1529,7 @@ Máx: 20</td>
 <td>Alfanumérico</td>
 <td style="text-align: center;">Mín: 0
 Máx: 20</td>
-<td>Teléfono asociado a la dirección. 
+<td>Teléfono asociado a la dirección.
 *Para Brasil usar el formato ddd(2)+numero(7-9) ejemplo: (11)756312633.</td>
 <td style="text-align: center;">Todos los comercios con envío físico de productos</td>
 </tr>
@@ -1545,7 +1545,7 @@ Máx: 2048</td>
 <td><i>recurringBillItems</i></td>
 <td></td>
 <td style="text-align: center;"></td>
-<td>Cobro adicional o un descuento realizado sobre el valor de uno de los pagos que conforman el plan de pagos recurrentes. 
+<td>Cobro adicional o un descuento realizado sobre el valor de uno de los pagos que conforman el plan de pagos recurrentes.
     Se tendrá en cuenta únicamente si el atributo "immediatePayment" tiene valor true.<br>
 Para obtener mayor informacion por favor visualizar la sección "Cargos adicionales" de esta página.</td>
 <td style="text-align: center;">No</td>
@@ -1612,46 +1612,6 @@ Ejemplo petición:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"installments"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trialDays"</span><span class="json-semi-colon">: </span><span class="json-value">"15"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"immediatePayment"</span><span class="json-semi-colon">: </span><span class="json-value">true</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"recurringBillItems"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[ </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"Cargo extra positivo uno"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_VALUE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"20000"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-4">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-5">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-6">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"Cargo extra negativo uno"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">[</span><span class="json-collapse-3">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-7">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_VALUE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"-20000"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-8">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-open-bracket">{</span><span class="json-collapse-9">
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"name"</span><span class="json-semi-colon">: </span><span class="json-value">"ITEM_TAX_RETURN_BASE"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">"0"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"COP"</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">]</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">} </span><span class="json-close-bracket">] </span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extra1"</span><span class="json-semi-colon">: </span><span class="json-value">"Extra 1"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extra2"</span><span class="json-semi-colon">: </span><span class="json-value">"Extra 2"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"customer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
@@ -1788,48 +1748,6 @@ Ejemplo petición:
    </span><span class="tag">&lt;trialDays&gt;</span><span class="pln">30</span><span class="tag">&lt;/trialDays&gt;</span><span class="pln">
    </span><span class="tag">&lt;installments&gt;</span><span class="pln">1</span><span class="tag">&lt;/installments&gt;</span><span class="pln">
    </span><span class="tag">&lt;immediatePayment&gt;</span><span class="pln">true</span><span class="tag">&lt;/immediatePayment&gt;</span><span class="pln">
-   </span><span class="tag">&lt;recurringBillItems&gt;</span><span class="pln">
-      </span><span class="tag">&lt;recurringBillItem&gt;</span><span class="pln">
-          </span><span class="tag">&lt;description&gt;</span><span class="pln">Cargo extra positivo</span><span class="tag">&lt;/description&gt;</span><span class="pln">
-          </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
-              </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_VALUE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">20000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-              </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-              </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-              </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-              </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                 </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-              </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/recurringBillItem&gt;</span><span class="pln">
-      </span><span class="tag">&lt;recurringBillItem&gt;</span><span class="pln">
-          </span><span class="tag">&lt;description&gt;</span><span class="pln">Cargo extra negativo</span><span class="tag">&lt;/description&gt;</span><span class="pln">
-          </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
-              </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_VALUE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">-20000</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-              </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-              </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-              </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-              </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;name&gt;</span><span class="pln">ITEM_TAX_RETURN_BASE</span><span class="tag">&lt;/name&gt;</span><span class="pln">
-                  </span><span class="tag">&lt;value&gt;</span><span class="pln">0</span><span class="tag">&lt;/value&gt;</span><span class="pln">
-                 </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
-              </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
-         </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/recurringBillItem&gt;</span><span class="pln">
-   </span><span class="tag">&lt;/recurringBillItems&gt;</span><span class="pln">
    </span><span class="tag">&lt;extra1&gt;</span><span class="pln">Extra 1</span><span class="tag">&lt;/extra1&gt;</span><span class="pln">
    </span><span class="tag">&lt;extra2&gt;</span><span class="pln">Extra 2</span><span class="tag">&lt;/extra2&gt;</span><span class="pln">
    </span><span class="tag">&lt;customer&gt;</span><span class="pln">
@@ -2575,7 +2493,7 @@ Ejemplo respuesta:
       </span><span class="tag">&lt;country&gt;</span><span class="pln">CO</span><span class="tag">&lt;/country&gt;</span><span class="pln">
       </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">00000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
       </span><span class="tag">&lt;phone&gt;</span><span class="pln">300300300</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
-    </span><span class="tag">&lt;/deliveryAddress&gt;</span><span class="pln">    
+    </span><span class="tag">&lt;/deliveryAddress&gt;</span><span class="pln">
 </span><span class="tag">&lt;/subscription&gt;</span>
 </pre>
 </div>
@@ -3530,15 +3448,15 @@ Ejemplo respuesta:
          </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71516840</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
          </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
          </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
          </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-04T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln"> 
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
       </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
          </span><span class="tag">&lt;id&gt;</span><span class="pln">56f0f5ca-cf29-437e-8920-7bc35578a39f</span><span class="tag">&lt;/id&gt;</span><span class="pln">
          </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtf4q8v451</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
          </span><span class="tag">&lt;state&gt;</span><span class="pln">CANCELLED</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
          </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-19T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
       </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
@@ -3603,16 +3521,16 @@ Ejemplo respuesta:
          </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71516840</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
          </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
          </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
          </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-04T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln"> 
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
       </span><span class="tag">&lt;recurringBill&gt;</span><span class="pln">
          </span><span class="tag">&lt;id&gt;</span><span class="pln">56f0f5ca-cf29-437e-8920-7bc35578a39f</span><span class="tag">&lt;/id&gt;</span><span class="pln">
          </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71651340</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
          </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
          </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
          </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-19T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
       </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
@@ -3668,10 +3586,10 @@ Ejemplo respuesta:
          </span><span class="tag">&lt;orderId&gt;</span><span class="pln">71516840</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
          </span><span class="tag">&lt;subscriptionId&gt;</span><span class="pln">6dtg51j09cr</span><span class="tag">&lt;/subscriptionId&gt;</span><span class="pln">
          </span><span class="tag">&lt;state&gt;</span><span class="pln">PAID</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">    
+         </span><span class="tag">&lt;amount&gt;</span><span class="pln">10000</span><span class="tag">&lt;/amount&gt;</span><span class="pln">
          </span><span class="tag">&lt;currency&gt;</span><span class="pln">COP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
          </span><span class="tag">&lt;dateCharge&gt;</span><span class="pln">2014-02-04T00:00:00-05:00</span><span class="tag">&lt;/dateCharge&gt;</span><span class="pln">
-      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln"> 
+      </span><span class="tag">&lt;/recurringBill&gt;</span><span class="pln">
    </span><span class="tag">&lt;/recurringBills&gt;</span><span class="pln">
 </span><span class="tag">&lt;/recurringBillListResponse&gt;</span>
 </pre>
