@@ -99,7 +99,7 @@ parameters.put(PayU.PARAMETERS.DESCRIPTION, "payment test");
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.ARS.name());
 
@@ -111,9 +111,9 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
-parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");
 //Enter the buyer's address here.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "Viamonte");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "1366");
@@ -131,9 +131,9 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 //Enter the payer's email here.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Enter the payer's contact phone here.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 //Enter the payer's contact document here.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");
 //Enter the payer's address here.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Avenida entre rios");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "452");
@@ -143,7 +143,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "AR");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4850110000000000");
 // Enter expiration date of the credit card here
@@ -177,7 +177,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -200,13 +200,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "ARS",
-	
+
 	// -- Buyer --
 	//Enter the buyer's name here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
@@ -224,7 +224,7 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "AR",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
-	
+
 	// -- Payer --
         ///Enter the payer's name here
 	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
@@ -242,8 +242,8 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "AR",
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
-	
-	// -- Credit card data -- 
+
+	// -- Credit card data --
         // Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4850110000000000",
 	// Enter expiration date of the credit card here
@@ -252,23 +252,23 @@ $parameters = array(
 	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
 	//Enter the name of the credit card here
 	// "MASTERCARD" || "AMEX" || "ARGENCARD" || "CABAL" || "NARANJA" || "CENCOSUD" || "SHOPPING"
-	PayUParameters::PAYMENT_METHOD =&gt; "VISA", 
-	
+	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::AR,
-	
+
 	// Device Session ID
 	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	// Cookie of the current session
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// User agent of the current session       
+	// User agent of the current session
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 	);
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if ($response) {
@@ -276,14 +276,14 @@ if ($response) {
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if ($response-&gt;transactionResponse-&gt;state=="PENDING"){
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   
-	
+	$response-&gt;transactionResponse-&gt;responseMessage;
+
 }
 </pre>
 </div>
@@ -316,7 +316,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.BRL.name());
 
@@ -328,10 +328,10 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
 parameters.put(PayU.PARAMETERS.BUYER_DNI, "811.807.405-64");
-// or 
+// or
 //parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "32593371000110");
 
 //Enter the buyer's address here.
@@ -349,7 +349,7 @@ parameters.put(PayU.PARAMETERS.BUYER_PHONE, "(11)756312633");
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
 // Enter expiration date of the credit card here
@@ -363,7 +363,7 @@ parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 // Enter the name of the country here.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.BR.name());
-	
+
 // Payer IP
 parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
 
@@ -376,7 +376,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -399,13 +399,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE => $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION => "payment test",
-	
+
 	// -- Values --
-	// Enter the value here.        
+	// Enter the value here.
 	PayUParameters::VALUE => $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY => "BRL",
-	
+
 	// -- Buyer --
 	//Enter the buyer's name here.
 	PayUParameters::BUYER_NAME => "First name and second buyer  name",
@@ -415,10 +415,10 @@ $parameters = array(
 	PayUParameters::BUYER_CONTACT_PHONE => "(11)756312633",
 	//Enter the buyer's contact document here.
 	PayUParameters::BUYER_DNI => "811.807.405-64",
-	// or 
+	// or
 	//PayUParameters::BUYER_CNPJ => "32593371000110",
 
-	
+
 	//Enter the buyer's address here.
 	PayUParameters::BUYER_STREET => "calle 100",
 	PayUParameters::BUYER_STREET_2 => "5555487",
@@ -427,12 +427,12 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY => "BR",
 	PayUParameters::BUYER_POSTAL_CODE => "01019-030",
 	PayUParameters::BUYER_PHONE => "7563126",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
-	PayUParameters::PAYER_NAME => "First name and second payer  name",  
-	
-	// -- Credit card data -- 
+	PayUParameters::PAYER_NAME => "First name and second payer  name",
+
+	// -- Credit card data --
 	// Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER => "4097440000000004",
 	// Enter expiration date of the credit card here
@@ -442,14 +442,14 @@ $parameters = array(
 	//Enter the name of the credit card here
 	//"VISA"||"MASTERCARD"||"AMEX"||"DINERS"||"ELO"||"HIPERCARD"
 	PayUParameters::PAYMENT_METHOD => "VISA",
-	
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER => "1",
 	// Enter the name of the country here.
-	PayUParameters::COUNTRY => PayUCountries::BR, 
-	
+	PayUParameters::COUNTRY => PayUCountries::BR,
+
 	// Payer IP
-	PayUParameters::IP_ADDRESS => "127.0.0.1",	
+	PayUParameters::IP_ADDRESS => "127.0.0.1",
 	);
 
 $response = PayUPayments::doAuthorization($parameters);
@@ -459,7 +459,7 @@ if ($response) {
 	$response->transactionResponse->transactionId;
 	$response->transactionResponse->state;
 	if ($response->transactionResponse->state=="PENDING") {
-		$response->transactionResponse->pendingReason;	
+		$response->transactionResponse->pendingReason;
 	}
 	$response->transactionResponse->paymentNetworkResponseCode;
 	$response->transactionResponse->paymentNetworkResponseErrorMessage;
@@ -489,7 +489,7 @@ parameters.put(PayU.PARAMETERS.ORDER_ID, "40049920");
 parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "96535b36-99db-4c66-bd87-6ad5c59b25a8");
 // Enter the transaction language here.
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
-	
+
 //Capture Request
 TransactionResponse response = PayUPayments.doCapture(parameters);
 
@@ -528,7 +528,7 @@ if ($response) {
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;        
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -560,7 +560,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.BRL.name());
 
@@ -572,10 +572,10 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
 parameters.put(PayU.PARAMETERS.BUYER_DNI, "811.807.405-64");
-// or 
+// or
 //parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "32593371000110");
 
 //Enter the buyer's address here.
@@ -591,7 +591,7 @@ parameters.put(PayU.PARAMETERS.BUYER_PHONE, "(11)756312633");
 //Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
 // Enter expiration date of the credit card here
@@ -605,7 +605,7 @@ parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 // Enter the name of the country here.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.BR.name());
-	
+
 // Payer IP
 parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
 
@@ -618,7 +618,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -641,13 +641,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.      
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "BRL",
-	
+
 	// -- Buyer --
         //Enter the buyer Id here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
@@ -657,10 +657,10 @@ $parameters = array(
 	PayUParameters::BUYER_CONTACT_PHONE =&gt; "(11)756312633",
 	//Enter the buyer's contact document here.
 	PayUParameters::BUYER_DNI =&gt; "811.807.405-64",
-	// or 
+	// or
 	//PayUParameters::BUYER_CNPJ =&gt; "32593371000110",
 
-	
+
 	//Enter the buyer's address here.
 	PayUParameters::BUYER_STREET =&gt; "calle 100",
 	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
@@ -669,12 +669,12 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "BR",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "01019-030",
 	PayUParameters::BUYER_PHONE =&gt; "(11)756312633",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
-	PayUParameters::PAYER_NAME =&gt; "First name and second payer  name",  
-	
-	// -- Credit card data -- 
+	PayUParameters::PAYER_NAME =&gt; "First name and second payer  name",
+
+	// -- Credit card data --
 	// Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
 	// Enter expiration date of the credit card here
@@ -684,14 +684,14 @@ $parameters = array(
 	//Enter the name of the credit card here
 	//"VISA"||"MASTERCARD"||"AMEX"||"DINERS"||"ELO"||"HIPERCARD"
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
-	
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
 	// Enter the name of the country here.
-	PayUParameters::COUNTRY =&gt; PayUCountries::BR, 
-	
+	PayUParameters::COUNTRY =&gt; PayUCountries::BR,
+
 	// Payer IP
-	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",	
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	);
 
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
@@ -701,13 +701,13 @@ if($response){
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -731,7 +731,7 @@ parameters.put(PayU.PARAMETERS.ORDER_ID, "40049920");
 parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "96535b36-99db-4c66-bd87-6ad5c59b25a8");
 // Enter the transaction language here.
 parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
-	
+
 TransactionResponse response = PayUPayments.doVoid(parameters);
 
 //Response
@@ -769,7 +769,7 @@ if ($response) {
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;        
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -803,13 +803,13 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 // -- Values --
 // Enter the value here.
 parameters.put(PayU.PARAMETERS.VALUE, ""+value);
-// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
-// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
-// Example 19000.00. In case you have no VAT you should fill out 0.  
+// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction,
+// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits.
+// Example 19000.00. In case you have no VAT you should fill out 0.
 parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");
-// Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
-// If you do not have VAT should be sent to 0. 
-parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
+// Enter the value of the base value on which VAT (only valid for Colombia) is calculated.
+// If you do not have VAT should be sent to 0.
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -821,9 +821,9 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
-parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");
 //Enter the buyer's address here.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
@@ -841,9 +841,9 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 //Enter the payer's email here.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Enter the payer's contact phone here.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 //Enter the payer's contact document here.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");
 //Enter the payer's address here.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "calle 93");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "125544");
@@ -853,7 +853,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
 // Enter expiration date of the credit card here
@@ -886,7 +886,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -909,20 +909,20 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
-        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
-        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
-        // Example 19000.00. In case you have no VAT you should fill out 0.  
+        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction,
+        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits.
+        // Example 19000.00. In case you have no VAT you should fill out 0.
 	PayUParameters::TAX_VALUE =&gt; "3193",
-        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
-        // If you do not have VAT should be sent to 0. 
+        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated.
+        // If you do not have VAT should be sent to 0.
         PayUParameters::TAX_RETURN_BASE =&gt; "16806",
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "COP",
-	
+
  	// -- Buyer --
         //Enter the buyer Id here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer name",
@@ -940,7 +940,7 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "CO",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
@@ -958,8 +958,8 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "CO",
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
-	
-	// -- Credit card data -- 
+
+	// -- Credit card data --
 	// Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
 	// Enter expiration date of the credit card here
@@ -969,22 +969,22 @@ $parameters = array(
 	//Enter the name of the credit card here
 	//VISA||MASTERCARD||AMEX||DINERS
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
-	
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
-	
+
 	//Session id del device.
 	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	// Cookie of the current session.
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// User agent of the current session.      
+	// User agent of the current session.
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if ($response) {
@@ -992,13 +992,13 @@ if ($response) {
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if ($response-&gt;transactionResponse-&gt;state=="PENDING") {
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   	
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -1036,7 +1036,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.MXN.name());
 
@@ -1048,9 +1048,9 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
-parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");
 //Enter the buyer's address here.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "Calle Salvador Alvarado");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "8 int 103");
@@ -1068,9 +1068,9 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 //Enter the payer's email here.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Enter the payer's contact phone here.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 //Enter the payer's contact document here.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");
 //Enter the payer's address here.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle Zaragoza esquina");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "calle 5 de Mayo");
@@ -1080,7 +1080,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "MX");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "64000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4772910000000008");
 // Enter expiration date of the credit card here
@@ -1113,7 +1113,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -1136,13 +1136,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "MXN",
-	
+
 	// -- Buyer --
         //Enter the buyer Id here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
@@ -1160,7 +1160,7 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "MX",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
@@ -1181,8 +1181,8 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "MX",
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "64000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
-	
-	// -- Credit card data -- 
+
+	// -- Credit card data --
 	// Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4772910000000008",
 	// Enter expiration date of the credit card here
@@ -1190,24 +1190,24 @@ $parameters = array(
 	//Enter the security code of the credit card here
 	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
 	//Enter the name of the credit card here
-	//VISA||MASTERCARD||AMEX    
+	//VISA||MASTERCARD||AMEX
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
-	
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::MX,
-	
+
 	//Session id del device.
 	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	// Cookie of the current session.
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// User agent of the current session.      
+	// User agent of the current session.
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if ($response) {
@@ -1215,15 +1215,15 @@ if ($response) {
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if ($response-&gt;transactionResponse-&gt;state=="PENDING") {
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;authorizationCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   	
-}    
+	$response-&gt;transactionResponse-&gt;responseMessage;
+}
 </pre>
 </div>
 </div>
@@ -1255,7 +1255,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.USD.name());
 
@@ -1267,9 +1267,9 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
-parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");
 //Enter the buyer's address here.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "Palacio de Las Garzas");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "Corregimiento de San Felipe");
@@ -1287,9 +1287,9 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 //Enter the payer's email here.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Enter the payer's contact phone here.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 //Enter the payer's contact document here.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");
 //Enter the payer's address here.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Colon");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "2000");
@@ -1299,7 +1299,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "PA");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4519860000000003");
 // Enter expiration date of the credit card here
@@ -1333,7 +1333,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -1356,13 +1356,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.        
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "USD",
-	
+
 	// -- Buyer --
         //Enter the buyer Id here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
@@ -1380,7 +1380,7 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "PA",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
@@ -1401,8 +1401,8 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "PA",
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
-	
-	// -- Credit card data -- 
+
+	// -- Credit card data --
 	// Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4519860000000003",
 	// Enter expiration date of the credit card here
@@ -1410,24 +1410,24 @@ $parameters = array(
 	//Enter the security code of the credit card here
 	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
 	//Enter the name of the credit card here
-	//VISA||MASTERCARD    
+	//VISA||MASTERCARD
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
-	
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::PA,
-	
+
 	//Session id del device.
 	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	// Cookie of the current session.
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// User agent of the current session.        
+	// User agent of the current session.
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response) {
@@ -1435,14 +1435,14 @@ if($response) {
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if($response-&gt;transactionResponse-&gt;state=="PENDING") {
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;authorizationCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   	
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -1475,7 +1475,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.PEN.name());
 
@@ -1487,9 +1487,9 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Enter the buyer's contact document here.
-parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");
 //Enter the buyer's address here.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "Avenida de la poesia");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "160");
@@ -1507,9 +1507,9 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 //Enter the payer's email here.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Enter the payer's contact phone here.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 //Enter the payer's contact document here.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");
 //Enter the payer's address here.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "av abancay");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "cra 4");
@@ -1519,7 +1519,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "PE");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// -- Credit card data -- 
+// -- Credit card data --
 // Enter the number of the credit card here
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4907840000000005");
 // Enter expiration date of the credit card here
@@ -1553,7 +1553,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -1576,13 +1576,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.        
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "PEN",
-	
+
 	// -- Buyer --
         //Enter the buyer Id here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
@@ -1600,7 +1600,7 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "PE",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
@@ -1621,8 +1621,8 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "PE",
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
-	
-	// -- Credit card data -- 
+
+	// -- Credit card data --
 	// Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4907840000000005",
 	// Enter expiration date of the credit card here
@@ -1630,24 +1630,24 @@ $parameters = array(
 	//Enter the security code of the credit card here
 	PayUParameters::CREDIT_CARD_SECURITY_CODE=&gt; "321",
 	//Enter the name of the credit card here
-	//VISA||MASTERCARD    
+	//VISA||MASTERCARD
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
-	
+
 	// Enter the number of installments here.
 	PayUParameters::INSTALLMENTS_NUMBER =&gt; "1",
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::PE,
-	
+
 	//Session id del device.
 	PayUParameters::DEVICE_SESSION_ID =&gt; "vghs6tvkcle931686k1900o6e1",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	// Cookie of the current session.
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// User agent of the current session.        
+	// User agent of the current session.
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response) {
@@ -1655,14 +1655,14 @@ if($response) {
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if($response-&gt;transactionResponse-&gt;state=="PENDING") {
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;authorizationCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   	
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -1711,7 +1711,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.ARS.name());
 
@@ -1721,7 +1721,7 @@ parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 
 //Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
-	
+
 //Enter the cash payment method name here.
 //PAGOFACIL||BAPRO||COBRO_EXPRESS||RAPIPAGO||RIPSA
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "PAGOFACIL");
@@ -1741,12 +1741,12 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().equals(TransactionState.PENDING)){
-		response.getPendingReason();	
+		response.getPendingReason();
 		Map<String,Object> extraParameters = response.getExtraParameters();
-		
-		// Obtain the payment receipt URL 
+
+		// Obtain the payment receipt URL
 		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
-					
+
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -1755,7 +1755,7 @@ if(response != null){
 	response.getResponseMessage();
 }
 </pre>
-</div> 
+</div>
 <div id="squelch-taas-tab-content-1-2">
 Request example:
 <pre style="height:300px; overflow: auto;">
@@ -1769,32 +1769,32 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "ARS",
-	
+
 	// Enter the buyer's email here.
 	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
 	// Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second buyer name",
 	// Enter the payer's contact document here.
 	PayUParameters::PAYER_DNI=&gt; "5415668464654",
-	
+
 	//Enter the cash payment method name here.
 	//COBRO_EXPRESS || PAGOFACIL || RAPIPAGO || BAPRO || RIPSA
 	PayUParameters::PAYMENT_METHOD =&gt; "COBRO_EXPRESS",
-   
+
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::AR,
-	
+
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
-   
+
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response){
@@ -1804,16 +1804,16 @@ if($response){
 	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
 		$response-&gt;transactionResponse-&gt;pendingReason;
 		$response-&gt;transactionResponse-&gt;trazabilityCode;
-		$response-&gt;transactionResponse-&gt;authorizationCode;		
+		$response-&gt;transactionResponse-&gt;authorizationCode;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BAR_CODE;
 	}
-	$response-&gt;transactionResponse-&gt;responseCode;		  
-} 
+	$response-&gt;transactionResponse-&gt;responseCode;
+}
 </pre>
-</div> 
-</div> 
+</div>
+</div>
 </div>
 <div id="squelch-taas-tab-content-2">
 &nbsp;<br>
@@ -1847,7 +1847,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.BRL.name());
 
@@ -1859,10 +1859,10 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer  name");
 //Enter the buyer's email here.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Enter the buyer's contact phone here.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "(11)756312633");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "(11)756312633");
 //Enter the buyer's contact document here.
 parameters.put(PayU.PARAMETERS.BUYER_DNI, "811.807.405-64");
-// or 
+// or
 //parameters.put(PayU.PARAMETERS.BUYER_CNPJ, "32593371000110");
 //Enter the buyer's address here.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
@@ -1890,12 +1890,12 @@ parameters.put(PayU.PARAMETERS.PAYER_PHONE, "(11)756312633");
 // Insert  the payment method here.
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "BOLETO_BANCARIO");
 
-//Enter the expiration date here. 
+//Enter the expiration date here.
 parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-20T00:00:00");
 
 // Enter the name of the country here.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.BR.name());
-	
+
 // Payer IP
 parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
 
@@ -1908,9 +1908,9 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().equals(TransactionState.PENDING)){
-		response.getPendingReason();	
+		response.getPendingReason();
 		Map<String,Object> extraParameters = response.getExtraParameters();
-		
+
 		//Obtain the payment receipt URL
 		String url=(String)extraParameters.get("URL_BOLETO_BANCARIO");
 	}
@@ -1935,13 +1935,13 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "BRL",
-	
+
 	// -- Buyer --
         //Enter the buyer Id here.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
@@ -1952,9 +1952,9 @@ $parameters = array(
 	//Ingrese aquí e//Enter the buyer's contact phone here.
 
 	PayUParameters::BUYER_DNI =&gt; "811.807.405-64",
-	// or 
+	// or
 	//PayUParameters::BUYER_CNPJ =&gt; "32593371000110",
-	
+
 	//Enter the buyer's address here.
 	PayUParameters::BUYER_STREET =&gt; "calle 100",
 	PayUParameters::BUYER_STREET_2 =&gt; "5555487",
@@ -1963,7 +1963,7 @@ $parameters = array(
 	PayUParameters::BUYER_COUNTRY =&gt; "BR",
 	PayUParameters::BUYER_POSTAL_CODE =&gt; "01019-030",
 	PayUParameters::BUYER_PHONE =&gt; "7563126",
-	
+
 	// -- Payer --
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second payer name",
@@ -1974,18 +1974,18 @@ $parameters = array(
 	PayUParameters::PAYER_STATE =&gt; "SP",
 	PayUParameters::PAYER_COUNTRY =&gt; "BR",
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "(11)756312633",
-   
+
 	// Insert  the payment method here.
 	PayUParameters::PAYMENT_METHOD =&gt; "BOLETO_BANCARIO",
-	
+
 	// Enter the name of the country here.
-	PayUParameters::COUNTRY =&gt; PayUCountries::BR, 
-	
+	PayUParameters::COUNTRY =&gt; PayUCountries::BR,
+
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
-	
+
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response){
@@ -1997,17 +1997,17 @@ if($response){
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;EXPIRATION_DATE;
 		//obtener la url del comprobante de pago
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_BOLETO_BANCARIO;
-		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BAR_CODE;		
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BAR_CODE;
 	}
 	$response-&gt;transactionResponse-&gt;responseCode;
 }
 </pre>
 </div>
-</div> 
+</div>
 </div>
 <div id="squelch-taas-tab-content-3">
 <span class="blue-text-13"><b>Cash payments</b></span><br>
-<span class="grey-text-13">Integration of the Baloto and Efecty payment methods.</span>
+<span class="grey-text-13">Integration of the Baloto, Efecty and SuRed payment methods.</span>
 &nbsp;<br>
 <span class="grey-text-13">You must direct the payer to the URL that you will find in the response to the request, the payer will see a payment receipt like this where he will find the logo of the chosen payment means, Baloto or Efecty:</span>
 <p align="center"><img src="/images/api/efectivo-co.jpg" border="0">
@@ -2036,13 +2036,13 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 // -- Values --
 // Enter the value here.
 parameters.put(PayU.PARAMETERS.VALUE, ""+value);
-// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
-// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
-// Example 19000.00. In case you have no VAT you should fill out 0.  
+// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction,
+// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits.
+// Example 19000.00. In case you have no VAT you should fill out 0.
 parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");
-// Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
-// If you do not have VAT should be sent to 0. 
-parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
+// Enter the value of the base value on which VAT (only valid for Colombia) is calculated.
+// If you do not have VAT should be sent to 0.
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -2051,14 +2051,14 @@ parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 
 //Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
-	
+
 //Enter the cash payment method name here.
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "BALOTO");
 
 // Enter the name of the country here.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.CO.name());
 
-//Enter the expiration date here. 
+//Enter the expiration date here.
 parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-20T00:00:00");
 
 // Payer IP
@@ -2073,9 +2073,9 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().equals(TransactionState.PENDING)){
-		response.getPendingReason();	
+		response.getPendingReason();
 		Map<String,Object> extraParameters = response.getExtraParameters();
-		
+
 		//obtener la url del comprobante de pago
 		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
 	}
@@ -2100,20 +2100,20 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
-        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
-        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
-        // Example 19000.00. In case you have no VAT you should fill out 0.  
+        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction,
+        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits.
+        // Example 19000.00. In case you have no VAT you should fill out 0.
 	PayUParameters::TAX_VALUE =&gt; "3193",
-        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
-        // If you do not have VAT should be sent to 0. 
+        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated.
+        // If you do not have VAT should be sent to 0.
         PayUParameters::TAX_RETURN_BASE =&gt; "16806",
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "COP",
-	
+
 	//Enter the buyer's email here.
 	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
 	//Enter the payer's name here.
@@ -2123,16 +2123,16 @@ $parameters = array(
 
 	//Enter the cash payment method name here.
 	PayUParameters::PAYMENT_METHOD =&gt; "BALOTO", //EFECTY
-   
+
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
-	
+
 	//Enter the expiration date here.
 	PayUParameters::EXPIRATION_DATE =&gt; "2014-09-26T00:00:00",
 	// Payer IP
-	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",   
+	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response){
@@ -2144,11 +2144,11 @@ if($response){
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
 	}
-	$response-&gt;transactionResponse-&gt;responseCode;		  
-} 
+	$response-&gt;transactionResponse-&gt;responseCode;
+}
 </pre>
 </div>
-</div> 
+</div>
 </div>
 <div id="squelch-taas-tab-content-4">
 <span class="blue-text-13"><b>Cash payments</b></span><br>
@@ -2186,7 +2186,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.MXN.name());
 
@@ -2195,14 +2195,14 @@ parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 
 //Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
-	
+
 //Enter the cash payment method name here.
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "OXXO"); // SEVEN_ELEVEN or SCOTIABANK or SANTANDER or BANCOMER or || OTHERS_CASH_MX
-	
+
 // Enter the name of the country here.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.MX.name());
 
-//Ingrese aquí la fecha de expiración. Sólo para OXXO y SEVEN_ELEVEN 
+//Ingrese aquí la fecha de expiración. Sólo para OXXO y SEVEN_ELEVEN
 parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-20T00:00:00");
 
 // Payer IP
@@ -2217,9 +2217,9 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().equals(TransactionState.PENDING)){
-		response.getPendingReason();	
+		response.getPendingReason();
 		Map<String,Object> extraParameters = response.getExtraParameters();
-		
+
 		//obtener la url del comprobante de pago
 		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
 	}
@@ -2244,34 +2244,34 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "MXN",
-	
+
 	//Enter the buyer's email here.
 	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second buyer  name",
 	//Enter the payer's contact document here.
 	PayUParameters::PAYER_DNI=&gt; "5415668464654",
-	
+
 	//Enter the cash payment method name here.
 	//"SANTANDER"||"SCOTIABANK"||"BANCOMER"||"OXXO"||"SEVEN_ELEVEN"||"OTHERS_CASH_MX"
 	PayUParameters::PAYMENT_METHOD =&gt; "OXXO",
-   
+
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::MX,
-	
+
 	//Enter the expiration date here. Only for OXXO and SEVEN_ELEVEN
 	PayUParameters::EXPIRATION_DATE =&gt; "2014-09-27T00:00:00",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
-   
+
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response){
@@ -2283,11 +2283,11 @@ if($response){
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
 	}
-	$response-&gt;transactionResponse-&gt;responseCode;		  
-}   
+	$response-&gt;transactionResponse-&gt;responseCode;
+}
 </pre>
 </div>
-</div> 
+</div>
 </div>
 <div id="squelch-taas-tab-content-1-5">
 &nbsp;<br>
@@ -2321,7 +2321,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Values --
 // Enter the value here.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.PEN.name());
 
@@ -2330,14 +2330,14 @@ parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 
 //Enter the payer's name here.
 parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
-	
+
 //Enter the name of the credit card here
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "BCP");
 
 // Enter the name of the country here.
 parameters.put(PayU.PARAMETERS.COUNTRY, PaymentCountry.PE.name());
 
-// Enter the expiration date here. 
+// Enter the expiration date here.
 parameters.put(PayU.PARAMETERS.EXPIRATION_DATE,"2014-05-21T00:00:00");
 
 // Payer IP
@@ -2352,12 +2352,12 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().equals(TransactionState.PENDING)){
-		response.getPendingReason();	
+		response.getPendingReason();
 		Map<String,Object> extraParameters = response.getExtraParameters();
-		
-		// Obtain the payment receipt URL 
+
+		// Obtain the payment receipt URL
 		String url=(String)extraParameters.get("URL_PAYMENT_RECEIPT_HTML");
-					
+
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -2380,33 +2380,33 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.      
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "PEN",
-	
+
 	//Enter the buyer's email here.
 	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
 	//Enter the payer's name here.
 	PayUParameters::PAYER_NAME =&gt; "First name and second buyer  name",
 	//Enter the payer's contact document here.
 	PayUParameters::PAYER_DNI=&gt; "5415668464654",
-	
+
 	//Enter the cash payment method name here
 	PayUParameters::PAYMENT_METHOD =&gt; "BCP",
-   
+
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::PE,
-	
+
 	//Enter the expiration date here
 	PayUParameters::EXPIRATION_DATE =&gt; "2014-10-02T04:00:00",
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
-   
+
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response){
@@ -2417,13 +2417,13 @@ if($response){
 		$response-&gt;transactionResponse-&gt;pendingReason;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;URL_PAYMENT_RECEIPT_HTML;
 		$response-&gt;transactionResponse-&gt;extraParameters-&gt;REFERENCE;
-		$response-&gt;transactionResponse-&gt;extraParameters-&gt;EXPIRATION_DATE;      
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;EXPIRATION_DATE;
 	}
-	$response-&gt;transactionResponse-&gt;responseCode;		  
-}  
+	$response-&gt;transactionResponse-&gt;responseCode;
+}
 </pre>
 </div>
-</div> 
+</div>
 </div>
 </div>
 &nbsp;<br>
@@ -2578,13 +2578,13 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 // -- Values --
 // Enter the value here.
 parameters.put(PayU.PARAMETERS.VALUE, ""+value);
-// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
-// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
-// Example 19000.00. In case you have no VAT you should fill out 0.  
+// Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction,
+// if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits.
+// Example 19000.00. In case you have no VAT you should fill out 0.
 parameters.put(PayU.PARAMETERS.TAX_VALUE, "3193");
-// Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
-// If you do not have VAT should be sent to 0. 
-parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");	
+// Enter the value of the base value on which VAT (only valid for Colombia) is calculated.
+// If you do not have VAT should be sent to 0.
+parameters.put(PayU.PARAMETERS.TAX_RETURN_BASE, "16806");
 // Enter the currency here.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -2597,22 +2597,22 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "First name and second payer name");
 //Enter the payer's email here.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Enter the payer's contact phone here.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 
 //-- Mandatory information for PSE –
 // Enter the bank PSE code here.
 parameters.put(PayU.PARAMETERS.PSE_FINANCIAL_INSTITUTION_CODE, "1007");
 // Enter the person type here (Natural or legal).
-parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.NATURAL.toString() );	
-//o parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.LEGAL.toString() );	
+parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.NATURAL.toString() );
+//o parameters.put(PayU.PARAMETERS.PAYER_PERSON_TYPE, PersonType.LEGAL.toString() );
 //Enter the payer's contact document here.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "123456789");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "123456789");
 // Enter the payer’s document type here.
 parameters.put(PayU.PARAMETERS.PAYER_DOCUMENT_TYPE, DocumentType.CC.toString());
 // Payer IP
 parameters.put(PayU.PARAMETERS.IP_ADDRESS, "127.0.0.1");
 
-// Enter the payment method name here. 
+// Enter the payment method name here.
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "PSE");
 
 // Enter the name of the country here.
@@ -2635,12 +2635,12 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().equals(TransactionState.PENDING)){
-		response.getPendingReason();	
+		response.getPendingReason();
 		Map<String,Object> extraParameters = response.getExtraParameters();
-		
+
 		//obtener la url del banco
 		String url=(String)extraParameters.get("BANK_URL");
-					
+
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -2663,20 +2663,20 @@ $parameters = array(
 	PayUParameters::REFERENCE_CODE =&gt; $reference,
 	// Enter the description here.
 	PayUParameters::DESCRIPTION =&gt; "payment test",
-	
+
 	// -- Values --
-        // Enter the value here.       
+        // Enter the value here.
 	PayUParameters::VALUE =&gt; $value,
-        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction, 
-        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits. 
-        // Example 19000.00. In case you have no VAT you should fill out 0.  
+        // Enter the value of the VAT (Value Added Tax only valid for Colombia) of the transaction,
+        // if no VAT is sent, the system will apply 19% automatically. It can contain two decimal digits.
+        // Example 19000.00. In case you have no VAT you should fill out 0.
 	PayUParameters::TAX_VALUE =&gt; "3193",
-        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated. 
-        // If you do not have VAT should be sent to 0. 
+        // Enter the value of the base value on which VAT (only valid for Colombia) is calculated.
+        // If you do not have VAT should be sent to 0.
         PayUParameters::TAX_RETURN_BASE =&gt; "16806",
 	// Enter the currency here.
 	PayUParameters::CURRENCY =&gt; "COP",
-	
+
 	//Enter the buyer's email here.
 	PayUParameters::BUYER_EMAIL =&gt; "buyer_test@test.com",
 	//Enter the payer's name here.
@@ -2685,7 +2685,7 @@ $parameters = array(
 	PayUParameters::PAYER_EMAIL =&gt; "payer_test@test.com",
 	//Enter the payer's contact phone here.
 	PayUParameters::PAYER_CONTACT_PHONE=&gt; "7563126",
-		   
+
 	//-- Mandatory information for PSE –
        // Enter the bank PSE code here.
 	PayUParameters::PSE_FINANCIAL_INSTITUTION_CODE =&gt; "1007",
@@ -2696,24 +2696,24 @@ $parameters = array(
 	// Enter the payer’s document type here: CC, CE, NIT, TI, PP,IDC, CEL, RC, DE.
 	PayUParameters::PAYER_DOCUMENT_TYPE =&gt; "CC",
 
-	// Enter the payment method name here. 
+	// Enter the payment method name here.
 	PayUParameters::PAYMENT_METHOD =&gt; "PSE",
-   
+
 	// Enter the name of the country here.
 	PayUParameters::COUNTRY =&gt; PayUCountries::CO,
-	
+
 	// Payer IP
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	// Cookie of the current session.
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	// User agent of the current session.    
+	// User agent of the current session.
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0",
-	
-	//Response page to which the payer will be redirected.   
+
+	//Response page to which the payer will be redirected.
 	PayUParameters::RESPONSE_URL=>"http://www.test.com/response"
-   
+
 );
-	
+
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
 if($response){
@@ -2723,9 +2723,9 @@ if($response){
 	if($response-&gt;transactionResponse-&gt;state)
 	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
 		$response-&gt;transactionResponse-&gt;pendingReason;
-		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BANK_URL;		
+		$response-&gt;transactionResponse-&gt;extraParameters-&gt;BANK_URL;
 	}
-	$response-&gt;transactionResponse-&gt;responseCode;		  
+	$response-&gt;transactionResponse-&gt;responseCode;
 }
 </pre>
 </div>
@@ -2771,7 +2771,7 @@ Fields with a "$" character at the beginning are parameters that are sent by GET
 		<td style="text-align: center;">9994</td>
 		<td>Pending transaction, please check if the debit was made in the bank.</td>
 	</tr>
-</table>	
+</table>
 &nbsp;<br></div></div>
 
 &nbsp;<br>

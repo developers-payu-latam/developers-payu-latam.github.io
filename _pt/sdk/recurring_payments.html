@@ -30,8 +30,8 @@ subcategory: recurring
 <div class="list-arrow">
     <ul>
         <li>Pagamentos recorrentes somente está disponível para contas do <span class="blue-text-16">Brasil, Colombia e México.</span></li>
-    </ul>  
-</div> 
+    </ul>
+</div>
 &nbsp;<br>
 Apontando as correspondentes URLS:
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
@@ -109,7 +109,7 @@ parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Basic Plan");
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd456" + System.currentTimeMillis());
 // Insira aqui o intervalo do plano.
 parameters.put(PayU.PARAMETERS.PLAN_INTERVAL, "MONTH");
-// Insira aqui a quantidade de intervalos. 
+// Insira aqui a quantidade de intervalos.
 parameters.put(PayU.PARAMETERS.PLAN_INTERVAL_COUNT, "12");
 // Insira aqui a moeda do plano
 parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
@@ -117,11 +117,11 @@ parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
 parameters.put(PayU.PARAMETERS.PLAN_VALUE, "50000");
 //(OPCIONAL) Insira aqui o valor do imposto.
 parameters.put(PayU.PARAMETERS.PLAN_TAX, "10000");
-//(OPCIONAL) Insira aqui a base de devolução do imposto. 
+//(OPCIONAL) Insira aqui a base de devolução do imposto.
 parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "40000");
 // Insira aqui a conta ID do plano
 parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "2");
-// Insira aqui o intervalo das novas tentativas de cobrança. 
+// Insira aqui o intervalo das novas tentativas de cobrança.
 parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "2");
 // Insira aqui a quantidade de cobranças que compõem o plano de pagamento
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENTS, "2");
@@ -139,7 +139,7 @@ $parameters = array(
 	// Insira aqui o intervalo do plano.
 	//DAY||WEEK||MONTH||YEAR
 	PayUParameters::PLAN_INTERVAL =&gt; "MONTH",
-	// Insira aqui a quantidade de intervalos. 
+	// Insira aqui a quantidade de intervalos.
 	PayUParameters::PLAN_INTERVAL_COUNT =&gt; "1",
 	// Insira aqui a moeda do plano
 	PayUParameters::PLAN_CURRENCY =&gt; "COP",
@@ -147,15 +147,15 @@ $parameters = array(
 	PayUParameters::PLAN_VALUE =&gt; "10000",
 	//(OPCIONAL) Insira aqui o valor do imposto.
 	PayUParameters::PLAN_TAX =&gt; "1600",
-	//(OPCIONAL) Insira aqui a base de devolução do imposto. 
+	//(OPCIONAL) Insira aqui a base de devolução do imposto.
 	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "8400",
 	// Insira aqui a conta ID do plano
 	PayUParameters::ACCOUNT_ID =&gt; "512321",
-	// Insira aqui o intervalo das novas tentativas de cobrança. 
+	// Insira aqui o intervalo das novas tentativas de cobrança.
 	PayUParameters::PLAN_ATTEMPTS_DELAY =&gt; "1",
 	// Insira aqui a quantidade de cobranças que compõem o plano de pagamento
 	PayUParameters::PLAN_MAX_PAYMENTS =&gt; "12",
-	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado. 
+	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado.
 	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
 	// Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada.
 	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
@@ -182,7 +182,7 @@ Exemplo pedido:
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Insira aqui a nova descrição para o plano.
 parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "New Basic Plan");
-// Insira aqui o código do plano (deve ser um código já existente) 
+// Insira aqui o código do plano (deve ser um código já existente)
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd4561379351327982");
 // Insira aqui a moeda do plano (deve ser a mesma do plano original)
 parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
@@ -204,7 +204,7 @@ Exemplo pedido:
 $parameters = array(
 	// Insira aqui a nova descrição para o plano.
 	PayUParameters::PLAN_DESCRIPTION =&gt; "New Sample Plan 001",
-	// Insira aqui o código do plano (deve ser um código já existente) 
+	// Insira aqui o código do plano (deve ser um código já existente)
 	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
 	// Insira aqui a moeda do plano (deve ser a mesma do plano original)
 	PayUParameters::PLAN_CURRENCY =&gt; "COP",
@@ -216,13 +216,13 @@ $parameters = array(
 	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "0",
 	// Insira aqui a quantidade de tentativas.
 	PayUParameters::PLAN_ATTEMPTS_DELAY =&gt; "1",
-	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado. 
+	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado.
 	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
 	// Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada.
 	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
 );
 
-$response = PayUSubscriptionPlans::update($parameters);    
+$response = PayUSubscriptionPlans::update($parameters);
 if($response){
 }
 </pre>
@@ -262,8 +262,8 @@ if($response) {
 	 $response-&gt;maxPaymentAttempts;
 	 $response-&gt;paymentAttemptsDelay;
 	 $response-&gt;maxPendingPayments;
-	 $response-&gt;trialDays;   
-}  
+	 $response-&gt;trialDays;
+}
 </pre>
 </div>
 </div>
@@ -408,7 +408,7 @@ $parameters = array(
 $response = PayUCustomers::update($parameters);
 
 if($response){
-	
+
 }
 </pre>
 </div>
@@ -424,7 +424,7 @@ Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Insira aqui o ID do cliente.
-parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz"); 
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
 Customer response = PayUCustomers.find(parameters);
 </pre>
 </div>
@@ -441,7 +441,7 @@ if($response) {
 	$response-&gt;fullName;
 	$response-&gt;email;
 	$creditCards=$response-&gt;creditCards;
-	
+
 	foreach ($creditCards as $creditCard) {
 		$creditCard-&gt;token;
 		$creditCard-&gt;number;
@@ -456,7 +456,7 @@ if($response) {
 		$address-&gt;country;
 		$address-&gt;postalCode;
 		$address-&gt;phone;
-	} 
+	}
 }
 </pre>
 </div>
@@ -487,7 +487,7 @@ $parameters = array(
 $response = PayUCustomers::delete($parameters);
 
 if($response){
-	
+
 }
 </pre>
 </div>
@@ -577,7 +577,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, PaymentCountry.CO.name());
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
 // Insira aqui o número do telefone.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
-CreditCard response = PayUCreditCard.create(parameters);
+PaymentPlanCreditCard response = PayUCreditCard.create(parameters);
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
@@ -586,7 +586,7 @@ Exemplo pedido:
 <pre style="height:200px; overflow: auto;">
 $parameters = array(
 	// Insira aqui o ID do cliente.
-	PayUParameters::CUSTOMER_ID =&gt; "6eb24tzp40", 
+	PayUParameters::CUSTOMER_ID =&gt; "6eb24tzp40",
 	// Insira o nome do cliente
 	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
 	//Coloque aqui o número do cartão de crédito.
@@ -635,7 +635,7 @@ if($response){
 Exemplo pedido:
 <pre style="height:200px; overflow: auto;">
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Insira aqui o ID do token do cartão de credito. 
+// Insira aqui o ID do token do cartão de credito.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "180oklk4o56");
 //Coloque aqui a data de vencimento do cartão de crédito.
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2015/01");
@@ -660,7 +660,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, PaymentCountry.CO.name());
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
 // Insira aqui o número do telefone.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
-CreditCard response = PayUCreditCard.update(parameters);
+PaymentPlanCreditCard response = PayUCreditCard.update(parameters);
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
@@ -668,7 +668,7 @@ LoggerUtil.info("{0}", response);
 Exemplo pedido:
 <pre style="height:200px; overflow: auto;">
 $parameters = array(
-	// Insira aqui o ID do token do cartão de credito. 
+	// Insira aqui o ID do token do cartão de credito.
 	PayUParameters::TOKEN_ID =&gt; "6f5f32d9-9c6f-4d57-97d7-68cde86f9266",
 	// Insira aqui o nome do cliente.
 	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
@@ -682,7 +682,7 @@ $parameters = array(
 	PayUParameters::PAYER_STREET =&gt; "Street 93B",
 	// (OPCIONAL) Insira aqui a segunda parte do endereço
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPCIONAL) Insira aqui a terceira parte do endereço 
+	// (OPCIONAL) Insira aqui a terceira parte do endereço
 	PayUParameters::PAYER_STREET_3 =&gt; "Office 301",
 	// (OPCIONAL) Insira aqui o nome da cidade.
 	PayUParameters::PAYER_CITY =&gt; "Bogotá",
@@ -714,9 +714,9 @@ if($response){
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Insira aqui o ID do token do cartão de credito. 
+// Insira aqui o ID do token do cartão de credito.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "25181bb1-b07f-4b9b-ae5d-6b13436c706d");
-CreditCard response = PayUCreditCard.find(parameters);
+PaymentPlanCreditCard response = PayUCreditCard.find(parameters);
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
@@ -724,7 +724,7 @@ LoggerUtil.info("{0}", response);
 Exemplo pedido:
 <pre style="height:200px; overflow: auto;">
 $parameters = array(
-	// Insira aqui o ID do token do cartão de credito. 
+	// Insira aqui o ID do token do cartão de credito.
 	PayUParameters::TOKEN_ID =&gt; "6f5f32d9-9c6f-4d57-97d7-68cde86f9266"
 );
 
@@ -744,7 +744,7 @@ if($response){
 	$address-&gt;state;
 	$address-&gt;country;
 	$address-&gt;postalCode;
-	$address-&gt;phone;        
+	$address-&gt;phone;
 }
 </pre>
 </div>
@@ -759,7 +759,7 @@ if($response){
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Insira aqui o ID do token do cartão de credito. 
+// Insira aqui o ID do token do cartão de credito.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "25181bb1-b07f-4b9b-ae5d-6b13436c706d");
 // Ingresa aquí el Id del cliente
 parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
@@ -771,7 +771,7 @@ LoggerUtil.info("{0}", response);
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// Insira aqui o ID do token do cartão de credito. 
+	// Insira aqui o ID do token do cartão de credito.
 	PayUParameters::TOKEN_ID => "6f5f32d9-9c6f-4d57-97d7-68cde86f9266",
 	// Insira aqui o ID do cliente.
 	PayUParameters::CUSTOMER_ID => "6eb24tzp40"
@@ -871,9 +871,9 @@ parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
 // (OPCIONAL) Insira aqui a primeira parte do endereço.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Address Name");
-// (OPCIONAL) Insira aqui a segunda parte do endereço 
+// (OPCIONAL) Insira aqui a segunda parte do endereço
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "17 25");
-// (OPCIONAL) Insira aqui a terceira parte do endereço 
+// (OPCIONAL) Insira aqui a terceira parte do endereço
 parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "Of 301");
 // (OPCIONAL) Insira aqui o nome da cidade.
 parameters.put(PayU.PARAMETERS.PAYER_CITY, "City Name");
@@ -893,7 +893,7 @@ parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Sample Plan 001");
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
 // Insira aqui o intervalo do plano.
 parameters.put(PayU.PARAMETERS.PLAN_INTERVAL, "MONTH");
-// Insira aqui a quantidade de intervalos. 
+// Insira aqui a quantidade de intervalos.
 parameters.put(PayU.PARAMETERS.PLAN_INTERVAL_COUNT, "1");
 // Insira aqui a moeda do plano
 parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
@@ -901,28 +901,28 @@ parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
 parameters.put(PayU.PARAMETERS.PLAN_VALUE, "10000");
 //(OPCIONAL) Insira aqui o valor do imposto
 parameters.put(PayU.PARAMETERS.PLAN_TAX, "1600");
-//(OPCIONAL) Insira aqui a base de devolução do imposto. 
+//(OPCIONAL) Insira aqui a base de devolução do imposto.
 parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "8400");
 // Insira aqui a conta ID do plano
 parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "512321");
-// Insira aqui o intervalo das novas tentativas de cobrança. 
+// Insira aqui o intervalo das novas tentativas de cobrança.
 parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "1");
-// Insira aqui a quantidade de cobranças que compõem o plano de pagamento. 
+// Insira aqui a quantidade de cobranças que compõem o plano de pagamento.
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENTS, "12");
-// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado. 
+// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado.
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "3");
-// Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada. 
+// Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada.
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "1");
 // Insira aqui a quantidade de dias de teste da assinatura.
 parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "30");
-	
+
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
 	response.getId();
 	response.getCustomer().getId();
 	response.getCreditCardToken();
-	
+
 }
 </pre>
 </div>
@@ -956,9 +956,9 @@ $parameters = array(
 	PayUParameters::PAYER_DNI =&gt; "1020304050",
 	// (OPCIONAL) Insira aqui a primeira parte do endereço.
 	PayUParameters::PAYER_STREET =&gt; "Address Name",
-	// (OPCIONAL) Insira aqui a segunda parte do endereço 
+	// (OPCIONAL) Insira aqui a segunda parte do endereço
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPCIONAL) Insira aqui a terceira parte do endereço 
+	// (OPCIONAL) Insira aqui a terceira parte do endereço
 	PayUParameters::PAYER_STREET_3 =&gt; "Of 301",
 	// (OPCIONAL) Insira aqui o nome da cidade.
 	PayUParameters::PAYER_CITY =&gt; "City Name",
@@ -966,7 +966,7 @@ $parameters = array(
 	PayUParameters::PAYER_STATE =&gt; "State Name",
 	// (OPCIONAL) Insira aqui o codigo do pais.
 	PayUParameters::PAYER_COUNTRY =&gt; "CO",
-	// (OPCIONAL) Insira aqui o documento de identificação do pagador. 
+	// (OPCIONAL) Insira aqui o documento de identificação do pagador.
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
 	// (OPCIONAL) Insira aqui o número do telefone.
 	PayUParameters::PAYER_PHONE =&gt; "300300300",
@@ -978,7 +978,7 @@ $parameters = array(
 	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
 	// Insira aqui o intervalo do plano.
 	PayUParameters::PLAN_INTERVAL =&gt; "MONTH",
-	// Insira aqui a quantidade de intervalos. 
+	// Insira aqui a quantidade de intervalos.
 	PayUParameters::PLAN_INTERVAL_COUNT =&gt; "1",
 	// Insira aqui a moeda do plano
 	PayUParameters::PLAN_CURRENCY =&gt; "COP",
@@ -986,15 +986,15 @@ $parameters = array(
 	PayUParameters::PLAN_VALUE =&gt; "10000",
 	//(OPCIONAL) Insira aqui o valor do imposto
 	PayUParameters::PLAN_TAX =&gt; "1600",
-	//(OPCIONAL) Insira aqui a base de devolução do imposto. 
+	//(OPCIONAL) Insira aqui a base de devolução do imposto.
 	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "8400",
 	// Insira aqui a conta ID do plano
 	PayUParameters::ACCOUNT_ID =&gt; "512321",
 	// Insira aqui o intervalo das novas tentativas de cobrança.
 	PayUParameters::PLAN_ATTEMPTS_DELAY =&gt; "1",
-	// Insira aqui a quantidade de cobranças que compõem o plano de pagamento. 
+	// Insira aqui a quantidade de cobranças que compõem o plano de pagamento.
 	PayUParameters::PLAN_MAX_PAYMENTS =&gt; "12",
-	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado. 
+	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado.
 	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
 	// Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada.
 	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
@@ -1005,9 +1005,9 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
+	$response-&gt;id;
 	$response-&gt;plan-&gt;id;
-	$response-&gt;customer-&gt;id;        	
+	$response-&gt;customer-&gt;id;
 }
 </pre>
 </div>
@@ -1037,10 +1037,10 @@ parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
 //Coloque aqui o número de parcelas.
 parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
 	response.getId();
-	
+
 }
 </pre>
 </div>
@@ -1063,7 +1063,7 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
+	$response-&gt;id;
 }
 </pre>
 </div>
@@ -1115,19 +1115,19 @@ parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "Of 301");
 parameters.put(PayU.PARAMETERS.PAYER_CITY, "City Name");
 // (OPCIONAL) Insira aqui o nome do estado.
 parameters.put(PayU.PARAMETERS.PAYER_STATE, "State Name");
-// (OPCIONAL) Insira o código do pais do endereço 
+// (OPCIONAL) Insira o código do pais do endereço
 parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
 // (OPCIONAL) IInsira aqui o código postal.
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
 // (OPCIONAL) Insira aqui o número do telefone.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
-	
+
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
 	response.getId();
 	response.getCreditCardToken();
-	
+
 }
 </pre>
 </div>
@@ -1159,9 +1159,9 @@ $parameters = array(
 	PayUParameters::PAYER_DNI =&gt; "1020304050",
 	// (OPCIONAL) Insira aqui a primeira parte do endereço.
 	PayUParameters::PAYER_STREET =&gt; "Address Name",
-	// (OPCIONAL) Insira aqui a segunda parte do endereço 
+	// (OPCIONAL) Insira aqui a segunda parte do endereço
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPCIONAL) Insira aqui a terceira parte do endereço 
+	// (OPCIONAL) Insira aqui a terceira parte do endereço
 	PayUParameters::PAYER_STREET_3 =&gt; "Of 301",
 	// (OPCIONAL) Insira aqui o nome da cidade.
 	PayUParameters::PAYER_CITY =&gt; "City Name",
@@ -1182,7 +1182,7 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
+	$response-&gt;id;
 }
 </pre>
 </div>
@@ -1208,7 +1208,7 @@ parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
 
 //Coloque aqui o ID do pagador.
 parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "eab38z33hh2");
-// Insira aqui o ID do token do cartão de credito. 
+// Insira aqui o ID do token do cartão de credito.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "a068e980-a6d7-4a19-b549-75c04f39ec22");
 
 // --  Parâmetros do plano --
@@ -1218,7 +1218,7 @@ parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "Sample Plan 001");
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
 // Insira aqui o intervalo do plano.
 parameters.put(PayU.PARAMETERS.PLAN_INTERVAL, "MONTH");
-// Insira aqui a quantidade de intervalos. 
+// Insira aqui a quantidade de intervalos.
 parameters.put(PayU.PARAMETERS.PLAN_INTERVAL_COUNT, "1");
 // Insira aqui a moeda do plano
 parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
@@ -1226,25 +1226,25 @@ parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
 parameters.put(PayU.PARAMETERS.PLAN_VALUE, "10000");
 //(OPCIONAL) Insira aqui o valor do imposto
 parameters.put(PayU.PARAMETERS.PLAN_TAX, "1600");
-//(OPCIONAL) Insira aqui a base de devolução do imposto. 
+//(OPCIONAL) Insira aqui a base de devolução do imposto.
 parameters.put(PayU.PARAMETERS.PLAN_TAX_RETURN_BASE, "8400");
 // Insira aqui a conta ID do plano
 parameters.put(PayU.PARAMETERS.ACCOUNT_ID, "512321");
-// Insira aqui o intervalo das tentativas de cobrança. 
+// Insira aqui o intervalo das tentativas de cobrança.
 parameters.put(PayU.PARAMETERS.PLAN_ATTEMPTS_DELAY, "1");
-// Insira aqui a quantidade de cobranças que compõem o plano de pagamento. 
+// Insira aqui a quantidade de cobranças que compõem o plano de pagamento.
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENTS, "12");
-// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado. 
+// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado.
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "3");
 // Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada.
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "1");
 // Insira aqui a quantidade de dias de teste da assinatura.
 parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "30");
-	
+
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
-	response.getId();		
+	response.getId();
 }
 </pre>
 </div>
@@ -1260,7 +1260,7 @@ $parameters = array(
 	// -- Parâmetros do cartão de credito --
 	//Coloque aqui o ID do pagador.
 	PayUParameters::CUSTOMER_ID =&gt; "5131879lzbx",
-	// Insira aqui o ID do token do cartão de credito. 
+	// Insira aqui o ID do token do cartão de credito.
 	PayUParameters::TOKEN_ID =&gt; "158e5bed-1e76-4bb2-83c2-97dc9bb1522d",
 
 	// -- Parâmetros do plano --
@@ -1270,7 +1270,7 @@ $parameters = array(
 	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
 	// Insira aqui o intervalo do plano.
 	PayUParameters::PLAN_INTERVAL =&gt; "MONTH",
-	// Insira aqui a quantidade de intervalos. 
+	// Insira aqui a quantidade de intervalos.
 	PayUParameters::PLAN_INTERVAL_COUNT =&gt; "1",
 	// Insira aqui a moeda do plano
 	PayUParameters::PLAN_CURRENCY =&gt; "COP",
@@ -1278,15 +1278,15 @@ $parameters = array(
 	PayUParameters::PLAN_VALUE =&gt; "10000",
 	//(OPCIONAL) Insira aqui o valor do imposto
 	PayUParameters::PLAN_TAX =&gt; "1600",
-	//(OPCIONAL) Insira aqui a base de devolução do imposto. 
+	//(OPCIONAL) Insira aqui a base de devolução do imposto.
 	PayUParameters::PLAN_TAX_RETURN_BASE =&gt; "8400",
 	// Ingresa aquí la cuenta Id del plan
 	PayUParameters::ACCOUNT_ID =&gt; "512321",
-	// Insira aqui o intervalo das tentativas de cobrança. 
+	// Insira aqui o intervalo das tentativas de cobrança.
 	PayUParameters::PLAN_ATTEMPTS_DELAY =&gt; "1",
 	// Insira aqui a quantidade de cobranças que compõem o plano de pagamento.
 	PayUParameters::PLAN_MAX_PAYMENTS =&gt; "12",
-	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado. 
+	// Insira aqui a quantidade total de novas tentativas quando um pagamento tem sido rejeitado.
 	PayUParameters::PLAN_MAX_PAYMENT_ATTEMPTS =&gt; "3",
 	// Insira aqui o número máximo de pagamentos pendentes que uma assinatura pode ter antes de ser cancelada.
 	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
@@ -1297,8 +1297,8 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
-	$response-&gt;plan-&gt;id;  
+	$response-&gt;id;
+	$response-&gt;plan-&gt;id;
 }
 </pre>
 </div>
@@ -1316,15 +1316,15 @@ Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-// Insira o ID da assinatura.  
+// Insira o ID da assinatura.
 parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "320756yk1x0");
-// Insira aqui o ID do token do cartão de credito. 
+// Insira aqui o ID do token do cartão de credito.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "a068e980-a6d7-4a19-b549-75c04f39ec22");
 
 Subscription response = PayUSubscription.update(parameters);
-		
+
 if(response!=null){
-	
+
 }
 </pre>
 </div>
@@ -1346,11 +1346,11 @@ No disponible
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Insira o ID da assinatura.  
+// Insira o ID da assinatura.
 parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "320756yk1x0");
 
 Subscription response = PayUSubscription.find(parameters);
-		
+
 if(response!=null){
 	response.getCreditCardToken();
 	response.getCustomer();
@@ -1375,7 +1375,7 @@ No disponible
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Insira o ID da assinatura.  
+// Insira o ID da assinatura.
 parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "123");
 boolean response = PayUSubscription.cancel(parameters);
 LoggerUtil.info("{0}", response);
@@ -1385,7 +1385,7 @@ LoggerUtil.info("{0}", response);
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// Insira o ID da assinatura.  
+	// Insira o ID da assinatura.
 	PayUParameters::SUBSCRIPTION_ID =&gt; "03e481u9l13",
 );
 
@@ -1459,13 +1459,13 @@ if($response){
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Descrição da taxa extra.  
+// Descrição da taxa extra.
 parameters.put(PayU.PARAMETERS.DESCRIPTION, "Cargo extra de prueba");
-// Valor da taxa extra.  
+// Valor da taxa extra.
 parameters.put(PayU.PARAMETERS.ITEM_VALUE, "20000");
-// Moeda da taxa extra.  
+// Moeda da taxa extra.
 parameters.put(PayU.PARAMETERS.CURRENCY, "COP");
-// Identificador da assinatura.  
+// Identificador da assinatura.
 parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "52b04sx2s6");
 // Impostos – Opcional
 parameters.put(PayU.PARAMETERS.ITEM_TAX, "0");
@@ -1474,7 +1474,7 @@ parameters.put(PayU.PARAMETERS.ITEM_TAX_RETURN_BASE, "0");
 RecurringBillItem response = PayURecurringBillItem.create(parameters);
 
 if(response!=null){
-	response.getId();		
+	response.getId();
 }
 </pre>
 </div>
@@ -1482,13 +1482,13 @@ if(response!=null){
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// Descrição da taxa extra.  
+	// Descrição da taxa extra.
 	PayUParameters::DESCRIPTION =&gt; "Cargo extra de prueba",
-	// Valor da taxa extra.  
+	// Valor da taxa extra.
 	PayUParameters::ITEM_VALUE =&gt; "20000",
-	// Moeda da taxa extra.  
+	// Moeda da taxa extra.
 	PayUParameters::CURRENCY =&gt; "COP",
-	/// Identificador da assinatura.  
+	/// Identificador da assinatura.
 	PayUParameters::SUBSCRIPTION_ID =&gt; "a9d01imeihk",
 	// Impostos – Opcional
 	PayUParameters::ITEM_TAX =&gt; "0",
@@ -1534,13 +1534,13 @@ RecurringBillItem response = PayURecurringBillItem.update(parameters);
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// ID da taxa extra. 
+	// ID da taxa extra.
 	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "cbb57ywul2l",
-	// Descrição da taxa extra.  
+	// Descrição da taxa extra.
 	PayUParameters::DESCRIPTION =&gt; "Cargo extra de prueba",
-	// Valor da taxa extra.  
+	// Valor da taxa extra.
 	PayUParameters::ITEM_VALUE =&gt; "20000",
-	// Moeda da taxa extra.  
+	// Moeda da taxa extra.
 	PayUParameters::CURRENCY =&gt; "COP",
 	// Impostos – Opcional
 	PayUParameters::ITEM_TAX =&gt; "0",
@@ -1567,13 +1567,13 @@ Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
-// ID da taxa extra.  
+// ID da taxa extra.
 parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "5e174m7lgns");
 
 RecurringBillItem response = PayURecurringBillItem.find(parameters);
 
 if(response!=null){
-	
+
 }
 </pre>
 </div>
@@ -1581,7 +1581,7 @@ if(response!=null){
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// ID da taxa extra.  
+	// ID da taxa extra.
 	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "cbb57ywul2l",
 );
 
@@ -1590,7 +1590,7 @@ $response = PayURecurringBillItem::find($parameters);
 if($response){
 	$response-&gt;description;
 	$response-&gt;subscriptionId;
-	$response-&gt;recurringBillId;	
+	$response-&gt;recurringBillId;
 }
 </pre>
 </div>
@@ -1607,7 +1607,7 @@ if($response){
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// ID da taxa extra.  
+// ID da taxa extra.
 parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "15tolsvwz7l");
 boolean response = PayURecurringBillItem.delete(parameters);
 </pre>
@@ -1616,7 +1616,7 @@ boolean response = PayURecurringBillItem.delete(parameters);
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// ID da taxa extra. 
+	// ID da taxa extra.
 	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "228bdp236sy",
 );
 

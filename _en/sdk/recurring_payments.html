@@ -30,7 +30,7 @@ subcategory: recurring
 <div class="list-arrow">
     <ul>
         <li>Recurring payments is only available for accounts <span class="blue-text-16">in Brazil, Colombia and Mexico.</span></li>
-    </ul>  
+    </ul>
 </div>
 &nbsp;<br>
 Pointing to the corresponding URLs:
@@ -182,9 +182,9 @@ Example request:
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Enter the new plan‘s description here
 parameters.put(PayU.PARAMETERS.PLAN_DESCRIPTION, "New Basic Plan");
-// Enter the identification code of the plan here (Must be an existing code) 
+// Enter the identification code of the plan here (Must be an existing code)
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "ASd4561379351327982");
-// Enter the currency of the plan here (Must be the same used during the creation of the plan) 
+// Enter the currency of the plan here (Must be the same used during the creation of the plan)
 parameters.put(PayU.PARAMETERS.PLAN_CURRENCY, "COP");
 // Enter the new value of the plan here
 parameters.put(PayU.PARAMETERS.PLAN_VALUE, "100000");
@@ -222,7 +222,7 @@ $parameters = array(
 	PayUParameters::PLAN_MAX_PENDING_PAYMENTS =&gt; "1",
 );
 
-$response = PayUSubscriptionPlans::update($parameters);    
+$response = PayUSubscriptionPlans::update($parameters);
 if($response){
 }
 </pre>
@@ -262,8 +262,8 @@ if($response) {
 	 $response-&gt;maxPaymentAttempts;
 	 $response-&gt;paymentAttemptsDelay;
 	 $response-&gt;maxPendingPayments;
-	 $response-&gt;trialDays;   
-}  
+	 $response-&gt;trialDays;
+}
 </pre>
 </div>
 </div>
@@ -350,11 +350,11 @@ if($response) {
 Example request:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Enter the costumer name here. 
+// Enter the costumer name here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
-// Enter the costumer email here. 
+// Enter the costumer email here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "oscar.romero@payulatam.com");
-// Operation create costumer 
+// Operation create costumer
 Customer response = PayUCustomers.create(parameters);
 </pre>
 </div>
@@ -362,7 +362,7 @@ Customer response = PayUCustomers.create(parameters);
 Example request:
 <pre>
 $parameters = array(
-	// Enter the costumer name here. 
+	// Enter the costumer name here.
 	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
 	// Enter the costumer email here.
 	PayUParameters::CUSTOMER_EMAIL =&gt; "pperez@payulatam.com"
@@ -386,11 +386,11 @@ if($response) {
 Example request:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Enter the costumer name here. 
+// Enter the costumer name here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
-// Enter the costumer email here. 
+// Enter the costumer email here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "oscar.romero@payulatam.com");
-// Operation create costumer 
+// Operation create costumer
 Customer response = PayUCustomers.create(parameters);
 </pre>
 </div>
@@ -398,9 +398,9 @@ Customer response = PayUCustomers.create(parameters);
 Example request:
 <pre>
 $parameters = array(
-	// Enter the costumer ID here. 
+	// Enter the costumer ID here.
 	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e",
-	// Enter the costumer name here. 
+	// Enter the costumer name here.
 	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
 	// Enter the costumer email here.
 	PayUParameters::CUSTOMER_EMAIL =&gt; "pperez@payulatam.com"
@@ -408,7 +408,7 @@ $parameters = array(
 $response = PayUCustomers::update($parameters);
 
 if($response){
-	
+
 }
 </pre>
 </div>
@@ -423,8 +423,8 @@ if($response){
 Example request:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Enter the costumer ID here. 
-parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz"); 
+// Enter the costumer ID here.
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
 Customer response = PayUCustomers.find(parameters);
 </pre>
 </div>
@@ -432,7 +432,7 @@ Customer response = PayUCustomers.find(parameters);
 Example request:
 <pre>
 $parameters = array(
-	// Enter the costumer name here. 
+	// Enter the costumer name here.
 	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e",
 );
 $response = PayUCustomers::find($parameters);
@@ -441,7 +441,7 @@ if($response) {
 	$response-&gt;fullName;
 	$response-&gt;email;
 	$creditCards=$response-&gt;creditCards;
-	
+
 	foreach ($creditCards as $creditCard) {
 		$creditCard-&gt;token;
 		$creditCard-&gt;number;
@@ -456,7 +456,7 @@ if($response) {
 		$address-&gt;country;
 		$address-&gt;postalCode;
 		$address-&gt;phone;
-	} 
+	}
 }
 </pre>
 </div>
@@ -471,7 +471,7 @@ if($response) {
 Example request:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Enter the costumer ID here. 
+// Enter the costumer ID here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
 boolean response = PayUCustomers.delete(parameters);
 </pre>
@@ -480,14 +480,14 @@ boolean response = PayUCustomers.delete(parameters);
 Example request:
 <pre>
 $parameters = array(
-	// Enter the costumer ID here. 
+	// Enter the costumer ID here.
 	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e"
 );
 
 $response = PayUCustomers::delete($parameters);
 
 if($response){
-	
+
 }
 </pre>
 </div>
@@ -561,7 +561,7 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "Nombre");
 //Enter the payer's identification document related to the credit card here.
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // -- The following parameters are optional --
-// Enter the first part of the address here 
+// Enter the first part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Calle falsa");
 // Enter the second part of the address here (if required).
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "123");
@@ -575,9 +575,9 @@ parameters.put(PayU.PARAMETERS.PAYER_STATE, "Bogotá D.C.");
 parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, PaymentCountry.CO.name());
 // Enter the postal code here.
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
-// Enter the contact phone here. 
+// Enter the contact phone here.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
-CreditCard response = PayUCreditCard.create(parameters);
+PaymentPlanCreditCard response = PayUCreditCard.create(parameters);
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
@@ -585,25 +585,25 @@ LoggerUtil.info("{0}", response);
 Example request:
 <pre style="height:200px; overflow: auto;">
 $parameters = array(
-	// Enter the costumer ID here. 
-	PayUParameters::CUSTOMER_ID =&gt; "6eb24tzp40", 
-	// Enter the costumer name here. 
+	// Enter the costumer ID here.
+	PayUParameters::CUSTOMER_ID =&gt; "6eb24tzp40",
+	// Enter the costumer name here.
 	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
 	//Enter the number of the credit card here
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4242424242424242",
 	// Enter the expiration date of the credit card here with format YYYY/MM
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2018/01",
-	// Enter the credit card’s franchise  
+	// Enter the credit card’s franchise
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
         //Enter the payer's identification document related to the credit card here.
         PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "101010123",
-	// (OPTIONAL) Enter the first part of the address here 
+	// (OPTIONAL) Enter the first part of the address here
 	PayUParameters::PAYER_STREET =&gt; "Street 93B",
-	// (OPTIONAL) Enter the second part of the address here 
+	// (OPTIONAL) Enter the second part of the address here
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPTIONAL) Enter the third part of the address here 
+	// (OPTIONAL) Enter the third part of the address here
 	PayUParameters::PAYER_STREET_3 =&gt; "Office 301",
 	// (OPTIONAL) Enter the city of the payer here.
 	PayUParameters::PAYER_CITY =&gt; "Bogotá",
@@ -613,7 +613,7 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "CO",
 	// (OPTIONAL) Enter the postal code of the payer here.
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
-	// (OPTIONAL) Enter the contact phone here. 
+	// (OPTIONAL) Enter the contact phone here.
 	PayUParameters::PAYER_PHONE =&gt; "300300300"
 );
 
@@ -658,9 +658,9 @@ parameters.put(PayU.PARAMETERS.PAYER_STATE, "Bogotá D.C.");
 parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, PaymentCountry.CO.name());
 // Enter the postal code here.
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
-// Enter the contact phone here. 
+// Enter the contact phone here.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
-CreditCard response = PayUCreditCard.update(parameters);
+PaymentPlanCreditCard response = PayUCreditCard.update(parameters);
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
@@ -670,7 +670,7 @@ Example request:
 $parameters = array(
 	// Enter the credit card’s token identifier here.
 	PayUParameters::TOKEN_ID =&gt; "6f5f32d9-9c6f-4d57-97d7-68cde86f9266",
-	// Enter the costumer name here. 
+	// Enter the costumer name here.
 	PayUParameters::PAYER_NAME =&gt; "Pedro Perez",
 	Enter the expiration date of the credit card here with format YYYY/MM
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2018/01",
@@ -678,11 +678,11 @@ $parameters = array(
         PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "101010123",
-	// (OPTIONAL) Enter the first part of the address here 
+	// (OPTIONAL) Enter the first part of the address here
 	PayUParameters::PAYER_STREET =&gt; "Street 93B",
-	// (OPTIONAL) Enter the second part of the address here 
+	// (OPTIONAL) Enter the second part of the address here
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPTIONAL) Enter the third part of the address here 
+	// (OPTIONAL) Enter the third part of the address here
 	PayUParameters::PAYER_STREET_3 =&gt; "Office 301",
 	// (OPTIONAL) Enter the city of the payer here.
 	PayUParameters::PAYER_CITY =&gt; "Bogotá",
@@ -692,7 +692,7 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "CO",
 	// (OPTIONAL) Enter the postal code of the payer here.
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
-	// (OPTIONAL) Enter the contact phone here. 
+	// (OPTIONAL) Enter the contact phone here.
 	PayUParameters::PAYER_PHONE =&gt; "300300300"
 );
 
@@ -716,7 +716,7 @@ Example request:
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Enter the credit card’s token identifier here.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "25181bb1-b07f-4b9b-ae5d-6b13436c706d");
-CreditCard response = PayUCreditCard.find(parameters);
+PaymentPlanCreditCard response = PayUCreditCard.find(parameters);
 LoggerUtil.info("{0}", response);
 </pre>
 </div>
@@ -744,7 +744,7 @@ if($response){
 	$address-&gt;state;
 	$address-&gt;country;
 	$address-&gt;postalCode;
-	$address-&gt;phone;        
+	$address-&gt;phone;
 }
 </pre>
 </div>
@@ -761,7 +761,7 @@ Example request:
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Enter the credit card’s token identifier here.
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "25181bb1-b07f-4b9b-ae5d-6b13436c706d");
-// Enter the costumer ID here. 
+// Enter the costumer ID here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "17ylzjz6bxz");
 boolean response = PayUCreditCard.delete(parameters);
 LoggerUtil.info("{0}", response);
@@ -773,7 +773,7 @@ Example request:
 $parameters = array(
 	// Enter the credit card’s token identifier here.
 	PayUParameters::TOKEN_ID => "6f5f32d9-9c6f-4d57-97d7-68cde86f9266",
-	// Enter the costumer ID here. 
+	// Enter the costumer ID here.
 	PayUParameters::CUSTOMER_ID => "6eb24tzp40"
 );
 
@@ -851,9 +851,9 @@ parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
 
 // -- Client parameters --
-// Enter the costumer name here. 
+// Enter the costumer name here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Pedro Perez");
-// Enter the costumer email here. 
+// Enter the costumer email here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "pperezz@payulatam.com");
 
 //-- Credit card parameters --
@@ -863,17 +863,17 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "Sample User Name");
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4242424242424242");
 Enter the expiration date of the credit card here with format YYYY/MM
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2018/01");
-// Enter the credit card’s franchise  
+// Enter the credit card’s franchise
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 //Enter the payer's identification document related to the credit card here.
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // (OPTIONAL) Enter the payer's identification document here.
 parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
-// (OPTIONAL) Enter the first part of the address here 
+// (OPTIONAL) Enter the first part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Address Name");
-// (OPTIONAL) Enter the second part of the address here 
+// (OPTIONAL) Enter the second part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "17 25");
-// (OPTIONAL) Enter the third part of the address here 
+// (OPTIONAL) Enter the third part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "Of 301");
 // (OPTIONAL) Enter the city of the payer here.
 parameters.put(PayU.PARAMETERS.PAYER_CITY, "City Name");
@@ -883,7 +883,7 @@ parameters.put(PayU.PARAMETERS.PAYER_STATE, "State Name");
 parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
 // (OPTIONAL) Enter the postal code of the payer here.
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
-// (OPTIONAL) Enter the contact phone here. 
+// (OPTIONAL) Enter the contact phone here.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
 
 // -- Plan parameters --
@@ -915,14 +915,14 @@ parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "3");
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "1");
 // Enter the amount of trial days of the subscription here.
 parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "30");
-	
+
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
 	response.getId();
 	response.getCustomer().getId();
 	response.getCreditCardToken();
-	
+
 }
 </pre>
 </div>
@@ -936,9 +936,9 @@ $parameters = array(
 	PayUParameters::TRIAL_DAYS =&gt; "10",
 
 	// -- Client parameters --
-	// Enter the costumer name here. 
+	// Enter the costumer name here.
 	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
-	// Enter the costumer email here. 
+	// Enter the costumer email here.
 	PayUParameters::CUSTOMER_EMAIL =&gt; "pperezz@payulatam.com",
 
 	//-- Credit card parameters --
@@ -948,17 +948,17 @@ $parameters = array(
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4242424242424242",
 	// Enter the expiration date of the credit card here with format YYYY/MM
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
-	// Enter the credit card’s franchise  
+	// Enter the credit card’s franchise
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
         //Enter the payer's identification document related to the credit card here.
         PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "1020304050",
-	// (OPTIONAL) Enter the first part of the address here 
+	// (OPTIONAL) Enter the first part of the address here
 	PayUParameters::PAYER_STREET =&gt; "Address Name",
-	// (OPTIONAL) Enter the second part of the address here 
+	// (OPTIONAL) Enter the second part of the address here
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPTIONAL) Enter the third part of the address here 
+	// (OPTIONAL) Enter the third part of the address here
 	PayUParameters::PAYER_STREET_3 =&gt; "Of 301",
 	// (OPTIONAL) Enter the city of the payer here.
 	PayUParameters::PAYER_CITY =&gt; "City Name",
@@ -968,7 +968,7 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "CO",
 	// (OPTIONAL) Enter the postal code of the payer here.
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
-	// (OPTIONAL) Enter the contact phone here. 
+	// (OPTIONAL) Enter the contact phone here.
 	PayUParameters::PAYER_PHONE =&gt; "300300300",
 
 	// -- Plan parameters --
@@ -1005,9 +1005,9 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
+	$response-&gt;id;
 	$response-&gt;plan-&gt;id;
-	$response-&gt;customer-&gt;id;        	
+	$response-&gt;customer-&gt;id;
 }
 </pre>
 </div>
@@ -1026,7 +1026,7 @@ With all existing elements</a></h3><div class="squelch-taas-toggle-shortcode-con
 Example request:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
-// Enter the plan code to subscribe 
+// Enter the plan code to subscribe
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
 //Enter the payer's ID here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "eab38z33hh2");
@@ -1037,10 +1037,10 @@ parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
 //Enter the number of installments here.
 parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
 	response.getId();
-	
+
 }
 </pre>
 </div>
@@ -1048,7 +1048,7 @@ if(response!=null){
 Example request:
 <pre>
 $parameters = array(
-	// Enter the plan code to subscribe 
+	// Enter the plan code to subscribe
 	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001s",
 	//Enter the payer's ID here.
 	PayUParameters::CUSTOMER_ID =&gt; "f03612gyte",
@@ -1063,7 +1063,7 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
+	$response-&gt;id;
 }
 </pre>
 </div>
@@ -1087,7 +1087,7 @@ parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "10");
 //Enter the number of installments here.
 parameters.put(PayU.PARAMETERS.INSTALLMENTS_NUMBER, "1");
 
-// Enter the plan code to subscribe 
+// Enter the plan code to subscribe
 parameters.put(PayU.PARAMETERS.PLAN_CODE, "sample-plan-code-001");
 //Enter the payer's ID here.
 parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "eab38z33hh2");
@@ -1099,17 +1099,17 @@ parameters.put(PayU.PARAMETERS.PAYER_NAME, "Sample User Name");
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4242424242424242");
 //Enter the expiration date of the credit card here with format YYYY/MM
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_EXPIRATION_DATE, "2018/01");
-// Enter the credit card’s franchise  
+// Enter the credit card’s franchise
 parameters.put(PayU.PARAMETERS.PAYMENT_METHOD, "VISA");
 //Enter the payer's identification document related to the credit card here.
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_DOCUMENT, "1020304050");
 // (OPTIONAL) Enter the payer's identification document here.
 parameters.put(PayU.PARAMETERS.PAYER_DNI, "1020304050");
-// (OPTIONAL) Enter the first part of the address here 
+// (OPTIONAL) Enter the first part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "Address Name");
-// (OPTIONAL) Enter the second part of the address here 
+// (OPTIONAL) Enter the second part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "17 25");
-// (OPTIONAL) Enter the third part of the address here 
+// (OPTIONAL) Enter the third part of the address here
 parameters.put(PayU.PARAMETERS.PAYER_STREET_3, "Of 301");
 // (OPTIONAL) Enter the city of the payer here.
 parameters.put(PayU.PARAMETERS.PAYER_CITY, "City Name");
@@ -1119,15 +1119,15 @@ parameters.put(PayU.PARAMETERS.PAYER_STATE, "State Name");
 parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
 // (OPTIONAL) Enter the postal code of the payer here.
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "00000");
-// (OPTIONAL) Enter the contact phone here. 
+// (OPTIONAL) Enter the contact phone here.
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "300300300");
-	
+
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
 	response.getId();
 	response.getCreditCardToken();
-	
+
 }
 </pre>
 </div>
@@ -1151,17 +1151,17 @@ $parameters = array(
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4242424242424242",
 	// Enter the expiration date of the credit card here with format YYYY/MM
 	PayUParameters::CREDIT_CARD_EXPIRATION_DATE =&gt; "2014/12",
-	// Enter the credit card’s franchise  
+	// Enter the credit card’s franchise
 	PayUParameters::PAYMENT_METHOD =&gt; "VISA",
         //Enter the payer's identification document related to the credit card here.
         PayUParameters::CREDIT_CARD_DOCUMENT =&gt; "1020304050",
 	// (OPTIONAL) Enter the payer's identification document here.
 	PayUParameters::PAYER_DNI =&gt; "1020304050",
-	// (OPTIONAL) Enter the first part of the address here 
+	// (OPTIONAL) Enter the first part of the address here
 	PayUParameters::PAYER_STREET =&gt; "Address Name",
-	// (OPTIONAL) Enter the second part of the address here 
+	// (OPTIONAL) Enter the second part of the address here
 	PayUParameters::PAYER_STREET_2 =&gt; "17 25",
-	// (OPTIONAL) Enter the third part of the address here 
+	// (OPTIONAL) Enter the third part of the address here
 	PayUParameters::PAYER_STREET_3 =&gt; "Of 301",
 	// (OPTIONAL) Enter the city of the payer here.
 	PayUParameters::PAYER_CITY =&gt; "City Name",
@@ -1171,18 +1171,18 @@ $parameters = array(
 	PayUParameters::PAYER_COUNTRY =&gt; "CO",
 	// (OPTIONAL) Enter the postal code of the payer here.
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "00000",
-	// (OPTIONAL) Enter the contact phone here. 
+	// (OPTIONAL) Enter the contact phone here.
 	PayUParameters::PAYER_PHONE =&gt; "300300300",
 
 	// -- Plan parameters --
-	// Enter the plan code to subscribe 
+	// Enter the plan code to subscribe
 	PayUParameters::PLAN_CODE =&gt; "sample-plan-code-001",
  );
 
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
+	$response-&gt;id;
 }
 </pre>
 </div>
@@ -1240,11 +1240,11 @@ parameters.put(PayU.PARAMETERS.PLAN_MAX_PAYMENT_ATTEMPTS, "3");
 parameters.put(PayU.PARAMETERS.PLAN_MAX_PENDING_PAYMENTS, "1");
 // Enter the amount of trial days here.
 parameters.put(PayU.PARAMETERS.TRIAL_DAYS, "30");
-	
+
 Subscription response = PayUSubscription.create(parameters);
-		
+
 if(response!=null){
-	response.getId();		
+	response.getId();
 }
 </pre>
 </div>
@@ -1297,8 +1297,8 @@ $parameters = array(
 $response = PayUSubscriptions::createSubscription($parameters);
 
 if($response){
-	$response-&gt;id;   
-	$response-&gt;plan-&gt;id;  
+	$response-&gt;id;
+	$response-&gt;plan-&gt;id;
 }
 </pre>
 </div>
@@ -1322,9 +1322,9 @@ parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "320756yk1x0");
 parameters.put(PayU.PARAMETERS.TOKEN_ID, "a068e980-a6d7-4a19-b549-75c04f39ec22");
 
 Subscription response = PayUSubscription.update(parameters);
-		
+
 if(response!=null){
-	
+
 }
 </pre>
 </div>
@@ -1350,7 +1350,7 @@ Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "320756yk1x0");
 
 Subscription response = PayUSubscription.find(parameters);
-		
+
 if(response!=null){
 	response.getCreditCardToken();
 	response.getCustomer();
@@ -1461,7 +1461,7 @@ Example request:
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Additional charge description
 parameters.put(PayU.PARAMETERS.DESCRIPTION, "Cargo extra de prueba");
-// Value of the additional charge 
+// Value of the additional charge
 parameters.put(PayU.PARAMETERS.ITEM_VALUE, "20000");
 // Currency
 parameters.put(PayU.PARAMETERS.CURRENCY, "COP");
@@ -1469,12 +1469,12 @@ parameters.put(PayU.PARAMETERS.CURRENCY, "COP");
 parameters.put(PayU.PARAMETERS.SUBSCRIPTION_ID, "52b04sx2s6");
 // Enter the taxes here (optional)
 parameters.put(PayU.PARAMETERS.ITEM_TAX, "0");
-// Devolution base of the taxes (optional) 
+// Devolution base of the taxes (optional)
 parameters.put(PayU.PARAMETERS.ITEM_TAX_RETURN_BASE, "0");
 RecurringBillItem response = PayURecurringBillItem.create(parameters);
 
 if(response!=null){
-	response.getId();		
+	response.getId();
 }
 </pre>
 </div>
@@ -1484,7 +1484,7 @@ Example request:
 $parameters = array(
 	// Additional charge description
 	PayUParameters::DESCRIPTION =&gt; "Cargo extra de prueba",
-	// Value of the additional charge 
+	// Value of the additional charge
 	PayUParameters::ITEM_VALUE =&gt; "20000",
 	// Currency
 	PayUParameters::CURRENCY =&gt; "COP",
@@ -1492,7 +1492,7 @@ $parameters = array(
 	PayUParameters::SUBSCRIPTION_ID =&gt; "a9d01imeihk",
 	// Enter the taxes here (optional)
 	PayUParameters::ITEM_TAX =&gt; "0",
-	// Devolution base of the taxes (optional) 
+	// Devolution base of the taxes (optional)
 	PayUParameters::ITEM_TAX_RETURN_BASE =&gt; "0",
 );
 
@@ -1517,7 +1517,7 @@ Example request:
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 // Enter the additional charge ID here.
 parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "15tolsvwz7l");
-//(OPTIONAL) New description of the additional charge 
+//(OPTIONAL) New description of the additional charge
 parameters.put(PayU.PARAMETERS.DESCRIPTION, "Test Item New");
 //(OPTIONAL) New value of the additional charge
 parameters.put(PayU.PARAMETERS.ITEM_VALUE, "200.5");
@@ -1538,13 +1538,13 @@ $parameters = array(
 	PayUParameters::RECURRING_BILL_ITEM_ID =&gt; "cbb57ywul2l",
 	// Additional charge description
 	PayUParameters::DESCRIPTION =&gt; "Cargo extra de prueba",
-	// Value of the additional charge 
+	// Value of the additional charge
 	PayUParameters::ITEM_VALUE =&gt; "20000",
 	// Currency
 	PayUParameters::CURRENCY =&gt; "COP",
 	// Enter the taxes here (optional)
 	PayUParameters::ITEM_TAX =&gt; "0",
-	// Devolution base of the taxes (optional) 
+	// Devolution base of the taxes (optional)
 	PayUParameters::ITEM_TAX_RETURN_BASE =&gt; "0",
 );
 
@@ -1573,7 +1573,7 @@ parameters.put(PayU.PARAMETERS.RECURRING_BILL_ITEM_ID, "5e174m7lgns");
 RecurringBillItem response = PayURecurringBillItem.find(parameters);
 
 if(response!=null){
-	
+
 }
 </pre>
 </div>
@@ -1590,7 +1590,7 @@ $response = PayURecurringBillItem::find($parameters);
 if($response){
 	$response-&gt;description;
 	$response-&gt;subscriptionId;
-	$response-&gt;recurringBillId;	
+	$response-&gt;recurringBillId;
 }
 </pre>
 </div>
