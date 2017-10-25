@@ -386,23 +386,25 @@ if($response) {
 Exemplo pedido:
 <pre>
 Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
+// Insira o ID do cliente
+parameters.put(PayU.PARAMETERS.CUSTOMER_ID, "f543exh3zh5o");
 // Insira o nome do cliente
 parameters.put(PayU.PARAMETERS.CUSTOMER_NAME, "Oscar");
 // Insira aqui o email do cliente.
-parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "oscar.romero@payulatam.com");
-// Operação criar cliente.
-Customer response = PayUCustomers.create(parameters);
+parameters.put(PayU.PARAMETERS.CUSTOMER_EMAIL, "oscarromero@payulatam.com");
+// Operação atualizar cliente.
+Customer response = PayUCustomers.update(parameters);
 </pre>
 </div>
 <div id="squelch-taas-tab-content-2">
 Exemplo pedido:
 <pre>
 $parameters = array(
-	// Ingresa aquí el identificador del cliente,
+	// Insira o ID do cliente
 	PayUParameters::CUSTOMER_ID =&gt; "24978c6l3e",
-	// Ingresa aquí el nombre del cliente
+	// Insira o nome do cliente
 	PayUParameters::CUSTOMER_NAME =&gt; "Pedro Perez",
-	// Ingresa aquí el correo del cliente
+	// Insira aqui o email do cliente.
 	PayUParameters::CUSTOMER_EMAIL =&gt; "pperez@payulatam.com"
 );
 $response = PayUCustomers::update($parameters);
