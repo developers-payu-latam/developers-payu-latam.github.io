@@ -5410,7 +5410,8 @@ Ejemplo respuesta:
 <div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
 	<ul>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">Colombia</a></li>
-                <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">México</a></li>
+    <li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">México</a></li>
+		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">Chile</a></li>
 	</ul>
 <div id="squelch-taas-tab-content-1">
 <span class="blue-text-13"><b>Transferencias bancarias</b></span>
@@ -6164,6 +6165,277 @@ Si se desea elaborar el comprobante de pago, se deben utilizar las siguientes va
 &nbsp;<br>
 </div>
 <!-- FIN SPEI -->
+<!-- TRANSBANK -->
+<div id="squelch-taas-tab-content-3">
+<span class="blue-text-13"><b>Transferencias bancarias</b></span>
+<span class="grey-text-13">Franquicias disponibles: REDCOMPRA. Para integrar este medio de pago, debes dirigir al pagador a la URL que encontrarás en la respuesta de la petición en el parámetro URL_PAYMENT_REDIRECT concatenandolo con el parámetro TRANSBANK_DIRECT_TOKEN que encontrarás igualmente en la respuesta, de la siguiente forma: <span class="highlight-txt">URL_PAYMENT_REDIRECT<u>?token_ws=</u>TRANSBANK_DIRECT_TOKEN</span><br><br>
+El pagador podrá visualizar el pago de la siguiente forma:</span>
+<p align="center"><img src="{{ site.baseurl }}/images/redcompra.PNG" alt="" border="0" /></p>
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-1">JSON</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1-2">XML</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1-1">
+Ejemplo petición:
+<pre style="height: 300px; overflow: auto;">
+<span class="json-open-bracket">{</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"command"</span><span class="json-semi-colon">: </span><span class="json-value">"SUBMIT_TRANSACTION"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchant"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiKey"</span><span class="json-semi-colon">: </span><span class="json-value">"4Vj8eK4rloUd272L48hsrarnUA"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"apiLogin"</span><span class="json-semi-colon">: </span><span class="json-value">"pRRXKOl8ikMmt9u"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transaction"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"order"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-4">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"accountId"</span><span class="json-semi-colon">: </span><span class="json-value">"512325"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"referenceCode"</span><span class="json-semi-colon">: </span><span class="json-value">"payment_test_00000001"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"description"</span><span class="json-semi-colon">: </span><span class="json-value">"payment test"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"language"</span><span class="json-semi-colon">: </span><span class="json-value">"es"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"signature"</span><span class="json-semi-colon">: </span><span class="json-value">"95d7e92b23cae0cae6a98e34cc54be39"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"notifyUrl"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.tes.com/confirmation"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalValues"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-5">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TX_VALUE"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-6">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"value"</span><span class="json-semi-colon">: </span><span class="json-value">100</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"currency"</span><span class="json-semi-colon">: </span><span class="json-value">"CLP"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"buyer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-7">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchantBuyerId"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and second buyer  name"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"buyer_test@test.com"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"contactPhone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dniNumber"</span><span class="json-semi-colon">: </span><span class="json-value">"5415668464654"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"shippingAddress"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-8">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street1"</span><span class="json-semi-colon">: </span><span class="json-value">"Calle Chilena"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street2"</span><span class="json-semi-colon">: </span><span class="json-value">"25151"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"city"</span><span class="json-semi-colon">: </span><span class="json-value">"Santiago de Chile"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"Santiago"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"country"</span><span class="json-semi-colon">: </span><span class="json-value">"CL"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"postalCode"</span><span class="json-semi-colon">: </span><span class="json-value">"000000"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"shippingAddress"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-9">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street1"</span><span class="json-semi-colon">: </span><span class="json-value">"Carrera 4 # 5 - 14"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street2"</span><span class="json-semi-colon">: </span><span class="json-value">"0000"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"city"</span><span class="json-semi-colon">: </span><span class="json-value">"Santiago de Chile"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"Santiago"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"country"</span><span class="json-semi-colon">: </span><span class="json-value">"CL"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"postalCode"</span><span class="json-semi-colon">: </span><span class="json-value">"0000000"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"payer"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-10">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"merchantPayerId"</span><span class="json-semi-colon">: </span><span class="json-value">"1"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"fullName"</span><span class="json-semi-colon">: </span><span class="json-value">"First name and second payer name"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"emailAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"payer_test@test.com"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"contactPhone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"dniNumber"</span><span class="json-semi-colon">: </span><span class="json-value">"5415668464654"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"billingAddress"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-11">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street1"</span><span class="json-semi-colon">: </span><span class="json-value">"Avenida chilena"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"street2"</span><span class="json-semi-colon">: </span><span class="json-value">"452"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"city"</span><span class="json-semi-colon">: </span><span class="json-value">"Concepcion"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"Estado Principal"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"country"</span><span class="json-semi-colon">: </span><span class="json-value">"CL"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"postalCode"</span><span class="json-semi-colon">: </span><span class="json-value">"64000"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"phone"</span><span class="json-semi-colon">: </span><span class="json-value">"7563126"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-13">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"RESPONSE_URL"</span><span class="json-semi-colon">: </span><span class="json-value">"http://www.test.com/respuesta"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION_AND_CAPTURE"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"TRANSBANK_DEBIT"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentCountry"</span><span class="json-semi-colon">: </span><span class="json-value">"CL"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"deviceSessionId"</span><span class="json-semi-colon">: </span><span class="json-value">"vghs6tvkcle931686k1900o6e1"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"cookie"</span><span class="json-semi-colon">: </span><span class="json-value">"pt1t38347bs6jc9ruv2ecpv7o2"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"userAgent"</span><span class="json-semi-colon">: </span><span class="json-value">"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"test"</span><span class="json-semi-colon">: </span><span class="json-value">false</span>
+<span class="json-indent"></span><span class="json-close-bracket">}</span></span>
+</pre>
+Ejemplo respuesta:
+<pre style="height: 300px; overflow: auto;">
+<span class="json-open-bracket">{</span><span class="json-collapse-1">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"code"</span><span class="json-semi-colon">: </span><span class="json-value">"SUCCESS"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"error"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionResponse"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-2">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"orderId"</span><span class="json-semi-colon">: </span><span class="json-value">982339291</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"299f188a-daf4-43ba-9a37-0b309af0d85d"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"state"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"authorizationCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_PAYMENT_IN_ENTITY"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"errorCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"transactionTime"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"operationDate"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"extraParameters"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-3">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"URL_PAYMENT_REDIRECT"</span><span class="json-semi-colon">: </span><span class="json-value">"https://webpay3g.transbank.cl:443/filtroUnificado/initTransaction"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"TRANSBANK_DIRECT_TOKEN"</span><span class="json-semi-colon">: </span><span class="json-value">"e48e0fb6782f12c96f8093262274ca1a942357f1fd30ee3e55cc78f1d4ff7be4"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"additionalInfo"</span><span class="json-semi-colon">: </span><span class="json-value">null</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span>
+<span class="json-indent"></span></span><span class="json-close-bracket">}</span>
+</pre>
+</div>
+<div id="squelch-taas-tab-content-1-2">
+Ejemplo petición:
+<pre style="height: 300px; overflow: auto;">
+<span class="tag">&lt;request&gt;</span><span class="pln">
+   </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+   </span><span class="tag">&lt;command&gt;</span><span class="pln">SUBMIT_TRANSACTION</span><span class="tag">&lt;/command&gt;</span><span class="pln">
+   </span><span class="tag">&lt;merchant&gt;</span><span class="pln">
+      </span><span class="tag">&lt;apiKey&gt;</span><span class="pln">4Vj8eK4rloUd272L48hsrarnUA</span><span class="tag">&lt;/apiKey&gt;</span><span class="pln">
+      </span><span class="tag">&lt;apiLogin&gt;</span><span class="pln">pRRXKOl8ikMmt9u</span><span class="tag">&lt;/apiLogin&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/merchant&gt;</span><span class="pln">
+   </span><span class="tag">&lt;transaction&gt;</span><span class="pln">
+      </span><span class="tag">&lt;order&gt;</span><span class="pln">
+         </span><span class="tag">&lt;accountId&gt;</span><span class="pln">512326</span><span class="tag">&lt;/accountId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;referenceCode&gt;</span><span class="pln">payment_test_00000001</span><span class="tag">&lt;/referenceCode&gt;</span><span class="pln">
+         </span><span class="tag">&lt;description&gt;</span><span class="pln">payment test</span><span class="tag">&lt;/description&gt;</span><span class="pln">
+         </span><span class="tag">&lt;language&gt;</span><span class="pln">es</span><span class="tag">&lt;/language&gt;</span><span class="pln">
+         </span><span class="tag">&lt;signature&gt;</span><span class="pln">f5ddecb11ed0705b6a7b3a4672af9f44</span><span class="tag">&lt;/signature&gt;</span><span class="pln">
+         </span><span class="tag">&lt;notifyUrl&gt;</span><span class="pln">http://www.test.com/confirmation</span><span class="tag">&lt;/notifyUrl&gt;</span><span class="pln">
+         </span><span class="tag">&lt;additionalValues&gt;</span><span class="pln">
+            </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+               </span><span class="tag">&lt;string&gt;</span><span class="pln">TX_VALUE</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+               </span><span class="tag">&lt;additionalValue&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;value&gt;</span><span class="pln">100</span><span class="tag">&lt;/value&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;currency&gt;</span><span class="pln">CLP</span><span class="tag">&lt;/currency&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/additionalValue&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/additionalValues&gt;</span><span class="pln">
+         </span><span class="tag">&lt;buyer&gt;</span><span class="pln">
+            </span><span class="tag">&lt;merchantBuyerId&gt;</span><span class="pln">1</span><span class="tag">&lt;/merchantBuyerId&gt;</span><span class="pln">
+            </span><span class="tag">&lt;fullName&gt;</span><span class="pln">First name and second buyer  name</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
+            </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">buyer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+            </span><span class="tag">&lt;contactPhone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/contactPhone&gt;</span><span class="pln">
+            </span><span class="tag">&lt;dniNumber&gt;</span><span class="pln">5415668464654</span><span class="tag">&lt;/dniNumber&gt;</span><span class="pln">
+            </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
+               </span><span class="tag">&lt;street1&gt;</span><span class="pln">Calle Chilena</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
+               </span><span class="tag">&lt;street2&gt;</span><span class="pln">25151</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
+               </span><span class="tag">&lt;city&gt;</span><span class="pln">Santiago de Chile</span><span class="tag">&lt;/city&gt;</span><span class="pln">
+               </span><span class="tag">&lt;state&gt;</span><span class="pln">Santiago</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+               </span><span class="tag">&lt;country&gt;</span><span class="pln">CL</span><span class="tag">&lt;/country&gt;</span><span class="pln">
+               </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">000000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
+               </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/shippingAddress&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/buyer&gt;</span><span class="pln">
+         </span><span class="tag">&lt;shippingAddress&gt;</span><span class="pln">
+            </span><span class="tag">&lt;street1&gt;</span><span class="pln">Carrera 4 # 5 - 14</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
+            </span><span class="tag">&lt;street2&gt;</span><span class="pln">0000</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
+            </span><span class="tag">&lt;city&gt;</span><span class="pln">Santiago de Chile</span><span class="tag">&lt;/city&gt;</span><span class="pln">
+            </span><span class="tag">&lt;state&gt;</span><span class="pln">Santiago</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+            </span><span class="tag">&lt;country&gt;</span><span class="pln">CL</span><span class="tag">&lt;/country&gt;</span><span class="pln">
+            </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">0000000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
+            </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/shippingAddress&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/order&gt;</span><span class="pln">
+      </span><span class="tag">&lt;payer&gt;</span><span class="pln">
+         </span><span class="tag">&lt;merchantPayerId&gt;</span><span class="pln">1</span><span class="tag">&lt;/merchantPayerId&gt;</span><span class="pln">
+         </span><span class="tag">&lt;fullName&gt;</span><span class="pln">First name and second payer name</span><span class="tag">&lt;/fullName&gt;</span><span class="pln">
+         </span><span class="tag">&lt;emailAddress&gt;</span><span class="pln">payer_test@test.com</span><span class="tag">&lt;/emailAddress&gt;</span><span class="pln">
+         </span><span class="tag">&lt;contactPhone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/contactPhone&gt;</span><span class="pln">
+         </span><span class="tag">&lt;dniNumber&gt;</span><span class="pln">5415668464654</span><span class="tag">&lt;/dniNumber&gt;</span><span class="pln">
+         </span><span class="tag">&lt;billingAddress&gt;</span><span class="pln">
+            </span><span class="tag">&lt;street1&gt;</span><span class="pln">Avenida chilena</span><span class="tag">&lt;/street1&gt;</span><span class="pln">
+            </span><span class="tag">&lt;street2&gt;</span><span class="pln">452</span><span class="tag">&lt;/street2&gt;</span><span class="pln">
+            </span><span class="tag">&lt;city&gt;</span><span class="pln">Concepcion</span><span class="tag">&lt;/city&gt;</span><span class="pln">
+            </span><span class="tag">&lt;state&gt;</span><span class="pln">Estado Principal</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+            </span><span class="tag">&lt;country&gt;</span><span class="pln">CL</span><span class="tag">&lt;/country&gt;</span><span class="pln">
+            </span><span class="tag">&lt;postalCode&gt;</span><span class="pln">64000</span><span class="tag">&lt;/postalCode&gt;</span><span class="pln">
+            </span><span class="tag">&lt;phone&gt;</span><span class="pln">7563126</span><span class="tag">&lt;/phone&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/billingAddress&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/payer&gt;</span><span class="pln">
+      </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">RESPONSE_URL</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">http://www.test.com/respuesta</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+      </span><span class="tag">&lt;type&gt;</span><span class="pln">AUTHORIZATION_AND_CAPTURE</span><span class="tag">&lt;/type&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">TRANSBANK_DEBIT</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
+      </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">CL</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
+      </span><span class="tag">&lt;deviceSessionId&gt;</span><span class="pln">vghs6tvkcle931686k1900o6e1</span><span class="tag">&lt;/deviceSessionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
+      </span><span class="tag">&lt;cookie&gt;</span><span class="pln">pt1t38347bs6jc9ruv2ecpv7o2</span><span class="tag">&lt;/cookie&gt;</span><span class="pln">
+      </span><span class="tag">&lt;userAgent&gt;</span><span class="pln">Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0</span><span class="tag">&lt;/userAgent&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
+   </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
+</span><span class="tag">&lt;/request&gt;</span>
+</pre>
+Ejemplo respuesta:
+<pre style="height: 300px; overflow: auto;">
+<span class="tag">&lt;paymentResponse&gt;</span><span class="pln">
+   </span><span class="tag">&lt;code&gt;</span><span class="pln">SUCCESS</span><span class="tag">&lt;/code&gt;</span><span class="pln">
+   </span><span class="tag">&lt;transactionResponse&gt;</span><span class="pln">
+      </span><span class="tag">&lt;orderId&gt;</span><span class="pln">935316458</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">2a76c54b-8a0e-4727-b2c5-49383f44e351</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;state&gt;</span><span class="pln">PENDING</span><span class="tag">&lt;/state&gt;</span><span class="pln">
+      </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PENDING_PAYMENT_IN_ENTITY</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
+      </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">URL_PAYMENT_REDIRECT</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">https://webpay3g.transbank.cl:443/filtroUnificado/initTransaction</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+         </span><span class="tag">&lt;entry&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">TRANSBANK_DIRECT_TOKEN<</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+            </span><span class="tag">&lt;string&gt;</span><span class="pln">e67581cc4838589ad892f6250e47e24e017478607b3513bbae1fed2866db84d9</span><span class="tag">&lt;/string&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/entry&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/extraParameters&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/transactionResponse&gt;</span><span class="pln">
+</span><span class="tag">&lt;/paymentResponse&gt;</span>
+</pre>
+</div>
+</div>
+<span class="highlight-txt2">Notas:</span>
+<span class="grey-text-13"><ol>
+	<li class="bullet-box">En caso de ser exitosa la solicitud del pago, la transacción quedará en state: <span class="highlight-txt">“PENDING”</span> con responseCode: <span class="highlight-txt">“PENDING_PAYMENT_IN_ENTITY”</span>; esto debido a que el pagador será redireccionado al banco seleccionado para que complete al pago.</li>
+	<li class="bullet-box">Si no envías la variable RESPONSE_URL se tomará la URL de respuesta configurada en tu Módulo Administrativo.
+	<p align="center"><img src="{{ site.baseurl }}/images/prespadmin.PNG" alt="" border="0" /></p></li>
+	<li class="bullet-box">Debes presentar en tu página de respuesta mínimo las siguientes variables. Son parámetros que se envían por GET y que se deben capturar:
+	<table class="table-d">
+	<tr bgcolor="#696a6c">
+	<td><span style="color: #fff; font-weight: bold;">Variable</span></td>
+	<td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
+	</tr>
+	<tr>
+	<td>transactionState</td>
+	<td>Estado de la transacción</td>
+	</tr>
+	<tr>
+	<td>reference_pol</td>
+	<td>Código de referencia para identificar una transacción en PayU</td>
+	</tr>
+	<tr>
+	<td>TX_VALUE</td>
+	<td>Monto de la transacción</td>
+	</tr>
+	<tr>
+	<td>authorizationCode</td>
+	<td>Código de autorización</td>
+	</tr>
+	<tr>
+	<td>processingDate</td>
+	<td>Fecha de transacción</td>
+	</tr>
+	<tr>
+	<td>cc_number</td>
+	<td>Número visible de la tarjeta utilizada en la transacción</td>
+	</tr>
+</table>
+	</li>
+</ol></span>
+&nbsp;<br>
+</div>
+<!-- FIN TRANSBANK -->
 </div>
 <div class="info-icon">Tener en cuenta:</div>
 <ol><li class="bullet-box">Las variables obligatorias <span class="highlight-txt2">transaction.order.signature</span> y <span class="highlight-txt2">transaction.deviceSessionId </span> requieren de algunos pasos adicionales, para conocer más sobre su funcionamiento visita la página: <a title="API – Consideraciones sobre las variables" href="{{ site.baseurl }}/es/api/considerations.html">consideraciones sobre las variables.</a></li>
