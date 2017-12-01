@@ -11,13 +11,17 @@ subcategory: Shopify
 <div class="row">
 <div class="payu-section">
 <div id="blue-box">
-<div id="info-box">Para tener en cuenta</div>
+<div id="info-box">Para tener en cuenta: Gestión de ordenes en Shopify</div>
 <ul>
-<li> Tener una cuenta activa con PayU.</li>
-<li> Tener una cuenta activa con <a href="http://es.shopify.com/" target="_blank">Shopify</a></li>
-<li> Durante un proceso de pago, solo se crea la orden en el administrador de la tienda Shopify  si el pagador hace clic en “<strong>Finalizar Transacción</strong>”.</li>
-<li> Cuando el pagador cierra la ventana de la pasarela de pagos de PayU sin completar el proceso, no es posible realizar otro pago ya que no genera una nueva referencia hasta que no se complete el pago anterior lo que dejaría a la orden en estado "<strong>PENDING</strong>".</li>
-<li> Las órdenes en estado "<strong>PENDING</strong>" producto de esos procesos de pago no completados se visualizan en el administrador de la tienda Shopify en la sección “<strong>Abandoned Checkout</strong>”.</li>
+<li> <strong>All Orders</strong>: Todas las ordenes con estado "<strong>Aprobado</strong>" (con pago completo o parcial) y "<strong>Pendiente</strong>" (siempre y cuando el pagador dé clic en regresar a la tienda luego de efectuado el pago en la pasarela).</li>
+<li> <strong>Abandoned Checkouts</strong>: Son procesos de compra que cumplen con los siguientes parámetros:</li>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.</strong> No fueron completados.<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.</strong> Han sido abandonados durante el proceso de pago.<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.</strong> Transacciones con estado "<strong>Rechazado</strong>".<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.</strong> Transacciones con estado "<strong>Pendiente</strong>" siempre y cuando el pagador <strong>NO</strong> dé clic en regresar a la tienda luego de efectuado el pago en la pasarela:<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.</strong> Pagos en Efectivo (siempre se obtendrá estado "<strong>Pendiente</strong>").<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.</strong> Pagos con Tarjetas de Crédito que entren en validación por las reglas de protección antifraude.<br>
+<span class="number">&nbsp;&nbsp;&nbsp;&nbsp;Nota:</span> Shopify <strong>NO</strong> realizará ningún tipo de reserva de inventarios para los casos anteriores.
 </ul>
 </div>
 &nbsp;<br>
@@ -25,32 +29,32 @@ subcategory: Shopify
 &nbsp;<br>
 &nbsp;<br>
 
-	
+
 	<div class="row">
 	<div class="col s12 m5 l5"><span class="number">01. </span><span class="grey-text-13">Ingresa a tu tienda de Shopify en el menú <span class="highlight-txt2">settings</span>.<br/></span>.</div>
 	<div class="col s12 m7 l7">
         <img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify1-es.png" alt="Shopify" class="center" />
         </div>
 	</div>
-	
+
 	<div class="row">
 	<div class="col s12 m5 l5"><span class="number">02. </span><span class="grey-text-13">En la opción <span class="highlight-txt2">Payments</span> selecciona el Gateway <span class="highlight-txt2">PayU Latam</span>.</span></div>
 	<div class="col s12 m7 l7"><img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify2.png" alt="Shopify" class="center" /></div>
 	</div>
-    
+
     <div class="row">
 	<div class="col s12 m5 l5"><span class="number">03. </span><span class="grey-text-13">Configura las credenciales de tu cuenta PayU.&nbsp;<br>
 <span class="highlight-txt2">Account ID:</span> Identificador proporcionado por PayU para el país donde estás vendiendo. Lo puedes obtener ingresando a tu módulo administrativo en la sección de <span class="highlight-txt2">“cuentas”</span>.&nbsp;<br>
-<span class="highlight-txt2">API key:</span> Credencial de seguridad proporcionada por PayU, la puedes ver en tu módulo administrativo en el menú de <span class="highlight-txt2">“Configuración”</span>. 
+<span class="highlight-txt2">API key:</span> Credencial de seguridad proporcionada por PayU, la puedes ver en tu módulo administrativo en el menú de <span class="highlight-txt2">“Configuración”</span>.
 &nbsp;<br>
 &nbsp;<br>
-        Una vez configures los datos de tu cuenta PayU, tus clientes podrán realizar pagos a través del Checkout PayU, que les brinda medios de pago en efectivo, tarjetas de crédito y transferencias bancarias dependiendo del país en donde realices tus ventas.         
+        Una vez configures los datos de tu cuenta PayU, tus clientes podrán realizar pagos a través del Checkout PayU, que les brinda medios de pago en efectivo, tarjetas de crédito y transferencias bancarias dependiendo del país en donde realices tus ventas.
         </span></div>
 	<div class="col s12 m7 l7"><img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify3-es.png" alt="Shopify" class="center" />
    <img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify4-es.png" alt="Shopify" class="center" />
         <img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify5-es.png" alt="Shopify" class="center" /></div>
 	</div>
-    
+
 <!-- INICIO CONFIGURACIÓN VALIDACIÓN REFERENCIAS -->
         <div class="row">
 	<div class="col s12 m5 l5"><span class="number">04. </span><span class="grey-text-13">Deshabilita la validación de referencia única para todos los estados, para evitar inconvenientes al momento de procesar tus pagos.
@@ -69,14 +73,14 @@ subcategory: Shopify
 &nbsp;<br>
 &nbsp;<br>
 	<div class="row"><div class="col s12 m5 l5"><span class="number">01. </span><span class="grey-text-13">Tu cliente elige el producto que desea comprar y lo agrega al carrito de compras.</span></div><div class="col s12 m7 l7"><img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify6-es.png" alt="Shopify" class="center" /></div></div>
-	
+
 	<div class="row"><div class="col s12 m5 l5"><span class="number">02. </span><span class="grey-text-13">Una vez dentro del carrito, tu cliente ingresa sus datos personales, confirma el valor total de la compra que puede incluir impuestos o costos de envío.</span></div><div class="col s12 m7 l7"><img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify7-es.png" alt="Shopify" class="center" /></div></div>
-	
-	
+
+
 	<div class="row"><div class="col s12 m5 l5"><span class="number">03 </span><span class="grey-text-13">Al hacer click sobre el botón <span class="highlight-txt2">“Finalizar Orden”</span> será direccionado al gateway de PayU en donde podrá seleccionar el medio de pago para completar la compra.</span></div><div class="col s12 m7 l7"><img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify8-es.png" alt="Shopify" class="center" />
-        <img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify9-es.png" alt="Shopify" class="center" /></div></div>			
+        <img src="{{ site.baseurl }}/images/soluciones-adicionales/shopify9-es.png" alt="Shopify" class="center" /></div></div>
 		</div>
 	</div>
-	
+
 </div>
 </div>
