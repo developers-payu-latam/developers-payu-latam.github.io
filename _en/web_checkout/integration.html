@@ -6,13 +6,13 @@ subcategory: payments
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
           	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
                 <script src="../../js/jquery-validate.bootstrap-tooltip.min.js"></script>
-          	<script src="../../js/signature-generator/validations.js"></script>           
+          	<script src="../../js/signature-generator/validations.js"></script>
          	<script src="../../js/signature-generator/md5.js"></script>
          	<script src="../../js/signature-generator/sha1.js"></script>
-         	<script src="../../js/signature-generator/sha256.js"></script>         
+         	<script src="../../js/signature-generator/sha256.js"></script>
                 <script src="../../js/signature-generator/signature-generator.js"></script>
                 <script>
-                    
+
                     var errApiKeyReq = "Please enter the ApiKey"
                     var errApiKeyMin = "Please enter more than 5 digits"
                     var errApiKeyMax = "Please enter less than  32 digits"
@@ -37,9 +37,9 @@ subcategory: payments
                     var errTsMax = "Please enter the transaction code less than 3 digits"
                     var errSpReq = "Please enter the transaction code"
                     var errSpMin = "Please enter the transaction code"
-                    var errSpMax = "Please enter the transaction code less than 1 digit" 
-                    
-                </script> 
+                    var errSpMax = "Please enter the transaction code less than 1 digit"
+
+                </script>
 
 <div class="payu-page-header superhero-sticky">
 <h1 class="payu-title1 bgreen">Webcheckout integration</h1>
@@ -66,7 +66,7 @@ Below, you will find the components to perform the Webcheckout integration.
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">1. Payment form</a></li>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">2. Response page</a></li>
 		<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-3">3. Confirmation page</a></li>
-		
+
 	</ul>
 <div id="squelch-taas-tab-content-1">
 <div id="formulario-de-pago" class="payu-fragment">
@@ -76,7 +76,7 @@ Below, you will find the components to perform the Webcheckout integration.
 <span class="grey-text-13">In this section you will see how to send data from one transaction to PayU.
 You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.</span><br>
 <div id="blue-box">
-<div id="info-box">Consider:</div> 
+<div id="info-box">Consider:</div>
 <ol>
 
 <li class="bullet-box">Make sure you have the correct merchantId, accountId and apikey.</li>
@@ -91,7 +91,7 @@ You must generate an HTML form with the transaction data using the HTTP POST met
 &nbsp;<br>
  Sample <b>HTML</b> with some of the parameters you can send:
 <pre><code>
- &lt;form method=&quot;post&quot; action=&quot;https://sandbox.gateway.payulatam.com/ppp-web-gateway/&quot;&gt;
+ &lt;form method=&quot;post&quot; action=&quot;https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/&quot;&gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">merchantId</span>&quot;    type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">508029</span>&quot;   &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">accountId</span>&quot;     type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">512321</span>&quot; &gt;
 &nbsp;&nbsp;&lt;input name=&quot;<span class="highlight-txt2">description</span>&quot;   type=&quot;hidden&quot;  value=&quot;<span class="highlight-txt2">Test PAYU</span>&quot;  &gt;
@@ -111,7 +111,7 @@ You must generate an HTML form with the transaction data using the HTTP POST met
  &nbsp;<br>
 <span class="grey-text-13"><strong>Note</strong>: If your store sends products, you must send us the following parameters:</span>
 <div id="blue-box">
-    <span class="grey-text-13"> 
+    <span class="grey-text-13">
         &nbsp;&nbsp;&lt;input name="<span class="highlight-txt2">shippingAddress</span>"    type="hidden"  value="<span class="highlight-txt2">93 Main St 4765</span>" &gt;
          <br>
         &nbsp;&nbsp;&lt;input name="<span class="highlight-txt2">shippingCity</span>"    type="hidden"  value="<span class="highlight-txt2">Bogota</span>" &gt;
@@ -123,8 +123,8 @@ You must generate an HTML form with the transaction data using the HTTP POST met
 <p>&nbsp;<br>
 <span class="grey-text-13">Once you generate the HTML form you should aim at the following URL:</span>
 <div id="blue-box">
-<span class="grey-text-13">Test: <b>https://sandbox.gateway.payulatam.com/ppp-web-gateway/</b><br><br>
-Live: <b>https://gateway.payulatam.com/ppp-web-gateway/</b></span>
+<span class="grey-text-13">Test: <b>https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/</b><br><br>
+Live: <b>https://checkout.payulatam.com/ppp-web-gateway-payu/</b></span>
 </div>
 <p>&nbsp;<br>
 <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
@@ -597,22 +597,22 @@ buyerEmail: test@test.com
 <br>
 <br>
 <span class="grey-text-13">
-<div id = "div_generador" >                      
+<div id = "div_generador" >
 
 <form method="POST" id="signature_form" >
-    <table> 
+    <table>
         <span class="blue-text-13"><b>Algorithm: &nbsp;</b></span>
-        <select id = "signature_algorithm" class="calc_selector form_control"> 
+        <select id = "signature_algorithm" class="calc_selector form_control">
             <option  value="md5">MD5</option>
-            <option  value="sha1">SHA1</option>                          
+            <option  value="sha1">SHA1</option>
             <option  value="sha256">SHA256</option>
         </select>
         <br>
         <br>
         <span class="calc_text">&nbsp;(</span>
-        <input class="form_control" type="text"  id ="signature_apikey" name = "signature_apikey" placeholder="ApiKey" maxlength="26"> ~ 
-        <input class="form_control number" type="text"  id ="signature_merchanId" name = "signature_merchanId" placeholder="MerchantId" maxlength="7"> ~ 
-        <input class="form_control" type="text"  id ="signature_referenceCode" name = "signature_referenceCode" placeholder="Reference" maxlength="255"> ~ 
+        <input class="form_control" type="text"  id ="signature_apikey" name = "signature_apikey" placeholder="ApiKey" maxlength="26"> ~
+        <input class="form_control number" type="text"  id ="signature_merchanId" name = "signature_merchanId" placeholder="MerchantId" maxlength="7"> ~
+        <input class="form_control" type="text"  id ="signature_referenceCode" name = "signature_referenceCode" placeholder="Reference" maxlength="255"> ~
         <input class="form_control  number" type="text" id ="signature_amount" name = "signature_amount" placeholder="Amount" maxlength="14"> ~
         <select id = "signature_currency" class="calc_selector form_control" >
             <option  value="USD">USD</option>
@@ -627,7 +627,7 @@ buyerEmail: test@test.com
         <br>
         <br>
         <br>
-        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated" name = "signature_generated" value = ""  readonly />                                                
+        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated" name = "signature_generated" value = ""  readonly />
     </table>
     <br>
     <table width="50%"  border="0" cellspacing="2" cellpadding="2">
@@ -638,7 +638,7 @@ buyerEmail: test@test.com
 </div>
 </span>
 </div>
-<!-- End of signature generator --> 
+<!-- End of signature generator -->
 
 </div>
 <!--fin integracion -->
@@ -658,7 +658,7 @@ If you want PayU to display always the information of the transaction, be sure n
 
 
 <div id="blue-box">
-<div id="info-box">Consider:</div> 
+<div id="info-box">Consider:</div>
 <ol>
 
 <li class="bullet-box">Some hosting providers have settings that do not allow sending URLs as URLs parameter values. example: &amp;merchant_url=http%3A%2F%2Fwww.lamiradaoptica.com </li>
@@ -729,7 +729,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	&lt;/tr&gt;
 	&lt;tr&gt;
 	&lt;td&gt;Reference sale&lt;/td&gt;
-	&lt;td&gt;&lt;?php echo $reference_pol; ?&gt;&lt;/td&gt; 
+	&lt;td&gt;&lt;?php echo $reference_pol; ?&gt;&lt;/td&gt;
 	&lt;/tr&gt;
 	&lt;tr&gt;
 	&lt;td&gt;Reference transaction&lt;/td&gt;
@@ -1152,7 +1152,7 @@ TX_VALUE to a decimal, using the rounding method "Round half to even":<br>
 &nbsp;&nbsp;&nbsp;&nbsp;* If the first decimal is odd and the second is 5, round it to the higher value.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;* Otherwise you must round it to the nearest decimal.</li>
 
-<li class="bullet-box">You must obtain the parameters to generate the signature: merchantId, 
+<li class="bullet-box">You must obtain the parameters to generate the signature: merchantId,
 referenceCode, TX_VALUE, currency and transactionState from the response page, not from your database.</li>
 
 <li class="bullet-box">You must store your ApiKey safely.</li>
@@ -1226,14 +1226,14 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 </div></div>
 </li>
 </div>
-    
+
 <!-- Signatue generator - response page -->
 <div id="blue-box">
 <span class="subtitle-page">Compare your signature</span>
 <br>
 <br>
 <span class="grey-text-13">
-<div>                          
+<div>
 <form method="POST" id="signature_form_response_page" >
     <table>
         <span class="blue-text-13"><b>Algorithm: &nbsp;</b></span>
@@ -1245,9 +1245,9 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
         <br>
         <br>
         <span class="calc_text">&nbsp;(</span>
-        <input class="form_control" type="text"  id ="signature_apikey_response_page" name = "signature_apikey_response_page" placeholder="ApiKey" maxlength="26"> ~ 
-        <input class="form_control number" type="text"  id ="signature_merchanId_response_page" name = "signature_merchanId_response_page" placeholder="MerchantId" maxlength="7"> ~ 
-        <input class="form_control" type="text"  id ="signature_referenceCode_response_page" name = "signature_referenceCode_response_page" placeholder="Reference" maxlength="255"> ~ 
+        <input class="form_control" type="text"  id ="signature_apikey_response_page" name = "signature_apikey_response_page" placeholder="ApiKey" maxlength="26"> ~
+        <input class="form_control number" type="text"  id ="signature_merchanId_response_page" name = "signature_merchanId_response_page" placeholder="MerchantId" maxlength="7"> ~
+        <input class="form_control" type="text"  id ="signature_referenceCode_response_page" name = "signature_referenceCode_response_page" placeholder="Reference" maxlength="255"> ~
         <input class="form_control  number" type="text" id ="signature_amount_response_page" name = "signature_amount_response_page" placeholder="Amount" maxlength="14"> ~
         <select id = "signature_currency_response_page" class="calc_selector form_control" >
             <option  value="USD">USD</option>
@@ -1256,20 +1256,20 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
             <option  value="ARS">ARS</option>
             <option  value="PEN">PEN</option>
             <option  value="BRL">BRL</option>
-            <option  value="CLP">CLP</option> 
+            <option  value="CLP">CLP</option>
         </select> ~
-        <select id = "signature_transaction_state_response_page" class="calc_selector form_control" >  
+        <select id = "signature_transaction_state_response_page" class="calc_selector form_control" >
             <option  value="4">4 (Approved)</option>
             <option  value="6">6 (Declined)</option>
             <option  value="104">104 (Error)</option>
             <option  value="5">5 (Expired)</option>
-            <option  value="7">7 (Pending)</option> 
+            <option  value="7">7 (Pending)</option>
         </select>
         <span class="calc_text">)</span>
         <br>
         <br>
-        <br>   
-        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated_response_page" name = "signature_generated_response_page" value = ""  readonly />                                                
+        <br>
+        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated_response_page" name = "signature_generated_response_page" value = ""  readonly />
     </table>
     <br>
     <table width="50%"  border="0" cellspacing="2" cellpadding="2">
@@ -1299,7 +1299,7 @@ signature = 01899cb431dd51623f5c94a62b1d2dc7</span>
 
 
 <div id="blue-box">
-<div id="info-box">Consider:</div> 
+<div id="info-box">Consider:</div>
 <ol>
 
 <li class="bullet-box">If youre site is restricted with "basic access authentication" or similar, disable it for the confirmation url.</li>
@@ -1766,7 +1766,7 @@ To validate the signature on the confirmation page, you should consider:</span><
 <li class="bullet-box">If the second decimal of the value parameter is zero, e.g. 150.00<br>
 the parameter new_value to generate the signature should only have one decimal, as follows: 150.0</li>
 
-<li class="bullet-box">If the second decimal of the value parameter is different from zero, e.g.  150.26<br> 
+<li class="bullet-box">If the second decimal of the value parameter is different from zero, e.g.  150.26<br>
 the parameter new_value to generate the signature should have two decimals, as follows: 150.26</li>
 <li class="bullet-box">You must obtain the parameters to generate the signature: merchant_id, reference_sale, value, currency and state_pol from your confirmation page, not from your database.</li>
 
@@ -1826,7 +1826,7 @@ sign = 1d95778a651e11a0ab93c2169a519cd6</span>
 <br>
 <br>
 <span class="grey-text-13">
-<div>                          
+<div>
 <form method="POST" id="signature_form_confirmation_page" >
     <table>
         <span class="blue-text-13"><b>Algorithm: &nbsp;</b></span>
@@ -1838,9 +1838,9 @@ sign = 1d95778a651e11a0ab93c2169a519cd6</span>
         <br>
         <br>
         <span class="calc_text">&nbsp;(</span>
-        <input class="form_control" type="text"  id ="signature_apikey_confirmation_page" name = "signature_apikey_confirmation_page" placeholder="ApiKey" maxlength="26"> ~ 
-        <input class="form_control number" type="text"  id ="signature_merchanId_confirmation_page" name = "signature_merchanId_confirmation_page" placeholder="MerchantId" maxlength="7"> ~ 
-        <input class="form_control" type="text"  id ="signature_referenceCode_confirmation_page" name = "signature_referenceCode_confirmation_page" placeholder="Reference" maxlength="255"> ~ 
+        <input class="form_control" type="text"  id ="signature_apikey_confirmation_page" name = "signature_apikey_confirmation_page" placeholder="ApiKey" maxlength="26"> ~
+        <input class="form_control number" type="text"  id ="signature_merchanId_confirmation_page" name = "signature_merchanId_confirmation_page" placeholder="MerchantId" maxlength="7"> ~
+        <input class="form_control" type="text"  id ="signature_referenceCode_confirmation_page" name = "signature_referenceCode_confirmation_page" placeholder="Reference" maxlength="255"> ~
         <input class="form_control  number" type="text" id ="signature_amount_confirmation_page" name = "signature_amount_confirmation_page" placeholder="Amount" maxlength="14"> ~
         <select id = "signature_currency_confirmation_page" class="calc_selector form_control" >
             <option  value="USD">USD</option>
@@ -1849,18 +1849,18 @@ sign = 1d95778a651e11a0ab93c2169a519cd6</span>
             <option  value="ARS">ARS</option>
             <option  value="PEN">PEN</option>
             <option  value="BRL">BRL</option>
-            <option  value="CLP">CLP</option> 
+            <option  value="CLP">CLP</option>
         </select> ~
-        <select id = "signature_state_pol_confirmation_page" class="calc_selector form_control" >  
+        <select id = "signature_state_pol_confirmation_page" class="calc_selector form_control" >
             <option  value="4">4 (Approved)</option>
-            <option  value="6">6 (Declined)</option>           
-            <option  value="5">5 (Expired)</option>           
+            <option  value="6">6 (Declined)</option>
+            <option  value="5">5 (Expired)</option>
         </select>
         <span class="calc_text">)</span>
         <br>
         <br>
-        <br>   
-        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated_confirmation_page" name = "signature_generated_confirmation_page" value = ""  readonly />                                                
+        <br>
+        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated_confirmation_page" name = "signature_generated_confirmation_page" value = ""  readonly />
     </table>
     <br>
     <table width="50%"  border="0" cellspacing="2" cellpadding="2">
