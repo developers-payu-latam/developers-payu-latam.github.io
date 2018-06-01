@@ -33,7 +33,7 @@ subcategory: considerations
 <div id="signature" class="payu-fragment">
 <span class="subtitle-page">Como gerar a assinatura de autenticação?</span>
 &nbsp;<br>
-A <span class="highlight-txt">signature</span> é uma variável utilizada para validar os pagamentos realizados através da plataforma, garantindo sua autenticidade. Consiste em uma cadeia de caracteres à qual é aplicado algoritmo MD5 ou SHA para codificá-la. A cadeia é composta da seguinte forma:
+A <span class="highlight-txt">signature</span> é uma variável utilizada para validar os pagamentos realizados através da plataforma, garantindo sua autenticidade. Consiste em uma cadeia de caracteres à qual é aplicado algoritmo MD5 ou SHA para codificá-la. A cadeia é composta da seguinte forma: 
 &nbsp;<br>
 <div id="blue-box">"ApiKey~merchantId~referenceCode~tx_value~currency"</div>
 &nbsp;<br>
@@ -55,25 +55,34 @@ Esta informação deverá ser enviada na variável:
 &nbsp;<br>
 </div>
 <div id="device" class="payu-fragment">
-<span class="subtitle-page">Variável deviceSessionId</span>
+<span class="subtitle-page">Variável devicesessionid</span>
 &nbsp;<br>
-O <span class="highlight-txt">deviceSessionId</span> é um código que captura a informação do equipamento a partir de onde é gerada a transação e gera um identificador único para este. Esta ferramenta de segurança permite detectar atacantes. Para realizar a integração você deve incluir o seguinte script no site onde são capturados os dados para pagamentos com cartão de crédito (formulário de pagamento):
+O <span class="highlight-txt">deviceSessionID</span> é um código que captura a informação do equipamento a partir de onde é gerada a transação e gera um identificador único para este. Esta ferramenta de segurança permite detectar atacantes. Para realizar a integração você deve incluir o seguinte script no site onde são capturados os dados para pagamentos com cartão de crédito (formulário de pagamento):
 <p><span class="number">01. </span> Incluir o seguinte script no site onde são capturados os dados (formulário de pagamento) para pagamentos com cartão de crédito:</p>
-<pre>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maf.pagosonline.net/ws/fp/tags.js?id=$<span class="highlight-txt2">{deviceSessionId}</span>80200&quot;&gt;&lt;/script&gt;
-	&lt;noscript&gt;
-		&lt;iframe style=&quot;width: 100px; height: 100px; border: 0; position: absolute; top: -5000px;&quot; src=&quot;https://maf.pagosonline.net/ws/fp/tags.js?id=$<span class="highlight-txt2">{deviceSessionId}</span>80200&quot;&gt;&lt;/iframe&gt;
-	&lt;/noscript&gt;<br></pre>
+<pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId)</span>&quot;&gt;&lt;/p&gt;<br />
+  &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot;&gt;<br />
+  &lt;script src=&quot;https://maf.pagosonline.net/ws/fp/check.js?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot;&gt;&lt;/script&gt;<br />
+  &lt;object type=&quot;application/x-shockwave-flash&quot;<br />
+  data=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot; width=&quot;1&quot; height=&quot;1&quot;<br />
+  id=&quot;thm_fp&quot;&gt;<br />
+  &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=$<span class="highlight-txt2">{deviceSessionId}usuarioId</span>&quot; /&gt;<br />
+&lt;/object&gt;</pre>
 &nbsp;<br>
 <p><span class="number">02. </span>É importante gerar o <span class="highlight-txt">deviceSessionId</span> com o seguinte algoritmo para garantir que a identificação seja única. Adicionalmente, você deve gerar um novo deviceSessionId para cada transação. Selecionar o session_Id do cookie e concatená-lo com o timestamp incluídos os milissegundos. Em seguida, passá-lo pelo método MD5.
 Exemplo em php:</p>
-<pre>$deviceSessionId = md5(session_id().microtime())</pre>
+<pre>$ deviceSessionId = md5(session_id().microtime())</pre>
 &nbsp;<br>
 
-<p><span class="number">03. </span>Exemplo: <span class="highlight-txt">d66f949f19b33e88c202b579cfc549b3</span>80200, e enviá-lo em todos os ${deviceSessionId}80200 do escript:</p>
-<pre>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maf.pagosonline.net/ws/fp/tags.js?id=<span class="highlight-txt2">d66f949f19b33e88c202b579cfc549b3</span>80200&quot;&gt;&lt;/script&gt;
-	&lt;noscript&gt;
-		&lt;iframe style=&quot;width: 100px; height: 100px; border: 0; position: absolute; top: -5000px;&quot; src=&quot;https://maf.pagosonline.net/ws/fp/tags.js?id=<span class="highlight-txt2">d66f949f19b33e88c202b579cfc549b3</span>80200&quot;&gt;&lt;/iframe&gt;
-	&lt;/noscript&gt;<br></pre>
+<p><span class="number">03. </span>Este deviceSessionId deve se concatenar com o "usuarioId" 80200, como no exemplo a seguir: <span class="highlight-txt">4091057053</span>80200
+E enviá-lo em todos os ${deviceSessionId}usuarioId do escript como no exemplo a seguir.</p>
+<pre>&lt;p style=&quot;background:url(https://maf.pagosonline.net/ws/fp?id=<span class="highlight-txt2">409105705380200</span>&quot;)&gt;&lt;/p&gt;<br />
+  &lt;img src=&quot;https://maf.pagosonline.net/ws/fp/clear.png?id=<span class="highlight-txt2">409105705380200</span>&quot;&gt;<br />
+  &lt;script src=&quot;https://maf.pagosonline.net/ws/fp/check.js?id=<span class="highlight-txt2">409105705380200</span>&quot;&gt;&lt;/script&gt;<br />
+  &lt;object type=&quot;application/x-shockwave-flash&quot;<br />
+  data=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot; width=&quot;1&quot; height=&quot;1&quot;<br />
+  id=&quot;thm_fp&quot;&gt;<br />
+  &lt;param name=&quot;movie&quot; value=&quot;https://maf.pagosonline.net/ws/fp/fp.swf?id=<span class="highlight-txt2">409105705380200</span>&quot;/&gt;<br />
+&lt;/object&gt;</pre>
 &nbsp;<br>
 <p><span class="number">04. </span> Finalmente, você deve enviar o <span class="highlight-txt">$deviceSessionId</span> (sem o "usuarioId") no pedido do API na variável:</p>
 <div class="list-arrow"><ul><li> Para API:<span class="highlight-txt2 ">transaction.deviceSessionId.</span></li>
