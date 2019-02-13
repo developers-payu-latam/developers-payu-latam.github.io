@@ -32,7 +32,7 @@ subcategory: queries
 <div id="squelch-taas-tab-content-2">
 <span class="grey-text-13"> Environment::setPaymentsCustomUrl(“https://api.payulatam.com/payments-api/4.0/service.cgi”); <br>
 <b>Environment::setReportsCustomUrl(“https://api.payulatam.com/reports-api/4.0/service.cgi”);</b><br>
-Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api/rest/v4.3/”); 
+Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api/rest/v4.9/”); 
 </span>
 </div>
 </div>
@@ -90,7 +90,7 @@ Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 
 // Coloque aqui o código de referência da ordem
 parameters.put(PayU.PARAMETERS.ORDER_ID, "2637540");
-Order response = PayUReports.getOrderDetail(parameters); 
+Order response = PayUReports.getOrderDetail(parameters);
 
 // -- Você pode obter as propriedades da ordem --
 if(response != null){
@@ -106,7 +106,7 @@ if(response != null){
 	// -- Listar as transações associadas à ordem --
 	List&lt;Transaction&gt; transactions = response.getTransactions();
 	Iterator&lt;Transaction&gt; transactions_iterator = transactions.iterator();
-	
+
 	while(transactions_iterator.hasNext()){
 		Transaction transaction= (Transaction) transactions_iterator.next();
 		transaction.getType();
@@ -117,7 +117,7 @@ if(response != null){
 		if(transaction.getPayer() != null){
 			transaction.getPayer().getFullName();
 			transaction.getPayer().getEmailAddress();
-		}		
+		}
 	}
 }
 </pre>
@@ -128,7 +128,7 @@ Ejemplo petición:
 //Ingresa aquí el código de referencia de la orden.
 $parameters = array(PayUParameters::ORDER_ID =&gt; "44469220");
 
-$order = PayUReports::getOrderDetail($parameters);    
+$order = PayUReports::getOrderDetail($parameters);
 
 if ($order) {
 	$order-&gt;accountId;
@@ -223,7 +223,7 @@ $parameters = array(PayUParameters::REFERENCE_CODE =&gt; "2014-05-06 06:14:19");
 
 $response = PayUReports::getOrderDetailByReferenceCode($parameters);
 
-foreach ($response as $order) {	
+foreach ($response as $order) {
 	$order-&gt;accountId;
 	$order-&gt;status;
 	$order-&gt;referenceCode;
@@ -234,7 +234,7 @@ foreach ($response as $order) {
 		$order-&gt;buyer-&gt;emailAddress;
 		$order-&gt;buyer-&gt;fullName;
 	}
-	
+
 	$transactions=$order-&gt;transactions;
 	foreach ($transactions as $transaction) {
 		$transaction-&gt;type;
@@ -271,7 +271,7 @@ Map&lt;String, String&gt; parameters = new HashMap&lt;String, String&gt;();
 //Insira aqui o identificador da transação.
 parameters.put(PayU.PARAMETERS.TRANSACTION_ID, "41bb0d7d-dc98-4eeb-a128-ce5b7366bcfa");
 
-TransactionResponse response = PayUReports.getTransactionResponse(parameters); 
+TransactionResponse response = PayUReports.getTransactionResponse(parameters);
 //  -- você poderá obter as propriedades da resposta --
 if(response != null){
 	response.getState();
