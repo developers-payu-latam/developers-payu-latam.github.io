@@ -27,8 +27,8 @@ subcategory: sandbox
 <span class="grey-text-13">Si deseas realizar pruebas a través de PayU, ya que el ambiente de pruebas no replica los datos de tu cuenta en producción, es importante que utilices las siguientes credenciales en la petición dependiendo del país de tu cuenta:</span>
 
 {% include test_credentials.html %}
-		
-<span class="grey-text-13">Apuntando a las siguientes URLs:</span>
+
+<!-- <span class="grey-text-13">Apuntando a las siguientes URLs:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://sandbox.api.payulatam.com/payments-api/";&nbsp;<br>
@@ -39,6 +39,23 @@ Environment::setPaymentsCustomUrl("https://sandbox.api.payulatam.com/payments-ap
 Environment::setReportsCustomUrl("https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi");&nbsp;<br>
 Environment::setSubscriptionsCustomUrl("https://sandbox.api.payulatam.com/payments-api/rest/v4.3/");&nbsp;<br>
 </span>
+</div> -->
+
+Apuntando a las correspondientes URLs:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="grey-text-13"><b>PayU.paymentsUrl = “https://sandbox.api.payulatam.com/payments-api/”;</b><br>
+PayU.reportsUrl = “https://sandbox.api.payulatam.com/reports-api/”; </span>
+</div>
+<div id="squelch-taas-tab-content-2">
+<span class="grey-text-13">Environment::setPaymentsCustomUrl(“https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi”);/<br>
+Environment::setReportsCustomUrl(“https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi”); <br>
+<b>Environment::setSubscriptionsCustomUrl(“https://sandbox.api.payulatam.com/payments-api/rest/v4.9/”);</b></span>
+</div>
 </div>
 
 <div id="blue-box">
@@ -94,7 +111,7 @@ parameters.put(PayU.PARAMETERS.LANGUAGE, "Language.es");
 
 // -- Valores --
 //Ingrese aquí el valor.
-parameters.put(PayU.PARAMETERS.VALUE, ""+value);	
+parameters.put(PayU.PARAMETERS.VALUE, ""+value);
 //Ingrese aquí la moneda.
 parameters.put(PayU.PARAMETERS.CURRENCY, ""+Currency.COP.name());
 
@@ -106,9 +123,9 @@ parameters.put(PayU.PARAMETERS.BUYER_NAME, "First name and second buyer name");
 //Ingrese aquí el email del comprador.
 parameters.put(PayU.PARAMETERS.BUYER_EMAIL, "buyer_test@test.com");
 //Ingrese aquí el teléfono de contacto del comprador.
-parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.BUYER_CONTACT_PHONE, "7563126");
 //Ingrese aquí el documento de contacto del comprador.
-parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.BUYER_DNI, "5415668464654");
 //Ingrese aquí la dirección del comprador.
 parameters.put(PayU.PARAMETERS.BUYER_STREET, "calle 100");
 parameters.put(PayU.PARAMETERS.BUYER_STREET_2, "5555487");
@@ -126,9 +143,9 @@ parameters.put(PayU.PARAMETERS.PAYER_ID, "1");
 //Ingrese aquí el email del pagador.
 parameters.put(PayU.PARAMETERS.PAYER_EMAIL, "payer_test@test.com");
 //Ingrese aquí el teléfono de contacto del pagador.
-parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");	
+parameters.put(PayU.PARAMETERS.PAYER_CONTACT_PHONE, "7563126");
 //Ingrese aquí el documento de contacto del pagador.
-parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");	
+parameters.put(PayU.PARAMETERS.PAYER_DNI, "5415668464654");
 //Ingrese aquí la dirección del pagador.
 parameters.put(PayU.PARAMETERS.PAYER_STREET, "calle 93");
 parameters.put(PayU.PARAMETERS.PAYER_STREET_2, "125544");
@@ -138,7 +155,7 @@ parameters.put(PayU.PARAMETERS.PAYER_COUNTRY, "CO");
 parameters.put(PayU.PARAMETERS.PAYER_POSTAL_CODE, "000000");
 parameters.put(PayU.PARAMETERS.PAYER_PHONE, "7563126");
 
-// -- Datos de la tarjeta de crédito -- 
+// -- Datos de la tarjeta de crédito --
 //Ingrese aquí el número de la tarjeta de crédito
 parameters.put(PayU.PARAMETERS.CREDIT_CARD_NUMBER, "4097440000000004");
 //Ingrese aquí la fecha de vencimiento de la tarjeta de crédito
@@ -171,7 +188,7 @@ if(response != null){
 	response.getTransactionId();
 	response.getState();
 	if(response.getState().toString().equalsIgnoreCase("PENDING")){
-		response.getPendingReason();	
+		response.getPendingReason();
 	}
 	response.getPaymentNetworkResponseCode();
 	response.getPaymentNetworkResponseErrorMessage();
@@ -197,12 +214,12 @@ $parameters = array(
 	PayUParameters::DESCRIPTION =&gt; "payment test",
 
 	// -- Valores --
-	//Ingrese aquí el valor.        
+	//Ingrese aquí el valor.
 	PayUParameters::VALUE =&gt; $value,
 	//Ingrese aquí la moneda.
 	PayUParameters::CURRENCY =&gt; "COP",
 
-	// -- Comprador 
+	// -- Comprador
 	//Ingrese aquí el nombre del comprador.
 	PayUParameters::BUYER_NAME =&gt; "First name and second buyer  name",
 	//Ingrese aquí el email del comprador.
@@ -238,7 +255,7 @@ $parameters = array(
 	PayUParameters::PAYER_POSTAL_CODE =&gt; "000000",
 	PayUParameters::PAYER_PHONE =&gt; "7563126",
 
-	// -- Datos de la tarjeta de crédito -- 
+	// -- Datos de la tarjeta de crédito --
 	//Ingrese aquí el número de la tarjeta de crédito
 	PayUParameters::CREDIT_CARD_NUMBER =&gt; "4097440000000004",
 	//Ingrese aquí la fecha de vencimiento de la tarjeta de crédito
@@ -260,10 +277,10 @@ $parameters = array(
 	PayUParameters::IP_ADDRESS =&gt; "127.0.0.1",
 	//Cookie de la sesión actual.
 	PayUParameters::PAYER_COOKIE=&gt;"pt1t38347bs6jc9ruv2ecpv7o2",
-	//Cookie de la sesión actual.        
+	//Cookie de la sesión actual.
 	PayUParameters::USER_AGENT=&gt;"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"
 );
-	
+
 //solicitud de autorización y captura
 $response = PayUPayments::doAuthorizationAndCapture($parameters);
 
@@ -273,13 +290,13 @@ if($response){
 	$response-&gt;transactionResponse-&gt;transactionId;
 	$response-&gt;transactionResponse-&gt;state;
 	if($response-&gt;transactionResponse-&gt;state=="PENDING"){
-		$response-&gt;transactionResponse-&gt;pendingReason;	
+		$response-&gt;transactionResponse-&gt;pendingReason;
 	}
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseCode;
 	$response-&gt;transactionResponse-&gt;paymentNetworkResponseErrorMessage;
 	$response-&gt;transactionResponse-&gt;trazabilityCode;
 	$response-&gt;transactionResponse-&gt;responseCode;
-	$response-&gt;transactionResponse-&gt;responseMessage;   	
+	$response-&gt;transactionResponse-&gt;responseMessage;
 }
 </pre>
 </div>
@@ -307,7 +324,7 @@ accountId: de tu cuenta
 test: false
 </pre>
 
-<span class="grey-text-13">Apuntando a las URLs de producción:</span>
+<!-- <span class="grey-text-13">Apuntando a las URLs de producción:</span>
 <div id="blue-box">
 <span class="grey-text-13"><b>Java</b>&nbsp;<br>
 PayU.paymentsUrl = "https://api.payulatam.com/payments-api/";&nbsp;<br>
@@ -318,6 +335,23 @@ Environment::setPaymentsCustomUrl("https://api.payulatam.com/payments-api/4.0/se
 Environment::setReportsCustomUrl("https://api.payulatam.com/reports-api/4.0/service.cgi");&nbsp;<br>
 Environment::setSubscriptionsCustomUrl("https://api.payulatam.com/payments-api/rest/v4.3/");&nbsp;<br>
 </span>
+</div> -->
+
+Apuntando a las correspondientes URLs:
+<div class="squelch-taas-tab-group squelch-taas-override" data-title="" data-disabled="false" data-collapsible="false" data-active="0" data-event="click">
+<ul>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-1">SDK Java</a></li>
+<li class="squelch-taas-tab"><a href="#squelch-taas-tab-content-2">SDK PHP</a></li>
+</ul>
+<div id="squelch-taas-tab-content-1">
+<span class="grey-text-13"><b>PayU.paymentsUrl = “https://api.payulatam.com/payments-api/”;</b><br>
+PayU.reportsUrl = “https://api.payulatam.com/reports-api/”; </span>
+</div>
+<div id="squelch-taas-tab-content-2">
+<span class="grey-text-13">Environment::setPaymentsCustomUrl(“https://api.payulatam.com/payments-api/4.0/service.cgi”);/<br>
+Environment::setReportsCustomUrl(“https://api.payulatam.com/reports-api/4.0/service.cgi”); <br>
+<b>Environment::setSubscriptionsCustomUrl(“https://api.payulatam.com/payments-api/rest/v4.9/”);</b></span>
+</div>
 </div>
 
 </div>
