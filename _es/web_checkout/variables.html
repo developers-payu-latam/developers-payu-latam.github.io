@@ -3,1976 +3,2177 @@ title: Tablas de variables
 subcategory: tables
 ---
 <div>
-<div class="payu-page-header superhero-sticky">
-<h1 class="payu-title1 bgreen">Integración webcheckout - tablas de variables</h1>
-</div>
+    <div class="payu-page-header superhero-sticky">
+        <h1 class="payu-title1 bgreen">Integración webcheckout - tablas de variables</h1>
+    </div>
 
-<div class="sh-container payu-white-bg">
-<div class="container">
-<div class="row" style="background-color: #f5f5f5;">
-{% include sidemenu_webcheckout.html %}
-<div id="page-menu-column2">
-&nbsp;<br>
-&nbsp;<br>
-<span class="grey-text-13">En esta sección encontraras los datos a tener en cuenta durante la integración webcheckout, como tablas de variables, lenguajes y divisas admitidas por nuestra plataforma.</span>
-&nbsp;<br>
-&nbsp;<br>
+    <div class="sh-container payu-white-bg">
+        <div class="container">
+            <div class="row" style="background-color: #f5f5f5;">
+                {% include sidemenu_webcheckout.html %}
+                <div id="page-menu-column2">
+                    &nbsp;<br>
+                    &nbsp;<br>
+                    <span class="grey-text-13">En esta sección encontraras los datos a tener en cuenta durante la integración webcheckout, como tablas de variables, lenguajes y divisas admitidas por nuestra plataforma.</span>
+                    &nbsp;<br>
+                    &nbsp;<br>
 
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui"  >
-<h3 >
-<a href="" id="varstableid_01">
-Códigos de respuesta de la página de respuesta</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_01">
+                                Códigos de respuesta de la página de respuesta</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
 
-<div ><table class="table-d" >
-  <tr bgcolor="#696a6c" style="font-size:12px;">
-    <td width="108" style="color: #fff; font-weight: bold;">lap<br>Transaction<br>State</td>
-    <td witdh="85" style="color: #fff; font-weight: bold;">transaction<br>State</td>
-    <td witdh="108" style="color: #fff; font-weight: bold;">pol<br>Transaction<br>State</td>
-    <td witdh="255" style="color: #fff; font-weight: bold;">lapResponseCode</td>
-    <td witdh="93" style="color: #fff; font-weight: bold;">pol<br>Response<br>Code</td>
-    <td witdh="220" style="color: #fff; font-weight: bold;">Descripción</td>
-  </tr>
-  <tr>
-    <td>APPROVED</td>
-    <td>4 (Aprobada)</td>
-    <td>4(Aprobada)</td>
-    <td>APPROVED</td>
-    <td >1</td>
-    <td>Transacción aprobada</td>
-  </tr>
-  <tr>
-    <td rowspan="25">DECLINED</td>
-    <td rowspan="25">6 (Declinada)</td>
-    <td rowspan="38">6(Rechazada)</td>
-    <td>PAYMENT_NETWORK_REJECTED</td>
-    <td >4</td>
-    <td>Transacción rechazada por entidad financiera</td>
-  </tr>
-  <tr>
-    <td>ENTITY_DECLINED</td>
-    <td >5</td>
-    <td>Transacción rechazada por el banco</td>
-  </tr>
-  <tr>
-    <td>INSUFFICIENT_FUNDS</td>
-    <td >6</td>
-    <td>Fondos insuficientes</td>
-  </tr>
-  <tr>
-    <td>INVALID_CARD</td>
-    <td >7</td>
-    <td>Tarjeta inválida</td>
-  </tr>
-  <tr>
-    <td>CONTACT_THE_ENTITY</td>
-    <td >8</td>
-    <td>Contactar entidad financiera</td>
-  </tr>
-  <tr>
-    <td>BANK_ACCOUNT_ACTIVATION<br>_ERROR</td>
-    <td >8</td>
-    <td>Débito automático no permitido</td>
-  </tr>
-  <tr>
-    <td>BANK_ACCOUNT_NOT_AUTHORIZED<br>_FOR_AUTOMATIC_DEBIT</td>
-    <td >8</td>
-    <td>Débito automático no permitido</td>
-  </tr>
-  <tr>
-    <td>INVALID_AGENCY_BANK_ACCOUNT</td>
-    <td >8</td>
-    <td>Débito automático no permitido</td>
-  </tr>
-  <tr>
-    <td>INVALID_BANK_ACCOUNT</td>
-    <td >8</td>
-    <td>Débito automático no permitido</td>
-  </tr>
-  <tr>
-    <td>INVALID_BANK</td>
-    <td >8</td>
-    <td>Débito automático no permitido</td>
-  </tr>
-  <tr>
-    <td>EXPIRED_CARD</td>
-    <td >9</td>
-    <td>Tarjeta vencida</td>
-  </tr>
-  <tr>
-    <td>RESTRICTED_CARD</td>
-    <td >10</td>
-    <td>Tarjeta restringida</td>
-  </tr>
-  <tr>
-    <td>INVALID_EXPIRATION_DATE_OR<br>_SECURITY_CODE</td>
-    <td >12</td>
-    <td>Fecha de expiración o código de seguridadinválidos</td>
-  </tr>
-  <tr>
-    <td>REPEAT_TRANSACTION</td>
-    <td >13</td>
-    <td>Reintentar pago</td>
-  </tr>
-  <tr>
-    <td>INVALID_TRANSACTION</td>
-    <td >14</td>
-    <td>Transacción inválida</td>
-  </tr>
-  <tr>
-    <td>EXCEEDED_AMOUNT</td>
-    <td >17</td>
-    <td>El valor excede el máximo permitido por la entidad</td>
-  </tr>
-  <tr>
-    <td>ABANDONED_TRANSACTION</td>
-    <td >19</td>
-    <td>Transacción abandonada por el pagador</td>
-  </tr>
-  <tr>
-    <td>CREDIT_CARD_NOT_AUTHORIZED_FOR<br>_INTERNET_TRANSACTIONS</td>
-    <td >22</td>
-    <td>Tarjeta no autorizada para comprar por internet</td>
-  </tr>
-  <tr>
-    <td>ANTIFRAUD_REJECTED</td>
-    <td >23</td>
-    <td>Transacción rechazada por sospecha de fraude</td>
-  </tr>
-  <tr>
-    <td>DIGITAL_CERTIFICATE_<br>NOT_FOUND</td>
-    <td >9995</td>
-    <td>Certificado digital no encotnrado</td>
-  </tr>
-  <tr>
-    <td>BANK_UNREACHABLE</td>
-    <td >9996</td>
-    <td>Error tratando de cominicarse con el banco</td>
-  </tr>
-  <tr>
-    <td>ENTITY_MESSAGING<br>_ERROR</td>
-    <td >9997</td>
-    <td>Error comunicándose con la entidad financiera</td>
-  </tr>
-  <tr>
-    <td>NOT_ACCEPTED_<br>TRANSACTION</td>
-    <td >9998</td>
-    <td>Transacción no permitida al tarjetahabiente</td>
-  </tr>
-  <tr>
-    <td>INTERNAL_PAYMENT<br>_PROVIDER_ERROR</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>INACTIVE_PAYMENT_<br>PROVIDER</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td rowspan="13">ERROR</td>
-    <td rowspan="13">104 (Error)</td>
-    <td>ERROR</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR_CONVERTING_TRANSACTION<br>_AMOUNTS</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>FIX_NOT_REQUIRED</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>AUTOMATICALLY_FIXED_AND_SUCCESS<br>_REVERSAL</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>AUTOMATICALLY_FIXED<br>_AND_UNSUCCESS<br>_REVERSAL</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>AUTOMATIC_FIXED_<br>NOT_SUPPORTED</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>NOT_FIXED_FOR_<br>ERROR_STATE</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR_FIXING_AND<br>_REVERSING</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR_FIXING_<br>INCOMPLETE_DATA</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>PAYMENT_NETWORK_<br>BAD_RESPONSE</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>PAYMENT_NETWORK_<br>NO_CONNECTION</td>
-    <td >9996</td>
-    <td>No fue posible establecer comunicación con la entidad    financiera</td>
-  </tr>
-  <tr>
-    <td>PAYMENT_NETWORK_<br>NO_RESPONSE</td>
-    <td >9996</td>
-    <td>No se recibió respuesta de la entidad financiera</td>
-  </tr>
-  <tr>
-    <td>EXPIRED</td>
-    <td>5 (Expirada)</td>
-    <td>5 (Expirada)</td>
-    <td>EXPIRED_TRANSACTION</td>
-    <td >20</td>
-    <td>Transacción expirada</td>
-  </tr>
-  <tr>
-    <td rowspan="8">PENDING</td>
-    <td rowspan="8">7(Pendiente)</td>
-    <td>7(Pendiente)</td>
-    <td>PENDING_TRANSACTION_<br>REVIEW</td>
-    <td >15</td>
-    <td>Transacción en validación manual</td>
-  </tr>
-  <tr>
-    <td>14(Pendiente)</td>
-    <td>PENDING_TRANSACTION_<br>CONFIRMATION</td>
-    <td >25</td>
-    <td>Recibo de pago generado. En espera de pago</td>
-  </tr>
-  <tr>
-    <td>7(Pendiente)</td>
-    <td>PENDING_TRANSACTION_<br>TRANSMISSION</td>
-    <td >9998</td>
-    <td>Transacción no permitida</td>
-  </tr>
-  <tr>
-    <td>14(Pendiente)</td>
-    <td>PENDING_PAYMENT_IN_ENTITY</td>
-    <td >25</td>
-    <td>Recibo de pago generado. En espera de pago</td>
-  </tr>
-  <tr>
-    <td>15(Pendiente)</td>
-    <td>PENDING_PAYMENT_IN_BANK</td>
-    <td >26</td>
-    <td>Recibo de pago generado. En espera de pago</td>
-  </tr>
-  <tr>
-    <td>10(Pendiente)</td>
-    <td>PENDING_SENT_TO_FINANCIAL<br>_ENTITY</td>
-    <td >29</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>12(Pendiente)</td>
-    <td>PENDING_AWAITING_PSE<br>_CONFIRMATION</td>
-    <td >9994</td>
-    <td>En espera de confirmación de PSE</td>
-  </tr>
-  <tr>
-    <td>18(Pendiente)</td>
-    <td>PENDING_NOTIFYING_ENTITY</td>
-    <td >25</td>
-    <td>Recibo de pago generado. En espera de pago</td>
-  </tr>
-</table></div>
+                            <div>
+                                <table class="table-d">
+                                    <tr bgcolor="#696a6c" style="font-size:12px;">
+                                        <td width="108" style="color: #fff; font-weight: bold;">lap<br>Transaction<br>State
+                                        </td>
+                                        <td witdh="85" style="color: #fff; font-weight: bold;">transaction<br>State</td>
+                                        <td witdh="108" style="color: #fff; font-weight: bold;">pol<br>Transaction<br>State
+                                        </td>
+                                        <td witdh="255" style="color: #fff; font-weight: bold;">lapResponseCode</td>
+                                        <td witdh="93" style="color: #fff; font-weight: bold;">pol<br>Response<br>Code
+                                        </td>
+                                        <td witdh="220" style="color: #fff; font-weight: bold;">Descripción</td>
+                                    </tr>
+                                    <tr>
+                                        <td>APPROVED</td>
+                                        <td>4 (Aprobada)</td>
+                                        <td>4(Aprobada)</td>
+                                        <td>APPROVED</td>
+                                        <td>1</td>
+                                        <td>Transacción aprobada</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="25">DECLINED</td>
+                                        <td rowspan="25">6 (Declinada)</td>
+                                        <td rowspan="38">6(Rechazada)</td>
+                                        <td>PAYMENT_NETWORK_REJECTED</td>
+                                        <td>4</td>
+                                        <td>Transacción rechazada por entidad financiera</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ENTITY_DECLINED</td>
+                                        <td>5</td>
+                                        <td>Transacción rechazada por el banco</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INSUFFICIENT_FUNDS</td>
+                                        <td>6</td>
+                                        <td>Fondos insuficientes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INVALID_CARD</td>
+                                        <td>7</td>
+                                        <td>Tarjeta inválida</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CONTACT_THE_ENTITY</td>
+                                        <td>8</td>
+                                        <td>Contactar entidad financiera</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BANK_ACCOUNT_ACTIVATION<br>_ERROR</td>
+                                        <td>8</td>
+                                        <td>Débito automático no permitido</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BANK_ACCOUNT_NOT_AUTHORIZED<br>_FOR_AUTOMATIC_DEBIT</td>
+                                        <td>8</td>
+                                        <td>Débito automático no permitido</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INVALID_AGENCY_BANK_ACCOUNT</td>
+                                        <td>8</td>
+                                        <td>Débito automático no permitido</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INVALID_BANK_ACCOUNT</td>
+                                        <td>8</td>
+                                        <td>Débito automático no permitido</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INVALID_BANK</td>
+                                        <td>8</td>
+                                        <td>Débito automático no permitido</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EXPIRED_CARD</td>
+                                        <td>9</td>
+                                        <td>Tarjeta vencida</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RESTRICTED_CARD</td>
+                                        <td>10</td>
+                                        <td>Tarjeta restringida</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INVALID_EXPIRATION_DATE_OR<br>_SECURITY_CODE</td>
+                                        <td>12</td>
+                                        <td>Fecha de expiración o código de seguridadinválidos</td>
+                                    </tr>
+                                    <tr>
+                                        <td>REPEAT_TRANSACTION</td>
+                                        <td>13</td>
+                                        <td>Reintentar pago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INVALID_TRANSACTION</td>
+                                        <td>14</td>
+                                        <td>Transacción inválida</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EXCEEDED_AMOUNT</td>
+                                        <td>17</td>
+                                        <td>El valor excede el máximo permitido por la entidad</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ABANDONED_TRANSACTION</td>
+                                        <td>19</td>
+                                        <td>Transacción abandonada por el pagador</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CREDIT_CARD_NOT_AUTHORIZED_FOR<br>_INTERNET_TRANSACTIONS</td>
+                                        <td>22</td>
+                                        <td>Tarjeta no autorizada para comprar por internet</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ANTIFRAUD_REJECTED</td>
+                                        <td>23</td>
+                                        <td>Transacción rechazada por sospecha de fraude</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BANK_FRAUD_REJECTED</td>
+                                        <td>23</td>
+                                        <td>Transacción rechazada debido a sospecha de fraude en la entidad
+                                            financiera
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIGITAL_CERTIFICATE_<br>NOT_FOUND</td>
+                                        <td>9995</td>
+                                        <td>Certificado digital no encotnrado</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BANK_UNREACHABLE</td>
+                                        <td>9996</td>
+                                        <td>Error tratando de cominicarse con el banco</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ENTITY_MESSAGING<br>_ERROR</td>
+                                        <td>9997</td>
+                                        <td>Error comunicándose con la entidad financiera</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NOT_ACCEPTED_<br>TRANSACTION</td>
+                                        <td>9998</td>
+                                        <td>Transacción no permitida al tarjetahabiente</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INTERNAL_PAYMENT<br>_PROVIDER_ERROR</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>INACTIVE_PAYMENT_<br>PROVIDER</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="13">ERROR</td>
+                                        <td rowspan="13">104 (Error)</td>
+                                        <td>ERROR</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ERROR_CONVERTING_TRANSACTION<br>_AMOUNTS</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FIX_NOT_REQUIRED</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AUTOMATICALLY_FIXED_AND_SUCCESS<br>_REVERSAL</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AUTOMATICALLY_FIXED<br>_AND_UNSUCCESS<br>_REVERSAL</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AUTOMATIC_FIXED_<br>NOT_SUPPORTED</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NOT_FIXED_FOR_<br>ERROR_STATE</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ERROR_FIXING_AND<br>_REVERSING</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ERROR_FIXING_<br>INCOMPLETE_DATA</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PAYMENT_NETWORK_<br>BAD_RESPONSE</td>
+                                        <td>9999</td>
+                                        <td>Error</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PAYMENT_NETWORK_<br>NO_CONNECTION</td>
+                                        <td>9996</td>
+                                        <td>No fue posible establecer comunicación con la entidad financiera</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PAYMENT_NETWORK_<br>NO_RESPONSE</td>
+                                        <td>9996</td>
+                                        <td>No se recibió respuesta de la entidad financiera</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EXPIRED</td>
+                                        <td>5 (Expirada)</td>
+                                        <td>5 (Expirada)</td>
+                                        <td>EXPIRED_TRANSACTION</td>
+                                        <td>20</td>
+                                        <td>Transacción expirada</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="8">PENDING</td>
+                                        <td rowspan="8">7(Pendiente)</td>
+                                        <td>7(Pendiente)</td>
+                                        <td>PENDING_TRANSACTION_<br>REVIEW</td>
+                                        <td>15</td>
+                                        <td>Transacción en validación manual</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14(Pendiente)</td>
+                                        <td>PENDING_TRANSACTION_<br>CONFIRMATION</td>
+                                        <td>25</td>
+                                        <td>Recibo de pago generado. En espera de pago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7(Pendiente)</td>
+                                        <td>PENDING_TRANSACTION_<br>TRANSMISSION</td>
+                                        <td>9998</td>
+                                        <td>Transacción no permitida</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14(Pendiente)</td>
+                                        <td>PENDING_PAYMENT_IN_ENTITY</td>
+                                        <td>25</td>
+                                        <td>Recibo de pago generado. En espera de pago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15(Pendiente)</td>
+                                        <td>PENDING_PAYMENT_IN_BANK</td>
+                                        <td>26</td>
+                                        <td>Recibo de pago generado. En espera de pago</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10(Pendiente)</td>
+                                        <td>PENDING_SENT_TO_FINANCIAL<br>_ENTITY</td>
+                                        <td>29</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12(Pendiente)</td>
+                                        <td>PENDING_AWAITING_PSE<br>_CONFIRMATION</td>
+                                        <td>9994</td>
+                                        <td>En espera de confirmación de PSE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18(Pendiente)</td>
+                                        <td>PENDING_NOTIFYING_ENTITY</td>
+                                        <td>25</td>
+                                        <td>Recibo de pago generado. En espera de pago</td>
+                                    </tr>
+                                </table>
+                            </div>
 
-</div></div>
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_02" >
-Códigos de respuesta de la página de confirmación</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
+                        </div>
+                    </div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_02">
+                                Códigos de respuesta de la página de confirmación</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
 
-<table class="table-d" >
-  <tr bgcolor="#696a6c" style="font-size:12px;">
-    <td style="color: #fff; font-weight: bold;">state_pol</td>
-    <td style="color: #fff; font-weight: bold;">response_message_pol</td>
-    <td style="color: #fff; font-weight: bold;">response_code_pol</td>
-    <td style="color: #fff; font-weight: bold;">Descripción</td>
-  </tr>
-  <tr>
-    <td>4(Aprobada)</td>
-    <td>APPROVED</td>
-    <td >1</td>
-    <td>Transacción aprobada</td>
-  </tr>
-  <tr>
-    <td rowspan="38">6 (Declinada)</td>
-    <td>PAYMENT_NETWORK_REJECTED</td>
-    <td >4</td>
-    <td>Transacción rechazada por entidad    financiera</td>
-  </tr>
-  <tr>
-    <td>ENTITY_DECLINED</td>
-    <td >5</td>
-    <td>Transacción rechazada    por el banco</td>
-  </tr>
-  <tr>
-    <td>INSUFFICIENT_FUNDS</td>
-    <td >6</td>
-    <td>Fondos insuficientes</td>
-  </tr>
-  <tr>
-    <td>INVALID_CARD</td>
-    <td >7</td>
-    <td>Tarjeta inválida</td>
-  </tr>
-  <tr>
-    <td>CONTACT_THE_ENTITY</td>
-    <td >8</td>
-    <td>Contactar entidad    financiera</td>
-  </tr>
-  <tr>
-    <td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
-    <td >8</td>
-    <td>Débito automático no    permitido</td>
-  </tr>
-  <tr>
-    <td>BANK_ACCOUNT_NOT_AUTHORIZED<br>_FOR_AUTOMATIC_DEBIT</td>
-    <td >8</td>
-    <td>Débito automático no    permitido</td>
-  </tr>
-  <tr>
-    <td>INVALID_AGENCY_BANK_ACCOUNT</td>
-    <td >8</td>
-    <td>Débito automático no    permitido</td>
-  </tr>
-  <tr>
-    <td>INVALID_BANK_ACCOUNT</td>
-    <td >8</td>
-    <td>Débito automático no    permitido</td>
-  </tr>
-  <tr>
-    <td>INVALID_BANK</td>
-    <td >8</td>
-    <td>Débito automático no    permitido</td>
-  </tr>
-  <tr>
-    <td>EXPIRED_CARD</td>
-    <td >9</td>
-    <td>Tarjeta vencida</td>
-  </tr>
-  <tr>
-    <td>RESTRICTED_CARD</td>
-    <td >10</td>
-    <td>Tarjeta restringida</td>
-  </tr>
-  <tr>
-    <td>INVALID_EXPIRATION_DATE_OR<br>_SECURITY_CODE</td>
-    <td >12</td>
-    <td>Fecha de expiración o código de seguridadinválidos</td>
-  </tr>
-  <tr>
-    <td>REPEAT_TRANSACTION</td>
-    <td >13</td>
-    <td>Reintentar pago</td>
-  </tr>
-  <tr>
-    <td>INVALID_TRANSACTION</td>
-    <td >14</td>
-    <td>Transacción inválida</td>
-  </tr>
-  <tr>
-    <td>EXCEEDED_AMOUNT</td>
-    <td >17</td>
-    <td>El valor excede el    máximo permitido por la entidad</td>
-  </tr>
-  <tr>
-    <td>ABANDONED_TRANSACTION</td>
-    <td >19</td>
-    <td>Transacción    abandonada por el pagador</td>
-  </tr>
-  <tr>
-    <td>CREDIT_CARD_NOT_AUTHORIZED_FOR<br>_INTERNET_TRANSACTIONS</td>
-    <td >22</td>
-    <td>Tarjeta no autorizada    para comprar por internet</td>
-  </tr>
-  <tr>
-    <td>ANTIFRAUD_REJECTED</td>
-    <td >23</td>
-    <td>Transacción rechazada    por sospecha de fraude</td>
-  </tr>
-  <tr>
-    <td>DIGITAL_CERTIFICATE_NOT_FOUND</td>
-    <td >9995</td>
-    <td>Certificado digital    no encotnrado</td>
-  </tr>
-  <tr>
-    <td>BANK_UNREACHABLE</td>
-    <td >9996</td>
-    <td>Error tratando de    cominicarse con el banco</td>
-  </tr>
-  <tr>
-    <td>PAYMENT_NETWORK_NO_CONNECTION</td>
-    <td >9996</td>
-    <td>No fue posible    establecer comunicación con la entidad financiera</td>
-  </tr>
-  <tr>
-    <td>PAYMENT_NETWORK_NO_RESPONSE</td>
-    <td >9996</td>
-    <td>No se recibió    respuesta de la entidad financiera</td>
-  </tr>
-  <tr>
-    <td>ENTITY_MESSAGING_ERROR</td>
-    <td >9997</td>
-    <td>Error comunicándose    con la entidad financiera</td>
-  </tr>
-  <tr>
-    <td>NOT_ACCEPTED_TRANSACTION</td>
-    <td >9998</td>
-    <td>Transacción no    permitida</td>
-  </tr>
-  <tr>
-    <td>INTERNAL_PAYMENT_PROVIDER_ERROR</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>INACTIVE_PAYMENT_PROVIDER</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR_CONVERTING_TRANSACTION<br>_AMOUNTS</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>FIX_NOT_REQUIRED</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>AUTOMATICALLY_FIXED_AND_SUCCESS<br>_REVERSAL</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>AUTOMATICALLY_FIXED_AND_UNSUCCESS<br>_REVERSAL</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>AUTOMATIC_FIXED_NOT_SUPPORTED</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>NOT_FIXED_FOR_ERROR_STATE</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR_FIXING_AND_REVERSING</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>ERROR_FIXING_INCOMPLETE_DATA</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>PAYMENT_NETWORK_BAD_RESPONSE</td>
-    <td >9999</td>
-    <td>Error</td>
-  </tr>
-  <tr>
-    <td>5 (Expirada)</td>
-    <td>EXPIRED_TRANSACTION</td>
-    <td >20</td>
-    <td>Transacción expirada</td>
-  </tr>
-</table>
-</div></div>
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c" style="font-size:12px;">
+                                    <td style="color: #fff; font-weight: bold;">state_pol</td>
+                                    <td style="color: #fff; font-weight: bold;">response_message_pol</td>
+                                    <td style="color: #fff; font-weight: bold;">response_code_pol</td>
+                                    <td style="color: #fff; font-weight: bold;">Descripción</td>
+                                </tr>
+                                <tr>
+                                    <td>4(Aprobada)</td>
+                                    <td>APPROVED</td>
+                                    <td>1</td>
+                                    <td>Transacción aprobada</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="38">6 (Declinada)</td>
+                                    <td>PAYMENT_NETWORK_REJECTED</td>
+                                    <td>4</td>
+                                    <td>Transacción rechazada por entidad financiera</td>
+                                </tr>
+                                <tr>
+                                    <td>ENTITY_DECLINED</td>
+                                    <td>5</td>
+                                    <td>Transacción rechazada por el banco</td>
+                                </tr>
+                                <tr>
+                                    <td>INSUFFICIENT_FUNDS</td>
+                                    <td>6</td>
+                                    <td>Fondos insuficientes</td>
+                                </tr>
+                                <tr>
+                                    <td>INVALID_CARD</td>
+                                    <td>7</td>
+                                    <td>Tarjeta inválida</td>
+                                </tr>
+                                <tr>
+                                    <td>CONTACT_THE_ENTITY</td>
+                                    <td>8</td>
+                                    <td>Contactar entidad financiera</td>
+                                </tr>
+                                <tr>
+                                    <td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
+                                    <td>8</td>
+                                    <td>Débito automático no permitido</td>
+                                </tr>
+                                <tr>
+                                    <td>BANK_ACCOUNT_NOT_AUTHORIZED<br>_FOR_AUTOMATIC_DEBIT</td>
+                                    <td>8</td>
+                                    <td>Débito automático no permitido</td>
+                                </tr>
+                                <tr>
+                                    <td>INVALID_AGENCY_BANK_ACCOUNT</td>
+                                    <td>8</td>
+                                    <td>Débito automático no permitido</td>
+                                </tr>
+                                <tr>
+                                    <td>INVALID_BANK_ACCOUNT</td>
+                                    <td>8</td>
+                                    <td>Débito automático no permitido</td>
+                                </tr>
+                                <tr>
+                                    <td>INVALID_BANK</td>
+                                    <td>8</td>
+                                    <td>Débito automático no permitido</td>
+                                </tr>
+                                <tr>
+                                    <td>EXPIRED_CARD</td>
+                                    <td>9</td>
+                                    <td>Tarjeta vencida</td>
+                                </tr>
+                                <tr>
+                                    <td>RESTRICTED_CARD</td>
+                                    <td>10</td>
+                                    <td>Tarjeta restringida</td>
+                                </tr>
+                                <tr>
+                                    <td>INVALID_EXPIRATION_DATE_OR<br>_SECURITY_CODE</td>
+                                    <td>12</td>
+                                    <td>Fecha de expiración o código de seguridadinválidos</td>
+                                </tr>
+                                <tr>
+                                    <td>REPEAT_TRANSACTION</td>
+                                    <td>13</td>
+                                    <td>Reintentar pago</td>
+                                </tr>
+                                <tr>
+                                    <td>INVALID_TRANSACTION</td>
+                                    <td>14</td>
+                                    <td>Transacción inválida</td>
+                                </tr>
+                                <tr>
+                                    <td>EXCEEDED_AMOUNT</td>
+                                    <td>17</td>
+                                    <td>El valor excede el máximo permitido por la entidad</td>
+                                </tr>
+                                <tr>
+                                    <td>ABANDONED_TRANSACTION</td>
+                                    <td>19</td>
+                                    <td>Transacción abandonada por el pagador</td>
+                                </tr>
+                                <tr>
+                                    <td>CREDIT_CARD_NOT_AUTHORIZED_FOR<br>_INTERNET_TRANSACTIONS</td>
+                                    <td>22</td>
+                                    <td>Tarjeta no autorizada para comprar por internet</td>
+                                </tr>
+                                <tr>
+                                    <td>ANTIFRAUD_REJECTED</td>
+                                    <td>23</td>
+                                    <td>Transacción rechazada por sospecha de fraude</td>
+                                </tr>
+                                <tr>
+                                    <td>BANK_FRAUD_REJECTED</td>
+                                    <td>23</td>
+                                    <td>Transacción rechazada debido a sospecha de fraude en la entidad
+                                        financiera
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>DIGITAL_CERTIFICATE_NOT_FOUND</td>
+                                    <td>9995</td>
+                                    <td>Certificado digital no encotnrado</td>
+                                </tr>
+                                <tr>
+                                    <td>BANK_UNREACHABLE</td>
+                                    <td>9996</td>
+                                    <td>Error tratando de cominicarse con el banco</td>
+                                </tr>
+                                <tr>
+                                    <td>PAYMENT_NETWORK_NO_CONNECTION</td>
+                                    <td>9996</td>
+                                    <td>No fue posible establecer comunicación con la entidad financiera</td>
+                                </tr>
+                                <tr>
+                                    <td>PAYMENT_NETWORK_NO_RESPONSE</td>
+                                    <td>9996</td>
+                                    <td>No se recibió respuesta de la entidad financiera</td>
+                                </tr>
+                                <tr>
+                                    <td>ENTITY_MESSAGING_ERROR</td>
+                                    <td>9997</td>
+                                    <td>Error comunicándose con la entidad financiera</td>
+                                </tr>
+                                <tr>
+                                    <td>NOT_ACCEPTED_TRANSACTION</td>
+                                    <td>9998</td>
+                                    <td>Transacción no permitida</td>
+                                </tr>
+                                <tr>
+                                    <td>INTERNAL_PAYMENT_PROVIDER_ERROR</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>INACTIVE_PAYMENT_PROVIDER</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>ERROR</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>ERROR_CONVERTING_TRANSACTION<br>_AMOUNTS</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>FIX_NOT_REQUIRED</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>AUTOMATICALLY_FIXED_AND_SUCCESS<br>_REVERSAL</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>AUTOMATICALLY_FIXED_AND_UNSUCCESS<br>_REVERSAL</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>AUTOMATIC_FIXED_NOT_SUPPORTED</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>NOT_FIXED_FOR_ERROR_STATE</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>ERROR_FIXING_AND_REVERSING</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>ERROR_FIXING_INCOMPLETE_DATA</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>PAYMENT_NETWORK_BAD_RESPONSE</td>
+                                    <td>9999</td>
+                                    <td>Error</td>
+                                </tr>
+                                <tr>
+                                    <td>5 (Expirada)</td>
+                                    <td>EXPIRED_TRANSACTION</td>
+                                    <td>20</td>
+                                    <td>Transacción expirada</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_03">
-Variables que se envían a la pasarela</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Campo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
-<td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
-<td><span style="color: #fff; font-weight: bold;">Requerido en</span></td>
-</tr>
-<tr>
-<td><i>amount</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14</td>
-<td>Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><i>merchantId</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">12</td>
-<td>Es el número identificador de su comercio en el sistema de PayU, este número lo encontrará en el correo de creación de la cuenta.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><i>referenceCode</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la referencia de la venta o pedido. Deber ser único por cada transacción que se envía al sistema.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><i>accountId</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">6</td>
-<td>Identificador de la cuenta del usuario para cada país que tenga asociado el comercio, al enviarla se despliegan solo los medios de pago pertenecientes a dicho país.</td>
-<td align="center">Todos los países</td>
-</tr>
-<tr>
-<td><i>description</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la descripción de la venta.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><i>tax</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><em>taxReturnBase</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Es el valor base sobre el cual se calcula el IVA. En caso de que no tenga IVA debe enviarse en 0.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><i>signature</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">32</td>
-<td>Es la firma digital creada para cada uno de las transacciones.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><em>currency</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">3</td>
-<td>La moneda respectiva en la que se realiza el pago. El proceso de conciliación se hace en pesos a la tasa representativa del día.</td>
-<td>Todos Los países</td>
-</tr>
-<tr>
-<td><i>test</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">1</td>
-<td>Variable para poder utilizar tarjetas de crédito de pruebas, los valores pueden ser 1 ó 0.</td>
-<td style="text-align: center;" valign="top" width="80">&#8212;</td>
-</tr>
-<tr>
-<td><i>buyerEmail</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo que contiene el correo electrónico del comprador para notificarle el resultado de la transacción por correo electrónico. Se recomienda hacer una validación si se toma este dato en un formulario.</td>
-<td>Todos los países</td>
-</tr>
-<tr>
-<td><i>lng</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>Idioma en el que se desea mostrar la pasarela de pagos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra1 </i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar información sobre la compra. Ej. Descripción de la compra en caso de querer visualizarla en la página de respuesta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra2</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de los productos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>responseUrl</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>La url de la página de respuesta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>confirmationUrl</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>La url de la página de confirmación.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerFullName</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>El nombre del comprador. Este valor se tomará para llenar el formulario de tarjetas crédito.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerDocument</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">25</td>
-<td>El número de identificación del comprador. Este valor se tomará para llenar el formulario de tarjetas crédito.</td>
-<td style="text-align: center;" width="80">&#8212;</td>
-</tr>
-<tr>
-<td><i>mobilePhone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>El número celular del comprador. Este valor se tomará para llenar el formulario de tarjetas crédito y será el teléfono de contacto.</td>
-<td style="text-align: center;" width="80">&#8212;</td>
-</tr>
-<tr>
-<td><i>billingAddress</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>La dirección de correspondencia.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>shippingAddress</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>La dirección de entrega de la mercancía.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>telephone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>El teléfono de residencia del comprador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>officeTelephone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>El teléfono diurno del comprador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>algorithmSignature</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Algoritmo de cifrado de la firma digital (signature).</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra3</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de los productos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>billingCity</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>Ciudad asociada a la dirección de facturación.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>shippingCity</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>La Ciudad de entrega de la mercancía.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>zipCode</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Código postal.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>billingCountry</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>El código ISO del país asociado a la dirección de facturación.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>shippingCountry</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>El código ISO del país de entrega de la mercancía.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>buyerFullName</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">150</td>
-<td>Nombre completo del comprador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerEmail</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Correo electrónico del pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerPhone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número telefónico del pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerOfficePhone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número telefónico del lugar de trabajo del pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>payerMobilePhone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Numero teléfono móvil del pagador.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-</table>
-</div></div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_03">
+                                Variables que se envían a la pasarela</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Campo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Requerido en</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i>amount</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14</td>
+                                    <td>Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej.
+                                        10000.00 ó 10000.
+                                    </td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>merchantId</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">12</td>
+                                    <td>Es el número identificador de su comercio en el sistema de PayU, este número lo
+                                        encontrará en el correo de creación de la cuenta.
+                                    </td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>referenceCode</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la referencia de la venta o pedido. Deber ser único por cada transacción que
+                                        se envía al sistema.
+                                    </td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>accountId</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">6</td>
+                                    <td>Identificador de la cuenta del usuario para cada país que tenga asociado el
+                                        comercio, al enviarla se despliegan solo los medios de pago pertenecientes a
+                                        dicho país.
+                                    </td>
+                                    <td align="center">Todos los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>description</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la descripción de la venta.</td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>tax</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14,2</td>
+                                    <td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema
+                                        aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej:
+                                        19000.00. En caso de no tener IVA debe enviarse en 0.
+                                    </td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><em>taxReturnBase</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14,2</td>
+                                    <td>Es el valor base sobre el cual se calcula el IVA. En caso de que no tenga IVA
+                                        debe enviarse en 0.
+                                    </td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>signature</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">32</td>
+                                    <td>Es la firma digital creada para cada uno de las transacciones.</td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><em>currency</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">3</td>
+                                    <td>La moneda respectiva en la que se realiza el pago. El proceso de conciliación se
+                                        hace en pesos a la tasa representativa del día.
+                                    </td>
+                                    <td>Todos Los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>test</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">1</td>
+                                    <td>Variable para poder utilizar tarjetas de crédito de pruebas, los valores pueden
+                                        ser 1 ó 0.
+                                    </td>
+                                    <td style="text-align: center;" valign="top" width="80">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>buyerEmail</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo que contiene el correo electrónico del comprador para notificarle el
+                                        resultado de la transacción por correo electrónico. Se recomienda hacer una
+                                        validación si se toma este dato en un formulario.
+                                    </td>
+                                    <td>Todos los países</td>
+                                </tr>
+                                <tr>
+                                    <td><i>lng</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>Idioma en el que se desea mostrar la pasarela de pagos.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>extra1 </i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo adicional para enviar información sobre la compra. Ej. Descripción de la
+                                        compra en caso de querer visualizarla en la página de respuesta.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>extra2</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de
+                                        los productos.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>responseUrl</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>La url de la página de respuesta.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>confirmationUrl</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>La url de la página de confirmación.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>payerFullName</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>El nombre del comprador. Este valor se tomará para llenar el formulario de
+                                        tarjetas crédito.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>payerDocument</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">25</td>
+                                    <td>El número de identificación del comprador. Este valor se tomará para llenar el
+                                        formulario de tarjetas crédito.
+                                    </td>
+                                    <td style="text-align: center;" width="80">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>mobilePhone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>El número celular del comprador. Este valor se tomará para llenar el formulario
+                                        de tarjetas crédito y será el teléfono de contacto.
+                                    </td>
+                                    <td style="text-align: center;" width="80">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>billingAddress</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>La dirección de correspondencia.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>shippingAddress</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>La dirección de entrega de la mercancía.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>telephone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>El teléfono de residencia del comprador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>officeTelephone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>El teléfono diurno del comprador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>algorithmSignature</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Algoritmo de cifrado de la firma digital (signature).</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>extra3</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de
+                                        los productos.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>billingCity</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>Ciudad asociada a la dirección de facturación.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>shippingCity</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>La Ciudad de entrega de la mercancía.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>zipCode</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Código postal.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>billingCountry</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>El código ISO del país asociado a la dirección de facturación.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>shippingCountry</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>El código ISO del país de entrega de la mercancía.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>buyerFullName</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">150</td>
+                                    <td>Nombre completo del comprador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>payerEmail</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Correo electrónico del pagador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>payerPhone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número telefónico del pagador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>payerOfficePhone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número telefónico del lugar de trabajo del pagador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>payerMobilePhone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Numero teléfono móvil del pagador.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="">Variables para Pago Contraentrega</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" ></p>
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Campo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
-<td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
-<td><span style="color: #fff; font-weight: bold;">Requerido</span></td>
-</tr>
-<tr>
-<td><em>merchantId</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">12</td>
-<td>Es el número identificador del comercio en el sistema de PayU, este número lo encontrarás en el correo de creación de la cuenta.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>accountId</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">6</td>
-<td>Identificador de la cuenta del usuario para cada país que tenga asociado el comercio, al enviarla se despliegan solo los medios de pago pertenecientes a dicho país.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>referenceCode</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la referencia de la venta o pedido. Deber ser único por cada transacción que se envía al sistema. Normalmente es una forma de que identifiques las peticiones que se envían a la pasarela de pagos.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>description </em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la descripción de la venta.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>amount</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>tax</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA (Impuesto al Valor Agregado solo valido para ) de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>taxReturnBase</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">32</td>
-<td>Es el valor base sobre el cual se calcula el IVA (solo valido para ). En caso de que no tenga IVA debe enviarse en 0.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>signature</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la firma digital creada para cada uno de las transacciones.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em><a class="green-link" href="{{ site.baseurl }}/es/web_checkout/variables.html?opened_div=06">currency</a></em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">3</td>
-<td>La moneda respectiva en la que se realiza el pago. El proceso de conciliación se hace en pesos a la tasa representativa del día.</td>
-<td><center>Si</center></td>
-</tr>
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Datos del comercio (Bodega)</span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-</tr>
-<tr>
-<td><em>wareHouseId</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">20</td>
-<td>Id de la bodega a la cual el operador logístico irá a recoger el pedido.</td>
-<td></td>
-</tr>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="">Variables para Pago Contraentrega</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content"></p>
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Campo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Requerido</span></td>
+                                </tr>
+                                <tr>
+                                    <td><em>merchantId</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">12</td>
+                                    <td>Es el número identificador del comercio en el sistema de PayU, este número lo
+                                        encontrarás en el correo de creación de la cuenta.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>accountId</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">6</td>
+                                    <td>Identificador de la cuenta del usuario para cada país que tenga asociado el
+                                        comercio, al enviarla se despliegan solo los medios de pago pertenecientes a
+                                        dicho país.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>referenceCode</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la referencia de la venta o pedido. Deber ser único por cada transacción que
+                                        se envía al sistema. Normalmente es una forma de que identifiques las peticiones
+                                        que se envían a la pasarela de pagos.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>description </em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la descripción de la venta.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>amount</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14,2</td>
+                                    <td>Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej.
+                                        10000.00 ó 10000.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>tax</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14,2</td>
+                                    <td>Es el valor del IVA (Impuesto al Valor Agregado solo valido para ) de la
+                                        transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente.
+                                        Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe
+                                        enviarse en 0.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>taxReturnBase</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">32</td>
+                                    <td>Es el valor base sobre el cual se calcula el IVA (solo valido para ). En caso de
+                                        que no tenga IVA debe enviarse en 0.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>signature</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la firma digital creada para cada uno de las transacciones.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em><a class="green-link"
+                                               href="{{ site.baseurl }}/es/web_checkout/variables.html?opened_div=06">currency</a></em>
+                                    </td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">3</td>
+                                    <td>La moneda respectiva en la que se realiza el pago. El proceso de conciliación se
+                                        hace en pesos a la tasa representativa del día.
+                                    </td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Datos del comercio (Bodega)</span>
+                                    </td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                </tr>
+                                <tr>
+                                    <td><em>wareHouseId</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Id de la bodega a la cual el operador logístico irá a recoger el pedido.</td>
+                                    <td></td>
+                                </tr>
 
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Datos del comprador</span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-</tr>
-<tr>
-<td><em>buyerDocumentType</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Tipo de documento de quien realiza el pedido.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>buyerDocument</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número de documento del comprador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>buyerFullName</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">150</td>
-<td>Nombre completo del comprador.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>mobilePhone</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número celular del comprador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>officeTelephone</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Teléfono diurno del comprador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>buyerEmail</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Correo electrónico del comprador.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>buyerCountry</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>País de residencia del comprador (código ISO 3166 de 2 caracteres alfabéticos).</td>
-<td></td>
-</tr>
-<tr>
-<td><em>buyerState</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">40</td>
-<td>Departamento, estado o región de residencia del comprador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>buyerCity</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>Ciudad o municipio de residencia del comprador.</td>
-<td></td>
-</tr>
-
-
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Datos de facturación</span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-</tr>
-<tr>
-<td><em>payerDocumentType</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Tipo de documento del pagador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerDocument</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número de identificación del pagador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerFullName</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">150</td>
-<td>Nombre del pagador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerMobilePhone</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número celular del pagador.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerOfficePhone</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Teléfono fijo o de la oficina del pagador.</td>
-<td></td>
-</tr><tr>
-<td><em>payerEmail</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Correo electrónico que va a quedar registrado en la factura.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerCountry</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>País que va a quedar registrado en la factura (código ISO 3166 de 2 caracteres alfabéticos).</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerState</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">40</td>
-<td>Departamento, estado o región que va a quedar registrado en la factura.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerCity</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">50</td>
-<td>Ciudad que va a quedar registrada en la factura.</td>
-<td></td>
-</tr>
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Datos del comprador</span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerDocumentType</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Tipo de documento de quien realiza el pedido.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerDocument</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número de documento del comprador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerFullName</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">150</td>
+                                    <td>Nombre completo del comprador.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>mobilePhone</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número celular del comprador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>officeTelephone</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Teléfono diurno del comprador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerEmail</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Correo electrónico del comprador.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerCountry</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>País de residencia del comprador (código ISO 3166 de 2 caracteres
+                                        alfabéticos).
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerState</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">40</td>
+                                    <td>Departamento, estado o región de residencia del comprador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>buyerCity</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>Ciudad o municipio de residencia del comprador.</td>
+                                    <td></td>
+                                </tr>
 
 
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Datos de facturación</span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerDocumentType</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Tipo de documento del pagador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerDocument</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número de identificación del pagador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerFullName</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">150</td>
+                                    <td>Nombre del pagador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerMobilePhone</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número celular del pagador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerOfficePhone</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Teléfono fijo o de la oficina del pagador.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerEmail</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Correo electrónico que va a quedar registrado en la factura.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerCountry</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>País que va a quedar registrado en la factura (código ISO 3166 de 2 caracteres
+                                        alfabéticos).
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerState</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">40</td>
+                                    <td>Departamento, estado o región que va a quedar registrado en la factura.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerCity</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">50</td>
+                                    <td>Ciudad que va a quedar registrada en la factura.</td>
+                                    <td></td>
+                                </tr>
 
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Datos de envío</span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-<td><span></span></td>
-</tr>
-<tr>
-<td><em>observationsReceivingShipment</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">250</td>
-<td>Observaciones relacionadas con la recepción del pedido por parte del destinatario.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>kilogramWeight</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">9</td>
-<td>Peso en KG del total del envío.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>declaredValue</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">14</td>
-<td>Es el Valor declarado por el comprador. Puede contener dos dígitos decimales, si el valor no es enviado y no se tiene definido en la configuración por defecto de la cuenta se define el valor de la orden. Si se desea que este valor sea 0 se debe enviar 0 para las integraciones personalizadas o se debe definir el valor 0 en la configuración por defecto de la cuenta.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>shippingValue</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">14</td>
-<td>Valor del envío. <br><br>
-Si el valor de este campo es "0" (cero), se interpreta que el comercio asume todo el valor del envío calculado.<br><br>
-Si no viene ningún valor en este campo, el valor del envío será calculado y se aplicará la configuración de la cuenta para distribuir el valor calculado entre comercio y pagador.<br><br>
-Si el valor de este campo es mayor a cero, se interpreta que el comercio asume este valor, adicionalmente si el valor calculado supera este valor, se aplicará la configuración definida para la cuenta para distribuir el valor de la diferencia entre el comercio y el pagador y si el valor calculado es menor al valor enviado se asume el valor enviado.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>isCourierApply</em></td>
-<td>Booleano</td>
-<td style="text-align: center;"></td>
-<td>Este campo tiene dos posibles valores: "true" o "false". En caso de que el comercio envíe el valor "true", el cálculo de valor de envío será afectado para adicionar el valor definido por el operador logístico para el servicio de courrier en caso de que este lo ofrezca.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>shippingCountry</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>Código ISO 3166 del País de entrega del pedido.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>shippingCity</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">10</td>
-<td>Código DANE de la Ciudad o municipio donde se realizará la entrega, el cual varía de acuerdo al país. Este valor debe corresponder con uno de los municipios cubiertos por el operador logístico.<a href="/cod/Cobertura Servientrega.zip"> Cobertura.</a></td>
-<td></td>
-</tr>
-<tr>
-<td><em>shippingAddress</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">100</td>
-<td>Dirección de entrega de la mercancía.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>shippingAddress2</em></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">100</td>
-<td>Linea 2 de la dirección de entrega de la mercancía, que se usa para complementar la información registrada en la "direccionEntrega".</td>
-<td></td>
-</tr>
-<tr>
-<td><em>payerShippingPostalCode</em></td>
-<td>Numérico</td>
-<td style="text-align: center;">6</td>
-<td>Código postal de envío.</td>
-<td></td>
-</tr>
-<tr>
-<td><em>shipmentPackageHeightDimension</em></td>
-<td>Numérico</td>
-<td style="text-align: center;"></td>
-<td>Alto en centímetros del envío.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>shipmentPackageWidthDimension</em></td>
-<td>Numérico</td>
-<td style="text-align: center;"></td>
-<td>Ancho en centímetros del envío.</td>
-<td><center>Si</center></td>
-</tr>
-<tr>
-<td><em>shipmentPackageLengthDimension</em></td>
-<td>Numérico</td>
-<td style="text-align: center;"></td>
-<td>Largo en centímetros del envío.</td>
-<td><center>Si</center></td>
-</tr>
-</table>
-</div></div>
 
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_04">
-Variables que se envían a la página de respuesta</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Campo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
-<td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
-<td><span style="color: #fff; font-weight: bold;">Requerido en</span></td>
-</tr>
-<tr>
-<td><i>merchantId</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">12</td>
-<td>Es el número identificador del comercio en el sistema de PayU, este número lo encontrará en el correo de creación de la cuenta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>transactionState</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">2</td>
-<td>Indica el estado de la transacción en el sistema.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>risk</i></td>
-<td>Decimal (#.00)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>El riesgo asociado a la transacción. Toma un valor entre 0 y 1. A mayor riesgo mayor valor. Viene en formato ###.00</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>polResponseCode</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">64</td>
-<td>El código de respuesta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>referenceCode</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la referencia de la venta o pedido. Deber ser único por cada transacción que se envía al sistema.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>reference_pol</i></td>
-<td>
-<p align="center">Alfa numérico</p>
-</td>
-<td style="text-align: center;">255</td>
-<td>La referencia o número de la transacción generado en Pay<span style="color: #009cdd;">U.</span></td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>signature</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la firma digital creada para cada uno de las transacciones.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>polPaymentMethod</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>El identificador interno del medio de pago utilizado.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>polPaymentMethodType</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">2</td>
-<td>El tipo de medio de pago utilizado para el pago.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>installmentsNumber</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">2</td>
-<td>Número de cuotas en las cuales se difirió el pago con tarjeta crédito.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>TX_VALUE</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>TX_TAX</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">14,2</td>
-<td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>buyerEmail</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo que contiene el correo electrónico del comprador para notificarle el resultado de la transacción por correo electrónico. Se recomienda hacer una validación si se toma este dato en un formulario.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>processingDate</i></td>
-<td>Fecha (YYYY-MM-DD HH:mm:ss)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>La fecha en que se realizó la transacción.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>currency</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">3</td>
-<td>La moneda respectiva en la que se realiza el pago. El proceso de conciliación se hace en pesos a la tasa representativa del día.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>cus</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>El cus, código único de seguimiento, es la referencia del pago dentro del Banco, aplica solo para pagos con PSE.</td>
-<td>Sólo aplica para PSE Colombia</td>
-</tr>
-<tr>
-<td><i>pseBank</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>El nombre del banco, aplica solo para pagos con PSE.</td>
-<td>Sólo aplica para PSE Colombia</td>
-</tr>
-<tr>
-<td><i>lng</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>Idioma en el que se desea mostrar la pasarela de pagos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>description</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Es la descripción de la venta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>lapResponseCode</i></td>
-<td>Alfa numéric</td>
-<td style="text-align: center;">64</td>
-<td>Código de respuesta que entrega PayU.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>lapPaymentMethod</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Medio de pago con el cual se hizo el pago por ejemplo VISA.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>lapPaymentMethodType</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Tipo de medio de pago con el que se realiza por ejemplo CREDIT_CARD.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>lapTransactionState</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">32</td>
-<td>-</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>message</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Descripción del estado de la transacción.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra1</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar información sobre la compra. Ej. Descripción de la compra en caso de querer visualizarla en la página de respuesta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra2</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de los productos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>extra3</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de los productos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>authorizationCode</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">12</td>
-<td>Código de autorización de la venta.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>merchant_address</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Dirección del comercio.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>merchant_name</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Nombre del comercio.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>merchant_url</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>URL del sitio web del comercio.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>orderLanguage</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">2</td>
-<td>Lenguaje de la orden (ISO-639-1).</td>
-<td>&#8212;</td>
-</tr>
-<tr>
-<td><i>pseCycle</i></td>
-<td>Numérico</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Identificador generado por PSE.</td>
-<td>Sólo aplica para PSE Colombia</td>
-</tr>
-<tr>
-<td><i>pseReference1</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Referencia no. 1 para pagos con PSE.</td>
-<td>Sólo aplica para PSE Colombia</td>
-</tr>
-<tr>
-<td><i>pseReference2</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Referencia no. 2 para pagos con PSE.</td>
-<td>Sólo aplica para PSE Colombia</td>
-</tr>
-<tr>
-<td><i>pseReference3</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Referencia no. 3 para pagos con PSE.</td>
-<td>Sólo aplica para PSE Colombia</td>
-</tr>
-<tr>
-<td><i>telephone</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">20</td>
-<td>Número telefónico del comercio.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>transactionId</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">36</td>
-<td>Identificador de la transacción.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>trazabilityCode</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">64</td>
-<td>Código de seguimiento de la venta en el sitio del comercio.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>TX_ADMINISTRATIVE_FEE</i></td>
-<td>Decimal (#.00)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Valor de la tarifa administrativa.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>TX_TAX_ADMINISTRATIVE<br>_FEE</i></td>
-<td>Decimal (#.00)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Valor del impuesto de la tarifa administrativa.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i><i>TX_TAX_ADMINISTRATIVE<br />
-_</i></i>FEE_RETURN_BASE</td>
-<td>Decimal (#.00)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Valor base de la tarifa administrativa para la devolución de impuestos.</td>
-<td style="text-align: center;">&#8212;</td>
-</tr>
-<tr>
-<td><i>action_code_description *</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">255</td>
-<td>Descripción del código de respuesta de VISANET.</td>
-<td>Solo aplica para VISANET Perú</td>
-</tr>
-<tr>
-<td><i>cc_holder *</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">150</td>
-<td>Nombre del tarjeta habiente.</td>
-<td>Solo aplica para VISANET Perú</td>
-</tr>
-<tr>
-<td><i>cc_number *</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Número de la tarjeta de crédito. PAN</td>
-<td>Solo aplica para VISANET Perú</td>
-</tr>
-<tr>
-<td><i>processing_date_time *</i></td>
-<td>Fecha (YYYY-MM-DD HH:mm:ss)</td>
-<td style="text-align: center;">&#8212;</td>
-<td>Fecha y hora del procesamiento de la venta.</td>
-<td>Solo aplica para VISANET Perú</td>
-</tr>
-<tr>
-<td><i>request_number *</i></td>
-<td>Alfa numérico</td>
-<td style="text-align: center;">9</td>
-<td>Número de la orden + identificador de la transacción.</td>
-<td>Solo aplica para VISANET Perú</td>
-</tr>
-</table>
-</div></div>
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_05">
-Variables que se envían a la página de confirmación</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Campo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
-<td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
-<td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
-</tr>
-<tr>
-<td width="181"><em>merchant_id </em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">12</td>
-<td width="648">Es el número identificador del comercio en el sistema de PayU, este número podrá encontrarlo en la pestaña de configuración, en la sección de información técnica en tu cuenta PayU Biz.</td>
-</tr>
-<tr>
-<td width="181"><em>state_pol</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">32</td>
-<td width="648">Indica el estado de la transacción en el sistema.</td>
-</tr>
-<tr>
-<td width="181"><em>risk</em></td>
-<td width="185">Decimal (#.00)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">El riesgo asociado a la transacción. Toma un valor entre 0 y 1. A mayor riesgo mayor valor. Viene en formato ###.00</td>
-</tr>
-<tr>
-<td width="181"><em>response_code_pol</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">El código de respuesta de PayU.</td>
-</tr>
-<tr>
-<td width="181"><em>reference_sale</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Es la referencia de la venta o pedido. Deber ser único por cada transacción que se envía al sistema.</td>
-</tr>
-<tr>
-<td width="181"><em>reference_pol</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">La referencia o número de la transacción generado en PayU.</td>
-</tr>
-<tr>
-<td width="181"><em>sign</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Es la firma digital creada para cada uno de las transacciones.</td>
-</tr>
-<tr>
-<td width="181"><em>extra1</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Campo adicional para enviar información sobre la compra. Ej. Descripción de la compra en caso de querer visualizarla en la página de confirmación.</td>
-</tr>
-<tr>
-<td width="181"><em>extra2</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Campo adicional para enviar información sobre la compra. Ej. Códigos internos de los productos.</td>
-</tr>
-<tr>
-<td width="181"><em>payment_method</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">El identificador interno del medio de pago utilizado.</td>
-</tr>
-<tr>
-<td width="181"><em>payment_method_type</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">El tipo de medio de pago utilizado para el pago</td>
-</tr>
-<tr>
-<td width="181"><em>installments_number</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Número de cuotas en las cuales se difirió el pago con tarjeta crédito.</td>
-</tr>
-<tr>
-<td width="181"><em>value</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">14,2</td>
-<td width="648">Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej. 10000.00 ó 10000</td>
-</tr>
-<tr>
-<td width="181"><em>tax</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">14,2</td>
-<td width="648">Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.</td>
-</tr>
-<tr>
-<td width="181"><em>additional_value</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">14,2</td>
-<td width="648">Valor Adicional no comisionable.</td>
-</tr>
-<tr>
-<td width="181"><em>transaction_date</em></td>
-<td width="185">Fecha (YYYY-MM-DD HH:mm:ss)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">La fecha en que se realizó la transacción.</td>
-</tr>
-<tr>
-<td width="181"><em>currency</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">3</td>
-<td width="648">La moneda respectiva en la que se realiza el pago. El proceso de conciliación se hace en pesos a la tasa representativa del día.</td>
-</tr>
-<tr>
-<td width="181"><em>email_buyer</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Campo que contiene el correo electrónico del comprador para notificarle el resultado de la transacción por correo electrónico. Se recomienda hacer una validación si se toma este dato en un formulario.</td>
-</tr>
-<tr>
-<td width="181"><em>cus</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">64</td>
-<td width="648">El cus, código único de seguimiento, es la referencia del pago dentro del Banco, aplica solo para pagos con PSE</td>
-</tr>
-<tr>
-<td width="181"><em>pse_bank</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">El nombre del banco, aplica solo para pagos con PSE.</td>
-</tr>
-<tr>
-<td width="181"><em>test</em></td>
-<td width="185">Lógico (true, false)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Variable para poder identificar si la operación fue una prueba.</td>
-</tr>
-<tr>
-<td width="181"><em>description</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Es la descripción de la venta.</td>
-</tr>
-<tr>
-<td width="181"><em>billing_address</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">La dirección de facturación</td>
-</tr>
-<tr>
-<td width="181"><em>shipping_address</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">50</td>
-<td width="648">La dirección de entrega de la mercancía.</td>
-</tr>
-<tr>
-<td width="181"><em>phone</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">20</td>
-<td width="648">El teléfono de residencia del comprador.</td>
-</tr>
-<tr>
-<td width="181"><em>office_phone</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">20</td>
-<td width="648">El teléfono diurno del comprador.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>account_number_ach</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">36</td>
-<td width="648">Identificador de la transacción.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>account_type_ach</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">36</td>
-<td width="648">Identificador de la transacción.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>administrative_fee</em></td>
-<td width="185">Decimal (#.00)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Valor de la tarifa administrativa</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>administrative_fee_base</em></td>
-<td width="185">Decimal (#.00)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Valor base de la tarifa administrativa</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>administrative_fee_tax</em></td>
-<td width="185">Decimal (#.00)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Valor del impuesto de la tarifa administrativa</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>airline_code</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">4</td>
-<td width="648">Código de la aerolínea</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>attempts</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Numero de intentos del envío de la confirmación.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>authorization_code</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">12</td>
-<td width="648">Código de autorización de la venta</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>travel_agency_authorization_code</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">12</td>
-<td width="648">Código de autorización de la agencia de viajes</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>bank_id</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Identificador del banco</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>billing_city</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">La ciudad de facturación.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>billing_country</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">2</td>
-<td width="648">El código ISO del país asociado a la dirección de facturación.</a>
-</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>commision_pol</em></td>
-<td width="185">Decimal (#.00)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Valor de la comisión</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>commision_pol_currency</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">3</td>
-<td width="648">Moneda de la comisión</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>customer_number</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Numero de cliente.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>date</em></td>
-<td width="185">Fecha (YYYY-MM-DD HH:mm:ss)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Fecha de la operación.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>error_code_bank</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Código de error del banco.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>error_message_bank</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Mensaje de error del banco</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>exchange_rate</em></td>
-<td width="185">Decimal (#.00)</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Valor de la tasa de cambio.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>ip</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">39</td>
-<td width="648">Dirección ip desde donde se realizó la transacción.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>nickname_buyer</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">150</td>
-<td width="648">Nombre corto del comprador.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>nickname_seller</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">150</td>
-<td width="648">Nombre corto del vendedor.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>payment_method_id</em></td>
-<td width="185">Numérico</td>
-<td style="text-align: center;" width="63">&#8212;</td>
-<td width="648">Identificador del medio de pago.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>payment_request_state</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">32</td>
-<td width="648">Estado de la solicitud de pago.</td>
-</tr>
-<tr>
-<td width="181"><em>pseReference1</em></td>
-<td valign="top" width="185">Alfa numérico</td>
-<td style="text-align: center;" valign="top" width="63">255</td>
-<td valign="top" width="648">Referencia no. 1 para pagos con PSE.</td>
-</tr>
-<tr>
-<td width="181"><em>pseReference2</em></td>
-<td valign="top" width="185">Alfa numérico</td>
-<td style="text-align: center;" valign="top" width="63">255</td>
-<td valign="top" width="648">Referencia no. 2 para pagos con PSE.</td>
-</tr>
-<tr>
-<td width="181"><em>pseReference3</em></td>
-<td valign="top" width="185">Alfa numérico</td>
-<td style="text-align: center;" valign="top" width="63">255</td>
-<td valign="top" width="648">Referencia no. 3 para pagos con PSE.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>response_message_pol</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">El mensaje de respuesta de PAYU.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>shipping_city</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">50</td>
-<td width="648">La ciudad de entrega de la mercancía.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>shipping_country</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">2</td>
-<td width="648">El código ISO asociado al país de entrega de la mercancía.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>transaction_bank_id</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Identificador de la transacción en el sistema del banco.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>transaction_id</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">36</td>
-<td width="648">Identificador de la transacción.</td>
-</tr>
-<tr>
-<td valign="bottom" width="181"><em>payment_method_name</em></td>
-<td width="185">Alfa numérico</td>
-<td style="text-align: center;" width="63">255</td>
-<td width="648">Medio de pago con el cual se hizo el pago. Por ejemplo VISA.</td>
-</tr>
-</table>
-</div></div>
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Datos de envío</span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                </tr>
+                                <tr>
+                                    <td><em>observationsReceivingShipment</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">250</td>
+                                    <td>Observaciones relacionadas con la recepción del pedido por parte del
+                                        destinatario.
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>kilogramWeight</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">9</td>
+                                    <td>Peso en KG del total del envío.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>declaredValue</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14</td>
+                                    <td>Es el Valor declarado por el comprador. Puede contener dos dígitos decimales, si
+                                        el valor no es enviado y no se tiene definido en la configuración por defecto de
+                                        la cuenta se define el valor de la orden. Si se desea que este valor sea 0 se
+                                        debe enviar 0 para las integraciones personalizadas o se debe definir el valor 0
+                                        en la configuración por defecto de la cuenta.
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>shippingValue</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14</td>
+                                    <td>Valor del envío. <br><br>
+                                        Si el valor de este campo es "0" (cero), se interpreta que el comercio asume
+                                        todo el valor del envío calculado.<br><br>
+                                        Si no viene ningún valor en este campo, el valor del envío será calculado y se
+                                        aplicará la configuración de la cuenta para distribuir el valor calculado entre
+                                        comercio y pagador.<br><br>
+                                        Si el valor de este campo es mayor a cero, se interpreta que el comercio asume
+                                        este valor, adicionalmente si el valor calculado supera este valor, se aplicará
+                                        la configuración definida para la cuenta para distribuir el valor de la
+                                        diferencia entre el comercio y el pagador y si el valor calculado es menor al
+                                        valor enviado se asume el valor enviado.
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>isCourierApply</em></td>
+                                    <td>Booleano</td>
+                                    <td style="text-align: center;"></td>
+                                    <td>Este campo tiene dos posibles valores: "true" o "false". En caso de que el
+                                        comercio envíe el valor "true", el cálculo de valor de envío será afectado para
+                                        adicionar el valor definido por el operador logístico para el servicio de
+                                        courrier en caso de que este lo ofrezca.
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>shippingCountry</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>Código ISO 3166 del País de entrega del pedido.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>shippingCity</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">10</td>
+                                    <td>Código DANE de la Ciudad o municipio donde se realizará la entrega, el cual
+                                        varía de acuerdo al país. Este valor debe corresponder con uno de los municipios
+                                        cubiertos por el operador logístico.<a href="/cod/Cobertura Servientrega.zip">
+                                            Cobertura.</a></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>shippingAddress</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">100</td>
+                                    <td>Dirección de entrega de la mercancía.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>shippingAddress2</em></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">100</td>
+                                    <td>Linea 2 de la dirección de entrega de la mercancía, que se usa para complementar
+                                        la información registrada en la "direccionEntrega".
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>payerShippingPostalCode</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">6</td>
+                                    <td>Código postal de envío.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><em>shipmentPackageHeightDimension</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;"></td>
+                                    <td>Alto en centímetros del envío.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>shipmentPackageWidthDimension</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;"></td>
+                                    <td>Ancho en centímetros del envío.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><em>shipmentPackageLengthDimension</em></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;"></td>
+                                    <td>Largo en centímetros del envío.</td>
+                                    <td>
+                                        <center>Si</center>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_06">
-Divisas admitidas (currency)</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Moneda</span></td>
-<td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
-</tr>
-<tr>
-<td>ARS</td>
-<td>Peso Argentino</td>
-</tr>
-<tr>
-<td>BRL</td>
-<td>Real Brasileño</td>
-</tr>
-<tr>
-<td>CLP</td>
-<td>Peso Chileno</td>
-</tr>
-<tr>
-<td>COP</td>
-<td>Peso Colombiano</td>
-</tr>
-<tr>
-<td>MXN</td>
-<td>Peso Mexicano</td>
-</tr>
-<tr>
-<td>PEN</td>
-<td>Nuevo Sol Peruano</td>
-</tr>
-<tr>
-<td>USD</td>
-<td valign="top">Dólar Americano</td>
-</tr>
-</table>
-</div></div>
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_07">
-Idiomas admitidos (lng)</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-<tr bgcolor="#696a6c">
-<td><span style="color: #fff; font-weight: bold;">Código ISO 639</span></td>
-<td><span style="color: #fff; font-weight: bold;">Idioma</span></td>
-</tr>
-<tr>
-<td>en</td>
-<td>Inglés</td>
-</tr>
-<tr>
-<td>es</td>
-<td>Español</td>
-</tr>
-<tr>
-<td>pt</td>
-<td>Portugués</td>
-</tr>
-</table>
-</div></div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_04">
+                                Variables que se envían a la página de respuesta</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Campo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Requerido en</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i>merchantId</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">12</td>
+                                    <td>Es el número identificador del comercio en el sistema de PayU, este número lo
+                                        encontrará en el correo de creación de la cuenta.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>transactionState</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>Indica el estado de la transacción en el sistema.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>risk</i></td>
+                                    <td>Decimal (#.00)</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>El riesgo asociado a la transacción. Toma un valor entre 0 y 1. A mayor riesgo
+                                        mayor valor. Viene en formato ###.00
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>polResponseCode</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">64</td>
+                                    <td>El código de respuesta.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>referenceCode</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la referencia de la venta o pedido. Deber ser único por cada transacción que
+                                        se envía al sistema.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>reference_pol</i></td>
+                                    <td>
+                                        <p align="center">Alfa numérico</p>
+                                    </td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>La referencia o número de la transacción generado en Pay<span
+                                            style="color: #009cdd;">U.</span></td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>signature</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la firma digital creada para cada uno de las transacciones.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>polPaymentMethod</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>El identificador interno del medio de pago utilizado.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>polPaymentMethodType</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>El tipo de medio de pago utilizado para el pago.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>installmentsNumber</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>Número de cuotas en las cuales se difirió el pago con tarjeta crédito.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>TX_VALUE</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14,2</td>
+                                    <td>Es el monto total de la transacción. Puede contener dos dígitos decimales. Ej.
+                                        10000.00 ó 10000
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>TX_TAX</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">14,2</td>
+                                    <td>Es el valor del IVA de la transacción, si se envía el IVA nulo el sistema
+                                        aplicará el 19% automáticamente. Puede contener dos dígitos decimales. Ej:
+                                        19000.00. En caso de no tener IVA debe enviarse en 0.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>buyerEmail</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo que contiene el correo electrónico del comprador para notificarle el
+                                        resultado de la transacción por correo electrónico. Se recomienda hacer una
+                                        validación si se toma este dato en un formulario.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>processingDate</i></td>
+                                    <td>Fecha (YYYY-MM-DD HH:mm:ss)</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>La fecha en que se realizó la transacción.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>currency</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">3</td>
+                                    <td>La moneda respectiva en la que se realiza el pago. El proceso de conciliación se
+                                        hace en pesos a la tasa representativa del día.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>cus</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>El cus, código único de seguimiento, es la referencia del pago dentro del Banco,
+                                        aplica solo para pagos con PSE.
+                                    </td>
+                                    <td>Sólo aplica para PSE Colombia</td>
+                                </tr>
+                                <tr>
+                                    <td><i>pseBank</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>El nombre del banco, aplica solo para pagos con PSE.</td>
+                                    <td>Sólo aplica para PSE Colombia</td>
+                                </tr>
+                                <tr>
+                                    <td><i>lng</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>Idioma en el que se desea mostrar la pasarela de pagos.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>description</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Es la descripción de la venta.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>lapResponseCode</i></td>
+                                    <td>Alfa numéric</td>
+                                    <td style="text-align: center;">64</td>
+                                    <td>Código de respuesta que entrega PayU.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>lapPaymentMethod</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Medio de pago con el cual se hizo el pago por ejemplo VISA.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>lapPaymentMethodType</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Tipo de medio de pago con el que se realiza por ejemplo CREDIT_CARD.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>lapTransactionState</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">32</td>
+                                    <td>-</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>message</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Descripción del estado de la transacción.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>extra1</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo adicional para enviar información sobre la compra. Ej. Descripción de la
+                                        compra en caso de querer visualizarla en la página de respuesta.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>extra2</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de
+                                        los productos.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>extra3</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Campo adicional para enviar información sobre la compra. Ej. Códigos internos de
+                                        los productos.
+                                    </td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>authorizationCode</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">12</td>
+                                    <td>Código de autorización de la venta.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>merchant_address</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Dirección del comercio.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>merchant_name</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Nombre del comercio.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>merchant_url</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>URL del sitio web del comercio.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>orderLanguage</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">2</td>
+                                    <td>Lenguaje de la orden (ISO-639-1).</td>
+                                    <td>&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>pseCycle</i></td>
+                                    <td>Numérico</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>Identificador generado por PSE.</td>
+                                    <td>Sólo aplica para PSE Colombia</td>
+                                </tr>
+                                <tr>
+                                    <td><i>pseReference1</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Referencia no. 1 para pagos con PSE.</td>
+                                    <td>Sólo aplica para PSE Colombia</td>
+                                </tr>
+                                <tr>
+                                    <td><i>pseReference2</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Referencia no. 2 para pagos con PSE.</td>
+                                    <td>Sólo aplica para PSE Colombia</td>
+                                </tr>
+                                <tr>
+                                    <td><i>pseReference3</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Referencia no. 3 para pagos con PSE.</td>
+                                    <td>Sólo aplica para PSE Colombia</td>
+                                </tr>
+                                <tr>
+                                    <td><i>telephone</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">20</td>
+                                    <td>Número telefónico del comercio.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>transactionId</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">36</td>
+                                    <td>Identificador de la transacción.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>trazabilityCode</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">64</td>
+                                    <td>Código de seguimiento de la venta en el sitio del comercio.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>TX_ADMINISTRATIVE_FEE</i></td>
+                                    <td>Decimal (#.00)</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>Valor de la tarifa administrativa.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>TX_TAX_ADMINISTRATIVE<br>_FEE</i></td>
+                                    <td>Decimal (#.00)</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>Valor del impuesto de la tarifa administrativa.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i><i>TX_TAX_ADMINISTRATIVE<br/>
+                                        _</i></i>FEE_RETURN_BASE
+                                    </td>
+                                    <td>Decimal (#.00)</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>Valor base de la tarifa administrativa para la devolución de impuestos.</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                </tr>
+                                <tr>
+                                    <td><i>action_code_description *</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">255</td>
+                                    <td>Descripción del código de respuesta de VISANET.</td>
+                                    <td>Solo aplica para VISANET Perú</td>
+                                </tr>
+                                <tr>
+                                    <td><i>cc_holder *</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">150</td>
+                                    <td>Nombre del tarjeta habiente.</td>
+                                    <td>Solo aplica para VISANET Perú</td>
+                                </tr>
+                                <tr>
+                                    <td><i>cc_number *</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>Número de la tarjeta de crédito. PAN</td>
+                                    <td>Solo aplica para VISANET Perú</td>
+                                </tr>
+                                <tr>
+                                    <td><i>processing_date_time *</i></td>
+                                    <td>Fecha (YYYY-MM-DD HH:mm:ss)</td>
+                                    <td style="text-align: center;">&#8212;</td>
+                                    <td>Fecha y hora del procesamiento de la venta.</td>
+                                    <td>Solo aplica para VISANET Perú</td>
+                                </tr>
+                                <tr>
+                                    <td><i>request_number *</i></td>
+                                    <td>Alfa numérico</td>
+                                    <td style="text-align: center;">9</td>
+                                    <td>Número de la orden + identificador de la transacción.</td>
+                                    <td>Solo aplica para VISANET Perú</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_05">
+                                Variables que se envían a la página de confirmación</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Campo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tipo</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Tamaño</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>merchant_id </em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">12</td>
+                                    <td width="648">Es el número identificador del comercio en el sistema de PayU, este
+                                        número podrá encontrarlo en la pestaña de configuración, en la sección de
+                                        información técnica en tu cuenta PayU Biz.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>state_pol</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">32</td>
+                                    <td width="648">Indica el estado de la transacción en el sistema.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>risk</em></td>
+                                    <td width="185">Decimal (#.00)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">El riesgo asociado a la transacción. Toma un valor entre 0 y 1. A
+                                        mayor riesgo mayor valor. Viene en formato ###.00
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>response_code_pol</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">El código de respuesta de PayU.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>reference_sale</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Es la referencia de la venta o pedido. Deber ser único por cada
+                                        transacción que se envía al sistema.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>reference_pol</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">La referencia o número de la transacción generado en PayU.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>sign</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Es la firma digital creada para cada uno de las transacciones.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>extra1</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Campo adicional para enviar información sobre la compra. Ej.
+                                        Descripción de la compra en caso de querer visualizarla en la página de
+                                        confirmación.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>extra2</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Campo adicional para enviar información sobre la compra. Ej. Códigos
+                                        internos de los productos.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>payment_method</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">El identificador interno del medio de pago utilizado.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>payment_method_type</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">El tipo de medio de pago utilizado para el pago</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>installments_number</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Número de cuotas en las cuales se difirió el pago con tarjeta
+                                        crédito.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>value</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">14,2</td>
+                                    <td width="648">Es el monto total de la transacción. Puede contener dos dígitos
+                                        decimales. Ej. 10000.00 ó 10000
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>tax</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">14,2</td>
+                                    <td width="648">Es el valor del IVA de la transacción, si se envía el IVA nulo el
+                                        sistema aplicará el 19% automáticamente. Puede contener dos dígitos decimales.
+                                        Ej: 19000.00. En caso de no tener IVA debe enviarse en 0.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>additional_value</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">14,2</td>
+                                    <td width="648">Valor Adicional no comisionable.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>transaction_date</em></td>
+                                    <td width="185">Fecha (YYYY-MM-DD HH:mm:ss)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">La fecha en que se realizó la transacción.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>currency</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">3</td>
+                                    <td width="648">La moneda respectiva en la que se realiza el pago. El proceso de
+                                        conciliación se hace en pesos a la tasa representativa del día.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>email_buyer</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Campo que contiene el correo electrónico del comprador para
+                                        notificarle el resultado de la transacción por correo electrónico. Se recomienda
+                                        hacer una validación si se toma este dato en un formulario.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>cus</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">64</td>
+                                    <td width="648">El cus, código único de seguimiento, es la referencia del pago
+                                        dentro del Banco, aplica solo para pagos con PSE
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>pse_bank</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">El nombre del banco, aplica solo para pagos con PSE.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>test</em></td>
+                                    <td width="185">Lógico (true, false)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Variable para poder identificar si la operación fue una prueba.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>description</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Es la descripción de la venta.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>billing_address</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">La dirección de facturación</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>shipping_address</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">50</td>
+                                    <td width="648">La dirección de entrega de la mercancía.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>phone</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">20</td>
+                                    <td width="648">El teléfono de residencia del comprador.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>office_phone</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">20</td>
+                                    <td width="648">El teléfono diurno del comprador.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>account_number_ach</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">36</td>
+                                    <td width="648">Identificador de la transacción.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>account_type_ach</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">36</td>
+                                    <td width="648">Identificador de la transacción.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>administrative_fee</em></td>
+                                    <td width="185">Decimal (#.00)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Valor de la tarifa administrativa</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>administrative_fee_base</em></td>
+                                    <td width="185">Decimal (#.00)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Valor base de la tarifa administrativa</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>administrative_fee_tax</em></td>
+                                    <td width="185">Decimal (#.00)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Valor del impuesto de la tarifa administrativa</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>airline_code</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">4</td>
+                                    <td width="648">Código de la aerolínea</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>attempts</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Numero de intentos del envío de la confirmación.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>authorization_code</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">12</td>
+                                    <td width="648">Código de autorización de la venta</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>travel_agency_authorization_code</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">12</td>
+                                    <td width="648">Código de autorización de la agencia de viajes</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>bank_id</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Identificador del banco</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>billing_city</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">La ciudad de facturación.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>billing_country</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">2</td>
+                                    <td width="648">El código ISO del país asociado a la dirección de facturación.</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>commision_pol</em></td>
+                                    <td width="185">Decimal (#.00)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Valor de la comisión</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>commision_pol_currency</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">3</td>
+                                    <td width="648">Moneda de la comisión</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>customer_number</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Numero de cliente.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>date</em></td>
+                                    <td width="185">Fecha (YYYY-MM-DD HH:mm:ss)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Fecha de la operación.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>error_code_bank</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Código de error del banco.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>error_message_bank</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Mensaje de error del banco</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>exchange_rate</em></td>
+                                    <td width="185">Decimal (#.00)</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Valor de la tasa de cambio.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>ip</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">39</td>
+                                    <td width="648">Dirección ip desde donde se realizó la transacción.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>nickname_buyer</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">150</td>
+                                    <td width="648">Nombre corto del comprador.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>nickname_seller</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">150</td>
+                                    <td width="648">Nombre corto del vendedor.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>payment_method_id</em></td>
+                                    <td width="185">Numérico</td>
+                                    <td style="text-align: center;" width="63">&#8212;</td>
+                                    <td width="648">Identificador del medio de pago.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>payment_request_state</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">32</td>
+                                    <td width="648">Estado de la solicitud de pago.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>pseReference1</em></td>
+                                    <td valign="top" width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" valign="top" width="63">255</td>
+                                    <td valign="top" width="648">Referencia no. 1 para pagos con PSE.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>pseReference2</em></td>
+                                    <td valign="top" width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" valign="top" width="63">255</td>
+                                    <td valign="top" width="648">Referencia no. 2 para pagos con PSE.</td>
+                                </tr>
+                                <tr>
+                                    <td width="181"><em>pseReference3</em></td>
+                                    <td valign="top" width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" valign="top" width="63">255</td>
+                                    <td valign="top" width="648">Referencia no. 3 para pagos con PSE.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>response_message_pol</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">El mensaje de respuesta de PAYU.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>shipping_city</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">50</td>
+                                    <td width="648">La ciudad de entrega de la mercancía.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>shipping_country</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">2</td>
+                                    <td width="648">El código ISO asociado al país de entrega de la mercancía.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>transaction_bank_id</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Identificador de la transacción en el sistema del banco.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>transaction_id</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">36</td>
+                                    <td width="648">Identificador de la transacción.</td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom" width="181"><em>payment_method_name</em></td>
+                                    <td width="185">Alfa numérico</td>
+                                    <td style="text-align: center;" width="63">255</td>
+                                    <td width="648">Medio de pago con el cual se hizo el pago. Por ejemplo VISA.</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
-<h3 >
-<a href="" id="varstableid_08">
-Códigos de medios de pago</a>
-</h3>
-<div class="squelch-taas-toggle-shortcode-content" >
-<table class="table-d" >
-  <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
-    <td >payment_method_type<br>(Página de  confirmación)</td>
-    <td rowspan="3" >lapPaymentMethodType <br>(Página de respuesta)</td>
-    <td rowspan="3" >Descripción</td>
-  </tr>
-   <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
-    <td >payment_method_id <br>(Página de confirmación)</td>
-  </tr>
-   <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
-    <td >polPaymentMethodType<br>(Página de respuesta)</td>
-  </tr>
-  <tr>
-    <td >2</td>
-    <td >CREDIT_CARD</td>
-    <td >Tarjetas de Crédito</td>
-  </tr>
-  <tr>
-    <td >4</td>
-    <td >PSE</td>
-    <td >Transferencias bancarias PSE</td>
-  </tr>
-  <tr>
-    <td >5</td>
-    <td >ACH</td>
-    <td >Débitos ACH</td>
-  </tr>
-  <tr>
-    <td >6</td>
-    <td >DEBIT_CARD</td>
-    <td>Tarjetas débito</td>
-  </tr>
-  <tr>
-    <td >7</td>
-    <td >CASH</td>
-    <td >Pago en efectivo</td>
-  </tr>
-  <tr>
-    <td >8</td>
-    <td >REFERENCED</td>
-    <td >Pago referenciado</td>
-  </tr>
-  <tr>
-    <td >10</td>
-    <td>BANK_REFERENCED</td>
-    <td >Pago en bancos</td>
-  </tr>
-  <tr>
-    <td >14</td>
-    <td>SPEI</td>
-    <td >Transferencias bancarias SPEI</td>
-  </tr>
-</table>
-</div></div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_06">
+                                Divisas admitidas (currency)</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Moneda</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Descripción</span></td>
+                                </tr>
+                                <tr>
+                                    <td>ARS</td>
+                                    <td>Peso Argentino</td>
+                                </tr>
+                                <tr>
+                                    <td>BRL</td>
+                                    <td>Real Brasileño</td>
+                                </tr>
+                                <tr>
+                                    <td>CLP</td>
+                                    <td>Peso Chileno</td>
+                                </tr>
+                                <tr>
+                                    <td>COP</td>
+                                    <td>Peso Colombiano</td>
+                                </tr>
+                                <tr>
+                                    <td>MXN</td>
+                                    <td>Peso Mexicano</td>
+                                </tr>
+                                <tr>
+                                    <td>PEN</td>
+                                    <td>Nuevo Sol Peruano</td>
+                                </tr>
+                                <tr>
+                                    <td>USD</td>
+                                    <td valign="top">Dólar Americano</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_07">
+                                Idiomas admitidos (lng)</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c">
+                                    <td><span style="color: #fff; font-weight: bold;">Código ISO 639</span></td>
+                                    <td><span style="color: #fff; font-weight: bold;">Idioma</span></td>
+                                </tr>
+                                <tr>
+                                    <td>en</td>
+                                    <td>Inglés</td>
+                                </tr>
+                                <tr>
+                                    <td>es</td>
+                                    <td>Español</td>
+                                </tr>
+                                <tr>
+                                    <td>pt</td>
+                                    <td>Portugués</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-&nbsp;<br>
-&nbsp;<br>
-</div>
+                    <div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active=""
+                         data-theme="jqueryui">
+                        <h3>
+                            <a href="" id="varstableid_08">
+                                Códigos de medios de pago</a>
+                        </h3>
+                        <div class="squelch-taas-toggle-shortcode-content">
+                            <table class="table-d">
+                                <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+                                    <td>payment_method_type<br>(Página de confirmación)</td>
+                                    <td rowspan="3">lapPaymentMethodType <br>(Página de respuesta)</td>
+                                    <td rowspan="3">Descripción</td>
+                                </tr>
+                                <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+                                    <td>payment_method_id <br>(Página de confirmación)</td>
+                                </tr>
+                                <tr bgcolor="#696a6c" style="font-size:14px; color: #fff; font-weight: bold;">
+                                    <td>polPaymentMethodType<br>(Página de respuesta)</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>CREDIT_CARD</td>
+                                    <td>Tarjetas de Crédito</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>PSE</td>
+                                    <td>Transferencias bancarias PSE</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>ACH</td>
+                                    <td>Débitos ACH</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>DEBIT_CARD</td>
+                                    <td>Tarjetas débito</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>CASH</td>
+                                    <td>Pago en efectivo</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>REFERENCED</td>
+                                    <td>Pago referenciado</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>BANK_REFERENCED</td>
+                                    <td>Pago en bancos</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>SPEI</td>
+                                    <td>Transferencias bancarias SPEI</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 
-</div>
+                    &nbsp;<br>
+                    &nbsp;<br>
+                </div>
 
-</div>
-</div>
+            </div>
+
+        </div>
+    </div>
 </div>
 </div>
