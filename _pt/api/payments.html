@@ -675,6 +675,53 @@ termsAndConditionsAcepted</i></td>
 <span class="text-blue1">*É obrigatório somente se sua conta PayU do Brasil está associada a uma conta bancária de outro país.</span></td>
 <td style="text-align: center;"><img title="Brasil" src="http://docs.payulatam.com/wp-content/uploads/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
 </tr>
+<tr>
+<td><a href="#separator"><i>transaction.threeDomainSecure</i></a></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td>Datos de 3DS 2.0.</td>
+<td style="text-align: center;">NÃO</td>
+</tr>
+<tr>
+<td><i>transaction.threeDomainSecure.
+embedded</i></td>
+<td>Booleano</td>
+<td style="text-align: center;"></td>
+<td>Indica se deve ser usado um MPI interno (incorporado) para o processo de autorização.<br>Se nenhum valor for fornecido, "false" é usado por padrão</td>
+<td style="text-align: center;">NÃO</td>
+</tr>
+<tr>
+<td><i>transaction.threeDomainSecure.
+eci</i></td>
+<td>Numérico</td>
+<td style="text-align: center;">Max: 2</td>
+<td>Indicador de comércio eletrônico.<br>Valor retornado pelos servidores de diretório indicando tentativa de autenticação<br>* Este campo é obrigatório se você enviar pelo menos um campo 3DS.</td>
+<td style="text-align: center;">NÃO</td>
+</tr>
+<tr>
+<td><i>transaction.threeDomainSecure.
+cavv</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">Max: 28</td>
+<td>Valor de verificação da autenticação do titular do cartão.<br>String codificada em Base64.<br>Código do criptograma usado na autenticação da transação.<br>Dependendo dos códigos ECI específicos estabelecidos pela rede, este campo deve ser enviado ou não.</td>
+<td style="text-align: center;">NÃO</td>
+</tr>
+<tr>
+<td><i>transaction.threeDomainSecure.
+xid</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">Max: 28</td>
+<td>ID da transação de autenticação enviada pelo MPI.<br>String codificada em Base64.<br>* Este campo é obrigatório se você enviar pelo menos um campo 3DS.</td>
+<td style="text-align: center;">NÃO</td>
+</tr>
+<tr>
+<td><i>transaction.threeDomainSecure.
+directoryServerTransactionId</i></td>
+<td>Alfanumérico</td>
+<td style="text-align: center;">Max: 36</td>
+<td>ID da transação gerada pelo Directory Server durante a autenticação.<br>Algumas redes não exigem o envio deste campo, mas é uma boa prática fornecê-lo ao usar o 3DS.</td>
+<td style="text-align: center;">NÃO</td>
+</tr>
 
 </table>
 </div>
@@ -1542,7 +1589,14 @@ Exemplo pedido:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"VISA"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentCountry"</span><span class="json-semi-colon">: </span><span class="json-value">"BR"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"threeDomainSecure"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-13">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"embedded"</span><span class="json-semi-colon">: </span><span class="json-value">false</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"eci"</span><span class="json-semi-colon">: </span><span class="json-value">"02"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"cavv"</span><span class="json-semi-colon">: </span><span class="json-value">"BwABBylVaQAAAAFwllVpAAAAAAA="</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"xid"</span><span class="json-semi-colon">: </span><span class="json-value">"Nmp3VFdWMlEwZ05pWGN3SGo4TDA="</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"directoryServerTransactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"f38e6948-5388-41a6-bca4-b49723c19437"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"test"</span><span class="json-semi-colon">: </span><span class="json-value">false</span>
 <span class="json-indent"></span></span><span class="json-close-bracket">}</span>
@@ -1634,6 +1688,13 @@ Exemplo pedido:
       </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">VISA</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
       </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">BR</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
       </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
+      </span><span class="tag">&lt;threeDomainSecure&gt;</span><span class="pln">
+          </span><span class="tag">&lt;embedded&gt;</span><span class="pln">false</span><span class="tag">&lt;/embedded&gt;</span><span class="pln">
+          </span><span class="tag">&lt;eci&gt;</span><span class="pln">02</span><span class="tag">&lt;/eci&gt;</span><span class="pln">
+          </span><span class="tag">&lt;cavv&gt;</span><span class="pln">BwABBylVaQAAAAFwllVpAAAAAAA=</span><span class="tag">&lt;/cavv&gt;</span><span class="pln">
+          </span><span class="tag">&lt;xid&gt;</span><span class="pln">Nmp3VFdWMlEwZ05pWGN3SGo4TDA=</span><span class="tag">&lt;/xid&gt;</span><span class="pln">
+          </span><span class="tag">&lt;directoryServerTransactionId&gt;</span><span class="pln">f38e6948-5388-41a6-bca4-b49723c19437</span><span class="tag">&lt;/directoryServerTransactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/threeDomainSecure&gt;</span><span class="pln">
    </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
    </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
 </span><span class="tag">&lt;/request&gt;</span>
@@ -1804,7 +1865,14 @@ Exemplo pedido:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"type"</span><span class="json-semi-colon">: </span><span class="json-value">"AUTHORIZATION_AND_CAPTURE"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentMethod"</span><span class="json-semi-colon">: </span><span class="json-value">"VISA"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentCountry"</span><span class="json-semi-colon">: </span><span class="json-value">"BR"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"threeDomainSecure"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-13">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"embedded"</span><span class="json-semi-colon">: </span><span class="json-value">false</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"eci"</span><span class="json-semi-colon">: </span><span class="json-value">"02"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"cavv"</span><span class="json-semi-colon">: </span><span class="json-value">"BwABBylVaQAAAAFwllVpAAAAAAA="</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"xid"</span><span class="json-semi-colon">: </span><span class="json-value">"Nmp3VFdWMlEwZ05pWGN3SGo4TDA="</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"directoryServerTransactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"f38e6948-5388-41a6-bca4-b49723c19437"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"test"</span><span class="json-semi-colon">: </span><span class="json-value">false</span>
 <span class="json-indent"></span></span><span class="json-close-bracket">}</span>
@@ -1896,6 +1964,13 @@ Exemplo pedido:
       </span><span class="tag">&lt;paymentMethod&gt;</span><span class="pln">VISA</span><span class="tag">&lt;/paymentMethod&gt;</span><span class="pln">
       </span><span class="tag">&lt;paymentCountry&gt;</span><span class="pln">BR</span><span class="tag">&lt;/paymentCountry&gt;</span><span class="pln">
       </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
+      </span><span class="tag">&lt;threeDomainSecure&gt;</span><span class="pln">
+         </span><span class="tag">&lt;embedded&gt;</span><span class="pln">false</span><span class="tag">&lt;/embedded&gt;</span><span class="pln">
+         </span><span class="tag">&lt;eci&gt;</span><span class="pln">02</span><span class="tag">&lt;/eci&gt;</span><span class="pln">
+         </span><span class="tag">&lt;cavv&gt;</span><span class="pln">BwABBylVaQAAAAFwllVpAAAAAAA=</span><span class="tag">&lt;/cavv&gt;</span><span class="pln">
+         </span><span class="tag">&lt;xid&gt;</span><span class="pln">Nmp3VFdWMlEwZ05pWGN3SGo4TDA=</span><span class="tag">&lt;/xid&gt;</span><span class="pln">
+         </span><span class="tag">&lt;directoryServerTransactionId&gt;</span><span class="pln">f38e6948-5388-41a6-bca4-b49723c19437</span><span class="tag">&lt;/directoryServerTransactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/threeDomainSecure&gt;</span><span class="pln">
    </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
    </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
 </span><span class="tag">&lt;/request&gt;</span>
@@ -2094,7 +2169,14 @@ Exemplo pedido:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"deviceSessionId"</span><span class="json-semi-colon">: </span><span class="json-value">"vghs6tvkcle931686k1900o6e1"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"ipAddress"</span><span class="json-semi-colon">: </span><span class="json-value">"127.0.0.1"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"cookie"</span><span class="json-semi-colon">: </span><span class="json-value">"pt1t38347bs6jc9ruv2ecpv7o2"</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"userAgent"</span><span class="json-semi-colon">: </span><span class="json-value">"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"userAgent"</span><span class="json-semi-colon">: </span><span class="json-value">"Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"threeDomainSecure"</span><span class="json-semi-colon">: </span><span class="json-open-bracket">{</span><span class="json-collapse-13">
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"embedded"</span><span class="json-semi-colon">: </span><span class="json-value">false</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"eci"</span><span class="json-semi-colon">: </span><span class="json-value">"02"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"cavv"</span><span class="json-semi-colon">: </span><span class="json-value">"BwABBylVaQAAAAFwllVpAAAAAAA="</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"xid"</span><span class="json-semi-colon">: </span><span class="json-value">"Nmp3VFdWMlEwZ05pWGN3SGo4TDA="</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"directoryServerTransactionId"</span><span class="json-semi-colon">: </span><span class="json-value">"f38e6948-5388-41a6-bca4-b49723c19437"</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span></span><span class="json-close-bracket">}</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;</span><span class="json-property">"test"</span><span class="json-semi-colon">: </span><span class="json-value">false</span>
 <span class="json-indent"></span></span><span class="json-close-bracket">}</span>
@@ -2212,6 +2294,13 @@ Exemplo pedido:
       </span><span class="tag">&lt;ipAddress&gt;</span><span class="pln">127.0.0.1</span><span class="tag">&lt;/ipAddress&gt;</span><span class="pln">
       </span><span class="tag">&lt;cookie&gt;</span><span class="pln">pt1t38347bs6jc9ruv2ecpv7o2</span><span class="tag">&lt;/cookie&gt;</span><span class="pln">
       </span><span class="tag">&lt;userAgent&gt;</span><span class="pln">Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0</span><span class="tag">&lt;/userAgent&gt;</span><span class="pln">
+      </span><span class="tag">&lt;threeDomainSecure&gt;</span><span class="pln">
+         </span><span class="tag">&lt;embedded&gt;</span><span class="pln">false</span><span class="tag">&lt;/embedded&gt;</span><span class="pln">
+         </span><span class="tag">&lt;eci&gt;</span><span class="pln">02</span><span class="tag">&lt;/eci&gt;</span><span class="pln">
+         </span><span class="tag">&lt;cavv&gt;</span><span class="pln">BwABBylVaQAAAAFwllVpAAAAAAA=</span><span class="tag">&lt;/cavv&gt;</span><span class="pln">
+         </span><span class="tag">&lt;xid&gt;</span><span class="pln">Nmp3VFdWMlEwZ05pWGN3SGo4TDA=</span><span class="tag">&lt;/xid&gt;</span><span class="pln">
+         </span><span class="tag">&lt;directoryServerTransactionId&gt;</span><span class="pln">f38e6948-5388-41a6-bca4-b49723c19437</span><span class="tag">&lt;/directoryServerTransactionId&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/threeDomainSecure&gt;</span><span class="pln">
    </span><span class="tag">&lt;/transaction&gt;</span><span class="pln">
    </span><span class="tag">&lt;isTest&gt;</span><span class="pln">false</span><span class="tag">&lt;/isTest&gt;</span><span class="pln">
 </span><span class="tag">&lt;/request&gt;</span>
