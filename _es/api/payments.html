@@ -740,7 +740,12 @@ termsAndConditionsAcepted</i></td>
 <td><a href="#separator"><i>transaction.threeDomainSecure</i></a></td>
 <td></td>
 <td style="text-align: center;"></td>
-<td>Datos de 3DS 2.0.</td>
+<td>Datos de 3DS 2.0.
+	<ul>
+		<li>Este objeto no reemplaza la información de la tarjeta o los campos requeridos para iniciar una transacción. Este objeto es adicional.</li>
+		<li>Este objeto corresponde a un escenario de <i>Pass Through</i> en el que el comercio realiza la autenticación 3DS por su cuenta. Actualmente, este escenario solo está disponible para Colombia y Brasil.</li>
+	</ul>
+</td>
 <td style="text-align: center;">NO</td>
 </tr>
 <tr>
@@ -6535,7 +6540,8 @@ Ejemplo respuesta:
 </div>
 <div class="info-icon">Tener en cuenta:</div>
 <ol><li class="bullet-box">Las variables obligatorias <span class="highlight-txt2">transaction.order.signature</span> y <span class="highlight-txt2">transaction.deviceSessionId </span> requieren de algunos pasos adicionales, para conocer más sobre su funcionamiento visita la página: <a title="API – Consideraciones sobre las variables" href="{{ site.baseurl }}/es/api/considerations.html">consideraciones sobre las variables.</a></li>
-&nbsp;
+	<li class="bullet-box">La variable <span class="highlight-txt2">transaction.threeDomainSecure</span> no reemplaza la información de la tarjeta o los campos requeridos para iniciar una transacción. Este objeto es adicional y no es obligatorio.</li>
+	<li class="bullet-box">La variable <span class="highlight-txt2">transaction.threeDomainSecure</span> corresponde a un escenario <span class="highlight-txt2">Pass Through</span> donde el comercio realiza la autenticación 3DS por su cuenta. Actualmente, este escenario solo se encuentra disponible para Colombia y Brasil.</li>
 <li class="bullet-box"> Si deseas confirmar el estado de una transacción cuentas con dos opciones:<br>
 <span class="highlight-txt2">A.</span> Con la <b>página de confirmación</b> enviada en la variable “transaction.notifyUrl” o la configurada en el módulo administrativo en la sección <a href="{{ site.baseurl }}/es/administrative_module/configuration.html" title="Soluciones adicionales – Configurar integración">configurar integración</a>, si deseas conocer más sobre la página de confirmación visita <a href="{{ site.baseurl }}/es/web_checkout/integration.html#pagina-confirmacion" title="Webcheckout – Integración">Integración Webcheckout</a><br>
 <span class="highlight-txt2" id="separator">B.</span> Con la <b>API de consultas</b>, que te permitirá programar una tarea de consulta del estado de las transacciones en un intervalo de tiempo determinado,  para más información visita la página <a href="{{ site.baseurl }}/es/api/queries.html" title="API – Consultas">API de Consultas.</a></div></li></ol>
