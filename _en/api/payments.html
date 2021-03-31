@@ -297,7 +297,7 @@ buyer.cnpj</i></td>
 <td>Numeric</td>
 <td style="text-align: center;">Max: 14</td>
 <td>Buyer’s CNPJ identification number if it is a legal person in Brazil. <span style="color: #1c3a85;">For Brazil must be used an algorithm to validate the CNPJ, and must have format XXXXXXXXXXXXXX example: 32593371000110</td>
-<td style="text-align: center;" align="center" valign="middle"><img title="Brasil" src="http://docs.payulatam.com/wp-content/uploads/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
+<td style="text-align: center;" align="center" valign="middle"><img title="Brazil" src="{{ site.baseurl }}/images/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
 </tr>
 <tr>
 <td><i>transaction.order.
@@ -345,7 +345,7 @@ shippingAddress.postalCode</i></td>
 <td>Numeric</td>
 <td style="text-align: center;">Max: 20</td>
 <td>Postal code of buyer’s shipping address. <span style="color: #1c3a85;">For Brazil use the format XXXXX-XXX or XXXXXXXX example: 09210-710 or 09210710.</span></td>
-<td style="text-align: center;" align="center" valign="middle"><img title="Brasil" src="http://docs.payulatam.com/wp-content/uploads/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
+<td style="text-align: center;" align="center" valign="middle"><img title="Brasil" src="{{ site.baseurl }}/images/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
 </tr>
 <tr>
 <td><i>transaction.order.buyer.
@@ -353,7 +353,7 @@ shippingAddress.phone</i></td>
 <td>Numeric</td>
 <td style="text-align: center;">Max: 20</td>
 <td>Buyer´s shipping address telephone. <br><span style="color: #1c3a85;">For Brazil use the format ddd(2)+number(7-9) example: (11)756312633.</span></td>
-<td style="text-align: center;" align="center" valign="middle"><img title="Brasil" src="http://docs.payulatam.com/wp-content/uploads/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
+<td style="text-align: center;" align="center" valign="middle"><img title="Brasil" src="{{ site.baseurl }}/images/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
 </tr>
 <tr>
 <td><a><i>transaction.order.
@@ -722,13 +722,18 @@ termsAndConditionsAcepted</i></td>
 <td style="text-align: center;"></td>
 <td>Terms and Conditions of PayU’s service which payers must accept.<br>
 * It is mandatory only if your PayU account in Brazil is linked to a bank account in another country</td>
-<td style="text-align: center;"><img title="Brasil" src="http://docs.payulatam.com/wp-content/uploads/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
+<td style="text-align: center;"><img title="Brasil" src="{{ site.baseurl }}/images/2013/07/flag-brasil.png" alt="Brasil" width="28" height="31" /></td>
 </tr>
 <tr>
 <td><a href="#separator"><i>transaction.threeDomainSecure</i></a></td>
 <td></td>
 <td style="text-align: center;"></td>
-<td>3DS 2.0 data.</td>
+<td>3DS 2.0 data.<br>
+<ul>
+	<li>This object does not replace the credit card information or the required fields to start a transaction. This object is additional.</li>
+	<li>This object corresponds to a <u>Pass Through scenario</u> where the shop performs the 3DS Authentication on its own. Currently, this scenario is only available for Colombia and Brazil.</li>
+</ul>
+</td>
 <td style="text-align: center;">NO</td>
 </tr>
 <tr>
@@ -861,7 +866,7 @@ Max: 32</td>
 <td>Alphanumeric</td>
 <td style="text-align: center;">32</td>
 <td>Use CAPTURE for capture, VOID for cancellation and REFUND for reimbursement.</td>
-<td style="text-align: center;">SI</td>
+<td style="text-align: center;">YES</td>
 </tr>
 <tr>
 <td><i>transaction.parentTransactionId</i></td>
@@ -5094,7 +5099,7 @@ Response example:
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"paymentNetworkResponseErrorMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"trazabilityCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"authorizationCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
-<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSMISSION"</span><span class="json-comma">,</span>
+<span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"pendingReason"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSMISYESON"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseCode"</span><span class="json-semi-colon">: </span><span class="json-value">"PENDING_TRANSACTION_CONFIRMATION"</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"errorCode"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
 <span class="json-indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="json-property">"responseMessage"</span><span class="json-semi-colon">: </span><span class="json-value">null</span><span class="json-comma">,</span>
@@ -5162,7 +5167,7 @@ Response example:
       </span><span class="tag">&lt;orderId&gt;</span><span class="pln">39876860</span><span class="tag">&lt;/orderId&gt;</span><span class="pln">
       </span><span class="tag">&lt;transactionId&gt;</span><span class="pln">84149c7f-15d0-4f52-b940-65704b9d7552</span><span class="tag">&lt;/transactionId&gt;</span><span class="pln">
       </span><span class="tag">&lt;state&gt;</span><span class="pln">PENDING</span><span class="tag">&lt;/state&gt;</span><span class="pln">
-      </span><span class="tag">&lt;pendingReason&gt;</span><span class="pln">PENDING_TRANSMISSION</span><span class="tag">&lt;/pendingReason&gt;</span><span class="pln">
+      </span><span class="tag">&lt;pendingReason&gt;</span><span class="pln">PENDING_TRANSMISYESON</span><span class="tag">&lt;/pendingReason&gt;</span><span class="pln">
       </span><span class="tag">&lt;responseCode&gt;</span><span class="pln">PENDING_TRANSACTION_CONFIRMATION</span><span class="tag">&lt;/responseCode&gt;</span><span class="pln">
       </span><span class="tag">&lt;extraParameters&gt;</span><span class="pln">
          </span><span class="tag">&lt;entry&gt;</span><span class="pln">
@@ -5747,8 +5752,9 @@ The fields with a "$" character at the beginning are parameters that are sent by
 &nbsp;<br>
 </div></div>
 <div class="info-icon">Consider:</div>
-<ol><li class="bullet-box">Mandatory transaction.order.signature and transaction.deviceSessionId variables require some additional steps</li>
-&nbsp;
+<ol><li class="bullet-box">Mandatory <u>transaction.order.signature</u> and <u>transaction.deviceSessionId<u> variables require some additional steps</li>
+	<li>The <u>transaction.threeDomainSecure</u> variable does not replace the credit card information or the required fields to start a transaction. This object is additional.</li>
+	<li>The <u>transaction.threeDomainSecure</u> variable corresponds to a <u>Pass Through scenario</u> where the shop performs the 3DS Authentication on its own. Currently, this scenario is only available for Colombia and Brazil.</li>
 <li class="bullet-box">To confirm the status of a transaction you have two options:<br>
 <span class="highlight-txt2">A.</span> With the confirmation page sent i<br>
 <span class="highlight-txt2" id="separator">B.</span> With the query API, that lets you schedule a task status inquiry of transactions in a given time interval.</li></ol>
