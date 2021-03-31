@@ -1,0 +1,286 @@
+---
+title: Tokenization Javascript
+subcategory: javascript
+---
+<div class="payu-page-header superhero-sticky">
+<h1 class="payu-title1 bgreen">Tokenization Javascript</h1>
+</div>
+
+<div class="sh-container payu-white-bg">
+<div class="container">
+<div class="row">
+<div class="payu-section">
+&nbsp;<br>
+&nbsp;<br>
+<div id="two-columns-column1">
+<span class="grey-text-13">With the <span class="highlight-txt2">Tokenization Javascript</span> you can create a form that allows you to capture the credit card data from your clients on your website, securely and without the need to store the data on your system. The javascript will connect directly with the PayU system, which will tokenize the data and return the token assigned to the credit card on file.<br><br>
+You can develop functionalities as <b>One click buy</b> or register different credit cards for each client. Once you implement the Javascript and register client’s credit cards, you will be able to generate payments with the purchase data.  
+If you want to know more about the PayU’s options to generate payments with tokenization, you can visit the <a href="{{ site.baseurl }}/en/sdk/tokenization.html" title="SDK – Tokenizacion">tokenization SDK</a> page or the <a href="{{ site.baseurl }}/en/api/tokenization.html" title="API – Tokenización">Tokenization API</a> page according to your integration mode.<br><br>
+You can implement the <span class="highlight-txt2">Tokenization Javascript</span> following these steps:</span>
+</div>
+<div id="two-columns-column2"><img src="/images/js-tokenizacion-en.jpg" width="500" border="0"  alt="Tokenization Javascript"/></div>
+&nbsp;<br>
+&nbsp;<br>
+
+<div id="three-columns-column1"><span class="number">01. </span><span class="grey-text-13"><b>Instance statement</b>: in order to start using PayU.js, you must add the following tag in your web page:</span></div>
+<div id="three-columns-column3">
+<pre>
+&lt;script type="text/javascript" src="https://gateway.payulatam.com/ppp-web-gateway/javascript/PayU.js"&gt;&lt;/script&gt;
+</pre>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span class="number">02. </span><span class="grey-text-13"><b>General settings</b>: You must make the following settings in order to be able to make the connection.</span></div>
+<div id="three-columns-column3">
+<span class="grey-text-13">With the following configuration you change the url for one that accepts development environment (Required): </span>
+<pre>
+payU.setURL('https://api.payulatam.com/payments-api/4.0/service');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">You must configure the public key through the instruction (Required): <br>
+To know more about your Public Key visit <a href="{{ site.baseurl }}/en/administrative_module/configuration.html" target="_blank">PayU’s Administrative Module</a> in 'Technical information' section.</span>
+<pre>
+payU.setPublicKey('PUBLIC KEY');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">You must configure the account with which you want to use PayU.js using the following line (Required):<br>
+To know more about your account ID visit the <a href="{{ site.baseurl }}/en/administrative_module/balance.html" target="_blank">PayU’s Administrative Module</a></span>
+<pre>
+payU.setAccountID('YOUR ACCOUNT NUMBER');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">The ID of the div used to display the franchise, the optional text is displayed so the client selects his franchise.</span>
+<pre>
+payU.setListBoxID('YOUR LIST BOX ID', 'optional text');
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">You must use the following method to get the active payment methods:</span>
+<pre>
+payU.getPaymentMethods();
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">You can set the language in which the information is displayed, the default is Spanish language ('es'), but it can be changed to English 'en' or Portuguese 'pt'</span>
+<pre>
+payU.setLanguage("en"); //If the language changes to English
+</pre>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span class="number">03. </span><span class="grey-text-13"><b>Get credit card information</b>: To run the Tokenization process, you must use the payU.setCardDetails method. This method converts sensitive data of the card into a token, which will be used to execute the transaction processing without needing to pass sensitive cardholder data through your server.</span></div>
+<div id="three-columns-column3">
+<pre>
+payU.setCardDetails(
+	{
+		number:'4111111111111111',
+		name_card:'NAME CARD',
+		payer_id:'PAYER_ID', 
+		exp_month:10,
+		exp_year:2015,
+		method:'VISA'
+	}
+);
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">The setCardDetails method the credit card data are filled, in the example a JSON object is passed, but you can use other methods, such as jQuery:</span>
+<ol>
+<li class="bullet-box">number: The card’s number as a string without separators. (Required) Example.'4242424242424242'.</li>
+<li class="bullet-box">exp_month: The number that represents the month of expiration. (Required) Example: 10</li>
+<li class="bullet-box">exp_year: A four-digit number representing the card’s expiry year. (Required)</li>
+<li class="bullet-box">name_card: the name on the card. (Required)</li>
+<li class="bullet-box">payer_id: The payer id assigned by the shop. (Required)</li>
+<li class="bullet-box">cvv: The card’s security code: Example: ‘123’'</li>
+<li class="bullet-box">document: The payer’s identification number.</li>
+</ol>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span class="number">04. </span><span class="grey-text-13"><b>Creating the credit card token:</b> The creation of a token is made through payU.createToken.</span></div>
+<div id="three-columns-column3">
+<pre>
+payU.createToken(responseHandler);
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">Where the responseHandler parameter is a function defined to handle the response.</span>
+<pre>
+function responseHandler(response)
+{
+	if (response.error) {
+		// Error messages are displayed.
+		$(".create-errors").text(response.error);
+	}
+	else {
+		// The token is obtained and can be saved or sent to any payment.
+		var token = response.token;
+		var payer_id = response.payer_id;
+		var document = response.document;
+		var name = response.name;
+	}
+}
+</pre>
+&nbsp;<br>
+<span class="grey-text-13">The create token function may also receive a second parameter, a form where you can enter the data without the need to use the setCardDetails method:</span>
+<pre>
+jQuery(function($)
+{
+	$(‘#create-form’).submit(function(event)
+	{
+		var $form = $(this);
+		payU.createToken(responseHandler, $form);
+		return false;
+	});
+});
+</pre>
+</div>
+&nbsp;<br>
+<div id="three-columns-column1"><span class="number">05. </span><span class="grey-text-13"><b>Validate</b>: These are the validations you can perform with the Javascript.</span></div>
+<div id="three-columns-column3">
+<span class="grey-text-13"><b>Credit card validation</b>: The credit card validation is done through the payU.validateNumber function, the function ignores spaces and other punctuation marks that are entered. As a response, the method returns 'true' if the card is valid, otherwise the return value is 'false'.</span>
+<pre>
+payU.validateCard ('4242424242424242')
+payU.validateCard ('4242-42424242-4242')
+payU.validateCard ('4242 4242 4242 4242')
+payU.validateCard ('4242-1111-1111-1111')
+payU.validateCard ('12345678')
+</pre>
+&nbsp;<br>
+<span class="grey-text-13"><b>Validation of the credit card’s expiry date</b>: Validation of the of a card’s expiration date, is done through payU.validateExpiry, which does a review of the provided year and month and generates an alert if the date is invalid.</span>
+<pre>
+payU.validateExpiry('2020','02') // True
+</pre>
+&nbsp;<br>
+<span class="grey-text-13"><b>Validation of the credit card’s franchise or type</b>: Validation of the credit card’s franchise or type is done through the payU.cardPaymentMethod function. Potential franchisees are VISA, MASTERCARD, AMEX, DINERS, DISCOVER and, if the card’s number is not identified, the value for the field will be returned UNKNOWN.</span>
+<pre>
+payU.cardPaymentMethod ('4242-4242-4242-4242') // "VISA"
+payU.cardPaymentMethod ('378282246310005') // "AMEX"
+payU.cardPaymentMethod ('1234') // "Unknown"
+</pre>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="three-columns-column1"><span class="highlight-txt2">Possible errors</span>: The system returns multiple error messages when faults occur or the when the information is incomplete. Below is the list of possible messages:</div>
+<div id="three-columns-column3">
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+Posts Developers might see</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table class="table-d" >
+<tr bgcolor="#696a6c">
+	<td nowrap><span style="color: #fff; font-weight: bold;">Code Error</span></td>
+	<td><span style="color: #fff; font-weight: bold;">Message</span></td>
+	<td><span style="color: #fff; font-weight: bold;">Description</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td>This franchise is not available for use.</td>
+<td>The configured account does not have the indicated means of payment. You must contact the operational support team to request activation of said payment means to your account.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Payer’s is not configured Id</td>
+<td>payer_id field was not sent.</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>An unexpected error has occurred with PayU.js. This may be due to connectivity problems, please try again. If you still have problems, please let us know.</td>
+<td>Connection errors. You can verify that the service is working properly and send the request again.</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>Your initial configuration is incorrect.</td>
+<td>Configurable data are incorrect.</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>Unknown credit card type.</td>
+<td>The card type is not known, you must sent / select the franchise.</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>The public key used is invalid </td>
+<td>Verify that the public key is equal to the one stated in the Administrative Block.</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>Your public key is not configured.</td>
+<td>Verify that the public key is equal to the one stated in the Administrative Block.</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>Your Account ID Is not configured.</td>
+<td>Verify that the account number is correct.</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td>The DIV franchise is not configured.</td>
+<td>Check that you have a DIV to show franchises.</td>
+</tr>
+<tr>
+<td style="text-align: center;">16</td>
+<td>The account identifier used is invalid.</td>
+<td>Verify that the account number is correct.</td>
+</tr>
+<tr>
+<td style="text-align: center;">17</td>
+<td>You must use an account ID and a public key that are valid.</td>
+<td>Verify that you are correctly using payU.setAccountID()  and payU.setPublicKey()</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td>Verify that you are sending the required parameters in Java Script (Name, Franchise, credit card’s number and expiry date).</td>
+<td>The card has required parameters that are not being sent.</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td>You don’t have a credit card to tokenize as an active means of payment ( Check that you are using payU.getPaymentMethods())</td>
+<td>Verify that you are using the payU.getPaymentMethods() function, or that your shop/account have payment methods with which you can perform tokenization.</td>
+</tr>
+</table>
+</div></div>
+<div class="squelch-taas-toggle squelch-taas-override" data-speed="800" data-active="" data-theme="jqueryui" >
+<h3 >
+<a href="">
+Posts your Clients can see</a></h3><div class="squelch-taas-toggle-shortcode-content" >
+<table class="table-d" >
+<tr bgcolor="#696a6c">
+	<td><span style="color: #fff; font-weight: bold;">Code Error</span></td>
+	<td><span style="color: #fff; font-weight: bold;">Message</span></td>
+	<td><span style="color: #fff; font-weight: bold;">Description</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Verify that all your credit card data are correct.</td>
+<td>Verify that all your credit card data are correct.</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>The document must have between 5 and 30 digits. </td>
+<td>The document optional field does not have the required digits.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Check that the expiration date is valid.</td>
+<td>Check the digits in the expiration date are valid.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>You must select a payment method.</td>
+<td>Payment method not defined.</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td>The credit card does not belong to the selected franchise.</td>
+<td>The credit card and the franchise does not match.</td>
+</tr>
+</table>
+</div></div>
+</div>
+&nbsp;<br>
+&nbsp;<br>
+<div id="blue-box">
+<span class="grey-text-13">The tokenization JavaScript it is available for Chrome, Firefox, Safari, Opera and Internet Explorer 10 or further.<br>
+If you want to develop the tokenization JavaScript in your website, you can download the following example. Remember that the tokenization JavaScript allows you to register your client’s credit cards. If you want to make collections, you must use the Tokenization API or SDK. </span>
+&nbsp;<br>
+<a href="https://github.com/sebastianduque/Tokenization-JavaScript" class="payu-btn payu-btn-blue" style="float: left;">Download example from GitHub</a>
+</div>
+&nbsp;<br>
+</div>
+</div>
+</div>
+</div><a href="{{ site.baseurl }}/en/api/considerations.html" title="API -Considerations on variables"></a>
