@@ -679,7 +679,12 @@ termsAndConditionsAcepted</i></td>
 <td><a href="#separator"><i>transaction.threeDomainSecure</i></a></td>
 <td></td>
 <td style="text-align: center;"></td>
-<td>Dados do 3DS 2.0.</td>
+<td>Dados do 3DS 2.0.
+	<ul>
+		<li>Este objeto não substitui as informações do cartão ou os campos necessários para iniciar uma transação. Este objeto é adicional.</li>
+		<li>Este objeto corresponde a um cenário <i>Pass Through</i> no qual o merchant realiza a autenticação 3DS por conta própria. Atualmente, este cenário está disponível só para transações na Colômbia e no Brasil.</li>
+	</ul>
+</td>
 <td style="text-align: center;">NÃO</td>
 </tr>
 <tr>
@@ -5288,7 +5293,8 @@ Os campos com o caractere "$" no início, são parâmetros enviados por GET e qu
 </div></div>
 <div class="info-icon">Considerar:</div>
 <ol><li class="bullet-box">As variáveis obrigatórias  <span class="highlight-txt2">transaction.order.signature</span> e <span class="highlight-txt2">transaction.deviceSessionId </span> precisam de alguns passos adicionais, para saber mais sobre seu funcionamento acesse a página: <a title="API – Consideraciones sobre las variables" href="{{ site.baseurl }}/pt/api/considerations.html">Considerações sobre as variáveis.</a></li>
-&nbsp;
+	<li class="bullet-box">A variável <span class="highlight-txt2">transaction.threeDomainSecure</span> ão substitui as informações do cartão ou os campos necessários para iniciar uma transação. Este objeto é adicional.</li>
+	<li class="bullet-box">A variável <span class="highlight-txt2">transaction.threeDomainSecure</span> corresponde a um cenárioo <span class="highlight-txt2">Pass Through</span> no qual o merchant realiza a autenticação 3DS por conta própria. Atualmente, este cenário está disponível só para transações na Colômbia e no Brasil.</li>
 <li class="bullet-box">Se desejar confirmar o status de uma transação você conta com duas opções:<br>
 <span class="highlight-txt2">A.</span> Com a <b>página de confirmação</b> enviada na variável “transaction.notifyUrl” ou a configurada no módulo administrativo na seção <a href="{{ site.baseurl }}/pt/administrative_module/configuration.html" title="Soluciones adicionales – Configurar integración">configurar integração</a>, e desejar saber mais sobre a página de confirmação acesse <a href="{{ site.baseurl }}/pt/web_checkout/integration.html#pagina-confirmacion" title="Webcheckout – Integración">Integração Webcheckout</a><br>
 <span class="highlight-txt2" id="separator">B.</span> Com a <b>API de consultas</b>, que permitirá programar uma tarefa de consulta do status das transações em um intervalo de tempo determinado, para mais informações acesse a página <a href="{{ site.baseurl }}/pt/api/queries.html" title="API – Consultas">API de Consultas.</a></li></ol>
