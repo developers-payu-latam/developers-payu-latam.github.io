@@ -1,0 +1,2601 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Tokenization API | Documentation</title><meta property="og:title" content="Tokenization API" />
+<meta property="og:description" content="Tokenization API allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/integrations/api-integration/tokenization-api.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-06-24T10:31:30-05:00" />
+<meta property="article:modified_time" content="2021-07-01T21:44:03-05:00" /><meta property="og:site_name" content="Documentation" />
+
+<meta itemprop="name" content="Tokenization API">
+<meta itemprop="description" content="Tokenization API allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
+"><meta itemprop="datePublished" content="2021-06-24T10:31:30-05:00" />
+<meta itemprop="dateModified" content="2021-07-01T21:44:03-05:00" />
+<meta itemprop="wordCount" content="2625">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tokenization API"/>
+<meta name="twitter:description" content="Tokenization API allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../">
+			
+			<span class="navbar-logo"><svg width="65" height="129" viewBox="0 0 260 129" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>payu</title><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group" transform="translate(-282.000000, -131.385999)" fill="#a6c307" fill-rule="nonzero"><g id="Logos/payu" transform="translate(282.000000, 132.000000)"><path d="M109.256921 49.1157572C112.658148 49.1157572 113.933214 50.1696191 114.78352 53.3319877l10.62844 38.5755726C126.687026 96.756421 128.17526 97.5996671 131.576487 97.5996671 134.339787 97.5996671 136.0404 96.757204 137.103087 91.9075603L146.455672 53.3319877c.850306000000018-3.1623686 2.125372-4.2162305 5.526599-4.2162305H153.045747C154.320812 49.1157572 155.809046 49.326373 156.446974 50.1696191 157.082533 51.8561113 156.870153 53.1213719 156.657774 54.3858496L143.690793 105.819946c-3.825986 15.177647-10.414482 21.501601-22.531156 22.344847H120.30933c-2.55013100000001.0-3.40122700000001-1.475876-3.825986-3.794999L116.270965 123.31515C116.058586 122.261288 115.845417 120.99681 116.483344 120.153564 117.121272 119.310318 118.183958 119.098919 119.884572 118.889086c8.07673-.843246000000008 10.840029-4.637462 13.603329-13.06914C132.212836 106.241961 130.724601 106.452577 129.023988 106.452577 120.096161 106.452577 117.75841 100.339238 115.633038 92.7508064L105.005387 53.7532193C104.579839 52.4887416 104.36746 51.0128652 105.005387 50.1696191 105.643315 49.326373 107.130759 49.1157572 108.406614 49.1157572H109.256921zM76.5220838 48.2725111c16.3674187.0 24.4441492 5.9027227 24.2317692 18.3392323V88.7451917c0 12.6471253-7.43959190000001 18.3392323-24.2317692 18.3392323-14.0288776.0-21.894018-6.113338-21.894018-17.4959862.0-11.5940466 7.6519715-17.0747547 23.8070109-17.0747547H90.9757201V66.6117434C90.9757201 59.8657747 86.937355 57.1254207 76.9468424 57.1254207c-5.7389786.0-10.8408193.843246100000002-12.328264 1.2652606C63.9806509 58.6012971 63.3435129 58.6012971 62.9179648 58.6012971 62.067658 58.6012971 61.2173512 58.1800655 60.7925926 57.5474352 60.367834 56.9148049 60.1546651 56.0723417 60.1546651 54.8070811V53.7532193c0-3.1615857 1.275855-3.794216 4.0391546-4.4268463C65.6812645 49.1157572 69.9327984 48.2725111 76.5220838 48.2725111zM240.832619 26.7716932C242.532443 26.7716932 243.809087 28.0361709 243.809087 29.7226631V45.3215413C243.808298 47.0080335 242.532443 48.2725111 240.832619 48.2725111L232.967 48.272 232.967478 78.4164058C232.967478 84.74036 231.479244 90.0104523 228.715945 94.2258998 223.402514 102.446962 212.986453 106.873025 198.319648 106.873025s-25.082076-4.426063-30.396296-12.6471252C165.160052 90.0096693 163.672608 84.5289612 163.672608 78.4164058V39.4196016c0-6.3239542 2.55013-7.3778161 9.564964-7.3778161h2.124583c7.01483300000001.0 9.564964 1.05386189999999 9.564964 7.3778161V78.4171887C184.927119 80.946144 185.352667 82.844035 186.415353 84.5305271c1.913783 2.95175279999999 5.739769 4.2162305 11.691916 4.2162305 5.951358.0 9.778133-1.2644777 11.690337-4.2162305C210.861081 83.0554337 211.28584 80.946927 211.28584 78.4171887V39.4196016c0-6.3239542 2.55013099999999-7.3778161 9.564964-7.3778161L222.339 32.041 222.339038 29.7226631C222.339038 28.0361709 223.614104 26.7716932 225.315507 26.7716932h15.517112zM29.7583688 31.8303868c17.2177255.0 25.2944556 7.5892148 24.869697 23.8199404.0 16.2315086-8.0767302 23.8191575-25.2944556 23.8191575H9.99051255V101.603716c0 3.37298399999999-1.06268609 4.426846-4.46391322 4.426846H4.46391323c-3.40122713.0-4.46391322999955-1.053079-4.46391322999955-4.426846V44.688911c0-8.8529095 4.03836507999955-12.8585242 12.9661914999995-12.8585242zM90.9757201 80.5249125H78.6466665c-10.2028919.0-14.0288777 2.5297382-14.0288777 9.0643082C64.6177888 95.4911604 68.4437746 98.4429132 76.5212943 98.4429132c12.1166742.0 14.4544258-3.79499890000001 14.4544258-10.1181701V80.5249125zM29.9707481 41.3167096H15.0915637c-3.4004376.0-4.6762925 1.2644776-4.6762925 4.637462V69.9847278H29.7583688c12.5414329.0 14.8791844-5.0586936 14.8791844-14.3336176.0-11.8054453-5.3134304-14.1237848-14.6668051-14.3344006zm202.9967299-1.897108c0-6.3239542-2.76329899999999-7.5892148-9.990512-7.3778161L222.339038 32.0412551V45.3215413C222.339038 47.0080335 223.614893 48.2725111 225.315507 48.2725111L232.967038 48.2722551zm24.657318-28.8794169C258.899862 10.5401847 259.962548 11.5940465 259.962548 12.8593072V24.4533537C259.962548 25.7178313 258.899862 26.7716932 257.624796 26.7716932H246.146049c-1.27506500000001.0-2.337751-1.0538619-2.337751-2.3183395V12.8593072c0-1.2652607 1.06268599999999-2.3191225 2.337751-2.3191225h11.478747zM242.320064-112976295e-20C243.169581-112976295e-20 243.808298.632630308 243.808298 1.4758764V9.27492404C243.808298 10.1189531 243.169581 10.7508004 242.320064 10.7508004H234.454923C233.604616 10.7508004 232.966689 10.1181701 232.966689 9.27492404V1.4758764C232.966689.632630308 233.604616-112976295e-20 234.454923-112976295e-20H242.320064z" id="Combined-Shape"/></g></g></g></svg></span><span class="text-uppercase font-weight-bold">Documentation</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../docs.html" ><span class="active">Online payments</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../payu-module-documentation.html" ><span>PayU Module guide</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.c355bc0b688032add06ec03d8b0999db494dde2aa476559ace19d645d63c127db77cebc2a82e0f599a51bb53235db47c95559881bf01d4226d3188bec5b8ee55.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs.html" href="../../../docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Home</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/getting-started.html" href="../../../docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Getting Started</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedcreate-an-accounthtml" href="../../../docs/getting-started/create-an-account.html">Create a PayU Account</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedselect-your-integrationhtml" href="../../../docs/getting-started/select-your-integration.html">Select Your Integration</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedselect-your-payment-methodhtml" href="../../../docs/getting-started/select-your-payment-method.html">Select Your Payment Method</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedtest-your-solutionhtml" href="../../../docs/getting-started/test-your-solution.html">Test Your Solution</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-starteddeploy-to-productionhtml" href="../../../docs/getting-started/deploy-to-production.html">Deploy to Production</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedresponse-codes-and-variableshtml" href="../../../docs/getting-started/response-codes-and-variables.html">Response Codes and Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/services.html" href="../../../docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Services</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicespaymentshtml" href="../../../docs/services/payments.html">Payments</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicesquerieshtml" href="../../../docs/services/queries.html">Queries for transactions</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicestokenizationhtml" href="../../../docs/services/tokenization.html">Tokenization</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicespromotionshtml" href="../../../docs/services/promotions.html">Installments and Promotions - Argentina and Mexico</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicesrefundshtml" href="../../../docs/services/refunds.html">Void and Refunds</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/tools.html" href="../../../docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Tools</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayment-requesthtml" href="../../../docs/tools/payment-request.html">Payment Request</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/tools/shopping-cart-plugins.html" href="../../../docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Shopping Cart Plugins</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsshopifyhtml" href="../../../docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsmagentohtml" href="../../../docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsdrupalhtml" href="../../../docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginswoocommercehtml" href="../../../docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsoscommercehtml" href="../../../docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsopencarthtml" href="../../../docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayu-modulehtml" href="../../../docs/tools/payu-module.html">PayU Module</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolsdisputeshtml" href="../../../docs/tools/disputes.html">Disputes</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayment-couponshtml" href="../../../docs/tools/payment-coupons.html">Payment Coupons</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/integrations.html" href="../../../docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integrations</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/integrations/webcheckout-integration.html" href="../../../docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">WebCheckout integration</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationswebcheckout-integrationpayment-formhtml" href="../../../docs/integrations/webcheckout-integration/payment-form.html">Payment Form</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../docs/integrations/webcheckout-integration/response-page.html">Response Page</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../docs/integrations/webcheckout-integration/confirmation-page.html">Confirmation Page</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/integrations/api-integration.html" href="../../../docs/integrations/api-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">API Integration</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-argentina.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../docs/integrations/api-integration/payments-api-argentina.html">Payments API - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-brazil.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../docs/integrations/api-integration/payments-api-brazil.html">Payments API - Brazil</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-chile.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-chilehtml" href="../../../docs/integrations/api-integration/payments-api-chile.html">Payments API - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-colombia.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../docs/integrations/api-integration/payments-api-colombia.html">Payments API - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-mexico.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../docs/integrations/api-integration/payments-api-mexico.html">Payments API - Mexico</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-panama.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-panamahtml" href="../../../docs/integrations/api-integration/payments-api-panama.html">Payments API - Panama</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-peru.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-peruhtml" href="../../../docs/integrations/api-integration/payments-api-peru.html">Payments API - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/queries-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationqueries-apihtml" href="../../../docs/integrations/api-integration/queries-api.html">Queries API</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/tokenization-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-docsintegrationsapi-integrationtokenization-apihtml" href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/promotions-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpromotions-apihtml" href="../../../docs/integrations/api-integration/promotions-api.html">Promotions API</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/refunds-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationrefunds-apihtml" href="../../../docs/integrations/api-integration/refunds-api.html">Voids and Refunds API</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/integrations/sdk-integration.html" href="../../../docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">SDK Integration</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../docs/integrations/sdk-integration/payments-sdk-argentina.html">Payments SDK - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../docs/integrations/sdk-integration/payments-sdk-brazil.html">Payments SDK - Brazil</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../docs/integrations/sdk-integration/payments-sdk-chile.html">Payments SDK - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../docs/integrations/sdk-integration/payments-sdk-colombia.html">Payments SDK - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../docs/integrations/sdk-integration/payments-sdk-mexico.html">Payments SDK - Mexico</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../docs/integrations/sdk-integration/payments-sdk-peru.html">Payments SDK - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationqueriessdkhtml" href="../../../docs/integrations/sdk-integration/queriessdk.html">Queries SDK</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationtokenizationsdkhtml" href="../../../docs/integrations/sdk-integration/tokenizationsdk.html">Tokenization SDK</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationrefundssdkhtml" href="../../../docs/integrations/sdk-integration/refundssdk.html">Voids and Refunds SDK</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/server-status.html" href="../../../docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Server Status</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>On this Page</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#available-methods">Available methods</a></li>
+    <li><a href="#individual-credit-card-registration">Individual credit card registration</a>
+      <ul>
+        <li><a href="#variables-for-request-and-response">Variables for request and response</a></li>
+        <li><a href="#api-call">Api call</a></li>
+      </ul>
+    </li>
+    <li><a href="#massive-credit-card-registration">Massive credit card registration</a>
+      <ul>
+        <li><a href="#considerations">Considerations</a></li>
+        <li><a href="#variables-for-request-and-response-1">Variables for request and response</a></li>
+        <li><a href="#api-call-1">Api call</a></li>
+      </ul>
+    </li>
+    <li><a href="#individual-token-removal">Individual token removal</a>
+      <ul>
+        <li><a href="#variables-for-request-and-response-2">Variables for request and response</a></li>
+        <li><a href="#api-call-2">Api call</a></li>
+      </ul>
+    </li>
+    <li><a href="#massive-token-removal">Massive token removal</a>
+      <ul>
+        <li><a href="#considerations-1">Considerations</a></li>
+        <li><a href="#variables-for-request-and-response-3">Variables for request and response</a></li>
+        <li><a href="#api-call-3">Api call</a></li>
+      </ul>
+    </li>
+    <li><a href="#query-tokens">Query tokens</a>
+      <ul>
+        <li><a href="#variables-for-request-and-response-4">Variables for request and response</a></li>
+        <li><a href="#api-call-4">Api call</a></li>
+      </ul>
+    </li>
+    <li><a href="#payments-using-tokenization">Payments using Tokenization</a>
+      <ul>
+        <li><a href="#multiple-payments-with-tokenization">Multiple payments with tokenization</a></li>
+        <li><a href="#considerations-2">Considerations</a></li>
+        <li><a href="#variables-for-request-and-response-5">Variables for request and response</a></li>
+        <li><a href="#api-call-5">Api call</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../docs.html">Home</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../docs/integrations.html">Integrations</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../docs/integrations/api-integration.html">API Integration</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Tokenization API</h1>
+    <div class="lead">Tokenization API allows you to safely store the data of your customers' credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.</div>
+	       
+	<p>Tokenization feature is available under customized commercial agreements. For more information, contact your sales representative.</p>
+<p>To integrate with Tokenization API, target your request to the following URLs according to your environment.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">URL</h4>
+<ul>
+<li>Test: <code>https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi</code></li>
+<li>Production: <code>https://api.payulatam.com/payments-api/4.0/service.cgi</code></li>
+</ul>
+
+</div>
+
+<h2 id="available-methods">Available methods</h2>
+<p>Tokenization API includes methods to register and remove tokens, and methods to query tokens.</p>
+<p>For registration a removal of tokens:</p>
+<ul>
+<li><a href="../../../docs/integrations/api-integration/tokenization-api.html#individual-credit-card-registration">Individual credit card registration</a></li>
+<li><a href="../../../docs/integrations/api-integration/tokenization-api.html#massive-credit-card-registration">Massive credit card registration</a></li>
+<li><a href="../../../docs/integrations/api-integration/tokenization-api.html#individual-token-removal">Individual token removal</a></li>
+<li><a href="../../../docs/integrations/api-integration/tokenization-api.html#massive-token-removal">Massive token removal</a></li>
+<li><a href="../../../docs/integrations/api-integration/tokenization-api.html#query-tokens">Query tokens</a></li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+<p>To query tokens, you need to target your request to the following URLs according to your environment.</p>
+<ul>
+<li>Test: <code>https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi</code></li>
+<li>Production: <code>https://api.payulatam.com/reports-api/4.0/service.cgi</code></li>
+</ul>
+
+</div>
+
+<h2 id="individual-credit-card-registration">Individual credit card registration</h2>
+<p>Using this feature, you can register the information of a customer&rsquo;s credit card and get a token.</p>
+<h3 id="variables-for-request-and-response">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>CREATE_TOKEN</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken</td>
+<td></td>
+<td></td>
+<td>Information of the credit card to be tokenized.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; payerId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Internal id of the credit card holder.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; name</td>
+<td>Alphanumeric</td>
+<td>Min:1 Max:255</td>
+<td>Holder&rsquo;s name displayed in the credit card.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; identificationNumber</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Identification number of the credit card holder.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; paymentMethod</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>Select a valid Credit card Payment Method. <a href="../../../docs/getting-started/select-your-payment-method.html">See the available Payment Methods</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; number</td>
+<td>Alphanumeric</td>
+<td>Min:13 Max:20</td>
+<td>Credit card number.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; expirationDate</td>
+<td>Alphanumeric</td>
+<td>7</td>
+<td>Credit card expiration date. Format <code>YYYY/MM</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>creditCardToken</td>
+<td></td>
+<td></td>
+<td>Information of the Tokenized credit card.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; creditCardTokenId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Token generated through the information of the credit card.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; name</td>
+<td>Alphanumeric</td>
+<td>Min:1 Max:255</td>
+<td>Holder&rsquo;s name displayed in the credit card as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; payerId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Internal id of the credit card holder as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; identificationNumber</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Identification number of the credit card holder as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; paymentMethod</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>Franchise of the tokenized credit card as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; maskedNumber</td>
+<td>Alphanumeric</td>
+<td>Min:13 Max:20</td>
+<td>Masked credit card number. The masked used displays the first six digits and the last four digits of the credit card.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call">Api call</h3>
+<p>The following are the bodies of the request and response of this method.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab11" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-1" data-toggle="tab" href="#tab12" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="1">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab11" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CREATE_TOKEN&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;creditCardToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;identificationNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;32144457&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4037997623271984&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;expirationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2025/01&#34;</span>
+   <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creditCardToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;05440005-9111-4d34-aa86-deeb91983d54&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;identificationNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;32144457&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;expirationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;creationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;maskedNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;403799******1984&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;errorDescription&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab12" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>CREATE_TOKEN<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;creditCardToken&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>APPROVED<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;identificationNumber&gt;</span>32144457<span style="color:#204a87;font-weight:bold">&lt;/identificationNumber&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>VISA<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;number&gt;</span>4916332769997505<span style="color:#204a87;font-weight:bold">&lt;/number&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;expirationDate&gt;</span>2024/01<span style="color:#204a87;font-weight:bold">&lt;/expirationDate&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/creditCardToken&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;creditCardTokenResponse&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;creditCardToken&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>APPROVED<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;identificationNumber&gt;</span>32144457<span style="color:#204a87;font-weight:bold">&lt;/identificationNumber&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>VISA<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;maskedNumber&gt;</span>491633******7505<span style="color:#204a87;font-weight:bold">&lt;/maskedNumber&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/creditCardToken&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h2 id="massive-credit-card-registration">Massive credit card registration</h2>
+<p>Using this feature, you can register the information of several credit cards stored in a <em><strong>.csv</strong></em> file and get a token per each card.</p>
+<h3 id="considerations">Considerations</h3>
+<ul>
+<li>Each record of the file must have the following structure and order separated by commas:
+<ul>
+<li>Payer ID</li>
+<li>Full name</li>
+<li>Credit card number</li>
+<li>Expiration date</li>
+<li>Franchise</li>
+<li>Identification number</li>
+</ul>
+</li>
+<li>The file must not have header.</li>
+<li>The file must be codifies using UTF-8. You need to implement a functionality to codify the content and send the codified string in the <code>contentFile</code> parameter.</li>
+<li>The file cannot have more than 10.000 records.<br><br><img src="../../../assets/massiveTokenization.jpeg" alt="PrintScreen"></li>
+</ul>
+<h3 id="variables-for-request-and-response-1">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>CREATE_BATCH_TOKENS</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>contentFile</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Codified string in Base64 with the information of the credit cards as explained before.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td></td>
+<td></td>
+<td>Identification of the procedure.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call-1">Api call</h3>
+<p>The following are the bodies of the request and response of this method.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-2" data-toggle="tab" href="#tab21" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab22" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="2">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab21" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CREATE_BATCH_TOKENS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;contentFile&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;MDAxLE1hcnkgS2VsbGVyLDQwMjQwMDcxMzU0MTI2ODAsMjAyNC8wMSxWSVNBLDEyMzQ1NgowMDIsTWFyayBCcm93biw1MTA0ODQyNTA1ODE2MTcwLDIwMjMvMDUsTUFTVEVSQ0FSRCw3ODkwMTI=&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;b721abbc-a9cf-44c6-99ba-91393de2b5d6&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab22" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>CREATE_BATCH_TOKENS<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;contentFile&gt;</span>MDAxLE1hcnkgS2VsbGVyLDQwMjQwMDcxMzU0MTI2ODAsMjAyNC8wMSxWSVNBLDEyMzQ1NgowMDIsTWFyayBCcm93biw1MTA0ODQyNTA1ODE2MTcwLDIwMjMvMDUsTUFTVEVSQ0FSRCw3ODkwMTI=<span style="color:#204a87;font-weight:bold">&lt;/contentFile&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;creditCardTokenBatchResponse&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>b721abbc-a9cf-44c6-99ba-91393de2b5d6<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenBatchResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h2 id="individual-token-removal">Individual token removal</h2>
+<p>Using this feature, you can remove the token previously registered.</p>
+<h3 id="variables-for-request-and-response-2">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>REMOVE_TOKEN</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>removeCreditCardToken</td>
+<td></td>
+<td></td>
+<td>Information of token to be removed.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>removeCreditCardToken &gt; payerId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Internal id of the credit card holder.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>removeCreditCardToken &gt; creditCardTokenId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Token of the credit card to be removed.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>creditCardToken</td>
+<td></td>
+<td></td>
+<td>Information of the Token removed.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; creditCardTokenId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Token of the credit card as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; name</td>
+<td>Alphanumeric</td>
+<td>Min:1 Max:255</td>
+<td>Holder&rsquo;s name displayed in the credit card.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; payerId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Internal id of the credit card holder.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; identificationNumber</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Identification number of the credit card holder.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; paymentMethod</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>Franchise of the tokenized credit card.</td>
+</tr>
+<tr>
+<td>creditCardToken &gt; maskedNumber</td>
+<td>Alphanumeric</td>
+<td>Min:13 Max:20</td>
+<td>Masked credit card number. The masked used displays the first six digits and the last four digits of the credit card.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call-2">Api call</h3>
+<p>The following are the bodies of the request and response of this method.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-3" data-toggle="tab" href="#tab31" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab32" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="3">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab31" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REMOVE_TOKEN&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;removeCreditCardToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3&#34;</span>
+   <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creditCardToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;identificationNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;32144457&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;expirationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;creationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;maskedNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;491633******7505&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;errorDescription&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab32" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>REMOVE_TOKEN<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;removeCreditCardToken&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>4
+   <span style="color:#204a87;font-weight:bold">&lt;/removeCreditCardToken&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;creditCardTokenResponse&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;creditCardToken&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>APPROVED<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;identificationNumber&gt;</span>32144457<span style="color:#204a87;font-weight:bold">&lt;/identificationNumber&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>VISA<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;maskedNumber&gt;</span>491633******7505<span style="color:#204a87;font-weight:bold">&lt;/maskedNumber&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/creditCardToken&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h2 id="massive-token-removal">Massive token removal</h2>
+<p>Using this feature, you can remove the tokens stored in a <em><strong>.csv</strong></em> file.</p>
+<h3 id="considerations-1">Considerations</h3>
+<ul>
+<li>Each record of the file must have the following structure and order separated by commas:
+<ul>
+<li>Payer ID</li>
+<li>Token.</li>
+</ul>
+</li>
+<li>The file must not have header.</li>
+<li>The file must be codifies using UTF-8. You need to implement a functionality to codify the content and send the codified string in the <code>contentFile</code> parameter.</li>
+<li>The file cannot have more than 10.000 records.<br><br><img src="../../../assets/massiveDeletion.png" alt="PrintScreen"></li>
+</ul>
+<h3 id="variables-for-request-and-response-3">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>REMOVE_BATCH_TOKENS</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>contentFile</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Codified string in Base64 with the information of the tokens to be removed.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td></td>
+<td></td>
+<td>Identification of the procedure.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call-3">Api call</h3>
+<p>The following are the bodies of the request and response of this method.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-4" data-toggle="tab" href="#tab41" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab42" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="4">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab41" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REMOVE_BATCH_TOKENS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;contentFile&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;UGF5ZXJJZDEsYWQ4NGQ2NzEtYjZiOC00YjEyLWFkNTktZmYxZDJhNjQ0M2NhDQpQYXllcklkMiw0ZGYxNjMwYy03MDkyLTRhNjgtODE3MC0yYzI2YzZjOTUyMDg=&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2562625d-9e4c-450a-b979-031feb033952&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab42" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>REMOVE_BATCH_TOKENS<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;contentFile&gt;</span>UGF5ZXJJZDEsYWQ4NGQ2NzEtYjZiOC00YjEyLWFkNTktZmYxZDJhNjQ0M2NhDQpQYXllcklkMiw0ZGYxNjMwYy03MDkyLTRhNjgtODE3MC0yYzI2YzZjOTUyMDg=<span style="color:#204a87;font-weight:bold">&lt;/contentFile&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;creditCardTokenBatchResponse&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2562625d-9e4c-450a-b979-031feb033952<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenBatchResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h2 id="query-tokens">Query tokens</h2>
+<p>Using this feature, you can get the information of tokenized credit cards, you can perform the query by the token number or by a date range.</p>
+<h3 id="variables-for-request-and-response-4">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>GET_TOKENS</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardTokenInformation</td>
+<td></td>
+<td></td>
+<td>Parameters of the query.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>creditCardTokenInformation &gt; creditCardTokenId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Token of the card to consult. This parameter is mandatory when you want to query by Token Id.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>creditCardTokenInformation &gt; startDate</td>
+<td>Alphanumeric</td>
+<td>23</td>
+<td>Start date of the query when you want to query by date range. This parameter is mandatory when you want to query by date rage.<br>Format <code>YYYY-MM-DDTHH:MM:SS</code>, for example <code>2021-06-12T16:07:11</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>creditCardTokenInformation &gt; endDate</td>
+<td>Alphanumeric</td>
+<td>23</td>
+<td>End date of the query when you want to query by date range. This parameter is mandatory when you want to query by date rage.<br>Format <code>YYYY-MM-DDTHH:MM:SS</code>, for example <code>2021-06-12T16:07:11</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>creditCardTokenList</td>
+<td></td>
+<td></td>
+<td>Information of the Tokenized credit cards.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; creditCardTokenId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Token generated through the information of the credit card.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; name</td>
+<td>Alphanumeric</td>
+<td>Min:1 Max:255</td>
+<td>Holder&rsquo;s name displayed in the credit card as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; payerId</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Internal id of the credit card holder as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; identificationNumber</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Identification number of the credit card holder as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; paymentMethod</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>Franchise of the tokenized credit card as sent in the request.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; creationDate</td>
+<td>Alphanumeric</td>
+<td>19</td>
+<td>date when the credit card was tokenized.</td>
+</tr>
+<tr>
+<td>creditCardTokenList &gt; maskedNumber</td>
+<td>Alphanumeric</td>
+<td>Min:13 Max:20</td>
+<td>Masked credit card number. The masked used displays the first six digits and the last four digits of the credit card.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call-4">Api call</h3>
+<p>The following are the bodies of the request and response of this method. The following example queries the tokenized cards by date range, if you want to query by using the token Id, just send the parameter <code>creditCardTokenInformation.creditCardTokenId</code>.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-5" data-toggle="tab" href="#tab51" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab52" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="5">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab51" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;GET_TOKENS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenInformation&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;startDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-06-23T12:00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;endDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-06-25T12:00:00&#34;</span>
+   <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenList&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1adc6940-ee7e-48c2-bb96-7d784de74964&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;20263841&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;identificationNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AMEX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;expirationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-06-23T13:36:36&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;maskedNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;377813*****0001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;errorDescription&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;3e5f0d77-0f93-421f-9432-99b6430e845e&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Juan Perez&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;158301&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;identificationNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;expirationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-06-23T19:03:41&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;maskedNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;424242******4242&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;errorDescription&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ead0a090-18dc-41ad-9431-ab342af854a2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;LadyM&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;payerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0sS01&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;identificationNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1234567890&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AMEX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;expirationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;creationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-06-24T11:48:21&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;maskedNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;377813*****0001&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;errorDescription&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab52" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>GET_TOKENS<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenInformation&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;startDate&gt;</span>2021-06-23T12:00:00<span style="color:#204a87;font-weight:bold">&lt;/startDate&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;endDate&gt;</span>2021-06-25T12:00:00<span style="color:#204a87;font-weight:bold">&lt;/endDate&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenInformation&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;creditCardTokenListResponse&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenList&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;creditCardToken&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>1adc6940-ee7e-48c2-bb96-7d784de74964<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>APPROVED<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>20263841<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>AMEX<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;creationDate&gt;</span>2021-06-23T13:36:36<span style="color:#204a87;font-weight:bold">&lt;/creationDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;maskedNumber&gt;</span>377813*****0001<span style="color:#204a87;font-weight:bold">&lt;/maskedNumber&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/creditCardToken&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;creditCardToken&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>3e5f0d77-0f93-421f-9432-99b6430e845e<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>Juan Perez<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>158301<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>VISA<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;creationDate&gt;</span>2021-06-23T19:03:41<span style="color:#204a87;font-weight:bold">&lt;/creationDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;maskedNumber&gt;</span>424242******4242<span style="color:#204a87;font-weight:bold">&lt;/maskedNumber&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/creditCardToken&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;creditCardToken&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>ead0a090-18dc-41ad-9431-ab342af854a2<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;name&gt;</span>LadyM<span style="color:#204a87;font-weight:bold">&lt;/name&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;payerId&gt;</span>0sS01<span style="color:#204a87;font-weight:bold">&lt;/payerId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;identificationNumber&gt;</span>1234567890<span style="color:#204a87;font-weight:bold">&lt;/identificationNumber&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>AMEX<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;creationDate&gt;</span>2021-06-24T11:48:21<span style="color:#204a87;font-weight:bold">&lt;/creationDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;maskedNumber&gt;</span>377813*****0001<span style="color:#204a87;font-weight:bold">&lt;/maskedNumber&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/creditCardToken&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenList&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenListResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h2 id="payments-using-tokenization">Payments using Tokenization</h2>
+<p>For payments with credit card tokens, include the parameter <code>transaction.creditCardTokenId</code> replacing the information of the credit card. The following example shows the body of the request in a high level for a one-step flow, the details of the request are not provided.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+To process without CVV is necessary to send the parameter <code>creditCard.processWithoutCvv2</code> as true in the payment request and remove the parameter <code>creditCard.securityCode</code>.<br>
+By default, processing credit cards without security code is not enabled. If you want to enable this feature, contact your Sales representative.
+</div>
+
+<p><nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-6" data-toggle="tab" href="#tab61" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab62" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="6">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab61" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Information of the order&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;payer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Information of the payer&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;creditCard&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;securityCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;123&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;extraParameters&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Extra parameters of the request&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AUTHORIZATION_AND_CAPTURE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Card franchise&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+      <span style="color:#204a87;font-weight:bold">&#34;paymentCountry&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Processing country&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;deviceSessionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;vghs6tvkcle931686k1900o6e1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;ipAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;127.0.0.1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;cookie&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pt1t38347bs6jc9ruv2ecpv7o2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;userAgent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;test&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab62" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Information of the order --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;payer&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Information of the payer --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/payer&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;creditCard&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;securityCode&gt;</span>321<span style="color:#204a87;font-weight:bold">&lt;/securityCode&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/creditCard&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;extraParameters&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Extra parameters of the request --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/extraParameters&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>AUTHORIZATION_AND_CAPTURE<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>{Card franchise}<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentCountry&gt;</span>{Processing country}<span style="color:#204a87;font-weight:bold">&lt;/paymentCountry&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;deviceSessionId&gt;</span>vghs6tvkcle931686k1900o6e1<span style="color:#204a87;font-weight:bold">&lt;/deviceSessionId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;ipAddress&gt;</span>127.0.0.1<span style="color:#204a87;font-weight:bold">&lt;/ipAddress&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;cookie&gt;</span>pt1t38347bs6jc9ruv2ecpv7o2<span style="color:#204a87;font-weight:bold">&lt;/cookie&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;userAgent&gt;</span>Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0<span style="color:#204a87;font-weight:bold">&lt;/userAgent&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<br></p>
+<p>For specific details about how to perform payments, refer to the respective article according to the processing country.</p>
+<div style="display: flex;">
+  <div style="float: left;width: 50%;">
+      <img src="../../../assets/Argentina.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-argentina.html">Argentina</a><br>
+      <img src="../../../assets/Brasil.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-brazil.html">Brazil</a><br>
+      <img src="../../../assets/Chile.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-chile.html">Chile</a><br>
+      <img src="../../../assets/Colombia.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-colombia.html">Colombia</a>
+    </ul>
+  </div>
+  <div style="float: left;width: 50%;">
+    <ul>
+      <img src="../../../assets/Mexico.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-mexico.html">Mexico</a><br>
+      <img src="../../../assets/Panama.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-panama.html">Panama</a><br>
+      <img src="../../../assets/Peru.png" width="25px"/> <a href="../../../docs/integrations/api-integration/payments-api-peru.html">Peru</a>
+    </ul>
+  </div>
+</div>
+<br>
+<h3 id="multiple-payments-with-tokenization">Multiple payments with tokenization</h3>
+<p>Using this feature, you can perform payments using several tokens stored in a <em><strong>.csv</strong></em> file and get a token per each card.</p>
+<h3 id="considerations-2">Considerations</h3>
+<ul>
+<li>Each record of the file must have the following structure and order separated by commas:
+<ul>
+<li>Account Id, identifier of your PayU account.</li>
+<li>Credit card token</li>
+<li>Credit card security code</li>
+<li>Number of installments</li>
+<li>Sale reference</li>
+<li>Sale description</li>
+<li>Buyer&rsquo;s email</li>
+<li>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a></li>
+<li>Total amount including taxes</li>
+<li>Base value of reimbursement</li>
+<li>Additional value</li>
+<li>Language used in emails sent to the buyer and the seller. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a></li>
+</ul>
+</li>
+<li>The file must not have header.</li>
+<li>The file must be codifies using UTF-8. You need to implement a functionality to codify the content and send the codified string in the <code>contentFile</code> parameter.</li>
+<li>The file cannot have more than 10.000 records.<br><br><img src="../../../assets/massivePaymentTokenization.png" alt="PrintScreen"></li>
+</ul>
+<h3 id="variables-for-request-and-response-5">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>PROCESS_BATCH_TRANSACTIONS_TOKEN</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>contentFile</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Codified string in Base64 with the information of the credit cards as explained before.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td></td>
+<td></td>
+<td>Identification of the procedure.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call-5">Api call</h3>
+<p>The following are the bodies of the request and response of this method.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-7" data-toggle="tab" href="#tab71" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab72" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="7">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab71" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PROCESS_BATCH_TRANSACTIONS_TOKEN&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;contentFile&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;NTAwNTM4LGVhMDIwZTU5LWQ5NWEtNDk1ZC04OTAzLTM0ZTg0M2ZkN2ZlYywxMzIsMSxTYWxlLTA0LFN1YnNjcmlwdGlvbiBmZWUsdXNlcjFAbWFpbC5jb20sQ09QLDEwMDAwLDAsMCwwLGVzCjUwMDUzOCxlYWQwYTA5MC0xOGRjLTQxYWQtOTQzMS1hYjM0MmFmODU0YTIsMTM1LDEsU2FsZS0wNSxTdWJzY3JpcHRpb24gZmVlLHVzZXIyQG1haWwuY29tLENPUCwxMTAwMCwwLDAsMCxlcw==&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;51c72d88-f707-45ca-ad59-4508140833a7&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab72" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>PROCESS_BATCH_TRANSACTIONS_TOKEN<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>51c72d88-f707-45ca-ad59-4508140833a7<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;contentFile&gt;</span>NTAwNTM4LGVhMDIwZTU5LWQ5NWEtNDk1ZC04OTAzLTM0ZTg0M2ZkN2ZlYywxMzIsMSxTYWxlLTA0LFN1YnNjcmlwdGlvbiBmZWUsdXNlcjFAbWFpbC5jb20sQ09QLDEwMDAwLDAsMCwwLGVzCjUwMDUzOCxlYWQwYTA5MC0xOGRjLTQxYWQtOTQzMS1hYjM0MmFmODU0YTIsMTM1LDEsU2FsZS0wNSxTdWJzY3JpcHRpb24gZmVlLHVzZXIyQG1haWwuY29tLENPUCwxMTAwMCwwLDAsMCxlcw=<span style="color:#204a87;font-weight:bold">&lt;/contentFile&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;creditCardTokenBatchResponse&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>b721abbc-a9cf-44c6-99ba-91393de2b5d6<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenBatchResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified July 1, 2021: <a  href="../../../commit/561e86ba96b20880ed5db3fe39c3deedecceee40">Added Web checkout and response codes (561e86b)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.6c32774585a2b6816a4bcc0ab6489e67f3c49db549168f27809b633a83ab18ce.js" integrity="sha256-bDJ3RYWitoFqS8wKtkieZ/PEnbVJFo8ngJtjOoOrGM4=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

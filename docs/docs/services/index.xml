@@ -1,0 +1,370 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation – Services</title>
+    <link>/docs/services.html</link>
+    <description>Recent content in Services on Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Mar 2021 08:19:46 -0500</lastBuildDate>
+    
+	  <atom:link href="/docs/services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Payments</title>
+      <link>/docs/services/payments.html</link>
+      <pubDate>Thu, 25 Mar 2021 14:28:20 -0500</pubDate>
+      
+      <guid>/docs/services/payments.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;Regardless of the &lt;a href=&#34;../../docs/integrations.html&#34;&gt;integration type&lt;/a&gt; you choose, PayU provides operations to process your transactions. The following section explains these methods.&lt;/p&gt;
+&lt;h2 id=&#34;payment-flows&#34;&gt;Payment flows&lt;/h2&gt;
+&lt;p&gt;PayU can process the payments using two types of Payment flows: two-step and one-step.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../assets/Payments/autorizacionycaptura-en.png&#34; alt=&#34;Payments&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In the one-step flow, combines the &lt;em&gt;&lt;strong&gt;Authorization&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;Capture&lt;/strong&gt;&lt;/em&gt; steps into a single transaction. Funds are transferred from your customer&amp;rsquo;s account to your PayU account when the payment has been authorized. The unique step in this flow are:
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Charge (Authorization and capture)&lt;/strong&gt;&lt;/em&gt;: this operation sends the amount of the transactions to validate (Authorization) and if it is approved, the amount is debited from the card immediately (capture). This is the most common method to process transactions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+One-step flow is not supported for Colombia and Panama. For Chile, this flow is available under request only, contact your sales representative.
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In the two-step flow, first you need to authorize and place a hold on the customer&amp;rsquo;s funds. Then, complete the transaction to transfer the authorized funds to your PayU account. The steps in this flow are:
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Authorization&lt;/strong&gt;&lt;/em&gt;: this operation is used to verify if the card used to pay is active, has funds, etc. The transaction is not complete until a transaction capture is sent. &lt;/br&gt;
+For Example, when you use a transportation app, after you request the service, the app sends an &lt;em&gt;Authorization&lt;/em&gt; to reserve the amount of the trip and verify that your card is valid (active and with enough founds). Nevertheless, the charge is not performed in your card yet.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Capture&lt;/strong&gt;&lt;/em&gt;: this operation terminates a previously authorized transaction, namely, at this point, the account makes a debit to the card.&lt;/br&gt;
+Back in the transportation app example, once your service has finished, the apps charges the total amount of your trip and terminates the transaction.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;payment-methods&#34;&gt;Payment methods&lt;/h3&gt;
+&lt;p&gt;The available payment methods used to process transactions are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Credit cards.&lt;/li&gt;
+&lt;li&gt;Cash or bank payments.&lt;/li&gt;
+&lt;li&gt;Bank transfers.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+Refer to &lt;a href=&#34;../../docs/getting-started/select-your-payment-method.html&#34;&gt;this article&lt;/a&gt; to know the Payment methods available to shoppers per country.
+&lt;/div&gt;
+
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;The integration with this feature depends on the country of your transactions, the operation selected and the payment method.&lt;/p&gt;
+&lt;div class=&#34;container overview-topic&#34; align=&#34;center&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Argentina.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-argentina.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-argentina.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Brasil.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-brazil.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-brazil.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Chile.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-chile.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-chile.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Colombia.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-colombia.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-colombia.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Mexico.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-mexico.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-mexico.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Panama.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-panama.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%;cursor:default;box-shadow:initial&#34;&gt;
+      &lt;img src=&#34;&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;display:none&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../assets/Peru.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-peru.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-peru.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%;cursor:default;box-shadow:initial&#34;&gt;
+      &lt;img src=&#34;&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;display:none&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Queries for transactions</title>
+      <link>/docs/services/queries.html</link>
+      <pubDate>Fri, 26 Mar 2021 09:12:41 -0500</pubDate>
+      
+      <guid>/docs/services/queries.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
+&lt;p&gt;Before using the &lt;em&gt;Queries&lt;/em&gt; feature, take into account the following considerations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is recommended to use &lt;em&gt;Queries&lt;/em&gt; for transactions in &lt;code&gt;PENDING&lt;/code&gt; state.&lt;/li&gt;
+&lt;li&gt;According to the payment method, the time to perform the query may vary. Nevertheless, it is recommended to perform the first query seven minutes after the transaction is created.&lt;/li&gt;
+&lt;li&gt;Do not retry a query of a transaction when PayU indicates that the transaction does not exist.&lt;/li&gt;
+&lt;li&gt;Bank transfer transactions are only available every ten minutes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;query-criteria&#34;&gt;Query criteria&lt;/h2&gt;
+&lt;p&gt;To query transactions, PayU allows you to search by any of the following criteria:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Order Id&lt;/em&gt;: it is generated by PayU. Identifies the order in PayU system and it the main element where any movement is recorded (charges, retries, refunds, etc)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Transaction Id&lt;/em&gt;: PayU generates this identifier per each movement associated with an order (Order ID).&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Reference Number&lt;/em&gt;: it is generated by the shop. Identifies the order or purchase in your system, PayU saves this value as you send it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;The integration with this feature can be performed using one of our integration types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/integrations/api-integration/queries-api.html&#34;&gt;For API integrations, refer to this topic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/integrations/sdk-integration/queriessdk.html&#34;&gt;For SDK integrations, refer to this topic&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Tokenization</title>
+      <link>/docs/services/tokenization.html</link>
+      <pubDate>Fri, 26 Mar 2021 09:34:59 -0500</pubDate>
+      
+      <guid>/docs/services/tokenization.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;To use the tokenization feature, you need to enable it in your PayU account. To do so, contact your sales representative:&lt;/p&gt;
+&lt;div style=&#34;display: flex;&#34;&gt;
+  &lt;div style=&#34;float: left;width: 50%;&#34;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Argentina.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.ar@payu.com&#34;&gt;comercios.ar@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Brasil.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.br@payu.com&#34;&gt;comercios.br@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Chile.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.cl@payu.com&#34;&gt;comercios.cl@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Colombia.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.co@payu.com&#34;&gt;comercios.co@payu.com&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;float: left;width: 50%;&#34;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Mexico.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.mx@payu.com&#34;&gt;comercios.mx@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Panama.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.pa@payu.com&#34;&gt;comercios.pa@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../assets/Peru.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.pe@payu.com&#34;&gt;comercios.pe@payu.com&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;how-does-tokenization-work&#34;&gt;How does Tokenization work?&lt;/h2&gt;
+&lt;p&gt;Tokenization includes two separated processes:&lt;/p&gt;
+&lt;h3 id=&#34;generate-token&#34;&gt;Generate token&lt;/h3&gt;
+&lt;p&gt;The first process lets you save the information of a credit card. This information is transformed into a token to let you use it later.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../assets/Tokenization/tokenizacion1-en.png&#34; alt=&#34;Tokenization&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;make-charges&#34;&gt;Make charges&lt;/h3&gt;
+&lt;p&gt;After you have the information of a credit card stored in a token, you can use it to perform charges periodically according to your need and your customer does not have to provide the information of their credit cards whenever you require a payment.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../assets/Tokenization/tokenizacion2-en.png&#34; alt=&#34;Tokenization&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Furthermore, the tokenization feature lets you store, remove or charge several credit carts by sending an file coded in Base64.&lt;/p&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;The integration with this feature can be performed using one of our integration types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/integrations/api-integration/tokenization-api.html&#34;&gt;For API integrations, refer to this topic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/integrations/sdk-integration/tokenizationsdk.html&#34;&gt;For SDK integrations, refer to this topic&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Installments and Promotions - Argentina and Mexico</title>
+      <link>/docs/services/promotions.html</link>
+      <pubDate>Fri, 26 Mar 2021 14:02:05 -0500</pubDate>
+      
+      <guid>/docs/services/promotions.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;what-are-installments-and-promotions&#34;&gt;What are Installments and Promotions&lt;/h2&gt;
+&lt;p&gt;With Installments and Promotions, you can offer to your customer the possibility to buy your products paying in a determined number of installments with a reduced interest rate. Regardless of the number of installments selected by your customer, you will receive the full amount of the purchase minus the commission free agreed with PayU.&lt;/p&gt;
+&lt;p&gt;To perform the configuration of Installments and Promotions based on the agreements you have with bank entities, contact your sales representative.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+For Mexico, you can use &lt;a href=&#34;../../docs/services/promotions.html#months-without-interests-msi---meses-sin-intereses&#34;&gt;Months Without Interests (MSI - Meses sin intereses)&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;how-does-installments-and-promotions-works-in-payu&#34;&gt;How does Installments and Promotions works in PayU&lt;/h2&gt;
+&lt;p&gt;To use promotions, you need to first consult the available promotions for your shop; then, select the promotion that fits to your needs and finally, send the payment request along with the promotion Id selected and the number of installments.&lt;/p&gt;
+&lt;p&gt;The following sequence of events explains better the promotions flow.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../assets/Promotions/PromotionsFlow.png&#34; alt=&#34;Promotions Flow&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;months-without-interests-msi---meses-sin-intereses&#34;&gt;Months Without Interests (MSI - Meses sin intereses)&lt;/h2&gt;
+&lt;p&gt;Months Without Interests (known in Mexico as &lt;em&gt;Meses sin intereses&lt;/em&gt;) lets you offer to your customers the possibility to pay in a defined number of interest-free installments (3, 6, 9, 12, or 18). Unlike the promotions model, when using MSI you don&amp;rsquo;t need to query the promotion id.&lt;/p&gt;
+&lt;p&gt;To request the usage of MSI, contact your sales representative.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+&lt;p&gt;The minimum values for MSI depends on the number of installments selected:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3 &amp;gt; $300 MXN&lt;/li&gt;
+&lt;li&gt;6 &amp;gt; $600 MXN&lt;/li&gt;
+&lt;li&gt;9 &amp;gt; $900 MXN&lt;/li&gt;
+&lt;li&gt;12 &amp;gt; $1200 MXN&lt;/li&gt;
+&lt;li&gt;18 &amp;gt; $1800 MXN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;The integration with this feature can be performed using the &lt;a href=&#34;../../docs/integrations/api-integration/promotions-api.html&#34;&gt;Promotions API&lt;/a&gt;. To learn how to integrate with MSI, refer to this &lt;a href=&#34;../../docs/integrations/api-integration/promotions-api.html#months-without-installments-msi---meses-sin-intereses&#34;&gt;section&lt;/a&gt;.&lt;/p&gt;
+&lt;!--
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+As this is a RESTful service, we strongly recommend you do not validate the scheme.
+If the schema is not validated, the integration is not affected, and you only need to perform small changes have to implement the new features when an update is added to the Web Service.
+&lt;/div&gt;
+
+
+To integrate with Promotions API, target the requests to the following URLs:
+
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;API&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Tests&lt;/strong&gt;&lt;/em&gt;: &lt;code&gt;GET https://sandbox.api.payulatam.com/payments-api/rest/v4.3/pricing&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Production&lt;/strong&gt;&lt;/em&gt;: &lt;code&gt;GET https://api.payulatam.com/payments-api/rest/v4.3/pricing&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+--&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Voids and Refunds</title>
+      <link>/docs/services/refunds.html</link>
+      <pubDate>Fri, 26 Mar 2021 15:09:39 -0500</pubDate>
+      
+      <guid>/docs/services/refunds.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;understanding-concepts&#34;&gt;Understanding concepts&lt;/h2&gt;
+&lt;p&gt;Before moving on, let&amp;rsquo;s explain the following concepts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Void&lt;/em&gt;: this operation reverses a previously authorized transaction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Refund&lt;/em&gt;: this operation requests the reversal of a previously captured transaction. Refunds can be requested by the total or the partial amount. A buyer may request a refund when they are not satisfied with the purchase, the purchase has multiple charges, or the buyer did not receive the product or service.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;void&#34;&gt;Void&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;VOID&lt;/code&gt; method cancels a previously authorized transaction. Void is automatic procedure, as soon as you send the &lt;code&gt;VOID&lt;/code&gt; request, it does not follow any approval flow, and the transaction is not charged to the card holder.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+&lt;code&gt;VOID&lt;/code&gt; method is not available in Colombia and Panama.
+&lt;/div&gt;
+
+&lt;h3 id=&#34;refund&#34;&gt;Refund&lt;/h3&gt;
+&lt;p&gt;A refund is requested when a shop decides to voluntarily return the money spent by the shopper due to dissatisfaction reasons or when the shop does not have enough stock of the product purchased. The &lt;code&gt;REFUND&lt;/code&gt; method request the reversal of a previously captured transaction.&lt;/p&gt;
+&lt;p&gt;Unlike the &lt;code&gt;VOID&lt;/code&gt; method, this method requires an approval. The refund procedure is explained below:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;When a refund is requested by your customer, you need to request it using the PayU module or the API or SDK integration. The request requires the &lt;em&gt;Order Id&lt;/em&gt;, and a refund reason.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once you send the request, PayU reviews the request and approves or rejects it in one to three business days.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;code&gt;REFUND&lt;/code&gt; has three states:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;UNRESOLVED&lt;/code&gt;: the request has been sent to PayU for approval. At this point, no transaction has been added to the order and when you consult it using the &lt;a href=&#34;../../docs/services/queries.html&#34; title=&#34;Query Service&#34;&gt;Queries service&lt;/a&gt;, the response only shows the transaction of the payment approval.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;APPROVED&lt;/code&gt;:  the request has been approved by a PayU&amp;rsquo;s customer service agent. At this point the order has changed its state to &lt;code&gt;CANCELLED&lt;/code&gt; or &lt;code&gt;REFUNDED&lt;/code&gt;state and a PayU adds a &lt;code&gt;REFUND&lt;/code&gt; transaction to the order with approved state.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DECLINED&lt;/code&gt;: the request does not meet the policies defined by PayU and was cancelled by an agent. when the refund is declined, PayU adds a &lt;code&gt;REFUND&lt;/code&gt; transaction to the order with declined state.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information about authorized and captured transactions, refer to &lt;a href=&#34;../../docs/services/payments.html#payment-flows&#34;&gt;Payments&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
+&lt;p&gt;Before using either &lt;em&gt;VOID&lt;/em&gt; or &lt;em&gt;REFUND&lt;/em&gt; feature, take into account the following considerations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Refund&lt;/em&gt; or &lt;em&gt;Void&lt;/em&gt; method are only available for transactions made with a credit card. If the request refers to a different payment means such as cash payment means, bank transfer; the request is declined by PayU´s customer service agent.&lt;/li&gt;
+&lt;li&gt;PayU only creates one application for each refund request, if a request is repeatedly posted for the same transaction, PayU indicates that the request is already registered.&lt;/li&gt;
+&lt;li&gt;PayU only accepts refund requests of captured transactions.&lt;/li&gt;
+&lt;li&gt;You can retry the refund request if this was previously declined.&lt;/li&gt;
+&lt;li&gt;Once you make the request, the transaction amount becomes part of the Frozen Balance of your PayU account until it is processed.
+&lt;ul&gt;
+&lt;li&gt;If your refund request is &lt;code&gt;APPROVED&lt;/code&gt;, the amount is refunded to the card holder.&lt;/li&gt;
+&lt;li&gt;If your refund request is &lt;code&gt;DECLINED&lt;/code&gt;, the amount is released from the Frozen Balance and returns to the available Balance of your PayU account.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Once the refund is approved, this will be reflected in the payer&amp;rsquo;s credit card when the bank make it effective.&lt;/li&gt;
+&lt;li&gt;To check the status of your refund request using the &lt;a href=&#34;../../docs/services/queries.html&#34; title=&#34;Query Service&#34;&gt;Queries service&lt;/a&gt; available for that purpose.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;According to the processing country, some special conditions may apply to be able to execute voids or refunds. These conditions are explained in the selected integration type.&lt;/p&gt;
+&lt;p&gt;The integration with this feature can be performed using one of our integration types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/integrations/api-integration/refunds-api.html&#34;&gt;For API integrations, refer to this topic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../docs/integrations/sdk-integration/refundssdk.html&#34;&gt;For SDK integrations, refer to this topic&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

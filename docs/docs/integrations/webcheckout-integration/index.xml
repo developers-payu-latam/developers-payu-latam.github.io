@@ -1,0 +1,1712 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation – WebCheckout integration</title>
+    <link>/docs/integrations/webcheckout-integration.html</link>
+    <description>Recent content in WebCheckout integration on Documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 29 Mar 2021 11:52:52 -0500</lastBuildDate>
+    
+	  <atom:link href="/docs/integrations/webcheckout-integration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Payment Form</title>
+      <link>/docs/integrations/webcheckout-integration/payment-form.html</link>
+      <pubDate>Mon, 29 Mar 2021 12:15:27 -0500</pubDate>
+      
+      <guid>/docs/integrations/webcheckout-integration/payment-form.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;In this topic, you find how to send data from one transaction to the PayU payment gateway. To do so, You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Make sure you have the right &lt;code&gt;merchantId&lt;/code&gt;, &lt;code&gt;accountId&lt;/code&gt;, and &lt;code&gt;apiKey&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Use a different payment reference per payment.&lt;/li&gt;
+&lt;li&gt;Do not include spaces in parameter values&lt;/li&gt;
+&lt;li&gt;Do not include values with more than two decimal places&lt;/li&gt;
+&lt;li&gt;Do not include special characters in the &lt;code&gt;referenceCode&lt;/code&gt;parameter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;variables&#34;&gt;Variables&lt;/h2&gt;
+&lt;p&gt;The following variables can be included in the Payment form.&lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;Variables in the payment form&lt;/summary&gt;
+&lt;br&gt;
+&lt;div class=&#34;variables&#34;&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Size&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Mandatory&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;amount&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;14&lt;/td&gt;
+&lt;td&gt;Total amount of the transaction. It can contain two decimal digits. Example 10000.00 or 10000.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;merchantId&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;ID number of your shop in PayU’s system, you will find this number in the account creation email.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;referenceCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference of the sale or order. It must be unique for each transaction that is sent to the system. Usually, this is a way to identify the requests sent to the payment gateway.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;accountId&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;ID of the user account for each country associated with the shop. This variable is used to display the available payment methods for this country.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;description&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Sale’s description.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tax&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;Value of the VAT of the transaction.&lt;br&gt;In Colombia, if no VAT is sent, the system applies 19% automatically. It can contain two decimal digits, for example 19000.00.&lt;br&gt;If the product or service is VAT exempt, assign &lt;code&gt;0&lt;/code&gt; to this variable.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;taxReturnBase&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;Base value to calculate the VAT.&lt;br&gt;If the product or service is VAT exempt, assign &lt;code&gt;0&lt;/code&gt;to this variable.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;signature&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Digital signature created for each transaction. Refer to &lt;a href=&#34;../../../docs/integrations/webcheckout-integration/payment-form.html#signature-for-payment-form&#34;&gt;Signature for Payment form&lt;/a&gt; to learn how to generate it.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;currency&lt;/td&gt;
+&lt;td&gt;Alpha numeric&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The respective currency in which the payment is made. The reconciliation process is performed in pesos at the representative rate of the day.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies&#34;&gt;See accepted currencies&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;buyerEmail&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Field that contains the buyer’s email to notify the result of the transaction by email. It is recommended to validate if this field has been provided in the form.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;telephone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The buyer’s residence phone.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;buyerFullName&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;150&lt;/td&gt;
+&lt;td&gt;The buyer’s full name.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;test&lt;/td&gt;
+&lt;td&gt;Number&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Indicates whether the transaction is in test or production mode. Set &lt;code&gt;1&lt;/code&gt;for test and &lt;code&gt;0&lt;/code&gt;for production.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lng&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Language in which the payment gateway is wished to be displayed.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#supported-languages&#34;&gt;See supported languages&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;shippingCity&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The delivery City of the merchandise&lt;br&gt;&lt;sup&gt;*&lt;/sup&gt; Mandatory if your shop ships the product.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;shippingCountry&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;The delivery ISO country code for the merchandise.&lt;br&gt;&lt;sup&gt;*&lt;/sup&gt; Mandatory if your shop ships the product.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#processing-countries&#34;&gt;See processing countries&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;shippingAddress&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The delivery address of the merchandise.&lt;br&gt;&lt;sup&gt;*&lt;/sup&gt; Mandatory if your shop ships the product.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;✓*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra1&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra2&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra3&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase. For example, internal codes of the products.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;responseUrl&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The URL of the response page.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;confirmationUrl&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The URL of the confirmation page.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payerFullName&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The payer’s name. This value will be taken to fill out the credit card form.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payerDocument&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;25&lt;/td&gt;
+&lt;td&gt;The buyer’s identification number. This value will be taken to fill out the credit card form.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mobilePhone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The buyer’s cell phone number. This value will be taken to fill out the credit card form and will be the contact telephone number.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;billingAddress&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The correspondence address.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;officeTelephone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The buyer’s daytime phone.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;algorithmSignature&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Encryption algorithm of the digital signature (&lt;code&gt;signature&lt;/code&gt; field). The three available algorithms are: &lt;code&gt;MD5&lt;/code&gt;, &lt;code&gt;SHA&lt;/code&gt; and &lt;code&gt;SHA256&lt;/code&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;billingCity&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;City associated with the billing address.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;zipCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;Postal code.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;billingCountry&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;The ISO country code associated with the billing address.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payerEmail&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The payer’s email.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payerPhone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;The payer’s phone number.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payerOfficePhone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;The payer’s workplace phone number.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payerMobilePhone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;The payer’s mobile phone number.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/details&gt;
+&lt;h3 id=&#34;considerations-in-variables&#34;&gt;Considerations in variables&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;tax&lt;/code&gt; is the VAT that may be used in some countries and the &lt;code&gt;taxReturnBase&lt;/code&gt; is the base value to calculate the VAT. If your product is tax exempt, assign both variables to &lt;code&gt;0&lt;/code&gt; (&lt;code&gt;tax=0&lt;/code&gt;, &lt;code&gt;taxReturnBase=0&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;If some elements have the tax and it does not apply to others, you must perform the following calculation to find out how to send the values to the payment platform.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Product&lt;/th&gt;
+&lt;th&gt;taxReturnBase&lt;/th&gt;
+&lt;th&gt;tax&lt;/th&gt;
+&lt;th&gt;Amount&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;84.033&lt;/td&gt;
+&lt;td&gt;15.966 (19%)&lt;/td&gt;
+&lt;td&gt;100.000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;181.818&lt;/td&gt;
+&lt;td&gt;18.181 (10%)&lt;/td&gt;
+&lt;td&gt;200.000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0 (0%)&lt;/td&gt;
+&lt;td&gt;150.000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Total&lt;/td&gt;
+&lt;td&gt;268.851&lt;/td&gt;
+&lt;td&gt;34.147&lt;/td&gt;
+&lt;td&gt;450.000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Important&lt;/h4&gt;
+Tax + taxReturnBase cannot be greater than the Total Value of each product.
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For businesses registered in Colombia that belong to the program &lt;em&gt;Régimen común&lt;/em&gt;, if you don&amp;rsquo;t send the tax, PayU automatically calculates the tax using 19%. If your business belongs to the program &lt;em&gt;Régimen simplificado&lt;/em&gt;, if you don&amp;rsquo;t send the tax, PayU automatically assigns the value as zero (0).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;form-example&#34;&gt;Form example&lt;/h2&gt;
+&lt;p&gt;The following is an example of a basic Payment form using only the mandatory fields and pointing the request to the sandbox environment (test mode).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;form&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;merchantId&amp;#34;&lt;/span&gt;      &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;508029&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;       &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512321&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;     &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Test PAYU&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;referenceCode&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;TestPayU&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;amount&amp;#34;&lt;/span&gt;          &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;20000&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;tax&amp;#34;&lt;/span&gt;             &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3193&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;taxReturnBase&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;16806&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;currency&amp;#34;&lt;/span&gt;        &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;COP&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;signature&amp;#34;&lt;/span&gt;       &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;7ee7cf808ce6a39b17481c54f2c57acc&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;            &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;buyerEmail&amp;#34;&lt;/span&gt;      &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;test@test.com&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;responseUrl&amp;#34;&lt;/span&gt;     &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://www.test.com/response&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;confirmationUrl&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://www.test.com/confirmation&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Submit&amp;#34;&lt;/span&gt;          &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;submit&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Enviar&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;form&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;If your shop ships the products, you need to include the following values:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;shippingAddress&amp;#34;&lt;/span&gt;    &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;calle 93 n 47 - 65&amp;#34;&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;shippingCity&amp;#34;&lt;/span&gt;       &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Bogotá&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;input&lt;/span&gt; &lt;span style=&#34;color:#c4a000&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;shippingCountry&amp;#34;&lt;/span&gt;    &lt;span style=&#34;color:#c4a000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#c4a000&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;CO&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;The URL configured in &lt;code&gt;action&lt;/code&gt; depends on the environment:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;Test: https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/
+Production: https://checkout.payulatam.com/ppp-web-gateway-payu/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;signature-for-payment-form&#34;&gt;Signature for Payment form&lt;/h2&gt;
+&lt;p&gt;The signature is a method to validate payments made through the platform and ensuring its authenticity. It consists of a string encrypted using &lt;code&gt;MD5&lt;/code&gt;, &lt;code&gt;SHA1&lt;/code&gt;, or &lt;code&gt;SHA256&lt;/code&gt;. The string is created as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;ApiKey~merchantId~referenceCode~amount~currency&amp;#34;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;For example, with the following dat:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;merchantId: 508029
+ApiKey: 4Vj8eK4rloUd272L48hsrarnUA
+referenceCode: TestPayU
+amount: 20000
+currency: COP
+accountId: 512326
+buyerEmail: test@test.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;The signature is:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU~20000~COP&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Encrypted using &lt;code&gt;MD5&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;7ee7cf808ce6a39b17481c54f2c57acc&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Encrypted using &lt;code&gt;SHA1&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;fa890d3f94e12b5cdb62e8771453b99b78e7ccdc&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Encrypted using &lt;code&gt;SHA256&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;af3899a22336b79db46006491d15813158826f944599bf3bf601e2327f898022&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;compare-your-signature&#34;&gt;Compare your signature&lt;/h3&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=../../../js/jquery-validate.bootstrap-tooltip.min.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/bootstrap.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/validations.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/md5.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/sha1.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/sha256.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/signature-generator.js&gt;&lt;/script&gt;
+&lt;script&gt;
+
+    var errApiKeyReq = &#34;Please enter the ApiKey&#34;
+    var errApiKeyMin = &#34;Please enter more than 5 digits&#34;
+    var errApiKeyMax = &#34;Please enter less than 32 digits&#34;
+    var errMerchantReq = &#34;Please enter the Merchant Id&#34;
+    var errMerchantMin = &#34;Please enter more than 5 digits&#34;
+    var errMerchantMax = &#34;Please enter less than 7 digits&#34;
+    var errMerchantPosi = &#34;Please enter a positive number&#34;
+    var errMerchantNum = &#34;Please enter just numbers&#34;
+    var errReferenceReq = &#34;Please enter the Reference Code&#34;
+    var errReferenceMin = &#34;Please enter the Reference Code&#34;
+    var errReferenceMax = &#34;Please enter less than 255 digits&#34;
+    var errAmountReq = &#34;Please enter the Amount&#34;
+    var errAmountMin = &#34;Please enter the Amount&#34;
+    var errAmountMax = &#34;Please enter less than 14 digits&#34;
+    var errAmountPosi = &#34;Please enter a positive number&#34;
+    var errAmountNum = &#34;Please enter just numbers&#34;
+    var errCurrReq = &#34;Please enter a valid Currency in format ISO 4217&#34;
+    var errCurrMin = &#34;Please enter more than 3 digits&#34;
+    var errCurrMax = &#34;Please enter less than 3 digits&#34;
+    var errTsReq = &#34;Please enter the transaction code&#34;
+    var errTsMin = &#34;Please enter the transaction code&#34;
+    var errTsMax = &#34;Please enter the transaction code less than 3 digits&#34;
+    var errSpReq = &#34;Please enter the transaction code&#34;
+    var errSpMin = &#34;Please enter the transaction code&#34;
+    var errSpMax = &#34;Please enter the transaction code less than 1 digit&#34;
+
+&lt;/script&gt;
+
+&lt;div id=&#34;blue-box&#34;&gt;
+&lt;span class=&#34;grey-text-13&#34;&gt;
+&lt;div id = &#34;div_generador&#34; &gt;
+
+&lt;form method=&#34;POST&#34; id=&#34;signature_form&#34; &gt;
+&lt;table&gt;
+    &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Algorithm: &amp;nbsp;&lt;/b&gt;&lt;/span&gt;
+    &lt;select id = &#34;signature_algorithm&#34; class=&#34;calc_selector form_control&#34;&gt;
+        &lt;option  value=&#34;md5&#34;&gt;MD5&lt;/option&gt;
+        &lt;option  value=&#34;sha1&#34;&gt;SHA1&lt;/option&gt;
+        &lt;option  value=&#34;sha256&#34;&gt;SHA256&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;br&gt;
+    &lt;br&gt;
+    &lt;span class=&#34;calc_text&#34;&gt;&amp;nbsp;(&lt;/span&gt;
+    &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_apikey&#34; name = &#34;signature_apikey&#34; placeholder=&#34;ApiKey&#34; maxlength=&#34;26&#34;&gt; ~
+    &lt;input class=&#34;form_control number&#34; type=&#34;text&#34;  id =&#34;signature_merchanId&#34; name = &#34;signature_merchanId&#34; placeholder=&#34;MerchantId&#34; maxlength=&#34;7&#34;&gt; ~
+    &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_referenceCode&#34; name = &#34;signature_referenceCode&#34; placeholder=&#34;Reference&#34; maxlength=&#34;255&#34;&gt; ~
+    &lt;input class=&#34;form_control  number&#34; type=&#34;text&#34; id =&#34;signature_amount&#34; name = &#34;signature_amount&#34; placeholder=&#34;Amount&#34; maxlength=&#34;14&#34;&gt; ~
+    &lt;select id = &#34;signature_currency&#34; class=&#34;calc_selector form_control&#34; &gt;
+        &lt;option  value=&#34;USD&#34;&gt;USD&lt;/option&gt;
+        &lt;option  value=&#34;COP&#34;&gt;COP&lt;/option&gt;
+        &lt;option  value=&#34;MXN&#34;&gt;MXN&lt;/option&gt;
+        &lt;option  value=&#34;ARS&#34;&gt;ARS&lt;/option&gt;
+        &lt;option  value=&#34;PEN&#34;&gt;PEN&lt;/option&gt;
+        &lt;option  value=&#34;BRL&#34;&gt;BRL&lt;/option&gt;
+        &lt;option  value=&#34;CLP&#34;&gt;CLP&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;span class=&#34;calc_text&#34;&gt;)&lt;/span&gt;
+    &lt;br&gt;
+    &lt;br&gt;
+    &lt;br&gt;
+    &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Result:&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;input class=&#34;form_control&#34; id =&#34;signature_generated&#34; name = &#34;signature_generated&#34; value = &#34;&#34;  readonly /&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;table width=&#34;50%&#34;  border=&#34;0&#34; cellspacing=&#34;2&#34; cellpadding=&#34;2&#34;&gt;
+    &lt;input type=&#34;button&#34; name=&#34;signature_generate&#34; id=&#34;signature_generate&#34; value=&#34;Generate signature&#34; &gt;
+    &lt;input type=&#34;button&#34; name=&#34;signature_generate_again&#34; id=&#34;signature_generate_again&#34; value=&#34;Generate new signature&#34; &gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;This calculator lets you generate the signature using any of the available encryption methods.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Response Page</title>
+      <link>/docs/integrations/webcheckout-integration/response-page.html</link>
+      <pubDate>Mon, 29 Mar 2021 12:15:39 -0500</pubDate>
+      
+      <guid>/docs/integrations/webcheckout-integration/response-page.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;In this topic, you find how to send data from one transaction to PayU. You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Some hosting providers have settings that do not allow sending URLs as parameter values. example: &lt;code&gt;&amp;amp;merchant_url=http%3A%2F%2Fwww.myshop.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For Brazil accounts, there is no redirection to the response page.&lt;/li&gt;
+&lt;li&gt;Do not depend on the response page to update your database or execute processes, users may not return to it. Use the confirmation page.&lt;/li&gt;
+&lt;li&gt;If you want to display information related to the transaction we suggest to show at least the following: status, reference value, currency and date.&lt;/li&gt;
+&lt;li&gt;It is recommended to send the &lt;code&gt;responseUrl&lt;/code&gt; parameter in the payment form or set PayU Module; it has priority the one sent in the parameter. If PayU does not find any, the payment process ends at the Webcheckout.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Important&lt;/h4&gt;
+If you want that PayU always shows the transaction information, do not send any value in the &lt;code&gt;responseUrl&lt;/code&gt; parameter of the payment form, and leave it blank in PayU Module. In this case, the buyer cannot return to your website.
+&lt;/div&gt;
+
+&lt;h2 id=&#34;variables&#34;&gt;Variables&lt;/h2&gt;
+&lt;p&gt;Send the following variables to the response page.&lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;Variables to be sent to the response page&lt;/summary&gt;
+&lt;br&gt;
+&lt;div class=&#34;variables&#34;&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Size&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Applies to&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;merchantId&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;Merchant’s ID number in PayU’s system, you find this number in the account creation mail.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transactionState&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Indicates the transaction’s status in the system.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page&#34;&gt;See the transaction states in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;risk&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Risk associated with the transaction. Values between 0 and 1.&lt;br&gt;The higher value, the greater the risk.&lt;b&gt;Format &lt;code&gt;###.00&lt;/code&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;polResponseCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;Response code.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page&#34;&gt;See the response codes in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;referenceCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference of the sale or order. It must be unique for each transaction sent to the system.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;reference_pol&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference or transaction number generated by PayU.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;signature&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Digital signature created for each one of the transactions&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;polPaymentMethod&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Internal identifier of the used payment methods&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;polPaymentMethodType&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;The type of payment method used for payment.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#codes-of-the-payment-methods&#34;&gt;See the codes of the payment methods&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;installmentsNumber&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Number of installments in which the credit card payment was deferred.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TX_VALUE&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;Total amount of the transaction. It can contain two decimal digits. For example 10000.00 or 10000&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TX_TAX&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;Value of the VAT of the transaction, if no VAT is sent, the system applies 19% automatically.&lt;br&gt;It can contain two decimal digits, for example 19000.00.&lt;br&gt;In case you have no VAT you should fill out 0.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;buyerEmail&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Field that contains the buyer’s email to notify the result of the transaction by email. It is recommended to validate it when the data is taken on a form&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;processingDate&lt;/td&gt;
+&lt;td&gt;Date (YYYY-MM-DD HH:mm:ss)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;The date the transaction was made.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;currency&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The respective currency in which the payment is made. The reconciliation process is performed in pesos at the representative rate of the day.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cus&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The CUS, unique tracking code, is the payment’s reference within the Bank, it applies only to payments with PSE.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PSE Colombia.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseBank&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The name of the bank, applies only to payments with PSE.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PSE Colombia.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lng&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Language in which to display the payment gateway.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;description&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Description of sale.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lapResponseCode&lt;/td&gt;
+&lt;td&gt;Alfa numéric&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;Response code that PayU delivers.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page&#34;&gt;See the responses codes in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lapPaymentMethod&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Payment method used in the payment, for example VISA.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lapPaymentMethodType&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Payment method type used in the payment, for example CREDIT_CARD.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lapTransactionState&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;Transaction status.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page&#34;&gt;See the transaction status in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;message&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Description of the transaction status.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra1&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra2&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra3&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;authorizationCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;Authorization Code of the sale.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;merchant_address&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Merchant’s address.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;merchant_name&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Merchant’s_name&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;merchant_url&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Merchant’s website URL.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;orderLanguage&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Language of the order (ISO-639-1).&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseCycle&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Identifier generated by PSE.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PSE Colombia&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseReference1&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference no. 1 for PSE payments.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PSE Colombia&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseReference2&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference no. 2 for PSE payments.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PSE Colombia&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseReference3&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference no. 3 for PSE payments.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PSE Colombia&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;telephone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;Merchant’s phone number.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transactionId&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;Transaction identifier.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;trazabilityCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;Traceability Code of the sale on the merchant&amp;rsquo;s site.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TX_ADMINISTRATIVE_FEE&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Value of the administrative fee.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TX_TAX_ADMINISTRATIVE _FEE&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Value of the tax of the administrative fee.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TX_TAX_ADMINISTRATIVE _FEE_RETURN_BASE&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Base value of the administrative fee for the tax refund.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;action_code_description&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;VISANET response code description.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;VISANET Peru&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cc_holder&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;150&lt;/td&gt;
+&lt;td&gt;Name of cardholder.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;VISANET Peru&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cc_number&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Credit card number. PAN&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;VISANET Peru&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;processing_date_time&lt;/td&gt;
+&lt;td&gt;Date(YYYY-MM-DD HH:mm:ss)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Date and time of the sale’s processing.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;VISANET Peru&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;request_number&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;Order Number + transaction identifier&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;VISANET Peru&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;integrate-the-response-page&#34;&gt;Integrate the response page&lt;/h2&gt;
+&lt;p&gt;The following is an example in PHP of how you can integrate the response page:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-PHP&#34; data-lang=&#34;PHP&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;php&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$ApiKey&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;4Vj8eK4rloUd272L48hsrarnUA&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$merchant_id&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;merchantId&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$referenceCode&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;referenceCode&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$TX_VALUE&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;TX_VALUE&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$New_value&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;number_format&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$TX_VALUE&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$currency&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;currency&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$transactionState&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;transactionState&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$firma_cadena&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;$ApiKey&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;$merchant_id&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;$referenceCode&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;$New_value&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;$currency&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;~&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;$transactionState&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$firmacreada&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;md5&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$firma_cadena&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$firma&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;signature&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$reference_pol&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;reference_pol&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$cus&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;cus&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$extra1&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$pseBank&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;pseBank&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$lapPaymentMethod&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;lapPaymentMethod&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;$transactionId&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;transactionId&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;transactionState&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#000&#34;&gt;$estadoTx&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Transaction approved&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;transactionState&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#000&#34;&gt;$estadoTx&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Transaction rejected&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;transactionState&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;104&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#000&#34;&gt;$estadoTx&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Error&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;transactionState&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;7&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#000&#34;&gt;$estadoTx&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Pending payment&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;else&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+	&lt;span style=&#34;color:#000&#34;&gt;$estadoTx&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;mensaje&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;];&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+
+
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;strtoupper&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$firma&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;strtoupper&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$firmacreada&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;h2&amp;gt;Transaction Summary&amp;lt;/h2&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;table&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Transaction status&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo $estadoTx; ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Transaction ID&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo $transactionId; ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Reference sale&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo $reference_pol; ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Reference transaction&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo $referenceCode; ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;?php
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	if($pseBank != null) {
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	?&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;td&amp;gt;cus &amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;td&amp;gt;&amp;lt;?php echo $cus; ?&amp;gt; &amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;td&amp;gt;Bank &amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;td&amp;gt;&amp;lt;?php echo $pseBank; ?&amp;gt; &amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;		&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;?php
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	}
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	?&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;total amount&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;$&amp;lt;?php echo number_format($TX_VALUE); ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Currency&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo $currency; ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Description&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo ($extra1); ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;Entity:&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;td&amp;gt;&amp;lt;?php echo ($lapPaymentMethod); ?&amp;gt;&amp;lt;/td&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/tr&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;/table&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;&amp;lt;?php
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;}
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;else
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;{
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;?&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;	&amp;lt;h1&amp;gt;Error validating digital signature.&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;&amp;lt;?php
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;}
+&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;?&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;GET example sent to the response page.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;http://mytestsite.com/response.php?&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;merchantId=508029&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;merchant_name=Test+PayU+Test&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;merchant_address=Av+123+Calle+12&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;telephone=7512354&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;transactionState=6&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;lapTransactionState=DECLINED&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;message=Declinada&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;referenceCode=2015-05-27+13%3A04%3A37&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;reference_pol=7069375&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;transactionId=f5e668f1-7ecc-4b83-a4d1-0aaa68260862&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;description=test_payu_01&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;trazabilityCode=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;cus=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;orderLanguage=es&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;extra1=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;extra2=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;extra3=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;polTransactionState=6&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;signature=e1b0939bbdc99ea84387bee9b90e4f5c&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;polResponseCode=5&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;lapResponseCode=ENTITY_DECLINED&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;risk=1.00&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;polPaymentMethod=10&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;lapPaymentMethod=VISA&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;polPaymentMethodType=2&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;lapPaymentMethodType=CREDIT_CARD&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;installmentsNumber=1&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;TX_VALUE=100.00&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;TX_TAX=.00&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;currency=USD&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;lng=es&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;pseCycle=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;buyerEmail=test%40payulatam.com&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;pseBank=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;pseReference1=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;pseReference2=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;pseReference3=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;authorizationCode=&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;TX_ADMINISTRATIVE_FEE=.00&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;TX_TAX_ADMINISTRATIVE_FEE=.00&lt;span style=&#34;color:#a40000&#34;&gt;&amp;amp;&lt;/span&gt;TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;signature-validation&#34;&gt;Signature validation&lt;/h2&gt;
+&lt;p&gt;The signature validation allows you to check the data integrity, you must generate the signature with the information you find in the response page and compare it with the information from the signature parameter.&lt;/p&gt;
+&lt;p&gt;To validate the signature in the response page, you should consider:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To get the new value &lt;code&gt;new_value&lt;/code&gt;, approximate the &lt;code&gt;TX_VALUE&lt;/code&gt; to a decimal, using the rounding method &lt;em&gt;Round half to even&lt;/em&gt;:
+&lt;ul&gt;
+&lt;li&gt;If the first decimal is even and the second is &lt;code&gt;5&lt;/code&gt;, round it to the lowest value.&lt;/li&gt;
+&lt;li&gt;If the first decimal is odd and the second is &lt;code&gt;5&lt;/code&gt;, round it to the higher value.&lt;/li&gt;
+&lt;li&gt;Otherwise you must round it to the nearest decimal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Get the parameters to generate the signature (&lt;code&gt;merchantId&lt;/code&gt;, &lt;code&gt;referenceCode&lt;/code&gt;, &lt;code&gt;TX_VALUE&lt;/code&gt;, &lt;code&gt;currency&lt;/code&gt;, and &lt;code&gt;transactionState&lt;/code&gt;) from the response page, do not get them from your database.&lt;/li&gt;
+&lt;li&gt;You must store your ApiKey safely.&lt;/li&gt;
+&lt;li&gt;Create the signature as follows:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;ApiKey~merchantId~referenceCode~new_value~currency~transactionState&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;First decimal is an even number and the second is 5&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA
+Parameters get from the response page:
+- merchantId = 508029
+- referenceCode = TestPayU04
+- TX_VALUE = 150.25
+- currency = USD
+- transactionState = 6
+
+The signature is generated as follows:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.2~USD~6) = 00286dc735bd9eaa8ae3a3a4cbb40688
+
+signature = 00286dc735bd9eaa8ae3a3a4cbb40688
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;First decimal is an odd number and the second is 5&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parameters get from the response page: 
+- merchantId = 508029
+- referenceCode = TestPayU04
+- TX_VALUE = 150.35
+- currency = USD
+- transactionState = 6
+
+The signature is generated as follows:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.4~USD~6) = 9df2bb60e2838170009040982967923f
+
+signature = 9df2bb60e2838170009040982967923f 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Other cases&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parameters get from the response page: 
+- merchantId = 508029
+- referenceCode = TestPayU04
+- TX_VALUE = 150.34
+- currency = USD
+- transactionState = 6
+
+The signature is generated as follows:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = 779f163be9347a691bcdb25064644795
+
+signature = 779f163be9347a691bcdb25064644795 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;compare-your-signature&#34;&gt;Compare your signature&lt;/h3&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=../../../js/jquery-validate.bootstrap-tooltip.min.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/bootstrap.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/validations.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/md5.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/sha1.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/sha256.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/signature-generator.js&gt;&lt;/script&gt;
+&lt;script&gt;
+
+    var errApiKeyReq = &#34;Please enter the ApiKey&#34;
+    var errApiKeyMin = &#34;Please enter more than 5 digits&#34;
+    var errApiKeyMax = &#34;Please enter less than 32 digits&#34;
+    var errMerchantReq = &#34;Please enter the Merchant Id&#34;
+    var errMerchantMin = &#34;Please enter more than 5 digits&#34;
+    var errMerchantMax = &#34;Please enter less than 7 digits&#34;
+    var errMerchantPosi = &#34;Please enter a positive number&#34;
+    var errMerchantNum = &#34;Please enter just numbers&#34;
+    var errReferenceReq = &#34;Please enter the Reference Code&#34;
+    var errReferenceMin = &#34;Please enter the Reference Code&#34;
+    var errReferenceMax = &#34;Please enter less than 255 digits&#34;
+    var errAmountReq = &#34;Please enter the Amount&#34;
+    var errAmountMin = &#34;Please enter the Amount&#34;
+    var errAmountMax = &#34;Please enter less than 14 digits&#34;
+    var errAmountPosi = &#34;Please enter a positive number&#34;
+    var errAmountNum = &#34;Please enter just numbers&#34;
+    var errCurrReq = &#34;Please enter a valid Currency in format ISO 4217&#34;
+    var errCurrMin = &#34;Please enter more than 3 digits&#34;
+    var errCurrMax = &#34;Please enter less than 3 digits&#34;
+    var errTsReq = &#34;Please enter the transaction code&#34;
+    var errTsMin = &#34;Please enter the transaction code&#34;
+    var errTsMax = &#34;Please enter the transaction code less than 3 digits&#34;
+    var errSpReq = &#34;Please enter the transaction code&#34;
+    var errSpMin = &#34;Please enter the transaction code&#34;
+    var errSpMax = &#34;Please enter the transaction code less than 1 digit&#34;
+
+&lt;/script&gt;
+
+&lt;div id=&#34;blue-box&#34;&gt;
+&lt;span class=&#34;grey-text-13&#34;&gt;
+&lt;div&gt;
+&lt;form method=&#34;POST&#34; id=&#34;signature_form_response_page&#34; &gt;
+    &lt;table&gt;
+        &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Algorithm: &amp;nbsp;&lt;/b&gt;&lt;/span&gt;
+        &lt;select id = &#34;signature_algorithm_response_page&#34; class=&#34;calc_selector form_control&#34;&gt;
+            &lt;option  value=&#34;md5&#34;&gt;MD5&lt;/option&gt;
+            &lt;option  value=&#34;sha1&#34;&gt;SHA1&lt;/option&gt;
+            &lt;option  value=&#34;sha256&#34;&gt;SHA256&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;span class=&#34;calc_text&#34;&gt;&amp;nbsp;(&lt;/span&gt;
+        &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_apikey_response_page&#34; name = &#34;signature_apikey_response_page&#34; placeholder=&#34;ApiKey&#34; maxlength=&#34;26&#34;&gt; ~
+        &lt;input class=&#34;form_control number&#34; type=&#34;text&#34;  id =&#34;signature_merchanId_response_page&#34; name = &#34;signature_merchanId_response_page&#34; placeholder=&#34;MerchantId&#34; maxlength=&#34;7&#34;&gt; ~
+        &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_referenceCode_response_page&#34; name = &#34;signature_referenceCode_response_page&#34; placeholder=&#34;Reference&#34; maxlength=&#34;255&#34;&gt; ~
+        &lt;input class=&#34;form_control  number&#34; type=&#34;text&#34; id =&#34;signature_amount_response_page&#34; name = &#34;signature_amount_response_page&#34; placeholder=&#34;Amount&#34; maxlength=&#34;14&#34;&gt; ~
+        &lt;select id = &#34;signature_currency_response_page&#34; class=&#34;calc_selector form_control&#34; &gt;
+            &lt;option  value=&#34;USD&#34;&gt;USD&lt;/option&gt;
+            &lt;option  value=&#34;COP&#34;&gt;COP&lt;/option&gt;
+            &lt;option  value=&#34;MXN&#34;&gt;MXN&lt;/option&gt;
+            &lt;option  value=&#34;ARS&#34;&gt;ARS&lt;/option&gt;
+            &lt;option  value=&#34;PEN&#34;&gt;PEN&lt;/option&gt;
+            &lt;option  value=&#34;BRL&#34;&gt;BRL&lt;/option&gt;
+            &lt;option  value=&#34;CLP&#34;&gt;CLP&lt;/option&gt;
+        &lt;/select&gt; ~
+        &lt;select id = &#34;signature_transaction_state_response_page&#34; class=&#34;calc_selector form_control&#34; &gt;
+            &lt;option  value=&#34;4&#34;&gt;4 (Approved)&lt;/option&gt;
+            &lt;option  value=&#34;6&#34;&gt;6 (Declined)&lt;/option&gt;
+            &lt;option  value=&#34;104&#34;&gt;104 (Error)&lt;/option&gt;
+            &lt;option  value=&#34;5&#34;&gt;5 (Expired)&lt;/option&gt;
+            &lt;option  value=&#34;7&#34;&gt;7 (Pending)&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;span class=&#34;calc_text&#34;&gt;)&lt;/span&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Result:&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;input class=&#34;form_control&#34; id =&#34;signature_generated_response_page&#34; name = &#34;signature_generated_response_page&#34; value = &#34;&#34;  readonly /&gt;
+    &lt;/table&gt;
+    &lt;br&gt;
+    &lt;table width=&#34;50%&#34;  border=&#34;0&#34; cellspacing=&#34;2&#34; cellpadding=&#34;2&#34;&gt;
+        &lt;input type=&#34;button&#34; name=&#34;signature_generate_response_page&#34; id=&#34;signature_generate_response_page&#34; value=&#34;Generate signature&#34; &gt;
+        &lt;input type=&#34;button&#34; name=&#34;signature_generate_again_response_page&#34; id=&#34;signature_generate_again_response_page&#34; value=&#34;Generate new signature&#34; &gt;
+    &lt;/table&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;This calculator lets you generate the signature using any of the available encryption methods.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Confirmation Page</title>
+      <link>/docs/integrations/webcheckout-integration/confirmation-page.html</link>
+      <pubDate>Mon, 29 Mar 2021 12:15:57 -0500</pubDate>
+      
+      <guid>/docs/integrations/webcheckout-integration/confirmation-page.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;The confirmation page lets you update the databases in your system; hence, this page should not include HTML code as it&amp;rsquo;s not visible to the buyer. This page is optional; when a transaction is complete (i.e., when approved, rejected, or when canceled) our platform sends the variables via the HTTP POST method.&lt;/p&gt;
+&lt;p&gt;In the confirmation page, you must capture the data you want to store in the database. This capture depends on the programming language you use.&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;If your site is restricted with &lt;em&gt;basic access authentication&lt;/em&gt; or similar, disable it for the confirmation url.&lt;/li&gt;
+&lt;li&gt;The IP associated with the confirmation URL should be public; do not use URL accessible from intranet or localhost.&lt;/li&gt;
+&lt;li&gt;If you&amp;rsquo;re using HTTPS, you must have a valid certificate.&lt;/li&gt;
+&lt;li&gt;Do not use security certificates elliptic curve or those who have the suite of encryption &lt;code&gt;TLS_ECDHE_ECDSA_WITH_RC4_128_SHA&lt;/code&gt; on your confirmation page.&lt;/li&gt;
+&lt;li&gt;PayU assumes that the confirmation page is reported correctly when receives the HTTP 200 code; otherwise, PayU makes a maximum of nine (9) attempts to send the confirmation page to your system. If after these attempts, HTTP 200 code is not received, PayU sends an email alert.&lt;/li&gt;
+&lt;li&gt;PayU reports the confirmation page once the transaction has a final status for example, when approved, rejected or expired. If a transaction is in progress (waiting for payment or analysis), PayU does not report until the transaction has a final status.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;variables-sent-with-the-confirmation-page&#34;&gt;Variables sent with the confirmation page&lt;/h2&gt;
+&lt;details&gt;
+&lt;summary&gt;Variables in the confirmation page&lt;/summary&gt;
+&lt;br&gt;
+&lt;div class=&#34;variables&#34;&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Size&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;merchant_id&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;Merchant’s ID number in PayU’s system, you find this number in the account creation mail.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;state_pol&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;Indicates the status of the transaction in the system.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-confirmation-page&#34;&gt;See the transaction status in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;risk&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Risk associated with the transaction. Values between 0 and 1.&lt;br&gt;The higher value, the greater the risk.&lt;b&gt;Format &lt;code&gt;###.00&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;response_code_pol&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;PayU’s response code.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-confirmation-page&#34;&gt;See the response codes in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;reference_sale&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference of the sale or order. It must be unique for each transaction that is sent to the system.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;reference_pol&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The reference or transaction number generated by PayU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;sign&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Digital signature created for each of one the transactions.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra1&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase. For example, description of the purchase if you would like to display it on the confirmation page&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;extra2&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase. For example, internal codes of the products&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payment_method&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;The internal identifier of the payment method used.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#codes-of-the-payment-methods&#34;&gt;See the codes of the payment methods&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payment_method_type&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;The payment method type used for the payment.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;installments_number&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Number of installments in which the credit card payment was deferred.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;value&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;Total amount of the transaction. It can contain two decimal digits. For example, 10000.00 or 10000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tax&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;VAT value of the transaction, if VAT zero is sent the system will automatically apply the 19%. It can contain two decimal digits. For example: 19000.00. In case you have no VAT you should fill out 0.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;additional_value&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;14,2&lt;/td&gt;
+&lt;td&gt;Non commissionaire Additional Value.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction_date&lt;/td&gt;
+&lt;td&gt;Date(YYYY-MM-DD HH:mm:ss)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;The date the transaction was made.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;currency&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;The currency in which the payment is made.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies&#34;&gt;See the accepted currencies&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;email_buyer&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Field that contains the buyer’s email to notify the transaction’s result by email. It&amp;rsquo;s recommended to validate it when the data is taken from a form.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cus&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;The cus (unique tracking code) is the payment’s reference within the Bank, it applies only to payments with PSE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pse_bank&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The name of the bank, applies only to payments with PSE.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;test&lt;/td&gt;
+&lt;td&gt;Boolean (true, false)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Variable to identify whether the operation was a test.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;description&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Description of the sale.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;billing_address&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The billing address&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;shipping_address&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The delivery address for the merchandise.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;phone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;The buyer’s residence phone.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;office_phone&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;The buyer’s daytime phone.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;account_number_ach&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;The transaction’s identifier.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;account_type_ach&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;The transaction’s identifier.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;administrative_fee&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Value of the administrative fee&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;administrative_fee_base&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Base value of the administrative fee&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;administrative_fee_tax&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Tax value of the administrative fee&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;airline_code&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Airline code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;attempts&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Number of attempts of sending the confirmation.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;authorization_code&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;td&gt;Sale’s authorization code&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;bank_id&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Bank identifier&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;billing_city&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;The billing city.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;billing_country&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;The ISO code of the country associated with the billing address.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;commision_pol&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Value of the commission.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;commision_pol_currency&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Currency of the commission&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;customer_number&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Customer number.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;date&lt;/td&gt;
+&lt;td&gt;Date (YYYY-MM-DD HH:mm:ss)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Date of the operation.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;error_code_bank&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Error code of the bank.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;error_message_bank&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Error message of the bank&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;exchange_rate&lt;/td&gt;
+&lt;td&gt;Decimal (#.00)&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Value of the exchange rate.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ip&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;39&lt;/td&gt;
+&lt;td&gt;The IP address from which the transaction was made.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nickname_buyer&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;150&lt;/td&gt;
+&lt;td&gt;Short name of the buyer.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;nickname_seller&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;150&lt;/td&gt;
+&lt;td&gt;Short name of the seller.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payment_method_id&lt;/td&gt;
+&lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;Identifier of payment methods.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#codes-of-the-payment-methods&#34;&gt;See the codes of the payment methods&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payment_request_state&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;Status of the payment request.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseReference1&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference no. 1 for PSE payments.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseReference2&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference no. 2 for PSE payments.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pseReference3&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Reference no. 3 for PSE payments.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;response_message_pol&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;PayU’s response message.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-confirmation-page&#34;&gt;See the response messages in the given column&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;shipping_city&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;The city where the merchandise is delivered.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;shipping_country&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;The ISO code associated with the country where the merchandise is delivered.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction_bank_id&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;ID of the transaction in the bank&amp;rsquo;s system.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction_id&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;36&lt;/td&gt;
+&lt;td&gt;Transaction identifier.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;payment_method_name&lt;/td&gt;
+&lt;td&gt;Alfa Numeric&lt;/td&gt;
+&lt;td&gt;255&lt;/td&gt;
+&lt;td&gt;Payment method used in the payment, for example VISA.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;post-example-send-to-the-confirmation-page&#34;&gt;POST example send to the confirmation page&lt;/h2&gt;
+&lt;p&gt;The following is a basic example of the variables sent to the response page via POST:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;response_code_pol=5
+phone=
+additional_value=0.00
+test=1
+transaction_date=2015-05-27 13:07:35
+cc_number=************0004
+cc_holder=test_buyer
+error_code_bank=
+billing_country=CO
+bank_referenced_name=
+description=test_payu_01
+administrative_fee_tax=0.00
+value=100.00
+administrative_fee=0.00
+payment_method_type=2
+office_phone=
+email_buyer=test@payulatam.com
+response_message_pol=ENTITY_DECLINED
+error_message_bank=
+shipping_city=
+transaction_id=f5e668f1-7ecc-4b83-a4d1-0aaa68260862
+sign=e1b0939bbdc99ea84387bee9b90e4f5c
+tax=0.00
+payment_method=10
+billing_address=cll 93
+payment_method_name=VISA
+pse_bank=
+state_pol=6
+date=2015.05.27 01:07:35
+nickname_buyer=
+reference_pol=7069375
+currency=USD
+risk=1.0
+shipping_address=
+bank_id=10
+payment_request_state=R
+customer_number=
+administrative_fee_base=0.00
+attempts=1
+merchant_id=508029
+exchange_rate=2541.15
+shipping_country=
+installments_number=1
+franchise=VISA
+payment_method_id=2
+extra1=
+extra2=
+antifraudMerchantId=
+extra3=
+nickname_seller=
+ip=190.242.116.98
+airline_code=
+billing_city=Bogota
+pse_reference1=
+reference_sale=2015-05-27 13:04:37
+pse_reference3=
+pse_reference2=
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;signature-validation&#34;&gt;Signature validation&lt;/h2&gt;
+&lt;p&gt;The signature validation allows you to check the data integrity, you must generate the signature with the information you find in the confirmation page and compare it with the information from the signature parameter.&lt;/p&gt;
+&lt;p&gt;To validate the signature in the confirmation page, you should consider:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the second decimal is zero, the &lt;code&gt;new_value&lt;/code&gt; to generate the signature must have one decimal. Example (&lt;code&gt;150.00&lt;/code&gt; -&amp;gt; &lt;code&gt;150.0&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;If the second decimal is not zero, the &lt;code&gt;new_value&lt;/code&gt; to generate the signature must keep the same two decimals. Example (&lt;code&gt;150.26&lt;/code&gt; -&amp;gt; &lt;code&gt;150.26&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Get the parameters to generate the signature (&lt;code&gt;merchant_id&lt;/code&gt;, &lt;code&gt;reference_sale&lt;/code&gt;, &lt;code&gt;value&lt;/code&gt;, &lt;code&gt;currency&lt;/code&gt;, and &lt;code&gt;state_pol&lt;/code&gt;) from the confirmation page, do not get them from your database.&lt;/li&gt;
+&lt;li&gt;You must store your ApiKey safely.&lt;/li&gt;
+&lt;li&gt;Create the signature as follows:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;ApiKey~merchant_id~reference_sale~new_value~currency~state_pol&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Example&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;With one decimal&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parameters obtained from the confirmation page
+- merchant_id = 508029
+- reference_sale = TestPayU04
+- value = 150.00
+- currency = USD
+- state_pol = 6
+
+The signature is generated in the following way: 
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.0~USD~6) = b607a2c2fa100e0947b206d41864fb86
+
+sign = b607a2c2fa100e0947b206d41864fb86
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;With two decimals&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parameters obtained from the confirmation page:
+- merchant_id = 508029
+- reference_sale = TestPayU05
+- value = 150.26
+- currency = USD
+- state_pol = 4
+
+The signature is generated in the following way: 
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU05~150.26~USD~4) = 1d95778a651e11a0ab93c2169a519cd6
+
+sign = 1d95778a651e11a0ab93c2169a519cd6 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;compare-your-signature&#34;&gt;Compare your signature&lt;/h3&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=../../../js/jquery-validate.bootstrap-tooltip.min.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/bootstrap.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/validations.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/md5.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/sha1.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/sha256.js&gt;&lt;/script&gt;
+&lt;script src=../../../js/signature-generator/signature-generator.js&gt;&lt;/script&gt;
+&lt;script&gt;
+
+    var errApiKeyReq = &#34;Please enter the ApiKey&#34;
+    var errApiKeyMin = &#34;Please enter more than 5 digits&#34;
+    var errApiKeyMax = &#34;Please enter less than 32 digits&#34;
+    var errMerchantReq = &#34;Please enter the Merchant Id&#34;
+    var errMerchantMin = &#34;Please enter more than 5 digits&#34;
+    var errMerchantMax = &#34;Please enter less than 7 digits&#34;
+    var errMerchantPosi = &#34;Please enter a positive number&#34;
+    var errMerchantNum = &#34;Please enter just numbers&#34;
+    var errReferenceReq = &#34;Please enter the Reference Code&#34;
+    var errReferenceMin = &#34;Please enter the Reference Code&#34;
+    var errReferenceMax = &#34;Please enter less than 255 digits&#34;
+    var errAmountReq = &#34;Please enter the Amount&#34;
+    var errAmountMin = &#34;Please enter the Amount&#34;
+    var errAmountMax = &#34;Please enter less than 14 digits&#34;
+    var errAmountPosi = &#34;Please enter a positive number&#34;
+    var errAmountNum = &#34;Please enter just numbers&#34;
+    var errCurrReq = &#34;Please enter a valid Currency in format ISO 4217&#34;
+    var errCurrMin = &#34;Please enter more than 3 digits&#34;
+    var errCurrMax = &#34;Please enter less than 3 digits&#34;
+    var errTsReq = &#34;Please enter the transaction code&#34;
+    var errTsMin = &#34;Please enter the transaction code&#34;
+    var errTsMax = &#34;Please enter the transaction code less than 3 digits&#34;
+    var errSpReq = &#34;Please enter the transaction code&#34;
+    var errSpMin = &#34;Please enter the transaction code&#34;
+    var errSpMax = &#34;Please enter the transaction code less than 1 digit&#34;
+
+&lt;/script&gt;
+
+&lt;div id=&#34;blue-box&#34;&gt;
+&lt;span class=&#34;grey-text-13&#34;&gt;
+&lt;div&gt;
+&lt;form method=&#34;POST&#34; id=&#34;signature_form_confirmation_page&#34; &gt;
+    &lt;table&gt;
+        &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Algorithm: &amp;nbsp;&lt;/b&gt;&lt;/span&gt;
+        &lt;select id = &#34;signature_algorithm_confirmation_page&#34; class=&#34;calc_selector form_control&#34;&gt;
+            &lt;option  value=&#34;md5&#34;&gt;MD5&lt;/option&gt;
+            &lt;option  value=&#34;sha1&#34;&gt;SHA1&lt;/option&gt;
+            &lt;option  value=&#34;sha256&#34;&gt;SHA256&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;span class=&#34;calc_text&#34;&gt;&amp;nbsp;(&lt;/span&gt;
+        &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_apikey_confirmation_page&#34; name = &#34;signature_apikey_confirmation_page&#34; placeholder=&#34;ApiKey&#34; maxlength=&#34;26&#34;&gt; ~
+        &lt;input class=&#34;form_control number&#34; type=&#34;text&#34;  id =&#34;signature_merchanId_confirmation_page&#34; name = &#34;signature_merchanId_confirmation_page&#34; placeholder=&#34;MerchantId&#34; maxlength=&#34;7&#34;&gt; ~
+        &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_referenceCode_confirmation_page&#34; name = &#34;signature_referenceCode_confirmation_page&#34; placeholder=&#34;Reference&#34; maxlength=&#34;255&#34;&gt; ~
+        &lt;input class=&#34;form_control  number&#34; type=&#34;text&#34; id =&#34;signature_amount_confirmation_page&#34; name = &#34;signature_amount_confirmation_page&#34; placeholder=&#34;Amount&#34; maxlength=&#34;14&#34;&gt; ~
+        &lt;select id = &#34;signature_currency_confirmation_page&#34; class=&#34;calc_selector form_control&#34; &gt;
+            &lt;option  value=&#34;USD&#34;&gt;USD&lt;/option&gt;
+            &lt;option  value=&#34;COP&#34;&gt;COP&lt;/option&gt;
+            &lt;option  value=&#34;MXN&#34;&gt;MXN&lt;/option&gt;
+            &lt;option  value=&#34;ARS&#34;&gt;ARS&lt;/option&gt;
+            &lt;option  value=&#34;PEN&#34;&gt;PEN&lt;/option&gt;
+            &lt;option  value=&#34;BRL&#34;&gt;BRL&lt;/option&gt;
+            &lt;option  value=&#34;CLP&#34;&gt;CLP&lt;/option&gt;
+        &lt;/select&gt; ~
+        &lt;select id = &#34;signature_state_pol_confirmation_page&#34; class=&#34;calc_selector form_control&#34; &gt;
+            &lt;option  value=&#34;4&#34;&gt;4 (Approved)&lt;/option&gt;
+            &lt;option  value=&#34;6&#34;&gt;6 (Declined)&lt;/option&gt;
+            &lt;option  value=&#34;5&#34;&gt;5 (Expired)&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;span class=&#34;calc_text&#34;&gt;)&lt;/span&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Result:&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;input class=&#34;form_control&#34; id =&#34;signature_generated_confirmation_page&#34; name = &#34;signature_generated_confirmation_page&#34; value = &#34;&#34;  readonly /&gt;
+    &lt;/table&gt;
+    &lt;br&gt;
+    &lt;table width=&#34;50%&#34;  border=&#34;0&#34; cellspacing=&#34;2&#34; cellpadding=&#34;2&#34;&gt;
+        &lt;input type=&#34;button&#34; name=&#34;signature_generate_confirmation_page&#34; id=&#34;signature_generate_confirmation_page&#34; value=&#34;Generate signature&#34; &gt;
+        &lt;input type=&#34;button&#34; name=&#34;signature_generate_again_confirmation_page&#34; id=&#34;signature_generate_again_confirmation_page&#34; value=&#34;Generate new signature&#34; &gt;
+    &lt;/table&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;This calculator lets you generate the signature using any of the available encryption methods.&lt;/p&gt;
+&lt;h2 id=&#34;payment-retries&#34;&gt;Payment retries&lt;/h2&gt;
+&lt;p&gt;When a transaction is rejected, the payer has the option to retry the payment using the same payment method or another. Keep in mind that for each attempt, PayU makes the call to the confirmation page with the corresponding transaction status.&lt;/p&gt;
+&lt;p&gt;Each of these calls are made with the same payment reference (&lt;code&gt;reference_sale&lt;/code&gt;), the same order identifier (&lt;code&gt;reference_pol&lt;/code&gt;) but with different transaction identifier (&lt;code&gt;transaction_id&lt;/code&gt;). Therefore, you can receive several calls to the confirmation page for the same sale.&lt;/p&gt;
+&lt;p&gt;Below, you find an example of a rejected attempt and its approved retry:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reference_sale=2015-05-27 13:04:37
+reference_pol=7069375
+transaction_id=f5e668f1-7ecc-4b83-a4d1-0aaa68260862
+state_pol=6
+
+reference_sale=2015-05-27 13:04:37
+reference_pol=7069375
+transaction_id=01cfdce8-68d5-4a4c-aabf-d89370a0b92f
+state_pol=4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note that if one of those calls to the confirmation page indicates that a payment reference (&lt;code&gt;reference_sale&lt;/code&gt;) was approved, you can be certain that you will not receive any report to the same reference.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
