@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>osCommerce | Documentation</title><meta property="og:title" content="osCommerce" />
+<meta property="og:description" content="This article shows you the procedure to enable PayU on your osCommerce website." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/tools/shopping-cart-plugins/oscommerce.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-05-26T08:39:47-05:00" />
+<meta property="article:modified_time" content="2021-05-28T17:29:43-05:00" /><meta property="og:site_name" content="Documentation" />
+
+<meta itemprop="name" content="osCommerce">
+<meta itemprop="description" content="This article shows you the procedure to enable PayU on your osCommerce website."><meta itemprop="datePublished" content="2021-05-26T08:39:47-05:00" />
+<meta itemprop="dateModified" content="2021-05-28T17:29:43-05:00" />
+<meta itemprop="wordCount" content="606">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="osCommerce"/>
+<meta name="twitter:description" content="This article shows you the procedure to enable PayU on your osCommerce website."/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../">
+			
+			<span class="navbar-logo"><svg width="65" height="129" viewBox="0 0 260 129" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>payu</title><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group" transform="translate(-282.000000, -131.385999)" fill="#a6c307" fill-rule="nonzero"><g id="Logos/payu" transform="translate(282.000000, 132.000000)"><path d="M109.256921 49.1157572C112.658148 49.1157572 113.933214 50.1696191 114.78352 53.3319877l10.62844 38.5755726C126.687026 96.756421 128.17526 97.5996671 131.576487 97.5996671 134.339787 97.5996671 136.0404 96.757204 137.103087 91.9075603L146.455672 53.3319877c.850306000000018-3.1623686 2.125372-4.2162305 5.526599-4.2162305H153.045747C154.320812 49.1157572 155.809046 49.326373 156.446974 50.1696191 157.082533 51.8561113 156.870153 53.1213719 156.657774 54.3858496L143.690793 105.819946c-3.825986 15.177647-10.414482 21.501601-22.531156 22.344847H120.30933c-2.55013100000001.0-3.40122700000001-1.475876-3.825986-3.794999L116.270965 123.31515C116.058586 122.261288 115.845417 120.99681 116.483344 120.153564 117.121272 119.310318 118.183958 119.098919 119.884572 118.889086c8.07673-.843246000000008 10.840029-4.637462 13.603329-13.06914C132.212836 106.241961 130.724601 106.452577 129.023988 106.452577 120.096161 106.452577 117.75841 100.339238 115.633038 92.7508064L105.005387 53.7532193C104.579839 52.4887416 104.36746 51.0128652 105.005387 50.1696191 105.643315 49.326373 107.130759 49.1157572 108.406614 49.1157572H109.256921zM76.5220838 48.2725111c16.3674187.0 24.4441492 5.9027227 24.2317692 18.3392323V88.7451917c0 12.6471253-7.43959190000001 18.3392323-24.2317692 18.3392323-14.0288776.0-21.894018-6.113338-21.894018-17.4959862.0-11.5940466 7.6519715-17.0747547 23.8070109-17.0747547H90.9757201V66.6117434C90.9757201 59.8657747 86.937355 57.1254207 76.9468424 57.1254207c-5.7389786.0-10.8408193.843246100000002-12.328264 1.2652606C63.9806509 58.6012971 63.3435129 58.6012971 62.9179648 58.6012971 62.067658 58.6012971 61.2173512 58.1800655 60.7925926 57.5474352 60.367834 56.9148049 60.1546651 56.0723417 60.1546651 54.8070811V53.7532193c0-3.1615857 1.275855-3.794216 4.0391546-4.4268463C65.6812645 49.1157572 69.9327984 48.2725111 76.5220838 48.2725111zM240.832619 26.7716932C242.532443 26.7716932 243.809087 28.0361709 243.809087 29.7226631V45.3215413C243.808298 47.0080335 242.532443 48.2725111 240.832619 48.2725111L232.967 48.272 232.967478 78.4164058C232.967478 84.74036 231.479244 90.0104523 228.715945 94.2258998 223.402514 102.446962 212.986453 106.873025 198.319648 106.873025s-25.082076-4.426063-30.396296-12.6471252C165.160052 90.0096693 163.672608 84.5289612 163.672608 78.4164058V39.4196016c0-6.3239542 2.55013-7.3778161 9.564964-7.3778161h2.124583c7.01483300000001.0 9.564964 1.05386189999999 9.564964 7.3778161V78.4171887C184.927119 80.946144 185.352667 82.844035 186.415353 84.5305271c1.913783 2.95175279999999 5.739769 4.2162305 11.691916 4.2162305 5.951358.0 9.778133-1.2644777 11.690337-4.2162305C210.861081 83.0554337 211.28584 80.946927 211.28584 78.4171887V39.4196016c0-6.3239542 2.55013099999999-7.3778161 9.564964-7.3778161L222.339 32.041 222.339038 29.7226631C222.339038 28.0361709 223.614104 26.7716932 225.315507 26.7716932h15.517112zM29.7583688 31.8303868c17.2177255.0 25.2944556 7.5892148 24.869697 23.8199404.0 16.2315086-8.0767302 23.8191575-25.2944556 23.8191575H9.99051255V101.603716c0 3.37298399999999-1.06268609 4.426846-4.46391322 4.426846H4.46391323c-3.40122713.0-4.46391322999955-1.053079-4.46391322999955-4.426846V44.688911c0-8.8529095 4.03836507999955-12.8585242 12.9661914999995-12.8585242zM90.9757201 80.5249125H78.6466665c-10.2028919.0-14.0288777 2.5297382-14.0288777 9.0643082C64.6177888 95.4911604 68.4437746 98.4429132 76.5212943 98.4429132c12.1166742.0 14.4544258-3.79499890000001 14.4544258-10.1181701V80.5249125zM29.9707481 41.3167096H15.0915637c-3.4004376.0-4.6762925 1.2644776-4.6762925 4.637462V69.9847278H29.7583688c12.5414329.0 14.8791844-5.0586936 14.8791844-14.3336176.0-11.8054453-5.3134304-14.1237848-14.6668051-14.3344006zm202.9967299-1.897108c0-6.3239542-2.76329899999999-7.5892148-9.990512-7.3778161L222.339038 32.0412551V45.3215413C222.339038 47.0080335 223.614893 48.2725111 225.315507 48.2725111L232.967038 48.2722551zm24.657318-28.8794169C258.899862 10.5401847 259.962548 11.5940465 259.962548 12.8593072V24.4533537C259.962548 25.7178313 258.899862 26.7716932 257.624796 26.7716932H246.146049c-1.27506500000001.0-2.337751-1.0538619-2.337751-2.3183395V12.8593072c0-1.2652607 1.06268599999999-2.3191225 2.337751-2.3191225h11.478747zM242.320064-112976295e-20C243.169581-112976295e-20 243.808298.632630308 243.808298 1.4758764V9.27492404C243.808298 10.1189531 243.169581 10.7508004 242.320064 10.7508004H234.454923C233.604616 10.7508004 232.966689 10.1181701 232.966689 9.27492404V1.4758764C232.966689.632630308 233.604616-112976295e-20 234.454923-112976295e-20H242.320064z" id="Combined-Shape"/></g></g></g></svg></span><span class="text-uppercase font-weight-bold">Documentation</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../docs.html" ><span class="active">Online payments</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../payu-module-documentation.html" ><span>PayU Module guide</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.c355bc0b688032add06ec03d8b0999db494dde2aa476559ace19d645d63c127db77cebc2a82e0f599a51bb53235db47c95559881bf01d4226d3188bec5b8ee55.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs.html" href="../../../docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Home</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/getting-started.html" href="../../../docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Getting Started</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedcreate-an-accounthtml" href="../../../docs/getting-started/create-an-account.html">Create a PayU Account</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedselect-your-integrationhtml" href="../../../docs/getting-started/select-your-integration.html">Select Your Integration</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedselect-your-payment-methodhtml" href="../../../docs/getting-started/select-your-payment-method.html">Select Your Payment Method</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedtest-your-solutionhtml" href="../../../docs/getting-started/test-your-solution.html">Test Your Solution</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-starteddeploy-to-productionhtml" href="../../../docs/getting-started/deploy-to-production.html">Deploy to Production</a>
+      
+      
+      
+      
+      
+        <a id="/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsgetting-startedresponse-codes-and-variableshtml" href="../../../docs/getting-started/response-codes-and-variables.html">Response Codes and Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/services.html" href="../../../docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Services</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicespaymentshtml" href="../../../docs/services/payments.html">Payments</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicesquerieshtml" href="../../../docs/services/queries.html">Queries for transactions</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicestokenizationhtml" href="../../../docs/services/tokenization.html">Tokenization</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicespromotionshtml" href="../../../docs/services/promotions.html">Installments and Promotions - Argentina and Mexico</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicesrefundshtml" href="../../../docs/services/refunds.html">Void and Refunds</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/tools.html" href="../../../docs/tools.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Tools</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/tools/payment-request.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayment-requesthtml" href="../../../docs/tools/payment-request.html">Payment Request</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/tools/shopping-cart-plugins.html" href="../../../docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Shopping Cart Plugins</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/shopify.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsshopifyhtml" href="../../../docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/magento.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsmagentohtml" href="../../../docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/drupal.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsdrupalhtml" href="../../../docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/virtuemart.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/woocommerce.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginswoocommercehtml" href="../../../docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/oscommerce.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsoscommercehtml" href="../../../docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/shopping-cart-plugins/opencart.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docstoolsshopping-cart-pluginsopencarthtml" href="../../../docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/docs/tools/payu-module.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayu-modulehtml" href="../../../docs/tools/payu-module.html">PayU Module</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/disputes.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolsdisputeshtml" href="../../../docs/tools/disputes.html">Disputes</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/payment-coupons.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayment-couponshtml" href="../../../docs/tools/payment-coupons.html">Payment Coupons</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/integrations.html" href="../../../docs/integrations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Integrations</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/integrations/webcheckout-integration.html" href="../../../docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">WebCheckout integration</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationswebcheckout-integrationpayment-formhtml" href="../../../docs/integrations/webcheckout-integration/payment-form.html">Payment Form</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../docs/integrations/webcheckout-integration/response-page.html">Response Page</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../docs/integrations/webcheckout-integration/confirmation-page.html">Confirmation Page</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/integrations/api-integration.html" href="../../../docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">API Integration</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../docs/integrations/api-integration/payments-api-argentina.html">Payments API - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../docs/integrations/api-integration/payments-api-brazil.html">Payments API - Brazil</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-chilehtml" href="../../../docs/integrations/api-integration/payments-api-chile.html">Payments API - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../docs/integrations/api-integration/payments-api-colombia.html">Payments API - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../docs/integrations/api-integration/payments-api-mexico.html">Payments API - Mexico</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-panamahtml" href="../../../docs/integrations/api-integration/payments-api-panama.html">Payments API - Panama</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayments-api-peruhtml" href="../../../docs/integrations/api-integration/payments-api-peru.html">Payments API - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationqueries-apihtml" href="../../../docs/integrations/api-integration/queries-api.html">Queries API</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationtokenization-apihtml" href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpromotions-apihtml" href="../../../docs/integrations/api-integration/promotions-api.html">Promotions API</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationrefunds-apihtml" href="../../../docs/integrations/api-integration/refunds-api.html">Voids and Refunds API</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/docs/integrations/sdk-integration.html" href="../../../docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">SDK Integration</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../docs/integrations/sdk-integration/payments-sdk-argentina.html">Payments SDK - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../docs/integrations/sdk-integration/payments-sdk-brazil.html">Payments SDK - Brazil</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../docs/integrations/sdk-integration/payments-sdk-chile.html">Payments SDK - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../docs/integrations/sdk-integration/payments-sdk-colombia.html">Payments SDK - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../docs/integrations/sdk-integration/payments-sdk-mexico.html">Payments SDK - Mexico</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../docs/integrations/sdk-integration/payments-sdk-peru.html">Payments SDK - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationqueriessdkhtml" href="../../../docs/integrations/sdk-integration/queriessdk.html">Queries SDK</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationtokenizationsdkhtml" href="../../../docs/integrations/sdk-integration/tokenizationsdk.html">Tokenization SDK</a>
+      
+      
+      
+      
+      
+        <a id="/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationssdk-integrationrefundssdkhtml" href="../../../docs/integrations/sdk-integration/refundssdk.html">Voids and Refunds SDK</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/docs/server-status.html" href="../../../docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Server Status</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="docsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>On this Page</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../docs.html">Home</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../docs/tools.html">Tools</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../docs/tools/shopping-cart-plugins.html">Shopping Cart Plugins</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>osCommerce</h1>
+    <div class="lead">This article shows you the procedure to enable PayU on your osCommerce website.</div>
+	       
+	<p>osCommerce is a platform developed in PHP that ease the creation of an online store. To let your <strong>clients</strong> pay with PayU from your website, you need to install the plugin for osCommerce, which integrates PayU Latam as a valid payment gateway. For more information about osCommerce, refer to their <a href="https://www.oscommerce.com/">official website</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You need an active account in PayU Latam.</li>
+<li>Having installed <a href="https://www.oscommerce.com/Products">osCommerce version 2.3</a>.</li>
+<li>Having the PayU&rsquo;s osCommerce plugin downloaded and stored in an accessible location. Click <a href="../../../assets/plugins/plugin-oscommerce.zip">here</a> to download it.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Follow the next procedure to install the plugin on your website.</p>
+<ol>
+<li>Unzip the plugin file in a location of your choice. From now on, we will refer this location to <code>[PLUGIN_PATH]</code>. <br>
+In this path, you find the folder <code>oscommerce-plugin-1.0</code>.</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_01.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Either using FTP or logging in as an Administrator to the server where osCommerce is installed, include the plugin files in the server as follows:</li>
+</ol>
+<ul>
+<li>In the server path <code>/[server]/apache/[publication_path]/oscommerce/catalog</code>, copy the plugin files <code>confirmation_payu.php</code> and <code>response_payu.php</code>. These files are located in the path <code>[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog</code>.</li>
+</ul>
+<p><img src="../../../assets/oscommerce/oscommerce_02.png" alt="PrintScreen"></p>
+<ul>
+<li>
+<p>In the server path <code>/[server]/apache/[publication_path]/oscommerce/catalog/includes/languages/english/modules/</code>, copy the plugin file <code>‘payu_latam.php</code> located in the path <code>[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\languages\english\modules\payment</code>.<br><br>
+<img src="../../../assets/oscommerce/oscommerce_03.png" alt="PrintScreen"><br>
+Repeat this step for Spanish and English if you have them installed in your osCommerce website. These files are located in the paths:<br></p>
+<ul>
+<li>ES: <code>[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\languages\espanol\modules\payment</code></li>
+<li>PT: <code>[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\languages\portugues\modules\payment</code>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+PayU Latam plugin for osCommerce is only available for English, Spanish and Portuguese.
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>In the server path <code>/[server]/apache/[publication_path]/oscommerce/catalog/includes/modules/payment/</code>, copy the plugin file <code>‘payu_latam.php</code> located in the path <code>[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\modules\payment</code>. This file is not the same file thn the one mentioned before.</p>
+</li>
+</ul>
+<p><img src="../../../assets/oscommerce/oscommerce_04.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>In the osCommerce admin panel, expand the <em><strong>Modules</strong></em> menu in the left panel and select <em><strong>Payment</strong></em> option.</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_05.jpg" alt="PrintScreen"></p>
+<ol start="4">
+<li>In the Payment section, click <em><strong>Install Module</strong></em> button located at the top right corner.</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_06.jpg" alt="PrintScreen"></p>
+<ol start="5">
+<li>Find the <code>Payu Latam</code> plugin and click it. Then, click <em><strong>Install Module</strong></em> button in the right panel.</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_07.jpg" alt="PrintScreen"></p>
+<ol start="6">
+<li>After installing the plugin, the list of installed modules of the <code>Payu Latam</code> plugin appears in the right panel.</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_08.jpg" alt="PrintScreen"></p>
+<h2 id="configuration">Configuration</h2>
+<ol>
+<li>In the Payment section, select the <em><strong>Payu Latam</strong></em> payment method and click the <em><strong>Edit</strong></em> button in the right panel.</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_09.jpg" alt="PrintScreen"></p>
+<ol start="2">
+<li>The following configuration form appears:</li>
+</ol>
+<img src="../../../assets/oscommerce/oscommerce_10.jpg" width="30%" alt="PrintScreen"/>
+<br>
+<p>Configure it using the information of your PayU account as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable / Disable</td>
+<td>Select <strong>True</strong> to enable the osCommerce payment gateway.</td>
+</tr>
+<tr>
+<td>Merchant ID</td>
+<td>ID of your commerce in PayU Latam</td>
+</tr>
+<tr>
+<td>Account ID</td>
+<td>ID of the PayU account according to the country where you want to sell.</td>
+</tr>
+<tr>
+<td>API key</td>
+<td>Unique key of your commerce, you can find this key in the PayU module.</td>
+</tr>
+<tr>
+<td>Gateway URL</td>
+<td>Gateway URL.<br>For test, you can use <a href="https://sandbox.gateway.payulatam.com/ppp-web-gateway">https://sandbox.gateway.payulatam.com/ppp-web-gateway</a> and for production <a href="https://gateway.payulatam.com/ppp-web-gateway/">https://gateway.payulatam.com/ppp-web-gateway/</a></td>
+</tr>
+<tr>
+<td>Transaction Mode</td>
+<td>Select <strong>Test</strong> if you want to process in the Test environment. Otherwise, select <strong>Live</strong>.</td>
+</tr>
+<tr>
+<td>Response page</td>
+<td>URL of the response page.<br>By default, the URL is <a href="http://your.domain.com/yourOscommerceFolder/catalog/response_payu.php,">http://your.domain.com/yourOscommerceFolder/catalog/response_payu.php,</a> you must replace <a href="http://your.domain.com">http://your.domain.com</a> with your site&rsquo;s domain.</td>
+</tr>
+<tr>
+<td>Confirmation page</td>
+<td>URL of the confirmation page.<br>By default, the URL is <a href="http://your.domain.com/yourOscommerceFolder/catalog/confirmation_payu.php,">http://your.domain.com/yourOscommerceFolder/catalog/confirmation_payu.php,</a> you must replace <a href="http://your.domain.com">http://your.domain.com</a> with your site&rsquo;s domain.</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>
+<p>Save the changes using the button at the bottom of the panel.</p>
+</li>
+<li>
+<p>Finally, go expand the <em><strong>Localization</strong></em> menu and click <em><strong>Order Status</strong></em>. Verify that the order status were created according to the installed languages (English, Spanish, and Portuguese) in your osCommerce website.</p>
+</li>
+</ol>
+<p><img src="../../../assets/oscommerce/oscommerce_13.jpg" alt="PrintScreen"></p>
+<p>The valid states are:</p>
+<ul>
+<li>For English: <code>Approved</code>, <code>Rejected</code>, <code>Failed</code>, and <code>Pending</code>.</li>
+<li>For Spanish: <code>Aprobada</code>, <code>Rechazada</code>, <code>Fallida</code>, and <code>Pendiente</code>.</li>
+<li>For Portuguese: <code>Aprovado</code>, <code>Recusada</code>, <code>Falha</code>, and <code>Pendente</code>.</li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+If you don&rsquo;t have any of the languages mentioned before, the states does not appear in the list. If you want to install a language later, you can create these states manually using the same names displayed above.
+</div>
+
+<p>At this point, your customers can pay with PayU Latam when they do the checkout in the osCommerce&rsquo;s shopping cart.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified May 28, 2021: <a  href="../../../commit/dd72dafc1342e49fa63df9135f34d554fc84f74f">Shopping cart guides created (dd72daf)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.6c32774585a2b6816a4bcc0ab6489e67f3c49db549168f27809b633a83ab18ce.js" integrity="sha256-bDJ3RYWitoFqS8wKtkieZ/PEnbVJFo8ngJtjOoOrGM4=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
