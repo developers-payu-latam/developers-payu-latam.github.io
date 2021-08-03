@@ -33,7 +33,7 @@
 <meta itemprop="description" content="Promotions feature lets you consult the valid promotions, along with their associate costs, characteristics, and further relevant information available for your customers. Promotions API applies only to Argentina and Mexico (MSI - Meses Sin Intereses).
 "><meta itemprop="datePublished" content="2021-06-29T12:38:41-05:00" />
 <meta itemprop="dateModified" content="2021-06-29T20:30:01-05:00" />
-<meta itemprop="wordCount" content="2380">
+<meta itemprop="wordCount" content="2361">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Promotions API for Argentina and Mexico"/>
 <meta name="twitter:description" content="Promotions feature lets you consult the valid promotions, along with their associate costs, characteristics, and further relevant information available for your customers. Promotions API applies only to Argentina and Mexico (MSI - Meses Sin Intereses).
@@ -123,7 +123,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.4992f789b1cb5e3bfecf024c3afccb0af30faf714972d2321cd11b458809dce1d765d8fcd63b1423621c2b67bcdb8220780fd64181724e6385b4ce5bca9ffc40.json"
+  data-offline-search-index-json-src="../../../offline-search-index.d82c54ac33d13005417c008b164f99a6547c5abac1a95ae47987c20b1237566f4993388813328cae7da1b23e479549a1dc8fbfa1e6224909702d40ac2343c569.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -737,7 +737,7 @@
 <p>A Promotion has the payment method, the payment method, the days of the week when it applies, the list of banks, and the start and end date when the promotion applies.</p>
 <h3 id="authentication-for-promotions">Authentication for Promotions</h3>
 <p>For Promotions, you need to authenticate and authorize the petitions received by your server using a HMAC based mechanism. To authenticate, you need to know your <code>MerchantPublicKey</code>, you can get this information in your PayU Module (<strong><em>Settings</em></strong> &gt; <strong><em>Technical configuration</em></strong> &gt; <strong><em>Public Key</em></strong>).</p>
-<p>![PrintScreen](/assets/Promotions/PublicKey &gt; png)</p>
+<p><img src="../../../assets/Promotions/PublicKey.png" alt="PrintScreen"></p>
 <h3 id="configuring-the-authentication">Configuring the authentication</h3>
 <p>You must include in the <code>Authorization</code> in the header, this header follows this structure:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#4e9a06">&#34;Hmac&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">MerchantPublicKey</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;:&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">Signature</span>
@@ -788,8 +788,8 @@ It is mandatory to include the three line breaks (<code>\n</code>) after the <co
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">URL</h4>
 <ul>
-<li>Test: <code>GET https://sandbox.api &gt; payulatam &gt; com/payments-api/rest/v4.9/pricing</code></li>
-<li>Production: <code>GET https://api &gt; payulatam &gt; com/payments-api/rest/v4.9/pricing</code></li>
+<li>Test: <code>GET https://sandbox.api.payulatam.com/payments-api/rest/v4.9/pricing</code></li>
+<li>Production: <code>GET https://api.payulatam.com/payments-api/rest/v4.9/pricing</code></li>
 </ul>
 
 </div>
@@ -1015,10 +1015,10 @@ If the schema is not validated, the integration is not affected, and you only ne
 <h4 id="api-call">API Call</h4>
 <p>To consult the available promotions, send the request as follows:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api} &gt; payulatam &gt; com/payments-api/rest/v4.9/pricing?accountId={accountId}currency={currency}&amp;amount={amount}&amp;paymentMethod={paymentMethod}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/payments-api/rest/v4.9/pricing?accountId={accountId}currency={currency}&amp;amount={amount}&amp;paymentMethod={paymentMethod}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox.api</code> for testing and <code>api</code> for production mode. Furthermore, the <code>paymentMethod</code> parameter is optional if you want to filter by a given payment method. Example:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span> <span style="color:#000">https</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#8f5902;font-style:italic">//sandbox.api &gt; payulatam &gt; com/payments-api/rest/v4.9/pricing?accountId=512322&amp;currency=ARS&amp;amount=1000
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span> <span style="color:#000">https</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#8f5902;font-style:italic">//sandbox.api.payulatam.com/payments-api/rest/v4.9/pricing?accountId=512322&amp;currency=ARS&amp;amount=1000
 </span></code></pre></div><br>
 <p>Response example:</p>
 <nav>
