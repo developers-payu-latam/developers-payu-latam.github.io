@@ -124,7 +124,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.d82c54ac33d13005417c008b164f99a6547c5abac1a95ae47987c20b1237566f4993388813328cae7da1b23e479549a1dc8fbfa1e6224909702d40ac2343c569.json"
+  data-offline-search-index-json-src="../../../offline-search-index.63018697b3e2297d364655a0dde05968ec6689a6645ab91f6ee5ec49c6ff4ebca01b7701c2c21aafcc62e0ecd686217aebd8f9c8f891f46b4e29031143617d98.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -740,7 +740,7 @@
 <p>For Promotions, you need to authenticate and authorize the petitions received by your server using a HMAC based mechanism. To authenticate, you need to know your <code>MerchantPublicKey</code>, you can get this information in your PayU Module (<strong><em>Settings</em></strong> &gt; <strong><em>Technical configuration</em></strong> &gt; <strong><em>Public Key</em></strong>).</p>
 <p><img src="../../../assets/Promotions/PublicKey.png" alt="PrintScreen"></p>
 <h3 id="configuring-the-authentication">Configuring the authentication</h3>
-<p>You must include in the <code>Authorization</code> in the header, this header follows this structure:</p>
+<p>You must include the headers <code>Authorization</code> and <code>Date</code>. The <code>Authorization</code> header follows this structure:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#4e9a06">&#34;Hmac&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">MerchantPublicKey</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;:&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">Signature</span>
 </code></pre></div><br>
 <p>Where <code>Signature</code> is created as follows:</p>
@@ -1016,7 +1016,7 @@ If the schema is not validated, the integration is not affected, and you only ne
 <h4 id="api-call">API Call</h4>
 <p>To consult the available promotions, send the request as follows:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/payments-api/rest/v4.9/pricing?accountId={accountId}currency={currency}&amp;amount={amount}&amp;paymentMethod={paymentMethod}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/payments-api/rest/v4.9/pricing?accountId={accountId}&amp;currency={currency}&amp;amount={amount}&amp;paymentMethod={paymentMethod}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox.api</code> for testing and <code>api</code> for production mode. Furthermore, the <code>paymentMethod</code> parameter is optional if you want to filter by a given payment method. Example:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span> <span style="color:#000">https</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#8f5902;font-style:italic">//sandbox.api.payulatam.com/payments-api/rest/v4.9/pricing?accountId=512322&amp;currency=ARS&amp;amount=1000
