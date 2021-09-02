@@ -21,18 +21,18 @@
 <link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
 
-<title>Payments API - Mexico | Documentation</title><meta property="og:title" content="Payments API - Mexico" />
+<title>Payments API - Mexico | </title><meta property="og:title" content="Payments API - Mexico" />
 <meta property="og:description" content="Payments API Mexico lets your shop process different transaction types with multiple payment methods.
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/payments-api-mexico.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2021-09-01T15:23:17-05:00" /><meta property="og:site_name" content="Documentation" />
+<meta property="article:modified_time" content="2021-09-02T16:43:31-05:00" />
 
 <meta itemprop="name" content="Payments API - Mexico">
 <meta itemprop="description" content="Payments API Mexico lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2021-09-01T15:23:17-05:00" />
+<meta itemprop="dateModified" content="2021-09-02T16:43:31-05:00" />
 <meta itemprop="wordCount" content="9644">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Mexico"/>
@@ -125,7 +125,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.e8bcf74da44131a3f3619d1d46842f573fe0cc024427f7d143c83fff077bc28aba26241fa4b2e8dd4928b768fdce3f5596b5a9f6011e35715566be1bfdc51a92.json"
+  data-offline-search-index-json-src="../../../offline-search-index.929bdf04ae6ee1f806d223a1b7bebbdbbf23b7f640af6d134fd996f2710aef689de765e94437422808bcd97e2fd5116f7fc74f7059e291665d47baae51b67ec5.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -1403,29 +1403,11 @@ Two-step flows are only supported for Mastercard and Visa.
 <td>Additional parameters or data associated with the request. The maximum size of each <em>extraParameters</em> name is 64 characters.<br>In JSON, the <em>extraParameters</em> parameter follows this structure: <br><code>&quot;extraParameters&quot;: {</code><br> <code>&quot;INSTALLMENTS_NUMBER&quot;: 1</code><br><code>}</code><br><br>In XML, the <em>extraParameters</em> parameter follows this structure: <br><code>&lt;extraParameters&gt;</code><br> <code>&lt;entry&gt;</code><br>  <code>&lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;</code><br>  <code>&lt;string&gt;1&lt;/string&gt;</code><br> <code>&lt;/entry&gt;</code><br><code>&lt;/extraParameters&gt;</code></td>
 <td style="text-align:center">No</td>
 </tr>
-<tr>
-<td>transaction &gt; monthsWithoutInterest</td>
-<td></td>
-<td></td>
-<td>Information when paying the purchase using Months Without Interests.<br>This parameter is mandatory when you want to use <a href="../../../docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses">Months Without Interests (Meses Sin Intereses - MSI) feature</a>.</td>
-<td style="text-align:center">No</td>
-</tr>
-<tr>
-<td>transaction &gt; monthsWithoutInterest &gt; months</td>
-<td>Number</td>
-<td>Max:2</td>
-<td>Number of Months Without Interests for the purchase. The available values are 3, 6, 9, or 12.<br>This parameter is mandatory when you want to use <a href="../../../docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses">Months Without Interests (Meses Sin Intereses - MSI) feature</a>.</td>
-<td style="text-align:center">No</td>
-</tr>
-<tr>
-<td>transaction &gt; monthsWithoutInterest &gt; bank</td>
-<td>Alphanumeric</td>
-<td>Max:255</td>
-<td>Issuing bank of the credit card used to pay the purchase using Months Without Interests.<br>This parameter is mandatory when you want to use <a href="../../../docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses">Months Without Interests (Meses Sin Intereses - MSI) feature</a>.</td>
-<td style="text-align:center">No</td>
-</tr>
 </tbody>
 </table>
+<!--| transaction > monthsWithoutInterest |  |  | Information when paying the purchase using Months Without Interests.<br>This parameter is mandatory when you want to use [Months Without Interests (Meses Sin Intereses - MSI) feature](/docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses). | No |
+| transaction > monthsWithoutInterest > months | Number | Max:2 | Number of Months Without Interests for the purchase. The available values are 3, 6, 9, or 12.<br>This parameter is mandatory when you want to use [Months Without Interests (Meses Sin Intereses - MSI) feature](/docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses). | No |
+| transaction > monthsWithoutInterest > bank | Alphanumeric | Max:255 | Issuing bank of the credit card used to pay the purchase using Months Without Interests.<br>This parameter is mandatory when you want to use [Months Without Interests (Meses Sin Intereses - MSI) feature](/docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses). | No |-->
 </details>
 <details>
 <summary>Response</summary>
@@ -1537,8 +1519,8 @@ Two-step flows are only supported for Mastercard and Visa.
 <h4 id="considerations">Considerations</h4>
 <ul>
 <li>Two-step flows are only available for Mastercard and Visa.</li>
-<li>For payments with Promotions, send the parameters <code>INSTALLMENTS_NUMBER</code> and <code>PROMOTION_ID</code> with the number of installments selected and the Id of the promotion. Refer to <a href="../../../docs/services/promotions.html">Promotions API</a> for more information.</li>
-<li>For payments with Months Without Interests (Meses Sin Intereses - MSI), send the parameters <code>transaction.monthsWithoutInterest.months</code> with the number of installments and <code>transaction.monthsWithoutInterest.bank</code> with the name of the issuer bank of the credit card. Refer to <a href="../../../docs/services/promotions.html#months-without-interest-msi---meses-sin-intereses">MSI</a> for more information.</li>
+<li>For payments with Promotions, send the extra parameters <code>INSTALLMENTS_NUMBER</code> and <code>PROMOTION_ID</code> with the number of installments selected and the Id of the promotion. Refer to <a href="../../../docs/services/promotions.html">Promotions API</a> for more information.</li>
+<li>For payments with Months Without Interests (Meses Sin Intereses - MSI), send the extra parameter <code>INSTALLMENTS_NUMBER</code> with the number of months. Refer to <a href="../../../docs/services/promotions.html#months-without-interests-msi---meses-sin-intereses">MSI</a> for more information.</li>
 <li>The available banks for MSI are: BANAMEX, BANCO REGIONAL DE MONTERREY S.A, BANCOPPEL, BANCO AZTECA, SCOTIABANK, HSBC, INBURSA, BANCA MIFEL SA, BANCO MULTIVA, BAJIO, CI BANCO, Afirme, Banregio, Banjercito, Banorte, Famsa, Invex, Premium Card Liverpool, Santander, and Bancomer.</li>
 <li>When using MSI, promotions or apply installments, always display the phrase <strong>&ldquo;PAGOS DIFERIDOS&rdquo;</strong> during the payment process.</li>
 <li>When installments applied (fees assumed by the payer), display the original amount of the transaction, the total amount after the fees, the number of installments, and the amount per installment including the extra fee.</li>
@@ -5612,7 +5594,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified September 1, 2021: <a  href="../../../commit/53fa3b4a4f61cca41af767343cf09a6f2a294d98">Note for expiration date of the vouchers (53fa3b4)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified September 2, 2021: <a  href="../../../commit/0692d63673d474ecd73e7bc0a61e7bb4d8a8c0a6">Changes for MSI (0692d63)</a>
 </div>
 </div>
 
