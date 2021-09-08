@@ -21,19 +21,19 @@
 <link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
 
-<title>Payouts API | </title><meta property="og:title" content="Payouts API" />
+<title>Payouts API | PayU Latam</title><meta property="og:title" content="Payouts API" />
 <meta property="og:description" content="This feature allows you to create multiple and secure payments for third parties (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/payouts-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-08-09T14:58:45-05:00" />
-<meta property="article:modified_time" content="2021-08-19T11:37:37-05:00" />
+<meta property="article:modified_time" content="2021-08-19T11:37:37-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payouts API">
 <meta itemprop="description" content="This feature allows you to create multiple and secure payments for third parties (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
 "><meta itemprop="datePublished" content="2021-08-09T14:58:45-05:00" />
 <meta itemprop="dateModified" content="2021-08-19T11:37:37-05:00" />
-<meta itemprop="wordCount" content="2851">
+<meta itemprop="wordCount" content="2882">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payouts API"/>
 <meta name="twitter:description" content="This feature allows you to create multiple and secure payments for third parties (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
@@ -47,6 +47,7 @@
 <link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
 
 
+<link href="../../../css/custom.css" rel="stylesheet">
 <script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 <script
@@ -125,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.929bdf04ae6ee1f806d223a1b7bebbdbbf23b7f640af6d134fd996f2710aef689de765e94437422808bcd97e2fd5116f7fc74f7059e291665d47baae51b67ec5.json"
+  data-offline-search-index-json-src="../../../offline-search-index.bdeeed4a07f08f8ad618bd39ed2d550544f1f70fa47841b6a39136a242ba8c362e640698d08a89ee99a8caf83b61c6c5a4126a373275f09c81bc2da6f8085b58.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -784,7 +785,7 @@ Service URL displayed here are not in sandbox or production environment yet. If 
 <h2 id="configuring-the-authentication">Configuring the authentication</h2>
 <p>To use the methods to manage Payouts or WebHooks exposed by the Payouts service, you must include the <code>Authorization</code> and <code>PublicKey</code> headers:</p>
 <ul>
-<li>To configure the <code>Authorization</code> header, concatenate <code>Bearer</code>, space, and the response of the <a href="../../../docs/integrations/api-integration/payouts-api.html#authentication">authentication method</a> provided by the Payouts service. <br>Example:</li>
+<li>To configure the <code>Authorization</code> header, call the <a href="../../../docs/integrations/api-integration/payouts-api.html#authentication">authentication method</a> provided by the Payouts service. <br>Example:</li>
 </ul>
 <pre><code>Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c 
 </code></pre><br>
@@ -867,7 +868,7 @@ Service URL displayed here are not in sandbox or production environment yet. If 
 <div class="tab-pane fade show active" id="tab11" role="tabpanel" aria-labelledby="nav-tabName1">
 
 	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#204a87;font-weight:bold">&#34;token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c&#34;</span>
+  <span style="color:#204a87;font-weight:bold">&#34;token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c&#34;</span>
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div>
 
@@ -985,6 +986,13 @@ You need to include two headers to use this method, refer to <a href="../../../d
 <tr>
 <td>transfer &gt; bankAccount &gt; bankCode</td>
 <td>Numeric</td>
+<td>2</td>
+<td>Code of the bank who issued the account of the third party.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transfer &gt; bankAccount &gt; accountType</td>
+<td>Alphanumeric</td>
 <td>2</td>
 <td>Set <code>CC</code> for Current account and <code>CA</code> for Saving account.<br>This parameter is mandatory when you are creating a payout request for a new third party.</td>
 <td style="text-align:center">No</td>
@@ -1258,6 +1266,13 @@ You need to include two headers to use this method, refer to <a href="../../../d
 <tr>
 <td>bankCode</td>
 <td>Numeric</td>
+<td>2</td>
+<td>Code of the bank who issued the account of the third party.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>accountType</td>
+<td>Alphanumeric</td>
 <td>2</td>
 <td>Set <code>CC</code> for Current account and <code>CA</code> for Saving account.</td>
 <td style="text-align:center">No</td>

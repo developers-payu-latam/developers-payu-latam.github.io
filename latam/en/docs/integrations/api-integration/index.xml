@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title> – API Integration</title>
+    <title>PayU Latam – API Integration</title>
     <link>/docs/integrations/api-integration.html</link>
-    <description>Recent content in API Integration on </description>
+    <description>Recent content in API Integration on PayU Latam</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	  <atom:link href="/docs/integrations/api-integration/index.xml" rel="self" type="application/rss+xml" />
@@ -29649,7 +29649,7 @@ Service URL displayed here are not in sandbox or production environment yet. If 
 &lt;h2 id=&#34;configuring-the-authentication&#34;&gt;Configuring the authentication&lt;/h2&gt;
 &lt;p&gt;To use the methods to manage Payouts or WebHooks exposed by the Payouts service, you must include the &lt;code&gt;Authorization&lt;/code&gt; and &lt;code&gt;PublicKey&lt;/code&gt; headers:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;To configure the &lt;code&gt;Authorization&lt;/code&gt; header, concatenate &lt;code&gt;Bearer&lt;/code&gt;, space, and the response of the &lt;a href=&#34;../../../docs/integrations/api-integration/payouts-api.html#authentication&#34;&gt;authentication method&lt;/a&gt; provided by the Payouts service. &lt;br&gt;Example:&lt;/li&gt;
+&lt;li&gt;To configure the &lt;code&gt;Authorization&lt;/code&gt; header, call the &lt;a href=&#34;../../../docs/integrations/api-integration/payouts-api.html#authentication&#34;&gt;authentication method&lt;/a&gt; provided by the Payouts service. &lt;br&gt;Example:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre&gt;&lt;code&gt;Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c 
 &lt;/code&gt;&lt;/pre&gt;&lt;br&gt;
@@ -29732,7 +29732,7 @@ Service URL displayed here are not in sandbox or production environment yet. If 
 &lt;div class=&#34;tab-pane fade show active&#34; id=&#34;tab11&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-tabName1&#34;&gt;
 
 	&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JSON&#34; data-lang=&#34;JSON&#34;&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;token&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;token&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -29850,6 +29850,13 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;tr&gt;
 &lt;td&gt;transfer &amp;gt; bankAccount &amp;gt; bankCode&lt;/td&gt;
 &lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Code of the bank who issued the account of the third party.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transfer &amp;gt; bankAccount &amp;gt; accountType&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;2&lt;/td&gt;
 &lt;td&gt;Set &lt;code&gt;CC&lt;/code&gt; for Current account and &lt;code&gt;CA&lt;/code&gt; for Saving account.&lt;br&gt;This parameter is mandatory when you are creating a payout request for a new third party.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
@@ -30123,6 +30130,13 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;tr&gt;
 &lt;td&gt;bankCode&lt;/td&gt;
 &lt;td&gt;Numeric&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Code of the bank who issued the account of the third party.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;accountType&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;2&lt;/td&gt;
 &lt;td&gt;Set &lt;code&gt;CC&lt;/code&gt; for Current account and &lt;code&gt;CA&lt;/code&gt; for Saving account.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
