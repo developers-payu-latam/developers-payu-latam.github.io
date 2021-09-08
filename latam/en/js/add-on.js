@@ -45,7 +45,7 @@ function copyCodeBlockExecCommand(codeToCopy, highlightDiv) {
   const textArea = document.createElement("textArea");
   textArea.contentEditable = "true";
   textArea.readOnly = "false";
-  textArea.className = "copyable-text-area";
+  //textArea.className = "copyable-text-area";
   textArea.value = codeToCopy;
   highlightDiv.insertBefore(textArea, highlightDiv.firstChild);
   const range = document.createRange();
@@ -54,6 +54,7 @@ function copyCodeBlockExecCommand(codeToCopy, highlightDiv) {
   sel.removeAllRanges();
   sel.addRange(range);
   textArea.setSelectionRange(0, 999999);
+  textArea.select();
   document.execCommand("copy");
   highlightDiv.removeChild(textArea);
 }
