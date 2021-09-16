@@ -11177,7 +11177,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td&gt;transaction &amp;gt; payer &amp;gt; dniType&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;Identification type of the buyer. &lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#document-types&#34;&gt;See Document types&lt;/a&gt;. This value is mandatory when the payment method is &lt;code&gt;CODENSA&lt;/code&gt;.&lt;/td&gt;
+&lt;td&gt;Identification type of the buyer. &lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#document-types&#34;&gt;See Document types&lt;/a&gt;.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -11395,7 +11395,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;li&gt;The variable &lt;code&gt;transaction.threeDomainSecure&lt;/code&gt; does not replace the card information nor any of the mandatory fields of the transaction. This object is additional and not mandatory.&lt;/li&gt;
 &lt;li&gt;The variable &lt;code&gt;transaction.threeDomainSecure&lt;/code&gt; corresponds to a &lt;em&gt;Pass Through&lt;/em&gt; scenario where the commerce performs the authentication by their own.&lt;/li&gt;
 &lt;li&gt;For Crédito Fácil Codensa card, the number of installments supported are 1 to 12, 18, 24, 36 and 48.&lt;/li&gt;
-&lt;li&gt;For Crédito Fácil Codensa card, the variable &lt;code&gt;transaction.payer.dniType&lt;/code&gt;is mandatory. The payer can choose any of the following document types:&lt;/li&gt;
+&lt;li&gt;For Crédito Fácil Codensa card, the payer can choose any of the following document types for the variable &lt;code&gt;transaction.payer.dniType&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -31005,8 +31005,16 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;/div&gt;
 
 &lt;h3 id=&#34;api-call-4&#34;&gt;API Call&lt;/h3&gt;
-&lt;p&gt;To create or update a WebHook, use the following URL:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To create a WebHook, use:&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;POST&lt;/span&gt;
+&lt;span style=&#34;color:#f57900&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//{env-api}.payulatam.com//v1.0/webhooks
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;ul&gt;
+&lt;li&gt;To update a WebHook, use:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;PUT&lt;/span&gt;
 &lt;span style=&#34;color:#f57900&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//{env-api}.payulatam.com//v1.0/webhooks
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;variables-for-request-and-response-3&#34;&gt;Variables for request and response&lt;/h3&gt;
 &lt;details&gt;
@@ -31042,7 +31050,7 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;td&gt;callbackUrl&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;URL used to receive the &lt;code&gt;POST&lt;/code&gt; notifications sent by PayU according to the events selected.&lt;/td&gt;
+&lt;td&gt;URL used to receive the &lt;code&gt;POST&lt;/code&gt; notifications sent by PayU according to the events selected. This URL must be unique per WebHook.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -31607,6 +31615,19 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;enabledEvents&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
             &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;TRANSFER_UPDATE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;TRANSFER_CREATION&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;VALIDATION_RESULT&amp;#34;&lt;/span&gt;
+        &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ENABLED&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;processingStatus&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;SUCCESS&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;672497c2-00f8-4787-a396-4024042eaa20&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;created&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2021-09-15T16:04:49.131+00:00&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;accountId&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;515058&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;callbackUrl&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://wwww.callbackurltest.com.co/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Web Hook For Test Swagger&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;enabledEvents&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;TRANSFER_UPDATE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;VALIDATION_RESULT&amp;#34;&lt;/span&gt;
         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ENABLED&amp;#34;&lt;/span&gt;
