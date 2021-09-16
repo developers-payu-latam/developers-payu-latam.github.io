@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/payouts-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-08-09T14:58:45-05:00" />
-<meta property="article:modified_time" content="2021-09-09T11:57:34-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-09-16T09:55:07-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payouts API">
 <meta itemprop="description" content="This feature allows you to create multiple and secure payments for third parties (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
 "><meta itemprop="datePublished" content="2021-08-09T14:58:45-05:00" />
-<meta itemprop="dateModified" content="2021-09-09T11:57:34-05:00" />
-<meta itemprop="wordCount" content="3403">
+<meta itemprop="dateModified" content="2021-09-16T09:55:07-05:00" />
+<meta itemprop="wordCount" content="3437">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payouts API"/>
 <meta name="twitter:description" content="This feature allows you to create multiple and secure payments for third parties (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.c9b6110964516b4050d1f8867497532e6c6b51356de260802ef6296b341eb781472af12dd24f3d657ad5dfe3bdcf82c30388f18885044ce3b5b459e754729c55.json"
+  data-offline-search-index-json-src="../../../offline-search-index.5c3e39ce18c99a0ad0efac1a1d245729c816154dda0e65306d55365f1e1824c6def9f09c44308283c4ab1b6a731873afd9c72c26bbb37d02c51c94c204663ec1.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -1971,8 +1971,16 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </div>
 
 <h3 id="api-call-4">API Call</h3>
-<p>To create or update a WebHook, use the following URL:</p>
+<ul>
+<li>To create a WebHook, use:</li>
+</ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com//v1.0/webhooks
+</span></code></pre></div><br>
+<ul>
+<li>To update a WebHook, use:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">PUT</span>
 <span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com//v1.0/webhooks
 </span></code></pre></div><h3 id="variables-for-request-and-response-3">Variables for request and response</h3>
 <details>
@@ -2008,7 +2016,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 <td>callbackUrl</td>
 <td>Alphanumeric</td>
 <td></td>
-<td>URL used to receive the <code>POST</code> notifications sent by PayU according to the events selected.</td>
+<td>URL used to receive the <code>POST</code> notifications sent by PayU according to the events selected. This URL must be unique per WebHook.</td>
 <td style="text-align:center">Yes</td>
 </tr>
 <tr>
@@ -2576,6 +2584,19 @@ You need to include two headers to use this method, refer to <a href="../../../d
             <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
         <span style="color:#000;font-weight:bold">],</span>
         <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ENABLED&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;672497c2-00f8-4787-a396-4024042eaa20&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-09-15T16:04:49.131+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">515058</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;callbackUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wwww.callbackurltest.com.co/&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Web Hook For Test Swagger&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;enabledEvents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#4e9a06">&#34;TRANSFER_UPDATE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
+        <span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ENABLED&#34;</span>
     <span style="color:#000;font-weight:bold">}</span>
 <span style="color:#000;font-weight:bold">]</span>
 </code></pre></div>
@@ -2606,7 +2627,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified September 9, 2021: <a  href="../../../commit/b1983136c6ae0d8cf3fc7f7aa8d16916a0ce20b9">Changes for Payouts due to sandbox tests (b198313)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified September 16, 2021: <a  href="../../../commit/b7c246af727f5ed38a249983eb3a6592b65bfb45">Changes for Payouts and SDK (b7c246a)</a>
 </div>
 </div>
 
