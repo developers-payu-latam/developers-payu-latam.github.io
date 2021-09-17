@@ -30091,7 +30091,7 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;td&gt;transfers[n] &amp;gt; bankAccount &amp;gt; merchantId&lt;/td&gt;
 &lt;td&gt;Numeric&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;Internal identifier in your system of the third party.&lt;/td&gt;
+&lt;td&gt;Identifier of your commerce in PayU.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -30493,11 +30493,12 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;h3 id=&#34;api-call-2&#34;&gt;API Call&lt;/h3&gt;
 &lt;p&gt;To update a Payout request, use the following URL:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;PUT&lt;/span&gt;
-&lt;span style=&#34;color:#f57900&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/bank-account/{bankAccountId}
+&lt;span style=&#34;color:#f57900&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/bank-account/{merchantId}/{bankAccountId}
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The value for the variable &lt;code&gt;{env-api}&lt;/code&gt; is &lt;code&gt;sandbox-web&lt;/code&gt; for testing and &lt;code&gt;web&lt;/code&gt; for production mode.&lt;/li&gt;
+&lt;li&gt;The value for the variable &lt;code&gt;{merchantId}&lt;/code&gt; is the identifier of your commerce in PayU.&lt;/li&gt;
 &lt;li&gt;The value for the variable &lt;code&gt;{bankAccountId}&lt;/code&gt; is the third party Id returned by the &lt;a href=&#34;../../../docs/integrations/api-integration/payouts-api.html#request-payout&#34;&gt;Request payout service&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;variables-for-request-and-response-1&#34;&gt;Variables for request and response&lt;/h3&gt;
@@ -30831,11 +30832,12 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;h3 id=&#34;api-call-3&#34;&gt;API Call&lt;/h3&gt;
 &lt;p&gt;To cancel a Payout request, use the following URL:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;DELETE&lt;/span&gt;
-&lt;span style=&#34;color:#f57900&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/{paymentOrderId}
+&lt;span style=&#34;color:#f57900&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/{merchantId}/{paymentOrderId}
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
 &lt;p&gt;Where:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The value for the variable &lt;code&gt;{env-api}&lt;/code&gt; is &lt;code&gt;sandbox-web&lt;/code&gt; for testing and &lt;code&gt;web&lt;/code&gt; for production mode.&lt;/li&gt;
+&lt;li&gt;The value for the variable &lt;code&gt;{merchantId}&lt;/code&gt; is the identifier of your commerce in PayU.&lt;/li&gt;
 &lt;li&gt;The value for the variable &lt;code&gt;{paymentOrderId}&lt;/code&gt; is the Payout id generated when the order was created by the &lt;a href=&#34;../../../docs/integrations/api-integration/payouts-api.html#request-payout&#34;&gt;Request payout service&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;variables-for-request-and-response-2&#34;&gt;Variables for request and response&lt;/h3&gt;
