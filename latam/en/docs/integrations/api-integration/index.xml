@@ -30020,8 +30020,8 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;tr&gt;
 &lt;td&gt;transfers[n] &amp;gt; bankAccount &amp;gt; accountNumber&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
-&lt;td&gt;15&lt;/td&gt;
-&lt;td&gt;Bank account number of the third party.&lt;br&gt;This parameter is mandatory when you are creating a payout request for a new third party.&lt;/td&gt;
+&lt;td&gt;CC:13 CA:14&lt;/td&gt;
+&lt;td&gt;Bank account number of the third party.&lt;br&gt;This parameter is mandatory when you are creating a payout request for a new third party.&lt;br&gt;&lt;em&gt;This length is under validation.&lt;/em&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -30182,7 +30182,7 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;tr&gt;
 &lt;td&gt;successfulItems[n] &amp;gt; bankAccount &amp;gt; accountNumber&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
-&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;Max:17&lt;/td&gt;
 &lt;td&gt;Bank account number of the third party.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -30524,8 +30524,8 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;tr&gt;
 &lt;td&gt;accountNumber&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
-&lt;td&gt;15&lt;/td&gt;
-&lt;td&gt;Bank account number of the third party.&lt;/td&gt;
+&lt;td&gt;CC:13&lt;br&gt;CA:14&lt;/td&gt;
+&lt;td&gt;Bank account number of the third party.&lt;br&gt;&lt;em&gt;This length is under validation.&lt;/em&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -30732,10 +30732,11 @@ You need to include two headers to use this method, refer to &lt;a href=&#34;../
 &lt;p&gt;This method lets you create or update a WebHook that allows you to configure a URL where PayU notifies states of a Payout via &lt;code&gt;POST&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You can configure a WebHook for the following events:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Transfer creation&lt;/strong&gt;: sends a notification when a payout request is created. To enable these notifications, include the &lt;code&gt;TRANSFER_UPDATE&lt;/code&gt; value in the list parameter &lt;code&gt;enabledEvents&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Transfer update&lt;/strong&gt;: sends a notification when an update is requested for an existing payout. To enable these notifications, include the &lt;code&gt;TRANSFER_CREATION&lt;/code&gt; value in the list parameter &lt;code&gt;enabledEvents&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Validation result&lt;/strong&gt;: sends a notification when the validation is completed with its result. To enable these notifications, include the &lt;code&gt;VALIDATION_RESULT&lt;/code&gt; value in the list parameter &lt;code&gt;enabledEvents&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transfer creation&lt;/strong&gt;: sends a notification when a payout request is created. To enable these notifications, include the &lt;code&gt;TRANSFER_CREATION&lt;/code&gt; value in the list parameter &lt;code&gt;enabledEvents&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transfer update&lt;/strong&gt;: sends a notification when the sanction screening validation rejects the third party. To enable these notifications, include the &lt;code&gt;TRANSFER_UPDATE&lt;/code&gt; value in the list parameter &lt;code&gt;enabledEvents&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validation result&lt;/strong&gt;: sends a notification when third party has approved the sanction screening validation and when the transfer has been rejected by the bank, include the &lt;code&gt;VALIDATION_RESULT&lt;/code&gt; value in the list parameter &lt;code&gt;enabledEvents&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;../../../docs/services/payouts.html#variables-in-the-notifications&#34;&gt;Click here to know the variables in the notifications&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
