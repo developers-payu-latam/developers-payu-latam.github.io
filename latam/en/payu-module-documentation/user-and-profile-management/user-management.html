@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../favicons/android-192x192.png" sizes="192x192">
+
+<title>User Management | PayU Latam</title><meta property="og:title" content="User Management" />
+<meta property="og:description" content="Learn how to create, search, update, and disable the users who can access your PayU module according to their profile.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/payu-module-documentation/user-and-profile-management/user-management.html" /><meta property="article:section" content="PayU Module Documentation" />
+<meta property="article:published_time" content="2021-08-27T08:43:01-05:00" />
+<meta property="article:modified_time" content="2021-10-01T15:34:20-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="User Management">
+<meta itemprop="description" content="Learn how to create, search, update, and disable the users who can access your PayU module according to their profile.
+"><meta itemprop="datePublished" content="2021-08-27T08:43:01-05:00" />
+<meta itemprop="dateModified" content="2021-10-01T15:34:20-05:00" />
+<meta itemprop="wordCount" content="903">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="User Management"/>
+<meta name="twitter:description" content="Learn how to create, search, update, and disable the users who can access your PayU module according to their profile.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../">
+			
+			
+			<span class="navbar-logo"><img src="../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../docs.html" ><span>Online payments</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../payu-module-documentation.html" ><span class="active">PayU Module guide</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../offline-search-index.d144de1558b76fe439f6c317225c2d480ab3f2a8880d3b9f25aa0a0cab3b00f21df5ef6f7725b0d1d0e4349eaa10422967cef4b76b8e12dc161b8085bb2d7730.json"
+  data-offline-search-base-href="../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/payu-module-documentation.html" href="../../payu-module-documentation.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Home</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/payu-module-documentation/getting-started.html" href="../../payu-module-documentation/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Getting Started</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationgetting-startedhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/payu-module-documentation/getting-started/log-in.html" href="../../payu-module-documentation/getting-started/log-in.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Log In</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationgetting-startedlog-inhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/getting-started/log-in/google-accounts.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-payu-module-documentationgetting-startedlog-ingoogle-accountshtml" href="../../payu-module-documentation/getting-started/log-in/google-accounts.html">Log in using Google Accounts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/getting-started/password-recovery.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationgetting-startedpassword-recoveryhtml" href="../../payu-module-documentation/getting-started/password-recovery.html">Password Recovery</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/payu-module-documentation/getting-started/understanding-the-payu-module.html" href="../../payu-module-documentation/getting-started/understanding-the-payu-module.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Getting to know the PayU module</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationgetting-startedunderstanding-the-payu-modulehtml">
+      
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-payu-module-documentationgetting-startedunderstanding-the-payu-moduleupdate-my-informationhtml" href="../../payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html">Update my information</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-payu-module-documentationgetting-startedunderstanding-the-payu-moduletechnical-configurationhtml" href="../../payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Technical Configuration</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/payu-module-documentation/user-and-profile-management.html" href="../../payu-module-documentation/user-and-profile-management.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">User &amp; Profile management</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationuser-and-profile-managementhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/user-and-profile-management/user-management.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active " id="m-payu-module-documentationuser-and-profile-managementuser-managementhtml" href="../../payu-module-documentation/user-and-profile-management/user-management.html">User Management</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationuser-and-profile-managementprofile-and-permissions-managementhtml" href="../../payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Profile and Permissions Management</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/payu-module-documentation/payu-operations.html" href="../../payu-module-documentation/payu-operations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">PayU Operations</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationpayu-operationshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/payu-operations/sell-with-payu.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationpayu-operationssell-with-payuhtml" href="../../payu-module-documentation/payu-operations/sell-with-payu.html">Sell With PayU</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/payu-operations/transfers.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationpayu-operationstransfershtml" href="../../payu-module-documentation/payu-operations/transfers.html">Transfers</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/payu-operations/refunds-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationpayu-operationsrefunds-mphtml" href="../../payu-module-documentation/payu-operations/refunds-mp.html">Refunds</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/payu-operations/disputes-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationpayu-operationsdisputes-mphtml" href="../../payu-module-documentation/payu-operations/disputes-mp.html">Disputes</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/payu-module-documentation/reports.html" href="../../payu-module-documentation/reports.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Reports</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="payu-module-documentationreportshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/reports/sales-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationreportssales-reporthtml" href="../../payu-module-documentation/reports/sales-report.html">Sales Report</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/reports/transfer-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationreportstransfer-reporthtml" href="../../payu-module-documentation/reports/transfer-report.html">Transfer Report</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/reports/financial-statement.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationreportsfinancial-statementhtml" href="../../payu-module-documentation/reports/financial-statement.html">Financial Statement</a>
+      
+      
+      
+      
+      
+        <a id="/payu-module-documentation/reports/withholding-certificate.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-payu-module-documentationreportswithholding-certificatehtml" href="../../payu-module-documentation/reports/withholding-certificate.html">Withholding Certificate</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>On this Page</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#permission-required">Permission required</a></li>
+    <li><a href="#user-management">User management</a>
+      <ul>
+        <li><a href="#add-users">Add users</a></li>
+        <li><a href="#search-users">Search users</a></li>
+        <li><a href="#edit-users">Edit users</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../payu-module-documentation.html">Home</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../payu-module-documentation/user-and-profile-management.html">User &amp; Profile management</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../payu-module-documentation/user-and-profile-management/user-management.html">User Management</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>User Management</h1>
+    <div class="lead">Learn how to create, search, update, and disable the users who can access your PayU module according to their profile.</div>
+	       
+	<p>Before moving on, let&rsquo;s recap some key terms:</p>
+<ul>
+<li>A <em><strong>user</strong></em> is a person who has a profile to manage or consult the information of an account.</li>
+<li>A <em><strong>profile</strong></em> is a set of permissions to access an account.</li>
+<li>A user can have one or multiple profiles, this means that a user can access multiple <em><strong>accounts</strong></em> and multiple <em><strong>merchants</strong></em>.</li>
+</ul>
+<p>For further information, read the <a href="../../payu-module-documentation.html#payu-module-concepts">concepts behind the PayU Module</a>.</p>
+<h2 id="permission-required">Permission required</h2>
+<p>To have access to this module, you need to have a profile with the following permission enabled:</p>
+<ul>
+<li><em>Review Users</em><br>This permission allows you to search a specified user.</li>
+<li><em>Create, edit and delete users</em></li>
+</ul>
+<p>Refer to <a href="../../payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Profiles and Permissions</a> for more information.</p>
+<h2 id="user-management">User management</h2>
+<p>To manage users, open you PayU account and click <em><strong>Settings</strong></em> menu at the top the screen and then, select <em><strong>User management</strong></em>.</p>
+<p><img src="../../assets/UserManagement/UserManagement_01.png" alt="PrintScreen"></p>
+<p>The <em><strong>User management</strong></em> module opens, here, you can find a list of the available users along with their status, the accounts they can access, and their profile.</p>
+<p><img src="../../assets/UserManagement/UserManagement_02.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+The users marked with a green star (<img src="../../assets/UserManagement/UserManagement_03.png" width="2%"/>) are default users which cannot be deleted (deactivated).
+</div>
+
+<h3 id="add-users">Add users</h3>
+<p>You can create a user using their e-mail address or providing a username. Follow the steps below to create a new user.</p>
+<ol>
+<li>In the <em><strong>User management</strong></em> module, click <em><strong>Add user</strong></em>.</li>
+</ol>
+<p><img src="../../assets/UserManagement/UserManagement_04.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>The <em><strong>Add user</strong></em> window appears. Here, you can provide the information of the person who will be allowed to collect payments over the internet and check information about your payments, according to the permission you provide.</li>
+</ol>
+<p><img src="../../assets/UserManagement/UserManagement_05.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Provide the following user information:</li>
+</ol>
+<ul>
+<li><strong>E-mail</strong>: E-mail address of the new user. PayU sends the login information to this e-mail address, make sure it is valid and the user has access to it.<br>Alternatively, you can create a user without using an e-mail address. This is useful specially when the user you want to create is attached to a role and not to a specific person. To do this, click <em><strong>Don&rsquo;t have an e-mail?</strong></em> and provide the following information:
+<ul>
+<li><em>User</em>: username used to log in. This user name cannot have numbers nor special characters.</li>
+<li><em>E-mail (Admin)</em>: provide the e-mail of the admin user to which, PayU send the options to generate or recover the password for this user.</li>
+</ul>
+</li>
+<li><strong>Full name</strong>: name of the user you want to create.</li>
+<li><strong>Status</strong>: set if the user you want to create is <em>Active</em> or <em>Inactive</em>.</li>
+</ul>
+<ol start="4">
+<li>Configure the user preferences. You can configure any of the following:</li>
+</ol>
+<ul>
+<li><strong>Date format</strong>: change the format in which you want to display the dates in your PayU Module,</li>
+</ul>
+<p><img src="../../assets/UserPreferences/UserPreferences_05.png" alt="PrintScreen" width="40%"/><br></p>
+<p>You can use any of the following formats:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>English Format</th>
+<th>Example<br><em>August 24, 2021</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dd/mm/aaaa</td>
+<td>dd/mm/yyyy</td>
+<td>24/08/2021</td>
+</tr>
+<tr>
+<td>mm/dd/aaaa</td>
+<td>mm/dd/yyyy</td>
+<td>08/24/2021</td>
+</tr>
+<tr>
+<td>aaaa/mm/dd</td>
+<td>yyyy/mm/dd</td>
+<td>2021/08/24</td>
+</tr>
+<tr>
+<td>aaaa/mmm/dd</td>
+<td>yyyy/mmm/dd</td>
+<td>2021/Aug/24</td>
+</tr>
+<tr>
+<td>dd-mm-aaaa</td>
+<td>dd-mm-yyyy</td>
+<td>24-08-2021</td>
+</tr>
+<tr>
+<td>mm-dd-aaaa</td>
+<td>mm-dd-yyyy</td>
+<td>08-24-2021</td>
+</tr>
+<tr>
+<td>aaaa-mm-dd</td>
+<td>yyyy-mm-dd</td>
+<td>2021-08-24</td>
+</tr>
+<tr>
+<td>aaaa-mmm-dd</td>
+<td>yyyy-mmm-dd</td>
+<td>2021-Aug-24</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Time Zone</strong>: change the time zone of the country in which you want to display the transaction’s information.</li>
+</ul>
+<p><img src="../../assets/UserPreferences/UserPreferences_06.png" alt="PrintScreen" width="40%"/><br></p>
+<ul>
+<li><strong>Currency format</strong>: change the display format of the currency values shown in your PayU module.</li>
+</ul>
+<p><img src="../../assets/UserPreferences/UserPreferences_07.png" alt="PrintScreen" width="40%"/><br></p>
+<ul>
+<li><strong>Language</strong>: change the language of your PayU module.</li>
+</ul>
+<p><img src="../../assets/UserPreferences/UserPreferences_08.png" alt="PrintScreen" width="40%"/><br></p>
+<ol start="5">
+<li>At the bottom of the screen, all the profiles created (both default and custom) loads along with the accounts of the current merchant. Configure the access for each account setting a profile, if you don&rsquo;t want to enable access to an account, don&rsquo;t select a profile.</li>
+</ol>
+<p><img src="../../assets/UserManagement/UserManagement_07.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+If you want to assign a custom profile, you must create it first.
+</div>
+
+<ol start="6">
+<li>Once finish, click <em><strong>Add user</strong></em>.</li>
+</ol>
+<p><img src="../../assets/UserManagement/UserManagement_08.png" alt="PrintScreen"></p>
+<ol start="7">
+<li>At this point, you have added the new user! We sent an e-mail to user address so they can access the PayU module.<br>The new user has to activate the account using the <em><strong>Activate your account</strong></em> button in the e-mail.</li>
+</ol>
+<img src="../../assets/UserManagement/UserManagement_09.png" alt="PrintScreen" width="40%"/>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+If the user was created without using e-mail, the instructions to activate the account are sent to the Admin e-mail you defined.
+</div>
+
+<ol start="8">
+<li>The new user needs to set a new password to access the account.</li>
+</ol>
+<p><img src="../../assets/UserManagement/UserManagement_10.png" alt="PrintScreen" width="40%"/><br></p>
+<ol start="9">
+<li>Once the user sets the new password, they can access to the selected accounts using their credentials.</li>
+</ol>
+<h3 id="search-users">Search users</h3>
+<p>When you need to find a specific user, you can use the filter options to find one or more users that meet given conditions.</p>
+<p>In the <em><strong>User management</strong></em> module, click the <em><strong>Search users</strong></em> field to see the available filters.</p>
+<p><img src="../../assets/UserManagement/UserManagement_11.png" alt="PrintScreen"></p>
+<p>Once you have selected the filters, click <em><strong>Search</strong></em>. All the users that meets the conditions selected are displayed in the table.</p>
+<p><img src="../../assets/UserManagement/UserManagement_12.png" alt="PrintScreen"></p>
+<p>If you want to remove a filter, click the <strong>x</strong> icon next to it.</p>
+<h3 id="edit-users">Edit users</h3>
+<p>Through the <em><strong>User management</strong></em> module, you can update some information of a user. To update a user, search and click it in the <em><strong>User management</strong></em> module.</p>
+<p><img src="../../assets/UserManagement/UserManagement_13.png" alt="PrintScreen"></p>
+<p>You can update the following information:</p>
+<ul>
+<li>Full name of a user</li>
+<li>Request a password recovery.</li>
+<li>Update the user status (Active or Inactive)</li>
+<li>Change or remove the profile assigned to a given account.</li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+The information of the user preferences cannot be updated using this option, this information is updated by each user by their own.
+</div>
+
+<p>Once finish, click <em><strong>Save setting</strong></em> to apply the changes.</p>
+<h4 id="edit-multiple-users">Edit multiple users</h4>
+<p>To edit multiple users, search them and use the checkbox at the left. Then, click <em><strong>Edit users (n)</strong></em>.</p>
+<p><img src="../../assets/UserManagement/UserManagement_14.png" alt="PrintScreen"></p>
+<p>The <em><strong>Edit users (n)</strong></em> window appears, where you can update the following information:</p>
+<ul>
+<li>Request a password recovery for all the users.</li>
+<li>Update their user status (Active or Inactive)</li>
+<li>Assign a profile to a given account.</li>
+</ul>
+<p><img src="../../assets/UserManagement/UserManagement_15.png" alt="PrintScreen"></p>
+<p>Take into account that using this option, all the users will have the same configuration you define here.</p>
+<p>Once finish, click <em><strong>Save setting</strong></em> to apply the changes.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified October 1, 2021: <a  href="../../commit/46cdecea9d35996aa487a56ab9cf73dcfba6e542">PayU module documentation (46cdece)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../js/scrollspy.js"></script>
+<script src="../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
