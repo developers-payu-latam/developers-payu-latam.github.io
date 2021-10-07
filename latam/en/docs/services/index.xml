@@ -335,14 +335,14 @@ To integrate with Promotions API, target the requests to the following URLs:
 &lt;p&gt;The &lt;code&gt;REFUND&lt;/code&gt; has three states:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;UNRESOLVED&lt;/code&gt;: the request has been sent to PayU for approval. At this point, no transaction has been added to the order and when you consult it using the &lt;a href=&#34;../../docs/services/queries.html&#34; title=&#34;Query Service&#34;&gt;Queries service&lt;/a&gt;, the response only shows the transaction of the payment approval.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;APPROVED&lt;/code&gt;: the request has been approved by a PayU&amp;rsquo;s customer service agent. At this point the order has changed its state to &lt;code&gt;CANCELLED&lt;/code&gt; or &lt;code&gt;REFUNDED&lt;/code&gt;state and a PayU adds a &lt;code&gt;REFUND&lt;/code&gt; transaction to the order with approved state.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;DECLINED&lt;/code&gt;: the request does not meet the policies defined by PayU and was cancelled by an agent. when the refund is declined, PayU adds a &lt;code&gt;REFUND&lt;/code&gt; transaction to the order with declined state.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;APPROVED&lt;/code&gt;: the request has been approved by a PayU&amp;rsquo;s customer service agent. At this point the order has changed its state to &lt;code&gt;REFUNDED&lt;/code&gt; state and PayU adds an approved &lt;code&gt;REFUND&lt;/code&gt; transaction to the order.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DECLINED&lt;/code&gt;: the request does not meet the policies defined by PayU and was rejected. When the refund is declined, PayU adds a declined &lt;code&gt;REFUND&lt;/code&gt; transaction to the order.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;For more information about authorized and captured transactions, refer to &lt;a href=&#34;../../docs/services/payments.html#payment-flows&#34;&gt;Payments&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
 &lt;p&gt;Before using either &lt;em&gt;VOID&lt;/em&gt; or &lt;em&gt;REFUND&lt;/em&gt; feature, take into account the following considerations:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Refund&lt;/em&gt; or &lt;em&gt;Void&lt;/em&gt; method are only available for transactions made with a credit card. If the request refers to a different payment means such as cash payment means, bank transfer; the request is declined by PayU´s customer service agent.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Refund&lt;/em&gt; or &lt;em&gt;Void&lt;/em&gt; method are only available for transactions made with a credit card. If the request refers to a different payment means such as cash payment means, bank transfer; the request is declined by PayU.&lt;/li&gt;
 &lt;li&gt;PayU only creates one application for each refund request, if a request is repeatedly posted for the same transaction, PayU indicates that the request is already registered.&lt;/li&gt;
 &lt;li&gt;PayU only accepts refund requests of captured transactions.&lt;/li&gt;
 &lt;li&gt;You can retry the refund request if this was previously declined.&lt;/li&gt;
