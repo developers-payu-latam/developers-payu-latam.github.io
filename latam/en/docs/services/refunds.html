@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/services/refunds.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-26T15:09:39-05:00" />
-<meta property="article:modified_time" content="2021-10-01T15:34:20-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-07T17:03:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Voids and Refunds">
 <meta itemprop="description" content="This feature allows you to request the cancellation or the refund of the transactions authorized or charged. You can create the refund request using the _Refund_ or _Void_ method according to the status of the transaction.
 "><meta itemprop="datePublished" content="2021-03-26T15:09:39-05:00" />
-<meta itemprop="dateModified" content="2021-10-01T15:34:20-05:00" />
-<meta itemprop="wordCount" content="607">
+<meta itemprop="dateModified" content="2021-10-07T17:03:44-05:00" />
+<meta itemprop="wordCount" content="595">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Voids and Refunds"/>
 <meta name="twitter:description" content="This feature allows you to request the cancellation or the refund of the transactions authorized or charged. You can create the refund request using the _Refund_ or _Void_ method according to the status of the transaction.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../offline-search-index.1c1582f4f1d4746fe3fc2979c9faeda81f5ebfd473ba8caff6c289a3c85c3a79ceeae9a12ab28124dfc240f4cad0241e5a3896daf911f4311ae43faea1df1f6a.json"
+  data-offline-search-index-json-src="../../offline-search-index.c55975fbc9d04ff79ff451bd5355a69d0a1da884d7b36c2a2d27b5c76cf2d1b1e37985c19547e3aa5c60d049803049f5bcb75e19442a579cd187ab83ba6c1094.json"
   data-offline-search-base-href="../../"
 >
 
@@ -379,6 +379,12 @@
       
       
         <a id="/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolspayment-couponshtml" href="../../docs/tools/payment-coupons.html">Payment Coupons</a>
+      
+      
+      
+      
+      
+        <a id="/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docstoolsantifraud-guaranteehtml" href="../../docs/tools/antifraud-guarantee.html">Anti-fraud Guarantee</a>
       
       
     </li>
@@ -681,7 +687,7 @@
 
 
 
-<p>On this Page</p>
+<p>On this page</p>
 
 
 <nav id="TableOfContents">
@@ -776,14 +782,14 @@
 <p>The <code>REFUND</code> has three states:</p>
 <ul>
 <li><code>UNRESOLVED</code>: the request has been sent to PayU for approval. At this point, no transaction has been added to the order and when you consult it using the <a href="../../docs/services/queries.html" title="Query Service">Queries service</a>, the response only shows the transaction of the payment approval.</li>
-<li><code>APPROVED</code>: the request has been approved by a PayU&rsquo;s customer service agent. At this point the order has changed its state to <code>CANCELLED</code> or <code>REFUNDED</code>state and a PayU adds a <code>REFUND</code> transaction to the order with approved state.</li>
-<li><code>DECLINED</code>: the request does not meet the policies defined by PayU and was cancelled by an agent. when the refund is declined, PayU adds a <code>REFUND</code> transaction to the order with declined state.</li>
+<li><code>APPROVED</code>: the request has been approved by a PayU&rsquo;s customer service agent. At this point the order has changed its state to <code>REFUNDED</code> state and PayU adds an approved <code>REFUND</code> transaction to the order.</li>
+<li><code>DECLINED</code>: the request does not meet the policies defined by PayU and was rejected. When the refund is declined, PayU adds a declined <code>REFUND</code> transaction to the order.</li>
 </ul>
 <p>For more information about authorized and captured transactions, refer to <a href="../../docs/services/payments.html#payment-flows">Payments</a>.</p>
 <h2 id="considerations">Considerations</h2>
 <p>Before using either <em>VOID</em> or <em>REFUND</em> feature, take into account the following considerations:</p>
 <ul>
-<li><em>Refund</em> or <em>Void</em> method are only available for transactions made with a credit card. If the request refers to a different payment means such as cash payment means, bank transfer; the request is declined by PayU´s customer service agent.</li>
+<li><em>Refund</em> or <em>Void</em> method are only available for transactions made with a credit card. If the request refers to a different payment means such as cash payment means, bank transfer; the request is declined by PayU.</li>
 <li>PayU only creates one application for each refund request, if a request is repeatedly posted for the same transaction, PayU indicates that the request is already registered.</li>
 <li>PayU only accepts refund requests of captured transactions.</li>
 <li>You can retry the refund request if this was previously declined.</li>
@@ -806,7 +812,12 @@
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified October 1, 2021: <a  href="../../commit/46cdecea9d35996aa487a56ab9cf73dcfba6e542">PayU module documentation (46cdece)</a>
+	<div class="text-muted mt-5 pt-3 border-top">
+Last modified
+
+October 7, 2021:
+
+ <b>Antifraud Guarantee (c3d2a4e)</b>
 </div>
 </div>
 
