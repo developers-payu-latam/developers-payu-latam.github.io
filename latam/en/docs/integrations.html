@@ -122,7 +122,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../offline-search-index.390c7a7b01d84f4df4b1def8ccc1894c61ec436eba04d3dca0cfd02763fa2c8f9663251773310555e07f71fbee22d3bf90c6977b80bea035a87d3918bf33a5fa.json"
+  data-offline-search-index-json-src="../offline-search-index.2becd32ef413bc2310357b498a8a4ec7feff259680670f24d79e9f221e273704f6f9b4b2a22a1a1c59cccdf31432203e6044250a5a91fd269ebe814783179d80.json"
   data-offline-search-base-href="../"
 >
 
@@ -688,7 +688,7 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#how-to-get-variables-for-integration">How to get variables for integration.</a>
+    <li><a href="#how-to-get-variables-for-integration">How to get variables for integration</a>
       <ul>
         <li><a href="#api-key-and-api-login">API key and API Login</a></li>
         <li><a href="#authentication-signature">Authentication signature</a></li>
@@ -766,7 +766,7 @@
   </div>
 </div>
 
-<h2 id="how-to-get-variables-for-integration">How to get variables for integration.</h2>
+<h2 id="how-to-get-variables-for-integration">How to get variables for integration</h2>
 <p>Regardless of the integration selected, you may require any of the following variables in the request of the methods.</p>
 <h3 id="api-key-and-api-login">API key and API Login</h3>
 <ol>
@@ -825,7 +825,16 @@ Both keys are unique per commerce in PayU, therefore, you must keep this informa
 <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">noscript</span><span style="color:#000;font-weight:bold">&gt;</span>
 	<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">iframe</span> <span style="color:#c4a000">style</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;width: 100px; height: 100px; border: 0; position: absolute; top: -5000px;&#34;</span> <span style="color:#c4a000">src</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;https://maf.pagosonline.net/ws/fp/tags.js?id=d66f949f19b33e88c202b579cfc549b380200&#34;</span><span style="color:#000;font-weight:bold">&gt;&lt;/</span><span style="color:#204a87;font-weight:bold">iframe</span><span style="color:#000;font-weight:bold">&gt;</span>
 <span style="color:#000;font-weight:bold">&lt;/</span><span style="color:#204a87;font-weight:bold">noscript</span><span style="color:#000;font-weight:bold">&gt;</span>
-</code></pre></div>
+</code></pre></div><br>
+<ol start="3">
+<li>Finally, you must send the <code>$deviceSessionId</code> in the variable according to the integration selected:</li>
+</ol>
+<ul>
+<li>For <strong>API</strong>: <code>transaction.deviceSessionId</code></li>
+<li>For <strong>SDK JAVA</strong>: <code>PayU.PARAMETERS.DEVICE_SESSION_ID</code></li>
+<li>For <strong>SDK PHP</strong>: <code>PayUParameters::DEVICE_SESSION_ID</code></li>
+</ul>
+
 		
 <div class="section-index">
     <hr class="panel-line">
@@ -977,9 +986,9 @@ Both keys are unique per commerce in PayU, therefore, you must keep this informa
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-June 15, 2021:
+October 21, 2021:
 
- <b>Payments API for Argentina created (fcfde64)</b>
+ <b>Added a missing order status (c4aad14)</b>
 </div>
 </div>
 
