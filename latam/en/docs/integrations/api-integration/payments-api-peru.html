@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/payments-api-peru.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2021-09-01T15:23:17-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-22T10:15:41-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payments API - Peru">
 <meta itemprop="description" content="Payments API Peru lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2021-09-01T15:23:17-05:00" />
-<meta itemprop="wordCount" content="5252">
+<meta itemprop="dateModified" content="2021-10-22T10:15:41-05:00" />
+<meta itemprop="wordCount" content="5299">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Peru"/>
 <meta name="twitter:description" content="Payments API Peru lets your shop process different transaction types with multiple payment methods.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.2becd32ef413bc2310357b498a8a4ec7feff259680670f24d79e9f221e273704f6f9b4b2a22a1a1c59cccdf31432203e6044250a5a91fd269ebe814783179d80.json"
+  data-offline-search-index-json-src="../../../offline-search-index.d798365be6bdf1596741a1e42406e4d0c2c41829b9f4d7431a921ddbe234b04e0fbc61241ebe2198f88a13ceb34487facee539dcdce4a5c34b7c858c12e633a8.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -824,6 +824,7 @@
 <th>Format</th>
 <th>Size</th>
 <th>Description</th>
+<th style="text-align:center">Mandatory</th>
 </tr>
 </thead>
 <tbody>
@@ -832,492 +833,574 @@
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>command</td>
 <td>Alphanumeric</td>
 <td>Max:32</td>
 <td>Set <code>SUBMIT_TRANSACTION</code>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>test (JSON)<hr>isTest (XML)</td>
 <td>Boolean</td>
 <td></td>
 <td>Set <code>true</code> if the request is in test mode. Otherwise, set <code>false</code>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>merchant</td>
 <td></td>
 <td></td>
 <td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>merchant &gt; apiLogin</td>
 <td>Alphanumeric</td>
 <td>Min:12 Max:32</td>
 <td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>merchant &gt; apiKey</td>
 <td>Alphanumeric</td>
 <td>Min:6 Max:32</td>
 <td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction</td>
 <td></td>
 <td></td>
 <td>This object has the transaction data.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order</td>
 <td></td>
 <td></td>
 <td>This object has the order data.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; accountId</td>
 <td>Number</td>
 <td></td>
 <td>Identifier of your account.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; referenceCode</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:255</td>
 <td>Represents the identifier of the order in your system.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; description</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:255</td>
 <td>Description of the order.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; language</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Language used in emails sent to the buyer and the seller.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; notifyUrl</td>
 <td>Alphanumeric</td>
 <td>Max:2048</td>
 <td>Confirmation URL of the order.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; partnerId</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Partner ID in PayU.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; signature</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>The signature associated to the form. For more information refer <a href="../../../docs/integrations.html#authentication-signature">Authentication signature</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress</td>
 <td></td>
 <td></td>
 <td>Shipping address.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; street1</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Address Line 1.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; street2</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Address Line 2.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; city</td>
 <td>Alphanumeric</td>
 <td>Max:50</td>
 <td>Address city.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; state</td>
 <td>Alphanumeric</td>
 <td>Max:40</td>
 <td>Address State.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; country</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Address country.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; postalCode</td>
 <td>Alphanumeric</td>
 <td>Max:8</td>
 <td>Address Zip code.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; phone</td>
 <td>Alphanumeric</td>
 <td>Max:11</td>
 <td>Phone number associated to the address.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer</td>
 <td></td>
 <td></td>
 <td>Buyer information.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; merchantBuyerId</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Buyer ID in your system.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; fullName</td>
 <td>Alphanumeric</td>
 <td>Max:150</td>
 <td>Full name of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; emailAddress</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>E-mail of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; contactPhone</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Phone number of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; dniNumber</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Identification number of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress</td>
 <td>Alphanumeric</td>
 <td></td>
 <td>Shipping address of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; street1</td>
 <td>Alphanumeric</td>
 <td>Max:150</td>
 <td>Buyer&rsquo;s shipping address Line 1.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; city</td>
 <td>Alphanumeric</td>
 <td>Max:50</td>
 <td>Buyer&rsquo;s shipping address city.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; state</td>
 <td>Alphanumeric</td>
 <td>Max:40</td>
 <td>Buyer&rsquo;s shipping address state.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; country</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Buyer&rsquo;s shipping address country in format ISO 3166 alpha-2.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; postalCode</td>
 <td>Number</td>
 <td>Max:20</td>
 <td>Buyer&rsquo;s shipping address zip code.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; phone</td>
 <td>Number</td>
 <td>Max:20</td>
 <td>Buyer&rsquo;s shipping address phone number.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt;</td>
 <td></td>
 <td>64</td>
 <td>Amount of the order or its associated values.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE</td>
 <td>Alphanumeric</td>
 <td>64</td>
 <td>Amount of the transaction.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE &gt; value</td>
 <td>Number</td>
 <td>19, 2</td>
 <td>Specifies the amount of the transaction, this value may have two decimal digits (Ex. <code>10000.00</code> or <code>10000</code>).</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE &gt; currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
 <td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX</td>
 <td>Alphanumeric</td>
 <td>64</td>
 <td>Amount of the Value Added Tax (VAT).</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; value</td>
 <td>Number</td>
 <td>19, 2</td>
 <td>Specifies the amount of the VAT.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
 <td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE</td>
 <td>Alphanumeric</td>
 <td>64</td>
 <td>Base value to calculate the VAT.<br>If the amount does not have IVA, send 0.<br>This value may have two decimal digits.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; value</td>
 <td>Number</td>
 <td>19, 2</td>
 <td>Specifies the base amount of the transaction.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
 <td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCardTokenId</td>
 <td></td>
 <td></td>
 <td>Include this parameter when the transaction is done using a tokenized card replacing the information of the credit card. For more information, refer to <a href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a></td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCard</td>
 <td></td>
 <td></td>
-<td>Credit card information. If you process using debit card, do not send this parameter</td>
+<td>Credit card information. If you process using debit card, do not send this parameter.<br>This object and its parameters are mandatory when the payment is performed using not tokenized credit card.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCard &gt; number</td>
 <td>Alphanumeric</td>
 <td>Min:13 Max:20</td>
 <td>Credit card number.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCard &gt; securityCode</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:4</td>
 <td>Credit card security code (CVC2, CVV2, CID).</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCard &gt; expirationDate</td>
 <td>Alphanumeric</td>
 <td>7</td>
 <td>Credit card expiration date. Format <code>YYYY/MM</code>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCard &gt; name</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:255</td>
 <td>Holder&rsquo;s name displayed in the credit card.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; creditCard &gt; processWithoutCvv2</td>
 <td>Boolean</td>
 <td>Max:255</td>
 <td>Allows you to process transactions without including the credit card security code. Your commerce requires PayU&rsquo;s authorization before using this feature.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; debitCard</td>
 <td></td>
 <td></td>
-<td>Debit card information. If you process using credit card, do not send this parameter</td>
+<td>Debit card information. This object and its parameters are mandatory when the payment is performed using debit card.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; debitCard &gt; number</td>
 <td>Alphanumeric</td>
 <td>Min:13 Max:20</td>
 <td>Debit card number.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; debitCard &gt; securityCode</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:4</td>
 <td>Debit card security code (CVC2, CVV2, CID).</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; debitCard &gt; expirationDate</td>
 <td>Alphanumeric</td>
 <td>7</td>
 <td>Debit card expiration date. Format <code>YYYY/MM</code>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; debitCard &gt; name</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:255</td>
 <td>Holder&rsquo;s name displayed in the debit card.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer</td>
 <td></td>
 <td></td>
 <td>Payer information.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; emailAddress</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Payer e-mail address.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; merchantPayerId</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Identifier of the payer in your system.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; fullName</td>
 <td>Alphanumeric</td>
 <td>Max:150</td>
-<td>Name of the payer which must meet the name sent in the parameter &gt; creditCard &gt; name for credit card payments.</td>
+<td>Name of the payer which must meet the name sent in the parameter <code>transaction.creditCard.name</code> for credit card payments.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress</td>
 <td></td>
 <td></td>
 <td>Billing address.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; street1</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Billing Address Line 1.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; street2</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Billing Address Line 2.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; city</td>
 <td>Alphanumeric</td>
 <td>Max:50</td>
 <td>Billing address city.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; state</td>
 <td>Alphanumeric</td>
 <td>Max:40</td>
-<td>Billing address state.</td>
+<td>Billing address state. Format <a href="https://www.iso.org/obp/ui/#iso:code:3166:AR">ISO 3166-2 ARG official</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; country</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Billing address country in format ISO 3166 Alpha-2.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; postalCode</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Billing address zip code.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; phone</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Billing address phone number.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; birthdate</td>
 <td>Alphanumeric</td>
 <td>Max:10</td>
 <td>Buyer&rsquo;s date of birth.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; contactPhone</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Buyer&rsquo;s phone number.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; dniNumber</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Identification number of the buyer.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; dniType</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Identification type of the buyer. <a href="../../../docs/getting-started/response-codes-and-variables.html#document-types">See Document types</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; type</td>
 <td>Alphanumeric</td>
 <td>32</td>
 <td>Set this value according to the transaction you want:<br><ul style="margin-bottom: initial;"><li><code>AUTHORIZATION</code></li><li><code>CAPTURE</code></li><li><code>AUTHORIZATION_AND_CAPTURE</code> for one-step flows.</li></ul></td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; paymentMethod</td>
 <td>Alphanumeric</td>
 <td>32</td>
 <td>Select a valid Credit or Debit card Payment Method. <a href="../../../docs/getting-started/select-your-payment-method.html#Peru">See the available Payment Methods for Peru</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; paymentCountry</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Set <code>PE</code> for Peru.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; deviceSessionId</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Session identifier of the device where the customer performs the transaction. For more information, refer to <a href="../../../docs/integrations.html#_devicesessionid_-variable">this topic</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; ipAddress</td>
 <td>Alphanumeric</td>
 <td>Max:39</td>
 <td>IP address of the device where the customer performs the transaction.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; cookie</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Cookie stored by the device where the customer performs the transaction.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; userAgent</td>
 <td>Alphanumeric</td>
 <td>Max:1024</td>
 <td>The User agent of the browser where the customer performs the transaction.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; extraParameters</td>
 <td></td>
 <td></td>
 <td>Additional parameters or data associated with the request. The maximum size of each <em>extraParameters</em> name is 64 characters.<br>In JSON, the <em>extraParameters</em> parameter follows this structure: <br><code>&quot;extraParameters&quot;: {</code><br> <code>&quot;INSTALLMENTS_NUMBER&quot;: 1</code><br><code>}</code><br><br>In XML, the <em>extraParameters</em> parameter follows this structure: <br><code>&lt;extraParameters&gt;</code><br> <code>&lt;entry&gt;</code><br>  <code>&lt;string&gt;INSTALLMENTS_NUMBER&lt;/string&gt;</code><br>  <code>&lt;string&gt;1&lt;/string&gt;</code><br> <code>&lt;/entry&gt;</code><br><code>&lt;/extraParameters&gt;</code></td>
+<td style="text-align:center">No</td>
 </tr>
 </tbody>
 </table>
@@ -2190,6 +2273,7 @@
 <th>Format</th>
 <th>Size</th>
 <th>Description</th>
+<th style="text-align:center">Mandatory</th>
 </tr>
 </thead>
 <tbody>
@@ -2198,438 +2282,469 @@
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Language used in the request, this language is used to display the error messages generated. <a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>command</td>
 <td>Alphanumeric</td>
 <td>Max:32</td>
 <td>Set <code>SUBMIT_TRANSACTION</code>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>test (JSON)<hr>isTest (XML)</td>
 <td>Boolean</td>
 <td></td>
 <td>Set <code>true</code> if the request is in test mode. Otherwise, set <code>false</code>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>merchant</td>
 <td></td>
 <td></td>
 <td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>merchant &gt; apiLogin</td>
 <td>Alphanumeric</td>
 <td>Min:12 Max:32</td>
 <td>User or login provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>merchant &gt; apiKey</td>
 <td>Alphanumeric</td>
 <td>Min:6 Max:32</td>
 <td>Password provided by PayU. <a href="../../../docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction</td>
 <td></td>
 <td></td>
 <td>This object has the transaction data.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order</td>
 <td></td>
 <td></td>
 <td>This object has the order data.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; accountId</td>
 <td>Number</td>
 <td></td>
 <td>Identifier of your account.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; referenceCode</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:255</td>
 <td>Represents the identifier of the order in your system.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; description</td>
 <td>Alphanumeric</td>
 <td>Min:1 Max:255</td>
 <td>Description of the order.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; language</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Language used in emails sent to the buyer and the seller.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; notifyUrl</td>
 <td>Alphanumeric</td>
 <td>Max:2048</td>
 <td>Confirmation URL of the order.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; partnerId</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Partner ID in PayU.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; signature</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>The signature associated to the form. For more information refer <a href="../../../docs/integrations.html#authentication-signature">Authentication signature</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress</td>
 <td></td>
 <td></td>
 <td>Shipping address.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; street1</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Address Line 1.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; street2</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Address Line 2.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; city</td>
 <td>Alphanumeric</td>
 <td>Max:50</td>
 <td>Address city.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; state</td>
 <td>Alphanumeric</td>
 <td>Max:40</td>
 <td>Address State.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; country</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Address country.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; postalCode</td>
 <td>Alphanumeric</td>
 <td>Max:8</td>
 <td>Address Zip code.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; shippingAddress &gt; phone</td>
 <td>Alphanumeric</td>
 <td>Max:11</td>
 <td>Phone number associated to the address.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer</td>
 <td></td>
 <td></td>
 <td>Buyer information.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; merchantBuyerId</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Buyer ID in your system.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; fullName</td>
 <td>Alphanumeric</td>
 <td>Max:150</td>
 <td>Full name of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; emailAddress</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>E-mail of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; contactPhone</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Phone number of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; dniNumber</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Identification number of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress</td>
 <td>Alphanumeric</td>
 <td></td>
 <td>Shipping address of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; street1</td>
 <td>Alphanumeric</td>
 <td>Max:150</td>
 <td>Buyer&rsquo;s shipping address Line 1.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; city</td>
 <td>Alphanumeric</td>
 <td>Max:50</td>
 <td>Buyer&rsquo;s shipping address city.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; state</td>
 <td>Alphanumeric</td>
 <td>Max:40</td>
 <td>Buyer&rsquo;s shipping address state.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; country</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Buyer&rsquo;s shipping address country in format ISO 3166 alpha-2.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; postalCode</td>
 <td>Number</td>
 <td>Max:20</td>
 <td>Buyer&rsquo;s shipping address zip code.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; phone</td>
 <td>Number</td>
 <td>Max:20</td>
 <td>Buyer&rsquo;s shipping address phone number.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt;</td>
 <td></td>
 <td>64</td>
 <td>Amount of the order or its associated values.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE</td>
 <td>Alphanumeric</td>
 <td>64</td>
 <td>Amount of the transaction.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE &gt; value</td>
 <td>Number</td>
 <td>19, 2</td>
 <td>Specifies the amount of the transaction, this value may have two decimal digits (Ex. <code>10000.00</code> or <code>10000</code>).</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE &gt; currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
 <td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX</td>
 <td>Alphanumeric</td>
 <td>64</td>
 <td>Amount of the Value Added Tax (VAT).</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; value</td>
 <td>Number</td>
 <td>19, 2</td>
 <td>Specifies the amount of the VAT.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
 <td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE</td>
 <td>Alphanumeric</td>
 <td>64</td>
 <td>Base value to calculate the VAT.<br>If the amount does not have IVA, send 0.<br>This value may have two decimal digits.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; value</td>
 <td>Number</td>
 <td>19, 2</td>
 <td>Specifies the base amount of the transaction.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
 <td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
-</tr>
-<tr>
-<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX</td>
-<td>Alphanumeric</td>
-<td>64</td>
-<td>Amount of the Value Added Tax (VAT).</td>
-</tr>
-<tr>
-<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; value</td>
-<td>Number</td>
-<td>19, 2</td>
-<td>Specifies the amount of the VAT.</td>
-</tr>
-<tr>
-<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; currency</td>
-<td>Alphanumeric</td>
-<td>3</td>
-<td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
-</tr>
-<tr>
-<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE</td>
-<td>Alphanumeric</td>
-<td>64</td>
-<td>Base value to calculate the VAT.<br>If the amount does not have IVA, send 0.<br>This value may have two decimal digits.</td>
-</tr>
-<tr>
-<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; value</td>
-<td>Number</td>
-<td>19, 2</td>
-<td>Specifies the base amount of the transaction.</td>
-</tr>
-<tr>
-<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; currency</td>
-<td>Alphanumeric</td>
-<td>3</td>
-<td>ISO code of the currency. <a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer</td>
 <td></td>
 <td></td>
 <td>Payer information.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; emailAddress</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Payer e-mail address.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; merchantPayerId</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Identifier of the payer in your system.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; fullName</td>
 <td>Alphanumeric</td>
 <td>Max:150</td>
-<td>Name of the payer which must meet the name sent in the parameter &gt; creditCard &gt; name for credit card payments.</td>
+<td>Name of the payer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress</td>
 <td></td>
 <td></td>
 <td>Billing address.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; street1</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Billing Address Line 1.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; street2</td>
 <td>Alphanumeric</td>
 <td>Max:100</td>
 <td>Billing Address Line 2.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; city</td>
 <td>Alphanumeric</td>
 <td>Max:50</td>
 <td>Billing address city.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; state</td>
 <td>Alphanumeric</td>
 <td>Max:40</td>
 <td>Billing address state.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; country</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Billing address country in format ISO 3166 Alpha-2.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; postalCode</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Billing address zip code.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; billingAddress &gt; phone</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Billing address phone number.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; birthdate</td>
 <td>Alphanumeric</td>
 <td>Max:10</td>
-<td>Buyer&rsquo;s date of birth.</td>
+<td>Payer&rsquo;s date of birth.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; contactPhone</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
-<td>Buyer&rsquo;s phone number.</td>
+<td>Payer&rsquo;s phone number.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; dniNumber</td>
 <td>Alphanumeric</td>
 <td>Max:20</td>
 <td>Identification number of the buyer.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; payer &gt; dniType</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Identification type of the buyer. <a href="../../../docs/getting-started/response-codes-and-variables.html#document-types">See Document types</a>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; type</td>
 <td>Alphanumeric</td>
 <td>32</td>
 <td>As cash payments are performed in physical offices, the only available transaction type is <code>AUTHORIZATION_AND_CAPTURE</code></td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; paymentMethod</td>
 <td>Alphanumeric</td>
 <td>32</td>
 <td>Select a valid Payment Method in cash. <a href="../../../docs/getting-started/select-your-payment-method.html#Peru">See the available Payment Methods for Peru</a>.</td>
+<td></td>
 </tr>
 <tr>
 <td>transaction &gt; paymentCountry</td>
 <td>Alphanumeric</td>
 <td>2</td>
 <td>Set <code>PE</code> for Peru.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 <tr>
 <td>transaction &gt; expirationDate</td>
 <td>Alphanumeric</td>
 <td>23</td>
 <td>Maximum date and time that the payer has to make the payment. Format <code>YYYY-MM-DDTHH:MM:SS</code>, for example <code>2021-06-12T16:07:11.586</code>.</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; ipAddress</td>
 <td>Alphanumeric</td>
 <td>Max:39</td>
 <td>IP address of the device where the customer performs the transaction.</td>
+<td style="text-align:center">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -2744,6 +2859,13 @@
 <h4 id="considerations-2">Considerations</h4>
 <ul>
 <li>The parameter <code>transaction.expirationDate</code> is not mandatory. If you don&rsquo;t send this parameter, its default value for is seven (7) days after the current date.<br>If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.</li>
+<li>For cash payments, the following parameters are mandatory:
+<ul>
+<li><code>transaction.order.buyer.fullName</code></li>
+<li><code>transaction.payer.fullName</code></li>
+<li><code>transaction.payer.emailAddress</code> or <code>transaction.order.buyer.emailAddress</code>.</li>
+</ul>
+</li>
 <li>The parameter <code>transactionResponse.extraParameters</code> has the following parameters related to the transaction:
 <ul>
 <li><strong>REFERENCE</strong>: internal payment reference generated by PayU.</li>
@@ -3491,9 +3613,9 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-September 1, 2021:
+October 22, 2021:
 
- <b>Note for expiration date of the vouchers (53fa3b4)</b>
+ <b>Update mandatory parameters for Cash payments in Peru (859a4b25)</b>
 </div>
 </div>
 
