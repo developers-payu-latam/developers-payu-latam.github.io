@@ -23,7 +23,13 @@
       <description>
         
         
-        &lt;p&gt;In this topic, you find how to send data from one transaction to the PayU payment gateway. To do so, You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.&lt;/p&gt;
+        &lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/md5.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/sha1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/sha256.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/signature-generator.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;In this topic, you find how to send data from one transaction to the PayU payment gateway. To do so, You must generate an HTML form with the transaction data using the HTTP POST method and pointing it to our system.&lt;/p&gt;
 &lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Make sure you have the right &lt;code&gt;merchantId&lt;/code&gt;, &lt;code&gt;accountId&lt;/code&gt;, and &lt;code&gt;apiKey&lt;/code&gt;.&lt;/li&gt;
@@ -400,88 +406,50 @@ buyerEmail: test@test.com
 &lt;p&gt;Encrypted using &lt;code&gt;SHA256&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-HTML&#34; data-lang=&#34;HTML&#34;&gt;&amp;#34;af3899a22336b79db46006491d15813158826f944599bf3bf601e2327f898022&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;compare-your-signature&#34;&gt;Compare your signature&lt;/h3&gt;
-&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=../../../js/jquery-validate.bootstrap-tooltip.min.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/bootstrap.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/validations.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/md5.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/sha1.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/sha256.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/signature-generator.js&gt;&lt;/script&gt;
-&lt;script&gt;
-
-    var errApiKeyReq = &#34;Please enter the ApiKey&#34;
-    var errApiKeyMin = &#34;Please enter more than 5 digits&#34;
-    var errApiKeyMax = &#34;Please enter less than 32 digits&#34;
-    var errMerchantReq = &#34;Please enter the Merchant Id&#34;
-    var errMerchantMin = &#34;Please enter more than 5 digits&#34;
-    var errMerchantMax = &#34;Please enter less than 7 digits&#34;
-    var errMerchantPosi = &#34;Please enter a positive number&#34;
-    var errMerchantNum = &#34;Please enter just numbers&#34;
-    var errReferenceReq = &#34;Please enter the Reference Code&#34;
-    var errReferenceMin = &#34;Please enter the Reference Code&#34;
-    var errReferenceMax = &#34;Please enter less than 255 digits&#34;
-    var errAmountReq = &#34;Please enter the Amount&#34;
-    var errAmountMin = &#34;Please enter the Amount&#34;
-    var errAmountMax = &#34;Please enter less than 14 digits&#34;
-    var errAmountPosi = &#34;Please enter a positive number&#34;
-    var errAmountNum = &#34;Please enter just numbers&#34;
-    var errCurrReq = &#34;Please enter a valid Currency in format ISO 4217&#34;
-    var errCurrMin = &#34;Please enter more than 3 digits&#34;
-    var errCurrMax = &#34;Please enter less than 3 digits&#34;
-    var errTsReq = &#34;Please enter the transaction code&#34;
-    var errTsMin = &#34;Please enter the transaction code&#34;
-    var errTsMax = &#34;Please enter the transaction code less than 3 digits&#34;
-    var errSpReq = &#34;Please enter the transaction code&#34;
-    var errSpMin = &#34;Please enter the transaction code&#34;
-    var errSpMax = &#34;Please enter the transaction code less than 1 digit&#34;
-
-&lt;/script&gt;
-
+&lt;!-- Signature generator --&gt;
 &lt;div id=&#34;blue-box&#34;&gt;
 &lt;span class=&#34;grey-text-13&#34;&gt;
 &lt;div id = &#34;div_generador&#34; &gt;
-
 &lt;form method=&#34;POST&#34; id=&#34;signature_form&#34; &gt;
-&lt;table&gt;
-    &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Algorithm: &amp;nbsp;&lt;/b&gt;&lt;/span&gt;
-    &lt;select id = &#34;signature_algorithm&#34; class=&#34;calc_selector form_control&#34;&gt;
-        &lt;option  value=&#34;md5&#34;&gt;MD5&lt;/option&gt;
-        &lt;option  value=&#34;sha1&#34;&gt;SHA1&lt;/option&gt;
-        &lt;option  value=&#34;sha256&#34;&gt;SHA256&lt;/option&gt;
-    &lt;/select&gt;
+    &lt;table&gt;
+        &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Algorithm: &amp;nbsp;&lt;/b&gt;&lt;/span&gt;
+        &lt;select id = &#34;signature_algorithm&#34; class=&#34;calc_selector form_control&#34;&gt;
+            &lt;option  value=&#34;md5&#34;&gt;MD5&lt;/option&gt;
+            &lt;option  value=&#34;sha1&#34;&gt;SHA1&lt;/option&gt;
+            &lt;option  value=&#34;sha256&#34;&gt;SHA256&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;span class=&#34;calc_text&#34;&gt;&amp;nbsp;(&lt;/span&gt;
+        &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_apikey&#34; name = &#34;signature_apikey&#34; placeholder=&#34;ApiKey&#34; maxlength=&#34;26&#34;&gt; ~
+        &lt;input class=&#34;form_control number&#34; type=&#34;text&#34;  id =&#34;signature_merchanId&#34; name = &#34;signature_merchanId&#34; placeholder=&#34;MerchantId&#34; maxlength=&#34;7&#34;&gt; ~
+        &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_referenceCode&#34; name = &#34;signature_referenceCode&#34; placeholder=&#34;Reference&#34; maxlength=&#34;255&#34;&gt; ~
+        &lt;input class=&#34;form_control  number&#34; type=&#34;text&#34; id =&#34;signature_amount&#34; name = &#34;signature_amount&#34; placeholder=&#34;Amount&#34; maxlength=&#34;14&#34;&gt; ~
+        &lt;select id = &#34;signature_currency&#34; class=&#34;calc_selector form_control&#34; &gt;
+            &lt;option  value=&#34;USD&#34;&gt;USD&lt;/option&gt;
+            &lt;option  value=&#34;COP&#34;&gt;COP&lt;/option&gt;
+            &lt;option  value=&#34;MXN&#34;&gt;MXN&lt;/option&gt;
+            &lt;option  value=&#34;ARS&#34;&gt;ARS&lt;/option&gt;
+            &lt;option  value=&#34;PEN&#34;&gt;PEN&lt;/option&gt;
+            &lt;option  value=&#34;BRL&#34;&gt;BRL&lt;/option&gt;
+            &lt;option  value=&#34;CLP&#34;&gt;CLP&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;span class=&#34;calc_text&#34;&gt;)&lt;/span&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Result:&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;input class=&#34;form_control&#34; id =&#34;signature_generated&#34; name = &#34;signature_generated&#34; value = &#34;&#34;  readonly /&gt;
+    &lt;/table&gt;
     &lt;br&gt;
-    &lt;br&gt;
-    &lt;span class=&#34;calc_text&#34;&gt;&amp;nbsp;(&lt;/span&gt;
-    &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_apikey&#34; name = &#34;signature_apikey&#34; placeholder=&#34;ApiKey&#34; maxlength=&#34;26&#34;&gt; ~
-    &lt;input class=&#34;form_control number&#34; type=&#34;text&#34;  id =&#34;signature_merchanId&#34; name = &#34;signature_merchanId&#34; placeholder=&#34;MerchantId&#34; maxlength=&#34;7&#34;&gt; ~
-    &lt;input class=&#34;form_control&#34; type=&#34;text&#34;  id =&#34;signature_referenceCode&#34; name = &#34;signature_referenceCode&#34; placeholder=&#34;Reference&#34; maxlength=&#34;255&#34;&gt; ~
-    &lt;input class=&#34;form_control  number&#34; type=&#34;text&#34; id =&#34;signature_amount&#34; name = &#34;signature_amount&#34; placeholder=&#34;Amount&#34; maxlength=&#34;14&#34;&gt; ~
-    &lt;select id = &#34;signature_currency&#34; class=&#34;calc_selector form_control&#34; &gt;
-        &lt;option  value=&#34;USD&#34;&gt;USD&lt;/option&gt;
-        &lt;option  value=&#34;COP&#34;&gt;COP&lt;/option&gt;
-        &lt;option  value=&#34;MXN&#34;&gt;MXN&lt;/option&gt;
-        &lt;option  value=&#34;ARS&#34;&gt;ARS&lt;/option&gt;
-        &lt;option  value=&#34;PEN&#34;&gt;PEN&lt;/option&gt;
-        &lt;option  value=&#34;BRL&#34;&gt;BRL&lt;/option&gt;
-        &lt;option  value=&#34;CLP&#34;&gt;CLP&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;span class=&#34;calc_text&#34;&gt;)&lt;/span&gt;
-    &lt;br&gt;
-    &lt;br&gt;
-    &lt;br&gt;
-    &lt;span class=&#34;blue-text-13&#34;&gt;&lt;b&gt;Result:&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;input class=&#34;form_control&#34; id =&#34;signature_generated&#34; name = &#34;signature_generated&#34; value = &#34;&#34;  readonly /&gt;
-&lt;/table&gt;
-&lt;br&gt;
-&lt;table width=&#34;50%&#34;  border=&#34;0&#34; cellspacing=&#34;2&#34; cellpadding=&#34;2&#34;&gt;
-    &lt;input type=&#34;button&#34; name=&#34;signature_generate&#34; id=&#34;signature_generate&#34; value=&#34;Generate signature&#34; &gt;
-    &lt;input type=&#34;button&#34; name=&#34;signature_generate_again&#34; id=&#34;signature_generate_again&#34; value=&#34;Generate new signature&#34; &gt;
-&lt;/table&gt;
+    &lt;table width=&#34;50%&#34;  border=&#34;0&#34; cellspacing=&#34;2&#34; cellpadding=&#34;2&#34;&gt;
+        &lt;input type=&#34;button&#34; name=&#34;signature_generate&#34; id=&#34;signature_generate&#34; value=&#34;Generate signature&#34; &gt;
+        &lt;input type=&#34;button&#34; name=&#34;signature_generate_again&#34; id=&#34;signature_generate_again&#34; value=&#34;Generate new signature&#34; &gt;
+    &lt;/table&gt;
 &lt;/form&gt;
 &lt;/div&gt;
 &lt;/span&gt;
 &lt;/div&gt;
+&lt;!-- End of signature generator --&gt;
 &lt;p&gt;This calculator lets you generate the signature using any of the available encryption methods.&lt;/p&gt;
 
       </description>
@@ -496,7 +464,13 @@ buyerEmail: test@test.com
       <description>
         
         
-        &lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
+        &lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/md5.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/sha1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/sha256.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/signature-generator.js&#34;&gt;&lt;/script&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Some hosting providers have settings that do not allow sending URLs as parameter values. Example: &lt;code&gt;&amp;amp;merchant_url=http%3A%2F%2Fwww.myshop.com&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;For Brazil accounts, there is no redirection to the response page.&lt;/li&gt;
@@ -546,7 +520,7 @@ If you want that PayU always shows the transaction information, do not send any 
 &lt;td&gt;risk&lt;/td&gt;
 &lt;td&gt;Decimal (#.00)&lt;/td&gt;
 &lt;td&gt;—&lt;/td&gt;
-&lt;td&gt;Risk associated with the transaction. Values between 0 and 1.&lt;br&gt;The higher value, the greater the risk.&lt;b&gt;Format &lt;code&gt;###.00&lt;/code&gt;.&lt;/td&gt;
+&lt;td&gt;Risk associated with the transaction. Values between 0 and 1.&lt;br&gt;The higher value, the greater the risk.&lt;br&gt;Format &lt;code&gt;###.00&lt;/code&gt;.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -574,14 +548,14 @@ If you want that PayU always shows the transaction information, do not send any 
 &lt;td&gt;signature&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;255&lt;/td&gt;
-&lt;td&gt;Digital signature created for each one of the transactions&lt;/td&gt;
+&lt;td&gt;Digital signature created for each one of the transactions.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;polPaymentMethod&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;255&lt;/td&gt;
-&lt;td&gt;Internal identifier of the used payment methods&lt;/td&gt;
+&lt;td&gt;Internal identifier of the used payment methods.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -616,7 +590,7 @@ If you want that PayU always shows the transaction information, do not send any 
 &lt;td&gt;buyerEmail&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;255&lt;/td&gt;
-&lt;td&gt;Field that contains the buyer’s e-mail to notify the result of the transaction. It is recommended to validate it when the data is taken on a form&lt;/td&gt;
+&lt;td&gt;Field that contains the buyer’s e-mail to notify the result of the transaction. It is recommended to validate it when the data is taken on a form.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -630,7 +604,7 @@ If you want that PayU always shows the transaction information, do not send any 
 &lt;td&gt;currency&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;The respective currency in which the payment is made. The reconciliation process is performed in pesos at the representative rate of the day.&lt;/td&gt;
+&lt;td&gt;The respective currency in which the payment is made. The reconciliation process is performed in Colombian pesos at the representative rate of the day.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -663,7 +637,7 @@ If you want that PayU always shows the transaction information, do not send any 
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;lapResponseCode&lt;/td&gt;
-&lt;td&gt;Alfa numéric&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;64&lt;/td&gt;
 &lt;td&gt;Response code that PayU delivers.&lt;br&gt;&lt;a href=&#34;../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page&#34;&gt;See the responses codes in the given column&lt;/a&gt;.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;—&lt;/td&gt;
@@ -840,7 +814,7 @@ If you want that PayU always shows the transaction information, do not send any 
 &lt;td&gt;cc_number&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;—&lt;/td&gt;
-&lt;td&gt;Credit card number. PAN&lt;/td&gt;
+&lt;td&gt;Credit card number.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;VISANET Peru&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1024,45 +998,7 @@ MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = 779f163be9347a69
 
 signature = 779f163be9347a691bcdb25064644795 
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;compare-your-signature&#34;&gt;Compare your signature&lt;/h3&gt;
-&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=../../../js/jquery-validate.bootstrap-tooltip.min.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/bootstrap.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/validations.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/md5.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/sha1.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/sha256.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/signature-generator.js&gt;&lt;/script&gt;
-&lt;script&gt;
-
-    var errApiKeyReq = &#34;Please enter the ApiKey&#34;
-    var errApiKeyMin = &#34;Please enter more than 5 digits&#34;
-    var errApiKeyMax = &#34;Please enter less than 32 digits&#34;
-    var errMerchantReq = &#34;Please enter the Merchant Id&#34;
-    var errMerchantMin = &#34;Please enter more than 5 digits&#34;
-    var errMerchantMax = &#34;Please enter less than 7 digits&#34;
-    var errMerchantPosi = &#34;Please enter a positive number&#34;
-    var errMerchantNum = &#34;Please enter just numbers&#34;
-    var errReferenceReq = &#34;Please enter the Reference Code&#34;
-    var errReferenceMin = &#34;Please enter the Reference Code&#34;
-    var errReferenceMax = &#34;Please enter less than 255 digits&#34;
-    var errAmountReq = &#34;Please enter the Amount&#34;
-    var errAmountMin = &#34;Please enter the Amount&#34;
-    var errAmountMax = &#34;Please enter less than 14 digits&#34;
-    var errAmountPosi = &#34;Please enter a positive number&#34;
-    var errAmountNum = &#34;Please enter just numbers&#34;
-    var errCurrReq = &#34;Please enter a valid Currency in format ISO 4217&#34;
-    var errCurrMin = &#34;Please enter more than 3 digits&#34;
-    var errCurrMax = &#34;Please enter less than 3 digits&#34;
-    var errTsReq = &#34;Please enter the transaction code&#34;
-    var errTsMin = &#34;Please enter the transaction code&#34;
-    var errTsMax = &#34;Please enter the transaction code less than 3 digits&#34;
-    var errSpReq = &#34;Please enter the transaction code&#34;
-    var errSpMin = &#34;Please enter the transaction code&#34;
-    var errSpMax = &#34;Please enter the transaction code less than 1 digit&#34;
-
-&lt;/script&gt;
-
+&lt;!-- Signatue generator - response page --&gt;
 &lt;div id=&#34;blue-box&#34;&gt;
 &lt;span class=&#34;grey-text-13&#34;&gt;
 &lt;div&gt;
@@ -1112,6 +1048,7 @@ signature = 779f163be9347a691bcdb25064644795
 &lt;/div&gt;
 &lt;/span&gt;
 &lt;/div&gt;
+&lt;!-- End of signature generator - response page --&gt;
 &lt;p&gt;This calculator lets you generate the signature using any of the available encryption methods.&lt;/p&gt;
 
       </description>
@@ -1126,7 +1063,13 @@ signature = 779f163be9347a691bcdb25064644795
       <description>
         
         
-        &lt;p&gt;The confirmation page lets you update the databases in your system; hence, this page should not include HTML code as it&amp;rsquo;s not visible to the buyer. This page is optional; when a transaction is complete (i.e., when approved, rejected, or when canceled) our platform sends the variables via the HTTP POST method.&lt;/p&gt;
+        &lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/md5.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/sha1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/sha256.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../js/signature-generator/signature-generator.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;The confirmation page lets you update the databases in your system; hence, this page should not include HTML code as it&amp;rsquo;s not visible to the buyer. This page is optional; when a transaction is complete (i.e., when approved, rejected, or when canceled) our platform sends the variables via the HTTP POST method.&lt;/p&gt;
 &lt;p&gt;In the confirmation page, you must capture the data you want to store in the database. This capture depends on the programming language you use.&lt;/p&gt;
 &lt;h2 id=&#34;considerations&#34;&gt;Considerations&lt;/h2&gt;
 &lt;ul&gt;
@@ -1168,7 +1111,7 @@ signature = 779f163be9347a691bcdb25064644795
 &lt;td&gt;risk&lt;/td&gt;
 &lt;td&gt;Decimal (#.00)&lt;/td&gt;
 &lt;td&gt;—&lt;/td&gt;
-&lt;td&gt;Risk associated with the transaction. Values between 0 and 1.&lt;br&gt;The higher value, the greater the risk.&lt;b&gt;Format &lt;code&gt;###.00&lt;/code&gt;.&lt;/td&gt;
+&lt;td&gt;Risk associated with the transaction. Values between 0 and 1.&lt;br&gt;The higher value, the greater the risk.&lt;br&gt;Format &lt;code&gt;###.00&lt;/code&gt;.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;response_code_pol&lt;/td&gt;
@@ -1198,13 +1141,13 @@ signature = 779f163be9347a691bcdb25064644795
 &lt;td&gt;extra1&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;255&lt;/td&gt;
-&lt;td&gt;Additional field to send information about the purchase. For example, description of the purchase if you would like to display it on the confirmation page&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;extra2&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;255&lt;/td&gt;
-&lt;td&gt;Additional field to send information about the purchase. For example, internal codes of the products&lt;/td&gt;
+&lt;td&gt;Additional field to send information about the purchase.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;payment_method&lt;/td&gt;
@@ -1602,45 +1545,7 @@ MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU05~150.26~USD~4) = 1d95778a651e11a
 
 sign = 1d95778a651e11a0ab93c2169a519cd6 
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;compare-your-signature&#34;&gt;Compare your signature&lt;/h3&gt;
-&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js&#34;&gt;&lt;/script&gt;
-&lt;script src=../../../js/jquery-validate.bootstrap-tooltip.min.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/bootstrap.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/validations.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/md5.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/sha1.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/sha256.js&gt;&lt;/script&gt;
-&lt;script src=../../../js/signature-generator/signature-generator.js&gt;&lt;/script&gt;
-&lt;script&gt;
-
-    var errApiKeyReq = &#34;Please enter the ApiKey&#34;
-    var errApiKeyMin = &#34;Please enter more than 5 digits&#34;
-    var errApiKeyMax = &#34;Please enter less than 32 digits&#34;
-    var errMerchantReq = &#34;Please enter the Merchant Id&#34;
-    var errMerchantMin = &#34;Please enter more than 5 digits&#34;
-    var errMerchantMax = &#34;Please enter less than 7 digits&#34;
-    var errMerchantPosi = &#34;Please enter a positive number&#34;
-    var errMerchantNum = &#34;Please enter just numbers&#34;
-    var errReferenceReq = &#34;Please enter the Reference Code&#34;
-    var errReferenceMin = &#34;Please enter the Reference Code&#34;
-    var errReferenceMax = &#34;Please enter less than 255 digits&#34;
-    var errAmountReq = &#34;Please enter the Amount&#34;
-    var errAmountMin = &#34;Please enter the Amount&#34;
-    var errAmountMax = &#34;Please enter less than 14 digits&#34;
-    var errAmountPosi = &#34;Please enter a positive number&#34;
-    var errAmountNum = &#34;Please enter just numbers&#34;
-    var errCurrReq = &#34;Please enter a valid Currency in format ISO 4217&#34;
-    var errCurrMin = &#34;Please enter more than 3 digits&#34;
-    var errCurrMax = &#34;Please enter less than 3 digits&#34;
-    var errTsReq = &#34;Please enter the transaction code&#34;
-    var errTsMin = &#34;Please enter the transaction code&#34;
-    var errTsMax = &#34;Please enter the transaction code less than 3 digits&#34;
-    var errSpReq = &#34;Please enter the transaction code&#34;
-    var errSpMin = &#34;Please enter the transaction code&#34;
-    var errSpMax = &#34;Please enter the transaction code less than 1 digit&#34;
-
-&lt;/script&gt;
-
+&lt;!-- Signature generator - confirmation page --&gt;
 &lt;div id=&#34;blue-box&#34;&gt;
 &lt;span class=&#34;grey-text-13&#34;&gt;
 &lt;div&gt;
@@ -1688,6 +1593,7 @@ sign = 1d95778a651e11a0ab93c2169a519cd6
 &lt;/div&gt;
 &lt;/span&gt;
 &lt;/div&gt;
+&lt;!-- End of signature generator - confirmation page --&gt;
 &lt;p&gt;This calculator lets you generate the signature using any of the available encryption methods.&lt;/p&gt;
 &lt;h2 id=&#34;payment-retries&#34;&gt;Payment retries&lt;/h2&gt;
 &lt;p&gt;When a transaction is rejected, the payer has the option to retry the payment using the same payment method or another. Keep in mind that for each attempt, PayU makes the call to the confirmation page with the corresponding transaction status.&lt;/p&gt;

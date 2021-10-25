@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/webcheckout-integration/response-page.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T12:15:39-05:00" />
-<meta property="article:modified_time" content="2021-10-22T10:15:41-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-25T10:30:48-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Response Page">
 <meta itemprop="description" content="The Response page is a mandatory page and lets you show the result of the transaction to the payer. Our system redirects the payer to this page once the transaction has been performed. The data with the payment results is sent to your system via HTTP GET method.&lt;/br&gt;This page is invoked for all the transaction states: approved, rejected, in validation, awaiting payment (for cash), etc.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:39-05:00" />
-<meta itemprop="dateModified" content="2021-10-22T10:15:41-05:00" />
-<meta itemprop="wordCount" content="1621">
+<meta itemprop="dateModified" content="2021-10-25T10:30:48-05:00" />
+<meta itemprop="wordCount" content="1406">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Response Page"/>
 <meta name="twitter:description" content="The Response page is a mandatory page and lets you show the result of the transaction to the payer. Our system redirects the payer to this page once the transaction has been performed. The data with the payment results is sent to your system via HTTP GET method.&lt;/br&gt;This page is invoked for all the transaction states: approved, rejected, in validation, awaiting payment (for cash), etc.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.d798365be6bdf1596741a1e42406e4d0c2c41829b9f4d7431a921ddbe234b04e0fbc61241ebe2198f88a13ceb34487facee539dcdce4a5c34b7c858c12e633a8.json"
+  data-offline-search-index-json-src="../../../offline-search-index.19e1695181353beb8dbf88080f7f4673f2f697427b3d00ed2300fadb90d9e6e57f00d265ac8cc0b9701faf2de005bbd18313cd23e20563afddebf8617276b424.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -759,7 +759,13 @@
 	<h1>Response Page</h1>
     <div class="lead">The Response page is a mandatory page and lets you show the result of the transaction to the payer. Our system redirects the payer to this page once the transaction has been performed. The data with the payment results is sent to your system via HTTP GET method.</br>This page is invoked for all the transaction states: approved, rejected, in validation, awaiting payment (for cash), etc.</div>
 	       
-	<h2 id="considerations">Considerations</h2>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="../../../js/signature-generator/md5.js"></script>
+<script src="../../../js/signature-generator/sha1.js"></script>
+<script src="../../../js/signature-generator/sha256.js"></script>
+<script src="../../../js/signature-generator/signature-generator.js"></script>
+<h2 id="considerations">Considerations</h2>
 <ul>
 <li>Some hosting providers have settings that do not allow sending URLs as parameter values. Example: <code>&amp;merchant_url=http%3A%2F%2Fwww.myshop.com</code></li>
 <li>For Brazil accounts, there is no redirection to the response page.</li>
@@ -809,7 +815,7 @@ If you want that PayU always shows the transaction information, do not send any 
 <td>risk</td>
 <td>Decimal (#.00)</td>
 <td>—</td>
-<td>Risk associated with the transaction. Values between 0 and 1.<br>The higher value, the greater the risk.<b>Format <code>###.00</code>.</td>
+<td>Risk associated with the transaction. Values between 0 and 1.<br>The higher value, the greater the risk.<br>Format <code>###.00</code>.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -837,14 +843,14 @@ If you want that PayU always shows the transaction information, do not send any 
 <td>signature</td>
 <td>Alphanumeric</td>
 <td>255</td>
-<td>Digital signature created for each one of the transactions</td>
+<td>Digital signature created for each one of the transactions.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
 <td>polPaymentMethod</td>
 <td>Alphanumeric</td>
 <td>255</td>
-<td>Internal identifier of the used payment methods</td>
+<td>Internal identifier of the used payment methods.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -879,7 +885,7 @@ If you want that PayU always shows the transaction information, do not send any 
 <td>buyerEmail</td>
 <td>Alphanumeric</td>
 <td>255</td>
-<td>Field that contains the buyer’s e-mail to notify the result of the transaction. It is recommended to validate it when the data is taken on a form</td>
+<td>Field that contains the buyer’s e-mail to notify the result of the transaction. It is recommended to validate it when the data is taken on a form.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -893,7 +899,7 @@ If you want that PayU always shows the transaction information, do not send any 
 <td>currency</td>
 <td>Alphanumeric</td>
 <td>3</td>
-<td>The respective currency in which the payment is made. The reconciliation process is performed in pesos at the representative rate of the day.</td>
+<td>The respective currency in which the payment is made. The reconciliation process is performed in Colombian pesos at the representative rate of the day.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -926,7 +932,7 @@ If you want that PayU always shows the transaction information, do not send any 
 </tr>
 <tr>
 <td>lapResponseCode</td>
-<td>Alfa numéric</td>
+<td>Alphanumeric</td>
 <td>64</td>
 <td>Response code that PayU delivers.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page">See the responses codes in the given column</a>.</td>
 <td style="text-align:center">—</td>
@@ -1103,7 +1109,7 @@ If you want that PayU always shows the transaction information, do not send any 
 <td>cc_number</td>
 <td>Alphanumeric</td>
 <td>—</td>
-<td>Credit card number. PAN</td>
+<td>Credit card number.</td>
 <td style="text-align:center">VISANET Peru</td>
 </tr>
 <tr>
@@ -1287,45 +1293,7 @@ MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = 779f163be9347a69
 
 signature = 779f163be9347a691bcdb25064644795 
 </code></pre><h3 id="compare-your-signature">Compare your signature</h3>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
-<script src=../../../js/jquery-validate.bootstrap-tooltip.min.js></script>
-<script src=../../../js/bootstrap.js></script>
-<script src=../../../js/signature-generator/validations.js></script>
-<script src=../../../js/signature-generator/md5.js></script>
-<script src=../../../js/signature-generator/sha1.js></script>
-<script src=../../../js/signature-generator/sha256.js></script>
-<script src=../../../js/signature-generator/signature-generator.js></script>
-<script>
-
-    var errApiKeyReq = "Please enter the ApiKey"
-    var errApiKeyMin = "Please enter more than 5 digits"
-    var errApiKeyMax = "Please enter less than 32 digits"
-    var errMerchantReq = "Please enter the Merchant Id"
-    var errMerchantMin = "Please enter more than 5 digits"
-    var errMerchantMax = "Please enter less than 7 digits"
-    var errMerchantPosi = "Please enter a positive number"
-    var errMerchantNum = "Please enter just numbers"
-    var errReferenceReq = "Please enter the Reference Code"
-    var errReferenceMin = "Please enter the Reference Code"
-    var errReferenceMax = "Please enter less than 255 digits"
-    var errAmountReq = "Please enter the Amount"
-    var errAmountMin = "Please enter the Amount"
-    var errAmountMax = "Please enter less than 14 digits"
-    var errAmountPosi = "Please enter a positive number"
-    var errAmountNum = "Please enter just numbers"
-    var errCurrReq = "Please enter a valid Currency in format ISO 4217"
-    var errCurrMin = "Please enter more than 3 digits"
-    var errCurrMax = "Please enter less than 3 digits"
-    var errTsReq = "Please enter the transaction code"
-    var errTsMin = "Please enter the transaction code"
-    var errTsMax = "Please enter the transaction code less than 3 digits"
-    var errSpReq = "Please enter the transaction code"
-    var errSpMin = "Please enter the transaction code"
-    var errSpMax = "Please enter the transaction code less than 1 digit"
-
-</script>
-
+<!-- Signatue generator - response page -->
 <div id="blue-box">
 <span class="grey-text-13">
 <div>
@@ -1375,6 +1343,7 @@ signature = 779f163be9347a691bcdb25064644795
 </div>
 </span>
 </div>
+<!-- End of signature generator - response page -->
 <p>This calculator lets you generate the signature using any of the available encryption methods.</p>
 
 	
@@ -1382,9 +1351,9 @@ signature = 779f163be9347a691bcdb25064644795
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 22, 2021:
+October 25, 2021:
 
- <b>Update mandatory parameters for Cash payments in Peru (859a4b25)</b>
+ <b>URL fixing (d1215f66)</b>
 </div>
 </div>
 
