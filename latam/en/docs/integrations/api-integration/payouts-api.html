@@ -27,12 +27,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/payouts-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-08-09T14:58:45-05:00" />
-<meta property="article:modified_time" content="2021-10-27T10:55:42-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-27T16:48:07-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payouts API">
 <meta itemprop="description" content="This feature allows you to create multiple and secure payments for payees (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
 "><meta itemprop="datePublished" content="2021-08-09T14:58:45-05:00" />
-<meta itemprop="dateModified" content="2021-10-27T10:55:42-05:00" />
+<meta itemprop="dateModified" content="2021-10-27T16:48:07-05:00" />
 <meta itemprop="wordCount" content="3040">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payouts API"/>
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.6fdcd7451659079c848cc938a708c6a8780bbf5bb6d06e6b3665543446fbefc78237877279b579a6eda8ac626b2207a23cff14f2111c343c7b6186e71d450f02.json"
+  data-offline-search-index-json-src="../../../offline-search-index.38edbcb4b0d8bf9e12db02bbd3920b9931ebab01f83eb5df856ec565c0422be34b68fdd51698d484e4fc82e43fdeeb8ce350caa1e7957f5f1fff1fdc36393979.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -809,7 +809,7 @@
 <h2 id="configuring-the-authentication">Configuring the authentication</h2>
 <p>To use the methods to manage Payouts or WebHooks exposed by the Payouts service, you must include the <code>Authorization</code> and <code>PublicKey</code> headers:</p>
 <ul>
-<li>To configure the <code>Authorization</code> header, call the <a href="../../../docs/integrations/api-integration/payouts-api.html#authentication">authentication method</a> provided by the Payouts service. <br>Example:</li>
+<li>To configure the <code>Authorization</code> header, call the <a href="#authentication">authentication method</a> provided by the Payouts service. <br>Example:</li>
 </ul>
 <pre><code>Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c 
 </code></pre><br>
@@ -820,13 +820,13 @@
 <h2 id="available-methods">Available methods</h2>
 <p>Payouts API includes the following methods:</p>
 <ul>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#authentication">Authentication</a></li>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#request-payout">Request payout</a></li>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#update-payout-request">Update payout request</a></li>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#cancel-payout-request">Cancel payout request</a></li>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#create-or-update-a-webhook">Create or update a WebHook</a></li>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#delete-a-webhook">Delete a WebHook</a></li>
-<li><a href="../../../docs/integrations/api-integration/payouts-api.html#query-webhooks">Query WebHooks</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#request-payout">Request payout</a></li>
+<li><a href="#update-payout-request">Update payout request</a></li>
+<li><a href="#cancel-payout-request">Cancel payout request</a></li>
+<li><a href="#create-or-update-a-transfershook">Create or update a WebHook</a></li>
+<li><a href="#delete-a-transfershook">Delete a WebHook</a></li>
+<li><a href="#query-transfershooks">Query WebHooks</a></li>
 </ul>
 <h2 id="authentication">Authentication</h2>
 <p>The first step regardless of the method you want to request is to authenticate your account using the credentials provided by PayU.</p>
@@ -836,7 +836,7 @@
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
 <span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/authenticate?accountId={accountId}&amp;apiKey={apiKey}&amp;apiLogin={apiLogin}
 </span></code></pre></div><br>
-<p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</p>
+<p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
 <thead>
 <tr>
@@ -930,7 +930,7 @@
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-You need to include two headers to use this method, refer to <a href="../../../docs/integrations/api-integration/payouts-api.html#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
+You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
 <h3 id="api-call-1">API Call</h3>
@@ -938,7 +938,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
 <span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/{merchantId}/{accountId}
 </span></code></pre></div><br>
-<p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</p>
+<p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
 <thead>
 <tr>
@@ -1482,7 +1482,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-You need to include two headers to use this method, refer to <a href="../../../docs/integrations/api-integration/payouts-api.html#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
+You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
 <h3 id="api-call-2">API Call</h3>
@@ -1492,9 +1492,9 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </span></code></pre></div><br>
 <p>Where:</p>
 <ul>
-<li>The value for the variable <code>{env-api}</code> is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</li>
+<li>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</li>
 <li>The value for the variable <code>{merchantId}</code> is the identifier of your commerce in PayU.</li>
-<li>The value for the variable <code>{bankAccountId}</code> is the payee Id returned by the <a href="../../../docs/integrations/api-integration/payouts-api.html#request-payout">Request payout service</a></li>
+<li>The value for the variable <code>{bankAccountId}</code> is the payee Id returned by the <a href="#request-payout">Request payout service</a></li>
 </ul>
 <h3 id="variables-for-request">Variables for request</h3>
 <div class="variables"></div>
@@ -1606,7 +1606,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-You need to include two headers to use this method, refer to <a href="../../../docs/integrations/api-integration/payouts-api.html#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
+You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
 <h3 id="api-call-3">API Call</h3>
@@ -1616,9 +1616,9 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </span></code></pre></div><br>
 <p>Where:</p>
 <ul>
-<li>The value for the variable <code>{env-api}</code> is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</li>
+<li>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</li>
 <li>The value for the variable <code>{merchantId}</code> is the identifier of your commerce in PayU.</li>
-<li>The value for the variable <code>{paymentOrderId}</code> is the Payout id generated when the order was created by the <a href="../../../docs/integrations/api-integration/payouts-api.html#request-payout">Request payout service</a></li>
+<li>The value for the variable <code>{paymentOrderId}</code> is the Payout id generated when the order was created by the <a href="#request-payout">Request payout service</a></li>
 </ul>
 <h3 id="variables-for-request-1">Variables for request</h3>
 <div class="variables"></div>
@@ -1736,7 +1736,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-You need to include two headers to use this method, refer to <a href="../../../docs/integrations/api-integration/payouts-api.html#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
+You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
 <h3 id="api-call-4">API Call</h3>
@@ -1754,7 +1754,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </span></code></pre></div><br>
 <p>Where:</p>
 <ul>
-<li>The value for the variable <code>{env-api}</code> is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</li>
+<li>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</li>
 </ul>
 <h3 id="variables-for-request-and-response-1">Variables for request and response</h3>
 <details>
@@ -1973,7 +1973,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-You need to include two headers to use this method, refer to <a href="../../../docs/integrations/api-integration/payouts-api.html#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
+You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
 <h3 id="api-call-5">API Call</h3>
@@ -1983,7 +1983,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </span></code></pre></div><br>
 <p>Where:</p>
 <ul>
-<li>The value for the variable <code>{env-api}</code> is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</li>
+<li>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</li>
 <li><code>{id}</code> is the id of the WebHook you want to delete.</li>
 </ul>
 <h4 id="response-example-1">Response example</h4>
@@ -2086,7 +2086,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-You need to include two headers to use this method, refer to <a href="../../../docs/integrations/api-integration/payouts-api.html#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
+You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
 <h3 id="query-webhooks-by-id">Query WebHooks by Id</h3>
@@ -2096,7 +2096,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </span></code></pre></div><br>
 <p>Where:</p>
 <ul>
-<li>The value for the variable <code>{env-api}</code> is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</li>
+<li>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</li>
 <li><code>{id}</code> is the id of the WebHook you want to consult.</li>
 </ul>
 <h4 id="response-example-2">Response example</h4>
@@ -2244,7 +2244,7 @@ You need to include two headers to use this method, refer to <a href="../../../d
 </span></code></pre></div><br>
 <p>Where:</p>
 <ul>
-<li>The value for the variable <code>{env-api}</code> is <code>sandbox-web</code> for testing and <code>web</code> for production mode.</li>
+<li>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</li>
 <li><code>{accountId}</code> is the id of your account.</li>
 </ul>
 <h4 id="response-example-3">Response example</h4>
@@ -2408,7 +2408,7 @@ Last modified
 
 October 27, 2021:
 
- <b>Payouts API for merchants (fdb151fd)</b>
+ <b>URL updated (6620d9a6)</b>
 </div>
 </div>
 
