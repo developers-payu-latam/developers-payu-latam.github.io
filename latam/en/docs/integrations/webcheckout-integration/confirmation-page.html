@@ -27,12 +27,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/webcheckout-integration/confirmation-page.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T12:15:57-05:00" />
-<meta property="article:modified_time" content="2021-10-25T11:01:08-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-27T10:56:04-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Confirmation Page">
 <meta itemprop="description" content="This page allows you to get system confirmations related with the transaction results. You can update your system&#39;s inventories, orders, or databases. This page is not visible to the customer and its goal is to enable communication between systems. The data is sent via the HTTP POST method. &lt;/br&gt;If the payer generates payment retries during the payment process, a confirmation page is generated for each transaction. This page is invoked for approved and rejected states.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:57-05:00" />
-<meta itemprop="dateModified" content="2021-10-25T11:01:08-05:00" />
+<meta itemprop="dateModified" content="2021-10-27T10:56:04-05:00" />
 <meta itemprop="wordCount" content="1415">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Confirmation Page"/>
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.ce3614a07f700d20ffc6fae603062a8ee57fd48ce785b2b6c37a4b1f870087d796160210bcbf07f1b776c049b00ac59dbbf1d7188a51cc79a150e55424ec040c.json"
+  data-offline-search-index-json-src="../../../offline-search-index.c17955739c583e6340de3914fc7d701fbf674af4671b5343530ae56b36ae2573c7a218018eead170503647c4409c13654c2ecbe87030f3cfdf55d06c0ec0b40b.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -263,6 +263,12 @@
       
       
         <a id="/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicesrefundshtml" href="../../../docs/services/refunds.html">Void and Refunds</a>
+      
+      
+      
+      
+      
+        <a id="/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-docsservicespayoutshtml" href="../../../docs/services/payouts.html">Payouts</a>
       
       
     </li>
@@ -540,6 +546,12 @@
         <a id="/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationrefunds-apihtml" href="../../../docs/integrations/api-integration/refunds-api.html">Voids and Refunds API</a>
       
       
+      
+      
+      
+        <a id="/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-docsintegrationsapi-integrationpayouts-apihtml" href="../../../docs/integrations/api-integration/payouts-api.html">Payouts API</a>
+      
+      
     </li>
   </ul>
   
@@ -770,7 +782,7 @@
 <p>In the confirmation page, you must capture the data you want to store in the database. This capture depends on the programming language you use.</p>
 <h2 id="considerations">Considerations</h2>
 <ul>
-<li>If your site is restricted with <em>basic access authentication</em> or similar, disable it for the confirmation url.</li>
+<li>If your site is restricted with <em>basic access authentication</em> or similar, disable it for the confirmation URL.</li>
 <li>The IP associated with the confirmation URL should be public; do not use URL accessible from intranet or localhost.</li>
 <li>If you&rsquo;re using HTTPS, you must have a valid certificate.</li>
 <li>The format of your confirmation page must be <code>x-www-form-urlencoded</code>.</li>
@@ -959,7 +971,7 @@
 <td>account_type_ach</td>
 <td>Alphanumeric</td>
 <td>36</td>
-<td>The transaction’s identifier.</td>
+<td>The transaction’s type.</td>
 </tr>
 <tr>
 <td>administrative_fee</td>
@@ -1145,7 +1157,7 @@
 </table>
 </details>
 <h2 id="post-example-send-to-the-confirmation-page">POST example send to the confirmation page</h2>
-<p>The following is a basic example of the variables sent to the response page via POST:</p>
+<p>The following is a basic example of the variables sent to the confirmation page via POST:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">response_code_pol=5
 phone=
 additional_value=0.00
@@ -1313,9 +1325,9 @@ state_pol=4
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 25, 2021:
+October 27, 2021:
 
- <b>Format of the Confirmation page (9519f851)</b>
+ <b>Grammar fixes due to translations (408e5f26)</b>
 </div>
 </div>
 
