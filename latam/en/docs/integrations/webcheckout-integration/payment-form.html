@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/webcheckout-integration/payment-form.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T12:15:27-05:00" />
-<meta property="article:modified_time" content="2021-10-25T15:43:36-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-27T15:03:40-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payment Form">
 <meta itemprop="description" content="With this HTML form, you can send the transaction request to our payment gateway along with the purchase information. Send the request using the HTTP POST method.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:27-05:00" />
-<meta itemprop="dateModified" content="2021-10-25T15:43:36-05:00" />
-<meta itemprop="wordCount" content="1122">
+<meta itemprop="dateModified" content="2021-10-27T15:03:40-05:00" />
+<meta itemprop="wordCount" content="2257">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payment Form"/>
 <meta name="twitter:description" content="With this HTML form, you can send the transaction request to our payment gateway along with the purchase information. Send the request using the HTTP POST method.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.c17955739c583e6340de3914fc7d701fbf674af4671b5343530ae56b36ae2573c7a218018eead170503647c4409c13654c2ecbe87030f3cfdf55d06c0ec0b40b.json"
+  data-offline-search-index-json-src="../../../offline-search-index.6fdcd7451659079c848cc938a708c6a8780bbf5bb6d06e6b3665543446fbefc78237877279b579a6eda8ac626b2207a23cff14f2111c343c7b6186e71d450f02.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -808,13 +808,6 @@
 </thead>
 <tbody>
 <tr>
-<td>amount</td>
-<td>Number</td>
-<td>14</td>
-<td>Total amount of the transaction. It can contain two decimal digits. Example 10000.00 or 10000.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
 <td>merchantId</td>
 <td>Number</td>
 <td>12</td>
@@ -843,11 +836,32 @@
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
+<td>currency</td>
+<td>Alphanumeric</td>
+<td>3</td>
+<td>The respective currency in which the payment is made. The reconciliation process is performed in Colombian pesos at the representative rate of the day.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Number</td>
+<td>14</td>
+<td>Total amount of the transaction. It can contain two decimal digits. Example 10000.00 or 10000.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
 <td>tax</td>
 <td>Number</td>
 <td>14,2</td>
 <td>Value of the VAT of the transaction.<br>In Colombia, if no VAT is sent, the system applies 19% automatically. It can contain two decimal digits, for example 19000.00.<br>If the product or service is VAT exempt, assign <code>0</code> to this variable.</td>
 <td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>discount</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Discount value applied to the sale.</td>
+<td style="text-align:center">—</td>
 </tr>
 <tr>
 <td>taxReturnBase</td>
@@ -857,6 +871,13 @@
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
+<td>additionalValue</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Additional value of the sale.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
 <td>signature</td>
 <td>Alphanumeric</td>
 <td>255</td>
@@ -864,32 +885,11 @@
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
-<td>currency</td>
-<td>Alphanumeric</td>
-<td>3</td>
-<td>The respective currency in which the payment is made. The reconciliation process is performed in Colombian pesos at the representative rate of the day.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td>buyerEmail</td>
+<td>algorithmSignature</td>
 <td>Alphanumeric</td>
 <td>255</td>
-<td>Field that contains the buyer’s e-mail to notify the result of the transaction by e-mail. It is recommended to validate if this field has been provided in the form.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>Alphanumeric</td>
-<td>50</td>
-<td>The buyer’s residence phone.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td>buyerFullName</td>
-<td>Alphanumeric</td>
-<td>150</td>
-<td>The buyer’s full name.</td>
-<td style="text-align:center">✓</td>
+<td>Encryption algorithm of the digital signature (<code>signature</code> field). The three available algorithms are: <code>MD5</code>, <code>SHA</code> and <code>SHA256</code>.</td>
+<td style="text-align:center">—</td>
 </tr>
 <tr>
 <td>test</td>
@@ -904,27 +904,6 @@
 <td>3</td>
 <td>Language in which the payment gateway is wished to be displayed.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
 <td style="text-align:center">—</td>
-</tr>
-<tr>
-<td>shippingCity</td>
-<td>Alphanumeric</td>
-<td>50</td>
-<td>The delivery City of the merchandise<br><sup>*</sup> Mandatory if your shop ships the product.</td>
-<td style="text-align:center">✓*</td>
-</tr>
-<tr>
-<td>shippingCountry</td>
-<td>Alphanumeric</td>
-<td>2</td>
-<td>The delivery ISO country code for the merchandise.<br><sup>*</sup> Mandatory if your shop ships the product.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#processing-countries">See processing countries</a>.</td>
-<td style="text-align:center">✓*</td>
-</tr>
-<tr>
-<td>shippingAddress</td>
-<td>Alphanumeric</td>
-<td>255</td>
-<td>The delivery address of the merchandise.<br><sup>*</sup> Mandatory if your shop ships the product.</td>
-<td style="text-align:center">✓*</td>
 </tr>
 <tr>
 <td>extra1</td>
@@ -948,6 +927,13 @@
 <td style="text-align:center">—</td>
 </tr>
 <tr>
+<td>template</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Template for the payment page.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
 <td>responseUrl</td>
 <td>Alphanumeric</td>
 <td>255</td>
@@ -962,24 +948,17 @@
 <td style="text-align:center">—</td>
 </tr>
 <tr>
-<td>payerFullName</td>
+<td>sourceUrl</td>
 <td>Alphanumeric</td>
-<td>50</td>
-<td>The payer’s name. This value will be taken to fill out the credit card form.</td>
+<td>255</td>
+<td>Source URL of the merchant transactions. This is where the payment button is located.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
-<td>payerDocument</td>
+<td>airline</td>
 <td>Alphanumeric</td>
-<td>25</td>
-<td>The buyer’s identification number. This value will be taken to fill out the credit card form.</td>
-<td style="text-align:center">—</td>
-</tr>
-<tr>
-<td>mobilePhone</td>
-<td>Alphanumeric</td>
-<td>50</td>
-<td>The buyer’s cell phone number. This value will be taken to fill out the credit card form and will be the contact telephone number.</td>
+<td>4</td>
+<td>Airline code.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -990,18 +969,11 @@
 <td style="text-align:center">—</td>
 </tr>
 <tr>
-<td>officeTelephone</td>
-<td>Alphanumeric</td>
-<td>50</td>
-<td>The buyer’s daytime phone.</td>
-<td style="text-align:center">—</td>
-</tr>
-<tr>
-<td>algorithmSignature</td>
+<td>shippingAddress</td>
 <td>Alphanumeric</td>
 <td>255</td>
-<td>Encryption algorithm of the digital signature (<code>signature</code> field). The three available algorithms are: <code>MD5</code>, <code>SHA</code> and <code>SHA256</code>.</td>
-<td style="text-align:center">—</td>
+<td>The delivery address of the merchandise.<br><sup>*</sup> Mandatory if your shop ships the product.</td>
+<td style="text-align:center">✓*</td>
 </tr>
 <tr>
 <td>billingCity</td>
@@ -1009,6 +981,13 @@
 <td>50</td>
 <td>City associated with the billing address.</td>
 <td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingCity</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The delivery City of the merchandise<br><sup>*</sup> Mandatory if your shop ships the product.</td>
+<td style="text-align:center">✓*</td>
 </tr>
 <tr>
 <td>zipCode</td>
@@ -1022,6 +1001,76 @@
 <td>Alphanumeric</td>
 <td>2</td>
 <td>The ISO country code associated with the billing address.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>The delivery ISO country code for the merchandise.<br><sup>*</sup> Mandatory if your shop ships the product.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#processing-countries">See processing countries</a>.</td>
+<td style="text-align:center">✓*</td>
+</tr>
+<tr>
+<td>buyerEmail</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Field that contains the buyer’s e-mail to notify the result of the transaction by e-mail. It is recommended to validate if this field has been provided in the form.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The buyer’s residence phone.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>officeTelephone</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The buyer’s daytime phone.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>mobilePhone</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The buyer’s cell phone number. This value will be taken to fill out the credit card form and will be the contact telephone number.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>buyerFullName</td>
+<td>Alphanumeric</td>
+<td>150</td>
+<td>The buyer’s full name.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>paymentMethods</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>List of payment methods enabled in the payment process.<br>This list must be separated by comma and without blanks. For example: <code>VISA,MASTERCARD</code>.<br>You can include installments for the payment methods adding them using hyphens. Example: <code>VISA-1-3,MASTERCARD-3-5-9</code>.<br><a href="../../../docs/getting-started/select-your-payment-method.html">See the available Payment Methods for your country in the column <code>paymentMethod parameter</code></a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>administrativeFee</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Amount of the administrative fee.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>taxAdministrativeFee</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Amount of tax of the administrative fee.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>taxAdministrativeFeeReturnBase</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Base value to calculate the tax of the administrative fee.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -1050,6 +1099,391 @@
 <td>Alphanumeric</td>
 <td>20</td>
 <td>The payer’s mobile phone number.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>Alphanumeric</td>
+<td>19</td>
+<td>Expiration date of the transactions for Cash payments. Format: <code>YYYY-MM-DD HH:mm:ss</code>.<br>This value must be lower than the default number of days for the cash payment (15 days for Argentina and 7 days for the other countries).</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>payerFullName</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The payer’s name. This value will be taken to fill out the credit card form.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerDocument</td>
+<td>Alphanumeric</td>
+<td>25</td>
+<td>The buyer’s identification number. This value will be taken to fill out the credit card form.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerDocumentType</td>
+<td>Alphanumeric</td>
+<td>25</td>
+<td>The buyer’s identification number. This value will be taken to fill out the credit card form.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>iin</td>
+<td>Alphanumeric</td>
+<td>2048</td>
+<td>List of Bins admitted during the payment process (separated by comma).<br><em>This parameter can only be used by merchants that validate signature.</em></td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>paymentMethodsDescription</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Description of the payment methods and Bins admitted during the payment process.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>pseBanks</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>List of bank codes enabled in the payment process through PSE.<br>This list must be separated by comma and without blanks.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>referenceCode</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Reference of the sale or order. It must be unique for each transaction that is sent to the system. Usually, this is a way to identify the requests sent to the payment gateway.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Number</td>
+<td>6</td>
+<td>ID of the user account for each country associated with the shop. This variable is used to display the available payment methods for this country.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Sale’s description.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Alphanumeric</td>
+<td>3</td>
+<td>The respective currency in which the payment is made. The reconciliation process is performed in Colombian pesos at the representative rate of the day.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Number</td>
+<td>14</td>
+<td>Total amount of the transaction. It can contain two decimal digits. Example 10000.00 or 10000.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Value of the VAT of the transaction.<br>In Colombia, if no VAT is sent, the system applies 19% automatically. It can contain two decimal digits, for example 19000.00.<br>If the product or service is VAT exempt, assign <code>0</code> to this variable.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>discount</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Discount value applied to the sale.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>taxReturnBase</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Base value to calculate the VAT.<br>If the product or service is VAT exempt, assign <code>0</code> to this variable.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Additional value of the sale.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Digital signature created for each transaction. Refer to <a href="../../../docs/integrations/webcheckout-integration/payment-form.html#signature-for-payment-form">Signature for Payment form</a> to learn how to generate it.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>algorithmSignature</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Encryption algorithm of the digital signature (<code>signature</code> field). The three available algorithms are: <code>MD5</code>, <code>SHA</code> and <code>SHA256</code>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>test</td>
+<td>Number</td>
+<td>1</td>
+<td>Indicates whether the transaction is in test or production mode. Set <code>1</code> for test and <code>0</code> for production.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>lng</td>
+<td>Alphanumeric</td>
+<td>3</td>
+<td>Language in which the payment gateway is wished to be displayed.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>extra1</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Additional field to send information about the purchase.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>extra2</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Additional field to send information about the purchase.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>extra3</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Additional field to send information about the purchase.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>template</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Template for the payment page.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>responseUrl</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>The URL of the response page.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>confirmationUrl</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>The URL of the confirmation page.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>sourceUrl</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Source URL of the merchant transactions. This is where the payment button is located.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>airline</td>
+<td>Alphanumeric</td>
+<td>4</td>
+<td>Airline code.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>billingAddress</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>The correspondence address.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingAddress</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>The delivery address of the merchandise.<br><sup>*</sup> Mandatory if your shop ships the product.</td>
+<td style="text-align:center">✓*</td>
+</tr>
+<tr>
+<td>billingCity</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>City associated with the billing address.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingCity</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The delivery City of the merchandise<br><sup>*</sup> Mandatory if your shop ships the product.</td>
+<td style="text-align:center">✓*</td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>Alphanumeric</td>
+<td>20</td>
+<td>Postal code.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>billingCountry</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>The ISO country code associated with the billing address.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>The delivery ISO country code for the merchandise.<br><sup>*</sup> Mandatory if your shop ships the product.<br><a href="../../../docs/getting-started/response-codes-and-variables.html#processing-countries">See processing countries</a>.</td>
+<td style="text-align:center">✓*</td>
+</tr>
+<tr>
+<td>buyerEmail</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Field that contains the buyer’s e-mail to notify the result of the transaction by e-mail. It is recommended to validate if this field has been provided in the form.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The buyer’s residence phone.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>officeTelephone</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The buyer’s daytime phone.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>mobilePhone</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The buyer’s cell phone number. This value will be taken to fill out the credit card form and will be the contact telephone number.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>buyerFullName</td>
+<td>Alphanumeric</td>
+<td>150</td>
+<td>The buyer’s full name.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>paymentMethods</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>List of payment methods enabled in the payment process.<br>This list must be separated by comma and without blanks. For example: <code>VISA,MASTERCARD</code>.<br>You can include installments for the payment methods adding them using hyphens. Example: <code>VISA-1-3,MASTERCARD-3-5-9</code>.<br><a href="../../../docs/getting-started/select-your-payment-method.html">See the available Payment Methods for your country in the column <code>paymentMethod parameter</code></a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>administrativeFee</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Amount of the administrative fee.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>taxAdministrativeFee</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Amount of tax of the administrative fee.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>taxAdministrativeFeeReturnBase</td>
+<td>Number</td>
+<td>14,2</td>
+<td>Base value to calculate the tax of the administrative fee.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerEmail</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>The payer’s e-mail.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerPhone</td>
+<td>Alphanumeric</td>
+<td>20</td>
+<td>The payer’s phone number.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerOfficePhone</td>
+<td>Alphanumeric</td>
+<td>20</td>
+<td>The payer’s workplace phone number.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerMobilePhone</td>
+<td>Alphanumeric</td>
+<td>20</td>
+<td>The payer’s mobile phone number.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>Alphanumeric</td>
+<td>19</td>
+<td>Expiration date of the transactions for Cash payments. Format: <code>YYYY-MM-DD HH:mm:ss</code>.<br>This value must be lower than the default number of days for the cash payment (15 days for Argentina and 7 days for the other countries).</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>payerFullName</td>
+<td>Alphanumeric</td>
+<td>50</td>
+<td>The payer’s name. This value will be taken to fill out the credit card form.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerDocument</td>
+<td>Alphanumeric</td>
+<td>25</td>
+<td>The buyer’s identification number. This value will be taken to fill out the credit card form.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerDocumentType</td>
+<td>Alphanumeric</td>
+<td>25</td>
+<td>The buyer’s identification number. This value will be taken to fill out the credit card form.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>iin</td>
+<td>Alphanumeric</td>
+<td>2048</td>
+<td>List of Bins admitted during the payment process (separated by comma).<br><em>This parameter can only be used by merchants that validate signature.</em></td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>paymentMethodsDescription</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Description of the payment methods and Bins admitted during the payment process.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>pseBanks</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>List of bank codes enabled in the payment process through PSE.<br>This list must be separated by comma and without blanks.</td>
 <td style="text-align:center">—</td>
 </tr>
 </tbody>
@@ -1135,8 +1569,16 @@ Tax + taxReturnBase cannot be greater than the Total Value of each product.
 Production: https://checkout.payulatam.com/ppp-web-gateway-payu/
 </code></pre></div><h2 id="signature-for-payment-form">Signature for Payment form</h2>
 <p>The signature is a method to validate payments made through the platform and ensuring its authenticity. It consists of a string encrypted using <code>MD5</code>, <code>SHA1</code>, or <code>SHA256</code>. The string is created as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchantId~referenceCode~amount~currency&#34;.
-</code></pre></div><br>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchantId~referenceCode~amount~currency&#34;
+</code></pre></div>
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+<p>If your Payment form includes the variables <code>paymentMethods</code>, <code>iin</code>, or <code>pseBanks</code>, you must concatenate them in such order:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchantId~referenceCode~amount~currency~paymentMethods~iin~pseBanks&#34;
+</code></pre></div>
+</div>
+
 <p>For example, with the following data:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">merchantId: 508029
 ApiKey: 4Vj8eK4rloUd272L48hsrarnUA
@@ -1209,9 +1651,9 @@ buyerEmail: test@test.com
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 25, 2021:
+October 27, 2021:
 
- <b>Adjustment for voids in Chile (0a1ff283)</b>
+ <b>Changes for Webcheckout (18130d09)</b>
 </div>
 </div>
 
