@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/payments-api-brazil.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2021-10-27T10:56:04-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-10-29T11:39:57-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payments API - Brazil">
 <meta itemprop="description" content="Payments API Brazil lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2021-10-27T10:56:04-05:00" />
-<meta itemprop="wordCount" content="8312">
+<meta itemprop="dateModified" content="2021-10-29T11:39:57-05:00" />
+<meta itemprop="wordCount" content="9115">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Brazil"/>
 <meta name="twitter:description" content="Payments API Brazil lets your shop process different transaction types with multiple payment methods.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.ae81241df31b00da472defc75144699cbff618f13007a42230456bb3a542b452f0235d25358ca6880234e13844623fc1ed42f64f30b8a12c78b05a3117b04b84.json"
+  data-offline-search-index-json-src="../../../offline-search-index.af753a4240e00133d51bbd4e5f57030cbf5acdf018634a483a932a73e4aec634a3fb10447a789048912b0bae18e2923c81a315717f2e64c5f9e7f942ef7eeb7e.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -708,6 +708,7 @@
     <li><a href="#submit-transaction-with-credit-cards">Submit transaction with credit cards</a>
       <ul>
         <li><a href="#adding-payment-facilitators">Adding Payment Facilitators</a></li>
+        <li><a href="#using-tokenized-cards">Using tokenized cards</a></li>
         <li><a href="#variables-for-request-and-response">Variables for request and response</a></li>
         <li><a href="#authorization">Authorization</a></li>
         <li><a href="#capture">Capture</a></li>
@@ -849,7 +850,308 @@
 <li>Sub-merchant&rsquo;s Postal Code (mandatory)</li>
 <li>Sub-merchant&rsquo;s Country (mandatory)</li>
 </ul>
-<p>Find the description of these fields in the next section.</p>
+<p>Find the description of these fields in the <a href="#variables-for-request-and-response">Variables</a> section.</p>
+<h3 id="using-tokenized-cards">Using tokenized cards</h3>
+<p>PayU supports payments with your tokenized card to let you make payments on a regular bases with a card stored in a token. A credit card token substitutes the sensitive information of a credit card and allows you to safely store it following PCI DSS (Payment Card Industry Data Security Standard) security standards.</p>
+<p>PayU can process payments with the following services:</p>
+<ul>
+<li>
+<p><strong>PayU Tokenization</strong>.<br>We provide our own service to tokenize your credit cards enabled under request. This service lets you tokenize the information of your customers' credit cards (regardless of their franchise) using our API or SDK integration.<br>For more information, refer to <a href="../../../docs/services/tokenization.html">PayU Tokenization</a>.</p>
+</li>
+<li>
+<p><strong>MasterCard Digital Enablement Service - MDES</strong>.<br>Tokenization service provided by Mastercard. This service lets you tokenize the Primary Account Number of the MasterCard credit cards to let you use them to make regular payments of build one-click payments features.<br>For more information, refer to <a href="https://developer.mastercard.com/mdes-digital-enablement/documentation/">MasterCard Digital Enablement Service (MDES)</a>.</p>
+</li>
+<li>
+<p><strong>Visa Token Service - VTS</strong>.<br>Tokenization service provided by Visa. This service lets you store the sensitive information of the Visa credit cards in a token to let you use them to make regular payments of build one-click payments features.<br>For more information, refer to <a href="https://usa.visa.com/products/visa-token-service.html">Visa Token Service (VTS)</a>.</p>
+</li>
+</ul>
+<h4 id="pay-with-payu-tokens">Pay with PayU tokens</h4>
+<p>For payments with PayU credit card tokens, include the parameter <code>transaction.creditCardTokenId</code> replacing the information of the credit card. The following example shows the body of the request in a high level for a one-step flow, the details of the request are not provided.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+To process without CVV is necessary to send the parameter <code>creditCard.processWithoutCvv2</code> as true in the payment request and remove the parameter <code>creditCard.securityCode</code>.<br>
+By default, processing credit cards without security code is not enabled. If you want to enable this feature, contact your Sales representative.
+</div>
+
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-9" data-toggle="tab" href="#tab91" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-9" data-toggle="tab" href="#tab92" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="9">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab91" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Information of the order&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;payer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Information of the payer&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;creditCardTokenId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;creditCard&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;securityCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;123&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;extraParameters&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Extra parameters of the request&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AUTHORIZATION_AND_CAPTURE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Card franchise&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+      <span style="color:#204a87;font-weight:bold">&#34;paymentCountry&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Processing country&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;deviceSessionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;vghs6tvkcle931686k1900o6e1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;ipAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;127.0.0.1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;cookie&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pt1t38347bs6jc9ruv2ecpv7o2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;userAgent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;test&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab92" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Information of the order --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;payer&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Information of the payer --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/payer&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;creditCardTokenId&gt;</span>46b7f03e-1b3b-4ce8-ad90-fe1a482f76c3<span style="color:#204a87;font-weight:bold">&lt;/creditCardTokenId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;creditCard&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;securityCode&gt;</span>321<span style="color:#204a87;font-weight:bold">&lt;/securityCode&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/creditCard&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;extraParameters&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Extra parameters of the request --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/extraParameters&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>AUTHORIZATION_AND_CAPTURE<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>{Card franchise}<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentCountry&gt;</span>{Processing country}<span style="color:#204a87;font-weight:bold">&lt;/paymentCountry&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;deviceSessionId&gt;</span>vghs6tvkcle931686k1900o6e1<span style="color:#204a87;font-weight:bold">&lt;/deviceSessionId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;ipAddress&gt;</span>127.0.0.1<span style="color:#204a87;font-weight:bold">&lt;/ipAddress&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;cookie&gt;</span>pt1t38347bs6jc9ruv2ecpv7o2<span style="color:#204a87;font-weight:bold">&lt;/cookie&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;userAgent&gt;</span>Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0<span style="color:#204a87;font-weight:bold">&lt;/userAgent&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h4 id="pay-with-mdes-or-vts-tokens">Pay with MDES or VTS tokens</h4>
+<p>If you are tokenizing your customer&rsquo;s credit cards using MDES or VTS, you can configure the information of the token in the parameter <code>transaction.networkToken</code> replacing the information of the credit card and send the parameter <code>creditCard.processWithoutCvv2</code> as true.<br>By default, processing credit cards without security code is not enabled, contact your Sales representative to enable it.</p>
+<p>The following example shows the body of the request in a high level for a one-step flow, the details of the request are not provided.</p>
+<p><nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-10" data-toggle="tab" href="#tab101" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-10" data-toggle="tab" href="#tab102" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="10">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab101" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Information of the order&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;payer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Information of the payer&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;networkToken&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+          <span style="color:#204a87;font-weight:bold">&#34;tokenPan&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4097440000000004&#34;</span><span style="color:#000;font-weight:bold">,</span>
+          <span style="color:#204a87;font-weight:bold">&#34;cryptogram&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;11223344556677889900112233445566778899&#34;</span><span style="color:#000;font-weight:bold">,</span>
+          <span style="color:#204a87;font-weight:bold">&#34;expiry&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2028/01&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;extraParameters&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;Extra parameters of the request&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AUTHORIZATION_AND_CAPTURE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Card franchise&#34;</span><span style="color:#000;font-weight:bold">,</span> 
+      <span style="color:#204a87;font-weight:bold">&#34;paymentCountry&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Processing country&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;deviceSessionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;vghs6tvkcle931686k1900o6e1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;ipAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;127.0.0.1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;cookie&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pt1t38347bs6jc9ruv2ecpv7o2&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;userAgent&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;test&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab102" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Information of the order --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;payer&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Information of the payer --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/payer&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;networkToken&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;tokenPan&gt;</span>4097440000000004<span style="color:#204a87;font-weight:bold">&lt;/tokenPan&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;cryptogram&gt;</span>11223344556677889900112233445566778899<span style="color:#204a87;font-weight:bold">&lt;/cryptogram&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;expiry&gt;</span>2028/01<span style="color:#204a87;font-weight:bold">&lt;/expiry&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/networkToken&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;extraParameters&gt;</span>
+         <span style="color:#8f5902;font-style:italic">&lt;!-- Extra parameters of the request --&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/extraParameters&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>AUTHORIZATION_AND_CAPTURE<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>{Card franchise}<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentCountry&gt;</span>{Processing country}<span style="color:#204a87;font-weight:bold">&lt;/paymentCountry&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;deviceSessionId&gt;</span>vghs6tvkcle931686k1900o6e1<span style="color:#204a87;font-weight:bold">&lt;/deviceSessionId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;ipAddress&gt;</span>127.0.0.1<span style="color:#204a87;font-weight:bold">&lt;/ipAddress&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;cookie&gt;</span>pt1t38347bs6jc9ruv2ecpv7o2<span style="color:#204a87;font-weight:bold">&lt;/cookie&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;userAgent&gt;</span>Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0<span style="color:#204a87;font-weight:bold">&lt;/userAgent&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<br></p>
+<p>Find the description of the object <code>transaction.networkToken</code> and its parameters in the <a href="#variables-for-request-and-response">Variables</a> section.</p>
 <h3 id="variables-for-request-and-response">Variables for request and response</h3>
 <details>
 <summary>Request</summary>
@@ -1297,7 +1599,7 @@
 <td>transaction &gt; creditCardTokenId</td>
 <td></td>
 <td></td>
-<td>Include this parameter when the transaction is done using a tokenized card; moreover, it is mandatory to also send the parameter <code>transaction.creditCard.expirationDate</code>.<br>For more information, refer to <a href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>.</td>
+<td>Include this parameter when the transaction is done using a tokenized card using the PayU Tokenization; moreover, it is mandatory to also send the parameter <code>transaction.creditCard.expirationDate</code>.<br>For more information, refer to <a href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>.</td>
 <td style="text-align:center">No</td>
 </tr>
 <tr>
@@ -1460,6 +1762,34 @@
 <td>2</td>
 <td>Identification type of the buyer. <a href="../../../docs/getting-started/response-codes-and-variables.html#document-types">See Document types</a>.</td>
 <td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; networkToken</td>
+<td></td>
+<td></td>
+<td>Information of the token. Include this parameter when the transaction is done using a tokenized card using the VTS or MDES Tokenization. For more information, refer to <a href="#pay-with-mdes-or-vts-tokens">Pay with MDES or VTS tokens</a>. <br><sup>*</sup>When sending this object, all its parameters are mandatory.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; networkToken &gt; tokenPan</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Token number generated either by MDES or VTS.</td>
+<td style="text-align:center">Yes<sup>*</sup></td>
+</tr>
+<tr>
+<td>transaction &gt; networkToken &gt; cryptogram</td>
+<td>Alphanumeric</td>
+<td>Max:28</td>
+<td>Unique key generated by MDES or VTS to decrypt the information of the credit card.</td>
+<td style="text-align:center">Yes<sup>*</sup></td>
+</tr>
+<tr>
+<td>transaction &gt; networkToken &gt; expiry</td>
+<td>Alphanumeric</td>
+<td>7</td>
+<td>Expiration date of the token. Format <code>YYYY/MM</code>.</td>
+<td style="text-align:center">Yes<sup>*</sup></td>
 </tr>
 <tr>
 <td>transaction &gt; type</td>
@@ -1674,8 +2004,9 @@
 <ul>
 <li>If your commerce does not have a local entity, it is mandatory to send either the CPF (parameter <code>transaction.[payer|buyer].dniNumber</code>) or the CNPJ (parameter <code>transaction.[payer|buyer].cnpj</code>) when using <a href="../../../docs/integrations/api-integration/payments-api-brazil.html#authorization">Authorization</a> or <a href="../../../docs/integrations/api-integration/payments-api-brazil.html#charge">Charge</a>.</li>
 <li>If you don&rsquo;t send any information for the sub-merchants, PayU configures your merchant as sub-merchant.</li>
-<li>For payments with credit card tokens, include the parameters <code>transaction.creditCardTokenId</code> and <code>transaction.creditCard.securityCode</code> (if you process with security code) replacing the information of the credit card. For more information, refer to <a href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>.</li>
-<li>By default, processing credit cards without security code is not enabled. If you want to enable this feature, contact your Sales representative. After this feature is enabled for you, send in the request the variable <code>creditCard.processWithoutCvv2</code> as true and remove the variable <code>creditCard.securityCode</code>.</li>
+<li>For payments with credit card tokens generated by PayU, include the parameters <code>transaction.creditCardTokenId</code> and <code>transaction.creditCard.securityCode</code> (if you process with security code) replacing the information of the credit card. For more information, refer to <a href="../../../docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>.</li>
+<li>For payments with credit card tokens generated using MDES or VTS, include the object <code>transaction.networkToken</code> and its parameters.</li>
+<li>By default, processing credit cards without security code is not enabled. If you want to enable this feature, contact your Sales representative. After this feature is enabled for you, send in the request the variable <code>creditCard.processWithoutCvv2</code> as true and remove the variable <code>creditCard.securityCode</code>.<br>Having this feature enable is mandatory when using credit card tokens generated using MDES or VTS.</li>
 <li>The extra parameter <code>CIELO_TID</code> identifies the transaction, this parameter is needed when you want to process voids.</li>
 <li>The variable <code>transaction.threeDomainSecure</code> does not replace the card information nor any of the mandatory fields of the transaction. This object is additional and not mandatory.</li>
 <li>The variable <code>transaction.threeDomainSecure</code> corresponds to a <em>Pass Through</em> scenario where the commerce performs the authentication by their own.</li>
@@ -3104,7 +3435,7 @@
 
 		
 
-		<a class="nav-item nav-link active" id="nav-4" data-toggle="tab" href="#tab41" role="tab"
+		<a class="nav-item nav-link active" id="nav-5" data-toggle="tab" href="#tab51" role="tab"
 		   aria-controls="nav-home" aria-selected="true">JSON</a>
 
 		
@@ -3116,7 +3447,7 @@
 
 		
 
-		<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab42" role="tab"
+		<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab52" role="tab"
 		   aria-controls="nav-home" aria-selected="false">XML</a>
 
 		
@@ -3125,7 +3456,7 @@
 	</div>
 </nav>
 
-<div class="tab-content" id="4">
+<div class="tab-content" id="5">
 
 
 
@@ -3134,7 +3465,7 @@
 
 
 
-<div class="tab-pane fade show active" id="tab41" role="tabpanel" aria-labelledby="nav-tabName1">
+<div class="tab-pane fade show active" id="tab51" role="tabpanel" aria-labelledby="nav-tabName1">
 
 	<br>
 <p>Request body:</p>
@@ -3235,7 +3566,7 @@
 
 
 
-<div class="tab-pane fade" id="tab42" role="tabpanel" aria-labelledby="nav-tabName2">
+<div class="tab-pane fade" id="tab52" role="tabpanel" aria-labelledby="nav-tabName2">
 
 	<br>
 <p>Request body:</p>
@@ -3984,7 +4315,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 		
 
-		<a class="nav-item nav-link active" id="nav-5" data-toggle="tab" href="#tab51" role="tab"
+		<a class="nav-item nav-link active" id="nav-6" data-toggle="tab" href="#tab61" role="tab"
 		   aria-controls="nav-home" aria-selected="true">JSON</a>
 
 		
@@ -3996,7 +4327,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 		
 
-		<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab52" role="tab"
+		<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab62" role="tab"
 		   aria-controls="nav-home" aria-selected="false">XML</a>
 
 		
@@ -4005,7 +4336,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 	</div>
 </nav>
 
-<div class="tab-content" id="5">
+<div class="tab-content" id="6">
 
 
 
@@ -4014,7 +4345,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 
-<div class="tab-pane fade show active" id="tab51" role="tabpanel" aria-labelledby="nav-tabName1">
+<div class="tab-pane fade show active" id="tab61" role="tabpanel" aria-labelledby="nav-tabName1">
 
 	<br>
 <p>Request body:</p>
@@ -4125,7 +4456,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 
-<div class="tab-pane fade" id="tab52" role="tabpanel" aria-labelledby="nav-tabName2">
+<div class="tab-pane fade" id="tab62" role="tabpanel" aria-labelledby="nav-tabName2">
 
 	<br>
 <p>Request body:</p>
@@ -4363,7 +4694,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 		
 
-		<a class="nav-item nav-link active" id="nav-5" data-toggle="tab" href="#tab51" role="tab"
+		<a class="nav-item nav-link active" id="nav-7" data-toggle="tab" href="#tab71" role="tab"
 		   aria-controls="nav-home" aria-selected="true">JSON</a>
 
 		
@@ -4375,7 +4706,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 		
 
-		<a class="nav-item nav-link" id="nav-5" data-toggle="tab" href="#tab52" role="tab"
+		<a class="nav-item nav-link" id="nav-7" data-toggle="tab" href="#tab72" role="tab"
 		   aria-controls="nav-home" aria-selected="false">XML</a>
 
 		
@@ -4384,7 +4715,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 	</div>
 </nav>
 
-<div class="tab-content" id="5">
+<div class="tab-content" id="7">
 
 
 
@@ -4393,7 +4724,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 
-<div class="tab-pane fade show active" id="tab51" role="tabpanel" aria-labelledby="nav-tabName1">
+<div class="tab-pane fade show active" id="tab71" role="tabpanel" aria-labelledby="nav-tabName1">
 
 	<br>
 <p>Request body:</p>
@@ -4441,7 +4772,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 
-<div class="tab-pane fade" id="tab52" role="tabpanel" aria-labelledby="nav-tabName2">
+<div class="tab-pane fade" id="tab72" role="tabpanel" aria-labelledby="nav-tabName2">
 
 	<br>
 <p>Request body:</p>
@@ -4594,7 +4925,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 		
 
-		<a class="nav-item nav-link active" id="nav-6" data-toggle="tab" href="#tab61" role="tab"
+		<a class="nav-item nav-link active" id="nav-8" data-toggle="tab" href="#tab81" role="tab"
 		   aria-controls="nav-home" aria-selected="true">JSON</a>
 
 		
@@ -4606,7 +4937,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 		
 
-		<a class="nav-item nav-link" id="nav-6" data-toggle="tab" href="#tab62" role="tab"
+		<a class="nav-item nav-link" id="nav-8" data-toggle="tab" href="#tab82" role="tab"
 		   aria-controls="nav-home" aria-selected="false">XML</a>
 
 		
@@ -4615,7 +4946,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 	</div>
 </nav>
 
-<div class="tab-content" id="6">
+<div class="tab-content" id="8">
 
 
 
@@ -4624,7 +4955,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 
-<div class="tab-pane fade show active" id="tab61" role="tabpanel" aria-labelledby="nav-tabName1">
+<div class="tab-pane fade show active" id="tab81" role="tabpanel" aria-labelledby="nav-tabName1">
 
 	<br>
 <p>Request body:</p>
@@ -4657,7 +4988,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 
-<div class="tab-pane fade" id="tab62" role="tabpanel" aria-labelledby="nav-tabName2">
+<div class="tab-pane fade" id="tab82" role="tabpanel" aria-labelledby="nav-tabName2">
 
 	<br>
 <p>Request body:</p>
@@ -4690,9 +5021,9 @@ To integrate with these transactions, you must redirect the customer to the URL 
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 27, 2021:
+October 29, 2021:
 
- <b>Grammar fixes due to translations (408e5f26)</b>
+ <b>MDES &amp; VTS tokens for Payments (97acd87b)</b>
 </div>
 </div>
 
