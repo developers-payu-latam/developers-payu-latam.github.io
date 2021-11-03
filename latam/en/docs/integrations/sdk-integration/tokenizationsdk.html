@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/sdk-integration/tokenizationsdk.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T08:31:38-05:00" />
-<meta property="article:modified_time" content="2021-06-30T22:58:54-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-03T17:04:11-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Tokenization SDK">
 <meta itemprop="description" content="Tokenization SDK allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
 "><meta itemprop="datePublished" content="2021-03-29T08:31:38-05:00" />
-<meta itemprop="dateModified" content="2021-06-30T22:58:54-05:00" />
-<meta itemprop="wordCount" content="1024">
+<meta itemprop="dateModified" content="2021-11-03T17:04:11-05:00" />
+<meta itemprop="wordCount" content="1045">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tokenization SDK"/>
 <meta name="twitter:description" content="Tokenization SDK allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.d548ebac68b8d945784cf75f8b2b70faf792bef502ccee3c3e18733bb49fe270b4f0bbc704a8b03bf71b5b4ba8126c4967e69c033421703770f04ada85eb6a80.json"
+  data-offline-search-index-json-src="../../../offline-search-index.03a62487a9ea4d1d146bf74cb496c8127ec63fdd630a063ab5ef9a322735ca04655942fc64d3ad3527b32c1d95611d83eeb4cc5fba129860d072a39621769119.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -859,7 +859,7 @@
 
 </div>
 <h2 id="available-methods">Available methods</h2>
-<p>Tokenization API includes methods to register and remove tokens, and methods to query tokens.</p>
+<p>Tokenization SDK includes methods to register and remove tokens, and methods to query tokens.</p>
 <p>For registration a removal of tokens:</p>
 <ul>
 <li><a href="../../../docs/integrations/sdk-integration/tokenizationsdk.html#individual-credit-card-registration">Individual credit card registration</a></li>
@@ -916,17 +916,17 @@
 
 	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java"><span style="color:#8f5902;font-style:italic">//-- “Create Token” operation--
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span> <span style="color:#000">parameters</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashMap</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;();</span>
-<span style="color:#8f5902;font-style:italic">//Enter the payer&#39;s name here.
+<span style="color:#8f5902;font-style:italic">// Enter the payer&#39;s name here.
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PAYER_NAME</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;Mary Keller&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the payer&#39;s ID here.
+<span style="color:#8f5902;font-style:italic">// Enter the payer&#39;s ID here.
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PAYER_ID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the payer&#39;s contact document here.
+<span style="color:#8f5902;font-style:italic">// Enter the payer&#39;s contact document here.
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PAYER_DNI</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;32144457&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the number of the credit card here
+<span style="color:#8f5902;font-style:italic">// Enter the number of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">CREDIT_CARD_NUMBER</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;4668063527597820&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the expiration date of the credit card here
+<span style="color:#8f5902;font-style:italic">// Enter the expiration date of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">CREDIT_CARD_EXPIRATION_DATE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;2024/06&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the name of the credit card here
+<span style="color:#8f5902;font-style:italic">// Enter the name of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PAYMENT_METHOD</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
 <span style="color:#000">CreditCardToken</span> <span style="color:#000">response</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">PayUTokens</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">create</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
@@ -953,17 +953,17 @@
 <div class="tab-pane fade" id="tab22" role="tabpanel" aria-labelledby="nav-tabName2">
 
 	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#000">$parameters</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">array</span><span style="color:#000;font-weight:bold">(</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the payer&#39;s name here.
+	<span style="color:#8f5902;font-style:italic">// Enter the payer&#39;s name here.
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">PAYER_NAME</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;Mary Keller&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the payer&#39;s ID here.
+	<span style="color:#8f5902;font-style:italic">// Enter the payer&#39;s ID here.
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">PAYER_ID</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the payer&#39;s contact document here.
+	<span style="color:#8f5902;font-style:italic">// Enter the payer&#39;s contact document here.
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">PAYER_DNI</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;32144457&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the number of the credit card here
+	<span style="color:#8f5902;font-style:italic">// Enter the number of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">CREDIT_CARD_NUMBER</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;4668063527597820&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the expiration date of the credit card here
+	<span style="color:#8f5902;font-style:italic">// Enter the expiration date of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">CREDIT_CARD_EXPIRATION_DATE</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;2024/10&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the name of the credit card here
+	<span style="color:#8f5902;font-style:italic">// Enter the name of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">PAYMENT_METHOD</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;VISA&#34;</span>
 <span style="color:#000;font-weight:bold">);</span>
 	
@@ -1253,20 +1253,20 @@ By default, processing credit cards without security code is not enabled. If you
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">CURRENCY</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">currency</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
 <span style="color:#8f5902;font-style:italic">// -- Buyer --
-</span><span style="color:#8f5902;font-style:italic">//Enter the buyer information here.
+</span><span style="color:#8f5902;font-style:italic">// Enter the buyer information here.
 </span><span style="color:#8f5902;font-style:italic">//parameters.put([...], [...]);
 </span><span style="color:#8f5902;font-style:italic"></span>
 
 <span style="color:#8f5902;font-style:italic">// -- Payer --
-</span><span style="color:#8f5902;font-style:italic">//Enter the payer information here.
+</span><span style="color:#8f5902;font-style:italic">// Enter the payer information here.
 </span><span style="color:#8f5902;font-style:italic">//parameters.put([...], [...]);
 </span><span style="color:#8f5902;font-style:italic"></span>
 <span style="color:#8f5902;font-style:italic">// -- Credit card data --
 </span><span style="color:#8f5902;font-style:italic">// Enter the credit card token here
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TOKEN_ID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;ab01ecd5-7d8f-4bee-91c1-4535d9ba282e&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the security code of the credit card here
+<span style="color:#8f5902;font-style:italic">// Enter the security code of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">CREDIT_CARD_SECURITY_CODE</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;321&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
-<span style="color:#8f5902;font-style:italic">//Enter the name of the credit card here
+<span style="color:#8f5902;font-style:italic">// Enter the name of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PAYMENT_METHOD</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
 <span style="color:#8f5902;font-style:italic">// Enter the number of installments here.
@@ -1302,7 +1302,7 @@ By default, processing credit cards without security code is not enabled. If you
 <div class="tab-pane fade" id="tab72" role="tabpanel" aria-labelledby="nav-tabName2">
 
 	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#000">$parameters</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">array</span><span style="color:#000;font-weight:bold">(</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the account’s identifier here
+	<span style="color:#8f5902;font-style:italic">// Enter the account’s identifier here
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">ACCOUNT_ID</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">$accountId</span><span style="color:#000;font-weight:bold">,</span>
 	<span style="color:#8f5902;font-style:italic">// Enter the reference code here.
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">REFERENCE_CODE</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">$reference</span><span style="color:#000;font-weight:bold">,</span>
@@ -1316,21 +1316,21 @@ By default, processing credit cards without security code is not enabled. If you
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">CURRENCY</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#000">$currency</span><span style="color:#000;font-weight:bold">,</span>
 
 	<span style="color:#8f5902;font-style:italic">// -- Buyer --
-</span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">//Enter the buyer information here.
+</span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">// Enter the buyer information here.
 </span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">//PayUParameters::[...] =&gt; [...],
 </span><span style="color:#8f5902;font-style:italic"></span>
 
   <span style="color:#8f5902;font-style:italic">// -- Payer --
-</span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">//Enter the payer information here.
+</span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">// Enter the payer information here.
 </span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">//PayUParameters::[...] =&gt; [...],
 </span><span style="color:#8f5902;font-style:italic"></span>
 	<span style="color:#8f5902;font-style:italic">// -- Credit card data --
 </span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#8f5902;font-style:italic">// Enter the credit card token here
 </span><span style="color:#8f5902;font-style:italic"></span>  <span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">TOKEN_ID</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;ab01ecd5-7d8f-4bee-91c1-4535d9ba282e&#34;</span><span style="color:#000;font-weight:bold">,</span>
 	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">CREDIT_CARD_EXPIRATION_DATE</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;2022/12&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the security code of the credit card here
+	<span style="color:#8f5902;font-style:italic">// Enter the security code of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">CREDIT_CARD_SECURITY_CODE</span><span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;321&#34;</span><span style="color:#000;font-weight:bold">,</span>
-	<span style="color:#8f5902;font-style:italic">//Enter the name of the credit card here
+	<span style="color:#8f5902;font-style:italic">// Enter the name of the credit card here
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">PAYMENT_METHOD</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;VISA&#34;</span><span style="color:#000;font-weight:bold">,</span>
 
 	<span style="color:#8f5902;font-style:italic">// Enter the number of installments here.
@@ -1379,14 +1379,15 @@ By default, processing credit cards without security code is not enabled. If you
 <br>
 <br>
 <br>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-June 30, 2021:
+November 3, 2021:
 
- <b>API and SDK completed (9a333e3a)</b>
+ <b>Changes found during the translation procedure (f2b9d537)</b>
 </div>
 </div>
 

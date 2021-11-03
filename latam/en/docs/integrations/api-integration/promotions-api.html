@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/promotions-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-06-29T12:38:41-05:00" />
-<meta property="article:modified_time" content="2021-09-02T16:43:31-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-03T17:04:11-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Promotions API for Argentina and Mexico">
 <meta itemprop="description" content="Promotions feature lets you consult the valid promotions, along with their associate costs, characteristics, and further relevant information available for your customers. Promotions API applies only to Argentina and Mexico (MSI - Meses Sin Intereses).
 "><meta itemprop="datePublished" content="2021-06-29T12:38:41-05:00" />
-<meta itemprop="dateModified" content="2021-09-02T16:43:31-05:00" />
-<meta itemprop="wordCount" content="2350">
+<meta itemprop="dateModified" content="2021-11-03T17:04:11-05:00" />
+<meta itemprop="wordCount" content="2348">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Promotions API for Argentina and Mexico"/>
 <meta name="twitter:description" content="Promotions feature lets you consult the valid promotions, along with their associate costs, characteristics, and further relevant information available for your customers. Promotions API applies only to Argentina and Mexico (MSI - Meses Sin Intereses).
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.d548ebac68b8d945784cf75f8b2b70faf792bef502ccee3c3e18733bb49fe270b4f0bbc704a8b03bf71b5b4ba8126c4967e69c033421703770f04ada85eb6a80.json"
+  data-offline-search-index-json-src="../../../offline-search-index.03a62487a9ea4d1d146bf74cb496c8127ec63fdd630a063ab5ef9a322735ca04655942fc64d3ad3527b32c1d95611d83eeb4cc5fba129860d072a39621769119.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -777,10 +777,10 @@
 	<h1>Promotions API for Argentina and Mexico</h1>
     <div class="lead">Promotions feature lets you consult the valid promotions, along with their associate costs, characteristics, and further relevant information available for your customers. Promotions API applies only to Argentina and Mexico (MSI - Meses Sin Intereses).</div>
 	       
-	<p>This sections explains how to integrate using <a href="../../../docs/integrations/api-integration/promotions-api.html#promotions">Promotions</a> or using <a href="../../../docs/integrations/api-integration/promotions-api.html#msi">MSI</a> (Only Available for Mexico).</p>
+	<p>These sections explains how to integrate using <a href="../../../docs/integrations/api-integration/promotions-api.html#promotions">Promotions</a> or using <a href="../../../docs/integrations/api-integration/promotions-api.html#msi">MSI</a> (Only Available for Mexico).</p>
 <h2 id="promotions">Promotions</h2>
 <p>This feature lets you consult via API, the promotions in force, their characteristics and further information you want to present to the customers.</p>
-<p>A Promotion has the payment method, the payment method, the days of the week when it applies, the list of banks, and the start and end date when the promotion applies.</p>
+<p>A Promotion has the payment method, the days of the week when it applies, the list of banks, and the start and end date when the promotion applies.</p>
 <h3 id="authentication-for-promotions">Authentication for Promotions</h3>
 <p>For Promotions, you need to authenticate and authorize the petitions received by your server using a HMAC based mechanism. To authenticate, you need to know your <code>MerchantPublicKey</code>, you can get this information in your PayU Module (<strong><em>Settings</em></strong> &gt; <strong><em>Technical configuration</em></strong> &gt; <strong><em>Public Key</em></strong>).</p>
 <p><img src="../../../assets/Promotions/PublicKey.png" alt="PrintScreen"></p>
@@ -824,7 +824,7 @@ It is mandatory to include the three line breaks (<code>\n</code>) after the <co
 <p><strong>Date</strong></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Mon</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">11</span> <span style="color:#000">May</span> <span style="color:#000">2015</span> <span style="color:#000">21</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">14</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">41</span> <span style="color:#000">GMT</span>
 </code></pre></div><br>
-<p>Due to some restrictions in REST clients, you can also send the the <code>x-hmac-date</code> header to meet security requirements, this header follows the same format used in <code>Date</code>:</p>
+<p>Due to some restrictions in REST clients, you can also send the <code>x-hmac-date</code> header to meet security requirements, this header follows the same format used in <code>Date</code>:</p>
 <p><strong>x-hmac-date</strong></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Mon</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">11</span> <span style="color:#000">May</span> <span style="color:#000">2015</span> <span style="color:#000">21</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">14</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">41</span> <span style="color:#000">GMT</span>
 </code></pre></div><h3 id="consult-available-promotions">Consult available promotions</h3>
@@ -972,7 +972,7 @@ If the schema is not validated, the integration is not affected, and you only ne
 <td>Object that has all the pricing for a payment method and installment, or all the installment (for countries that have a installment-based system).</td>
 </tr>
 <tr>
-<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee.installments</td>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; installments</td>
 <td>String</td>
 <td></td>
 <td>Installment (1) or set of installments (1-36 for countries with installment-based ranges).</td>
@@ -1977,7 +1977,7 @@ If the schema is not validated, the integration is not affected, and you only ne
 
 </div>
 <h3 id="execute-a-transaction-with-promotions">Execute a transaction with Promotions</h3>
-<p>Once you have selected the transaction, you need to include the promotion ID an the number of installments as an extra parameter:</p>
+<p>Once you have selected the promotion, you need to include the promotion ID an the number of installments as an extra parameter:</p>
 <p><nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
 
@@ -2166,9 +2166,9 @@ If the schema is not validated, the integration is not affected, and you only ne
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-September 2, 2021:
+November 3, 2021:
 
- <b>Changes for MSI (0692d636)</b>
+ <b>Changes found during the translation procedure (f2b9d537)</b>
 </div>
 </div>
 
