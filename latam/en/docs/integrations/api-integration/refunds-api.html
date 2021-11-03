@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/integrations/api-integration/refunds-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-06-25T09:24:50-05:00" />
-<meta property="article:modified_time" content="2021-10-25T15:43:36-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-03T17:04:11-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Voids and Refunds API">
 <meta itemprop="description" content="This feature allows you to request the cancellation or the refund of the transactions authorized or charged. You can create the refund request using the _Refund_ or _Void_ method according to the status of the transaction. 
 "><meta itemprop="datePublished" content="2021-06-25T09:24:50-05:00" />
-<meta itemprop="dateModified" content="2021-10-25T15:43:36-05:00" />
-<meta itemprop="wordCount" content="2290">
+<meta itemprop="dateModified" content="2021-11-03T17:04:11-05:00" />
+<meta itemprop="wordCount" content="2289">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Voids and Refunds API"/>
 <meta name="twitter:description" content="This feature allows you to request the cancellation or the refund of the transactions authorized or charged. You can create the refund request using the _Refund_ or _Void_ method according to the status of the transaction. 
@@ -126,7 +126,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.d548ebac68b8d945784cf75f8b2b70faf792bef502ccee3c3e18733bb49fe270b4f0bbc704a8b03bf71b5b4ba8126c4967e69c033421703770f04ada85eb6a80.json"
+  data-offline-search-index-json-src="../../../offline-search-index.03a62487a9ea4d1d146bf74cb496c8127ec63fdd630a063ab5ef9a322735ca04655942fc64d3ad3527b32c1d95611d83eeb4cc5fba129860d072a39621769119.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -839,7 +839,7 @@
 <h3 id="mexico">Mexico</h3>
 <ul>
 <li>The minimum time to send a void is 10 minutes after the authorization and the maximum is 30 days. If the transaction was made with American Express, the maximum time is seven (7) days.<br>If no void or capture is sent after this time, the transaction is auto-voided.</li>
-<li>The minimum time to send a refund is 10 minutes after the approval and the maximum is 180 days. If the transaction was made processed by Bancomer, the maximum time is 45 days.</li>
+<li>The minimum time to send a refund is 10 minutes after the approval and the maximum is 180 days. If the transaction was processed by Bancomer, the maximum time is 45 days.</li>
 <li>When a refund is approved, the payer gets the money back in 30 working days.</li>
 <li>Refunds with decimals are not supported.</li>
 </ul>
@@ -1649,19 +1649,19 @@
 <ol start="2">
 <li>Use the <em><strong>Filter my sales</strong></em> field to find the order using the order and the transaction id.</li>
 </ol>
-<p><img src="../../../assets/Refunds/Refunds_en_02.png" alt="PrintScreen"></p>
+<p><img src="../../../assets/Refunds/Refunds_en_02.png" alt="PrintScreen" width="50%"/><br></p>
 <ol start="3">
 <li>The Status column show whether the refund has been approved or rejected; if the refund has not been approved, this column shows that the refund has been requested.</li>
 </ol>
 <p><img src="../../../assets/Refunds/Refunds_en_03.png" alt="PrintScreen"></p>
 <h4 id="check-status-using-queries">Check status using queries</h4>
-<p>You can consult the state of the refund by using the <a href="../../../docs/integrations/api-integration/queries-api.html">Queries API</a>. In the response of the query, you need to send the order id.</p>
+<p>You can consult the state of the refund by using the <a href="../../../docs/integrations/api-integration/queries-api.html">Queries API</a>. In the request of the query, you need to send the order id.</p>
 <p>When query an order, the system returns the last transaction associated with the Order.</p>
 <p>There are three possible status in the response of your request:</p>
 <ul>
 <li><strong>Unresolved request</strong>: if the request has not been resolved, the order found in the query appears in <code>CAPTURED</code> status (parameter <code>result.payload.status</code> in the response), the first transaction type is <code>AUTHORIZATION_AND_CAPTURE</code> (parameter <code>result.transactions.type</code> in the response) and the first transaction status is <code>APPROVED</code> (First parameter <code>result.transactions.transactionResponse.state</code> in the response).</li>
 <li><strong>Approved</strong>: if the refund request is approved by a PayU’s customer service agent, the order found in the query appears in <code>REFUNDED</code> status (parameter <code>result.payload.status</code> in the response), the first transaction type is <code>REFUND</code> (parameter <code>result.transactions.type</code> in the response) and the first transaction status is <code>APPROVED</code> (First parameter <code>result.transactions.transactionResponse.state</code> in the response).</li>
-<li><strong>Declined</strong>: if the refund request is approved by a PayU’s customer service agent, the order found in the query appears in <code>CAPTURED</code> status (parameter <code>result.payload.status</code> in the response), the first transaction type is <code>REFUND</code> (parameter <code>result.transactions.type</code> in the response) and the first transaction status is <code>DECLINED</code> (First parameter <code>result.transactions.transactionResponse.state</code> in the response).</li>
+<li><strong>Declined</strong>: if the refund request is declined by a PayU’s customer service agent, the order found in the query appears in <code>CAPTURED</code> status (parameter <code>result.payload.status</code> in the response), the first transaction type is <code>REFUND</code> (parameter <code>result.transactions.type</code> in the response) and the first transaction status is <code>DECLINED</code> (First parameter <code>result.transactions.transactionResponse.state</code> in the response).</li>
 </ul>
 
 	
@@ -1669,9 +1669,9 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 25, 2021:
+November 3, 2021:
 
- <b>Adjustment for voids in Chile (0a1ff283)</b>
+ <b>Changes found during the translation procedure (f2b9d537)</b>
 </div>
 </div>
 
