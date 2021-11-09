@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+<link rel="alternate" type="application/rss&#43;xml" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/index.xml">
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Conociendo el Módulo PayU | PayU Latam</title><meta property="og:title" content="Conociendo el Módulo PayU" />
+<meta property="og:description" content="Tan pronto inicies sesión, puedes utilizar todas las opciones disponibles para manejar tu cuenta, conocer e estado de tus ventas, controlar tus finanzas, transferir dinero desde tu cuenta PayU y más.
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/es/payu-module-documentation/getting-started/understanding-the-payu-module.html" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Conociendo el Módulo PayU">
+<meta itemprop="description" content="Tan pronto inicies sesión, puedes utilizar todas las opciones disponibles para manejar tu cuenta, conocer e estado de tus ventas, controlar tus finanzas, transferir dinero desde tu cuenta PayU y más.
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Conociendo el Módulo PayU"/>
+<meta name="twitter:description" content="Tan pronto inicies sesión, puedes utilizar todas las opciones disponibles para manejar tu cuenta, conocer e estado de tus ventas, controlar tus finanzas, transferir dinero desde tu cuenta PayU y más.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../es/docs.html" ><span>Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../es/payu-module-documentation.html" ><span class="active">Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/getting-started/understanding-the-payu-module.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/getting-started/understanding-the-payu-module.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation.html" href="../../../es/payu-module-documentation.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/getting-started.html" href="../../../es/payu-module-documentation/getting-started.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationgetting-startedhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/payu-module-documentation/getting-started/log-in.html" href="../../../es/payu-module-documentation/getting-started/log-in.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Iniciar sesión</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationgetting-startedlog-inhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/log-in/google-accounts.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-espayu-module-documentationgetting-startedlog-ingoogle-accountshtml" href="../../../es/payu-module-documentation/getting-started/log-in/google-accounts.html">Iniciar sesión utilizando cuentas de Google</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/password-recovery.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationgetting-startedpassword-recoveryhtml" href="../../../es/payu-module-documentation/getting-started/password-recovery.html">Recuperación de contraseña</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/payu-module-documentation/getting-started/understanding-the-payu-module.html" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Conociendo el Módulo PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationgetting-startedunderstanding-the-payu-modulehtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-espayu-module-documentationgetting-startedunderstanding-the-payu-moduleupdate-my-informationhtml" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html">Actualizar mi información</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-espayu-module-documentationgetting-startedunderstanding-the-payu-moduletechnical-configurationhtml" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Configuración técnica</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/user-and-profile-management.html" href="../../../es/payu-module-documentation/user-and-profile-management.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Gestión de usuarios y permisos</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationuser-and-profile-managementhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/user-and-profile-management/user-management.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationuser-and-profile-managementuser-managementhtml" href="../../../es/payu-module-documentation/user-and-profile-management/user-management.html">Gestión de usuarios</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationuser-and-profile-managementprofile-and-permissions-managementhtml" href="../../../es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Gestión de perfiles y permisos</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/payu-operations.html" href="../../../es/payu-module-documentation/payu-operations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Operaciones de PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationpayu-operationshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/sell-with-payu.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationssell-with-payuhtml" href="../../../es/payu-module-documentation/payu-operations/sell-with-payu.html">Vende con PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/transfers.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationstransfershtml" href="../../../es/payu-module-documentation/payu-operations/transfers.html">Transferencias</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/refunds-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationsrefunds-mphtml" href="../../../es/payu-module-documentation/payu-operations/refunds-mp.html">Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/disputes-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationsdisputes-mphtml" href="../../../es/payu-module-documentation/payu-operations/disputes-mp.html">Disputas</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/reports.html" href="../../../es/payu-module-documentation/reports.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Reportes</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationreportshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/sales-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportssales-reporthtml" href="../../../es/payu-module-documentation/reports/sales-report.html">Reporte de ventas</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/transfer-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportstransfer-reporthtml" href="../../../es/payu-module-documentation/reports/transfer-report.html">Reporte de transferencias</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/financial-statement.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportsfinancial-statementhtml" href="../../../es/payu-module-documentation/reports/financial-statement.html">Balance financiero</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/withholding-certificate.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportswithholding-certificatehtml" href="../../../es/payu-module-documentation/reports/withholding-certificate.html">Certificado de Retenciones</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerrequisitos</a></li>
+    <li><a href="#payu-module-web-application">Aplicación web del Módulo PayU</a>
+      <ul>
+        <li><a href="#1-account-options">1. Opciones de cuenta</a></li>
+        <li><a href="#2-settings-and-user-options">2. Configuraciones y opciones de usuario</a></li>
+        <li><a href="#3-main-panel">3. Panel principal</a></li>
+        <li><a href="#4-footer">4. Pie de página</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/payu-module-documentation.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/payu-module-documentation/getting-started.html">Empezando...</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module.html">Conociendo el Módulo PayU</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Conociendo el Módulo PayU</h1>
+        <div class="lead">Tan pronto inicies sesión, puedes utilizar todas las opciones disponibles para manejar tu cuenta, conocer e estado de tus ventas, controlar tus finanzas, transferir dinero desde tu cuenta PayU y más.</div>
+	
+	<h2 id="prerequisites">Prerrequisitos</h2>
+<p>Antes de empezar a explicar cómo está organizado el modulo PayU, necesitas lo siguiente:</p>
+<ul>
+<li>Tener un usuario en el módulo PayU. Aprende a crear uno <a href="../../../es/docs/getting-started/create-an-account.html">aquí</a>.</li>
+<li>Haber leído y entendido los <a href="../../../es/payu-module-documentation.html#payu-module-concepts">conceptos detrás del Módulo PayU</a>.</li>
+</ul>
+<h2 id="payu-module-web-application">Aplicación web del Módulo PayU</h2>
+<p>El módulo PayU está dividido en cuatro grupos principales:</p>
+<ol>
+<li><a href="#1-account-options">Opciones de cuenta</a>.</li>
+<li><a href="#2-settings-and-user-options">Configuraciones y opciones de usuario</a>.</li>
+<li><a href="#3-main-panel">Panel principal</a>.</li>
+<li><a href="#4-footer">Pie de página</a>.</li>
+</ol>
+<p><img src="../../../assets/MerchantPanel/MerchantPanel_01_es.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Nota</h4>
+Las opciones mostradas en este artículo dependen del perfil que tengas para acceder a cada cuenta.
+</div>
+
+<h3 id="1-account-options">1. Opciones de cuenta</h3>
+<p>Este panel tiene las opciones requeridas para manejar las cuentas asociadas al comercio actual. En este panel encuentras las siguientes opciones:</p>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Subopción</th>
+<th style="text-align:center">Disponible en</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Merchant ID</td>
+<td></td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Número de identificación de tu comercio en el sistema de PayU. Este identificador es requerido cuando utilizas <a href="../../../es/docs/integrations.html">Integraciones</a>.</td>
+</tr>
+<tr>
+<td>Cuenta</td>
+<td>Información de la cuenta</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra en nombre e identificador de la cuenta seleccionada.<br>Esta opción también le permite cambiar la cuenta y realizar operaciones relacionadas. Haz clic en el simbolo <strong>▾</strong> para encontrar estas opciones o cambiar la cuenta.<br><br><img src="../../../assets/MerchantPanel/MerchantPanel_02_es.png" alt="PrintScreen" width="40%"/></td>
+</tr>
+<tr>
+<td></td>
+<td>Datos de mi negocio</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra la ubicación y la información de contacto principal de su negocio. Además, esta opción muestra las personas asociadas con su negocio.</td>
+</tr>
+<tr>
+<td></td>
+<td>Datos de ventas</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra la información de cómo realizas tus ventas, qué vendes, el logo de tu tienda, información de entrega, cómo ofreces tus productos o servicios y cómo tus clientes pueden contactarte.</td>
+</tr>
+<tr>
+<td></td>
+<td>Datos bancarios</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra la cuenta bancaria y el banco intermediario donde desea transferir los fondos recaudados para esta cuenta.</td>
+</tr>
+<tr>
+<td></td>
+<td>Cuentas creadas</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra la lista de cuentas disponibles en su comercio.</td>
+</tr>
+<tr>
+<td>Saldo disponible</td>
+<td></td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra el saldo disponible en la cuenta seleccionada.</td>
+</tr>
+<tr>
+<td>Inicio</td>
+<td></td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Muestra la página de bienvenida del módulo PayU. Para más información, consulta la página de <a href="#home-page">Inicio</a>.</td>
+</tr>
+<tr>
+<td>Transacciones</td>
+<td>Reporte de ventas</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Revisa el detalle de los pagos recibidos, incluyendo métodos de pago más utilizados y clientes frecuentes. Para más información, consulta <a href="../../../es/payu-module-documentation/reports/sales-report.html">Reporte de ventas</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Disputas</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Gestiona el proceso de disputas generadas en tu cuenta PayU. Para más información, consulta <a href="../../../es/payu-module-documentation/payu-operations/disputes-mp.html">Disputas</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Balance financiero</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Te permite entender el flujo de dinero de tu cuenta, los cargos aplicados, las tarifas relacionadas y los impuestos. Para más información, consulta <a href="../../../es/payu-module-documentation/reports/financial-statement.html">Balance financiero</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Certificado de Retenciones</td>
+<td style="text-align:center"><img src="../../../assets/Colombia.png" width="20px"/></td>
+<td>Descarga tu Certificado de Retenciones de acuerdo con el periodo de tiempo seleccionado. Para más información, consulta <a href="../../../es/payu-module-documentation/reports/withholding-certificate.html">Certificado de Retenciones</a>.</td>
+</tr>
+<tr>
+<td>Transferencias</td>
+<td>Transferencias</td>
+<td style="text-align:center"><img src="../../../assets/Argentina.png" width="20px"/><img src="../../../assets/Chile.png" width="20px"/><img src="../../../assets/Colombia.png" width="20px"/><br><img src="../../../assets/Mexico.png" width="20px"/><img src="../../../assets/Panama.png" width="20px"/><img src="../../../assets/Peru.png" width="20px"/></td>
+<td>Te permite transferir los fondos recolectados en tu cuenta PayU a tu cuenta bancaria. Para más información, consulta <a href="../../../es/payu-module-documentation/payu-operations/transfers.html">Transferencias</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Programar transferencia</td>
+<td style="text-align:center"><img src="../../../assets/Argentina.png" width="20px"/><img src="../../../assets/Chile.png" width="20px"/><img src="../../../assets/Colombia.png" width="20px"/><br><img src="../../../assets/Mexico.png" width="20px"/><img src="../../../assets/Panama.png" width="20px"/><img src="../../../assets/Peru.png" width="20px"/></td>
+<td>Te permite crear transferencias diarias, semanales o mensuales. Además, puedes configurar transferencias personalizadas. Para más información, consulta <a href="../../../es/payu-module-documentation/payu-operations/transfers.html#schedule-transfers">Programar transferencias</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Transferencias diarias</td>
+<td style="text-align:center"><img src="../../../assets/Brasil.png" width="20px"/></td>
+<td>Como PayU en Brasil no es una institución de pago, los fondos recaudados en tu cuenta PayU se transfieren a tu cuenta bancaria diariamente. A través de este reporte, puedes conocer el estado de las transferencias diarias.<br>Este reporte solo está disponible para cuentas en Brasil y tiene las mismas columnas y opciones que el <a href="../../../es/payu-module-documentation/reports/transfer-report.html">reporte Transferencias</a>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Editar datos bancarios</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Te permite solicitar el cambio de tu cuenta bancaria y el banco intermediario donde vas a transferir los fondos recolectados en esta cuenta. Para más información, consulta <a href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html#request-the-change-of-your-bank-account">Actualizar mi información</a></td>
+</tr>
+<tr>
+<td>Cobra con PayU</td>
+<td>Cobra en internet</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Te permite crear solicitudes de pago para que puedas cobrarle a tus clientes sin tener una página Web. Para más información, consulta <a href="../../../es/docs/tools/payment-request.html">Solicitud de pago</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Cobros en efectivo</td>
+<td style="text-align:center"><img src="../../../assets/Argentina.png" width="20px"/><img src="../../../assets/Colombia.png" width="20px"/></td>
+<td>Te permite generar cupones de pago o tarjetas de cobranza<sup>*</sup> con la información necesaria para permitirle a tus clientes hacer pagos en efecto las veces que lo requieran en los puntos de pago disponibles. Para más información, consulta <a href="../../../es/docs/tools/payment-coupons.html">Cupones de pago</a>.<br><sup>*</sup><em>Las tarjetas de cobranza solo están disponibles en Argentina</em>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Mis herramientas</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Te permite encontrar y administrar la información de los <em>Links de pago</em> (Solicitud de pago) y <em>Cupones de pagoCupones de pago</em><sup>*</sup> que hayas creado en tu cuenta.<br><sup>*</sup><em>Cupones de pago solo están disponibles en Argentina y Colombia</em>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-settings-and-user-options">2. Configuraciones y opciones de usuario</h3>
+<p>Este panel tiene las opciones requeridas para administrar tu comercio y tu usuario.</p>
+<img src="../../../assets/MerchantPanel/MerchantPanel_03_es.png" alt="PrintScreen" width="50%"/>
+<h4 id="merchant-settings">Configuraciones del comercio</h4>
+<p>Esta opción te permite administrar usuarios, permisos, perfiles y la configuración de tu comercio. Al hacer clic en el botón <em><strong>Configuración</strong></em>, encuentras las siguientes opciones:</p>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th style="text-align:center">Disponible en</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gestión de usuarios</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Te permite otorgar acceso a los miembros de tu equipo para que puedan solicitar pagos en línea o validar información de los pagos. Para más información, consulta <a href="../../../es/payu-module-documentation/user-and-profile-management/user-management.html">Gestión de usuarios</a>.</td>
+</tr>
+<tr>
+<td>Perfiles y permisos</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>Te permite create custom profiles with specific permissions.<br>En esta sección, puedes consultar los permisos predeterminados incluidos en el Módulo PayU. Para más información, consulta <a href="../../../es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Gestión de perfiles y permisos</a>.</td>
+</tr>
+<tr>
+<td>Configuración técnica</td>
+<td style="text-align:center"><img src="../../../assets/World.png" width="20px"/></td>
+<td>En esta opción, puedes encontrar las variables requeridas para integrar PayU con tu página Web. Además, puedes configurar notificaciones de pagos procesados y Disputas. Para más información, consulta <a href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Configuración técnica</a>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="user-settings">Configuraciones del usuario</h4>
+<p>Esta opción te permite administrar tu perfil. En la vista principal de esta opción, encuentras tu correo electrónico, tu perfil actual en el módulo PayU (para la cuenta actual), y el account Id; haz clic en el símbolo <strong>▾</strong> para mostrar las configuraciones de usuario disponibles.</p>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cambiar comercio</td>
+<td>Esta opción está disponible cuando tu usuario está enrolado a más de un comercio.</td>
+</tr>
+<tr>
+<td>Mi perfil</td>
+<td>En esta opción, puedes configurar tus preferencias y actualizar tu contraseña.</td>
+</tr>
+<tr>
+<td>Cerrar Sesión</td>
+<td>Esta opción cierra la sesión del usuario activo.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-main-panel">3. Panel principal</h3>
+<p>Este panel panel carga la opción seleccionada en el panel de la izquierda o en la opción de la parte superior. La página <em><strong>Inicio</strong></em> está seleccionada por defecto, por lo que se carga tan pronto inicias sesión en el módulo PayU.</p>
+<p>Para configurar una opción para que see muestre por defecto, haz clic en el menú de los tres puntos en la esquina superior derecha y selecciona <em><strong>Definir como página principal</strong></em>.</p>
+<img src="../../../assets/MerchantPanel/MerchantPanel_04_es.png" alt="PrintScreen" width="40%"/>
+<h4 id="home-page">Página de Inicio</h4>
+<p>La página de inicio es el punto de partida del Módulo PayU. Muestra los atajos para realizar ventas en línea, saber el estado de tud ventas, controlar tus finanzas, transferir fondos, aprender sobre comercio electrónico y dejarnos comentarios.</p>
+<p><img src="../../../assets/MerchantPanel/MerchantPanel_05_es.png" alt="PrintScreen"></p>
+<p>En esta página, puedes también tomar un tour utilizando el botón de <em><strong>Tour Virtual</strong></em>. Este botón te lleva a través de las opciones principales para administrar tu cuenta.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Nota</h4>
+Lagunas opciones del tour están atadas a los permisos configurados a tu usuario.
+</div>
+
+<h3 id="4-footer">4. Pie de página</h3>
+<p>El pie de página muestra el número de teléfono para contactarnos y el enlace para leer los <em><strong>terminos y condiciones</strong></em> de acuerdo con el país de procesamiento.</p>
+<p>Los siguientes son los números y hora de contacto:</p>
+<ul>
+<li><img src="../../../assets/Argentina.png" width="25px"/> (+5411) 598 42132 &gt; Lun - Vie 09:00 - 22:00 (UTC -3:00)</li>
+<li><img src="../../../assets/Brasil.png" width="25px"/> (+5511) 4130 5311 &gt; Lun - Vie 09h a 18h / Sab 09h a 15h - Zona horaria de Brasilia (UTC -3:00)</li>
+<li><img src="../../../assets/Chile.png" width="25px"/> (+562) 258-13949 &gt; Lun - Vie 8:00 - 21:00 Hora chilena</li>
+<li><img src="../../../assets/Colombia.png" width="25px"/> (+57) 601 654 0721 &gt; Lun - Vie 7:00 - 20:00 Hora colombiana (UTC -5:00)</li>
+<li><img src="../../../assets/Mexico.png" width="25px"/> (+5255) 474 11439 &gt; Lun - Vie 7:00 - 20:00 Hora CDMX</li>
+<li><img src="../../../assets/Panama.png" width="25px"/> (+507) 836 5577 &gt; Lun - Vie 7:00 - 20:00 Hora colombiana (UTC -5:00)</li>
+<li><img src="../../../assets/Peru.png" width="25px"/> (+511) 708 5381 &gt; Lun - Vie 7:00 - 20:00 Hora peruana (UTC -5:00)</li>
+</ul>
+
+		
+<div class="section-index">
+    <hr class="panel-line">
+    <h4>Temas en esta sección</h4>
+    
+    
+    
+    
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html">Actualizar mi información</a>
+                    </h5>
+                    <p>Aprende cómo cambiar tu contraseña, actualizar tus preferencias de usuario, cambiar el logo de tu comercio y solicitar el cambio de tus Datos bancarios.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Configuración técnica</a>
+                    </h5>
+                    <p>Encuentra aquí todos los detalles que te ayudarán a integrar tu página web usando cualquiera de nuestras <a href="../../../es/docs/integrations.html">integraciones</a>.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    
+</div>
+
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

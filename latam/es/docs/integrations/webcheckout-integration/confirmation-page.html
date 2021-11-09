@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Página de confirmación | PayU Latam</title><meta property="og:title" content="Página de confirmación" />
+<meta property="og:description" content="Esta página te permite obtener confirmaciones de sistema relacionadas con los resultados de la transacción. Puedes actualizar tus inventarios, órdenes o bases de datos. Está página no es visible para el cliente y su objetivo es permitir la comunicación entre sistemas. Los datos se envía a través deñ método HTTP POST. &lt;/br&gt;Si el pagador genera reintentos de pago durante el proceso, se genera una página de confirmación por cada transacción. Esta página es invocada por transacciones aprobadas o rechazadas.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/es/docs/integrations/webcheckout-integration/confirmation-page.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-03-29T12:15:57-05:00" />
+<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Página de confirmación">
+<meta itemprop="description" content="Esta página te permite obtener confirmaciones de sistema relacionadas con los resultados de la transacción. Puedes actualizar tus inventarios, órdenes o bases de datos. Está página no es visible para el cliente y su objetivo es permitir la comunicación entre sistemas. Los datos se envía a través deñ método HTTP POST. &lt;/br&gt;Si el pagador genera reintentos de pago durante el proceso, se genera una página de confirmación por cada transacción. Esta página es invocada por transacciones aprobadas o rechazadas.
+"><meta itemprop="datePublished" content="2021-03-29T12:15:57-05:00" />
+<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
+<meta itemprop="wordCount" content="1484">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Página de confirmación"/>
+<meta name="twitter:description" content="Esta página te permite obtener confirmaciones de sistema relacionadas con los resultados de la transacción. Puedes actualizar tus inventarios, órdenes o bases de datos. Está página no es visible para el cliente y su objetivo es permitir la comunicación entre sistemas. Los datos se envía a través deñ método HTTP POST. &lt;/br&gt;Si el pagador genera reintentos de pago durante el proceso, se genera una página de confirmación por cada transacción. Esta página es invocada por transacciones aprobadas o rechazadas.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../../es/docs.html" ><span class="active">Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../../es/payu-module-documentation.html" ><span>Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/webcheckout-integration/confirmation-page.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/webcheckout-integration/confirmation-page.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs.html" href="../../../../es/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/getting-started.html" href="../../../../es/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedcreate-an-accounthtml" href="../../../../es/docs/getting-started/create-an-account.html">Crear una cuenta de PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-integrationhtml" href="../../../../es/docs/getting-started/select-your-integration.html">Seleccionar tu integración</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-payment-methodhtml" href="../../../../es/docs/getting-started/select-your-payment-method.html">Seleccionar tu medio de Pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedtest-your-solutionhtml" href="../../../../es/docs/getting-started/test-your-solution.html">Probar tu solución</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-starteddeploy-to-productionhtml" href="../../../../es/docs/getting-started/deploy-to-production.html">Desplegar a Producción</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedresponse-codes-and-variableshtml" href="../../../../es/docs/getting-started/response-codes-and-variables.html">Códigos de respuesta y Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/services.html" href="../../../../es/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespaymentshtml" href="../../../../es/docs/services/payments.html">Pagos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesquerieshtml" href="../../../../es/docs/services/queries.html">Consulta de transacciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicestokenizationhtml" href="../../../../es/docs/services/tokenization.html">Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespromotionshtml" href="../../../../es/docs/services/promotions.html">Cuotas y Promociones - Argentina y México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesrefundshtml" href="../../../../es/docs/services/refunds.html">Anulaciones y Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespayoutshtml" href="../../../../es/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/tools.html" href="../../../../es/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Herramientas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-requesthtml" href="../../../../es/docs/tools/payment-request.html">Solicitud de pago</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/tools/shopping-cart-plugins.html" href="../../../../es/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins para Carritos de compra</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../../es/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsmagentohtml" href="../../../../es/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../../es/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../../es/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../../es/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../../es/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsopencarthtml" href="../../../../es/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayu-modulehtml" href="../../../../es/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsdisputeshtml" href="../../../../es/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-couponshtml" href="../../../../es/docs/tools/payment-coupons.html">Cupones de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsantifraud-guaranteehtml" href="../../../../es/docs/tools/antifraud-guarantee.html">Garantía Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/integrations.html" href="../../../../es/docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integraciones</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/webcheckout-integration.html" href="../../../../es/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Integración WebCheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/payment-form.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../../es/docs/integrations/webcheckout-integration/payment-form.html">Formulario de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/response-page.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../../es/docs/integrations/webcheckout-integration/response-page.html">Página de Respuesta</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/confirmation-page.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../../es/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmación</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/api-integration.html" href="../../../../es/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../../es/docs/integrations/api-integration/payments-api-argentina.html">API de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../../es/docs/integrations/api-integration/payments-api-brazil.html">API de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../../es/docs/integrations/api-integration/payments-api-chile.html">API de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../../es/docs/integrations/api-integration/payments-api-colombia.html">API de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../../es/docs/integrations/api-integration/payments-api-mexico.html">API de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../../es/docs/integrations/api-integration/payments-api-panama.html">API de Pagos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../../es/docs/integrations/api-integration/payments-api-peru.html">API de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationqueries-apihtml" href="../../../../es/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationtokenization-apihtml" href="../../../../es/docs/integrations/api-integration/tokenization-api.html">API de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpromotions-apihtml" href="../../../../es/docs/integrations/api-integration/promotions-api.html">API de Promociones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationrefunds-apihtml" href="../../../../es/docs/integrations/api-integration/refunds-api.html">API de Reembolsos y Anulaciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayouts-apihtml" href="../../../../es/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/sdk-integration.html" href="../../../../es/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationqueriessdkhtml" href="../../../../es/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../../es/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationrefundssdkhtml" href="../../../../es/docs/integrations/sdk-integration/refundssdk.html">SDK de Reembolsos y Anulaciones</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/server-status.html" href="../../../../es/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Estado de nuestros servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#considerations">Consideraciones</a></li>
+    <li><a href="#variables-sent-with-the-confirmation-page">Variables enviadas con la página de confirmación</a></li>
+    <li><a href="#post-example-send-to-the-confirmation-page">Ejemplo POST enviado a página de confirmación</a></li>
+    <li><a href="#signature-validation">Validación de la firma</a>
+      <ul>
+        <li><a href="#compare-your-signature">Compara tu firma</a></li>
+      </ul>
+    </li>
+    <li><a href="#payment-retries">Reintentos de pago</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs/integrations.html">Integraciones</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs/integrations/webcheckout-integration.html">Integración WebCheckout</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../../es/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmación</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Página de confirmación</h1>
+    <div class="lead">Esta página te permite obtener confirmaciones de sistema relacionadas con los resultados de la transacción. Puedes actualizar tus inventarios, órdenes o bases de datos. Está página no es visible para el cliente y su objetivo es permitir la comunicación entre sistemas. Los datos se envía a través deñ método HTTP POST. </br>Si el pagador genera reintentos de pago durante el proceso, se genera una página de confirmación por cada transacción. Esta página es invocada por transacciones aprobadas o rechazadas.</div>
+	       
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="../../../../js/signature-generator/md5.js"></script>
+<script src="../../../../js/signature-generator/sha1.js"></script>
+<script src="../../../../js/signature-generator/sha256.js"></script>
+<script src="../../../../js/signature-generator/signature-generator.js"></script>
+<p>La página de confirmación te permite actualizar las bases de datos de tu sistema; por lo tanto, no debe incluir código HTML ya que no es visible al comprador. Esta página es opcional; cuando se completa una transacción (por ejemplo, cuando se aprueba, se rechaza o cuando se cancela) nuestra plataforma envía las variables a través del método HTTP POST.</p>
+<p>En la página de confirmación, debes capturar los datos que desear guardar en la base de datos. Esta captura depende del lenguaje de programación que utilizas.</p>
+<h2 id="considerations">Consideraciones</h2>
+<ul>
+<li>Si tienes restringido el sitio con <em>basic access authentication</em> o similar, desactívalo para la URL de confirmación.</li>
+<li>La IP asociada con la URL de confirmación debe ser pública; no utilice URL que se accedan por intranet o localhost.</li>
+<li>Si utilizas HTTPS, debes tener un certificado válido.</li>
+<li>El formato de tu página de confirmación debe ser <code>x-www-form-urlencoded</code>.</li>
+<li>No utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de encriptación <code>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</code> en tu página de confirmación.</li>
+<li>PayU asume que la página de confirmación es reportada correctamente cuando recibe el código HTTP 200; en caso contrario, PayU realiza un máximo de nueve (9) intentos de enviar la página de confirmación a tu sistema. Si luego de estos intentos no se recibe el código HTTP 200, PayU envía una alerta por correo electrónico.</li>
+<li>PayU reporta la página de confirmación una vez la transacción tenga un estado final, ed decir, cuando se aprueba, se rechaza o se vence. Si una transacción está en proceso (esperando pago o análisis), PayU no reporta hasta que la transacción tenga un estado final.</li>
+</ul>
+<h2 id="variables-sent-with-the-confirmation-page">Variables enviadas con la página de confirmación</h2>
+<details>
+<summary>Variables en la página de confirmación</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Tamaño</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchant_id</td>
+<td>Numeric</td>
+<td>12</td>
+<td>Identificador de tu tienda en el sistema de PayU, puedes encontrar este número en el correo de creación de tu cuenta.</td>
+</tr>
+<tr>
+<td>state_pol</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>Indica el estado de la transacción en el sistema.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-confirmation-page">Ver los estados de la transacción en la columna respectiva</a>.</td>
+</tr>
+<tr>
+<td>risk</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Riesgo asociado con la transacción. Los posibles valores están entre 0 y 1.<br>Entre mayor sea el valor, mayor es el riesgo.<br>Formato <code>###.00</code>.</td>
+</tr>
+<tr>
+<td>response_code_pol</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Código de repuesta de PayU.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-confirmation-page">Ver los códigos de respuesta en la columna respectiva</a>.</td>
+</tr>
+<tr>
+<td>reference_sale</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Referencia de la venta o la orden. Debe ser única por cada transacción enviada al sistema.</td>
+</tr>
+<tr>
+<td>reference_pol</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Referencia o número de transacción generado por PayU.</td>
+</tr>
+<tr>
+<td>sign</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Firma digital creada por cada transacción.</td>
+</tr>
+<tr>
+<td>extra1</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Campo adicional para enviar información relacionada con la compra.</td>
+</tr>
+<tr>
+<td>extra2</td>
+<td>Alphanumeric</td>
+<td>255</td>
+<td>Campo adicional para enviar información relacionada con la compra.</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Identificador interno utilizado por los métodos de pago.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#codes-of-the-payment-methods">Ver los códigos de los métodos de pago</a>.</td>
+</tr>
+<tr>
+<td>payment_method_type</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Método de pago utilizado.</td>
+</tr>
+<tr>
+<td>installments_number</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Número de cuotas en las cuales se difirió el pago con tarjeta crédito.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor total de la transacción. Puede contener dos dígitos decimales. Por ejemplo 10000.00 o 10000.</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor del IVA de la transacción, si no se envió IVA, el sistema aplica el 19% automáticamente. Puede contener dos dígitos decimales. Por ejemplo 19000.00. En caso de que no tenga IVA, debe enviarse 0.</td>
+</tr>
+<tr>
+<td>additional_value</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor Adicional no comisionable.</td>
+</tr>
+<tr>
+<td>transaction_date</td>
+<td>Fecha (AAAA-MM-DD HH:mm:ss)</td>
+<td>—</td>
+<td>Fecha en la que se realizó la transacción.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Alfanumérico</td>
+<td>3</td>
+<td>Moneda respectiva en la que se hace el pago.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#accepted-currencies">Ver las monedas aceptadas</a>.</td>
+</tr>
+<tr>
+<td>email_buyer</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Campo que contiene el correo electrónico del comprador para notificar el resultado de la transacción. Se recomienda validarlo cuando se toma este valor del formulario.</td>
+</tr>
+<tr>
+<td>cus</td>
+<td>Alfanumérico</td>
+<td>64</td>
+<td>El CUS (Código Único de Seguimiento) es la referencia de pago dentro del banco, aplica solo para pagos con PSE.</td>
+</tr>
+<tr>
+<td>pse_bank</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Nombre del banco, aplica solo para pagos con PSE.</td>
+</tr>
+<tr>
+<td>test</td>
+<td>Booleano (true, false)</td>
+<td>—</td>
+<td>Variable para identificar si la operación fue en modo pruebas.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Descripción de al venta.</td>
+</tr>
+<tr>
+<td>billing_address</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Dirección de facturación.</td>
+</tr>
+<tr>
+<td>shipping_address</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Dirección de la mercancía.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Alfanumérico</td>
+<td>20</td>
+<td>Teléfono de residencia del comprador.</td>
+</tr>
+<tr>
+<td>office_phone</td>
+<td>Alfanumérico</td>
+<td>20</td>
+<td>Teléfono diurno del comprador.</td>
+</tr>
+<tr>
+<td>account_number_ach</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador de la transacción.</td>
+</tr>
+<tr>
+<td>account_type_ach</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Tipo de la transacción.</td>
+</tr>
+<tr>
+<td>administrative_fee</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor de la tarifa administrativa.</td>
+</tr>
+<tr>
+<td>administrative_fee_base</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor base de la tarifa administrativa.</td>
+</tr>
+<tr>
+<td>administrative_fee_tax</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor del impuesto de la tarifa administrativa.</td>
+</tr>
+<tr>
+<td>airline_code</td>
+<td>Alfanumérico</td>
+<td>4</td>
+<td>Código de la aerolínea.</td>
+</tr>
+<tr>
+<td>attempts</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Número de intentos de enviar la confirmación.</td>
+</tr>
+<tr>
+<td>authorization_code</td>
+<td>Alfanumérico</td>
+<td>12</td>
+<td>Código de autorización de la venta.</td>
+</tr>
+<tr>
+<td>bank_id</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Identificador del banco.</td>
+</tr>
+<tr>
+<td>billing_city</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Ciudad de facturación.</td>
+</tr>
+<tr>
+<td>billing_country</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Código ISO del país asociado a la dirección de facturación.</td>
+</tr>
+<tr>
+<td>commision_pol</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor de la comisión.</td>
+</tr>
+<tr>
+<td>commision_pol_currency</td>
+<td>Alfanumérico</td>
+<td>3</td>
+<td>Moneda  de la comisión.</td>
+</tr>
+<tr>
+<td>customer_number</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Número personalizado.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>Fecha (AAAA-MM-DD HH:mm:ss)</td>
+<td>—</td>
+<td>Fecha de la operación.</td>
+</tr>
+<tr>
+<td>error_code_bank</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Código de error del banco.</td>
+</tr>
+<tr>
+<td>error_message_bank</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Mensaje de error del banco.</td>
+</tr>
+<tr>
+<td>exchange_rate</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor de la tasa de cambio.</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>Alfanumérico</td>
+<td>39</td>
+<td>Dirección IP desde donde se realizó la transacción.</td>
+</tr>
+<tr>
+<td>nickname_buyer</td>
+<td>Alfanumérico</td>
+<td>150</td>
+<td>Nombre corto del comprador.</td>
+</tr>
+<tr>
+<td>nickname_seller</td>
+<td>Alfanumérico</td>
+<td>150</td>
+<td>Nombre corto del vendedor.</td>
+</tr>
+<tr>
+<td>payment_method_id</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Identificador del método de pago.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#codes-of-the-payment-methods">Ver los códigos de los métodos de pago</a>.</td>
+</tr>
+<tr>
+<td>payment_request_state</td>
+<td>Alfanumérico</td>
+<td>32</td>
+<td>Estado de la solicitud de pago.</td>
+</tr>
+<tr>
+<td>pseReference1</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia no. 1 para pagos PSE.</td>
+</tr>
+<tr>
+<td>pseReference2</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia no. 2 para pagos PSE.</td>
+</tr>
+<tr>
+<td>pseReference3</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia no. 3 para pagos PSE.</td>
+</tr>
+<tr>
+<td>response_message_pol</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Mensaje de respuesta de PayU.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-confirmation-page">Ver los mensajes de respuesta en la columna correspondiente</a>.</td>
+</tr>
+<tr>
+<td>shipping_city</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Ciudad donde se entrega la mercancía.</td>
+</tr>
+<tr>
+<td>shipping_country</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Código ISO del país donde se entrega la mercancía.</td>
+</tr>
+<tr>
+<td>transaction_bank_id</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Identificador de la transacción en el sistema del banco.</td>
+</tr>
+<tr>
+<td>transaction_id</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador de la transacción.</td>
+</tr>
+<tr>
+<td>payment_method_name</td>
+<td>Alfa Numérico</td>
+<td>255</td>
+<td>Método de pago utilizado, por ejemplo VISA.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="post-example-send-to-the-confirmation-page">Ejemplo POST enviado a página de confirmación</h2>
+<p>El siguiente es un ejemplo básico de las variables enviadas a la página de confirmación vía POST:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">response_code_pol=5
+phone=
+additional_value=0.00
+test=1
+transaction_date=2015-05-27 13:07:35
+cc_number=************0004
+cc_holder=test_buyer
+error_code_bank=
+billing_country=CO
+bank_referenced_name=
+description=test_payu_01
+administrative_fee_tax=0.00
+value=100.00
+administrative_fee=0.00
+payment_method_type=2
+office_phone=
+email_buyer=test@payulatam.com
+response_message_pol=ENTITY_DECLINED
+error_message_bank=
+shipping_city=
+transaction_id=f5e668f1-7ecc-4b83-a4d1-0aaa68260862
+sign=e1b0939bbdc99ea84387bee9b90e4f5c
+tax=0.00
+payment_method=10
+billing_address=cll 93
+payment_method_name=VISA
+pse_bank=
+state_pol=6
+date=2015.05.27 01:07:35
+nickname_buyer=
+reference_pol=7069375
+currency=USD
+risk=1.0
+shipping_address=
+bank_id=10
+payment_request_state=R
+customer_number=
+administrative_fee_base=0.00
+attempts=1
+merchant_id=508029
+exchange_rate=2541.15
+shipping_country=
+installments_number=1
+franchise=VISA
+payment_method_id=2
+extra1=
+extra2=
+antifraudMerchantId=
+extra3=
+nickname_seller=
+ip=190.242.116.98
+airline_code=
+billing_city=Bogota
+pse_reference1=
+reference_sale=2015-05-27 13:04:37
+pse_reference3=
+pse_reference2=
+</code></pre></div><h2 id="signature-validation">Validación de la firma</h2>
+<p>La validación de la firma te permite comprobar la integridad de los datos, debes generar la firma con los datos que encuentras en la página de confirmación y compararla con la información del parámetro signature.</p>
+<p>Para validar la firma en la página de respuesta debes tener en cuenta:</p>
+<ul>
+<li>Si el segundo decimal es cero, el valor de <code>new_value</code> para generar la firma debe tener un decimal. Ejemplo (<code>150.00</code> -&gt; <code>150.0</code>).</li>
+<li>Si el segundo decimal no es cero, el valor de <code>new_value</code> para generar la firma debe mantener los dos decimales. Ejemplo (<code>150.26</code> -&gt; <code>150.26</code>).</li>
+<li>Obten los parámetros para generar la firma (<code>merchantId</code>, <code>referenceCode</code>, <code>TX_VALUE</code>, <code>currency</code> y <code>transactionState</code>) de la página de respuesta, no de la base de datos.</li>
+<li>Debes guardar tu ApiKey de forma segura.</li>
+<li>Crea la firma así:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchant_id~reference_sale~new_value~currency~state_pol&#34;
+</code></pre></div><br>
+<p>Ejemplo</p>
+<p><strong>Con un decimal</strong></p>
+<pre><code>Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parámetros obtenidos de la página de confirmación
+- merchant_id = 508029
+- reference_sale = TestPayU04
+- value = 150.00
+- currency = USD
+- state_pol = 6
+
+La firma se genera de la siguiente manera:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.0~USD~6) = b607a2c2fa100e0947b206d41864fb86
+
+sign = b607a2c2fa100e0947b206d41864fb86
+</code></pre><p><strong>Con dos decimales</strong></p>
+<pre><code>Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parámetros obtenidos de la página de confirmación:
+- merchant_id = 508029
+- reference_sale = TestPayU05
+- value = 150.26
+- currency = USD
+- state_pol = 4
+
+La firma se genera de la siguiente manera:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU05~150.26~USD~4) = 1d95778a651e11a0ab93c2169a519cd6
+
+sign = 1d95778a651e11a0ab93c2169a519cd6 
+</code></pre><h3 id="compare-your-signature">Compara tu firma</h3>
+<!-- Signature generator - confirmation page -->
+<div id="blue-box">
+<span class="grey-text-13">
+<div>
+<form method="POST" id="signature_form_confirmation_page" >
+    <table>
+        <span class="blue-text-13"><b>Algoritmo: &nbsp;</b></span>
+        <select id = "signature_algorithm_confirmation_page" class="calc_selector form_control">
+            <option  value="md5">MD5</option>
+            <option  value="sha1">SHA1</option>
+            <option  value="sha256">SHA256</option>
+        </select>
+        <br>
+        <br>
+        <span class="calc_text">&nbsp;(</span>
+        <input class="form_control" type="text"  id ="signature_apikey_confirmation_page" name = "signature_apikey_confirmation_page" placeholder="ApiKey" maxlength="26"> ~
+        <input class="form_control number" type="text"  id ="signature_merchanId_confirmation_page" name = "signature_merchanId_confirmation_page" placeholder="MerchantId" maxlength="7"> ~
+        <input class="form_control" type="text"  id ="signature_referenceCode_confirmation_page" name = "signature_referenceCode_confirmation_page" placeholder="Referencia" maxlength="255"> ~
+        <input class="form_control  number" type="text" id ="signature_amount_confirmation_page" name = "signature_amount_confirmation_page" placeholder="Monto" maxlength="14"> ~
+        <select id = "signature_currency_confirmation_page" class="calc_selector form_control" >
+            <option  value="USD">USD</option>
+            <option  value="COP">COP</option>
+            <option  value="MXN">MXN</option>
+            <option  value="ARS">ARS</option>
+            <option  value="PEN">PEN</option>
+            <option  value="BRL">BRL</option>
+            <option  value="CLP">CLP</option>
+        </select> ~
+        <select id = "signature_state_pol_confirmation_page" class="calc_selector form_control" >
+            <option  value="4">4 (Aprobada)</option>
+            <option  value="6">6 (Rechazada)</option>
+            <option  value="5">5 (Expirada)</option>
+        </select>
+        <span class="calc_text">)</span>
+        <br>
+        <br>
+        <br>
+        <span class="blue-text-13"><b>Result:&nbsp;</b></span><input class="form_control" id ="signature_generated_confirmation_page" name = "signature_generated_confirmation_page" value = ""  readonly />
+    </table>
+    <br>
+    <table width="50%"  border="0" cellspacing="2" cellpadding="2">
+        <input type="button" name="signature_generate_confirmation_page" id="signature_generate_confirmation_page" value="Generar firma" >
+        <input type="button" name="signature_generate_again_confirmation_page" id="signature_generate_again_confirmation_page" value="Generar nueva firma" >
+    </table>
+</form>
+</div>
+</span>
+</div>
+<!-- End of signature generator - confirmation page -->
+<p>Esta calculadora te permite generar la firma utilizando alguno de los métodos de cifrado disponibles.</p>
+<h2 id="payment-retries">Reintentos de pago</h2>
+<p>Cuando se rechaza una transacción, el pagador tiene la opción de reintentar el pago utilizando el mismo u otro método de pago. Ten en cuenta que por cada intento, PayU hace el llamado de la página de confirmación con su estado de transacción correspondiente.</p>
+<p>Cada uno de estos llamados se hacen con la misma referencia de pago (<code>reference_sale</code>), el mismo identificador de la orden (<code>reference_pol</code>) pero diferente identificador de transacción (<code>transaction_id</code>). Por lo tanto, puedes recibir varios llamados a la página de confirmación para la misma venta.</p>
+<p>A continuación, encontrarás un ejemplo e un intento rechazado y su reintento aprobado:</p>
+<pre><code>reference_sale=2015-05-27 13:04:37
+reference_pol=7069375
+transaction_id=f5e668f1-7ecc-4b83-a4d1-0aaa68260862
+state_pol=6
+
+reference_sale=2015-05-27 13:04:37
+reference_pol=7069375
+transaction_id=01cfdce8-68d5-4a4c-aabf-d89370a0b92f
+state_pol=4
+</code></pre><p>Observa que si uno de los llamados a la página de confirmación indica que una referencia de pago (<code>reference_sale</code>) fue aprobada, puedes estar seguro de que no recibirás ningún reporte a la misma referencia.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../../js/scrollspy.js"></script>
+<script src="../../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

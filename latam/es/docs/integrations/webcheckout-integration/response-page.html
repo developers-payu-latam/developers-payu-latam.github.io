@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Página de Respuesta | PayU Latam</title><meta property="og:title" content="Página de Respuesta" />
+<meta property="og:description" content="La Página de Respuesta es una página obligatoria que te permite mostrar el resultado de la transacción al pagador. Nuestro sistema redirecciona al pagador a esta página una vez la transacción haya sido realizada. La información de los resultados del pago es enviada a tu sistema a través del método HTTP GET. &lt;/br&gt;Esta página es invocada para todos los estados de la transacción: aprobada, rechazada, en validación, esperando el pago (para pagos en efectivo), etc.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/es/docs/integrations/webcheckout-integration/response-page.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-03-29T12:15:39-05:00" />
+<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Página de Respuesta">
+<meta itemprop="description" content="La Página de Respuesta es una página obligatoria que te permite mostrar el resultado de la transacción al pagador. Nuestro sistema redirecciona al pagador a esta página una vez la transacción haya sido realizada. La información de los resultados del pago es enviada a tu sistema a través del método HTTP GET. &lt;/br&gt;Esta página es invocada para todos los estados de la transacción: aprobada, rechazada, en validación, esperando el pago (para pagos en efectivo), etc.
+"><meta itemprop="datePublished" content="2021-03-29T12:15:39-05:00" />
+<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
+<meta itemprop="wordCount" content="1475">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Página de Respuesta"/>
+<meta name="twitter:description" content="La Página de Respuesta es una página obligatoria que te permite mostrar el resultado de la transacción al pagador. Nuestro sistema redirecciona al pagador a esta página una vez la transacción haya sido realizada. La información de los resultados del pago es enviada a tu sistema a través del método HTTP GET. &lt;/br&gt;Esta página es invocada para todos los estados de la transacción: aprobada, rechazada, en validación, esperando el pago (para pagos en efectivo), etc.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../../es/docs.html" ><span class="active">Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../../es/payu-module-documentation.html" ><span>Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/webcheckout-integration/response-page.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/webcheckout-integration/response-page.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs.html" href="../../../../es/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/getting-started.html" href="../../../../es/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedcreate-an-accounthtml" href="../../../../es/docs/getting-started/create-an-account.html">Crear una cuenta de PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-integrationhtml" href="../../../../es/docs/getting-started/select-your-integration.html">Seleccionar tu integración</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-payment-methodhtml" href="../../../../es/docs/getting-started/select-your-payment-method.html">Seleccionar tu medio de Pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedtest-your-solutionhtml" href="../../../../es/docs/getting-started/test-your-solution.html">Probar tu solución</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-starteddeploy-to-productionhtml" href="../../../../es/docs/getting-started/deploy-to-production.html">Desplegar a Producción</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedresponse-codes-and-variableshtml" href="../../../../es/docs/getting-started/response-codes-and-variables.html">Códigos de respuesta y Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/services.html" href="../../../../es/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespaymentshtml" href="../../../../es/docs/services/payments.html">Pagos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesquerieshtml" href="../../../../es/docs/services/queries.html">Consulta de transacciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicestokenizationhtml" href="../../../../es/docs/services/tokenization.html">Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespromotionshtml" href="../../../../es/docs/services/promotions.html">Cuotas y Promociones - Argentina y México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesrefundshtml" href="../../../../es/docs/services/refunds.html">Anulaciones y Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespayoutshtml" href="../../../../es/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/tools.html" href="../../../../es/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Herramientas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-requesthtml" href="../../../../es/docs/tools/payment-request.html">Solicitud de pago</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/tools/shopping-cart-plugins.html" href="../../../../es/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins para Carritos de compra</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../../es/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsmagentohtml" href="../../../../es/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../../es/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../../es/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../../es/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../../es/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsopencarthtml" href="../../../../es/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayu-modulehtml" href="../../../../es/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsdisputeshtml" href="../../../../es/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-couponshtml" href="../../../../es/docs/tools/payment-coupons.html">Cupones de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsantifraud-guaranteehtml" href="../../../../es/docs/tools/antifraud-guarantee.html">Garantía Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/integrations.html" href="../../../../es/docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integraciones</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/webcheckout-integration.html" href="../../../../es/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Integración WebCheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/payment-form.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../../es/docs/integrations/webcheckout-integration/payment-form.html">Formulario de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/response-page.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../../es/docs/integrations/webcheckout-integration/response-page.html">Página de Respuesta</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/confirmation-page.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../../es/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmación</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/api-integration.html" href="../../../../es/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../../es/docs/integrations/api-integration/payments-api-argentina.html">API de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../../es/docs/integrations/api-integration/payments-api-brazil.html">API de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../../es/docs/integrations/api-integration/payments-api-chile.html">API de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../../es/docs/integrations/api-integration/payments-api-colombia.html">API de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../../es/docs/integrations/api-integration/payments-api-mexico.html">API de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../../es/docs/integrations/api-integration/payments-api-panama.html">API de Pagos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../../es/docs/integrations/api-integration/payments-api-peru.html">API de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationqueries-apihtml" href="../../../../es/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationtokenization-apihtml" href="../../../../es/docs/integrations/api-integration/tokenization-api.html">API de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpromotions-apihtml" href="../../../../es/docs/integrations/api-integration/promotions-api.html">API de Promociones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationrefunds-apihtml" href="../../../../es/docs/integrations/api-integration/refunds-api.html">API de Reembolsos y Anulaciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayouts-apihtml" href="../../../../es/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/sdk-integration.html" href="../../../../es/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationqueriessdkhtml" href="../../../../es/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../../es/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationrefundssdkhtml" href="../../../../es/docs/integrations/sdk-integration/refundssdk.html">SDK de Reembolsos y Anulaciones</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/server-status.html" href="../../../../es/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Estado de nuestros servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#considerations">Consideraciones</a></li>
+    <li><a href="#variables">Variables</a></li>
+    <li><a href="#integrate-the-response-page">Integrar la página de respuesta</a></li>
+    <li><a href="#signature-validation">Validación de la firma</a>
+      <ul>
+        <li><a href="#compare-your-signature">Compara tu firma</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs/integrations.html">Integraciones</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs/integrations/webcheckout-integration.html">Integración WebCheckout</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../../es/docs/integrations/webcheckout-integration/response-page.html">Página de Respuesta</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Página de Respuesta</h1>
+    <div class="lead">La Página de Respuesta es una página obligatoria que te permite mostrar el resultado de la transacción al pagador. Nuestro sistema redirecciona al pagador a esta página una vez la transacción haya sido realizada. La información de los resultados del pago es enviada a tu sistema a través del método HTTP GET. </br>Esta página es invocada para todos los estados de la transacción: aprobada, rechazada, en validación, esperando el pago (para pagos en efectivo), etc.</div>
+	       
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+<script src="../../../../js/signature-generator/md5.js"></script>
+<script src="../../../../js/signature-generator/sha1.js"></script>
+<script src="../../../../js/signature-generator/sha256.js"></script>
+<script src="../../../../js/signature-generator/signature-generator.js"></script>
+<h2 id="considerations">Consideraciones</h2>
+<ul>
+<li>Algunos proveedores de hosting tienen configuraciones que no permite enviar URLs como valores de parámetros. Por ejemplo: <code>&amp;merchant_url=http%3A%2F%2Fwww.mitienda.com</code></li>
+<li>Para cuentas de Brasil, no hay redirección a la página de respuesta.</li>
+<li>No dependas de la página de respuesta para actualizar tu base de datos o ejecutar procesos ya que es posible que el usuario no regrese a la misma; utiliza la página de confirmación.</li>
+<li>Si quieres mostrar información relacionada con la transacción, te sugerimos mostrar como mínimo lo siguiente: estado, referencia, valor, moneda y fecha.</li>
+<li>Se recomienda enviar el parámetro <code>responseUrl</code> en el formulario de pago o configurarlo en el Módulo PayU; tiene mayor prioridad el enviado como parámetro. Si PayU no encuentra ninguno, el proceso de pago finaliza en el Webcheckout.</li>
+</ul>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Importante</h4>
+Si deseas que PayU siempre muestra la información de la transacción, no envíes ningún valor en el parámetro <code>responseUrl</code> del formulario de pagos y déjalo en blanco en el Módulo PayU. En este caso, el comprador no tendrá la opción de regresar a tu página.
+</div>
+
+<h2 id="variables">Variables</h2>
+<p>Variables enviadas a la Página de respuesta.</p>
+<details open>
+<summary>Variables enviadas a la Página de respuesta</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Tamaño</th>
+<th>Descripción</th>
+<th style="text-align:center">Aplica para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Numérico</td>
+<td>12</td>
+<td>Identificador de tu tienda en el sistema de PayU, puedes encontrar este número en el correo de creación de tu cuenta.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>transactionState</td>
+<td>Numérico</td>
+<td>2</td>
+<td>Indica el estado de la transacción en el sistema.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page">Ver los estados de la transacción en la columna respectiva</a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>risk</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Riesgo asociado con la transacción. Los posibles valores están entre 0 y 1.<br>Entre mayor sea el valor, mayor es el riesgo.<br>Formato <code>###.00</code>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>polResponseCode</td>
+<td>Alfanumérico</td>
+<td>64</td>
+<td>Código de respuesta.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page">Ver los códigos de respuesta en la columna respectiva</a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>referenceCode</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia de la venta o la orden. Debe ser única por cada transacción enviada al sistema.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>reference_pol</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia o número de transacción generado por PayU.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Firma digital creada por cada transacción.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>polPaymentMethod</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Identificador interno utilizado por los métodos de pago.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>polPaymentMethodType</td>
+<td>Numérico</td>
+<td>2</td>
+<td>Método de pago utilizado.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#codes-of-the-payment-methods">Ver los códigos de los métodos de pago</a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>installmentsNumber</td>
+<td>Numérico</td>
+<td>2</td>
+<td>Número de cuotas en las cuales se difirió el pago con tarjeta crédito.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>TX_VALUE</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor total de la transacción. Puede contener dos dígitos decimales. Por ejemplo 10000.00 o 10000.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>TX_TAX</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor del IVA de la transacción, si no se envió IVA, el sistema aplica el 19% automáticamente.<br>Puede contener dos dígitos decimales. Por ejemplo 19000.00.<br>En caso de que no tenga IVA, debe enviarse 0.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>buyerEmail</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Campo que contiene el correo electrónico del comprador para notificar el resultado de la transacción. Se recomienda validarlo cuando se toma este valor del formulario.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>processingDate</td>
+<td>Fecha (AAAA-MM-DD HH:mm:ss)</td>
+<td>—</td>
+<td>Fecha en la que se realizó la transacción.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Alfanumérico</td>
+<td>3</td>
+<td>Moneda respectiva en la que se hace el pago. El proceso de conciliación se realiza en pesos colombianos a la tasa representativa del día.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>cus</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>El CUS, Código Único de Seguimiento, es la referencia de pago dentro del banco, aplica solo para pagos con PSE.</td>
+<td style="text-align:center">PSE Colombia.</td>
+</tr>
+<tr>
+<td>pseBank</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Nombre del banco, aplica solo para pagos con PSE.</td>
+<td style="text-align:center">PSE Colombia.</td>
+</tr>
+<tr>
+<td>lng</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Idioma en el que se quiere mostrar la pasarela de pagos.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Descripción de la venta.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>lapResponseCode</td>
+<td>Alfanumérico</td>
+<td>64</td>
+<td>Código de Respuesta entregado por PayU.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page">Ver los códigos de respuesta en la columna respectiva</a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>lapPaymentMethod</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Método de pago utilizado, por ejemplo VISA.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>lapPaymentMethodType</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Tipo del método de pago utilizado, por ejemplo CREDIT_CARD.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>lapTransactionState</td>
+<td>Alfanumérico</td>
+<td>32</td>
+<td>Estado de la transacción.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-sent-to-the-response-page">Ver los estados de la transacción en la columna respectiva</a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Descripción del estado de la transacción.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>extra1</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Campo adicional para enviar información relacionada con la compra.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>extra2</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Campo adicional para enviar información relacionada con la compra.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>extra3</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Campo adicional para enviar información relacionada con la compra.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>authorizationCode</td>
+<td>Alfanumérico</td>
+<td>12</td>
+<td>Código de autorización de la venta.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>merchant_address</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Dirección del comercio.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>merchant_name</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Nombre del comercio.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>merchant_url</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>URL de la página web del comercio.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>orderLanguage</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Idioma de la orden (ISO-639-1).</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>pseCycle</td>
+<td>Numérico</td>
+<td>—</td>
+<td>Identificador generado por PSE.</td>
+<td style="text-align:center">PSE Colombia</td>
+</tr>
+<tr>
+<td>pseReference1</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia no. 1 por PSE payments.</td>
+<td style="text-align:center">PSE Colombia</td>
+</tr>
+<tr>
+<td>pseReference2</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia no. 2 por PSE payments.</td>
+<td style="text-align:center">PSE Colombia</td>
+</tr>
+<tr>
+<td>pseReference3</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Referencia no. 3 por PSE payments.</td>
+<td style="text-align:center">PSE Colombia</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>Alfanumérico</td>
+<td>20</td>
+<td>Teléfono del comercio.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador del comercio.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>trazabilityCode</td>
+<td>Alfanumérico</td>
+<td>64</td>
+<td>Código de trazabilidad de la venta en la página web del comercio.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>TX_ADMINISTRATIVE_FEE</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor de la tarifa administrativa.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>TX_TAX_ADMINISTRATIVE _FEE</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor del impuesto de la tarifa administrativa.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>TX_TAX_ADMINISTRATIVE _FEE_RETURN_BASE</td>
+<td>Decimal (#.00)</td>
+<td>—</td>
+<td>Valor base de la tarifa administrativa para reintegro de impuestos.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>action_code_description</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Descripción del código de respuesta de VISANET.</td>
+<td style="text-align:center">VISANET Perú</td>
+</tr>
+<tr>
+<td>cc_holder</td>
+<td>Alfanumérico</td>
+<td>150</td>
+<td>Nombre del tarjetahabiente.</td>
+<td style="text-align:center">VISANET Perú</td>
+</tr>
+<tr>
+<td>cc_number</td>
+<td>Alfanumérico</td>
+<td>—</td>
+<td>Número de la tarjeta de crédito.</td>
+<td style="text-align:center">VISANET Perú</td>
+</tr>
+<tr>
+<td>processing_date_time</td>
+<td>Fecha (AAAA-MM-DD)</td>
+<td>—</td>
+<td>Fecha de procesamiento de la venta.</td>
+<td style="text-align:center">VISANET Perú</td>
+</tr>
+<tr>
+<td>request_number</td>
+<td>Alfanumérico</td>
+<td>9</td>
+<td>Número de Orden + identificador de la transacción.</td>
+<td style="text-align:center">VISANET Perú</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="integrate-the-response-page">Integrar la página de respuesta</h2>
+<p>El siguiente es un ejemplo en PHP de cómo integrar la página de respuesta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#ce5c00;font-weight:bold">&lt;?</span><span style="color:#000">php</span>
+<span style="color:#000">$ApiKey</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000">$merchant_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;merchantId&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$referenceCode</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;referenceCode&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$TX_VALUE</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;TX_VALUE&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$New_value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">number_format</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">$TX_VALUE</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;.&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;&#39;</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000">$currency</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;currency&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$transactionState</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;transactionState&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$firma_cadena</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">$ApiKey</span><span style="color:#4e9a06">~</span><span style="color:#4e9a06">$merchant_id</span><span style="color:#4e9a06">~</span><span style="color:#4e9a06">$referenceCode</span><span style="color:#4e9a06">~</span><span style="color:#4e9a06">$New_value</span><span style="color:#4e9a06">~</span><span style="color:#4e9a06">$currency</span><span style="color:#4e9a06">~</span><span style="color:#4e9a06">$transactionState</span><span style="color:#4e9a06">&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000">$firmacreada</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">md5</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">$firma_cadena</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000">$firma</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;signature&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$reference_pol</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;reference_pol&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$cus</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;cus&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$extra1</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;description&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$pseBank</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;pseBank&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$lapPaymentMethod</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;lapPaymentMethod&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000">$transactionId</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;transactionId&#39;</span><span style="color:#000;font-weight:bold">];</span>
+
+<span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;transactionState&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">4</span> <span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000">$estadoTx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Transacción aprobada&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;transactionState&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">6</span> <span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000">$estadoTx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Transacción rechazada&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;transactionState&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">104</span> <span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000">$estadoTx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Error&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">else</span> <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;transactionState&#39;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#0000cf;font-weight:bold">7</span> <span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000">$estadoTx</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Pago pendiente&#34;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#204a87;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000">$estadoTx</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">$_REQUEST</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;mensaje&#39;</span><span style="color:#000;font-weight:bold">];</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+
+<span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#000">strtoupper</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">$firma</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">==</span> <span style="color:#000">strtoupper</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">$firmacreada</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#000;font-weight:bold">{</span>
+<span style="color:#8f5902;font-style:italic">?&gt;</span><span style="color:#a40000">
+</span><span style="color:#a40000">	&lt;h2&gt;Resumen de la transacción&lt;/h2&gt;
+</span><span style="color:#a40000">	&lt;table&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Estado de la transacción&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo $estadoTx; ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;ID de la transacción&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo $transactionId; ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Referencia de venta&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo $reference_pol; ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Referencia de la transacción&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo $referenceCode; ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;?php
+</span><span style="color:#a40000">	if($pseBank != null) {
+</span><span style="color:#a40000">	?&gt;
+</span><span style="color:#a40000">		&lt;tr&gt;
+</span><span style="color:#a40000">		&lt;td&gt;cus &lt;/td&gt;
+</span><span style="color:#a40000">		&lt;td&gt;&lt;?php echo $cus; ?&gt; &lt;/td&gt;
+</span><span style="color:#a40000">		&lt;/tr&gt;
+</span><span style="color:#a40000">		&lt;tr&gt;
+</span><span style="color:#a40000">		&lt;td&gt;Banco &lt;/td&gt;
+</span><span style="color:#a40000">		&lt;td&gt;&lt;?php echo $pseBank; ?&gt; &lt;/td&gt;
+</span><span style="color:#a40000">		&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;?php
+</span><span style="color:#a40000">	}
+</span><span style="color:#a40000">	?&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Valor total&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;$&lt;?php echo number_format($TX_VALUE); ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Moneda&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo $currency; ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Descripción&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo ($extra1); ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;tr&gt;
+</span><span style="color:#a40000">	&lt;td&gt;Entidad:&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;td&gt;&lt;?php echo ($lapPaymentMethod); ?&gt;&lt;/td&gt;
+</span><span style="color:#a40000">	&lt;/tr&gt;
+</span><span style="color:#a40000">	&lt;/table&gt;
+</span><span style="color:#a40000">&lt;?php
+</span><span style="color:#a40000">}
+</span><span style="color:#a40000">else
+</span><span style="color:#a40000">{
+</span><span style="color:#a40000">?&gt;
+</span><span style="color:#a40000">	&lt;h1&gt;Error validando la firma digital.&lt;/h1&gt;
+</span><span style="color:#a40000">&lt;?php
+</span><span style="color:#a40000">}
+</span><span style="color:#a40000">?&gt;
+</span></code></pre></div><br>
+<p>Ejemplo GET enviado a la página de respuesta.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">http://mypaginadeprueba.com/response.php?<span style="color:#a40000">&amp;</span>merchantId=508029<span style="color:#a40000">&amp;</span>merchant_name=Test+PayU+Test<span style="color:#a40000">&amp;</span>merchant_address=Av+123+Calle+12<span style="color:#a40000">&amp;</span>telephone=7512354<span style="color:#a40000">&amp;</span>merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com<span style="color:#a40000">&amp;</span>transactionState=6<span style="color:#a40000">&amp;</span>lapTransactionState=DECLINED<span style="color:#a40000">&amp;</span>message=Declinada<span style="color:#a40000">&amp;</span>referenceCode=2015-05-27+13%3A04%3A37<span style="color:#a40000">&amp;</span>reference_pol=7069375<span style="color:#a40000">&amp;</span>transactionId=f5e668f1-7ecc-4b83-a4d1-0aaa68260862<span style="color:#a40000">&amp;</span>description=test_payu_01<span style="color:#a40000">&amp;</span>trazabilityCode=<span style="color:#a40000">&amp;</span>cus=<span style="color:#a40000">&amp;</span>orderLanguage=es<span style="color:#a40000">&amp;</span>extra1=<span style="color:#a40000">&amp;</span>extra2=<span style="color:#a40000">&amp;</span>extra3=<span style="color:#a40000">&amp;</span>polTransactionState=6<span style="color:#a40000">&amp;</span>signature=e1b0939bbdc99ea84387bee9b90e4f5c<span style="color:#a40000">&amp;</span>polResponseCode=5<span style="color:#a40000">&amp;</span>lapResponseCode=ENTITY_DECLINED<span style="color:#a40000">&amp;</span>risk=1.00<span style="color:#a40000">&amp;</span>polPaymentMethod=10<span style="color:#a40000">&amp;</span>lapPaymentMethod=VISA<span style="color:#a40000">&amp;</span>polPaymentMethodType=2<span style="color:#a40000">&amp;</span>lapPaymentMethodType=CREDIT_CARD<span style="color:#a40000">&amp;</span>installmentsNumber=1<span style="color:#a40000">&amp;</span>TX_VALUE=100.00<span style="color:#a40000">&amp;</span>TX_TAX=.00<span style="color:#a40000">&amp;</span>currency=USD<span style="color:#a40000">&amp;</span>lng=es<span style="color:#a40000">&amp;</span>pseCycle=<span style="color:#a40000">&amp;</span>buyerEmail=test%40payulatam.com<span style="color:#a40000">&amp;</span>pseBank=<span style="color:#a40000">&amp;</span>pseReference1=<span style="color:#a40000">&amp;</span>pseReference2=<span style="color:#a40000">&amp;</span>pseReference3=<span style="color:#a40000">&amp;</span>authorizationCode=<span style="color:#a40000">&amp;</span>TX_ADMINISTRATIVE_FEE=.00<span style="color:#a40000">&amp;</span>TX_TAX_ADMINISTRATIVE_FEE=.00<span style="color:#a40000">&amp;</span>TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00
+</code></pre></div><h2 id="signature-validation">Validación de la firma</h2>
+<p>La validación de la firma te permite comprobar la integridad de los datos, debes generar la firma con los datos que encuentras en la página de respuesta y compararla con la información del parámetro signature.</p>
+<p>Para validar la firma en la página de respuesta debes tener en cuenta:</p>
+<ul>
+<li>Para obtener el nuevo valor <code>new_value</code> se debe aproximar <code>TX_VALUE</code> siempre a un decimal con el método de redondeo <em>Round half to even</em>:
+<ul>
+<li>Si el primer decimal es par y el segundo es <code>5</code>, redondéalo hacia el menor valor.</li>
+<li>Si el primer decimal es impar y el segundo es <code>5</code>, redondéalo hacia el mayor valor.</li>
+<li>Si no, debes redondearlo al decimal más cercano.</li>
+</ul>
+</li>
+<li>Obten los parámetros para generar la firma (<code>merchantId</code>, <code>referenceCode</code>, <code>TX_VALUE</code>, <code>currency</code> y <code>transactionState</code>) de la página de respuesta, no de la base de datos.</li>
+<li>Debes guardar tu ApiKey de forma segura.</li>
+<li>Crea la firma así:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchantId~referenceCode~new_value~currency~transactionState&#34;
+</code></pre></div><br>
+<p>Ejemplos:</p>
+<p><strong>Primer decimal es par y el segundo es 5</strong></p>
+<pre><code>Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA
+Parámetros obtenidos de la página de respuesta:
+- merchantId = 508029
+- referenceCode = TestPayU04
+- TX_VALUE = 150.25
+- currency = USD
+- transactionState = 6
+
+La firma se genera así:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.2~USD~6) = 00286dc735bd9eaa8ae3a3a4cbb40688
+
+signature = 00286dc735bd9eaa8ae3a3a4cbb40688
+</code></pre><p><strong>Primer decimal es impar y el segundo es 5</strong></p>
+<pre><code>Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parámetros obtenidos de la página de respuesta:
+- merchantId = 508029
+- referenceCode = TestPayU04
+- TX_VALUE = 150.35
+- currency = USD
+- transactionState = 6
+
+La firma se genera así:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.4~USD~6) = 9df2bb60e2838170009040982967923f
+
+signature = 9df2bb60e2838170009040982967923f 
+</code></pre><p><strong>Otros casos</strong></p>
+<pre><code>Your apiKey: 4Vj8eK4rloUd272L48hsrarnUA 
+Parámetros obtenidos de la página de respuesta:
+- merchantId = 508029
+- referenceCode = TestPayU04
+- TX_VALUE = 150.34
+- currency = USD
+- transactionState = 6
+
+La firma se genera así:
+MD5(4Vj8eK4rloUd272L48hsrarnUA~508029~TestPayU04~150.3~USD~6) = 779f163be9347a691bcdb25064644795
+
+signature = 779f163be9347a691bcdb25064644795 
+</code></pre><h3 id="compare-your-signature">Compara tu firma</h3>
+<!-- Generador de firmas pagina de respuesta -->
+<div id="blue-box">
+<span class="grey-text-13">
+<div>
+<form method="POST" id="signature_form_response_page" >
+    <table>
+        <span class="blue-text-13"><b>Algoritmo: &nbsp;</b></span>
+        <select id = "signature_algorithm_response_page" class="calc_selector form_control">
+            <option  value="md5">MD5</option>
+            <option  value="sha1">SHA1</option>
+            <option  value="sha256">SHA256</option>
+        </select>
+        <br>
+        <br>
+        <span class="calc_text">&nbsp;(</span>
+        <input class="form_control" type="text"  id ="signature_apikey_response_page" name = "signature_apikey_response_page" placeholder="ApiKey" maxlength="26"> ~
+        <input class="form_control number" type="text"  id ="signature_merchanId_response_page" name = "signature_merchanId_response_page" placeholder="MerchantId" maxlength="7"> ~
+        <input class="form_control" type="text"  id ="signature_referenceCode_response_page" name = "signature_referenceCode_response_page" placeholder="Referencia" maxlength="255"> ~
+        <input class="form_control  number" type="text" id ="signature_amount_response_page" name = "signature_amount_response_page" placeholder="Valor" maxlength="14"> ~
+        <select id = "signature_currency_response_page" class="calc_selector form_control" >
+            <option  value="USD">USD</option>
+            <option  value="COP">COP</option>
+            <option  value="MXN">MXN</option>
+            <option  value="ARS">ARS</option>
+            <option  value="PEN">PEN</option>
+            <option  value="BRL">BRL</option>
+            <option  value="CLP">CLP</option>
+        </select> ~
+        <select id = "signature_transaction_state_response_page" class="calc_selector form_control" >
+            <option  value="4">4 (Aprobada)</option>
+            <option  value="6">6 (Rechazada)</option>
+            <option  value="104">104 (Error)</option>
+            <option  value="5">5 (Expirada)</option>
+            <option  value="7">7 (Pendiente)</option>
+        </select>
+        <span class="calc_text">)</span>
+        <br>
+        <br>
+        <br>
+        <span class="blue-text-13"><b>Resultado:&nbsp;</b></span><input class="form_control" id ="signature_generated_response_page" name = "signature_generated_response_page" value = ""  readonly />
+    </table>
+    <br>
+    <table width="50%"  border="0" cellspacing="2" cellpadding="2">
+        <input type="button" name="signature_generate_response_page" id="signature_generate_response_page" value="Generar firma" >
+        <input type="button" name="signature_generate_again_response_page" id="signature_generate_again_response_page" value="Generar nueva firma" >
+    </table>
+</form>
+</div>
+</span>
+</div>
+<!-- Fin del generador de firmas pagina de respuesta-->
+<p>Esta calculadora te permite generar la firma utilizando alguno de los métodos de cifrado disponibles.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../../js/scrollspy.js"></script>
+<script src="../../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
