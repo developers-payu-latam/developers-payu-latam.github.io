@@ -362,7 +362,6 @@ El método &lt;code&gt;VOID&lt;/code&gt; no está disponible en Colombia ni en P
 &lt;li&gt;&lt;strong&gt;Aprovecha las capacidades regionales&lt;/strong&gt;.&lt;br&gt;Payouts es una API completa y fácil de utilizar para realizar pagos a cualquier banco en el país de procesamiento&lt;sup&gt;*&lt;/sup&gt;.&lt;br&gt;&lt;sup&gt;*&lt;/sup&gt;&lt;em&gt;Disponible por ahora en Colombia, próximamente en otros mercados.&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Uno or múltiples pagos&lt;/strong&gt;.&lt;br&gt;La API es flexible. Puedes crear uno o múltiples solicitudes de pago para beneficiarios nuevos o existentes. No hay restricción en el número de registros.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ahorra tiempo y costos&lt;/strong&gt;.&lt;br&gt;Puedes ahorrar costos operacionales y tiempo gestionando todas las operaciones de pago en un solo lugar.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Flexibilidad de pago&lt;/strong&gt;.&lt;br&gt;Puedes hacer actualizaciones a las órdenes de pago en cualquier momento antes de que sean enviadas al banco.&lt;br&gt;Esto es útil cuando el beneficiario cambia su cuenta bancaria.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Administra mejor los fondos y el saldo de la cuenta&lt;/strong&gt;.&lt;br&gt;Puedes cancelar órdenes de pago antes de que sean enviadas al banco. Payouts te ayuda a manejar mejor los fondos y el saldo de tu cuenta.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Notificaciones personalizadas&lt;/strong&gt;.&lt;br&gt;Cualquier cambio en la orden de pago es actualizado por nuestra solución. Puedes personalizar las notificaciones que recibes.&lt;/li&gt;
 &lt;/ul&gt;
@@ -405,7 +404,7 @@ El método &lt;code&gt;VOID&lt;/code&gt; no está disponible en Colombia ni en P
 &lt;li&gt;&lt;strong&gt;IN_VALIDATION&lt;/strong&gt;: debido a políticas de PayU, cada pago puede estar sujeto a una validación. Este estado indica que tu solicitud debe ser revisada bajo nuestras políticas internas. Si la validación falla, el pago que no cumplió con las políticas es rechazado.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;IN_PAYU_PROCESS&lt;/strong&gt;: este estado indica que PayU ha iniciado el proceso del pago.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;AWAITING_BANK_SENT&lt;/strong&gt;: este estado indica que PayU ha iniciado la transferencia del monto al beneficiario.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;IN_BANKING_PROCESS&lt;/strong&gt;: este estado indica que el pago está siendo procesado por la cuenta bancaria del beneficiario. En este punto, no puedes solicitar su cancelación ni actualizarla.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IN_BANKING_PROCESS&lt;/strong&gt;: este estado indica que el pago está siendo procesado por la cuenta bancaria del beneficiario. En este punto, no puedes solicitar su cancelación.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;CONFIRMED_BY_THE_BANK&lt;/strong&gt;: este estado indica que el beneficiario ha recibido el monto de la transferencia.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;REJECTED&lt;/strong&gt;: este estado indica que la transacción ha sido rechazada por PayU (debido a incumplimiento de políticas) o por el Banco (debido a errores en la información bancaria).&lt;/li&gt;
 &lt;/ul&gt;
@@ -419,7 +418,7 @@ El método &lt;code&gt;VOID&lt;/code&gt; no está disponible en Colombia ni en P
 &lt;p&gt;Ten en cuentas las siguientes consideraciones:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Payouts no es un servicio incluido de forma predeterminada. Debes solicitarlo y firmar un anexo al contrato para acordar el valor de la tarifa de procesamiento y demás condiciones. Contacta a tu Key Account Manager para contratar este servicio.&lt;/li&gt;
-&lt;li&gt;Los comercios son los responsables de la integridad y la veracidad de la información de los beneficiarios. PayU no valida que la información entregada sea completa y correcta. Además, la actualización de la información debe ser solicitada por los comercios.&lt;br&gt;PayU no es responsable por transacciones no exitosas debido a información incorrecta.&lt;/li&gt;
+&lt;li&gt;Los comercios son los responsables de la integridad y la veracidad de la información de los beneficiarios. PayU no valida que la información entregada sea completa y correcta.&lt;br&gt;PayU no es responsable por transacciones no exitosas debido a información incorrecta.&lt;/li&gt;
 &lt;li&gt;Payouts solo permite pagos locales. El comercio puede ser internacional (bajo análisis de seguridad y riesgo) pero solo pueden solicitar Payouts utilizando los fondos obtenidos en el país de procesamiento.&lt;br&gt;Por ejemplo, si el comercio &lt;em&gt;ABC&lt;/em&gt; procesa en Colombia y Perú, puede solicitar payouts a beneficiarios en Colombia utilizando los fondos recaudados en Colombia; no pueden solicitar pagos a beneficiarios en Perú utilizando los fondos recaudados en Colombia.&lt;/li&gt;
 &lt;li&gt;Una vez se ha creado el Payout, toma el flujo regular en PayU. Esto significa que puedes ver el payout creado en el módulo PayU.&lt;/li&gt;
 &lt;li&gt;El comercio debe probar la relación entre él y sus beneficiarios para garantizar que la transacción es legítima.&lt;/li&gt;

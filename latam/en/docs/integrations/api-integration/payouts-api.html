@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/api-integration/payouts-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-08-09T14:58:45-05:00" />
-<meta property="article:modified_time" content="2021-11-03T17:04:11-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-09T11:21:54-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payouts API">
 <meta itemprop="description" content="This feature allows you to create multiple and secure payments for payees (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
 "><meta itemprop="datePublished" content="2021-08-09T14:58:45-05:00" />
-<meta itemprop="dateModified" content="2021-11-03T17:04:11-05:00" />
-<meta itemprop="wordCount" content="3122">
+<meta itemprop="dateModified" content="2021-11-09T11:21:54-05:00" />
+<meta itemprop="wordCount" content="3082">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payouts API"/>
 <meta name="twitter:description" content="This feature allows you to create multiple and secure payments for payees (users, merchants, providers, customers, etc.) using the funds you have in your PayU Account.
@@ -139,7 +139,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.b731b3c1c5f676f2b8116d673416cb466713df02bbacbe0e4fb2c33dbd0e676a42a9f3b128403f01d9cc09bf5f76ad9d3b8511a28b7330445b801a53d32ff59b.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.9629d51f70b737e5f98e47a122a9ceea12c24c7fbf5944ff61b7c4eb01d48a922a144a17903b1e1069e2febe238129cb6e4af3ab7ed1b4a1fd68f543c26f341c.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -743,27 +743,21 @@
         <li><a href="#variables-for-request-and-response">Variables for request and response</a></li>
       </ul>
     </li>
-    <li><a href="#update-payout-request">Update payout request</a>
+    <li><a href="#cancel-payout-request">Cancel payout request</a>
       <ul>
         <li><a href="#api-call-2">API Call</a></li>
         <li><a href="#variables-for-request">Variables for request</a></li>
       </ul>
     </li>
-    <li><a href="#cancel-payout-request">Cancel payout request</a>
-      <ul>
-        <li><a href="#api-call-3">API Call</a></li>
-        <li><a href="#variables-for-request-1">Variables for request</a></li>
-      </ul>
-    </li>
     <li><a href="#create-or-update-a-webhook">Create or Update a WebHook</a>
       <ul>
-        <li><a href="#api-call-4">API Call</a></li>
+        <li><a href="#api-call-3">API Call</a></li>
         <li><a href="#variables-for-request-and-response-1">Variables for request and response</a></li>
       </ul>
     </li>
     <li><a href="#delete-a-webhook">Delete a WebHook</a>
       <ul>
-        <li><a href="#api-call-5">API Call</a></li>
+        <li><a href="#api-call-4">API Call</a></li>
       </ul>
     </li>
     <li><a href="#query-webhooks">Query WebHooks</a>
@@ -848,7 +842,6 @@
 <ul>
 <li><a href="#authentication">Authentication</a></li>
 <li><a href="#request-payout">Request payout</a></li>
-<li><a href="#update-payout-request">Update payout request</a></li>
 <li><a href="#cancel-payout-request">Cancel payout request</a></li>
 <li><a href="#create-or-update-a-transfershook">Create or update a WebHook</a></li>
 <li><a href="#delete-a-transfershook">Delete a WebHook</a></li>
@@ -860,7 +853,7 @@
 <h3 id="api-call">API Call</h3>
 <p>To authenticate, send the request as follows:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/authenticate?accountId={accountId}&amp;apiKey={apiKey}&amp;apiLogin={apiLogin}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/authenticate?accountId={accountId}&amp;apiKey={apiKey}&amp;apiLogin={apiLogin}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -962,7 +955,7 @@ You need to include two headers to use this method, refer to <a href="#configuri
 <h3 id="api-call-1">API Call</h3>
 <p>To create a Payout request, use the following URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/{merchantId}/{accountId}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/supplier-transfers/{merchantId}/{accountId}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> displayed above is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -1168,7 +1161,7 @@ You need to include two headers to use this method, refer to <a href="#configuri
 <td>successfulItems[n] &gt; paymentOrderId</td>
 <td>Alphanumeric</td>
 <td>36</td>
-<td>Id generated for the payout request. Use this id to either update or cancel the request.</td>
+<td>Id generated for the payout request. Use this id to cancel the request.</td>
 </tr>
 <tr>
 <td>successfulItems[n] &gt; value</td>
@@ -1495,9 +1488,11 @@ You need to include two headers to use this method, refer to <a href="#configuri
 
 
 </div>
-<h2 id="update-payout-request">Update payout request</h2>
-<p>This method lets you request the update of the bank information of a payee on a running payout request. For example, this method is useful to change the bank account number of the payee.</p>
-<p>You can only request the update of the information of a payee when the Payout status is in <code>IN_PAYU_PROCESS</code> or earlier. Refer to <a href="../../../../en/docs/services/payouts.html#payout-states">Payout states</a> for more information.</p>
+<!--## Update payout request
+This method lets you request the update of the bank information of a payee on a running payout request. For example, this method is useful to change the bank account number of the payee.
+
+You can only request the update of the information of a payee when the Payout status is in `IN_PAYU_PROCESS` or earlier. Refer to [Payout states](/en/docs/services/payouts.html#payout-states) for more information. 
+
 
 
 <div class="alert alert-info" role="alert">
@@ -1505,69 +1500,35 @@ You need to include two headers to use this method, refer to <a href="#configuri
 You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
-<h3 id="api-call-2">API Call</h3>
-<p>To update a Payout request, use the following URL:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">PUT</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/bank-account/{merchantId}/{accountId}/{bankAccountId}
-</span></code></pre></div><br>
-<p>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-<th style="text-align:center">Mandatory</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>merchantId</td>
-<td>Merchant’s ID number in PayU’s system.</td>
-<td style="text-align:center">Yes</td>
-</tr>
-<tr>
-<td>accountId</td>
-<td>ID of the user account for each country associated with the merchant.</td>
-<td style="text-align:center">Yes</td>
-</tr>
-<tr>
-<td>bankAccountId</td>
-<td>ID returned by the <a href="#request-payout">Request payout service</a>.</td>
-<td style="text-align:center">Yes</td>
-</tr>
-</tbody>
-</table>
-<h3 id="variables-for-request">Variables for request</h3>
+
+### API Call
+To update a Payout request, use the following URL:
+
+```JAVA
+PUT
+https://{env-api}.payulatam.com/v1.0/supplier-transfers/bank-account/{merchantId}/{accountId}/{bankAccountId}
+```
+<br>
+
+The value for the variable `{env-api}` is `sandbox-transfers` for testing and `transfers` for production mode.
+
+| Parameter     | Description                                                                 | Mandatory |
+|---------------|-----------------------------------------------------------------------------|:---------:|
+| merchantId    | Merchant’s ID number in PayU’s system.                                      |    Yes    |
+| accountId     | ID of the user account for each country associated with the merchant.       |    Yes    |
+| bankAccountId | ID returned by the [Request payout service](#request-payout). |    Yes    |
+
+### Variables for request
+
 <div class="variables"></div>
-<table>
-<thead>
-<tr>
-<th>Field name</th>
-<th>Format</th>
-<th>Size</th>
-<th>Description</th>
-<th style="text-align:center">Mandatory</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>Alphanumeric</td>
-<td>36</td>
-<td>Identifier of the Bank account of the payee.</td>
-<td style="text-align:center">Yes</td>
-</tr>
-<tr>
-<td>accountNumber</td>
-<td>Alphanumeric</td>
-<td>Max:17</td>
-<td>Bank account number of the payee.</td>
-<td style="text-align:center">Yes</td>
-</tr>
-</tbody>
-</table>
+
+| Field name | Format | Size | Description | Mandatory |
+|---|---|---|---|:-:|
+| id | Alphanumeric | 36 | Identifier of the Bank account of the payee. | Yes |
+| accountNumber | Alphanumeric | Max:17 | Bank account number of the payee. | Yes |-->
 <!--additionalData-->
-<p>The following are the request and response bodies for this method.</p>
+<!--The following are the request and response bodies for this method.
+
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
 
@@ -1617,7 +1578,7 @@ You need to include two headers to use this method, refer to <a href="#configuri
 
 
 
-
+-->
 <!--
 
 
@@ -1638,9 +1599,9 @@ You need to include two headers to use this method, refer to <a href="#configuri
 
 
 -->
+<!--
 
-
-</div>
+</div>-->
 <h2 id="cancel-payout-request">Cancel payout request</h2>
 <p>This method lets you request the cancellation of a payout request. You can only request the cancellation of a Payout when its status is <code>IN_PAYU_PROCESS</code> or earlier. Refer to <a href="../../../../en/docs/services/payouts.html#payout-states">Payout states</a> for more information.</p>
 
@@ -1650,10 +1611,10 @@ You need to include two headers to use this method, refer to <a href="#configuri
 You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
-<h3 id="api-call-3">API Call</h3>
+<h3 id="api-call-2">API Call</h3>
 <p>To cancel a Payout request, use the following URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">DELETE</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/{merchantId}/{accountId}/{paymentOrderId}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/supplier-transfers/{merchantId}/{accountId}/{paymentOrderId}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -1682,7 +1643,7 @@ You need to include two headers to use this method, refer to <a href="#configuri
 </tr>
 </tbody>
 </table>
-<h3 id="variables-for-request-1">Variables for request</h3>
+<h3 id="variables-for-request">Variables for request</h3>
 <div class="variables"></div>
 <table>
 <thead>
@@ -1801,18 +1762,18 @@ You need to include two headers to use this method, refer to <a href="#configuri
 You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
-<h3 id="api-call-4">API Call</h3>
+<h3 id="api-call-3">API Call</h3>
 <ul>
 <li>To create a WebHook, use:</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/webhooks/{merchantId}/{accountId}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}
 </span></code></pre></div><br>
 <ul>
 <li>To update a WebHook, use:</li>
 </ul>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">PUT</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/webhooks/{merchantId}/{accountId}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -2056,10 +2017,10 @@ You need to include two headers to use this method, refer to <a href="#configuri
 You need to include two headers to use this method, refer to <a href="#configuring-the-authentication">Configuring authentication</a> for more information. Furthermore, you need to know your Merchant and account ID, you can get this information in your PayU Module.
 </div>
 
-<h3 id="api-call-5">API Call</h3>
+<h3 id="api-call-4">API Call</h3>
 <p>To delete a WebHook, use the following URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">DELETE</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/webhooks/{merchantId}/{accountId}/{id}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}/{id}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -2194,7 +2155,7 @@ You need to include two headers to use this method, refer to <a href="#configuri
 <h3 id="query-webhooks-by-id">Query WebHooks by Id</h3>
 <p>This method lets you consult the information of a specific WebHook using its id. To query a WebHook, use the following URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/webhooks/{merchantId}/{accountId}/{id}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}/{id}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -2364,7 +2325,7 @@ You need to include two headers to use this method, refer to <a href="#configuri
 <h3 id="query-webhooks-by-account">Query webhooks by account</h3>
 <p>This method lets you consult the information of all the WebHooks created in your account. To query the WebHook list, use the following URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/webhooks/account/{merchantId}/{accountId}
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/account/{merchantId}/{accountId}
 </span></code></pre></div><br>
 <p>The value for the variable <code>{env-api}</code> is <code>sandbox-transfers</code> for testing and <code>transfers</code> for production mode.</p>
 <table>
@@ -2547,9 +2508,9 @@ You need to include two headers to use this method, refer to <a href="#configuri
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-November 3, 2021:
+November 9, 2021:
 
- <b>Changes found during the translation procedure (f2b9d537)</b>
+ <b>URL fixing in Payouts and method updates (df7f3527)</b>
 </div>
 </div>
 

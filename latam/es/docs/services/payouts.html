@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/es/docs/services/payouts.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-07-16T11:32:55-05:00" />
-<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-09T11:21:54-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payouts">
 <meta itemprop="description" content="Payouts is una solución API que te permite enviar múltiples pagos de forma fácil y segura a diferentes tipos de beneficiarios (usuarios, comercios, proveedores, clientes, etc.) y se adapta funcionalmente a las especificaciones del mercado LATAM.
 "><meta itemprop="datePublished" content="2021-07-16T11:32:55-05:00" />
-<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
-<meta itemprop="wordCount" content="1857">
+<meta itemprop="dateModified" content="2021-11-09T11:21:54-05:00" />
+<meta itemprop="wordCount" content="1812">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payouts"/>
 <meta name="twitter:description" content="Payouts is una solución API que te permite enviar múltiples pagos de forma fácil y segura a diferentes tipos de beneficiarios (usuarios, comercios, proveedores, clientes, etc.) y se adapta funcionalmente a las especificaciones del mercado LATAM.
@@ -139,7 +139,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.b731b3c1c5f676f2b8116d673416cb466713df02bbacbe0e4fb2c33dbd0e676a42a9f3b128403f01d9cc09bf5f76ad9d3b8511a28b7330445b801a53d32ff59b.json"
+  data-offline-search-index-json-src="../../../offline-search-index.9629d51f70b737e5f98e47a122a9ceea12c24c7fbf5944ff61b7c4eb01d48a922a144a17903b1e1069e2febe238129cb6e4af3ab7ed1b4a1fd68f543c26f341c.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -806,7 +806,6 @@
 <li><strong>Aprovecha las capacidades regionales</strong>.<br>Payouts es una API completa y fácil de utilizar para realizar pagos a cualquier banco en el país de procesamiento<sup>*</sup>.<br><sup>*</sup><em>Disponible por ahora en Colombia, próximamente en otros mercados.</em></li>
 <li><strong>Uno or múltiples pagos</strong>.<br>La API es flexible. Puedes crear uno o múltiples solicitudes de pago para beneficiarios nuevos o existentes. No hay restricción en el número de registros.</li>
 <li><strong>Ahorra tiempo y costos</strong>.<br>Puedes ahorrar costos operacionales y tiempo gestionando todas las operaciones de pago en un solo lugar.</li>
-<li><strong>Flexibilidad de pago</strong>.<br>Puedes hacer actualizaciones a las órdenes de pago en cualquier momento antes de que sean enviadas al banco.<br>Esto es útil cuando el beneficiario cambia su cuenta bancaria.</li>
 <li><strong>Administra mejor los fondos y el saldo de la cuenta</strong>.<br>Puedes cancelar órdenes de pago antes de que sean enviadas al banco. Payouts te ayuda a manejar mejor los fondos y el saldo de tu cuenta.</li>
 <li><strong>Notificaciones personalizadas</strong>.<br>Cualquier cambio en la orden de pago es actualizado por nuestra solución. Puedes personalizar las notificaciones que recibes.</li>
 </ul>
@@ -849,7 +848,7 @@
 <li><strong>IN_VALIDATION</strong>: debido a políticas de PayU, cada pago puede estar sujeto a una validación. Este estado indica que tu solicitud debe ser revisada bajo nuestras políticas internas. Si la validación falla, el pago que no cumplió con las políticas es rechazado.</li>
 <li><strong>IN_PAYU_PROCESS</strong>: este estado indica que PayU ha iniciado el proceso del pago.</li>
 <li><strong>AWAITING_BANK_SENT</strong>: este estado indica que PayU ha iniciado la transferencia del monto al beneficiario.</li>
-<li><strong>IN_BANKING_PROCESS</strong>: este estado indica que el pago está siendo procesado por la cuenta bancaria del beneficiario. En este punto, no puedes solicitar su cancelación ni actualizarla.</li>
+<li><strong>IN_BANKING_PROCESS</strong>: este estado indica que el pago está siendo procesado por la cuenta bancaria del beneficiario. En este punto, no puedes solicitar su cancelación.</li>
 <li><strong>CONFIRMED_BY_THE_BANK</strong>: este estado indica que el beneficiario ha recibido el monto de la transferencia.</li>
 <li><strong>REJECTED</strong>: este estado indica que la transacción ha sido rechazada por PayU (debido a incumplimiento de políticas) o por el Banco (debido a errores en la información bancaria).</li>
 </ul>
@@ -863,7 +862,7 @@
 <p>Ten en cuentas las siguientes consideraciones:</p>
 <ul>
 <li>Payouts no es un servicio incluido de forma predeterminada. Debes solicitarlo y firmar un anexo al contrato para acordar el valor de la tarifa de procesamiento y demás condiciones. Contacta a tu Key Account Manager para contratar este servicio.</li>
-<li>Los comercios son los responsables de la integridad y la veracidad de la información de los beneficiarios. PayU no valida que la información entregada sea completa y correcta. Además, la actualización de la información debe ser solicitada por los comercios.<br>PayU no es responsable por transacciones no exitosas debido a información incorrecta.</li>
+<li>Los comercios son los responsables de la integridad y la veracidad de la información de los beneficiarios. PayU no valida que la información entregada sea completa y correcta.<br>PayU no es responsable por transacciones no exitosas debido a información incorrecta.</li>
 <li>Payouts solo permite pagos locales. El comercio puede ser internacional (bajo análisis de seguridad y riesgo) pero solo pueden solicitar Payouts utilizando los fondos obtenidos en el país de procesamiento.<br>Por ejemplo, si el comercio <em>ABC</em> procesa en Colombia y Perú, puede solicitar payouts a beneficiarios en Colombia utilizando los fondos recaudados en Colombia; no pueden solicitar pagos a beneficiarios en Perú utilizando los fondos recaudados en Colombia.</li>
 <li>Una vez se ha creado el Payout, toma el flujo regular en PayU. Esto significa que puedes ver el payout creado en el módulo PayU.</li>
 <li>El comercio debe probar la relación entre él y sus beneficiarios para garantizar que la transacción es legítima.</li>
@@ -1017,7 +1016,7 @@ Puede que las solicitudes de Payouts no queden en el estado <strong>IN_BANKING_P
 
 9 de noviembre de 2021:
 
- <b>Developers site in Spanish (44e815c3)</b>
+ <b>URL fixing in Payouts and method updates (df7f3527)</b>
 </div>
 </div>
 
