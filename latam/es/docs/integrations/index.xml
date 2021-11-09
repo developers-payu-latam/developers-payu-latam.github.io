@@ -1,0 +1,438 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PayU Latam – Integraciones</title>
+    <link>/es/docs/integrations.html</link>
+    <description>Recent content in Integraciones on PayU Latam</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 07 Apr 2021 10:01:55 -0500</lastBuildDate>
+    
+	  <atom:link href="/es/docs/integrations/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Integración WebCheckout</title>
+      <link>/es/docs/integrations/webcheckout-integration.html</link>
+      <pubDate>Mon, 29 Mar 2021 11:52:52 -0500</pubDate>
+      
+      <guid>/es/docs/integrations/webcheckout-integration.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;img src=&#34;../../../assets/Checkout1-es.png&#34; alt=&#34;WebCheckout integration&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Puedes incluir el logo de tu compañía en nuestra pasarela enviándolo a través del método HTTP POST.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+La persona encargada de la integración de tu tienda con nuestra pasarela de pagos (WebCheckout) debe tener conocimientos de lenguajes de programación dinámicos como PHP o Java.
+&lt;/div&gt;
+
+&lt;h2 id=&#34;how-does-the-webcheckout-integration-work&#34;&gt;¿Cómo funciona la integración con el WebCheckout?&lt;/h2&gt;
+&lt;p&gt;El procedimiento para permitir que tus clientes paguen utilizando los servicios de PayU es simple.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tu cliente navega tu página y selecciona los productos o servicios que quiere comprar. Tu sistema actualiza el monto de la compra y envía a nuestro sistema el formulario de pago con la información de la compra.&lt;br&gt;Tu sistema debe enviar esta información a través de &lt;code&gt;HTTP POST&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/paso1-es.jpg&#34; alt=&#34;WebCheckout integration&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Para el procesamiento del pago, tu cliente es redirigido a nuestro Checkout donde puede seleccionar el método de pago.&lt;br&gt;PayU soporta varios métodos de pago que se ajustan con las necesidades de tu cliente de acuerdo con el país en el que proceses la compra, &lt;a href=&#34;../../../es/docs/getting-started/select-your-payment-method.html&#34;&gt;mira los métodos de pago disponibles&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/paso2-es.jpg&#34; alt=&#34;WebCheckout integration&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;PayU procesa la transacción y muestra el resultado en nuestra página de respuesta.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/paso3-es.jpg&#34; alt=&#34;WebCheckout integration&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Cuando el cliente regresa a tu página luego del proceso de pago, PayU lo redirige a tu Página de respuesta y envía la transacción a través de &lt;code&gt;HTTP GET&lt;/code&gt;. Necesitas procesar la respuesta y mostrar su información a tu cliente.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/paso4-es.jpg&#34; alt=&#34;WebCheckout integration&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;En paralelo, PayU notifica el estado de la transacción a la página de confirmación a través de &lt;code&gt;HTTP POST&lt;/code&gt;. Además, PayU te notifica el resultado de la transacción a ti a través de correo electrónico.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/paso5-es.jpg&#34; alt=&#34;WebCheckout integration&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Consideraciones&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Tu página debe estar codificada en &lt;code&gt;UTF-8&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;La página del WebCheckout no puede ser incluida en un iframe.&lt;/li&gt;
+&lt;li&gt;No enmascares la URL durante el proceso de checkout.&lt;/li&gt;
+&lt;li&gt;No utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de encriptación &lt;code&gt;TLS_ECDHE_ECDSA_WITH_RC4_128_SHA&lt;/code&gt; en tu página de confirmación.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;integration-components&#34;&gt;Componentes de integración&lt;/h2&gt;
+&lt;p&gt;Consulta las siguientes secciones para aprender a integrarte utilizando la Integración WebCheckout.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Integración API</title>
+      <link>/es/docs/integrations/api-integration.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/es/docs/integrations/api-integration.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;Puedes contactar tu tienda en línea a la plataforma de PayU y el proceso de checkout será manejado en tu página web. Para integrar esta opción, debes tener una cuenta de PayU empresarial y habilidades de programación avanzadas.&lt;/p&gt;
+&lt;p&gt;Accede a múltiples métodos de pago (varía por país) incluyendo tarjetas de crédito, transferencias bancarias y pagos en efectivo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/api1-es.png&#34; alt=&#34;API integration&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;initial-settings&#34;&gt;Configuraciones iniciales&lt;/h2&gt;
+&lt;p&gt;PayU te permite integrarte con la pasarela de pagos transaccional, las herramientas de pago disponibles y las consultas desarrollando un cliente HTTPS para enviar la información de la transacción a través de SSL. Es muy importante que los datos sensibles de la transacción como el número de la tarjeta de crédito, la fecha de expiración de la misma y demás, no sean almacenados. Recomendamos que sigas las &lt;a href=&#34;https://www.pcisecuritystandards.org/documents/PCI_DSS_V2.0_Best_Practices_for_Maintaining_PCI_DSS_Compliance.pdf&#34;&gt;mejores prácticas de PCI DSS&lt;/a&gt; (Payment Card Industry Data Security Standard).&lt;/p&gt;
+&lt;p&gt;la transmisión de las transacciones se asegurada a través de una conexión TLS (Transport Layer Security) de 256 bits desde el servidor de tu tienda hasta nuestra pasarela de pagos. El intercambio de mensajes se hace a través de cadenas JSON o XML y las operaciones se distinguen por un comando que se incluye en la petición. Observa los siguientes ejemplos JSON y XML:&lt;/p&gt;
+&lt;p&gt;&lt;nav&gt;
+	&lt;div class=&#34;nav nav-tabs&#34; id=&#34;nav-tab&#34; role=&#34;tablist&#34;&gt;
+
+		
+		
+
+		
+		
+		
+
+		
+
+		&lt;a class=&#34;nav-item nav-link active&#34; id=&#34;nav-1&#34; data-toggle=&#34;tab&#34; href=&#34;#tab11&#34; role=&#34;tab&#34;
+		   aria-controls=&#34;nav-home&#34; aria-selected=&#34;true&#34;&gt;JSON&lt;/a&gt;
+
+		
+		
+
+		
+		
+		
+
+		
+
+		&lt;a class=&#34;nav-item nav-link&#34; id=&#34;nav-1&#34; data-toggle=&#34;tab&#34; href=&#34;#tab12&#34; role=&#34;tab&#34;
+		   aria-controls=&#34;nav-home&#34; aria-selected=&#34;false&#34;&gt;XML&lt;/a&gt;
+
+		
+		
+
+	&lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class=&#34;tab-content&#34; id=&#34;1&#34;&gt;
+
+
+
+
+
+
+
+
+&lt;div class=&#34;tab-pane fade show active&#34; id=&#34;tab11&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-tabName1&#34;&gt;
+
+	&lt;br&gt;
+POST /payments-api/4.0/service.cgi HTTP/1.1&lt;br&gt;
+Host: sandbox.api.payulatam.com&lt;br&gt;
+Content-Type: application/json; charset=utf-8&lt;br&gt;
+Accept: application/json&lt;br&gt;
+Content-Length: length
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JSON&#34; data-lang=&#34;JSON&#34;&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;language&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;es&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;GET_PAYMENT_METHODS&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;merchant&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;apiLogin&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxxxxxxxxxxxx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;apiKey&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxxxxxxxxxxxx&amp;#34;&lt;/span&gt;
+   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+&lt;div class=&#34;tab-pane fade&#34; id=&#34;tab12&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-tabName2&#34;&gt;
+
+	&lt;br&gt;
+POST /payments-api/4.0/service.cgi HTTP/1.1&lt;br&gt;
+Host: sandbox.api.payulatam.com&lt;br&gt;
+Content-Type: application/json; charset=utf-8&lt;br&gt;
+Accept: application/xml&lt;br&gt;
+Content-Length: length&lt;br&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-XML&#34; data-lang=&#34;XML&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;request&amp;gt;&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;language&amp;gt;&lt;/span&gt;es&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/language&amp;gt;&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;command&amp;gt;&lt;/span&gt;GET_PAYMENT_METHODS&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/command&amp;gt;&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;merchant&amp;gt;&lt;/span&gt;
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;apiLogin&amp;gt;&lt;/span&gt;xxxxxxxxxxxxx&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/apiLogin&amp;gt;&lt;/span&gt;
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;apiKey&amp;gt;&lt;/span&gt;xxxxxxxxxxxxx&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/apiKey&amp;gt;&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/merchant&amp;gt;&lt;/span&gt;
+   &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;isTest&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/isTest&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/request&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+
+
+
+
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Puedes definir en lenguaje que deseas utilizar en la petición a través de las cabeceras HTTP &lt;code&gt;Content-type&lt;/code&gt; y &lt;code&gt;Accept&lt;/code&gt;. Puedes utilizar todas las combinaciones posibles:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;CONTENT-TYPE&lt;/th&gt;
+&lt;th&gt;ACCEPT&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;application/xml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;application/xml&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;application/json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;application/json&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;application/xml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;application/json&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;application/json&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;application/xml&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Consideraciones&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Debes tener una cuenta activa de PayU.&lt;/li&gt;
+&lt;li&gt;Debes instalar un certificado SSL válido en tu servidor y tu página web debe poder hacer conexiones SSL. Debido a esto, la máquina virtual debe contar con las extensiones de seguridad apropiadas.&lt;/li&gt;
+&lt;li&gt;Temporalmente NO utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de cifrado &lt;code&gt;TLS_ECDHE_ECDSA_WITH_RC4_128_SHA&lt;/code&gt; en tus peticiones de pago.&lt;/li&gt;
+&lt;li&gt;Debes tener lenguajes de servidor o CGI tales como Java, C#, VB, PHP, etc.&lt;/li&gt;
+&lt;li&gt;Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (API Key y API Login).&lt;/li&gt;
+&lt;li&gt;Los mensajes deben ser codificados utilizando &lt;code&gt;UTF-8&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Las fechas deben utilizar el formato &lt;code&gt;yyyy-MM-ddTHH:mm:ss&lt;/code&gt;, el formato de hora es 24 horas. Ejemplo: &lt;code&gt;2015-08-22T21:35:12&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;En condiciones normales la conexión garantiza tiempos de respuesta de tres segundos en promedio. Si hay una situación anormal, el tiempo máximo de respuesta será de un minuto. Te recomendamos que configures los &lt;em&gt;timeouts&lt;/em&gt; cuando te conectes a PayU.&lt;/li&gt;
+&lt;li&gt;Es importante validar la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;available-features&#34;&gt;Funcionalidades disponibles&lt;/h2&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Integración SDK</title>
+      <link>/es/docs/integrations/sdk-integration.html</link>
+      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/es/docs/integrations/sdk-integration.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;De forma similar a cualquier integración API, puedes personalizar tu checkout de acuerdo con las necesidades de tu negocio y el cliente permanece en tu página web durante la compra y el procedimiento de pago. Para integrar esta opción, debes tener una cuenta de PayU empresarial y habilidades de programación avanzadas.&lt;/p&gt;
+&lt;p&gt;Accede a múltiples métodos de pago (varía por país) incluyendo tarjetas de crédito, transferencias bancarias y pagos en efectivo.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/api1-es.png&#34; alt=&#34;API integration&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;initial-settings&#34;&gt;Configuraciones iniciales&lt;/h2&gt;
+&lt;p&gt;PayU te permite integrarte con la pasarela de pagos transaccional, las herramientas de pago disponibles y las consultas desarrollando un cliente HTTPS para enviar la información de la transacción a través de SSL. Es muy importante que los datos sensibles de la transacción como el número de la tarjeta de crédito, la fecha de expiración de la misma y demás, no sean almacenados. Recomendamos que sigas las &lt;a href=&#34;https://www.pcisecuritystandards.org/documents/PCI_DSS_V2.0_Best_Practices_for_Maintaining_PCI_DSS_Compliance.pdf&#34;&gt;mejores prácticas de PCI DSS&lt;/a&gt; (Payment Card Industry Data Security Standard).&lt;/p&gt;
+&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
+&lt;p&gt;Para integrate con el API, el SDK depende de la librería de Apache &lt;code&gt;HttpClient&lt;/code&gt; que a su vez depende de las librerías &lt;code&gt;HttpCore&lt;/code&gt;, &lt;code&gt;CommonsLoggin&lt;/code&gt; y &lt;code&gt;CommonsCodec&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;En general, necesitas las siguientes librerías en tu classpath:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.4.1&#34;&gt;HttpClient-4.4.1.jar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore/4.4.4&#34;&gt;HttpCore-4.4.4.jar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mvnrepository.com/artifact/commons-logging/commons-logging/1.1.1&#34;&gt;Commons-loggin-1.1.1.jar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mvnrepository.com/artifact/commons-codec/commons-codec/1.6&#34;&gt;Commons-codec-1.6.jar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mvnrepository.com/artifact/org.apache.commons/commons-lang3/3.5&#34;&gt;Commons-lang3-3.5.jar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;http://developers.payulatam.com/sdk/java/payu-java-sdk-1.3.9.zip&#34; target=&#34;_blank&#34; class=&#34;payu-btn-green&#34;&gt;Descargar el SDK Java 1.3.9&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Antes de realizar cualquier operación con el SDK, necesitas asignar algunos valores a la clase &lt;code&gt;PayU&lt;/code&gt;, los cuales aplican a todas las operaciones SDK y deben ser configurados con tu información comercial. La siguiente tabla muestra los valores que necesitas configurar.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Nombre del parámetro&lt;/th&gt;
+&lt;th&gt;Tamaño&lt;/th&gt;
+&lt;th&gt;Tipo&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Obligatorio&lt;/th&gt;
+&lt;th&gt;Descripción&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;language&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Language&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Idioma utilizado para mensajes de error en ell sistema y correos electrónicos enviados entre el comprado y el vendedor. Actualmente se soporta en &lt;code&gt;en&lt;/code&gt; (inglés), &lt;code&gt;es&lt;/code&gt; (español) y &lt;code&gt;pt&lt;/code&gt; (portugués).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;isTest&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Asigna &lt;code&gt;true&lt;/code&gt; si es una petición de prueba, Si no, asigna &lt;code&gt;false&lt;/code&gt;. Dependiendo del tipo de transacción u operación, el valor de este campo puede afectar el comportamiento.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;apiLogin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Min:12 Max:32&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Tu API Login. &lt;a href=&#34;../../../es/docs/integrations.html#api-key-and-api-login&#34;&gt;Cómo obtengo mi API Login&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;apiKey&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Min:6 Max:32&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Tu API Key. &lt;a href=&#34;../../../es/docs/integrations.html#api-key-and-api-login&#34;&gt;Cómo obtengo mi API Key&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;merchantId&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;td&gt;Identificador del comercio, es utilizado para generar las firmas para verificar las transacciones de pago. &lt;br&gt;Este parámetro es obligatorio a menos que envíes la firma.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;paymentsUrl&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Min:1&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;td&gt;URL de lla página a donde vas a enviar las peticiones relacionadas a pagos. Por defecto, este parámetro toma la URL de producción.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;reportsUrl&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Min:1&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;td&gt;URL de lla página a donde vas a enviar las peticiones relacionadas a reportes. Por defecto, este parámetro toma la URL de producción.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ejemplo&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;apiKey&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxxxxxxxxxxx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Ingresa tu API key aquí
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;apiLogin&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxxxxxxxxxxx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Ingresa tu API login aquí
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;language&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;Language&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;en&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Ingresa aquí el idioma
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;isTest&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// asigna true si estás en modo pruebas
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;LoggerUtil&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;setLogLevel&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;ALL&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;);&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// inclúyelo solo si quieres ver a traza del log completa. Si no, puedes removerlo.
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;paymentsUrl&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://api.payulatam.com/payments-api/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// inclúyelo si quieres probar en un servidor de pagos específico y asigna su URL.
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;reportsUrl&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://api.payulatam.com/reports-api/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// inclúyelo si quieres probar en un servidor de reportes específico y asigna su URL.
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Para la ejecución de cada una de las operaciones provistas por el SDK de PayU, debes enviar un Mapa de parámetros al método correspondiente como argumento, este contiene toda la información de la transacción a procesar.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-JAVA&#34; data-lang=&#34;JAVA&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;parameters&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;HashMap&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;gt;();&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;PARAMETERS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;TRANSACTION_ID&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;transactionId&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;put&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;PARAMETERS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;ORDER_ID&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;orderId&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Para facilitar su uso, se proporcionan una serie de constantes en la interfaz &lt;code&gt;PayU.PARAMETERS&lt;/code&gt; que contienen los nombres de los parámetros utilizados en los métodos del SDK.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+A partir de la versión 1.2.X, es necesario agregar el certificado del API de pagos de PayU (&lt;a href=&#34;https://api.payulatam.com/payments-api/&#34;&gt;https://api.payulatam.com/payments-api/&lt;/a&gt;) en la carpeta de llaves de Java. Esta carpeta se encuentra en &lt;em&gt;&lt;strong&gt;[Java-Installation-Folder]/jdk/jre/lib/security/cacerts&lt;/strong&gt;&lt;/em&gt;.
+&lt;/div&gt;
+
+&lt;h3 id=&#34;php&#34;&gt;PHP&lt;/h3&gt;
+&lt;p&gt;Para integrarte con el API, el SDK puede ser ejecutado en máquinas con PHP versión igual o superior a 5.2.1. Además, se necesitan las siguientes extensiones PHP en tu servidor:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;curl&lt;/li&gt;
+&lt;li&gt;xml&lt;/li&gt;
+&lt;li&gt;mbstring&lt;/li&gt;
+&lt;li&gt;json&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;../../assets/Libraries/PHP/4.5.6/payu-php-sdk-4.5.6.zip&#34; target=&#34;_blank&#34; class=&#34;payu-btn-green&#34;&gt;Descargar el SDK PHP 4.5.6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Para tener acceso al las funcionalidades de SDK, necesitas incluir la clase &lt;code&gt;PayU&lt;/code&gt; ubicada en &lt;em&gt;&lt;strong&gt;[PayU-php-sdk-Path]/lib/PayU.php&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-PHP&#34; data-lang=&#34;PHP&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;php&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;require_once&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[PayU-php-sdk-Path]/lib/PayU.php&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;...&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Antes de realizar cualquier operación con el SDK, necesitas asignar algunos valores a la clase &lt;code&gt;PayU&lt;/code&gt;, los cuales aplican a todas las operaciones SDK y deben ser configurados con tu información comercial. La siguiente tabla muestra los valores que necesitas configurar.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Nombre del parámetro&lt;/th&gt;
+&lt;th&gt;Tamaño&lt;/th&gt;
+&lt;th&gt;Tipo&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Obligatorio&lt;/th&gt;
+&lt;th&gt;Descripción&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PayU::$language&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Language&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Idioma utilizado para mensajes de error en ell sistema y correos electrónicos enviados entre el comprado y el vendedor. Actualmente se soporta en en (inglés), es (español) and pt (portugués).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PayU::$isTest&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Asigna &lt;code&gt;true&lt;/code&gt; si es una petición de prueba, Si no, asigna &lt;code&gt;false&lt;/code&gt;. Dependiendo del tipo de transacción u operación, el valor de este campo puede afectar el comportamiento.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PayU::$apiLogin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Min:12 Max:32&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Tu API Login. &lt;a href=&#34;../../../es/docs/integrations.html#api-key-and-api-login&#34;&gt;Cómo obtengo mi API Login&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PayU::$apiKey&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Min:6 Max:32&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Sí&lt;/td&gt;
+&lt;td&gt;Tu API Key. &lt;a href=&#34;../../../es/docs/integrations.html#api-key-and-api-login&#34;&gt;Cómo obtengo mi API Key&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;PayU::$merchantId&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;String&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;td&gt;Identificador del comercio, es utilizado para generar las firmas para verificar las transacciones de pago. &lt;br&gt;Este parámetro es obligatorio a menos que envíes la firma.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ejemplo&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-PHP&#34; data-lang=&#34;PHP&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;php&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$apiKey&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxxxxxxxxxxx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Ingresa tu llave API aquí
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$apiLogin&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xxxxxxxxxxxx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Ingresa tu API login aquí
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$merchantId&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Enter your Merchant Id here
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$language&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;SupportedLanguages&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;ES&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// Ingresa aquí el idioma
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;PayU&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$isTest&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;false&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// asigna true si estás en modo pruebas
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;...&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p&gt;Además, necesitas configurar el API para redirigir tus peticiones utilizando la clase &lt;code&gt;Environment&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-PHP&#34; data-lang=&#34;PHP&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;php&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// URL de pagos
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Environment&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;setPaymentsCustomUrl&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// URL de reportes
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Environment&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;setReportsCustomUrl&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;...&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;considerations&#34;&gt;Consideraciones&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Debes tener una cuenta activa de PayU.&lt;/li&gt;
+&lt;li&gt;Debes instalar un certificado SSL válido en tu servidor y tu página web debe poder hacer conexiones SSL. Debido a esto, la máquina virtual debe contar con las extensiones de seguridad apropiadas.
+T* emporalmente NO utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de cifrado &lt;code&gt;TLS_ECDHE_ECDSA_WITH_RC4_128_SHA&lt;/code&gt; en tus peticiones de pago.&lt;/li&gt;
+&lt;li&gt;Debes tener lenguajes de servidor o CGI tales como Java, C#, VB, PHP, etc.&lt;/li&gt;
+&lt;li&gt;Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (API Key y API Login).&lt;/li&gt;
+&lt;li&gt;Los mensajes deben ser codificados utilizando &lt;code&gt;UTF-8&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Las fechas deben utilizar el formato &lt;code&gt;yyyy-MM-ddTHH:mm:ss&lt;/code&gt;, el formato de hora es 24 horas. Ejemplo: &lt;code&gt;2015-08-22T21:35:12&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;En condiciones normales la conexión garantiza tiempos de respuesta de tres segundos en promedio. Si hay una situación anormal, el tiempo máximo de respuesta será de un minuto. Te recomendamos que configures los &lt;em&gt;timeouts&lt;/em&gt; cuando te conectes a PayU.&lt;/li&gt;
+&lt;li&gt;Es importante validar la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;available-features&#34;&gt;Funcionalidades disponibles&lt;/h2&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

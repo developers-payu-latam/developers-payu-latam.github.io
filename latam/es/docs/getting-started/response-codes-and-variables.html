@@ -1,0 +1,2433 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Códigos de respuesta y Variables | PayU Latam</title><meta property="og:title" content="Códigos de respuesta y Variables" />
+<meta property="og:description" content="In this section, you find relevant data used during the integration process, such as the variable tables, languages, and currencies admitted in the PayU’s platform." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/es/docs/getting-started/response-codes-and-variables.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-04-06T15:33:35-05:00" />
+<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Códigos de respuesta y Variables">
+<meta itemprop="description" content="In this section, you find relevant data used during the integration process, such as the variable tables, languages, and currencies admitted in the PayU’s platform."><meta itemprop="datePublished" content="2021-04-06T15:33:35-05:00" />
+<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
+<meta itemprop="wordCount" content="1896">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Códigos de respuesta y Variables"/>
+<meta name="twitter:description" content="In this section, you find relevant data used during the integration process, such as the variable tables, languages, and currencies admitted in the PayU’s platform."/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../es/docs.html" ><span class="active">Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../es/payu-module-documentation.html" ><span>Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/docs/getting-started/response-codes-and-variables.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/docs/getting-started/response-codes-and-variables.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs.html" href="../../../es/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/getting-started.html" href="../../../es/docs/getting-started.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/create-an-account.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedcreate-an-accounthtml" href="../../../es/docs/getting-started/create-an-account.html">Crear una cuenta de PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-integration.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-integrationhtml" href="../../../es/docs/getting-started/select-your-integration.html">Seleccionar tu integración</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-payment-method.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-payment-methodhtml" href="../../../es/docs/getting-started/select-your-payment-method.html">Seleccionar tu medio de Pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/test-your-solution.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedtest-your-solutionhtml" href="../../../es/docs/getting-started/test-your-solution.html">Probar tu solución</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/deploy-to-production.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-starteddeploy-to-productionhtml" href="../../../es/docs/getting-started/deploy-to-production.html">Desplegar a Producción</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/response-codes-and-variables.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active " id="m-esdocsgetting-startedresponse-codes-and-variableshtml" href="../../../es/docs/getting-started/response-codes-and-variables.html">Códigos de respuesta y Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/services.html" href="../../../es/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespaymentshtml" href="../../../es/docs/services/payments.html">Pagos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesquerieshtml" href="../../../es/docs/services/queries.html">Consulta de transacciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicestokenizationhtml" href="../../../es/docs/services/tokenization.html">Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespromotionshtml" href="../../../es/docs/services/promotions.html">Cuotas y Promociones - Argentina y México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesrefundshtml" href="../../../es/docs/services/refunds.html">Anulaciones y Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespayoutshtml" href="../../../es/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/tools.html" href="../../../es/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Herramientas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-requesthtml" href="../../../es/docs/tools/payment-request.html">Solicitud de pago</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/tools/shopping-cart-plugins.html" href="../../../es/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins para Carritos de compra</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../es/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsmagentohtml" href="../../../es/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../es/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../es/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../es/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../es/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsopencarthtml" href="../../../es/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayu-modulehtml" href="../../../es/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsdisputeshtml" href="../../../es/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-couponshtml" href="../../../es/docs/tools/payment-coupons.html">Cupones de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsantifraud-guaranteehtml" href="../../../es/docs/tools/antifraud-guarantee.html">Garantía Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/integrations.html" href="../../../es/docs/integrations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Integraciones</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/webcheckout-integration.html" href="../../../es/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración WebCheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../es/docs/integrations/webcheckout-integration/payment-form.html">Formulario de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../es/docs/integrations/webcheckout-integration/response-page.html">Página de Respuesta</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../es/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmación</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/api-integration.html" href="../../../es/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../es/docs/integrations/api-integration/payments-api-argentina.html">API de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../es/docs/integrations/api-integration/payments-api-brazil.html">API de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../es/docs/integrations/api-integration/payments-api-chile.html">API de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../es/docs/integrations/api-integration/payments-api-colombia.html">API de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../es/docs/integrations/api-integration/payments-api-mexico.html">API de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../es/docs/integrations/api-integration/payments-api-panama.html">API de Pagos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../es/docs/integrations/api-integration/payments-api-peru.html">API de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationqueries-apihtml" href="../../../es/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationtokenization-apihtml" href="../../../es/docs/integrations/api-integration/tokenization-api.html">API de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpromotions-apihtml" href="../../../es/docs/integrations/api-integration/promotions-api.html">API de Promociones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationrefunds-apihtml" href="../../../es/docs/integrations/api-integration/refunds-api.html">API de Reembolsos y Anulaciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayouts-apihtml" href="../../../es/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/sdk-integration.html" href="../../../es/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationqueriessdkhtml" href="../../../es/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../es/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationrefundssdkhtml" href="../../../es/docs/integrations/sdk-integration/refundssdk.html">SDK de Reembolsos y Anulaciones</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/server-status.html" href="../../../es/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Estado de nuestros servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#response-codes-for-transactions">Códigos de respuesta de las transacciones</a></li>
+    <li><a href="#response-codes-sent-to-the-response-page">Códigos de respuesta de la página de respuesta</a></li>
+    <li><a href="#response-codes-sent-to-the-confirmation-page">Códigos de respuesta de la página de confirmación</a></li>
+    <li><a href="#codes-of-the-payment-methods">Códigos de los métodos de pago</a></li>
+    <li><a href="#commands-accepted-by-the-payments-api">Comandos aceptados por el API de pagos</a></li>
+    <li><a href="#commands-accepted-by-the-query-api">Comandos aceptados por el API de consultas</a></li>
+    <li><a href="#accepted-currencies">Divisas aceptadas</a></li>
+    <li><a href="#order-status">Estados de la orden</a></li>
+    <li><a href="#transaction-states">Estados de la transacción</a></li>
+    <li><a href="#transaction-types">Tipos de transacción</a></li>
+    <li><a href="#processing-countries">Paises de pago</a></li>
+    <li><a href="#supported-languages">Idiomas soportados</a></li>
+    <li><a href="#document-types">Tipos de documento</a></li>
+    <li><a href="#bancos-para-payouts">Bancos para Payouts</a>
+      <ul>
+        <li><a href="#colombia">Colombia</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/docs.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/docs/getting-started.html">Empezando...</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../es/docs/getting-started/response-codes-and-variables.html">Códigos de respuesta y Variables</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Códigos de respuesta y Variables</h1>
+    <div class="lead">In this section, you find relevant data used during the integration process, such as the variable tables, languages, and currencies admitted in the PayU’s platform.</div>
+	       
+	<h2 id="response-codes-for-transactions">Códigos de respuesta de las transacciones</h2>
+<table>
+<thead>
+<tr>
+<th>Código de respuesta</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERROR</code></td>
+<td>Error general.</td>
+</tr>
+<tr>
+<td><code>APPROVED</code></td>
+<td>La transacción fue aprobada.</td>
+</tr>
+<tr>
+<td><code>ANTIFRAUD_REJECTED</code></td>
+<td>La transacción fue rechazada por el sistema antifraude.</td>
+</tr>
+<tr>
+<td><code>BANK_FRAUD_REJECTED</code></td>
+<td>La transacción fue rechazada debido a sospecha de fraude en la institución financiera.</td>
+</tr>
+<tr>
+<td><code>PAYMENT_NETWORK_REJECTED</code></td>
+<td>La red financiera rechazó la transacción.</td>
+</tr>
+<tr>
+<td><code>ENTITY_DECLINED</code></td>
+<td>La transacción fue declinada por el banco o por la red financiera debido a un error.</td>
+</tr>
+<tr>
+<td><code>INTERNAL_PAYMENT_PROVIDER_ERROR</code></td>
+<td>Ocurrió un error en el sistema intentando procesar el pago.</td>
+</tr>
+<tr>
+<td><code>INACTIVE_PAYMENT_PROVIDER</code></td>
+<td>El proveedor de pagos no se encontraba activo.</td>
+</tr>
+<tr>
+<td><code>DIGITAL_CERTIFICATE_NOT_FOUND</code></td>
+<td>La red financiera reportó un error en la autenticación.</td>
+</tr>
+<tr>
+<td><code>INVALID_EXPIRATION_DATE_OR_SECURITY_CODE</code></td>
+<td>El código de seguridad o la fecha de expiración fue inválido.</td>
+</tr>
+<tr>
+<td><code>INVALID_RESPONSE_PARTIAL_APPROVAL</code></td>
+<td>Tipo de respuesta no válida. La entidad aprobó parcialmente la transacción y debe ser cancelada automáticamente por el sistema.</td>
+</tr>
+<tr>
+<td><code>INSUFFICIENT_FUNDS</code></td>
+<td>La cuenta no tenía fondos suficientes.</td>
+</tr>
+<tr>
+<td><code>CREDIT_CARD_NOT_AUTHORIZED _FOR_INTERNET_TRANSACTIONS</code></td>
+<td>La tarjeta de crédito no estaba autorizada para transacciones por Internet.</td>
+</tr>
+<tr>
+<td><code>INVALID_TRANSACTION</code></td>
+<td>La red financiera reportó que la transacción fue inválida.</td>
+</tr>
+<tr>
+<td><code>INVALID_CARD</code></td>
+<td>La tarjeta es inválida.</td>
+</tr>
+<tr>
+<td><code>EXPIRED_CARD</code></td>
+<td>La tarjeta ya expiró.</td>
+</tr>
+<tr>
+<td><code>RESTRICTED_CARD</code></td>
+<td>La tarjeta presenta una restricción.</td>
+</tr>
+<tr>
+<td><code>CONTACT_THE_ENTITY</code></td>
+<td>Se debe contactar al banco.</td>
+</tr>
+<tr>
+<td><code>REPEAT_TRANSACTION</code></td>
+<td>Se debe repetir la transacción.</td>
+</tr>
+<tr>
+<td><code>ENTITY_MESSAGING_ERROR</code></td>
+<td>La red financiera reportó un error de comunicaciones con el banco.</td>
+</tr>
+<tr>
+<td><code>BANK_UNREACHABLE</code></td>
+<td>El banco no se encontraba disponible.</td>
+</tr>
+<tr>
+<td><code>EXCEEDED_AMOUNT</code></td>
+<td>La transacción excede un monto establecido por el banco.</td>
+</tr>
+<tr>
+<td><code>NOT_ACCEPTED_TRANSACTION</code></td>
+<td>La transacción no fue aceptada por el banco por algún motivo.</td>
+</tr>
+<tr>
+<td><code>ERROR_CONVERTING_TRANSACTION_AMOUNTS</code></td>
+<td>Ocurrió un error convirtiendo los montos a la moneda de pago.</td>
+</tr>
+<tr>
+<td><code>EXPIRED_TRANSACTION</code></td>
+<td>La transacción expiró.</td>
+</tr>
+<tr>
+<td><code>PENDING_TRANSACTION_REVIEW</code></td>
+<td>La transacción fue detenida y debe ser revisada, esto puede ocurrir por filtros de seguridad.</td>
+</tr>
+<tr>
+<td><code>PENDING_TRANSACTION_CONFIRMATION</code></td>
+<td>La transacción está pendiente de ser confirmada.</td>
+</tr>
+<tr>
+<td><code>PENDING_TRANSACTION_TRANSMISSION</code></td>
+<td>La transacción está pendiente para ser trasmitida a la red financiera. Normalmente esto aplica para transacciones con métodos de pago en efectivo.</td>
+</tr>
+<tr>
+<td><code>PAYMENT_NETWORK_BAD_RESPONSE</code></td>
+<td>El mensaje retornado por la red financiera es inconsistente.</td>
+</tr>
+<tr>
+<td><code>PAYMENT_NETWORK_NO_CONNECTION</code></td>
+<td>No se pudo realizar la conexión con la red financiera.</td>
+</tr>
+<tr>
+<td><code>PAYMENT_NETWORK_NO_RESPONSE</code></td>
+<td>La red financiera no respondió.</td>
+</tr>
+<tr>
+<td><code>FIX_NOT_REQUIRED</code></td>
+<td>Clínica de transacciones: Código de manejo interno.</td>
+</tr>
+<tr>
+<td><code>AUTOMATICALLY_FIXED_AND_SUCCESS_REVERSAL</code></td>
+<td>Clínica de transacciones: Código de manejo interno. Sólo aplica para la API de reportes.</td>
+</tr>
+<tr>
+<td><code>AUTOMATICALLY_FIXED_AND_UNSUCCESS_REVERSAL</code></td>
+<td>Clínica de transacciones: Código de manejo interno. Sólo aplica para la API de reportes.</td>
+</tr>
+<tr>
+<td><code>AUTOMATIC_FIXED_NOT_SUPPORTED</code></td>
+<td>Clínica de transacciones: Código de manejo interno. Sólo aplica para la API de reportes.</td>
+</tr>
+<tr>
+<td><code>NOT_FIXED_FOR_ERROR_STATE</code></td>
+<td>Clínica de transacciones: Código de manejo interno. Sólo aplica para la API de reportes.</td>
+</tr>
+<tr>
+<td><code>ERROR_FIXING_AND_REVERSING</code></td>
+<td>Clínica de transacciones: Código de manejo interno. Sólo aplica para la API de reportes.</td>
+</tr>
+<tr>
+<td><code>ERROR_FIXING_INCOMPLETE_DATA</code></td>
+<td>Clínica de transacciones: Código de manejo interno. Sólo aplica para la API de reportes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="response-codes-sent-to-the-response-page">Códigos de respuesta de la página de respuesta</h2>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>lap Transaction State</th>
+<th>transaction State</th>
+<th>pol Transaction State</th>
+<th>lapResponseCode</th>
+<th>pol Response Code</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APPROVED</td>
+<td>4 (Aprobada)</td>
+<td>4 (Aprobada)</td>
+<td>APPROVED</td>
+<td>1</td>
+<td>Transacción aprobada</td>
+</tr>
+<tr>
+<td>DECLINED</td>
+<td>6 (Declinada)</td>
+<td>6 (Rechazada)</td>
+<td>PAYMENT_NETWORK_REJECTED</td>
+<td>4</td>
+<td>Transacción rechazada por entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ENTITY_DECLINED</td>
+<td>5</td>
+<td>Transacción rechazada por el banco</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INSUFFICIENT_FUNDS</td>
+<td>6</td>
+<td>Fondos insuficientes</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INVALID_CARD</td>
+<td>7</td>
+<td>Tarjeta inválida</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>CONTACT_THE_ENTITY</td>
+<td>8</td>
+<td>Por favor, contactar a la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>BANK_ACCOUNT_ACTIVATION _ERROR</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>BANK_ACCOUNT_NOT_AUTHORIZED _FOR_AUTOMATIC_DEBIT</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INVALID_AGENCY_BANK_ACCOUNT</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INVALID_BANK_ACCOUNT</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INVALID_BANK</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>EXPIRED_CARD</td>
+<td>9</td>
+<td>Tarjeta vencida</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>RESTRICTED_CARD</td>
+<td>10</td>
+<td>Tarjeta restringida</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INVALID_EXPIRATION_DATE_OR _SECURITY_CODE</td>
+<td>12</td>
+<td>La fecha de expiración o el código de seguridad son inválidos</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>REPEAT_TRANSACTION</td>
+<td>13</td>
+<td>Reintentar pago</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INVALID_TRANSACTION</td>
+<td>14</td>
+<td>Transacción inválida</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>EXCEEDED_AMOUNT</td>
+<td>17</td>
+<td>El valor excede el máximo permitido por la entidad</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ABANDONED_TRANSACTION</td>
+<td>19</td>
+<td>Transacción abandonada por el pagador</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>CREDIT_CARD_NOT_AUTHORIZED_FOR _INTERNET_TRANSACTIONS</td>
+<td>22</td>
+<td>La tarjeta no está autorizada para comprar por internet</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ANTIFRAUD_REJECTED</td>
+<td>23</td>
+<td>Transacción rechazada por el módulo antifraude</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>BANK_FRAUD_REJECTED</td>
+<td>23</td>
+<td>Transacción rechazada debido a sospecha de fraude en la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>DIGITAL_CERTIFICATE_ NOT_FOUND</td>
+<td>9995</td>
+<td>Certificado digital no encontrado</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>BANK_UNREACHABLE</td>
+<td>9996</td>
+<td>Error tratando de comunicarse con el banco</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ENTITY_MESSAGING _ERROR</td>
+<td>9997</td>
+<td>Error comunicándose con la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>NOT_ACCEPTED_ TRANSACTION</td>
+<td>9998</td>
+<td>Transacción no permitida al tarjetahabiente</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INTERNAL_PAYMENT _PROVIDER_ERROR</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>INACTIVE_PAYMENT_ PROVIDER</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>104 (Error)</td>
+<td>6 (Rechazada)</td>
+<td>ERROR</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ERROR_CONVERTING_TRANSACTION _AMOUNTS</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>FIX_NOT_REQUIRED</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>AUTOMATICALLY_FIXED_AND_SUCCESS _REVERSAL</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>AUTOMATICALLY_FIXED _AND_UNSUCCESS _REVERSAL</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>AUTOMATIC_FIXED_ NOT_SUPPORTED</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>NOT_FIXED_FOR_ ERROR_STATE</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ERROR_FIXING_AND _REVERSING</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ERROR_FIXING_ INCOMPLETE_DATA</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>PAYMENT_NETWORK_ BAD_RESPONSE</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>PAYMENT_NETWORK_ NO_CONNECTION</td>
+<td>9996</td>
+<td>No fue posible establecer comunicación con la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>PAYMENT_NETWORK_ NO_RESPONSE</td>
+<td>9996</td>
+<td>No se recibió respuesta de la entidad financiera</td>
+</tr>
+<tr>
+<td>EXPIRED</td>
+<td>5 (Expirada)</td>
+<td>5 (Expirada)</td>
+<td>EXPIRED_TRANSACTION</td>
+<td>20</td>
+<td>Transacción expirada</td>
+</tr>
+<tr>
+<td>PENDING</td>
+<td>7 (Pendiente)</td>
+<td>7 (Pendiente)</td>
+<td>PENDING_TRANSACTION_ REVIEW</td>
+<td>15</td>
+<td>Transacción pendiente de aprobación (en validación manual)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>14 (Pendiente)</td>
+<td>PENDING_TRANSACTION_ CONFIRMATION</td>
+<td>25</td>
+<td>Recibo de pago generado. En espera de pago</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>7 (Pendiente)</td>
+<td>PENDING_TRANSACTION_ TRANSMISSION</td>
+<td>9998</td>
+<td>Transacción no permitida</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>14 (Pendiente)</td>
+<td>PENDING_PAYMENT_IN_ENTITY</td>
+<td>25</td>
+<td>Recibo de pago generado. En espera de pago</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>15 (Pendiente)</td>
+<td>PENDING_PAYMENT_IN_BANK</td>
+<td>26</td>
+<td>Recibo de pago generado. En espera de pago</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>10 (Pendiente)</td>
+<td>PENDING_SENT_TO_FINANCIAL _ENTITY</td>
+<td>29</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>12 (Pendiente)</td>
+<td>PENDING_AWAITING_PSE _CONFIRMATION</td>
+<td>9994</td>
+<td>En espera de confirmación de PSE</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>18 (Pendiente)</td>
+<td>PENDING_NOTIFYING_ENTITY</td>
+<td>25</td>
+<td>Recibo de pago generado. En espera de pago</td>
+</tr>
+</tbody>
+</table>
+<h2 id="response-codes-sent-to-the-confirmation-page">Códigos de respuesta de la página de confirmación</h2>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>state_pol</th>
+<th>response_message_pol</th>
+<th>response_code_pol</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 (Aprobada)</td>
+<td>APPROVED</td>
+<td>1</td>
+<td>Transacción aprobada</td>
+</tr>
+<tr>
+<td>6 (Declinada)</td>
+<td>PAYMENT_NETWORK_REJECTED</td>
+<td>4</td>
+<td>Transacción rechazada por entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td>ENTITY_DECLINED</td>
+<td>5</td>
+<td>Transacción rechazada por el banco</td>
+</tr>
+<tr>
+<td></td>
+<td>INSUFFICIENT_FUNDS</td>
+<td>6</td>
+<td>Fondos insuficientes</td>
+</tr>
+<tr>
+<td></td>
+<td>INVALID_CARD</td>
+<td>7</td>
+<td>Tarjeta inválida</td>
+</tr>
+<tr>
+<td></td>
+<td>CONTACT_THE_ENTITY</td>
+<td>8</td>
+<td>Contactar a la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td>BANK_ACCOUNT_NOT_AUTHORIZED _FOR_AUTOMATIC_DEBIT</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td>INVALID_AGENCY_BANK_ACCOUNT</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td>INVALID_BANK_ACCOUNT</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td>INVALID_BANK</td>
+<td>8</td>
+<td>Débito automático no permitido</td>
+</tr>
+<tr>
+<td></td>
+<td>EXPIRED_CARD</td>
+<td>9</td>
+<td>Tarjeta vencida</td>
+</tr>
+<tr>
+<td></td>
+<td>RESTRICTED_CARD</td>
+<td>10</td>
+<td>Tarjeta restringida</td>
+</tr>
+<tr>
+<td></td>
+<td>INVALID_EXPIRATION_DATE_OR _SECURITY_CODE</td>
+<td>12</td>
+<td>La fecha de expiración o el código de seguridad son inválidos</td>
+</tr>
+<tr>
+<td></td>
+<td>REPEAT_TRANSACTION</td>
+<td>13</td>
+<td>Reintentar pago</td>
+</tr>
+<tr>
+<td></td>
+<td>INVALID_TRANSACTION</td>
+<td>14</td>
+<td>Transacción inválida</td>
+</tr>
+<tr>
+<td></td>
+<td>EXCEEDED_AMOUNT</td>
+<td>17</td>
+<td>El valor excede el máximo permitido por la entidad</td>
+</tr>
+<tr>
+<td></td>
+<td>ABANDONED_TRANSACTION</td>
+<td>19</td>
+<td>Transacción abandonada por el pagador</td>
+</tr>
+<tr>
+<td></td>
+<td>CREDIT_CARD_NOT_AUTHORIZED_FOR _INTERNET_TRANSACTIONS</td>
+<td>22</td>
+<td>Tarjeta no autorizada para comprar por internet</td>
+</tr>
+<tr>
+<td></td>
+<td>ANTIFRAUD_REJECTED</td>
+<td>23</td>
+<td>Transacción rechazada por sospecha de fraude</td>
+</tr>
+<tr>
+<td></td>
+<td>BANK_FRAUD_REJECTED</td>
+<td>23</td>
+<td>Transacción rechazada debido a sospecha de fraude en la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td>DIGITAL_CERTIFICATE_NOT_FOUND</td>
+<td>9995</td>
+<td>Certificado digital no encontrado</td>
+</tr>
+<tr>
+<td></td>
+<td>BANK_UNREACHABLE</td>
+<td>9996</td>
+<td>Error tratando de comunicarse con el banco</td>
+</tr>
+<tr>
+<td></td>
+<td>PAYMENT_NETWORK_NO_CONNECTION</td>
+<td>9996</td>
+<td>No fue posible establecer comunicación con la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td>PAYMENT_NETWORK_NO_RESPONSE</td>
+<td>9996</td>
+<td>No se recibió respuesta de la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td>ENTITY_MESSAGING_ERROR</td>
+<td>9997</td>
+<td>Error comunicándose con la entidad financiera</td>
+</tr>
+<tr>
+<td></td>
+<td>NOT_ACCEPTED_TRANSACTION</td>
+<td>9998</td>
+<td>Transacción no permitida</td>
+</tr>
+<tr>
+<td></td>
+<td>INTERNAL_PAYMENT_PROVIDER_ERROR</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>INACTIVE_PAYMENT_PROVIDER</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>ERROR</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>ERROR_CONVERTING_TRANSACTION _AMOUNTS</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>BANK_ACCOUNT_ACTIVATION_ERROR</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>FIX_NOT_REQUIRED</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>AUTOMATICALLY_FIXED_AND_SUCCESS _REVERSAL</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>AUTOMATICALLY_FIXED_AND_UNSUCCESS _REVERSAL</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>AUTOMATIC_FIXED_NOT_SUPPORTED</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>NOT_FIXED_FOR_ERROR_STATE</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>ERROR_FIXING_AND_REVERSING</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>ERROR_FIXING_INCOMPLETE_DATA</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td></td>
+<td>PAYMENT_NETWORK_BAD_RESPONSE</td>
+<td>9999</td>
+<td>Error interno</td>
+</tr>
+<tr>
+<td>5 (Expirada)</td>
+<td>EXPIRED_TRANSACTION</td>
+<td>20</td>
+<td>Transacción expirada</td>
+</tr>
+</tbody>
+</table>
+<h2 id="codes-of-the-payment-methods">Códigos de los métodos de pago</h2>
+<p>Los siguientes códigos aplican para <code>payment_method_type</code> (Página de confirmación), <code>payment_method_id</code> (Página de confirmación) y <code>polPaymentMethodType</code> (Página de respuesta).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Código</th>
+<th>lapPaymentMethodType<br>(Página de respuesta)</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2</td>
+<td>CREDIT_CARD</td>
+<td>Tarjetas de Crédito</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td>PSE</td>
+<td>Transferencias bancarias PSE</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td>ACH</td>
+<td>Débitos ACH</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td>DEBIT_CARD</td>
+<td>Tarjetas débito</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td>CASH</td>
+<td>Efectivo</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td>REFERENCED</td>
+<td>Referencia de pago</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td>BANK_REFERENCED</td>
+<td>Pago en bancos</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td>SPEI</td>
+<td>Transferencias bancarias SPEI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="commands-accepted-by-the-payments-api">Comandos aceptados por el API de pagos</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PING</code></td>
+<td>Utilizado para realizar ping al servicio.</td>
+</tr>
+<tr>
+<td><code>SUBMIT_TRANSACTION</code></td>
+<td>Utilizado para enviar transacciones de cualquier tipo.</td>
+</tr>
+<tr>
+<td><code>GET_PAYMENT_METHODS</code></td>
+<td>Utilizado para consultar los métodos de pago disponibles para el comercio.</td>
+</tr>
+<tr>
+<td><code>GET_BANKS_LIST</code></td>
+<td>Utilizado para obtener el listado de bancos para las transacciones con PSE.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="commands-accepted-by-the-query-api">Comandos aceptados por el API de consultas</h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PING</code></td>
+<td>Utilizado para realizar ping al servicio.</td>
+</tr>
+<tr>
+<td><code>ORDER_DETAIL</code></td>
+<td>Utilizado para consultar una orden utilizado su identificador.</td>
+</tr>
+<tr>
+<td><code>ORDER_DETAIL_BY_REFERENCE_CODE</code></td>
+<td>Utilizado para consultar una orden utilizado su código de referencia.</td>
+</tr>
+<tr>
+<td><code>TRANSACTION_RESPONSE_DETAIL</code></td>
+<td>Utilizado para consultar la respuesta de una transacción.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="accepted-currencies">Divisas aceptadas</h2>
+<table>
+<thead>
+<tr>
+<th>Moneda</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ARS</code></td>
+<td>Peso argentino</td>
+</tr>
+<tr>
+<td><code>BRL</code></td>
+<td>Real brasileño</td>
+</tr>
+<tr>
+<td><code>CLP</code></td>
+<td>Peso chileno</td>
+</tr>
+<tr>
+<td><code>COP</code></td>
+<td>Peso colombiano</td>
+</tr>
+<tr>
+<td><code>MXN</code></td>
+<td>Peso mexicano</td>
+</tr>
+<tr>
+<td><code>PEN</code></td>
+<td>Nuevo Sol peruano</td>
+</tr>
+<tr>
+<td><code>USD</code></td>
+<td>Dólar americano</td>
+</tr>
+</tbody>
+</table>
+<h2 id="order-status">Estados de la orden</h2>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NEW</code></td>
+<td>La orden fue creada en el sistema.</td>
+</tr>
+<tr>
+<td><code>IN_PROGRESS</code></td>
+<td>La orden está siendo procesada.</td>
+</tr>
+<tr>
+<td><code>AUTHORIZED</code></td>
+<td>El último estado de la orden es una autorización aprobada.</td>
+</tr>
+<tr>
+<td><code>CAPTURED</code></td>
+<td>El último estado de la orden es una captura aprobada.</td>
+</tr>
+<tr>
+<td><code>CANCELLED</code></td>
+<td>El último estado de la orden es una cancelación aprobada.</td>
+</tr>
+<tr>
+<td><code>DECLINED</code></td>
+<td>El último estado de la orden fue declinada.</td>
+</tr>
+<tr>
+<td><code>REFUNDED</code></td>
+<td>El último estado de la orden es un reembolso aprobado.</td>
+</tr>
+<tr>
+<td><code>CHARGEBACK</code></td>
+<td>El último estado de la orden es un Contracargo. Es decir, corresponde a una <a href="../../../es/docs/tools/disputes.html">Dispute</a> perdida.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transaction-states">Estados de la transacción</h2>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APPROVED</code></td>
+<td>Transacción aprobada.</td>
+</tr>
+<tr>
+<td><code>DECLINED</code></td>
+<td>Transacción rechazada.</td>
+</tr>
+<tr>
+<td><code>ERROR</code></td>
+<td>Error procesando la transacción.</td>
+</tr>
+<tr>
+<td><code>EXPIRED</code></td>
+<td>Transacción expirada.</td>
+</tr>
+<tr>
+<td><code>PENDING</code></td>
+<td>Transacción pendiente o en validación</td>
+</tr>
+<tr>
+<td><code>SUBMITTED</code></td>
+<td>Transacción enviada a la entidad financiera y por algún motivo no terminó su procesamiento.<br>Sólo aplica para la API de reportes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="transaction-types">Tipos de transacción</h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AUTHORIZATION</code></td>
+<td>Transacción de autorización.</td>
+</tr>
+<tr>
+<td><code>AUTHORIZATION_AND_CAPTURE</code></td>
+<td>Transacción de cobro, Autorización y captura en un paso.</td>
+</tr>
+<tr>
+<td><code>CAPTURE</code></td>
+<td>Transacción de captura.</td>
+</tr>
+<tr>
+<td><code>VOID</code></td>
+<td>Transacción de cancelación de una autorización.</td>
+</tr>
+<tr>
+<td><code>REFUND</code></td>
+<td>Transacción de reembolso o cancelación de una captura.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="processing-countries">Paises de pago</h2>
+<table>
+<thead>
+<tr>
+<th>País</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AR</code></td>
+<td>Argentina</td>
+</tr>
+<tr>
+<td><code>BR</code></td>
+<td>Brasil</td>
+</tr>
+<tr>
+<td><code>CL</code></td>
+<td>Chile</td>
+</tr>
+<tr>
+<td><code>CO</code></td>
+<td>Colombia</td>
+</tr>
+<tr>
+<td><code>MX</code></td>
+<td>México</td>
+</tr>
+<tr>
+<td><code>PA</code></td>
+<td>Panamá</td>
+</tr>
+<tr>
+<td><code>PE</code></td>
+<td>Perú</td>
+</tr>
+</tbody>
+</table>
+<h2 id="supported-languages">Idiomas soportados</h2>
+<table>
+<thead>
+<tr>
+<th>Código ISO 639</th>
+<th>Idioma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>en</code></td>
+<td>Inglés</td>
+</tr>
+<tr>
+<td><code>es</code></td>
+<td>Español</td>
+</tr>
+<tr>
+<td><code>pt</code></td>
+<td>Portugués</td>
+</tr>
+</tbody>
+</table>
+<h2 id="document-types">Tipos de documento</h2>
+<table>
+<thead>
+<tr>
+<th>ISO</th>
+<th>Descripción</th>
+<th>País</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CC</td>
+<td>Cédula de ciudadanía.</td>
+<td>Colombia</td>
+</tr>
+<tr>
+<td>CE</td>
+<td>Cédula de extranjería.</td>
+<td>Colombia, Perú</td>
+</tr>
+<tr>
+<td>CEL</td>
+<td>En caso de identificarse a través de la línea del móvil.</td>
+<td>Colombia</td>
+</tr>
+<tr>
+<td>CEP</td>
+<td>Comprobante Electrónico de Pago.</td>
+<td>México</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Cédula de Identidad.</td>
+<td>Argentina, Chile</td>
+</tr>
+<tr>
+<td>CNPJ</td>
+<td>Registro Nacional de Personas Jurídicas.</td>
+<td>Brasil</td>
+</tr>
+<tr>
+<td>CPF</td>
+<td>Registro de Personas físicas.</td>
+<td>Brasil</td>
+</tr>
+<tr>
+<td>CUIL</td>
+<td>Código Único de Identificación Laboral.</td>
+<td>Argentina</td>
+</tr>
+<tr>
+<td>CUIT</td>
+<td>Código Único de Identificación Tributaria.</td>
+<td>Argentina</td>
+</tr>
+<tr>
+<td>CURP</td>
+<td>Clave Única de Registro de Población.</td>
+<td>México</td>
+</tr>
+<tr>
+<td>DE</td>
+<td>Documento de identificación extranjero.</td>
+<td>Perú</td>
+</tr>
+<tr>
+<td>DL</td>
+<td>Licencia de Conducción.</td>
+<td></td>
+</tr>
+<tr>
+<td>DNI</td>
+<td>Documento Nacional de Identidad.</td>
+<td>Argentina, Perú, Chile</td>
+</tr>
+<tr>
+<td>DNIE</td>
+<td>Documento Nacional de Identidad - Electrónico.</td>
+<td>Argentina, Perú, Chile</td>
+</tr>
+<tr>
+<td>EIN</td>
+<td>Número de identificación del empleador.</td>
+<td>Perú</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>Identificación.</td>
+<td></td>
+</tr>
+<tr>
+<td>IDC</td>
+<td>Identificador único de cliente, para el caso de ID’s únicos de clientes / usuarios de servicios públicos.</td>
+<td></td>
+</tr>
+<tr>
+<td>IFE</td>
+<td>Instituto Federal Electoral.</td>
+<td>México</td>
+</tr>
+<tr>
+<td>LC</td>
+<td>Libreta Cívica.</td>
+<td>Argentina</td>
+</tr>
+<tr>
+<td>LE</td>
+<td>Libreta de Enrolamiento.</td>
+<td>Argentina</td>
+</tr>
+<tr>
+<td>NIF</td>
+<td>Número de Identificación Financiera.</td>
+<td></td>
+</tr>
+<tr>
+<td>NIT</td>
+<td>Número de Identificación Tributaria.</td>
+<td>Colombia</td>
+</tr>
+<tr>
+<td>PP</td>
+<td>Pasaporte.</td>
+<td></td>
+</tr>
+<tr>
+<td>RC</td>
+<td>Registro civil de nacimiento.</td>
+<td>Colombia</td>
+</tr>
+<tr>
+<td>RDE</td>
+<td>Tipo de documento RDE.</td>
+<td></td>
+</tr>
+<tr>
+<td>RE</td>
+<td>Tipo de documento RE.</td>
+<td></td>
+</tr>
+<tr>
+<td>RFC</td>
+<td>Registro Federal de Contribuyentes.</td>
+<td>México</td>
+</tr>
+<tr>
+<td>RIF</td>
+<td>Registro de Información Fiscal.</td>
+<td></td>
+</tr>
+<tr>
+<td>RM</td>
+<td>Registro Mercantil.</td>
+<td></td>
+</tr>
+<tr>
+<td>RMC</td>
+<td>Registro Mercantil Consular.</td>
+<td></td>
+</tr>
+<tr>
+<td>RNC</td>
+<td>Registro Nacional de Contribuyentes.</td>
+<td></td>
+</tr>
+<tr>
+<td>RUC</td>
+<td>Registro Único de Contribuyentes.</td>
+<td>Perú</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>Rol Único Nacional.</td>
+<td>Chile</td>
+</tr>
+<tr>
+<td>RUT</td>
+<td>Rol Único Tributario.</td>
+<td>Chile</td>
+</tr>
+<tr>
+<td>SC</td>
+<td>Salvoconducto.</td>
+<td></td>
+</tr>
+<tr>
+<td>SIEM</td>
+<td>Sistema de Información Empresarial Mexicano.</td>
+<td>México</td>
+</tr>
+<tr>
+<td>SSN</td>
+<td>Número de Seguridad Social.</td>
+<td></td>
+</tr>
+<tr>
+<td>TI</td>
+<td>Tarjeta de Identidad.</td>
+<td>Colombia</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bancos-para-payouts">Bancos para Payouts</h2>
+<p>Envía el valor exacto mostrado en la columna <code>Código</code> en la variable <code>transfers[n].bankAccount.bankCode</code>. Consulta <a href="../../../es/docs/integrations/api-integration/payouts-api.html">Payouts</a> para más información.</p>
+<h3 id="colombia">Colombia</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Nombre del banco</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>001</code></td>
+<td>BOGOTA</td>
+</tr>
+<tr>
+<td><code>002</code></td>
+<td>POPULAR</td>
+</tr>
+<tr>
+<td><code>006</code></td>
+<td>ITAU CORPBANCA</td>
+</tr>
+<tr>
+<td><code>007</code></td>
+<td>BANCOLOMBIA</td>
+</tr>
+<tr>
+<td><code>009</code></td>
+<td>CITIBANK COLOMBIA</td>
+</tr>
+<tr>
+<td><code>012</code></td>
+<td>GNB SUDAMERIS</td>
+</tr>
+<tr>
+<td><code>014</code></td>
+<td>ITAU</td>
+</tr>
+<tr>
+<td><code>013</code></td>
+<td>BBVA</td>
+</tr>
+<tr>
+<td><code>019</code></td>
+<td>SCOTIABANK</td>
+</tr>
+<tr>
+<td><code>023</code></td>
+<td>BANCO DE OCCIDENTE</td>
+</tr>
+<tr>
+<td><code>031</code></td>
+<td>BANCOLDEX</td>
+</tr>
+<tr>
+<td><code>032</code></td>
+<td>BCSC</td>
+</tr>
+<tr>
+<td><code>040</code></td>
+<td>BANCO AGRARIO</td>
+</tr>
+<tr>
+<td><code>041</code></td>
+<td>JPMORGAN</td>
+</tr>
+<tr>
+<td><code>042</code></td>
+<td>BNP PARIBAS</td>
+</tr>
+<tr>
+<td><code>047</code></td>
+<td>MUNDOMUJER</td>
+</tr>
+<tr>
+<td><code>051</code></td>
+<td>DAVIVIENDA</td>
+</tr>
+<tr>
+<td><code>052</code></td>
+<td>AV VILLAS</td>
+</tr>
+<tr>
+<td><code>059</code></td>
+<td>BANCAMIA</td>
+</tr>
+<tr>
+<td><code>060</code></td>
+<td>PICHINCHA</td>
+</tr>
+<tr>
+<td><code>061</code></td>
+<td>BANCOOMEVA</td>
+</tr>
+<tr>
+<td><code>062</code></td>
+<td>FALABELLA</td>
+</tr>
+<tr>
+<td><code>063</code></td>
+<td>FINANDINA</td>
+</tr>
+<tr>
+<td><code>065</code></td>
+<td>BCO SANTANDER DE NEGOCIOS</td>
+</tr>
+<tr>
+<td><code>066</code></td>
+<td>COOPCENTRAL</td>
+</tr>
+<tr>
+<td><code>067</code></td>
+<td>COOMPARTIR</td>
+</tr>
+<tr>
+<td><code>069</code></td>
+<td>BANCO SERFINANZA</td>
+</tr>
+<tr>
+<td><code>070</code></td>
+<td>LULO BANK</td>
+</tr>
+<tr>
+<td><code>071</code></td>
+<td>BANCO JP MORGAN COLOMBIA</td>
+</tr>
+<tr>
+<td><code>083</code></td>
+<td>COMPENSAR</td>
+</tr>
+<tr>
+<td><code>084</code></td>
+<td>APORTES EN LINEA</td>
+</tr>
+<tr>
+<td><code>086</code></td>
+<td>ASOPAGOS</td>
+</tr>
+<tr>
+<td><code>087</code></td>
+<td>FEDECAJAS</td>
+</tr>
+<tr>
+<td><code>088</code></td>
+<td>SIMPLE</td>
+</tr>
+<tr>
+<td><code>089</code></td>
+<td>ENLACE OPERATIVO</td>
+</tr>
+<tr>
+<td><code>090</code></td>
+<td>CORFICOLOMBIANA</td>
+</tr>
+<tr>
+<td><code>121</code></td>
+<td>JURISCOOP</td>
+</tr>
+<tr>
+<td><code>151</code></td>
+<td>RAPPIPAY</td>
+</tr>
+<tr>
+<td><code>283</code></td>
+<td>COOP FIN DE ANTIOQUIA</td>
+</tr>
+<tr>
+<td><code>289</code></td>
+<td>COTRAFA</td>
+</tr>
+<tr>
+<td><code>292</code></td>
+<td>CONFIAR</td>
+</tr>
+<tr>
+<td><code>342</code></td>
+<td>SERFINANSA</td>
+</tr>
+<tr>
+<td><code>370</code></td>
+<td>COLTEFINANCIERA S.A. - COMPANIA DE FINANCIAMIENTO</td>
+</tr>
+<tr>
+<td><code>637</code></td>
+<td>IRIS</td>
+</tr>
+<tr>
+<td><code>550</code></td>
+<td>DECEVAL</td>
+</tr>
+<tr>
+<td><code>507</code></td>
+<td>NEQUI</td>
+</tr>
+<tr>
+<td><code>683</code></td>
+<td>DGCPTN</td>
+</tr>
+<tr>
+<td><code>685</code></td>
+<td>DGCPTN-REGALIAS</td>
+</tr>
+<tr>
+<td><code>801</code></td>
+<td>MOVII</td>
+</tr>
+<tr>
+<td><code>0551</code></td>
+<td>DAVIPLATA</td>
+</tr>
+<tr>
+<td><code>0558</code></td>
+<td>CREDIFINANCIERA S.A.</td>
+</tr>
+<tr>
+<td><code>1053</code></td>
+<td>BANCO WWB</td>
+</tr>
+<tr>
+<td><code>1062</code></td>
+<td>BANCO FALABELLA S.A.</td>
+</tr>
+<tr>
+<td><code>1063</code></td>
+<td>BANCO FINANDINA S.A.</td>
+</tr>
+<tr>
+<td><code>1069</code></td>
+<td>BANCO SERFINANZA S.A.</td>
+</tr>
+<tr>
+<td><code>1283</code></td>
+<td>COOPERATIVA FINANCIERA DE ANTIOQUIA</td>
+</tr>
+<tr>
+<td><code>1291</code></td>
+<td>COOFINEP</td>
+</tr>
+<tr>
+<td><code>1292</code></td>
+<td>CONFIAR COOPERATIVA FINANCIERA</td>
+</tr>
+<tr>
+<td><code>1303</code></td>
+<td>GIROS Y FINANZAS</td>
+</tr>
+</tbody>
+</table>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

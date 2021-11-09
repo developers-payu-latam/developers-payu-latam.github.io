@@ -1,0 +1,827 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PayU Latam – Plugins para Carritos de compra</title>
+    <link>/es/docs/tools/shopping-cart-plugins.html</link>
+    <description>Recent content in Plugins para Carritos de compra on PayU Latam</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 07 Apr 2021 09:27:04 -0500</lastBuildDate>
+    
+	  <atom:link href="/es/docs/tools/shopping-cart-plugins/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Shopify</title>
+      <link>/es/docs/tools/shopping-cart-plugins/shopify.html</link>
+      <pubDate>Tue, 25 May 2021 10:30:35 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/shopify.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Necesitas un &lt;a href=&#34;https://es.shopify.com/precios&#34;&gt;plan&lt;/a&gt; válido en Shopify. El Checkout no está disponible para cuentas Trial.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;order-management-in-shopify&#34;&gt;Gestión de órdenes en Shopify&lt;/h2&gt;
+&lt;p&gt;Ten en cuenta lo siguiente cuando manejes órdenes en Shopify:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;All orders&lt;/strong&gt;: son las órdenes con estado &lt;em&gt;&lt;strong&gt;Aprobado&lt;/strong&gt;&lt;/em&gt; (con pago completo o parcial) y &lt;em&gt;&lt;strong&gt;Pendiente&lt;/strong&gt;&lt;/em&gt; (siempre y cuando el pagador regrese a la tienda luego del procesamiento del pago en la pasarela).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Abandoned checkouts&lt;/strong&gt;: son procesos de pago que cumplen con uno de los siguientes criterios:
+&lt;ol&gt;
+&lt;li&gt;No fueron completados.&lt;/li&gt;
+&lt;li&gt;Fueron abandonados durante el proceso de pago.&lt;/li&gt;
+&lt;li&gt;Transacciones con estado &lt;em&gt;&lt;strong&gt;Rechazado&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Transacciones con estado &lt;em&gt;&lt;strong&gt;Pendiente&lt;/strong&gt;&lt;/em&gt; siempre y cuando el pagador no regrese a la tienda luego del procesamiento del pago en la pasarela:&lt;br&gt;
+&lt;span style=&#34;color: #A6C307;font-weight: bold;&#34;&gt;4.1.&lt;/span&gt; Pagos en efectivo (siempre se obtiene el estado &lt;em&gt;&lt;strong&gt;Pendiente&lt;/strong&gt;&lt;/em&gt; state).&lt;br&gt;
+&lt;span style=&#34;color: #A6C307;font-weight: bold;&#34;&gt;4.2.&lt;/span&gt; Pagos con Tarjetas de Crédito que entren en validación por las reglas de protección antifraude.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Shopify &lt;strong&gt;NO&lt;/strong&gt; realiza ningún tipo de reserva de inventarios para los casos anteriores.&lt;/li&gt;
+&lt;li&gt;Shopify crea órdenes para estos casos cuando el estado final de la transacción es &lt;em&gt;&lt;strong&gt;Aprobado&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&#34;enable-payu-as-payment-gateway&#34;&gt;Configurar PayU como pasarela de pagos&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Ingresa a tu panel de control de &lt;em&gt;Shopify&lt;/em&gt;. Haz clic en &lt;em&gt;&lt;strong&gt;Configuración&lt;/strong&gt;&lt;/em&gt; y luego, selecciona &lt;em&gt;&lt;strong&gt;Pagos&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_01_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Ve a la sección &lt;em&gt;&lt;strong&gt;Proveedores de pago&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;Seleccionar un proveedor&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_02_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;En la lista, localiza y haz clic en la pasarela de &lt;em&gt;PayU Latam&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_03_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Ingresa la siguiente información de tu cuenta PayU:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_04_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Account Id (1)&lt;/strong&gt;: Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Api Key (2)&lt;/strong&gt;: Llave única de tu comercio, puedes obtener esta información en tu Módulo PayU (&lt;strong&gt;&lt;em&gt;Configuración&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;Configuración técnica&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;API Key&lt;/em&gt;&lt;/strong&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_05_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Por último, haz clic en el botón &lt;em&gt;&lt;strong&gt;Activar PayU Latam&lt;/strong&gt;&lt;/em&gt; al final de la página.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_06_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Abre el Módulo PayU module y vé a las opciones de &lt;em&gt;&lt;strong&gt;Configuración&lt;/strong&gt;&lt;/em&gt; (&lt;strong&gt;&lt;em&gt;Configuración&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;Configuración técnica&lt;/em&gt;&lt;/strong&gt;). Luego, desactiva la validación de referencias únicas para todos los estados para evitar problemas al momento de procesar tus pagos.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_07_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;En este punto, tus clientes pueden hacer pagos utilizando el Checkout de PayU y podrán pagar utilizando métodos de pago como efectivo, tarjetas de crédito y transferencias bancarias, dependiendo del país en el que estés vendiendo.&lt;/p&gt;
+&lt;h2 id=&#34;payment-flow-in-shopify&#34;&gt;Flujo de pago en Shopify&lt;/h2&gt;
+&lt;p&gt;Cuando configuras PayU como pasarela de pago en la plataforma, tu cliente puede pagar de la siguiente forma.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tu cliente selecciona el producto o servicio que quiere comprar y luego lo agrega a su carrito de compras.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_08_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;En el carrito de compras, tu cliente procede al pago.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_09_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Una vez tu cliente ingresa su información, puede hacer clic en &lt;em&gt;&lt;strong&gt;Finalizar el pedido&lt;/strong&gt;&lt;/em&gt; para ser redireccionado a PayU Latam para completar el pago.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_10_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Cuando está en nuestra pasarela de pagos, puede ver la descripción de la venta y los métodos de pago disponibles para tu país.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Shopify/Shopify_11_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Magento</title>
+      <link>/es/docs/tools/shopping-cart-plugins/magento.html</link>
+      <pubDate>Wed, 26 May 2021 08:38:26 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/magento.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Tener instalado Magento versión 1.7.x a la 1.9.x.&lt;/li&gt;
+&lt;li&gt;Haber descargado el plugin de Magento de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/Plugin_PayU_Magento-1.3.zip&#34;&gt;aquí&lt;/a&gt; para descargarlo.&lt;/li&gt;
+&lt;li&gt;Tener acceso a las carpetas donde se encuentra instalado Magento.&lt;/li&gt;
+&lt;li&gt;Tener acceso al Admin Panel de Magento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Consideraciones&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Los pagos aprobados aparecen con estado &lt;em&gt;Processing&lt;/em&gt; en el reporte de órdenes.&lt;/li&gt;
+&lt;li&gt;Una vez el pago es recibido correctamente, Magento crea una factura con la orden asociada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Instalación&lt;/h2&gt;
+&lt;p&gt;Sigue este procedimiento para instalar el plugin en tu página web.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ingresa a tu Admin panel de Log in to your Magento admin panel. Luego, expande el menú &lt;em&gt;&lt;strong&gt;System&lt;/strong&gt;&lt;/em&gt; en la parte superior y haz clic en &lt;em&gt;&lt;strong&gt;Cache Management&lt;/strong&gt;&lt;/em&gt;.&lt;br&gt;
+En la nueva ventana, haz clic en &lt;em&gt;&lt;strong&gt;Flush Magento Cache&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_01.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Descomprime el plugin. La carpeta del plugin se llama &lt;code&gt;app&lt;/code&gt; y tiene la siguente estructura:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_02.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Navega a &lt;em&gt;&lt;strong&gt;[CarpetaPlugin]\app\code\local&lt;/strong&gt;&lt;/em&gt; y copia la carpeta &lt;strong&gt;Gfgrisales&lt;/strong&gt; en la carpeta &lt;em&gt;&lt;strong&gt;\app\code\local&lt;/strong&gt;&lt;/em&gt; en la ruta de instalación de Magento.&lt;br&gt;
+Si esta estructura no existe, créala con permisos de lectura y escritura.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_03.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Navega a &lt;em&gt;&lt;strong&gt;[CarpetaPlugin]\app\design\frontend\base\default\template&lt;/strong&gt;&lt;/em&gt; y copia la carpeta &lt;strong&gt;payu&lt;/strong&gt; en la carpeta &lt;em&gt;&lt;strong&gt;\app\design\frontend\base\default\template&lt;/strong&gt;&lt;/em&gt; en la ruta de instalación de Magento.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_04.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Navega a &lt;em&gt;&lt;strong&gt;[CarpetaPlugin]\app\etc\modules&lt;/strong&gt;&lt;/em&gt; y copia el archivo &lt;strong&gt;Gfgrisales_Payu.xml&lt;/strong&gt; en la carpeta &lt;em&gt;&lt;strong&gt;\app\etc\modules&lt;/strong&gt;&lt;/em&gt; en la raíz de la ruta de instalación de Magento.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_05.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuración&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Regresa al Admin panel de Magento, expande el menú &lt;em&gt;&lt;strong&gt;System&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;Configuration&lt;/strong&gt;&lt;/em&gt;. Luego, expande la sección &lt;em&gt;&lt;strong&gt;Advanced&lt;/strong&gt;&lt;/em&gt; en el menú mostrado en el panel izquierdo y haz clic en la opción &lt;em&gt;&lt;strong&gt;Advanced&lt;/strong&gt;&lt;/em&gt;.&lt;br&gt;
+Has clic en &lt;em&gt;&lt;strong&gt;Disable Modules Output&lt;/strong&gt;&lt;/em&gt; y verifica que está habilitada (Enable) la extensión llamada &lt;em&gt;Gfgrisales_Payu&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_06.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;En el menú &lt;em&gt;&lt;strong&gt;Configuration&lt;/strong&gt;&lt;/em&gt; en el panel de la izquierda, expande la sección &lt;em&gt;&lt;strong&gt;Sales&lt;/strong&gt;&lt;/em&gt; en el menú mostrado en el panel izquierdo y haz clic en la opción &lt;em&gt;&lt;strong&gt;Payment methods&lt;/strong&gt;&lt;/em&gt;.&lt;br&gt;
+Localiza y expande el método &lt;em&gt;&lt;strong&gt;PayU&lt;/strong&gt;&lt;/em&gt; e ingresa la siguiente información de tu cuenta PayU.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Magento/Magento_07.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Merchant ID&lt;/strong&gt;: Identificador de tu comercio en PayU Latam.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;APIKey&lt;/strong&gt;: Llave única de tu comercio, puedes obtener esta información en tu Módulo Payu (&lt;strong&gt;&lt;em&gt;Configuración&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;Configuración técnica&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;API Key&lt;/em&gt;&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account ID&lt;/strong&gt;: Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gateway URL&lt;/strong&gt;: URL de la pasarela.
+&lt;ul&gt;
+&lt;li&gt;Para pruebas, utiliza &lt;a href=&#34;https://sandbox.gateway.payulatam.com/ppp-web-gateway&#34;&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Para producción, utiliza &lt;a href=&#34;https://gateway.payulatam.com/ppp-web-gateway/&#34;&gt;https://gateway.payulatam.com/ppp-web-gateway/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+&lt;p&gt;Para pruebas, puedes utilizar los valores de &lt;strong&gt;Merchant ID&lt;/strong&gt;, &lt;strong&gt;APIKey&lt;/strong&gt; y &lt;strong&gt;Account ID&lt;/strong&gt; disponibles en &lt;a href=&#34;../../../../es/docs/getting-started/test-your-solution.html&#34;&gt;Probar tu solución&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Una vez estén en el formulario de pago con tarjeta de crédito y asegurandote de que en la parte superior de la pasarela se muestre el mensaje &lt;em&gt;Transacción en modo de prueba&lt;/em&gt;, debes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ingresar el texto &lt;code&gt;APPROVED&lt;/code&gt; en el campo Nombre completo si quieres que la transacción sea aprobada, &lt;code&gt;REJECTED&lt;/code&gt; si quieres que la transacción sea rechazada o &lt;code&gt;PENDING&lt;/code&gt; si quieres que la transacción quede pendiente.&lt;/li&gt;
+&lt;li&gt;Para el número de la tarjeta, utiliza un número válido que corresponda a la franquicia seleccionada. Puedes utilizar un generador en línea de tarjetas de crédito.&lt;/li&gt;
+&lt;li&gt;Los demás campos pueden ser aleatorios.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Una vez termines, haz clic en &lt;em&gt;&lt;strong&gt;Save Config&lt;/strong&gt;&lt;/em&gt; para guardar los cambios.&lt;/p&gt;
+&lt;p&gt;En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de Magento.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Drupal</title>
+      <link>/es/docs/tools/shopping-cart-plugins/drupal.html</link>
+      <pubDate>Wed, 26 May 2021 08:38:45 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/drupal.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Tener instalado &lt;a href=&#34;https://www.drupal.org/project/commerce_kickstart&#34;&gt;Drupal Commerce Kickstart 7.xx&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Haber descargado el plugin de Drupal de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/commerce_payulatam_1.0.zip&#34;&gt;aquí&lt;/a&gt; para descargarlo.&lt;/li&gt;
+&lt;li&gt;Tener acceso a la carpeta de instalación de Drupal.&lt;/li&gt;
+&lt;li&gt;Tener acceso al backend de Drupal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Instalación&lt;/h2&gt;
+&lt;p&gt;El proceso de instalación para instalar el plugin en el servidor de Drupa solo requiere descomprimir el plugin en la ruta &lt;em&gt;&lt;strong&gt;\sites\all\modules&lt;/strong&gt;&lt;/em&gt;. La carpeta descomprimida tiene la siguiente estructura:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Drupal/Drupal_01.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuración&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Ingresa al panel de administración de Drupal. Abre el menú &lt;em&gt;&lt;strong&gt;Site settings&lt;/strong&gt;&lt;/em&gt; y haz clic en la opción &lt;em&gt;&lt;strong&gt;Modules&lt;/strong&gt;&lt;/em&gt; dentro de la sección &lt;em&gt;&lt;strong&gt;Advanced settings&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Drupal/Drupal_02.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Localiza y activa el módulo &lt;em&gt;&lt;strong&gt;Payment Payulatam&lt;/strong&gt;&lt;/em&gt;. Puedes utilizar la búsqueda para encontrarlo más fácil.&lt;br&gt;
+Cuando termines, haz clic en &lt;em&gt;&lt;strong&gt;Save configuration&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Drupal/Drupal_03.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;De vuelta en el panel de administración de Drupal. Abre el menú &lt;em&gt;&lt;strong&gt;Store settings&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;Payment methods&lt;/strong&gt;&lt;/em&gt;.&lt;br&gt;
+Busca &lt;em&gt;&lt;strong&gt;Payment gateway PayuLatam&lt;/strong&gt;&lt;/em&gt; en la lista &lt;em&gt;&lt;strong&gt;Disabled payment method rules&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;enable&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Drupal/Drupal_04.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Si la activación fue exitosa, Drupal muestra el siguiente mensaje&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Drupal/Drupal_05.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Ahora, haz clic en el enlace &lt;em&gt;&lt;strong&gt;edit&lt;/strong&gt;&lt;/em&gt; en el método recientemente activado.&lt;br&gt;
+Luego, localiza la sección &lt;em&gt;&lt;strong&gt;Actions&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;edit&lt;/strong&gt;&lt;/em&gt; junto a la acción &lt;em&gt;&lt;strong&gt;Enable payment method: PayuLatam&lt;/strong&gt;&lt;/em&gt;. Aquí, configura el plugin utilizando tu cuenta de PayU.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/Drupal/Drupal_06.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;API KEY&lt;/strong&gt;: Llave única de tu comercio, puedes obtener esta información en tu Módulo PayU (&lt;strong&gt;&lt;em&gt;Configuración&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;Configuración técnica&lt;/em&gt;&lt;/strong&gt; &amp;gt; &lt;strong&gt;&lt;em&gt;API Key&lt;/em&gt;&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Merchant Id&lt;/strong&gt;: Identificador de tu comercio en PayU Latam.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Id&lt;/strong&gt;: Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Enabled&lt;/strong&gt;: Asigna &lt;code&gt;No&lt;/code&gt; si quieres procesar el el ambiente de producción. Si no, asigna &lt;code&gt;Yes&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Deja los demás campos con su valor predeterminado.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+&lt;p&gt;Para pruebas, puedes utilizar los valores de &lt;strong&gt;Merchant ID&lt;/strong&gt;, &lt;strong&gt;APIKey&lt;/strong&gt; y &lt;strong&gt;Account ID&lt;/strong&gt; disponibles en &lt;a href=&#34;../../../../es/docs/getting-started/test-your-solution.html&#34;&gt;Probar tu solución&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Una vez estén en el formulario de pago con tarjeta de crédito y asegurandote de que en la parte superior de la pasarela se muestre el mensaje &lt;em&gt;Transacción en modo de prueba&lt;/em&gt;, debes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ingresar el texto &lt;code&gt;APPROVED&lt;/code&gt; en el campo Nombre completo si quieres que la transacción sea aprobada, &lt;code&gt;REJECTED&lt;/code&gt; si quieres que la transacción sea rechazada o &lt;code&gt;PENDING&lt;/code&gt; si quieres que la transacción quede pendiente.&lt;/li&gt;
+&lt;li&gt;Para el número de la tarjeta, utiliza un número válido que corresponda a la franquicia seleccionada. Puedes utilizar un generador en línea de tarjetas de crédito.&lt;/li&gt;
+&lt;li&gt;Los demás campos pueden ser aleatorios.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de Drupal.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: VirtueMart</title>
+      <link>/es/docs/tools/shopping-cart-plugins/virtuemart.html</link>
+      <pubDate>Wed, 26 May 2021 08:39:05 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/virtuemart.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Para VirtueMart versión 2 o superior:
+&lt;ul&gt;
+&lt;li&gt;Haber descargado el plugin de VirtueMart de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/plugin-joomla-virtuemart2.6.7.zip&#34;&gt;aquí&lt;/a&gt; para descargarlo.&lt;/li&gt;
+&lt;li&gt;Tener instalado VirtueMart versión 2 o superior.&lt;/li&gt;
+&lt;li&gt;Tu página web de VirtueMart website debe estar instalada en &lt;a href=&#34;https://joomla.org/&#34;&gt;Joomla!®&lt;/a&gt; 2.5 o superior con MySQL 5.1 o superior.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Para VirtueMart versión 3.0.6:
+&lt;ul&gt;
+&lt;li&gt;Haber descargado el plugin de VirtueMart de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/plugin-joomla-virtuemart3.0.6.zip&#34;&gt;aquí&lt;/a&gt; para descargarlo.&lt;/li&gt;
+&lt;li&gt;Tener instalado VirtueMart versión 3.0.6.&lt;/li&gt;
+&lt;li&gt;Tu página web de VirtueMart website debe estar instalada en &lt;a href=&#34;https://joomla.org/&#34;&gt;Joomla!®&lt;/a&gt; versions 3.3.6, 2.5.28 o 2.5.27.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;plugin-for-virtuemart-2-or-higher&#34;&gt;Plugin para VirtueMart 2 o superior&lt;/h2&gt;
+&lt;p&gt;Sigue este procedimiento para instalar y configurar el plugin en tu página web.&lt;/p&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Instalación&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Ingresa a la &lt;em&gt;Consola de Administrador de Joomla!®&lt;/em&gt; y selecciona la opción &lt;em&gt;&lt;strong&gt;Extension Manager&lt;/strong&gt;&lt;/em&gt; que se encuentra en el menú &lt;em&gt;&lt;strong&gt;Extension&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart_01.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;En la sección &lt;em&gt;&lt;strong&gt;Upload Package File&lt;/strong&gt;&lt;/em&gt;, Haz clic en &lt;em&gt;&lt;strong&gt;Browse&lt;/strong&gt;&lt;/em&gt; y ubica el archivo &lt;em&gt;.zip&lt;/em&gt; del plugin de Payu descargado.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart_02.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Una vez termine el proceso de instalación, aparece un mensaje para informar que la instalación fue exitosa.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart_03.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;configuration&#34;&gt;Configuración&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Expande la opción &lt;em&gt;&lt;strong&gt;Shop&lt;/strong&gt;&lt;/em&gt; en el menú de &lt;em&gt;&lt;strong&gt;VirtueMart&lt;/strong&gt;&lt;/em&gt; y selecciona &lt;em&gt;&lt;strong&gt;Payment methods&lt;/strong&gt;&lt;/em&gt;. Luego, haz clic en &lt;em&gt;&lt;strong&gt;New&lt;/strong&gt;&lt;/em&gt; en la parte superior derecha de la pantalla.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart_04.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;En la pestaña &lt;em&gt;&lt;strong&gt;Payment Method Information&lt;/strong&gt;&lt;/em&gt;, Ingresa &lt;em&gt;Payulatam&lt;/em&gt; como nombre (&lt;em&gt;&lt;strong&gt;Payment Name&lt;/strong&gt;&lt;/em&gt;) y selecciona &lt;code&gt;PayuLatam&lt;/code&gt; en el campo &lt;em&gt;&lt;strong&gt;Payment Method&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart_05.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Ve a la pestaña &lt;em&gt;&lt;strong&gt;Configuration&lt;/strong&gt;&lt;/em&gt; e ingresa la información de tu cuenta y tu API key.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart_06.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Además, ingresa la URL de conexión a la pasarela y las variables de configuración explicadas en la sección &lt;a href=&#34;#configuration-variables&#34;&gt;Variables de Configuración&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Las URLs para los ambientes de pruebas y producción son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pruebas: &lt;code&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Producción: &lt;code&gt;https://gateway.payulatam.com/ppp-web-gateway/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Por último, Haz clic en el botón &lt;em&gt;&lt;strong&gt;Save&lt;/strong&gt;&lt;/em&gt; o &lt;em&gt;&lt;strong&gt;Save &amp;amp; Close&lt;/strong&gt;&lt;/em&gt;. En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de VirtueMart.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;plugin-for-virtuemart-306&#34;&gt;Plugin para VirtueMart 3.0.6&lt;/h2&gt;
+&lt;p&gt;Sigue este procedimiento para instalar y configurar el plugin en tu página web.&lt;/p&gt;
+&lt;h3 id=&#34;installation-1&#34;&gt;Instalación&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Ingresa a la &lt;em&gt;Consola de Administrador de Joomla!®&lt;/em&gt; y selecciona la opción &lt;em&gt;&lt;strong&gt;Extension Manager&lt;/strong&gt;&lt;/em&gt; que se encuentra en el menú &lt;em&gt;&lt;strong&gt;Extensions&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_02.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;En el campo &lt;em&gt;&lt;strong&gt;Extension package file&lt;/strong&gt;&lt;/em&gt;, selecciona el archivo &lt;em&gt;.zip&lt;/em&gt; previamente descargado.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_03.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Una vez se haya cargado el archivo &lt;em&gt;.zip&lt;/em&gt; file is loaded, click &lt;em&gt;&lt;strong&gt;Upload &amp;amp; Install&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_05.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Una vez termine el proceso de instalación, aparece un mensaje para informar que la instalación fue exitosa.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_06.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;configuration-1&#34;&gt;Configuración&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;En el menú de la izquierda, haz clic en &lt;em&gt;&lt;strong&gt;Manage&lt;/strong&gt;&lt;/em&gt;. Ubica y activa el plugin &lt;code&gt;PayuLatam&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_07.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Aparece un mensaje informado que has activado el plugin. Además, el ícono cambia a una marca de verificación.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_08.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Abre el menú de &lt;em&gt;&lt;strong&gt;Components&lt;/strong&gt;&lt;/em&gt; y expande la opción &lt;em&gt;&lt;strong&gt;Virtuemart&lt;/strong&gt;&lt;/em&gt;. Luego, selecciona &lt;em&gt;&lt;strong&gt;Payment Methods&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_09.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;En la ventana que se abre, haz clic en &lt;em&gt;&lt;strong&gt;New&lt;/strong&gt;&lt;/em&gt; para crear el método de pago utilizando el plugin &lt;code&gt;PayuLatam&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_10.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;En la pestaña &lt;em&gt;&lt;strong&gt;Payment Method Information&lt;/strong&gt;&lt;/em&gt;, Ingresa &lt;em&gt;Payulatam&lt;/em&gt; como nombre (&lt;em&gt;&lt;strong&gt;Payment Name&lt;/strong&gt;&lt;/em&gt;) y selecciona &lt;code&gt;PayuLatam&lt;/code&gt; en el campo &lt;em&gt;&lt;strong&gt;Payment Method&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_11.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Ve a la pestaña &lt;em&gt;&lt;strong&gt;Configuration&lt;/strong&gt;&lt;/em&gt; e ingresa la información de tu cuenta y tu API key.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/VirtueMart/VirtueMart3_13.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Además, ingresa la URL de conexión a la pasarela y las variables de configuración explicadas en la sección &lt;a href=&#34;#configuration-variables&#34;&gt;Variables de Configuración&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Las URLs para los ambientes de pruebas y producción son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pruebas: &lt;code&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Producción: &lt;code&gt;https://gateway.payulatam.com/ppp-web-gateway/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Por último, Haz clic en el botón &lt;em&gt;&lt;strong&gt;Save&lt;/strong&gt;&lt;/em&gt; o &lt;em&gt;&lt;strong&gt;Save &amp;amp; Close&lt;/strong&gt;&lt;/em&gt;. En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de VirtueMart.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;configuration-variables&#34;&gt;Variables de Configuración&lt;/h2&gt;
+&lt;p&gt;Independiente de la versión de VirtueMart que utilices, configura las siguientes variables en tu plugin:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Campo&lt;/th&gt;
+&lt;th&gt;Valor&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Logo&lt;/td&gt;
+&lt;td&gt;Logo mostrado para el método de pago &lt;strong&gt;PayuLatam&lt;/strong&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Test URL&lt;/td&gt;
+&lt;td&gt;URL de la pasarela para Pruebas: &lt;code&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Production URL&lt;/td&gt;
+&lt;td&gt;URL de la pasarela para Producción: &lt;code&gt;https://gateway.payulatam.com/ppp-web-gateway&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Test Mode&lt;/td&gt;
+&lt;td&gt;Selecciona &lt;strong&gt;Yes&lt;/strong&gt; si quieres hacer transacciones en el ambiente de pruebas. Cuando activas esta opción, VirtueMart utiliza la URL configurada en la variable &lt;strong&gt;Test URL&lt;/strong&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Merchant ID&lt;/td&gt;
+&lt;td&gt;Identificador de tu comercio en PayU Latam.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account ID&lt;/td&gt;
+&lt;td&gt;Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;API Key&lt;/td&gt;
+&lt;td&gt;Llave única de tu comercio, puedes obtener esta información en tu Módulo PayU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Sección &lt;strong&gt;ORDER STATUS PARAMS&lt;/strong&gt;&lt;br&gt;&lt;ul style=&#34;margin-bottom: initial;&#34;&gt;&lt;li&gt;Approved Transactions&lt;/li&gt;&lt;li&gt;Pending Transactions&lt;/li&gt;&lt;li&gt;Declined Transactions&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
+&lt;td&gt;Define el estado de la orden en VirtueMart de acuerdo con el estado de la transacción retornado por PayU. Sugerimos dejar los estados predeterminados; sin embargo, puedes configurarlos de acuerdo a tu necesidades.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Currency&lt;/td&gt;
+&lt;td&gt;Configura USD. También, puedes configurar la moneda del país de tu Account ID.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Minimum Value / Maximum value&lt;/td&gt;
+&lt;td&gt;El valor total de la orden debe estar en este rango para activar el método de pago &lt;strong&gt;PayuLatam&lt;/strong&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Tax&lt;/td&gt;
+&lt;td&gt;Para utilizar esta opción, configura la regla correspondiente de VirtueMart asociada al impuesto. Por ejemplo, el IVA en Colombia.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: WooCommerce</title>
+      <link>/es/docs/tools/shopping-cart-plugins/woocommerce.html</link>
+      <pubDate>Wed, 26 May 2021 08:40:03 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/woocommerce.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;WooCommerce es uin plugin de WordPress que facilita la creación de una tienda en línea integrada. Para permitirle a tus &lt;strong&gt;clientes&lt;/strong&gt; pagar con PayU desde tu página web, necesitas instalar el plugin para WooCommerce, el cual integra a PayU Latam como pasarela válida de pago. Para más información sobre WooCommerce, consulta su &lt;a href=&#34;https://woocommerce.com/&#34;&gt;página web oficial&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Tener instalado &lt;a href=&#34;https://wordpress.com/es&#34;&gt;WordPress 3.8&lt;/a&gt; o superior.&lt;/li&gt;
+&lt;li&gt;Tener instalado WooCommerce 2.0 o superior in the WordPress website.&lt;/li&gt;
+&lt;li&gt;Haber descargado el plugin de WooCommerce de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/woocommerce-payu-latam-2.1.zip&#34;&gt;aquí&lt;/a&gt; para descargarlo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Instalación&lt;/h2&gt;
+&lt;p&gt;Sigue este procedimiento para instalar el plugin en tu página web.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ingresa a tu sitio WordPress como administrador.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;En el escritorio de administrador, expande el menú &lt;em&gt;&lt;strong&gt;Plugins&lt;/strong&gt;&lt;/em&gt; en el panel izquierdo y haz clic en &lt;em&gt;&lt;strong&gt;Añadir nuevo&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_01.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Ve a la opción &lt;em&gt;&lt;strong&gt;Subir&lt;/strong&gt;&lt;/em&gt; y selecciona el archivo &lt;em&gt;.zip&lt;/em&gt; del plugin de WooCommerce descargado.&lt;br&gt;
+Luego, haz clic en &lt;em&gt;&lt;strong&gt;Instalar ahora&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_02.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Ingresa los datos de la conexión via FTP y haz clic en &lt;em&gt;&lt;strong&gt;Ejecutar&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_03.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+La ejecución de este paso depende de la configuración Inicial de WordPress. La instalación del plugin no se afecta si no ves esta pantalla.
+&lt;/div&gt;
+
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Por último, activa el plugin que instalaste haciendo clic en el enlace &lt;em&gt;&lt;strong&gt;Activar Plugin&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_04.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuración&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;De vuelta en el escritorio de administrador, expande el menú &lt;em&gt;&lt;strong&gt;WooCommerce&lt;/strong&gt;&lt;/em&gt; en el panel de la derecha y selecciona &lt;em&gt;&lt;strong&gt;Ajustes&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_05.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Ingresa a la pestaña &lt;em&gt;&lt;strong&gt;Checkout&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_06.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Desplázate hacia la tabla &lt;em&gt;&lt;strong&gt;Pasarelas de Pago&lt;/strong&gt;&lt;/em&gt;. Luego, localiza &lt;em&gt;PayU Latam&lt;/em&gt; y arrástrala a la parte superior de la tabla.&lt;br&gt;
+Haz clic en el radio de la columna &lt;em&gt;&lt;strong&gt;Predeterminado&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_07.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Guarda los cambios.&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Haz clic en el enlace &lt;em&gt;PayU Latam&lt;/em&gt; en la parte superior de la pestaña y configura los datos de tu cuenta PayU.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/WooCommerce/WooCommerce_09.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;La siguiente tabla explica los valores:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Campo&lt;/th&gt;
+&lt;th&gt;Valor&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Habilitar / Deshabilitar&lt;/td&gt;
+&lt;td&gt;Marca esta casilla para activar la pasarela de pago en WooCommerce.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Título&lt;/td&gt;
+&lt;td&gt;Titulo mostrado para el Medio de Pago. El valor por defecto es &lt;em&gt;PayU Latam&lt;/em&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Merchant ID&lt;/td&gt;
+&lt;td&gt;Identificador de tu comercio en PayU Latam.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account ID&lt;/td&gt;
+&lt;td&gt;Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;API key&lt;/td&gt;
+&lt;td&gt;Llave única de tu comercio, puedes obtener esta información en tu Módulo PayU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gateway URL&lt;/td&gt;
+&lt;td&gt;URL de la pasarela de pago.&lt;br&gt;Para pruebas, utiliza &lt;a href=&#34;https://sandbox.gateway.payulatam.com/ppp-web-gateway&#34;&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/a&gt; y para producción &lt;a href=&#34;https://gateway.payulatam.com/ppp-web-gateway/&#34;&gt;https://gateway.payulatam.com/ppp-web-gateway/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Transacciones en modo de prueba&lt;/td&gt;
+&lt;td&gt;Marca esta casilla para hacer transacciones de prueba.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Página de respuesta&lt;/td&gt;
+&lt;td&gt;URL de la página de respuesta.&lt;br&gt;Por defecto, la URL es &lt;a href=&#34;https://tu.dominio.com/wp-content/plugins/woocommerce-payu-latam/response.php,&#34;&gt;https://tu.dominio.com/wp-content/plugins/woocommerce-payu-latam/response.php,&lt;/a&gt; debes reemplazar &lt;a href=&#34;https://tu.dominio.com&#34;&gt;https://tu.dominio.com&lt;/a&gt; con el dominio de tu sitio.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Página de confirmación&lt;/td&gt;
+&lt;td&gt;URL de la página de confirmación.&lt;br&gt;Por defecto, la URL es &lt;a href=&#34;https://tu.dominio.com/wp-content/plugins/woocommerce-payu-latam/confirmation.php,&#34;&gt;https://tu.dominio.com/wp-content/plugins/woocommerce-payu-latam/confirmation.php,&lt;/a&gt; debes reemplazar &lt;a href=&#34;https://tu.dominio.com&#34;&gt;https://tu.dominio.com&lt;/a&gt; con el dominio de tu sitio.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Por último, haz clic en el botón &lt;em&gt;&lt;strong&gt;Guardar cambios&lt;/strong&gt;&lt;/em&gt;. En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de WooCommerce.&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: osCommerce</title>
+      <link>/es/docs/tools/shopping-cart-plugins/oscommerce.html</link>
+      <pubDate>Wed, 26 May 2021 08:39:47 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/oscommerce.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;osCommerce es una plataforma desarrollada en PHP que facilita la creación de una tienda en línea. Para permitirle a tus &lt;strong&gt;clientes&lt;/strong&gt; pagar con PayU desde tu página web, necesitas instalar el plugin para osCommerce, el cual integra a PayU Latam como pasarela válida de pago. Para más información sobre osCommerce, consulta su &lt;a href=&#34;https://www.oscommerce.com/&#34;&gt;página web oficial&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Tener instalado &lt;a href=&#34;https://www.oscommerce.com/Products&#34;&gt;osCommerce versión 2.3&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Haber descargado el plugin de osCommerce de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/plugin-oscommerce.zip&#34;&gt;aquí&lt;/a&gt; to download it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Instalación&lt;/h2&gt;
+&lt;p&gt;Sigue este procedimiento para instalar el plugin en tu página web.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Descomprime el archivo del plugin en una ruta de tu preferencia. Desde ahora, nos referiremos a dicha ruta como &lt;code&gt;[PLUGIN_PATH]&lt;/code&gt;. &lt;br&gt;
+En esta ruta, encontrarás la carpeta &lt;code&gt;oscommerce-plugin-1.0&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_01.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Por FTP o iniciando sesión como Administrador en el servidor donde está instalado osCommerce, incluye los archivos del plugin de la siguiente forma:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;En la ruta del servidor &lt;code&gt;/[servidor]/apache/[publication_path]/oscommerce/catalog&lt;/code&gt;, copia los archivos &lt;code&gt;confirmation_payu.php&lt;/code&gt; y &lt;code&gt;response_payu.php&lt;/code&gt; del plugin. Estos archivos se encuentran en la ruta &lt;code&gt;[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_02.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;En la ruta del servidor &lt;code&gt;/[servidor]/apache/[publication_path]/oscommerce/catalog/includes/languages/english/modules/&lt;/code&gt;, copia el archivo &lt;code&gt;‘payu_latam.php&lt;/code&gt; del plugin que se encuentra en la ruta &lt;code&gt;[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\languages\english\modules\payment&lt;/code&gt;.&lt;br&gt;&lt;br&gt;
+&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_03.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;br&gt;
+Repite este paso para español y portugués si los tienes instalados en tu página web de osCommerce. Estos archivos están en:&lt;br&gt;
+&lt;ul&gt;
+&lt;li&gt;ES: &lt;code&gt;[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\languages\espanol\modules\payment&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;PT: &lt;code&gt;[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\languages\portugues\modules\payment&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+El plugin de PayU Latam para osCommerce solo está disponible para inglés, español y portugués.
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;En la ruta del servidor &lt;code&gt;/[servidor]/apache/[publication_path]/oscommerce/catalog/includes/modules/payment/&lt;/code&gt;, copia el archivo &lt;code&gt;‘payu_latam.php&lt;/code&gt; del plugin que se encuentra en la ruta &lt;code&gt;[PLUGIN_PATH]\oscommerce-plugin-1.0\oscommerce-payu-latam-1.0\catalog\includes\modules\payment&lt;/code&gt;. Este archivo no es el mismo que se mencionó anteriormente.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_04.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;En el panel de administrador de osCommerce, expande menú &lt;em&gt;&lt;strong&gt;Modules&lt;/strong&gt;&lt;/em&gt; en el panel izquierdo y selecciona la opción &lt;em&gt;&lt;strong&gt;Payment&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_05.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;En la sección Payment, haz clic en el botón &lt;em&gt;&lt;strong&gt;Install Module&lt;/strong&gt;&lt;/em&gt; ubicado en lla esquina superior derecha.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_06.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Localiza el plugin &lt;code&gt;Payu Latam&lt;/code&gt; y haz clic en él. Luego, haz clic en el botón &lt;em&gt;&lt;strong&gt;Install Module&lt;/strong&gt;&lt;/em&gt; en el panel de la derecha.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_07.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Luego de instalar el plugin, aparece la lista de módulos instalados del plugin de &lt;code&gt;Payu Latam&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_08.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;Configuración&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;En la sección Payment, selecciona el método de pago &lt;em&gt;&lt;strong&gt;Payu Latam&lt;/strong&gt;&lt;/em&gt; y haz clic en el botón &lt;em&gt;&lt;strong&gt;Edit&lt;/strong&gt;&lt;/em&gt; en el panel de la derecha.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_09.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Aparece el siguiente formulario de configuración:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_10.jpg&#34; width=&#34;30%&#34; alt=&#34;PrintScreen&#34;/&gt;
+&lt;br&gt;
+&lt;p&gt;Configúralo utilizando la información de tu cuenta PayU así:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Campo&lt;/th&gt;
+&lt;th&gt;Valor&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Habilitar / Deshabilitar&lt;/td&gt;
+&lt;td&gt;Selecciona &lt;strong&gt;True&lt;/strong&gt; para habilitar la pasarela en osCommerce.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Merchant ID&lt;/td&gt;
+&lt;td&gt;Identificador de tu comercio en PayU Latam.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account ID&lt;/td&gt;
+&lt;td&gt;Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;API key&lt;/td&gt;
+&lt;td&gt;Llave única de tu comercio, puedes obtener esta información en tu Módulo PayU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gateway URL&lt;/td&gt;
+&lt;td&gt;URL de la pasarela de pago.&lt;br&gt;Para pruebas, utiliza &lt;a href=&#34;https://sandbox.gateway.payulatam.com/ppp-web-gateway&#34;&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/a&gt; y para producción &lt;a href=&#34;https://gateway.payulatam.com/ppp-web-gateway/&#34;&gt;https://gateway.payulatam.com/ppp-web-gateway/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Modo Transacciones&lt;/td&gt;
+&lt;td&gt;Selecciona &lt;strong&gt;Test&lt;/strong&gt; si quieres procesar en el ambiente de pruebas. En caso contrario, selecciona &lt;strong&gt;Live&lt;/strong&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Página de respuesta&lt;/td&gt;
+&lt;td&gt;URL de la página de respuesta.&lt;br&gt;Por defecto, la URL es &lt;a href=&#34;https://tu.dominio.com/yourOscommerceFolder/catalog/response_payu.php,&#34;&gt;https://tu.dominio.com/yourOscommerceFolder/catalog/response_payu.php,&lt;/a&gt; debes reemplazar &lt;a href=&#34;https://tu.dominio.com&#34;&gt;https://tu.dominio.com&lt;/a&gt; con el dominio de tu sitio.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Página de confirmación&lt;/td&gt;
+&lt;td&gt;URL de la página de confirmación.&lt;br&gt;Por defecto, la URL es &lt;a href=&#34;https://tu.dominio.com/yourOscommerceFolder/catalog/confirmation_payu.php,&#34;&gt;https://tu.dominio.com/yourOscommerceFolder/catalog/confirmation_payu.php,&lt;/a&gt; debes reemplazar &lt;a href=&#34;https://tu.dominio.com&#34;&gt;https://tu.dominio.com&lt;/a&gt; con el dominio de tu sitio.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Guarda los cambios utilizando el botón al final del panel.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Por último, expande el menú &lt;em&gt;&lt;strong&gt;Localization&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;Order Status&lt;/strong&gt;&lt;/em&gt;. Verifica que los estados de la orden fueron creados de acuerdo con los idiomas instalados (inglés, español y portugués) en tu página web de osCommerce.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/oscommerce/oscommerce_13.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Los estados válidos son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Para inglés: &lt;code&gt;Approved&lt;/code&gt;, &lt;code&gt;Rejected&lt;/code&gt;, &lt;code&gt;Failed&lt;/code&gt; y &lt;code&gt;Pending&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Para español: &lt;code&gt;Aprobada&lt;/code&gt;, &lt;code&gt;Rechazada&lt;/code&gt;, &lt;code&gt;Fallida&lt;/code&gt; y &lt;code&gt;Pendiente&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Para portugués: &lt;code&gt;Aprovado&lt;/code&gt;, &lt;code&gt;Recusada&lt;/code&gt;, &lt;code&gt;Falha&lt;/code&gt; y &lt;code&gt;Pendente&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Nota&lt;/h4&gt;
+Si no tienes instalado ninguno de los idiomas mencionados, los estados no aparecen en la lista. Si quieres instalar un idioma más adelante, puedes crear estos estados manualmente utilizando los nombres mostrados.
+&lt;/div&gt;
+
+&lt;p&gt;En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de osCommerce.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenCart</title>
+      <link>/es/docs/tools/shopping-cart-plugins/opencart.html</link>
+      <pubDate>Wed, 26 May 2021 08:40:11 -0500</pubDate>
+      
+      <guid>/es/docs/tools/shopping-cart-plugins/opencart.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;Opencart es una plataforma gratuita desarrollada en PHP para crear tiendas en línea. OpenCart proporciona una base profesional y confiable para construir una tienda en línea. Esta base utiliza a una amplia variedad de usuarios como desarrolladores web en busca de una interfaz de uso fácil o propietarios de tiendas que quieren lanzar su negocio en línea por primera vez. OpenCart tiene una gran cantidad de características te dan un amplio control sobre la personalización de tu tienda. Para más información sobre OpenCart, consulta su &lt;a href=&#34;https://www.opencart.com/&#34;&gt;página web oficial&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerrequisitos&lt;/h2&gt;
+&lt;p&gt;El plugin de OpenCart está disponible para las versiones 1.5 y 2.0. Necesitas cumplir con os siguientes prerrequisistos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Necesitas una cuenta activa en PayU Latam.&lt;/li&gt;
+&lt;li&gt;Para OpenCart versión 1.5:
+&lt;ul&gt;
+&lt;li&gt;Haber descargado el plugin de OpenCart v1.5 de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/plugin-opencart.zip&#34;&gt;aquí&lt;/a&gt; to download it.&lt;/li&gt;
+&lt;li&gt;Having VirtueMart version 1.5.5.1 - 1.5.6.X installed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Para OpenCart versión 2.0:
+&lt;ul&gt;
+&lt;li&gt;Haber descargado el plugin de OpenCart v2.0 de PayU y tenerlo guardado en una ruta accesible. Haz clic &lt;a href=&#34;http://developers.payulatam.com/plugins/plugin-opencart-2.0.zip&#34;&gt;aquí&lt;/a&gt; to download it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation-and-configuration&#34;&gt;Instalación y configuración&lt;/h2&gt;
+&lt;p&gt;El procedimiento para instalar el plugin de OpenCart es el mismo para la versión 1.5 como para la 2.0. La única diferencia es la interfaz de las versiones, la cual es resaltada a lo largo de este artículo.&lt;br&gt;
+Sigue este procedimiento para instalar el plugin en tu página web.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Descomprime el archivo del plugin en una ubicación de tu elección. Luego, utilizando un cliente FTP, ve a la ruta donde descomprimiste el plugin.&lt;br&gt;
+Luego, carga las carpetas &lt;strong&gt;admin&lt;/strong&gt; y &lt;strong&gt;catalog&lt;/strong&gt; a la carpeta raíz de la instalación  de OpenCart en tu servidor.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_01.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Esta accion agregará los archivos del plugin a tu servidor de OpenCart en las rutas correctas. Para validar si el procedimiento fue exitoso, busca los siguientes archivos en sus rutas correspondientes.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_02.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;En la consola de administración de tu tienda OpenCart, abre el menú &lt;em&gt;&lt;strong&gt;Extensions&lt;/strong&gt;&lt;/em&gt; y haz clic en &lt;em&gt;&lt;strong&gt;Payments&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;OpenCart v1.5&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_03.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenCart v2.0&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_04.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;En la tabla &lt;em&gt;&lt;strong&gt;Payment&lt;/strong&gt;&lt;/em&gt;, localiza el método de pago &lt;em&gt;PayuLatam&lt;/em&gt;. Luego, haz clic en &lt;em&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;OpenCart v1.5&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_05.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenCart v2.0&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_06.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Cuando se haya instalado e plugin, haz clic en &lt;em&gt;&lt;strong&gt;Edit&lt;/strong&gt;&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;OpenCart v1.5&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_07.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenCart v2.0&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../../assets/OpenCart/OpenCart_08.jpg&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Configura el método de pago utilizando los datos de tu cuenta PayU así.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Campo&lt;/th&gt;
+&lt;th&gt;Valor&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Production Url&lt;/td&gt;
+&lt;td&gt;URL de PayU Latam en producción &lt;a href=&#34;https://gateway.payulatam.com/ppp-web-gateway/&#34;&gt;https://gateway.payulatam.com/ppp-web-gateway/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Test Url&lt;/td&gt;
+&lt;td&gt;URL de PayU Latam en pruebas &lt;a href=&#34;https://sandbox.gateway.payulatam.com/ppp-web-gateway&#34;&gt;https://sandbox.gateway.payulatam.com/ppp-web-gateway&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Test Mode?&lt;/td&gt;
+&lt;td&gt;Selecciona &lt;strong&gt;Yes&lt;/strong&gt; para hacer transacciones en el ambiente de prueba y &lt;strong&gt;No&lt;/strong&gt; para producción.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Merchant ID&lt;/td&gt;
+&lt;td&gt;Identificador de tu comercio en PayU Latam.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account ID&lt;/td&gt;
+&lt;td&gt;Identificador de la cuenta PayU de acuerdo con el país en el que quieres vender.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;API key&lt;/td&gt;
+&lt;td&gt;Llave única de tu comercio, puedes obtener esta información en tu Módulo PayU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Approved Transaction&lt;/td&gt;
+&lt;td&gt;Estado de la orden en la tienda OpenCart cuando PayU Latam aprueba la transacción.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pending Transaction&lt;/td&gt;
+&lt;td&gt;Estado de la orden en la tienda OpenCart cuando la transacción queda pendiente en PayU Latam.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Declined Transaction&lt;/td&gt;
+&lt;td&gt;Estado de la orden en la tienda OpenCart cuando PayU Latam declina la transacción.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Status&lt;/td&gt;
+&lt;td&gt;Selecciona &lt;em&gt;&lt;strong&gt;Enable&lt;/strong&gt;&lt;/em&gt; para activar este método de pago en OpenCart.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Por último, guarda los cambios. En este punto, tus clientes pueden pagar con PayU Latam en el carrito de compras de OpenCart.&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

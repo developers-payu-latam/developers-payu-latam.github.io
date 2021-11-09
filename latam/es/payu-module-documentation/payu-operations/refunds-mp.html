@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Reembolsos | PayU Latam</title><meta property="og:title" content="Reembolsos" />
+<meta property="og:description" content="Aprende cómo hacer reembolsos de transacciones desde el módulo PayU. Un reembolso se realiza cuando una tienda decide voluntariamente regresar el dinero al cliente.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/es/payu-module-documentation/payu-operations/refunds-mp.html" /><meta property="article:section" content="PayU Module Documentation" />
+<meta property="article:published_time" content="2021-09-03T16:41:53-05:00" />
+<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Reembolsos">
+<meta itemprop="description" content="Aprende cómo hacer reembolsos de transacciones desde el módulo PayU. Un reembolso se realiza cuando una tienda decide voluntariamente regresar el dinero al cliente.
+"><meta itemprop="datePublished" content="2021-09-03T16:41:53-05:00" />
+<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
+<meta itemprop="wordCount" content="833">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Reembolsos"/>
+<meta name="twitter:description" content="Aprende cómo hacer reembolsos de transacciones desde el módulo PayU. Un reembolso se realiza cuando una tienda decide voluntariamente regresar el dinero al cliente.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../es/docs.html" ><span>Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../es/payu-module-documentation.html" ><span class="active">Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/payu-operations/refunds-mp.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/payu-operations/refunds-mp.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation.html" href="../../../es/payu-module-documentation.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/getting-started.html" href="../../../es/payu-module-documentation/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationgetting-startedhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/payu-module-documentation/getting-started/log-in.html" href="../../../es/payu-module-documentation/getting-started/log-in.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Iniciar sesión</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationgetting-startedlog-inhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/log-in/google-accounts.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-espayu-module-documentationgetting-startedlog-ingoogle-accountshtml" href="../../../es/payu-module-documentation/getting-started/log-in/google-accounts.html">Iniciar sesión utilizando cuentas de Google</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/password-recovery.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationgetting-startedpassword-recoveryhtml" href="../../../es/payu-module-documentation/getting-started/password-recovery.html">Recuperación de contraseña</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/payu-module-documentation/getting-started/understanding-the-payu-module.html" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Conociendo el Módulo PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationgetting-startedunderstanding-the-payu-modulehtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-espayu-module-documentationgetting-startedunderstanding-the-payu-moduleupdate-my-informationhtml" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html">Actualizar mi información</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-espayu-module-documentationgetting-startedunderstanding-the-payu-moduletechnical-configurationhtml" href="../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Configuración técnica</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/user-and-profile-management.html" href="../../../es/payu-module-documentation/user-and-profile-management.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Gestión de usuarios y permisos</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationuser-and-profile-managementhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/user-and-profile-management/user-management.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationuser-and-profile-managementuser-managementhtml" href="../../../es/payu-module-documentation/user-and-profile-management/user-management.html">Gestión de usuarios</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationuser-and-profile-managementprofile-and-permissions-managementhtml" href="../../../es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Gestión de perfiles y permisos</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/payu-operations.html" href="../../../es/payu-module-documentation/payu-operations.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">Operaciones de PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationpayu-operationshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/sell-with-payu.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationssell-with-payuhtml" href="../../../es/payu-module-documentation/payu-operations/sell-with-payu.html">Vende con PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/transfers.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationstransfershtml" href="../../../es/payu-module-documentation/payu-operations/transfers.html">Transferencias</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/refunds-mp.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active " id="m-espayu-module-documentationpayu-operationsrefunds-mphtml" href="../../../es/payu-module-documentation/payu-operations/refunds-mp.html">Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/payu-operations/disputes-mp.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationpayu-operationsdisputes-mphtml" href="../../../es/payu-module-documentation/payu-operations/disputes-mp.html">Disputas</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/payu-module-documentation/reports.html" href="../../../es/payu-module-documentation/reports.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Reportes</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="espayu-module-documentationreportshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/sales-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportssales-reporthtml" href="../../../es/payu-module-documentation/reports/sales-report.html">Reporte de ventas</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/transfer-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportstransfer-reporthtml" href="../../../es/payu-module-documentation/reports/transfer-report.html">Reporte de transferencias</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/financial-statement.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportsfinancial-statementhtml" href="../../../es/payu-module-documentation/reports/financial-statement.html">Balance financiero</a>
+      
+      
+      
+      
+      
+        <a id="/es/payu-module-documentation/reports/withholding-certificate.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-espayu-module-documentationreportswithholding-certificatehtml" href="../../../es/payu-module-documentation/reports/withholding-certificate.html">Certificado de Retenciones</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-refund">¿Qué es un reembolso?</a></li>
+    <li><a href="#refund-procedure">Procedimiento de reembolso</a>
+      <ul>
+        <li><a href="#refund-states">Estados de reembolso</a></li>
+      </ul>
+    </li>
+    <li><a href="#permission-required">Permisos requeridos</a></li>
+    <li><a href="#considerations">Consideraciones</a></li>
+    <li><a href="#refunds-per-country">Reembolsos por país</a></li>
+    <li><a href="#how-to-request-a-refund">¿Cómo solicitar un reembolso?</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/payu-module-documentation.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/payu-module-documentation/payu-operations.html">Operaciones de PayU</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../es/payu-module-documentation/payu-operations/refunds-mp.html">Reembolsos</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Reembolsos</h1>
+    <div class="lead">Aprende cómo hacer reembolsos de transacciones desde el módulo PayU. Un reembolso se realiza cuando una tienda decide voluntariamente regresar el dinero al cliente.</div>
+	       
+	
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Nota</h4>
+Si realizas un reembolso a través de este panel, este solo se actualiza en el Módulo PayU. Si necesitas controlar y registrar los reembolsos en tu sistema, debes utilizar el <a href="../../../es/docs/services/refunds.html">API de Reembolsos</a>.
+</div>
+
+<h2 id="what-is-a-refund">¿Qué es un reembolso?</h2>
+<p>Un reembolso es la acción para devolver voluntariamente el dinero pagado por un cliente cuando ocurre alguna de las siguientes situaciones:</p>
+<ul>
+<li>El producto o servicio entregado no cumplió con las expectativas del cliente y lo devolvió.</li>
+<li>El producto está agotado, y el comerciante no puede entregar el producto al cliente.</li>
+</ul>
+<h2 id="refund-procedure">Procedimiento de reembolso</h2>
+<p>Los reembolsos están sujetos a revisión y aprobación de nuestro equipo. El procedimiento para solicitar reembolsos se explica a continuación:</p>
+<ol>
+<li>
+<p>Cuando tu cliente solicita un reembolso, debes solicitarlo utilizando el módulo PayU. Solo necesitas encontrar el pedido y entregar una razón para el reembolso.</p>
+</li>
+<li>
+<p>Una vez enviada la solicitud, PayU la revisa y esta es aprobada o rechazada en <strong>uno</strong> a <strong>tres</strong> días hábiles.</p>
+</li>
+</ol>
+<h3 id="refund-states">Estados de reembolso</h3>
+<p>Un reembolso puede estar en uno de los siguientes tres estados:</p>
+<ul>
+<li><strong>En progreso</strong>: la solicitud ha sido enviada a PayU para su aprobación y está en proceso de aprobación.</li>
+<li><strong>Aprobado</strong>: la solicitud ha sido aprobada por un agente de servicio al cliente de PayU.</li>
+<li><strong>Declinado</strong>: la solicitud no cumple con las políticas definidas por PayU y fue rechazada por un agente.</li>
+</ul>
+<h2 id="permission-required">Permisos requeridos</h2>
+<p>Para tener acceso a este módulo, necesitas un perfil con los siguientes permisos activos:</p>
+<ul>
+<li><em>Reembolsos y Contracargos</em> &gt; <em>Listar Reembolsos</em></li>
+<li><em>Reembolsos y Contracargos</em> &gt; <em>Administrar Reembolsos</em><br>Este permiso te permite realizar reembolsos.</li>
+</ul>
+<p>Consulta <a href="../../../es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Perfiles y Permisos</a> para más información.</p>
+<h2 id="considerations">Consideraciones</h2>
+<ul>
+<li>Los Reembolsos solo están disponibles para transacciones realizadas con tarjeta de crédito.</li>
+<li>Puedes reintentar la solicitud de reembolso si fue rechazada previamente.</li>
+<li>Una vez hagas la solicitud, el monto de la transacción se convierte en parte del Saldo Congelado de tu cuenta de PayU hasta que sea procesado.</li>
+<li>En <strong>Chile</strong>:
+<ul>
+<li>No se soportan reembolsos para <a href="../../../es/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-debit-and-prepaid-cards">transacciones procesadas con WebPay Plus</a>.</li>
+<li>Para transacciones con tarjetas prepago que no sean procesadas a través de WebPay Plus, los Reembolsos solicitados luego de la primero hora del cobro pueden ser aprobados o rechazados por la red financiera. Luego de esta hora, se rechazan todos los reembolsos para transacciones realizadas con tarjetas prepago.</li>
+<li>ISi se rechaza el reembolso, PayU muestra el <a href="../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-for-transactions">código de error</a> generado por la red.</li>
+<li>Los reembolsos parciales para transacciones que utilizan cuotas se reciben en línea pero son procesados de forma manual debido a restricciones de la red adquirente.</li>
+</ul>
+</li>
+<li>En <strong>Colombia</strong>, no se soportan reembolsos parciales para tarjetas de crédito internacionales.</li>
+<li>En <strong>Perú</strong>, se soportan reembolsos parciales para transacciones sin cuotas. Ten en cuenta que las transacciones en una cuota son consideradas como sin cuotas.</li>
+<li>Si tu solicitud de reembolso es aprobada, el monto es retornado al tarjetahabiente.</li>
+<li>Si tu solicitud de reembolso es declinada, el monto se libera del Saldo Congelado y retorna a tu cuenta de PayU.</li>
+<li>Una vez se apruebe el reembolso, este será reflejado en la tarjeta de crédito del pagador cuando el banco lo haga efectivo.</li>
+<li>Para verificar el estado de tu solicitud de reembolso, puedes consultarla haciendo clic en la venta en el Módulo PayU.</li>
+</ul>
+<h2 id="refunds-per-country">Reembolsos por país</h2>
+<p>Ten en cuenta las siguientes consideraciones por país antes de solicitar reembolsos.</p>
+<p><table style="table-layout: fixed;">
+    <thead>
+      <tr>
+        <th rowspan="2"></th>
+        <th colspan="2" style="vertical-align: middle; text-align: center;">Tiempo para enviar el reembolso</th>
+        <th rowspan="2" style="vertical-align: middle; text-align: center;">Monto mínimo</th>
+        <th colspan="2" style="vertical-align: middle; text-align: center;">¿Cuánto tiempo tardará el cliente en recuperar el dinero?</th>
+        <th rowspan="2" style="vertical-align: middle; text-align: center;">¿Acepta reembolsos parciales?</th>
+      </tr>
+      <tr>
+        <th style="text-align: center;">Mín.</th>
+        <th style="text-align: center;">Max.</th>
+        <th style="text-align: center;">Mín.</th>
+        <th style="text-align: center;">Max.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Argentina.png" width="25px"/></td>
+        <td style="vertical-align: middle; text-align: center;">10 minutos</td>
+        <td style="vertical-align: middle; text-align: center;"><ul style="margin-bottom: initial;"><li>365 días</li><li>180 días (Reembolsos parciales)</li></ul></td>
+        <td style="vertical-align: middle; text-align: center;">-</td>
+        <td style="vertical-align: middle; text-align: center;">1 día hábil</td>
+        <td style="vertical-align: middle; text-align: center;">30 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">✓</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Brasil.png" width="25px"/></td>
+        <td style="vertical-align: middle; text-align: center;"><ul style="margin-bottom: initial;"><li>10 minutos</li><li>1 día (Reembolsos parciales)</li></ul></td>
+        <td style="vertical-align: middle; text-align: center;">90 o 120 días<sup>*</sup></td>
+        <td style="vertical-align: middle; text-align: center;">-</td>
+        <td style="vertical-align: middle; text-align: center;">1 día hábil</td>
+        <td style="vertical-align: middle; text-align: center;">15 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">✓</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Chile.png" width="25px"/></td>
+        <td style="vertical-align: middle; text-align: center;">10 minutos</td>
+        <td style="vertical-align: middle; text-align: center;">90 días</td>
+        <td style="vertical-align: middle; text-align: center;">10 CLP</td>
+        <td style="vertical-align: middle; text-align: center;">8 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">20 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">✓</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Colombia.png" width="25px"/></td>
+        <td style="text-align: center;">10 minutos</td>
+        <td style="text-align: center;">2 años</td>
+        <td style="text-align: center;">100 COP</td>
+        <td style="text-align: center;">1 día hábil</td>
+        <td style="text-align: center;">30 días hábiles</td>
+        <td style="text-align: center;">✓</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Mexico.png" width="25px"/></td>
+        <td style="vertical-align: middle; text-align: center;">10 minutos</td>
+        <td style="vertical-align: middle; text-align: center;">45 o 180 días<sup>*</sup></td>
+        <td style="vertical-align: middle; text-align: center;">-</td>
+        <td style="vertical-align: middle; text-align: center;">1 día hábil</td>
+        <td style="vertical-align: middle; text-align: center;">30 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">✓</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Panama.png" width="25px"/></td>
+        <td style="vertical-align: middle; text-align: center;">10 minutos</td>
+        <td style="vertical-align: middle; text-align: center;">180 días</td>
+        <td style="vertical-align: middle; text-align: center;">-</td>
+        <td style="vertical-align: middle; text-align: center;">1 día hábil</td>
+        <td style="vertical-align: middle; text-align: center;">8 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">X</td>
+      </tr>
+      <tr>
+        <td style="vertical-align: middle; text-align: center;"><img src="../../../assets/Peru.png" width="25px"/></td>
+        <td style="vertical-align: middle; text-align: center;">10 minutos</td>
+        <td style="vertical-align: middle; text-align: center;">180 días</td>
+        <td style="vertical-align: middle; text-align: center;"><ul style="margin-bottom: initial;"><li>1 USD</li><li>1 PEN</li></ul></td>
+        <td style="vertical-align: middle; text-align: center;">15 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">25 días hábiles</td>
+        <td style="vertical-align: middle; text-align: center;">✓</td>
+      </tr>
+    </tbody>
+    </table>
+<sup>*</sup><em>Depende de la red.</em></p>
+<h2 id="how-to-request-a-refund">¿Cómo solicitar un reembolso?</h2>
+<p>Para solicitar un reembolso, la transacción debe estar aprobada y sin ningún proceso de disputa pendiente. Sigue estos pasos para solicitarlo.</p>
+<ol>
+<li>Inicia sesión en ru cuenta PayU. En el menú de la izquierda, expande el menú <em><strong>Transacciones</strong></em> y selecciona <em><strong>Reporte de ventas</strong></em>.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_04.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Se abre el <a href="../../../es/payu-module-documentation/reports/sales-report.html">Reporte de ventas</a>. Localiza la transacción que quieres reembolsar y haz clic en ella.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_05.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Aparecen los detalles de la transacción a la derecha de la ventana. Haz clic en el botón <em><strong>Devolver dinero</strong></em> al final del panel.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_06.png" alt="PrintScreen" width="50%"/><br></p>
+<ol start="4">
+<li>Si necesitas solicitar un reembolso parcial, marca la opción <em><strong>Devolver una parte de la compra</strong></em> e ingresa el valor solicitado.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_08.png" alt="PrintScreen" width="50%"/><br></p>
+<ol start="5">
+<li>Ingresa la razón para solicitar el reembolso (parcial o total) y haz clic en <em><strong>Devolver dinero</strong></em>.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_07.png" alt="PrintScreen" width="50%"/><br></p>
+<ol start="6">
+<li>Aparece el resumen de la solicitud. Mientras PayU procesa el reembolso, el monto del reembolso se congela en tu cuenta. Si se aprueba la solicitud, el monto reembolsado se devuelve al cliente a través del método de pago utilizado.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_09.png" alt="PrintScreen" width="50%"/><br></p>
+<ol start="7">
+<li>Una vez aprobada la solicitud, el estado aparece en la venta.</li>
+</ol>
+<p><img src="../../../assets/Refunds/Refunds_es_10.png" alt="PrintScreen" width="50%"/><br></p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

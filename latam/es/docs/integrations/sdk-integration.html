@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+<link rel="alternate" type="application/rss&#43;xml" href="../../../es/docs/integrations/sdk-integration/index.xml">
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Integración SDK | PayU Latam</title><meta property="og:title" content="Integración SDK" />
+<meta property="og:description" content="El SDK (Software Development Kit) de PayU provee una solución simple para integraciones complejas.
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/es/docs/integrations/sdk-integration.html" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Integración SDK">
+<meta itemprop="description" content="El SDK (Software Development Kit) de PayU provee una solución simple para integraciones complejas.
+"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Integración SDK"/>
+<meta name="twitter:description" content="El SDK (Software Development Kit) de PayU provee una solución simple para integraciones complejas.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../es/docs.html" ><span class="active">Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../es/payu-module-documentation.html" ><span>Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/docs/integrations/sdk-integration.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../en/docs/integrations/sdk-integration.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs.html" href="../../../es/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/getting-started.html" href="../../../es/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedcreate-an-accounthtml" href="../../../es/docs/getting-started/create-an-account.html">Crear una cuenta de PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-integrationhtml" href="../../../es/docs/getting-started/select-your-integration.html">Seleccionar tu integración</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-payment-methodhtml" href="../../../es/docs/getting-started/select-your-payment-method.html">Seleccionar tu medio de Pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedtest-your-solutionhtml" href="../../../es/docs/getting-started/test-your-solution.html">Probar tu solución</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-starteddeploy-to-productionhtml" href="../../../es/docs/getting-started/deploy-to-production.html">Desplegar a Producción</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedresponse-codes-and-variableshtml" href="../../../es/docs/getting-started/response-codes-and-variables.html">Códigos de respuesta y Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/services.html" href="../../../es/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespaymentshtml" href="../../../es/docs/services/payments.html">Pagos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesquerieshtml" href="../../../es/docs/services/queries.html">Consulta de transacciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicestokenizationhtml" href="../../../es/docs/services/tokenization.html">Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespromotionshtml" href="../../../es/docs/services/promotions.html">Cuotas y Promociones - Argentina y México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesrefundshtml" href="../../../es/docs/services/refunds.html">Anulaciones y Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespayoutshtml" href="../../../es/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/tools.html" href="../../../es/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Herramientas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-requesthtml" href="../../../es/docs/tools/payment-request.html">Solicitud de pago</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/tools/shopping-cart-plugins.html" href="../../../es/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins para Carritos de compra</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../es/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsmagentohtml" href="../../../es/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../es/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../es/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../es/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../es/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsopencarthtml" href="../../../es/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayu-modulehtml" href="../../../es/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsdisputeshtml" href="../../../es/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-couponshtml" href="../../../es/docs/tools/payment-coupons.html">Cupones de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsantifraud-guaranteehtml" href="../../../es/docs/tools/antifraud-guarantee.html">Garantía Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/integrations.html" href="../../../es/docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integraciones</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/webcheckout-integration.html" href="../../../es/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración WebCheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../es/docs/integrations/webcheckout-integration/payment-form.html">Formulario de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../es/docs/integrations/webcheckout-integration/response-page.html">Página de Respuesta</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../es/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmación</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/api-integration.html" href="../../../es/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../es/docs/integrations/api-integration/payments-api-argentina.html">API de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../es/docs/integrations/api-integration/payments-api-brazil.html">API de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../es/docs/integrations/api-integration/payments-api-chile.html">API de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../es/docs/integrations/api-integration/payments-api-colombia.html">API de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../es/docs/integrations/api-integration/payments-api-mexico.html">API de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../es/docs/integrations/api-integration/payments-api-panama.html">API de Pagos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../es/docs/integrations/api-integration/payments-api-peru.html">API de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationqueries-apihtml" href="../../../es/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationtokenization-apihtml" href="../../../es/docs/integrations/api-integration/tokenization-api.html">API de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpromotions-apihtml" href="../../../es/docs/integrations/api-integration/promotions-api.html">API de Promociones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationrefunds-apihtml" href="../../../es/docs/integrations/api-integration/refunds-api.html">API de Reembolsos y Anulaciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayouts-apihtml" href="../../../es/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/sdk-integration.html" href="../../../es/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Integración SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-argentina.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-brazil.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-chile.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-colombia.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-mexico.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-peru.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../es/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/queriessdk.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationqueriessdkhtml" href="../../../es/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/tokenizationsdk.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../es/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/refundssdk.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationrefundssdkhtml" href="../../../es/docs/integrations/sdk-integration/refundssdk.html">SDK de Reembolsos y Anulaciones</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/server-status.html" href="../../../es/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Estado de nuestros servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#initial-settings">Configuraciones iniciales</a>
+      <ul>
+        <li><a href="#java">Java</a></li>
+        <li><a href="#php">PHP</a></li>
+      </ul>
+    </li>
+    <li><a href="#considerations">Consideraciones</a></li>
+    <li><a href="#available-features">Funcionalidades disponibles</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/docs.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../es/docs/integrations.html">Integraciones</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../es/docs/integrations/sdk-integration.html">Integración SDK</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Integración SDK</h1>
+        <div class="lead">El SDK (Software Development Kit) de PayU provee una solución simple para integraciones complejas.</div>
+	
+	<p>De forma similar a cualquier integración API, puedes personalizar tu checkout de acuerdo con las necesidades de tu negocio y el cliente permanece en tu página web durante la compra y el procedimiento de pago. Para integrar esta opción, debes tener una cuenta de PayU empresarial y habilidades de programación avanzadas.</p>
+<p>Accede a múltiples métodos de pago (varía por país) incluyendo tarjetas de crédito, transferencias bancarias y pagos en efectivo.</p>
+<p><img src="../../../assets/api1-es.png" alt="API integration"></p>
+<h2 id="initial-settings">Configuraciones iniciales</h2>
+<p>PayU te permite integrarte con la pasarela de pagos transaccional, las herramientas de pago disponibles y las consultas desarrollando un cliente HTTPS para enviar la información de la transacción a través de SSL. Es muy importante que los datos sensibles de la transacción como el número de la tarjeta de crédito, la fecha de expiración de la misma y demás, no sean almacenados. Recomendamos que sigas las <a href="https://www.pcisecuritystandards.org/documents/PCI_DSS_V2.0_Best_Practices_for_Maintaining_PCI_DSS_Compliance.pdf">mejores prácticas de PCI DSS</a> (Payment Card Industry Data Security Standard).</p>
+<h3 id="java">Java</h3>
+<p>Para integrate con el API, el SDK depende de la librería de Apache <code>HttpClient</code> que a su vez depende de las librerías <code>HttpCore</code>, <code>CommonsLoggin</code> y <code>CommonsCodec</code>.</p>
+<p>En general, necesitas las siguientes librerías en tu classpath:</p>
+<ul>
+<li><a href="https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.4.1">HttpClient-4.4.1.jar</a></li>
+<li><a href="https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore/4.4.4">HttpCore-4.4.4.jar</a></li>
+<li><a href="https://mvnrepository.com/artifact/commons-logging/commons-logging/1.1.1">Commons-loggin-1.1.1.jar</a></li>
+<li><a href="https://mvnrepository.com/artifact/commons-codec/commons-codec/1.6">Commons-codec-1.6.jar</a></li>
+<li><a href="https://mvnrepository.com/artifact/org.apache.commons/commons-lang3/3.5">Commons-lang3-3.5.jar</a></li>
+</ul>
+<p><a href="http://developers.payulatam.com/sdk/java/payu-java-sdk-1.3.9.zip" target="_blank" class="payu-btn-green">Descargar el SDK Java 1.3.9</a></p>
+<p>Antes de realizar cualquier operación con el SDK, necesitas asignar algunos valores a la clase <code>PayU</code>, los cuales aplican a todas las operaciones SDK y deben ser configurados con tu información comercial. La siguiente tabla muestra los valores que necesitas configurar.</p>
+<table>
+<thead>
+<tr>
+<th>Nombre del parámetro</th>
+<th>Tamaño</th>
+<th>Tipo</th>
+<th style="text-align:center">Obligatorio</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>language</code></td>
+<td>2</td>
+<td>Language</td>
+<td style="text-align:center">Sí</td>
+<td>Idioma utilizado para mensajes de error en ell sistema y correos electrónicos enviados entre el comprado y el vendedor. Actualmente se soporta en <code>en</code> (inglés), <code>es</code> (español) y <code>pt</code> (portugués).</td>
+</tr>
+<tr>
+<td><code>isTest</code></td>
+<td></td>
+<td>boolean</td>
+<td style="text-align:center">Sí</td>
+<td>Asigna <code>true</code> si es una petición de prueba, Si no, asigna <code>false</code>. Dependiendo del tipo de transacción u operación, el valor de este campo puede afectar el comportamiento.</td>
+</tr>
+<tr>
+<td><code>apiLogin</code></td>
+<td>Min:12 Max:32</td>
+<td>String</td>
+<td style="text-align:center">Sí</td>
+<td>Tu API Login. <a href="../../../es/docs/integrations.html#api-key-and-api-login">Cómo obtengo mi API Login</a></td>
+</tr>
+<tr>
+<td><code>apiKey</code></td>
+<td>Min:6 Max:32</td>
+<td>String</td>
+<td style="text-align:center">Sí</td>
+<td>Tu API Key. <a href="../../../es/docs/integrations.html#api-key-and-api-login">Cómo obtengo mi API Key</a></td>
+</tr>
+<tr>
+<td><code>merchantId</code></td>
+<td></td>
+<td>String</td>
+<td style="text-align:center">No</td>
+<td>Identificador del comercio, es utilizado para generar las firmas para verificar las transacciones de pago. <br>Este parámetro es obligatorio a menos que envíes la firma.</td>
+</tr>
+<tr>
+<td><code>paymentsUrl</code></td>
+<td>Min:1</td>
+<td>String</td>
+<td style="text-align:center">No</td>
+<td>URL de lla página a donde vas a enviar las peticiones relacionadas a pagos. Por defecto, este parámetro toma la URL de producción.</td>
+</tr>
+<tr>
+<td><code>reportsUrl</code></td>
+<td>Min:1</td>
+<td>String</td>
+<td style="text-align:center">No</td>
+<td>URL de lla página a donde vas a enviar las peticiones relacionadas a reportes. Por defecto, este parámetro toma la URL de producción.</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apiKey</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;xxxxxxxxxxxx&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Ingresa tu API key aquí
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">apiLogin</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;xxxxxxxxxxxx&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Ingresa tu API login aquí
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">language</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Language</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">en</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Ingresa aquí el idioma
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isTest</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// asigna true si estás en modo pruebas
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">LoggerUtil</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setLogLevel</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Level</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ALL</span><span style="color:#ce5c00;font-weight:bold">);</span> <span style="color:#8f5902;font-style:italic">// inclúyelo solo si quieres ver a traza del log completa. Si no, puedes removerlo.
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">paymentsUrl</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;https://api.payulatam.com/payments-api/&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// inclúyelo si quieres probar en un servidor de pagos específico y asigna su URL.
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">reportsUrl</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;https://api.payulatam.com/reports-api/&#34;</span><span style="color:#ce5c00;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// inclúyelo si quieres probar en un servidor de reportes específico y asigna su URL.
+</span></code></pre></div><br>
+<p>Para la ejecución de cada una de las operaciones provistas por el SDK de PayU, debes enviar un Mapa de parámetros al método correspondiente como argumento, este contiene toda la información de la transacción a procesar.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">Map</span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>  <span style="color:#000">parameters</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">HashMap</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">String</span><span style="color:#ce5c00;font-weight:bold">&gt;();</span>
+<span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">TRANSACTION_ID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">transactionId</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#000">parameters</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">put</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">PARAMETERS</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">ORDER_ID</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">orderId</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+</code></pre></div><br>
+<p>Para facilitar su uso, se proporcionan una serie de constantes en la interfaz <code>PayU.PARAMETERS</code> que contienen los nombres de los parámetros utilizados en los métodos del SDK.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Nota</h4>
+A partir de la versión 1.2.X, es necesario agregar el certificado del API de pagos de PayU (<a href="https://api.payulatam.com/payments-api/">https://api.payulatam.com/payments-api/</a>) en la carpeta de llaves de Java. Esta carpeta se encuentra en <em><strong>[Java-Installation-Folder]/jdk/jre/lib/security/cacerts</strong></em>.
+</div>
+
+<h3 id="php">PHP</h3>
+<p>Para integrarte con el API, el SDK puede ser ejecutado en máquinas con PHP versión igual o superior a 5.2.1. Además, se necesitan las siguientes extensiones PHP en tu servidor:</p>
+<ul>
+<li>curl</li>
+<li>xml</li>
+<li>mbstring</li>
+<li>json</li>
+</ul>
+<p><a href="../../assets/Libraries/PHP/4.5.6/payu-php-sdk-4.5.6.zip" target="_blank" class="payu-btn-green">Descargar el SDK PHP 4.5.6</a></p>
+<p>Para tener acceso al las funcionalidades de SDK, necesitas incluir la clase <code>PayU</code> ubicada en <em><strong>[PayU-php-sdk-Path]/lib/PayU.php</strong></em>.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#ce5c00;font-weight:bold">&lt;?</span><span style="color:#000">php</span>
+<span style="color:#204a87;font-weight:bold">require_once</span> <span style="color:#4e9a06">&#39;[PayU-php-sdk-Path]/lib/PayU.php&#39;</span><span style="color:#000;font-weight:bold">;</span>
+<span style="color:#ce5c00;font-weight:bold">...</span>
+<span style="color:#8f5902;font-style:italic">?&gt;</span><span style="color:#a40000">
+</span></code></pre></div><br>
+<p>Antes de realizar cualquier operación con el SDK, necesitas asignar algunos valores a la clase <code>PayU</code>, los cuales aplican a todas las operaciones SDK y deben ser configurados con tu información comercial. La siguiente tabla muestra los valores que necesitas configurar.</p>
+<table>
+<thead>
+<tr>
+<th>Nombre del parámetro</th>
+<th>Tamaño</th>
+<th>Tipo</th>
+<th style="text-align:center">Obligatorio</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PayU::$language</code></td>
+<td>2</td>
+<td>Language</td>
+<td style="text-align:center">Sí</td>
+<td>Idioma utilizado para mensajes de error en ell sistema y correos electrónicos enviados entre el comprado y el vendedor. Actualmente se soporta en en (inglés), es (español) and pt (portugués).</td>
+</tr>
+<tr>
+<td><code>PayU::$isTest</code></td>
+<td></td>
+<td>boolean</td>
+<td style="text-align:center">Sí</td>
+<td>Asigna <code>true</code> si es una petición de prueba, Si no, asigna <code>false</code>. Dependiendo del tipo de transacción u operación, el valor de este campo puede afectar el comportamiento.</td>
+</tr>
+<tr>
+<td><code>PayU::$apiLogin</code></td>
+<td>Min:12 Max:32</td>
+<td>String</td>
+<td style="text-align:center">Sí</td>
+<td>Tu API Login. <a href="../../../es/docs/integrations.html#api-key-and-api-login">Cómo obtengo mi API Login</a></td>
+</tr>
+<tr>
+<td><code>PayU::$apiKey</code></td>
+<td>Min:6 Max:32</td>
+<td>String</td>
+<td style="text-align:center">Sí</td>
+<td>Tu API Key. <a href="../../../es/docs/integrations.html#api-key-and-api-login">Cómo obtengo mi API Key</a></td>
+</tr>
+<tr>
+<td><code>PayU::$merchantId</code></td>
+<td></td>
+<td>String</td>
+<td style="text-align:center">No</td>
+<td>Identificador del comercio, es utilizado para generar las firmas para verificar las transacciones de pago. <br>Este parámetro es obligatorio a menos que envíes la firma.</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#ce5c00;font-weight:bold">&lt;?</span><span style="color:#000">php</span>
+<span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">$apiKey</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;xxxxxxxxxxxx&#34;</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Ingresa tu llave API aquí
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">$apiLogin</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;xxxxxxxxxxxx&#34;</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Ingresa tu API login aquí
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">$merchantId</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Enter your Merchant Id here
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">$language</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">SupportedLanguages</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">ES</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// Ingresa aquí el idioma
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">PayU</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#000">$isTest</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">false</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#8f5902;font-style:italic">// asigna true si estás en modo pruebas
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">...</span>
+<span style="color:#8f5902;font-style:italic">?&gt;</span><span style="color:#a40000">
+</span></code></pre></div><br>
+<p>Además, necesitas configurar el API para redirigir tus peticiones utilizando la clase <code>Environment</code>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#ce5c00;font-weight:bold">&lt;?</span><span style="color:#000">php</span>
+<span style="color:#8f5902;font-style:italic">// URL de pagos
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Environment</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">setPaymentsCustomUrl</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi&#34;</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#8f5902;font-style:italic">// URL de reportes
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">Environment</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">setReportsCustomUrl</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi&#34;</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">...</span>
+<span style="color:#8f5902;font-style:italic">?&gt;</span><span style="color:#a40000">
+</span></code></pre></div><h2 id="considerations">Consideraciones</h2>
+<ul>
+<li>Debes tener una cuenta activa de PayU.</li>
+<li>Debes instalar un certificado SSL válido en tu servidor y tu página web debe poder hacer conexiones SSL. Debido a esto, la máquina virtual debe contar con las extensiones de seguridad apropiadas.
+T* emporalmente NO utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de cifrado <code>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</code> en tus peticiones de pago.</li>
+<li>Debes tener lenguajes de servidor o CGI tales como Java, C#, VB, PHP, etc.</li>
+<li>Debes estar en capacidad de almacenar de forma segura tus credenciales de autenticación (API Key y API Login).</li>
+<li>Los mensajes deben ser codificados utilizando <code>UTF-8</code>.</li>
+<li>Las fechas deben utilizar el formato <code>yyyy-MM-ddTHH:mm:ss</code>, el formato de hora es 24 horas. Ejemplo: <code>2015-08-22T21:35:12</code>.</li>
+<li>En condiciones normales la conexión garantiza tiempos de respuesta de tres segundos en promedio. Si hay una situación anormal, el tiempo máximo de respuesta será de un minuto. Te recomendamos que configures los <em>timeouts</em> cuando te conectes a PayU.</li>
+<li>Es importante validar la longitud y los números de tarjetas de crédito por franquicia junto con los códigos de seguridad.</li>
+</ul>
+<h2 id="available-features">Funcionalidades disponibles</h2>
+
+		
+<div class="section-index">
+    <hr class="panel-line">
+    <h4>Temas en esta sección</h4>
+    
+    
+    
+    
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagos - Argentina</a>
+                    </h5>
+                    <p>El SDK de Pagos de Argentina le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagos - Brasil</a>
+                    </h5>
+                    <p>El SDK de Pagos de Brasil le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagos - Chile</a>
+                    </h5>
+                    <p>El SDK de Pagos de Chile le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagos - Colombia</a>
+                    </h5>
+                    <p>El SDK de Pagos de Colombia le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagos - México</a>
+                    </h5>
+                    <p>El SDK de Pagos de México le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagos - Perú</a>
+                    </h5>
+                    <p>El SDK de Pagos de Perú le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</p>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+                    </h5>
+                    <p>El SDK de Consultas te permite validar el estado de las órdenes generadas junto con sus transacciones.</p>
+                </div>
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenización</a>
+                    </h5>
+                    <p>El SDK de Tokenización te permite almacenar de forma segura, la información de las tarjetas de crédito de tus clientes a través de la creación de un token. Este token tee permite realizar pagos regulares o implementar la funcionalidad de pago a un clic, siguiendo lo estándares de seguridad de PCI DSS (Payment Card Industry Data Security Standard) para manejar los datos de las tarjetas de crédito.</p>
+                </div>
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="../../../es/docs/integrations/sdk-integration/refundssdk.html">SDK de Reembolsos y Anulaciones</a>
+                    </h5>
+                    <p>Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (<em>Refund</em>) o de cancelación (<em>Void</em>) de acuerdo con el estado de la transacción.</p>
+                </div>
+            
+        
+            
+        
+    
+</div>
+
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

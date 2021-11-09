@@ -1,0 +1,1729 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>API de Reembolsos y Anulaciones | PayU Latam</title><meta property="og:title" content="API de Reembolsos y Anulaciones" />
+<meta property="og:description" content="Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (_Refund_) o de cancelación (_Void_) de acuerdo con el estado de la transacción.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/es/docs/integrations/api-integration/refunds-api.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-06-25T09:24:50-05:00" />
+<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="API de Reembolsos y Anulaciones">
+<meta itemprop="description" content="Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (_Refund_) o de cancelación (_Void_) de acuerdo con el estado de la transacción.
+"><meta itemprop="datePublished" content="2021-06-25T09:24:50-05:00" />
+<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
+<meta itemprop="wordCount" content="2383">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="API de Reembolsos y Anulaciones"/>
+<meta name="twitter:description" content="Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (_Refund_) o de cancelación (_Void_) de acuerdo con el estado de la transacción.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../es/">
+			
+			
+			<span class="navbar-logo"><img src="../../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../../es/docs.html" ><span class="active">Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../../es/payu-module-documentation.html" ><span>Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/api-integration/refunds-api.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../offline-search-index.6ede73fe1cea12a54da169ff6f2db9b82f94d7d91c72b8ce080ac6cc8b4b08acb42cc89ed450cf0bfe4240c22a85afddfc4293c93cfc5ca94a47bad835b27e0c.json"
+  data-offline-search-base-href="../../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/api-integration/refunds-api.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs.html" href="../../../../es/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Inicio</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/getting-started.html" href="../../../../es/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Empezando...</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedcreate-an-accounthtml" href="../../../../es/docs/getting-started/create-an-account.html">Crear una cuenta de PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-integrationhtml" href="../../../../es/docs/getting-started/select-your-integration.html">Seleccionar tu integración</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedselect-your-payment-methodhtml" href="../../../../es/docs/getting-started/select-your-payment-method.html">Seleccionar tu medio de Pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedtest-your-solutionhtml" href="../../../../es/docs/getting-started/test-your-solution.html">Probar tu solución</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-starteddeploy-to-productionhtml" href="../../../../es/docs/getting-started/deploy-to-production.html">Desplegar a Producción</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsgetting-startedresponse-codes-and-variableshtml" href="../../../../es/docs/getting-started/response-codes-and-variables.html">Códigos de respuesta y Variables</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/services.html" href="../../../../es/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespaymentshtml" href="../../../../es/docs/services/payments.html">Pagos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesquerieshtml" href="../../../../es/docs/services/queries.html">Consulta de transacciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicestokenizationhtml" href="../../../../es/docs/services/tokenization.html">Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespromotionshtml" href="../../../../es/docs/services/promotions.html">Cuotas y Promociones - Argentina y México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicesrefundshtml" href="../../../../es/docs/services/refunds.html">Anulaciones y Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocsservicespayoutshtml" href="../../../../es/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/tools.html" href="../../../../es/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Herramientas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-requesthtml" href="../../../../es/docs/tools/payment-request.html">Solicitud de pago</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/tools/shopping-cart-plugins.html" href="../../../../es/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins para Carritos de compra</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../../es/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsmagentohtml" href="../../../../es/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../../es/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../../es/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../../es/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../../es/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocstoolsshopping-cart-pluginsopencarthtml" href="../../../../es/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayu-modulehtml" href="../../../../es/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsdisputeshtml" href="../../../../es/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolspayment-couponshtml" href="../../../../es/docs/tools/payment-coupons.html">Cupones de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-esdocstoolsantifraud-guaranteehtml" href="../../../../es/docs/tools/antifraud-guarantee.html">Garantía Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/integrations.html" href="../../../../es/docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integraciones</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/webcheckout-integration.html" href="../../../../es/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración WebCheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../../es/docs/integrations/webcheckout-integration/payment-form.html">Formulario de pago</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../../es/docs/integrations/webcheckout-integration/response-page.html">Página de Respuesta</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../../es/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmación</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/api-integration.html" href="../../../../es/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Integración API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-argentina.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../../es/docs/integrations/api-integration/payments-api-argentina.html">API de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-brazil.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../../es/docs/integrations/api-integration/payments-api-brazil.html">API de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-chile.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../../es/docs/integrations/api-integration/payments-api-chile.html">API de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-colombia.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../../es/docs/integrations/api-integration/payments-api-colombia.html">API de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-mexico.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../../es/docs/integrations/api-integration/payments-api-mexico.html">API de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-panama.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../../es/docs/integrations/api-integration/payments-api-panama.html">API de Pagos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payments-api-peru.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../../es/docs/integrations/api-integration/payments-api-peru.html">API de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/queries-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationqueries-apihtml" href="../../../../es/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/tokenization-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationtokenization-apihtml" href="../../../../es/docs/integrations/api-integration/tokenization-api.html">API de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/promotions-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpromotions-apihtml" href="../../../../es/docs/integrations/api-integration/promotions-api.html">API de Promociones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/refunds-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-esdocsintegrationsapi-integrationrefunds-apihtml" href="../../../../es/docs/integrations/api-integration/refunds-api.html">API de Reembolsos y Anulaciones</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/api-integration/payouts-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationsapi-integrationpayouts-apihtml" href="../../../../es/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/es/docs/integrations/sdk-integration.html" href="../../../../es/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integración SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagos - Colombia</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagos - México</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../../es/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagos - Perú</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationqueriessdkhtml" href="../../../../es/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../../es/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenización</a>
+      
+      
+      
+      
+      
+        <a id="/es/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-esdocsintegrationssdk-integrationrefundssdkhtml" href="../../../../es/docs/integrations/sdk-integration/refundssdk.html">SDK de Reembolsos y Anulaciones</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/docs/server-status.html" href="../../../../es/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Estado de nuestros servicios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#considerations-per-country">Consideraciones por país</a>
+      <ul>
+        <li><a href="#argentina">Argentina</a></li>
+        <li><a href="#brazil">Brasil</a></li>
+        <li><a href="#chile">Chile</a></li>
+        <li><a href="#colombia">Colombia</a></li>
+        <li><a href="#mexico">México</a></li>
+        <li><a href="#panama">Panamá</a></li>
+        <li><a href="#peru">Perú</a></li>
+      </ul>
+    </li>
+    <li><a href="#void">Anulación (Void)</a>
+      <ul>
+        <li><a href="#variables-for-request-and-response">Variables para la petición y la respuesta</a></li>
+        <li><a href="#api-call">Llamado del API</a></li>
+      </ul>
+    </li>
+    <li><a href="#refunds">Reembolsos (Refunds)</a>
+      <ul>
+        <li><a href="#variables-for-request-and-response-1">Variables para la petición y la respuesta</a></li>
+        <li><a href="#api-call-1">Llamado del API</a></li>
+        <li><a href="#query-the-refund-status">Consultar los estados de los Reembolsos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs.html">Inicio</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs/integrations.html">Integraciones</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../es/docs/integrations/api-integration.html">Integración API</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../../es/docs/integrations/api-integration/refunds-api.html">API de Reembolsos y Anulaciones</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>API de Reembolsos y Anulaciones</h1>
+    <div class="lead">Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (<em>Refund</em>) o de cancelación (<em>Void</em>) de acuerdo con el estado de la transacción.</div>
+	       
+	<p>Para integrarte con el API de Reembolsos y Anulaciones, apunta tus peticiones a las siguientes URLs de acuerdo con tu ambiente.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">URL</h4>
+<ul>
+<li>Pruebas: <code>https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi</code></li>
+<li>Producción: <code>https://api.payulatam.com/payments-api/4.0/service.cgi</code></li>
+</ul>
+
+</div>
+
+<p>Si necesitas entender los conceptos y leer más consideraciones sobre Reembolsos y Anulaciones, consulta <a href="../../../../es/docs/services/refunds.html">este artículo</a>.</p>
+<h2 id="considerations-per-country">Consideraciones por país</h2>
+<p>Antes de utilizar el API de Reembolsos y Anulaciones, ten en cuenta las siguientes consideraciones.</p>
+<h3 id="argentina">Argentina</h3>
+<ul>
+<li>El tiempo máximo para enviar una anulación es 14 días. Si no se envía una anulación o una captura luego de este tiempo, la transacción se anula automáticamente.</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es 365 días y 180 días para reembolsos parciales.</li>
+<li>No se soportan reembolsos con decimales.</li>
+<li>Cuando se aprueba el reembolso, el pagador obtiene su dinero en máximo 30 días hábiles.</li>
+</ul>
+<h3 id="brazil">Brasil</h3>
+<ul>
+<li>El tiempo máximo para enviar una anulación es siete (7) días. Si no se envía una anulación o una captura luego de este tiempo, la transacción se cancela.</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es 90 días para transacciones procesadas en Redecard y 120 para transacciones procesadas en Cielo.</li>
+<li>Cuando se aprueba el reembolso, el pagador obtiene su dinero en máximo 15 días hábiles.</li>
+</ul>
+<h3 id="chile">Chile</h3>
+<ul>
+<li>Debido a restricciones de la red, se pueden autorizar anulaciones dentro de las tres primeras horas luego de la autorización. Si no se acepta la anulación o no se envía una captura luego de siete (7) días, la transacción se anula automáticamente.</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es 90 días.</li>
+<li>No se soportan reembolsos para <a href="../../../../es/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-debit-y-prepaid-cards">transacciones procesadas con WebPay Plus</a>.</li>
+<li>Para transacciones con tarjetas prepago que no sean procesadas a través de WebPay Plus, los Reembolsos solicitados luego de la primero hora del cobro pueden ser aprobados o rechazados por la red financiera. Luego de esta hora, se rechazan todos los reembolsos para transacciones realizadas con tarjetas prepago.</li>
+<li>Si se rechaza el reembolso, PayU muestra el <a href="../../../../es/docs/getting-started/response-codes-and-variables.html#response-codes-for-transactions">código de error</a> generado por la red.</li>
+<li>No se soportan reembolsos con decimales.</li>
+<li>Cuando se aprueba un reembolso, el pagador obtiene su dinero en 8 a 20 días hábiles.</li>
+<li>Los reembolsos parciales para transacciones que utilizan cuotas se reciben en línea pero son procesados de forma manual debido a restricciones de la red adquirente.</li>
+<li>El valor mínimo para enviar un Reembolso es 10 CLP.</li>
+</ul>
+<h3 id="colombia">Colombia</h3>
+<ul>
+<li>No se soportan Anulaciones (Void).</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es two years.</li>
+<li>El valor mínimo para enviar un Reembolso es 100 COP.</li>
+<li>Si no se envía el reembolso el mismo día en el que la transacción fue capturada (antes de las 9 pm UTC-5) el reembolso va inmediatamente  un proceso manual sin enviar un intento en línea.</li>
+<li>Cuando se aprueba el reembolso, el pagador obtiene su dinero en máximo 30 días hábiles.</li>
+<li>No se soportan reembolsos parciales para tarjetas de crédito internacionales.</li>
+</ul>
+<h3 id="mexico">México</h3>
+<ul>
+<li>El tiempo mínimo para enviar una anulación (Void) es 10 minutos luego de la autorización y el máximo es 30 días. Si la transacción se hizo con American Express, el tiempo máximo es siete (7) días.<br>Si no se envía una anulación o una captura luego de este tiempo, la transacción se anula automáticamente.</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es 180 días. Si la transacción fue procesada por Bancomer, el tiempo máximo es 45 días.</li>
+<li>Cuando se aprueba un reembolso, el pagador obtiene su dinero en 30 días hábiles.</li>
+<li>No se soportan reembolsos con decimales.</li>
+</ul>
+<h3 id="panama">Panamá</h3>
+<ul>
+<li>No se soportan Anulaciones (Void).</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es 180 días.</li>
+<li>Cuando se aprueba el reembolso, el pagador obtiene su dinero en máximo 8 días hábiles.</li>
+</ul>
+<h3 id="peru">Perú</h3>
+<ul>
+<li>Los días máximos para enviar una autorización son:
+<ul>
+<li>Visa: 21 días. Si no se envía una anulación o una captura luego de este tiempo, la transacción se captura automáticamente.</li>
+<li>Mastercard: 28 días. Si no se envía una anulación o una captura luego de este tiempo, la transacción se captura automáticamente.</li>
+<li>American Express: 30 días. Si no se envía una anulación o una captura luego de este tiempo, la transacción se anula automáticamente.</li>
+<li>Diners: 11 días. Si no se envía una anulación o una captura luego de este tiempo, la transacción se anula automáticamente.</li>
+</ul>
+</li>
+<li>El tiempo mínimo para enviar un reembolso es 10 minutos luego de la aprobación y el máximo es 180 días.</li>
+<li>Se soportan reembolsos parciales para transacciones sin cuotas. Ten en cuenta que las transacciones en una cuota son consideradas como sin cuotas.</li>
+<li>Los Reembolsos parciales con visanet deben enviarse un día después.</li>
+<li>Cuando se aprueba un reembolso, el pagador obtiene su dinero en 15 to 25 días hábiles.</li>
+<li>La cantidad mínima para enviar un Reembolso es 1 USD o 1 PEN.</li>
+</ul>
+<h2 id="void">Anulación (Void)</h2>
+<p>Le método <code>VOID</code> cancela una transacción previamente autorizada. La anulación es un procedimiento automático, tan pronto envías la petición de <code>VOID</code>, no sigue ningún flujo de aprobación y la transacción no se cobra al tarjetahabiente.</p>
+<h3 id="variables-for-request-and-response">Variables para la petición y la respuesta</h3>
+<details>
+<summary>Petición (Request)</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nombre del campo</th>
+<th>Formato</th>
+<th>Tamaño</th>
+<th>Descripción</th>
+<th style="text-align:center">Obligatorio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Idioma utilizado en la petición, este idioma se utiliza para mostrar los mensajes de error generados. <a href="../../../../es/docs/getting-started/response-codes-and-variables.html#supported-languages">Ver idiomas soportados</a>.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alfanumérico</td>
+<td>Max:32</td>
+<td>Asigna <code>SUBMIT_TRANSACTION</code>.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>test (JSON)<hr>isTest (XML)</td>
+<td>Booleano</td>
+<td></td>
+<td>Asigna <code>true</code> si la petición es en modo pruebas. Si no, asigna <code>false</code>.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>Este objeto tiene los datos de autenticación.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alfanumérico</td>
+<td>Min:12 Max:32</td>
+<td>Usuario o login entregado por PayU. <a href="../../../../es/docs/integrations.html#api-key-y-api-login">Cómo obtengo mi API Login</a></td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alfanumérico</td>
+<td>Min:6 Max:32</td>
+<td>Contraseña entregada por PayU. <a href="../../../../es/docs/integrations.html#api-key-y-api-login">Cómo obtengo mi API Key</a></td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td></td>
+<td></td>
+<td>Este objeto tiene los datos de la transacción.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; order</td>
+<td></td>
+<td></td>
+<td>Este objeto tiene los datos de la orden.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; id</td>
+<td>Numérico</td>
+<td></td>
+<td>Identificador de la orden a ser anulada.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; type</td>
+<td>Alfanumérico</td>
+<td>32</td>
+<td>Asigna <code>VOID</code> para realizar una anulación de una transacción autorizada.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; reason</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Entrega la razón para anular una transacción autorizada.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; parentTransactionId</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador de la transacción a anular.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Respuesta (Response)</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nombre del campo</th>
+<th>Formato</th>
+<th>Tamaño</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Código de respuesta de la transacción. Los valores posibles son <code>ERROR</code> y <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alfanumérico</td>
+<td>Max:2048</td>
+<td>Mensaje de error asociado cuando el código de respuesta es <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>transactionResponse</td>
+<td></td>
+<td></td>
+<td>Datos de la respuesta.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; orderId</td>
+<td>Numérico</td>
+<td></td>
+<td>Identificador de la orden generado o existente en PayU.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; transactionId</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador de la transacción en PayU.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; state</td>
+<td>Alfanumérico</td>
+<td>Max:32</td>
+<td>Estado de la transacción.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; paymentNetworkResponseCode</td>
+<td>Alfanumérico</td>
+<td>Max:255</td>
+<td>Código de respuesta retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; paymentNetworkResponseErrorMessage</td>
+<td>Alfanumérico</td>
+<td>Max:255</td>
+<td>Mensaje de error retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; trazabilityCode</td>
+<td>Alfanumérico</td>
+<td>Max:32</td>
+<td>Código de trazabilidad retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; authorizationCode</td>
+<td>Alfanumérico</td>
+<td>Max:12</td>
+<td>Código de autorización retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; responseCode</td>
+<td>Alfanumérico</td>
+<td>Max:64</td>
+<td>Código de respuesta asociado al estado.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; responseMessage</td>
+<td>Alfanumérico</td>
+<td>Max:2048</td>
+<td>Mensaje asociado al código de respuesta.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; operationDate</td>
+<td>Fecha</td>
+<td></td>
+<td>Fecha de creación en el sistema de PayU.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call">Llamado del API</h3>
+<p>Los siguientes son los cuerpos de la petición y la respuesta para este tipo de transacción.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab11" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-1" data-toggle="tab" href="#tab12" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="1">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab11" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Ejemplo petición:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1400462414&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;VOID&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;reason&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Razón para solicitar la anulación de la transacción&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;parentTransactionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;c8ec8737-7645-4756-a991-6e60a99eb4d9&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;test&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Ejemplo respuesta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;transactionResponse&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;orderId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1400462414</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;transactionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;57546e0a-8275-48e3-af11-7d3dc7420bfe&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;paymentNetworkResponseCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;paymentNetworkResponseErrorMessage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;trazabilityCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;49263990&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;authorizationCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;NPS-011111&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;pendingReason&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;responseCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APPROVED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;errorCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;responseMessage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;APROBADA - Autorizada&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;transactionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;transactionTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;operationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1624880273010</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;referenceQuestionnaire&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;extraParameters&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab12" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Ejemplo petición:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1400462466<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>VOID<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;parentTransactionId&gt;</span>50876ad6-46f2-4c8d-bb91-2f028b56ccb8<span style="color:#204a87;font-weight:bold">&lt;/parentTransactionId&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Ejemplo respuesta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;paymentResponse&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;transactionResponse&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;orderId&gt;</span>1400462466<span style="color:#204a87;font-weight:bold">&lt;/orderId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;transactionId&gt;</span>5fbb1ab0-3d2e-448f-a0be-b0bcfb5501ae<span style="color:#204a87;font-weight:bold">&lt;/transactionId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;state&gt;</span>APPROVED<span style="color:#204a87;font-weight:bold">&lt;/state&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;paymentNetworkResponseCode&gt;</span>0<span style="color:#204a87;font-weight:bold">&lt;/paymentNetworkResponseCode&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;trazabilityCode&gt;</span>49263990<span style="color:#204a87;font-weight:bold">&lt;/trazabilityCode&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;authorizationCode&gt;</span>NPS-011111<span style="color:#204a87;font-weight:bold">&lt;/authorizationCode&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;responseCode&gt;</span>APPROVED<span style="color:#204a87;font-weight:bold">&lt;/responseCode&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;responseMessage&gt;</span>APROBADA - Autorizada<span style="color:#204a87;font-weight:bold">&lt;/responseMessage&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;operationDate&gt;</span>2021-06-28T06:57:44<span style="color:#204a87;font-weight:bold">&lt;/operationDate&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/transactionResponse&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/paymentResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h2 id="refunds">Reembolsos (Refunds)</h2>
+<p>Un reembolso se solicita cuando una tienda decide voluntariamente regresar el dinero al cliente debido a razones de insatisfacción o cuando la tienda no tiene suficiente inventario del producto comprado. El método <code>REFUND</code> solicita el reverso de una transacción previamente capturada.</p>
+<p>Los reembolsos pueden ser solicitados por la cantidad total o parcial (<code>PARTIAL REFUND</code>).</p>
+<h3 id="variables-for-request-and-response-1">Variables para la petición y la respuesta</h3>
+<details>
+<summary>Petición (Request)</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nombre del campo</th>
+<th>Formato</th>
+<th>Tamaño</th>
+<th>Descripción</th>
+<th style="text-align:center">Obligatorio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Idioma utilizado en la petición, este idioma se utiliza para mostrar los mensajes de error generados. <a href="../../../../es/docs/getting-started/response-codes-and-variables.html#supported-languages">Ver idiomas soportados</a>.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alfanumérico</td>
+<td>Max:32</td>
+<td>Asigna <code>SUBMIT_TRANSACTION</code>.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>test (JSON)<hr>isTest (XML)</td>
+<td>Booleano</td>
+<td></td>
+<td>Asigna <code>true</code> si la petición es en modo pruebas. Si no, asigna <code>false</code>.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>Este objeto tiene los datos de autenticación.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alfanumérico</td>
+<td>Min:12 Max:32</td>
+<td>Usuario o login entregado por PayU. <a href="../../../../es/docs/integrations.html#api-key-y-api-login">Cómo obtengo mi API Login</a></td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alfanumérico</td>
+<td>Min:6 Max:32</td>
+<td>Contraseña entregada por PayU. <a href="../../../../es/docs/integrations.html#api-key-y-api-login">Cómo obtengo mi API Key</a></td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td></td>
+<td></td>
+<td>Este objeto tiene los datos de la transacción.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; additionalValues &gt;</td>
+<td></td>
+<td>64</td>
+<td>Monto del reembolso parcial. Este parámetro y sus valores son obligatorios cuando se realiza un reembolso parcial.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; additionalValues &gt; TX_VALUE</td>
+<td>Alfanumérico</td>
+<td>64</td>
+<td>Monto de la transacción. Obligatorio para reembolsos parciales</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; additionalValues &gt; TX_VALUE &gt; value</td>
+<td>Numérico</td>
+<td>19</td>
+<td>Especifica el monto de la transacción. Obligatorio para reembolsos parciales</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; additionalValues &gt; TX_VALUE &gt; currency</td>
+<td>Alfanumérico</td>
+<td>3</td>
+<td>Código ISO de la moneda. <a href="../../../../es/docs/getting-started/response-codes-and-variables.html#accepted-currencies">Ver monedas aceptadas</a>. Obligatorio para reembolsos parciales</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order</td>
+<td></td>
+<td></td>
+<td>Este objeto tiene los datos de la orden.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; id</td>
+<td>Numérico</td>
+<td></td>
+<td>Identificador de la orden que será reembolsada.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; type</td>
+<td>Alfanumérico</td>
+<td>32</td>
+<td>Asigna este valor de acuerdo con el tipo de transacción requerido:<br><ul style="margin-bottom: initial;"><li><code>REFUND</code></li><li><code>PARTIAL_REFUND</code> para reembolsos parciales (si se soportan).</li></ul></td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; reason</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Entrega la razón para reembolsar una transacción autorizada.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; parentTransactionId</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador de la transacción a reembolsar.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Respuesta (Response)</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nombre del campo</th>
+<th>Formato</th>
+<th>Tamaño</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Código de respuesta de la transacción. Los valores posibles son <code>ERROR</code> y <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alfanumérico</td>
+<td>Max:2048</td>
+<td>Mensaje de error asociado cuando el código de respuesta es <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>transactionResponse</td>
+<td></td>
+<td></td>
+<td>Datos de la respuesta.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; orderId</td>
+<td>Numérico</td>
+<td></td>
+<td>Identificador de la orden generado o existente en PayU.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; transactionId</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador de la transacción en PayU.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; state</td>
+<td>Alfanumérico</td>
+<td>Max:32</td>
+<td>Estado de la transacción.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; paymentNetworkResponseCode</td>
+<td>Alfanumérico</td>
+<td>Max:255</td>
+<td>Código de respuesta retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; paymentNetworkResponseErrorMessage</td>
+<td>Alfanumérico</td>
+<td>Max:255</td>
+<td>Mensaje de error retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; trazabilityCode</td>
+<td>Alfanumérico</td>
+<td>Max:32</td>
+<td>Código de trazabilidad retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; authorizationCode</td>
+<td>Alfanumérico</td>
+<td>Max:12</td>
+<td>Código de autorización retornado por la red bancaria.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; responseCode</td>
+<td>Alfanumérico</td>
+<td>Max:64</td>
+<td>Código de respuesta asociado al estado.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; responseMessage</td>
+<td>Alfanumérico</td>
+<td>Max:2048</td>
+<td>Mensaje asociado al código de respuesta.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; operationDate</td>
+<td>Fecha</td>
+<td></td>
+<td>Fecha de creación en el sistema de PayU.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="api-call-1">Llamado del API</h3>
+<p>Los siguientes son los cuerpos de la petición y la respuesta para este tipo de transacción.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-2" data-toggle="tab" href="#tab21" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab22" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="2">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab21" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Ejemplo petición (Refund):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1400462687&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;REFUND&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;reason&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Razón para solicitar el reembolso de la transacción&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;parentTransactionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;60e2080d-08b1-4db2-a54f-8bcbe8271662&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;test&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Ejemplo petición (Partial Refund):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>  
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;es&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:{</span>  
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:{</span>  
+      <span style="color:#204a87;font-weight:bold">&#34;additionalValues&#34;</span><span style="color:#000;font-weight:bold">:{</span>  
+         <span style="color:#204a87;font-weight:bold">&#34;TX_VALUE&#34;</span><span style="color:#000;font-weight:bold">:{</span>  
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;950&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;currency&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;ARS&#34;</span>
+         <span style="color:#000;font-weight:bold">}</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:{</span>  
+         <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;1400462690&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;parentTransactionId&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;0486359b-a048-4b6b-9b72-af584e710e64&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;reason&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Razón para solicitar el reembolso de la transacción&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;PARTIAL_REFUND&#34;</span>
+   <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Ejemplo respuesta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;transactionResponse&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;orderId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1400462690</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;transactionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;paymentNetworkResponseCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;paymentNetworkResponseErrorMessage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;trazabilityCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;authorizationCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;pendingReason&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING_REVIEW&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;responseCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;errorCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;responseMessage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1400462690&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;transactionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;transactionTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;operationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;referenceQuestionnaire&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;extraParameters&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab22" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Ejemplo petición (Refund):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1400462689<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>REFUND<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;reason&gt;</span>Razón para solicitar el reembolso de la transacción.<span style="color:#204a87;font-weight:bold">&lt;/reason&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;parentTransactionId&gt;</span>1d31ea44-0d8f-4e65-93ac-6be4347e5b40<span style="color:#204a87;font-weight:bold">&lt;/parentTransactionId&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Ejemplo petición (Partial refund):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>es<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;additionalValues&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>TX_VALUE<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;additionalValue&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>100<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;currency&gt;</span>ARS<span style="color:#204a87;font-weight:bold">&lt;/currency&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/additionalValue&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/additionalValues&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1400462691<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>REFUND<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;reason&gt;</span>Razón para solicitar el reembolso de la transacción.<span style="color:#204a87;font-weight:bold">&lt;/reason&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;parentTransactionId&gt;</span>976d0411-8d0f-46e7-b5fe-515dad9a41ee<span style="color:#204a87;font-weight:bold">&lt;/parentTransactionId&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+</code></pre></div><br>
+<p>Ejemplo respuesta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;paymentResponse&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;transactionResponse&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;orderId&gt;</span>1400462691<span style="color:#204a87;font-weight:bold">&lt;/orderId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;transactionId&gt;</span>6cef020a-8006-4744-b7f9-d9a343807297<span style="color:#204a87;font-weight:bold">&lt;/transactionId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;state&gt;</span>PENDING<span style="color:#204a87;font-weight:bold">&lt;/state&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;pendingReason&gt;</span>PENDING_REVIEW<span style="color:#204a87;font-weight:bold">&lt;/pendingReason&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;responseMessage&gt;</span>1400462690<span style="color:#204a87;font-weight:bold">&lt;/responseMessage&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/transactionResponse&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/paymentResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h3 id="query-the-refund-status">Consultar los estados de los Reembolsos</h3>
+<p>Como mencionamos anteriormente, la solicitud de reembolso tarda entre 1 y 3 días en ser procesada y aprobada o rechazada. Si deseas saber el estado de un reembolso, tienes dos opciones:</p>
+<h4 id="check-status-through-the-payu-module">Verificar el estado en el Módulo PayU</h4>
+<ol>
+<li>Ingresa a tu cuenta PayU. En el panel izquierdo, expande el menú <em><strong>Transacciones</strong></em> y selecciona la opción <em><strong>Reporte de ventas</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/Refunds/Refunds_es_01.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Utiliza el campo <em><strong>Filtrar mis ventas</strong></em> para encontrar la orden utilizando su ID y el ID de la transacción.</li>
+</ol>
+<p><img src="../../../../assets/Refunds/Refunds_es_02.png" alt="PrintScreen" width="50%"/><br></p>
+<ol start="3">
+<li>La columna estado muestra si el reembolso a sido aprobado o rechazado; si no ha sido aprobado, esta columna muestra que se ha solicitado un reembolso.</li>
+</ol>
+<p><img src="../../../../assets/Refunds/Refunds_es_03.png" alt="PrintScreen"></p>
+<h4 id="check-status-using-queries">Verificar el estado utilizando consultas</h4>
+<p>Puedes consultar el estado de un reembolso utilizando el <a href="../../../../es/docs/integrations/api-integration/queries-api.html">API de consultas</a>. En la petición de la consulta, necesitas enviar el id de la orden.</p>
+<p>Cuando consultas una orden, el sistema retorna su última transacción.</p>
+<p>Hay tres posibles estados en la respuesta de tu solicitud:</p>
+<ul>
+<li><strong>Solicitud no resuelta</strong>: si la solicitud no ha sido resuelta, la orden que aparece en la consulta está en estado <code>CAPTURED</code> (parámetro <code>result.payload.status</code> en la respuesta), el primer tipo de transacción es <code>AUTHORIZATION_AND_CAPTURE</code> (parámetro <code>result.transactions.type</code> en la respuesta) y el primer estado de la transacción es <code>APPROVED</code> (primer parámetro <code>result.transactions.transactionResponse.state</code> en la respuesta).</li>
+<li><strong>Aprobada</strong>: si la solicitud de reembolso ha sido aprobada por un agente de servicio de PayU, la orden que aparece en la consulta está en estado <code>REFUNDED</code> (parámetro <code>result.payload.status</code> en la respuesta), el primer tipo de transacción es <code>REFUND</code> (parámetro <code>result.transactions.type</code> en la respuesta) y el primer estado de la transacción es <code>APPROVED</code> (primer parámetro <code>result.transactions.transactionResponse.state</code> en la respuesta).</li>
+<li><strong>Declinada</strong>: si la solicitud de reembolso ha sido declinada por un agente de servicio de PayU, la orden que aparece en la consulta está en estado <code>CAPTURED</code> (parámetro <code>result.payload.status</code> en la respuesta), el primer tipo de transacción es <code>REFUND</code> (parámetro <code>result.transactions.type</code> en la respuesta) y el primer estado de la transacción es <code>DECLINED</code> (primer parámetro <code>result.transactions.transactionResponse.state</code> en la respuesta).</li>
+</ul>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+9 de noviembre de 2021:
+
+ <b>Developers site in Spanish (44e815c3)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../../js/scrollspy.js"></script>
+<script src="../../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
