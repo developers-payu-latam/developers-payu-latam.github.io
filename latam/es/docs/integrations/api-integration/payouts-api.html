@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/es/docs/integrations/api-integration/payouts-api.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-08-09T14:58:45-05:00" />
-<meta property="article:modified_time" content="2021-11-09T07:55:53-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-09T11:21:54-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="API de Payouts">
 <meta itemprop="description" content="Esta funcionalidad te permite crear múltiples y seguros pagos a beneficiarios (usuarios, comercios, proveedores, clientes, etc.) utilizando los fondos que tienes un tu cuenta PayU.
 "><meta itemprop="datePublished" content="2021-08-09T14:58:45-05:00" />
-<meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
-<meta itemprop="wordCount" content="3098">
+<meta itemprop="dateModified" content="2021-11-09T11:21:54-05:00" />
+<meta itemprop="wordCount" content="3062">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de Payouts"/>
 <meta name="twitter:description" content="Esta funcionalidad te permite crear múltiples y seguros pagos a beneficiarios (usuarios, comercios, proveedores, clientes, etc.) utilizando los fondos que tienes un tu cuenta PayU.
@@ -139,7 +139,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.b731b3c1c5f676f2b8116d673416cb466713df02bbacbe0e4fb2c33dbd0e676a42a9f3b128403f01d9cc09bf5f76ad9d3b8511a28b7330445b801a53d32ff59b.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.9629d51f70b737e5f98e47a122a9ceea12c24c7fbf5944ff61b7c4eb01d48a922a144a17903b1e1069e2febe238129cb6e4af3ab7ed1b4a1fd68f543c26f341c.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -743,27 +743,21 @@
         <li><a href="#variables-for-request-and-response">Variables para la petición y la respuesta</a></li>
       </ul>
     </li>
-    <li><a href="#update-payout-request">Actualizar solicitud de payout</a>
+    <li><a href="#cancel-payout-request">Cancelar solicitud de payout</a>
       <ul>
         <li><a href="#api-call-2">Llamado del API</a></li>
         <li><a href="#variables-for-request">Variables para la solicitud</a></li>
       </ul>
     </li>
-    <li><a href="#cancel-payout-request">Cancelar solicitud de payout</a>
-      <ul>
-        <li><a href="#api-call-3">Llamado del API</a></li>
-        <li><a href="#variables-for-request-1">Variables para la solicitud</a></li>
-      </ul>
-    </li>
     <li><a href="#create-or-update-a-webhook">Crear o actualizar un WebHook</a>
       <ul>
-        <li><a href="#api-call-4">Llamado del API</a></li>
+        <li><a href="#api-call-3">Llamado del API</a></li>
         <li><a href="#variables-for-request-and-response-1">Variables para la petición y la respuesta</a></li>
       </ul>
     </li>
     <li><a href="#delete-a-webhook">Eliminar un WebHook</a>
       <ul>
-        <li><a href="#api-call-5">Llamado del API</a></li>
+        <li><a href="#api-call-4">Llamado del API</a></li>
       </ul>
     </li>
     <li><a href="#query-webhooks">Consultar WebHooks</a>
@@ -848,7 +842,6 @@
 <ul>
 <li><a href="#authentication">Autenticación</a></li>
 <li><a href="#request-payout">Solicitar payout</a></li>
-<li><a href="#update-payout-request">Actualizar solicitud de payout</a></li>
 <li><a href="#cancel-payout-request">Cancelar solicitud de payout</a></li>
 <li><a href="#create-or-update-a-transfershook">Crear o actualizar un WebHook</a></li>
 <li><a href="#delete-a-transfershook">Eliminar un WebHook</a></li>
@@ -1495,9 +1488,11 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 
 
 </div>
-<h2 id="update-payout-request">Actualizar solicitud de payout</h2>
-<p>Este método te permite actualizar la información del banco de un pagador en una solicitud de payout en curso. Por ejemplo, este método es util para cambiar el número de cuenta del beneficiario.</p>
-<p>Solo puedes solicitar la actualización del beneficiario cuando el estado de Payout esté en <code>IN_PAYU_PROCESS</code> o antes. Consulta <a href="../../../../es/docs/services/payouts.html#payout-states">estados de los Payout</a> para más información.</p>
+<!--## Actualizar solicitud de payout {#update-payout-request}
+Este método te permite actualizar la información del banco de un pagador en una solicitud de payout en curso. Por ejemplo, este método es util para cambiar el número de cuenta del beneficiario.
+
+Solo puedes solicitar la actualización del beneficiario cuando el estado de Payout esté en `IN_PAYU_PROCESS` o antes. Consulta [estados de los Payout](/es/docs/services/payouts.html#payout-states) para más información. 
+
 
 
 <div class="alert alert-info" role="alert">
@@ -1505,69 +1500,36 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 Necesitas incluir dos encabezados para utilizar este método, consulta <a href="#configuring-the-authentication">Configurar a autenticación</a> para más información. Además, necesitas saber tu Merchant ID y tu Account ID, puedes obtener esta información en tu Módulo PayU.
 </div>
 
-<h3 id="api-call-2">Llamado del API</h3>
-<p>Para actualizar una solicitud de Payout, utiliza la siguiente URL:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">PUT</span>
-<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/bank-account/{merchantId}/{accountId}/{bankAccountId}
-</span></code></pre></div><br>
-<p>El valor de la variable <code>{env-api}</code> is <code>sandbox-transfers</code> para pruebas y <code>transfers</code> para producción.</p>
-<table>
-<thead>
-<tr>
-<th>Parámetro</th>
-<th>Descripción</th>
-<th style="text-align:center">Obligatorio</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>merchantId</td>
-<td>Identificador del comercio en el sistema de PayU.</td>
-<td style="text-align:center">Sí</td>
-</tr>
-<tr>
-<td>accountId</td>
-<td>Identificador de la cuenta para cada país asociada al comercio.</td>
-<td style="text-align:center">Sí</td>
-</tr>
-<tr>
-<td>bankAccountId</td>
-<td>Identificador retronado por el <a href="#request-payout">Servicio de solicitar payout</a>.</td>
-<td style="text-align:center">Sí</td>
-</tr>
-</tbody>
-</table>
-<h3 id="variables-for-request">Variables para la solicitud</h3>
+
+### Llamado del API {#api-call-2}
+Para actualizar una solicitud de Payout, utiliza la siguiente URL:
+
+```JAVA
+PUT
+https://{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/bank-account/{merchantId}/{accountId}/{bankAccountId}
+```
+<br>
+
+El valor de la variable `{env-api}` is `sandbox-transfers` para pruebas y `transfers` para producción.
+
+| Parámetro     | Descripción                                                                                   | Obligatorio |
+|---------------|-----------------------------------------------------------------------------------------------|:-----------:|
+| merchantId    | Identificador del comercio en el sistema de PayU.                                             |      Sí     |
+| accountId     | Identificador de la cuenta para cada país asociada al comercio.                               |      Sí     |
+| bankAccountId | Identificador retronado por el [Servicio de solicitar payout](#request-payout). |      Sí     |
+
+### Variables para la solicitud {#variables-for-request}
+
 <div class="variables"></div>
-<table>
-<thead>
-<tr>
-<th>Nombre del campo</th>
-<th>Formato</th>
-<th>Tamaño</th>
-<th>Descripción</th>
-<th style="text-align:center">Obligatorio</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>Alfanumérico</td>
-<td>36</td>
-<td>Identificador de la cuenta bancaria del beneficiario.</td>
-<td style="text-align:center">Sí</td>
-</tr>
-<tr>
-<td>accountNumber</td>
-<td>Alfanumérico</td>
-<td>Max:17</td>
-<td>Número de cuenta bancaria del beneficiario.</td>
-<td style="text-align:center">Sí</td>
-</tr>
-</tbody>
-</table>
+
+| Nombre del campo  | Formato | Tamaño | Descripción | Obligatorio |
+|---|---|---|---|:-:|
+| id | Alfanumérico | 36 | Identificador de la cuenta bancaria del beneficiario. | Sí |
+| accountNumber | Alfanumérico | Max:17 | Número de cuenta bancaria del beneficiario. | Sí |-->
 <!--additionalData-->
-<p>Los siguientes son los cuerpos de la petición y la respuesta para este método.</p>
+<!--
+Los siguientes son los cuerpos de la petición y la respuesta para este método.
+
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
 
@@ -1617,7 +1579,7 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 
 
 
-
+-->
 <!--
 
 
@@ -1638,9 +1600,9 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 
 
 -->
+<!--
 
-
-</div>
+</div>-->
 <h2 id="cancel-payout-request">Cancelar solicitud de payout</h2>
 <p>Este método te permite cancelar la solicitud de payout. Solo puedes solicitar la cancelación de un Payout cuando está en estado <code>IN_PAYU_PROCESS</code> o antes. Consulta <a href="../../../../es/docs/services/payouts.html#payout-states">estados del Payout</a> para más información.</p>
 
@@ -1650,7 +1612,7 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 Necesitas incluir dos encabezados para utilizar este método, consulta <a href="#configuring-the-authentication">Configurar a autenticación</a> para más información. Además, necesitas saber tu Merchant ID y tu Account ID, puedes obtener esta información en tu Módulo PayU.
 </div>
 
-<h3 id="api-call-3">Llamado del API</h3>
+<h3 id="api-call-2">Llamado del API</h3>
 <p>Para cancelar una solicitud de Payout, utiliza la siguiente URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">DELETE</span>
 <span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/supplier-transfers/{merchantId}/{accountId}/{paymentOrderId}
@@ -1682,7 +1644,7 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 </tr>
 </tbody>
 </table>
-<h3 id="variables-for-request-1">Variables para la solicitud</h3>
+<h3 id="variables-for-request">Variables para la solicitud</h3>
 <div class="variables"></div>
 <table>
 <thead>
@@ -1801,7 +1763,7 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 Necesitas incluir dos encabezados para utilizar este método, consulta <a href="#configuring-the-authentication">Configurar a autenticación</a> para más información. Además, necesitas saber tu Merchant ID y tu Account ID, puedes obtener esta información en tu Módulo PayU.
 </div>
 
-<h3 id="api-call-4">Llamado del API</h3>
+<h3 id="api-call-3">Llamado del API</h3>
 <ul>
 <li>Para crear un WebHook, utiliza:</li>
 </ul>
@@ -2056,7 +2018,7 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 Necesitas incluir dos encabezados para utilizar este método, consulta <a href="#configuring-the-authentication">Configurar a autenticación</a> para más información. Además, necesitas saber tu Merchant ID y tu Account ID, puedes obtener esta información en tu Módulo PayU.
 </div>
 
-<h3 id="api-call-5">Llamado del API</h3>
+<h3 id="api-call-4">Llamado del API</h3>
 <p>Para borrar un WebHook, utiliza la siguiente URL:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">DELETE</span>
 <span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/push-payment/v1.0/webhooks/{merchantId}/{accountId}/{id}
@@ -2549,7 +2511,7 @@ Necesitas incluir dos encabezados para utilizar este método, consulta <a href="
 
 9 de noviembre de 2021:
 
- <b>Developers site in Spanish (44e815c3)</b>
+ <b>URL fixing in Payouts and method updates (df7f3527)</b>
 </div>
 </div>
 
