@@ -33,7 +33,7 @@
 <meta itemprop="description" content="Con este formulario HTML, puedes enviar los datos de la transacción a nuestra pasarela de pago junto con la información de la compra. Envía los datos utilizando el método HTTP POST.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:27-05:00" />
 <meta itemprop="dateModified" content="2021-11-09T07:55:53-05:00" />
-<meta itemprop="wordCount" content="1141">
+<meta itemprop="wordCount" content="1487">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Formulario de pago"/>
 <meta name="twitter:description" content="Con este formulario HTML, puedes enviar los datos de la transacción a nuestra pasarela de pago junto con la información de la compra. Envía los datos utilizando el método HTTP POST.
@@ -139,7 +139,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.bf5ba7afdbc9646d8db2e69e05858bfe4efb7070a936daac9c5f600ad81e45d098a1c640342f937150f8588551c24dd0c41579edea5e3d58dfe7bc200451a51d.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.23e231af17b4ad5f684c8edcf44d5f1bc884462052bc9edc0dec751ae170ecc9a084d46fad75afc6e128262a3d24633dd77ef29770f53001d80ed855a6365dac.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -834,13 +834,6 @@
 </thead>
 <tbody>
 <tr>
-<td>amount</td>
-<td>Numérico</td>
-<td>14</td>
-<td>Valor total de la transacción. Puede tener dos cifras decimales. Ejemplo 10000.00 o 10000.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
 <td>merchantId</td>
 <td>Numérico</td>
 <td>12</td>
@@ -869,11 +862,46 @@
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
+<td>currency</td>
+<td>Alfanumérico</td>
+<td>3</td>
+<td>Moneda respectiva en la que se hace el pago. El proceso de conciliación se realiza en pesos colombianos a la tasa representativa del día.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#accepted-currencies">Ver monedas aceptadas</a>.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Numérico</td>
+<td>14</td>
+<td>Valor total de la transacción. Puede tener dos cifras decimales. Ejemplo 10000.00 o 10000.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
 <td>tax</td>
 <td>Numérico</td>
 <td>14,2</td>
 <td>Valor del impuesto al valor agregado de la transacción.<br>En Colombia, si no se envía el IVA. el sistema aplica automáticamente el 19%. Puede tener dos dígitos decimales, por ejemplo 19000.00.<br>Si el producto o servicio es exento de impuesto al valor agregado, asigne <code>0</code> a esta variable.</td>
 <td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>discount</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor del descuento sobre la venta.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>taxReturnBase</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor base para la devolución de impuestos.<br>Si el producto o servicio es exento de impuesto al valor agregado, asigne <code>0</code> a esta variable.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>additionalValue</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor adicional no comisionable de la venta.</td>
+<td style="text-align:center">—</td>
 </tr>
 <tr>
 <td>signature</td>
@@ -883,32 +911,11 @@
 <td style="text-align:center">✓</td>
 </tr>
 <tr>
-<td>currency</td>
-<td>Alfanumérico</td>
-<td>3</td>
-<td>Moneda respectiva en la que se hace el pago. El proceso de conciliación se realiza en pesos colombianos a la tasa representativa del día.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#accepted-currencies">Ver monedas aceptadas</a>.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td>buyerEmail</td>
+<td>algorithmSignature</td>
 <td>Alfanumérico</td>
 <td>255</td>
-<td>Campo que contiene el correo electrónico del comprador para notificar el resultado de la transacción por medio de correo electrónico. Se recomienda validar que se haya ingresado este campo en el formulario.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>Alfanumérico</td>
-<td>50</td>
-<td>Teléfono de residencia del comprador.</td>
-<td style="text-align:center">✓</td>
-</tr>
-<tr>
-<td>buyerFullName</td>
-<td>Alfanumérico</td>
-<td>150</td>
-<td>Nombre completo del comprador.</td>
-<td style="text-align:center">✓</td>
+<td>Algoritmo de encriptación de la firma digital (campo <code>signature</code>). Los tres algoritmos disponibles son: <code>MD5</code>, <code>SHA</code> y <code>SHA256</code>.</td>
+<td style="text-align:center">—</td>
 </tr>
 <tr>
 <td>test</td>
@@ -923,27 +930,6 @@
 <td>3</td>
 <td>Idioma en el que se quiere mostrar la pasarela de pagos.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#supported-languages">Ver idiomas soportados</a>.</td>
 <td style="text-align:center">—</td>
-</tr>
-<tr>
-<td>shippingCity</td>
-<td>Alfanumérico</td>
-<td>50</td>
-<td>Ciudad de entrega de la mercancía<br><sup>*</sup> Obligatorio si tu tienda envía el producto.</td>
-<td style="text-align:center">✓*</td>
-</tr>
-<tr>
-<td>shippingCountry</td>
-<td>Alfanumérico</td>
-<td>2</td>
-<td>Código ISO del país de entrega de lla mercancía.<br><sup>*</sup> Obligatorio si tu tienda envía el producto.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#processing-countries">Ver los paises de pago</a>.</td>
-<td style="text-align:center">✓*</td>
-</tr>
-<tr>
-<td>shippingAddress</td>
-<td>Alfanumérico</td>
-<td>255</td>
-<td>Dirección de entrega de la mercancía.<br><sup>*</sup> Obligatorio si tu tienda envía el producto.</td>
-<td style="text-align:center">✓*</td>
 </tr>
 <tr>
 <td>extra1</td>
@@ -967,6 +953,13 @@
 <td style="text-align:center">—</td>
 </tr>
 <tr>
+<td>template</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Plantilla para la página de pagos.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
 <td>responseUrl</td>
 <td>Alfanumérico</td>
 <td>255</td>
@@ -981,24 +974,17 @@
 <td style="text-align:center">—</td>
 </tr>
 <tr>
-<td>payerFullName</td>
+<td>sourceUrl</td>
 <td>Alfanumérico</td>
-<td>50</td>
-<td>Nombre del pagador. Este valor será utilizado para diligenciar el formulario de la tarjeta de crédito.</td>
+<td>255</td>
+<td>URL de origen de las transacciones del comercio. Aquí es donde se encuentra ubicado el botón de pago.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
-<td>payerDocument</td>
+<td>airline</td>
 <td>Alfanumérico</td>
-<td>25</td>
-<td>Número de identificación del pagador. Este valor será utilizado para diligenciar el formulario de la tarjeta de crédito.</td>
-<td style="text-align:center">—</td>
-</tr>
-<tr>
-<td>mobilePhone</td>
-<td>Alfanumérico</td>
-<td>50</td>
-<td>Número del móvil del comprador. Este valor será utilizado para diligenciar el formulario de la tarjeta de crédito y será el número de teléfono de contacto.</td>
+<td>4</td>
+<td>Código de la aerolínea.</td>
 <td style="text-align:center">—</td>
 </tr>
 <tr>
@@ -1009,18 +995,11 @@
 <td style="text-align:center">—</td>
 </tr>
 <tr>
-<td>officeTelephone</td>
-<td>Alfanumérico</td>
-<td>50</td>
-<td>Teléfono diurno del comprador.</td>
-<td style="text-align:center">—</td>
-</tr>
-<tr>
-<td>algorithmSignature</td>
+<td>shippingAddress</td>
 <td>Alfanumérico</td>
 <td>255</td>
-<td>Algoritmo de encriptación de la firma digital (campo <code>signature</code>). Los tres algoritmos disponibles son: <code>MD5</code>, <code>SHA</code> y <code>SHA256</code>.</td>
-<td style="text-align:center">—</td>
+<td>Dirección de entrega de la mercancía.<br><sup>*</sup> Obligatorio si tu tienda envía el producto.</td>
+<td style="text-align:center">✓*</td>
 </tr>
 <tr>
 <td>billingCity</td>
@@ -1028,6 +1007,13 @@
 <td>50</td>
 <td>Ciudad asociada con la dirección de facturación.</td>
 <td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingCity</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Ciudad de entrega de la mercancía<br><sup>*</sup> Obligatorio si tu tienda envía el producto.</td>
+<td style="text-align:center">✓*</td>
 </tr>
 <tr>
 <td>zipCode</td>
@@ -1042,6 +1028,76 @@
 <td>2</td>
 <td>Código ISO del país asociado con la dirección de facturación.</td>
 <td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Código ISO del país de entrega de lla mercancía.<br><sup>*</sup> Obligatorio si tu tienda envía el producto.<br><a href="../../../../es/docs/getting-started/response-codes-and-variables.html#processing-countries">Ver los paises de pago</a>.</td>
+<td style="text-align:center">✓*</td>
+</tr>
+<tr>
+<td>buyerEmail</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Campo que contiene el correo electrónico del comprador para notificar el resultado de la transacción por medio de correo electrónico. Se recomienda validar que se haya ingresado este campo en el formulario.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>telephone</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Teléfono de residencia del comprador.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>officeTelephone</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Teléfono diurno del comprador.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>mobilePhone</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Número del móvil del comprador. Este valor será utilizado para diligenciar el formulario de la tarjeta de crédito y será el número de teléfono de contacto.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>buyerFullName</td>
+<td>Alfanumérico</td>
+<td>150</td>
+<td>Nombre completo del comprador.</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td>paymentMethods</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Lista de métodos de pago habilitados en el proceso de pago.<br>Esta lista debe estar separada por comas y sin espacios en blanco. Por ejemplo: <code>VISA,MASTERCARD</code>.<br>Puedes incluir cuotas para los métodos de pago añadiéndolas mediante guiones. Ejemplo: <code>VISA-1-3,MASTERCARD-3-5-9</code>.<br><a href="../../../../es/docs/getting-started/select-your-payment-method.html">Consulta los métodos de pago disponibles para tu país en la columna<code> parámetro de método de pago</code></a>.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>administrativeFee</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor de la tarifa administrativa.</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>taxAdministrativeFee</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor del impuesto de la tarifa administrativa.</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>taxAdministrativeFeeReturnBase</td>
+<td>Numérico</td>
+<td>14,2</td>
+<td>Valor base para calcular el impuesto de la tarifa administrativa.</td>
+<td style="text-align:center">-</td>
 </tr>
 <tr>
 <td>payerEmail</td>
@@ -1070,6 +1126,55 @@
 <td>20</td>
 <td>Número de teléfono móvil del pagador.</td>
 <td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>#N/A</td>
+<td>19</td>
+<td>Fecha de vencimiento de las transacciones para pagos en efectivo. Formato: <code>YYYY-MM-DD HH:mm:ss</code>.<br>Este valor debe ser menor que el número de días predeterminado para el pago en efectivo (15 días para Argentina y 7 días para el resto de países).</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>payerFullName</td>
+<td>Alfanumérico</td>
+<td>50</td>
+<td>Nombre del pagador. Este valor será utilizado para diligenciar el formulario de la tarjeta de crédito.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerDocument</td>
+<td>Alfanumérico</td>
+<td>25</td>
+<td>Número de identificación del pagador. Este valor será utilizado para diligenciar el formulario de la tarjeta de crédito.</td>
+<td style="text-align:center">—</td>
+</tr>
+<tr>
+<td>payerDocumentType</td>
+<td>Alfanumérico</td>
+<td>25</td>
+<td>El número de identificación del comprador. Este valor se tomará para completar el formulario de la tarjeta de crédito.</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>iin</td>
+<td>Alfanumérico</td>
+<td>2048</td>
+<td>Lista de Bins admitidos durante el proceso de pago (separados por coma).<br><em>Este parámetro solo lo pueden utilizar los comercios que validan la firma.</em></td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>PaymentMethodsDescription</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Descripción de los métodos de pago y Bins admitidos durante el proceso de pago.</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td>pseBanks</td>
+<td>Alfanumérico</td>
+<td>255</td>
+<td>Listado de códigos bancarios habilitados en el proceso de pago a través de PSE.<br>Este listado debe estar separado por coma y sin espacios en blanco.</td>
+<td style="text-align:center">-</td>
 </tr>
 </tbody>
 </table>
@@ -1156,6 +1261,15 @@ Producción: https://checkout.payulatam.com/ppp-web-gateway-payu/
 <p>La firma es un método para validar los pagos realizados a través de la plataforma asegurando su autenticidad. Consiste en un string encriptado utilizando  <code>MD5</code>, <code>SHA1</code> o <code>SHA256</code>. El string creado es así:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchantId~referenceCode~amount~currency&#34;.
 </code></pre></div><br>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Nota</h4>
+<p>Si tu formulario de pago incluye las variables <code>paymentMethods</code>, <code>iin</code> o <code>pseBanks</code>, debes concatenarlas en dicho orden:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&#34;ApiKey~merchantId~referenceCode~amount~currency~paymentMethods~iin~pseBanks&#34;
+</code></pre></div>
+</div>
+
 <p>Por ejemplo, con los siguientes datos:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">merchantId: 508029
 ApiKey: 4Vj8eK4rloUd272L48hsrarnUA
