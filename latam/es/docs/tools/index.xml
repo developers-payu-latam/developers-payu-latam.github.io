@@ -396,9 +396,10 @@ Puedes crear hasta 1000 links por archivo.
       <description>
         
         
-        &lt;p&gt;&lt;img src=&#34;../../../assets/Disputes/Disputes_es.png&#34; alt=&#34;Concepts&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;what-is-a-dispute&#34;&gt;¿Qué es una Disputa?&lt;/h2&gt;
-&lt;p&gt;Tus compradores pueden presentar una reclamación al banco de emisor de su tarjeta. El banco nos envía una notificación de disputa y nosotros la creamos en nuestro sistema. La disputa congela el valor total de la venta en tu cuenta PayU.&lt;/p&gt;
+        &lt;h2 id=&#34;what-is-a-dispute&#34;&gt;¿Qué es una Disputa?&lt;/h2&gt;
+&lt;p&gt;Tus compradores pueden presentar una reclamación al banco de emisor de su tarjeta. El banco nos envía una notificación de disputa para determinar la validez de la compra y nosotros la creamos en nuestro sistema. Luego de la creación, te notificamos a través del Módulo PayU.&lt;/p&gt;
+&lt;p&gt;La disputa congela el valor total de la venta en tu cuenta PayU.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/Disputes/Disputes_es2.png&#34; alt=&#34;Concepts&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-a-dispute-happens&#34;&gt;¿Por qué ocurre una disputa?&lt;/h2&gt;
 &lt;p&gt;Un comprador puede reclamar al banco de emisor de su tarjeta reportando que no ha recibido el producto, el producto es deficiente o no cumple con las características esperadas. El comprador también puede desconocer la compra en el extracto de su tarjeta de crédito.&lt;br&gt;
 Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;/p&gt;
@@ -411,6 +412,7 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 &lt;li&gt;&lt;strong&gt;Monto no corresponde&lt;/strong&gt;: el cobro de la tarjeta de crédito no corresponde con el valor de la compra.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;No informado por la entidad&lt;/strong&gt;: el banco o la red de procesamiento inicia una disputa sin una razón específica.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;No todas las entidades financieras utilizan los mismos mecanismos para notificar una disputa; por lo tanto, PayU no puede garantizar que siempre puedas conocer las razones de la disputa.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
@@ -418,6 +420,7 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 &lt;ul&gt;
 &lt;li&gt;Recuerda que PayU únicamente actúa como intermediario para que tu comercio pueda presentar evidencias en el proceso de disputas frente a la entidad bancaria. PayU no tiene injerencia sobre el resultado de la disputa, esta decisión depende del banco emisor.&lt;/li&gt;
 &lt;li&gt;Una vez que una transacción es parte de una disputa, el monto asociado pasa a formar parte del saldo congelado, por lo tanto no podrás realizar transferencias de dicho saldo a tu cuenta bancaria hasta tanto no se resuelva la disputa.&lt;/li&gt;
+&lt;li&gt;Tus clientes pueden reclamar una transacción hasta &lt;strong&gt;120 días&lt;/strong&gt; después de la fecha de la transacción para tarjetas locales y hasta &lt;strong&gt;180 días&lt;/strong&gt; para tarjetas internacionales. Estos tiempos son definidos por las franquicias.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
@@ -425,8 +428,8 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 &lt;h2 id=&#34;how-does-the-disputes-process-works-in-payu&#34;&gt;¿Cómo funciona el proceso de disputas en PayU?&lt;/h2&gt;
 &lt;p&gt;El proceso de disputas sigue un flujo simple:&lt;/p&gt;
 &lt;h3 id=&#34;1-dispute-notification&#34;&gt;1. Notificación de la Disputa&lt;/h3&gt;
-&lt;p&gt;Cuando un banco notifica a PayU sobre una disputa, tú y tu comercio reciben un correo electrónico notificando el inicio del proceso de disputa.&lt;/p&gt;
-&lt;p&gt;También enviamos un &lt;code&gt;POST&lt;/code&gt; con toda la información de la disputa a la URL que configuraste en tu &lt;a href=&#34;../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html#disputes&#34;&gt;módulo PayU&lt;/a&gt;. De esta forma, puedes automatizar el manejo del proceso de disputas para minimizar el riesgo de un posible contracargo.&lt;/p&gt;
+&lt;p&gt;Cuando un banco o una red de procesamiento notifica a PayU sobre una disputa, puedes consultar toda su información en el &lt;a href=&#34;../../../es/payu-module-documentation/payu-operations/disputes-mp.html&#34;&gt;Módulo de disputas&lt;/a&gt; del Módulo PayU.&lt;/p&gt;
+&lt;p&gt;Si tienes configurados los correos de notificaciones en tu &lt;a href=&#34;../../../es/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html#disputes&#34;&gt;módulo PayU&lt;/a&gt;, recibes también la información a través de correo electrónico. Además, cuando tienes habilitada la &lt;em&gt;&lt;strong&gt;URL de notificación automática&lt;/strong&gt;&lt;/em&gt;, enviamos una notificación &lt;code&gt;POST&lt;/code&gt;. De esta forma, puedes automatizar el manejo del proceso de disputas para minimizar el riesgo de un posible contracargo.&lt;/p&gt;
 &lt;p&gt;Puedes configurar la URL donde te notificamos en el módulo PayU. Ingresa a &lt;a href=&#34;payu.com&#34;&gt;PayU.com&lt;/a&gt; y haz clic en la opción para iniciar sesión que se encuentra en la parte superior de la página. O si lo prefieres, puedes ir directamente a &lt;a href=&#34;https://merchants.payulatam.com/&#34;&gt;https://merchants.payulatam.com/&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Haz clic en &lt;em&gt;&lt;strong&gt;Configuración&lt;/strong&gt;&lt;/em&gt; y luego selecciona &lt;em&gt;&lt;strong&gt;Configuración técnica&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../../assets/IntegrationVariables_01_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
@@ -437,7 +440,7 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 &lt;p&gt;Puedes ver y administrar el proceso de disputas desde el módulo PayU en la opción &lt;em&gt;&lt;strong&gt;Disputas&lt;/strong&gt;&lt;/em&gt; dentro del menú &lt;em&gt;&lt;strong&gt;Transacciones&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;../../../assets/Disputes/Disputes_02_es.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;3-provide-evidence&#34;&gt;3. Presenta evidencias&lt;/h3&gt;
-&lt;p&gt;Es importante responder siempre a una disputa presentando evidencias antes de la &lt;a href=&#34;../../../es/docs/tools/disputes.html#maximum-days-to-provide-evidence&#34;&gt;fecha máxima estipulada por el banco&lt;/a&gt;. Luego de la fecha máxima, no puedes cargar evidencias de una disputa.&lt;/p&gt;
+&lt;p&gt;Es importante responder siempre a una disputa presentando evidencias antes de la &lt;a href=&#34;../../../es/docs/tools/disputes.html#maximum-days-to-provide-evidence&#34;&gt;fecha máxima estipulada por el banco o la red de procesamiento&lt;/a&gt;. Luego de la fecha máxima, no puedes cargar evidencias de una disputa.&lt;/p&gt;
 &lt;p&gt;Para aprender a cargar evidencia para resolver la disputa, consulta el &lt;a href=&#34;../../../es/payu-module-documentation/payu-operations/disputes-mp.html&#34;&gt;Módulo PayU&lt;/a&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;what-information-can-be-useful&#34;&gt;¿Qué información puede ser útil?&lt;/h4&gt;
 &lt;ul&gt;
@@ -509,7 +512,11 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;En revisión de la red&lt;/td&gt;
-&lt;td&gt;Cuando la tienda presenta la evidencia a través del Módulo PayU y la disputa entra en revisión por el banco o la red.&lt;/td&gt;
+&lt;td&gt;Cuando el comercio presenta la evidencia a través del Módulo PayU y la disputa entra en revisión por el banco o la red.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Documentos no presentados&lt;/td&gt;
+&lt;td&gt;Cuando vence el tiempo para la presentación de documentos y el comercio no proporciona ninguna evidencia.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Perdida&lt;/td&gt;
@@ -520,12 +527,12 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 &lt;td&gt;El proceso de disputas ha sido resulto en favor de la tienda, no hay deducciones de ningún tipo.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Reembolsada&lt;/td&gt;
-&lt;td&gt;Este procesos ocurre cuando el comercio autoriza reversar la operación bajo su propia voluntad, esto previene que la tienda tenga que pagar un contracargo y se reemplace por un reembolso.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td&gt;Expirada&lt;/td&gt;
 &lt;td&gt;Luego de pasados 120 días sin respuesta del banco, el monto de la disputa queda disponible para el comercio.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Reembolsada&lt;/td&gt;
+&lt;td&gt;Este procesos ocurre cuando el comercio autoriza reversar la operación bajo su propia voluntad, esto previene que la tienda tenga que pagar un contracargo y se reemplace por un reembolso.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -536,6 +543,13 @@ Las razones para iniciar un proceso de disputa varian, algunas de ellas son:&lt;
 Si tienes activada la &lt;a href=&#34;../../../es/docs/tools/antifraud-guarantee.html&#34;&gt;Garantía antifraude&lt;/a&gt;, cuando el contracargo es sujeto a cobertura, PayU asume los valores debitados de tu cuenta. En este caso, el estado de la disputa es &lt;em&gt;Contracargada&lt;/em&gt; (Perdida) &lt;em&gt;Aplica garantía antifraude&lt;/em&gt;.
 &lt;/div&gt;
 
+&lt;h2 id=&#34;anti-fraud-tips-for-your-business&#34;&gt;Consejos antifraude para tu negocio&lt;/h2&gt;
+&lt;p&gt;¡Luchar contra el fraude digital es nuestro deber!. Ten en cuenta los siguientes consejos:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ten cuidado con un aumento en las compras o solicitudes de servicio mayor de lo esperado dada a la naturaleza de tu negocio.&lt;/li&gt;
+&lt;li&gt;Desconfía de las compras realizadas con montos superiores al promedio que recibes en tu comercio.&lt;/li&gt;
+&lt;li&gt;Verifica si recibes un volumen de compra mayor de un solo cliente o solicitado a la misma dirección.&lt;/li&gt;
+&lt;/ol&gt;
 
       </description>
     </item>
