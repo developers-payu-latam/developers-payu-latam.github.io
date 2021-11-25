@@ -2983,10 +2983,10 @@
 &lt;p&gt;&lt;strong&gt;PayU Tokenization&lt;/strong&gt;.&lt;br&gt;We provide our own service to tokenize your credit cards enabled under request. This service lets you tokenize the information of your customers&#39; credit cards (regardless of their franchise) using our API or SDK integration.&lt;br&gt;For more information, refer to &lt;a href=&#34;../../../../en/docs/services/tokenization.html&#34;&gt;PayU Tokenization&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;MasterCard Digital Enablement Service - MDES&lt;/strong&gt;.&lt;br&gt;Tokenization service provided by Mastercard. This service lets you tokenize the Primary Account Number of the MasterCard credit cards to let you use them to make regular payments of build one-click payments features.&lt;br&gt;For more information, refer to &lt;a href=&#34;https://developer.mastercard.com/mdes-digital-enablement/documentation/&#34;&gt;MasterCard Digital Enablement Service (MDES)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MasterCard Digital Enablement Service - MDES&lt;/strong&gt;.&lt;br&gt;Tokenization service provided by Mastercard. This service lets you tokenize the Primary Account Number of the MasterCard credit cards to let you use them to make regular payments or build one-click payments features.&lt;br&gt;For more information, refer to &lt;a href=&#34;https://developer.mastercard.com/mdes-digital-enablement/documentation/&#34;&gt;MasterCard Digital Enablement Service (MDES)&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Visa Token Service - VTS&lt;/strong&gt;.&lt;br&gt;Tokenization service provided by Visa. This service lets you store the sensitive information of the Visa credit cards in a token to let you use them to make regular payments of build one-click payments features.&lt;br&gt;For more information, refer to &lt;a href=&#34;https://usa.visa.com/products/visa-token-service.html&#34;&gt;Visa Token Service (VTS)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Visa Token Service - VTS&lt;/strong&gt;.&lt;br&gt;Tokenization service provided by Visa. This service lets you store the sensitive information of the Visa credit cards in a token to let you use them to make regular payments or build one-click payments features.&lt;br&gt;For more information, refer to &lt;a href=&#34;https://usa.visa.com/products/visa-token-service.html&#34;&gt;Visa Token Service (VTS)&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;pay-with-payu-tokens&#34;&gt;Pay with PayU tokens&lt;/h4&gt;
@@ -5390,7 +5390,7 @@ By default, processing credit cards without security code is not enabled. If you
 &lt;td&gt;transaction &amp;gt; type&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;32&lt;/td&gt;
-&lt;td&gt;As Bank transfers payments are performed in the bank&amp;rsquo;s webpage, the only available transaction type is &lt;code&gt;AUTHORIZATION_AND_CAPTURE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;As cash payments are performed in physical offices, the only available transaction type is &lt;code&gt;AUTHORIZATION_AND_CAPTURE&lt;/code&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -9275,7 +9275,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-2&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value for is seven days after the current date at 12:00 pm.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
+&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven days after the current date at 12:00 pm.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
 &lt;li&gt;You must set a response URL in the parameter &lt;code&gt;NETWORK_CALLBACK_URL&lt;/code&gt; inside &lt;code&gt;transaction.extraParameters&lt;/code&gt;; this URL redirects the user back to your page after they finish the online payment procedure.&lt;/li&gt;
 &lt;li&gt;You must redirect the payer to the Klap webpage (fka as Multicaja) to let them perform the cash payment. This URL is found in the &lt;code&gt;BANK_URL&lt;/code&gt; parameter in the response.&lt;/li&gt;
 &lt;/ul&gt;
@@ -10019,7 +10019,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td&gt;transaction &amp;gt; type&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;32&lt;/td&gt;
-&lt;td&gt;As cash payments are performed in physical offices, the only available transaction type is &lt;code&gt;AUTHORIZATION_AND_CAPTURE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;As payments are made on the WebPay plus page, the only available transaction type is &lt;code&gt;AUTHORIZATION_AND_CAPTURE&lt;/code&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -10068,7 +10068,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td&gt;transaction &amp;gt; extraParameters&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;Additional parameters or data associated with the request. For Bank transfer payments, this is the response page of your commerce.&lt;br&gt;In JSON, the &lt;em&gt;extraParameters&lt;/em&gt; parameter is set as: &lt;br&gt;&lt;code&gt;&amp;quot;extraParameters&amp;quot;: {&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;quot;RESPONSE_URL&amp;quot;: &amp;quot;http://www.test.com/response&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;}&lt;/code&gt;&lt;br&gt;&lt;br&gt;In XML, the &lt;em&gt;extraParameters&lt;/em&gt; parameter is set as: &lt;br&gt;&lt;code&gt;&amp;lt;extraParameters&amp;gt;&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;entry&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;&amp;lt;string&amp;gt;RESPONSE_URL&amp;lt;/string&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;http://www.test.com/response&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;/entry&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&amp;lt;/extraParameters&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Additional parameters or data associated with the request. For payments through WebPay plus, this is the response page of your commerce.&lt;br&gt;In JSON, the &lt;em&gt;extraParameters&lt;/em&gt; parameter is set as: &lt;br&gt;&lt;code&gt;&amp;quot;extraParameters&amp;quot;: {&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;quot;RESPONSE_URL&amp;quot;: &amp;quot;http://www.test.com/response&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;}&lt;/code&gt;&lt;br&gt;&lt;br&gt;In XML, the &lt;em&gt;extraParameters&lt;/em&gt; parameter is set as: &lt;br&gt;&lt;code&gt;&amp;lt;extraParameters&amp;gt;&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;entry&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;&amp;lt;string&amp;gt;RESPONSE_URL&amp;lt;/string&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;http://www.test.com/response&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;/entry&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&amp;lt;/extraParameters&amp;gt;&lt;/code&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -10183,8 +10183,8 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-3&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;If you don&amp;rsquo;t send the &lt;code&gt;RESPONSE_URL&lt;/code&gt; parameter in &lt;code&gt;transaction.extraParameters&lt;/code&gt;, the API took the value from the &lt;em&gt;&lt;strong&gt;Response URL&lt;/strong&gt;&lt;/em&gt; variable in your PayU Module (&lt;em&gt;&lt;strong&gt;Settings&lt;/strong&gt;&lt;/em&gt; &amp;gt; &lt;em&gt;&lt;strong&gt;Technical configuration&lt;/strong&gt;&lt;/em&gt;).&lt;/li&gt;
-&lt;li&gt;When you process bank transfer payment, you must redirect the customer to the URL found in the &lt;code&gt;URL_PAYMENT_REDIRECT&lt;/code&gt; extra parameter concatenated with the &lt;code&gt;TRANSBANK_DIRECT_TOKEN&lt;/code&gt; extra parameter as follows: &lt;br&gt; &lt;code&gt;URL_PAYMENT_REDIRECT?token_ws=TRANSBANK_DIRECT_TOKEN&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If you don&amp;rsquo;t send the &lt;code&gt;RESPONSE_URL&lt;/code&gt; parameter in &lt;code&gt;transaction.extraParameters&lt;/code&gt;, the API takes the value from the &lt;em&gt;&lt;strong&gt;Response URL&lt;/strong&gt;&lt;/em&gt; variable in your PayU Module (&lt;em&gt;&lt;strong&gt;Settings&lt;/strong&gt;&lt;/em&gt; &amp;gt; &lt;em&gt;&lt;strong&gt;Technical configuration&lt;/strong&gt;&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;When you process payments through WebPay plus, you must redirect the customer to the URL found in the &lt;code&gt;URL_PAYMENT_REDIRECT&lt;/code&gt; extra parameter concatenated with the &lt;code&gt;TRANSBANK_DIRECT_TOKEN&lt;/code&gt; extra parameter as follows: &lt;br&gt; &lt;code&gt;URL_PAYMENT_REDIRECT?token_ws=TRANSBANK_DIRECT_TOKEN&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;If the payment request is successful, the transaction has state &lt;code&gt;PENDING&lt;/code&gt; and responseCode &lt;code&gt;PENDING_PAYMENT_IN_ENTITY&lt;/code&gt;; this is because the payer is redirected to the selected bank to complete the payment.&lt;/li&gt;
 &lt;li&gt;The response page must have the following variables:&lt;/li&gt;
 &lt;/ul&gt;
@@ -11547,7 +11547,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td&gt;transaction &amp;gt; deviceSessionId&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;Max:255&lt;/td&gt;
-&lt;td&gt;Session identifier of the device where the customer performs the transaction. For mor information, refer to &lt;a href=&#34;../../../../en/docs/integrations.html#_devicesessionid_-variable&#34;&gt;this topic&lt;/a&gt;.&lt;/td&gt;
+&lt;td&gt;Session identifier of the device where the customer performs the transaction. For more information, refer to &lt;a href=&#34;../../../../en/docs/integrations.html#_devicesessionid_-variable&#34;&gt;this topic&lt;/a&gt;.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -12718,7 +12718,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-1&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value for is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
+&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
 &lt;li&gt;For &lt;code&gt;BALOTO&lt;/code&gt; and &lt;code&gt;EFECTY&lt;/code&gt;, the confirmation of the payment takes 15 minutes. For &lt;code&gt;BANK_REFERENCED&lt;/code&gt; and &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red), the confirmation is online.&lt;/li&gt;
 &lt;li&gt;The minimum and maximum values for &lt;code&gt;BALOTO&lt;/code&gt;, &lt;code&gt;EFECTY&lt;/code&gt;, and &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) are:
 &lt;ul&gt;
@@ -13719,7 +13719,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;li&gt;All the payment process values must be formatted in thousands (i.e., 1,200.00 or 1,200) without exception.&lt;/li&gt;
 &lt;li&gt;If the payment request is successful, the transaction has state &lt;code&gt;PENDING&lt;/code&gt; and responseCode &lt;code&gt;PENDING_TRANSACTION_CONFIRMATION&lt;/code&gt;; this is because the payer is redirected to the selected bank to complete the payment; you must redirect the payer to the URL returned in the extra parameter &lt;code&gt;BANK_URL&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;The URL returned in the extra parameter &lt;code&gt;BANK_URL&lt;/code&gt; is configured in the PayU Module and must show the following information:&lt;br&gt;&lt;br&gt;&lt;img src=&#34;../../../../assets/Payments/PSEresponse-en.png&#34; alt=&#34;PrintScreen&#34;&gt;&lt;br&gt;Parameters starting with $ symbol are sent via &lt;code&gt;GET&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Once the client click the Pay button, this must be disabled to avoid sending a new request over the same payment.&lt;/li&gt;
+&lt;li&gt;Once the client clicks the Pay button, this must be disabled to avoid sending a new request over the same payment.&lt;/li&gt;
 &lt;li&gt;It is recommended to display a wait message while your customer is redirected.&lt;/li&gt;
 &lt;li&gt;Do not show the bank site in containers (frames, panel, iframes, etc). The payment process must be fluid. Furthermore, avoid opening the bank site in a new tab nor a new browser window. If you need to use a new tab or window, block the origin page to avoid sending a new request over the same payment.&lt;/li&gt;
 &lt;li&gt;You must add in the response page the options to retry the payment, finish the transaction and print the receipt.&lt;/li&gt;
@@ -17563,7 +17563,7 @@ Two-step flows are only supported for Mastercard and Visa.
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-2&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value for is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
+&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
 &lt;li&gt;When the payment method is &lt;code&gt;OXXO&lt;/code&gt;, the confirmation of the payment will be one day after the payment. For other cash payment methods, the confirmation is online.&lt;/li&gt;
 &lt;li&gt;The parameter &lt;code&gt;transactionResponse.extraParameters&lt;/code&gt; has the following parameters related to the transaction:
 &lt;ul&gt;
@@ -18507,7 +18507,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-3&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value for is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
+&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
 &lt;li&gt;When the payer selects this payment method, PayU creates an order in &lt;em&gt;in progress&lt;/em&gt; state and a transaction in &lt;code&gt;PENDING&lt;/code&gt; state.&lt;/li&gt;
 &lt;li&gt;To perform the payment, the payer must log in the virtual branch of their bank (The bank must appear in the list of SPEI available banks). &lt;br&gt;First, the payer must register the PayU CLABE account in their bank branch. Once the PayU CLABE account is enabled to perform transfers, the payer must provide the reference returned by PayU in the parameter &lt;code&gt;trazabilityCode&lt;/code&gt; and the amount as returned by PayU in their virtual branch.&lt;/li&gt;
 &lt;li&gt;In the response body, you can find the needed variables to generate the payment receipt (voucher) and the URL of the receipt generated by PayU in HTML and PDF format. If you want to generate the voucher, use the following variables:
@@ -19434,7 +19434,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-4&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value for is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
+&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
 &lt;li&gt;The parameter &lt;code&gt;transactionResponse.extraParameters&lt;/code&gt; has the following parameters related to the transaction:
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;REFERENCE&lt;/strong&gt;: internal payment reference generated by PayU.&lt;/li&gt;
@@ -23764,7 +23764,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 &lt;/details&gt;
 &lt;h4 id=&#34;considerations-2&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value for is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
+&lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
 &lt;li&gt;For cash payments, the following parameters are mandatory:
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;transaction.order.buyer.fullName&lt;/code&gt;&lt;/li&gt;

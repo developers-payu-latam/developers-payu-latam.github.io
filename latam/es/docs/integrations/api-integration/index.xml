@@ -10068,7 +10068,7 @@ Klap se conocía anteriormente como MULTICAJA. Aún puede que veas elementos o c
 &lt;td&gt;transaction &amp;gt; extraParameters&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
-&lt;td&gt;Parámetros adicionales o datos asociados a la petición. Para los pagos a través de WebPay plus, esthis is the response page of your commerce.&lt;br&gt;En JSON, El parámetro &lt;em&gt;extraParameters&lt;/em&gt; se configura así: &lt;br&gt;&lt;code&gt;&amp;quot;extraParameters&amp;quot;: {&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;quot;RESPONSE_URL&amp;quot;: &amp;quot;http://www.test.com/response&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;}&lt;/code&gt;&lt;br&gt;&lt;br&gt;En XML, El parámetro &lt;em&gt;extraParameters&lt;/em&gt; se configura así: &lt;br&gt;&lt;code&gt;&amp;lt;extraParameters&amp;gt;&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;entry&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;&amp;lt;string&amp;gt;RESPONSE_URL&amp;lt;/string&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;http://www.test.com/response&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;/entry&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&amp;lt;/extraParameters&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Parámetros adicionales o datos asociados a la petición. Para los pagos a través de WebPay plus, esta es la página de respuesta de tu comercio.&lt;br&gt;En JSON, El parámetro &lt;em&gt;extraParameters&lt;/em&gt; se configura así: &lt;br&gt;&lt;code&gt;&amp;quot;extraParameters&amp;quot;: {&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;quot;RESPONSE_URL&amp;quot;: &amp;quot;http://www.test.com/response&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;}&lt;/code&gt;&lt;br&gt;&lt;br&gt;En XML, El parámetro &lt;em&gt;extraParameters&lt;/em&gt; se configura así: &lt;br&gt;&lt;code&gt;&amp;lt;extraParameters&amp;gt;&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;entry&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;&amp;lt;string&amp;gt;RESPONSE_URL&amp;lt;/string&amp;gt;&lt;/code&gt;&lt;br&gt;  &lt;code&gt;http://www.test.com/response&lt;/code&gt;&lt;br&gt; &lt;code&gt;&amp;lt;/entry&amp;gt;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&amp;lt;/extraParameters&amp;gt;&lt;/code&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -10184,7 +10184,7 @@ Klap se conocía anteriormente como MULTICAJA. Aún puede que veas elementos o c
 &lt;h4 id=&#34;considerations-3&#34;&gt;Consideraciones&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Si no envías el parámetro &lt;code&gt;RESPONSE_URL&lt;/code&gt; en &lt;code&gt;transaction.extraParameters&lt;/code&gt;, el API toma el valor de la variable &lt;em&gt;&lt;strong&gt;URL de respuesta&lt;/strong&gt;&lt;/em&gt; en tu Módulo PayU (&lt;em&gt;&lt;strong&gt;Configuración&lt;/strong&gt;&lt;/em&gt; &amp;gt; &lt;em&gt;&lt;strong&gt;Configuración técnica&lt;/strong&gt;&lt;/em&gt;).&lt;/li&gt;
-&lt;li&gt;Cuando procesas pagos de transferencias bancarias, debes redirigir a tu cliente a la URL que encuentras en el extra parámetro &lt;code&gt;URL_PAYMENT_REDIRECT&lt;/code&gt; concatenado con el extra parámetro &lt;code&gt;TRANSBANK_DIRECT_TOKEN&lt;/code&gt; así: &lt;br&gt; &lt;code&gt;URL_PAYMENT_REDIRECT?token_ws=TRANSBANK_DIRECT_TOKEN&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Cuando procesas pagos a través de WebPay plus, debes redirigir a tu cliente a la URL que encuentras en el extra parámetro &lt;code&gt;URL_PAYMENT_REDIRECT&lt;/code&gt; concatenado con el extra parámetro &lt;code&gt;TRANSBANK_DIRECT_TOKEN&lt;/code&gt; así: &lt;br&gt; &lt;code&gt;URL_PAYMENT_REDIRECT?token_ws=TRANSBANK_DIRECT_TOKEN&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Si la solicitud de pago es exitosa, la transacción queda con estado &lt;code&gt;PENDING&lt;/code&gt; y responseCode &lt;code&gt;PENDING_PAYMENT_IN_ENTITY&lt;/code&gt;; esto es debido a que el pagador es redirigido al banco seleccionado para completar el pago.&lt;/li&gt;
 &lt;li&gt;La página de respuesta debe tener las siguientes variables:&lt;/li&gt;
 &lt;/ul&gt;
@@ -22415,7 +22415,7 @@ Para integrarte con las transacciones en efectivo, debes redirigir a tu cliente 
 &lt;ul&gt;
 &lt;li&gt;Para pagos con tókenes de tarjetas de crédito, incluye los parámetros &lt;code&gt;transaction.creditCardTokenId&lt;/code&gt; y &lt;code&gt;transaction.creditCard.securityCode&lt;/code&gt; (Si procesas con código de seguridad) reemplazando la información de la tarjeta de crédito . Para más información, consulta el &lt;a href=&#34;../../../../es/docs/integrations/api-integration/tokenization-api.html&#34;&gt;API de Tokenización&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Por defecto, el procesamiento de tarjetas de crédito sin código de seguridad no está activo. Si lo quieres activar, contacta a tu representante de ventas. Luego de que esté activado, envía en la petición la variable &lt;code&gt;creditCard.processWithoutCvv2&lt;/code&gt; con valor true y elimina la variable &lt;code&gt;creditCard.securityCode&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;En Perú, puedes seleccionar 0 o de 2 a 26 cuotas cuando pagas con tarjeta de crédito. Si seleccionas una (1) cuota, PayU envía cero (0) como valor por defecto.&lt;/li&gt;
+&lt;li&gt;En Perú, puedes seleccionar 0 o de 2 a 36 cuotas cuando pagas con tarjeta de crédito. Si seleccionas una (1) cuota, PayU envía cero (0) como valor por defecto.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;authorization&#34;&gt;Autorización&lt;/h3&gt;
 &lt;p&gt;Utiliza este método para realizar el paso de &lt;strong&gt;Autorización&lt;/strong&gt; del flujo de dos pasos. En este paso, autorizas el pago pero el monto no se debita hasta que &lt;a href=&#34;../../../../es/docs/integrations/api-integration/payments-api-peru.html#capture&#34;&gt;captures&lt;/a&gt; los fondos.&lt;/p&gt;
@@ -29280,7 +29280,7 @@ Si no validas el esquema, la integración so se verá afectada y solo necesitar�
 &lt;li&gt;Los bancos disponibles para MSI son: BANAMEX, BANCO REGIONAL DE MONTERREY S.A, BANCOPPEL, BANCO AZTECA, SCOTIABANK, HSBC, INBURSA, BANCA MIFEL SA, BANCO MULTIVA, BAJIO, CI BANCO, Afirme, Banregio, Banjercito, Banorte, Famsa, Invex, Premium Card Liverpool, Santander y Bancomer.&lt;/li&gt;
 &lt;li&gt;Cuando utilices MSI, muestra siempre la frase &lt;strong&gt;&amp;ldquo;PAGOS DIFERIDOS&amp;rdquo;&lt;/strong&gt; durante el proceso de pago.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;variables-for-msi&#34;&gt;Variables for MSI&lt;/h3&gt;
+&lt;h3 id=&#34;variables-for-msi&#34;&gt;Variables para MSI&lt;/h3&gt;
 &lt;p&gt;Para utilizar MSI, necesitas incluir el número de meses como un extra parámetro:&lt;/p&gt;
 &lt;p&gt;&lt;nav&gt;
 	&lt;div class=&#34;nav nav-tabs&#34; id=&#34;nav-tab&#34; role=&#34;tablist&#34;&gt;

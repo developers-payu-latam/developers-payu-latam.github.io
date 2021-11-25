@@ -22,21 +22,21 @@
 <link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
 
 <title>Disputes | PayU Latam</title><meta property="og:title" content="Disputes" />
-<meta property="og:description" content="Using this tool, you can manage the dispute processes generated in your PayU account.
+<meta property="og:description" content="Find all the information about the dispute module. This tool found in your PayU module, allows you to manage the dispute processes generated in your PayU account.
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/tools/disputes.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-04-12T08:34:58-05:00" />
-<meta property="article:modified_time" content="2021-10-22T10:15:41-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-25T12:41:41-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Disputes">
-<meta itemprop="description" content="Using this tool, you can manage the dispute processes generated in your PayU account.
+<meta itemprop="description" content="Find all the information about the dispute module. This tool found in your PayU module, allows you to manage the dispute processes generated in your PayU account.
 "><meta itemprop="datePublished" content="2021-04-12T08:34:58-05:00" />
-<meta itemprop="dateModified" content="2021-10-22T10:15:41-05:00" />
-<meta itemprop="wordCount" content="1025">
+<meta itemprop="dateModified" content="2021-11-25T12:41:41-05:00" />
+<meta itemprop="wordCount" content="1230">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Disputes"/>
-<meta name="twitter:description" content="Using this tool, you can manage the dispute processes generated in your PayU account.
+<meta name="twitter:description" content="Find all the information about the dispute module. This tool found in your PayU module, allows you to manage the dispute processes generated in your PayU account.
 "/>
 
 
@@ -139,7 +139,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.7bfa18caeffe5546d8898a2a01701aec020546fe79fd08a54a58d592fc5e36bdba2fc7f0e6f5401988c2153aff6b9968b2b6b359c6382e5cf3de3af8c75faf26.json"
+  data-offline-search-index-json-src="../../../offline-search-index.add7e06097dedefafa35c4dc8441a251f600f581c7007e0bd7373163bc603762973cb1173f466176f879ad2ead7fd478c27e33f7a3ebef9e8bbbaef80b4b7711.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -741,6 +741,7 @@
       </ul>
     </li>
     <li><a href="#dispute-states">Dispute states</a></li>
+    <li><a href="#anti-fraud-tips-for-your-business">Anti-fraud tips for your business</a></li>
   </ul>
 </nav>
 
@@ -788,11 +789,12 @@
             
 <div class="td-content">
 	<h1>Disputes</h1>
-    <div class="lead">Using this tool, you can manage the dispute processes generated in your PayU account.</div>
+    <div class="lead">Find all the information about the dispute module. This tool found in your PayU module, allows you to manage the dispute processes generated in your PayU account.</div>
 	       
-	<p><img src="../../../assets/Disputes/Disputes_en.png" alt="Concepts"></p>
-<h2 id="what-is-a-dispute">What is a Dispute?</h2>
-<p>Your buyers can present a claim to their card issuing bank. The bank sends us a dispute notification, and we create the dispute in our system. This dispute froze the total amount of the sale in your PayU account.</p>
+	<h2 id="what-is-a-dispute">What is a Dispute?</h2>
+<p>Your buyers can present a claim to their card issuing bank. The bank sends us a dispute notification to determine the validity of the purchase, and we create the dispute in our system. After we create the dispute, we notify you through the PayU Module.</p>
+<p>The dispute freezes the total amount of the sale in your PayU account.</p>
+<p><img src="../../../assets/Disputes/Disputes_en2.png" alt="Concepts"></p>
 <h2 id="why-a-dispute-happens">Why a dispute happens?</h2>
 <p>A buyer can claim to their card issuer bank reporting that they have not received a product, the product is deficient, or it does not meet the expected characteristics. The buyer also can disclaim the purchase of their credit card invoice.<br>
 The reasons for starting a dispute process may vary, some of them are:</p>
@@ -805,6 +807,7 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 <li><strong>Amount does not match</strong>: the charge to the credit card does not match with the value of the purchase.</li>
 <li><strong>Not reported by the entity</strong>: the bank or processing network initiates a dispute process without a specific reason.</li>
 </ul>
+<p>As not all the financial entities use the same mechanisms to notify a dispute; therefore, PayU cannot guarantee that you can always know the reasons of the dispute.</p>
 
 
 <div class="alert alert-warning" role="alert">
@@ -812,6 +815,7 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 <ul>
 <li>Recall that PayU acts as an intermediary to let your commerce provide evidence in the dispute process between you and the bank entity. PayU has no interference on the result of the dispute, this decision depends on the issuing bank.</li>
 <li>Once a transaction is part of a dispute, the associated amount becomes part of the frozen balance; therefore, you cannot transfer funds from this balance to your bank account until the dispute is resolved.</li>
+<li>Your customers may claim a transaction up to <strong>120 days</strong> after the transaction date for local cards and <strong>180 days</strong> for international cards. These date are defined by the card franchises.</li>
 </ul>
 
 </div>
@@ -819,8 +823,8 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 <h2 id="how-does-the-disputes-process-works-in-payu">How does the disputes process works in PayU?</h2>
 <p>The disputes process follows a simple flow:</p>
 <h3 id="1-dispute-notification">1. Dispute notification</h3>
-<p>When a bank notifies PayU about a dispute, both you and your customer receives an e-mail notifying the start of the dispute process.</p>
-<p>We also send a <code>POST</code> with all the information of the dispute to the URL you set in your <a href="../../../en/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html#disputes">PayU module</a>. This way, you can automate your dispute management processes to minimize the risk of a possible chargeback.</p>
+<p>When a bank or a processing network notifies PayU about the start of a dispute process due to a claim of your customer, you can consult all the information related to it in the <a href="../../../en/payu-module-documentation/payu-operations/disputes-mp.html">Disputes module</a> of the PayU Module.</p>
+<p>If you have configured the notification e-mails in your <a href="../../../en/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html#disputes">PayU module</a>, you also receive the dispute information vía e-mail. Furthermore, when you have enabled the <em><strong>Automatic notification URL</strong></em>, we also send a <code>POST</code> notification. This way, you can automate your dispute management processes to minimize the risk of a possible chargeback.</p>
 <p>You can configure the URL where we make the notification in the PayU module. Log in to <a href="payu.com">PayU.com</a> and click the login option located at the top of the page. Alternatively, you can log in to <a href="https://merchants.payulatam.com/">https://merchants.payulatam.com/</a>.</p>
 <p>Click <em><strong>Settings</strong></em> and then select <em><strong>Technical configuration</strong></em>.</p>
 <p><img src="../../../assets/IntegrationVariables_01.png" alt="PrintScreen"></p>
@@ -831,7 +835,7 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 <p>You can view and manage your dispute processes from your PayU module, in the <em><strong>Dispute</strong></em> option inside the <em><strong>Transactions</strong></em> menu.</p>
 <p><img src="../../../assets/Disputes/Disputes_02.png" alt="PrintScreen"></p>
 <h3 id="3-provide-evidence">3. Provide evidence</h3>
-<p>It&rsquo;s important to always respond a dispute by providing evidence before the <a href="../../../en/docs/tools/disputes.html#maximum-days-to-provide-evidence">deadline stipulated by the bank</a>. After the deadline date, you cannot upload the corresponding evidence for a dispute.</p>
+<p>It&rsquo;s important to always respond a dispute by providing evidence before the <a href="../../../en/docs/tools/disputes.html#maximum-days-to-provide-evidence">deadline stipulated by the bank or the processing network</a>. After the deadline date, you cannot upload the corresponding evidence for a dispute.</p>
 <p>To learn how to upload evidence to resolve the dispute, refer to the <a href="../../../en/payu-module-documentation/payu-operations/disputes-mp.html">PayU module</a>.</p>
 <h4 id="what-information-can-be-useful">What information can be useful?</h4>
 <ul>
@@ -906,6 +910,10 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 <td>When the shop provides evidence for a dispute through the PayU module and the dispute is reviewed by the bank or network.</td>
 </tr>
 <tr>
+<td>Documents not provided</td>
+<td>The deadline date to provide evidence has been reached and the commerce did not provide any documentation.</td>
+</tr>
+<tr>
 <td>Lost</td>
 <td>The transaction is reversed from the virtual shopping account and may incur in a chargeback management cost.</td>
 </tr>
@@ -914,12 +922,12 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 <td>The dispute process is resolved in favor of the shop, there are no deductions of any kind.</td>
 </tr>
 <tr>
-<td>Refunded</td>
-<td>This process occurs when the shop authorizes to reverse the operation in self-determination, this prevents the shop from having to pay a chargeback transaction and it is replaced by a refund.</td>
-</tr>
-<tr>
 <td>Expired</td>
 <td>After past 120 days without a response from the bank, the amount is set to available for the merchant.</td>
+</tr>
+<tr>
+<td>Refunded</td>
+<td>This process occurs when the shop authorizes to reverse the operation in self-determination, this prevents the shop from having to pay a chargeback transaction and it is replaced by a refund.</td>
 </tr>
 </tbody>
 </table>
@@ -930,15 +938,22 @@ The reasons for starting a dispute process may vary, some of them are:</p>
 If you have activated <a href="../../../en/docs/tools/antifraud-guarantee.html">Anti-fraud Guarantee</a>, when the chargeback is subject to be covered by the guarantee, PayU assumes the values debited from your account. In this case, the status of this dispute is <em>Chargeback</em> (Lost) <em>With antifraud guarantee</em>.
 </div>
 
+<h2 id="anti-fraud-tips-for-your-business">Anti-fraud tips for your business</h2>
+<p>Fight against the digital fraud it&rsquo;s our duty!. Take into account the following tips:</p>
+<ol>
+<li>Be wary of an increase in purchases or service requests higher than expected due to the nature of your business.</li>
+<li>Be suspicious of purchases made with higher amounts than the average you receive in your commerce.</li>
+<li>Verify if you have a higher purchase volume form a single client or requested to the same address.</li>
+</ol>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 22, 2021:
+November 25, 2021:
 
- <b>Update mandatory parameters for Cash payments in Peru (859a4b25)</b>
+ <b>Changes for the disputes process (db778db7)</b>
 </div>
 </div>
 

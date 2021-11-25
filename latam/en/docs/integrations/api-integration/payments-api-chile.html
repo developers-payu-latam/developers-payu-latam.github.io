@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/api-integration/payments-api-chile.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2021-11-02T08:37:25-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-11-25T12:42:09-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payments API - Chile">
 <meta itemprop="description" content="Payments API Chile lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2021-11-02T08:37:25-05:00" />
-<meta itemprop="wordCount" content="7422">
+<meta itemprop="dateModified" content="2021-11-25T12:42:09-05:00" />
+<meta itemprop="wordCount" content="7424">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Chile"/>
 <meta name="twitter:description" content="Payments API Chile lets your shop process different transaction types with multiple payment methods.
@@ -139,7 +139,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.7bfa18caeffe5546d8898a2a01701aec020546fe79fd08a54a58d592fc5e36bdba2fc7f0e6f5401988c2153aff6b9968b2b6b359c6382e5cf3de3af8c75faf26.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.add7e06097dedefafa35c4dc8441a251f600f581c7007e0bd7373163bc603762973cb1173f466176f879ad2ead7fd478c27e33f7a3ebef9e8bbbaef80b4b7711.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -2945,7 +2945,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 </details>
 <h4 id="considerations-2">Considerations</h4>
 <ul>
-<li>The parameter <code>transaction.expirationDate</code> is not mandatory. If you don&rsquo;t send this parameter, its default value for is seven days after the current date at 12:00 pm.<br>If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.</li>
+<li>The parameter <code>transaction.expirationDate</code> is not mandatory. If you don&rsquo;t send this parameter, its default value is seven days after the current date at 12:00 pm.<br>If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.</li>
 <li>You must set a response URL in the parameter <code>NETWORK_CALLBACK_URL</code> inside <code>transaction.extraParameters</code>; this URL redirects the user back to your page after they finish the online payment procedure.</li>
 <li>You must redirect the payer to the Klap webpage (fka as Multicaja) to let them perform the cash payment. This URL is found in the <code>BANK_URL</code> parameter in the response.</li>
 </ul>
@@ -3689,7 +3689,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 <td>transaction &gt; type</td>
 <td>Alphanumeric</td>
 <td>32</td>
-<td>As cash payments are performed in physical offices, the only available transaction type is <code>AUTHORIZATION_AND_CAPTURE</code></td>
+<td>As payments are made on the WebPay plus page, the only available transaction type is <code>AUTHORIZATION_AND_CAPTURE</code></td>
 <td style="text-align:center">Yes</td>
 </tr>
 <tr>
@@ -3738,7 +3738,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 <td>transaction &gt; extraParameters</td>
 <td></td>
 <td></td>
-<td>Additional parameters or data associated with the request. For Bank transfer payments, this is the response page of your commerce.<br>In JSON, the <em>extraParameters</em> parameter is set as: <br><code>&quot;extraParameters&quot;: {</code><br> <code>&quot;RESPONSE_URL&quot;: &quot;http://www.test.com/response&quot;</code><br><code>}</code><br><br>In XML, the <em>extraParameters</em> parameter is set as: <br><code>&lt;extraParameters&gt;</code><br> <code>&lt;entry&gt;</code><br>  <code>&lt;string&gt;RESPONSE_URL&lt;/string&gt;</code><br>  <code>http://www.test.com/response</code><br> <code>&lt;/entry&gt;</code><br><code>&lt;/extraParameters&gt;</code></td>
+<td>Additional parameters or data associated with the request. For payments through WebPay plus, this is the response page of your commerce.<br>In JSON, the <em>extraParameters</em> parameter is set as: <br><code>&quot;extraParameters&quot;: {</code><br> <code>&quot;RESPONSE_URL&quot;: &quot;http://www.test.com/response&quot;</code><br><code>}</code><br><br>In XML, the <em>extraParameters</em> parameter is set as: <br><code>&lt;extraParameters&gt;</code><br> <code>&lt;entry&gt;</code><br>  <code>&lt;string&gt;RESPONSE_URL&lt;/string&gt;</code><br>  <code>http://www.test.com/response</code><br> <code>&lt;/entry&gt;</code><br><code>&lt;/extraParameters&gt;</code></td>
 <td style="text-align:center">No</td>
 </tr>
 </tbody>
@@ -3853,8 +3853,8 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 </details>
 <h4 id="considerations-3">Considerations</h4>
 <ul>
-<li>If you don&rsquo;t send the <code>RESPONSE_URL</code> parameter in <code>transaction.extraParameters</code>, the API took the value from the <em><strong>Response URL</strong></em> variable in your PayU Module (<em><strong>Settings</strong></em> &gt; <em><strong>Technical configuration</strong></em>).</li>
-<li>When you process bank transfer payment, you must redirect the customer to the URL found in the <code>URL_PAYMENT_REDIRECT</code> extra parameter concatenated with the <code>TRANSBANK_DIRECT_TOKEN</code> extra parameter as follows: <br> <code>URL_PAYMENT_REDIRECT?token_ws=TRANSBANK_DIRECT_TOKEN</code>.</li>
+<li>If you don&rsquo;t send the <code>RESPONSE_URL</code> parameter in <code>transaction.extraParameters</code>, the API takes the value from the <em><strong>Response URL</strong></em> variable in your PayU Module (<em><strong>Settings</strong></em> &gt; <em><strong>Technical configuration</strong></em>).</li>
+<li>When you process payments through WebPay plus, you must redirect the customer to the URL found in the <code>URL_PAYMENT_REDIRECT</code> extra parameter concatenated with the <code>TRANSBANK_DIRECT_TOKEN</code> extra parameter as follows: <br> <code>URL_PAYMENT_REDIRECT?token_ws=TRANSBANK_DIRECT_TOKEN</code>.</li>
 <li>If the payment request is successful, the transaction has state <code>PENDING</code> and responseCode <code>PENDING_PAYMENT_IN_ENTITY</code>; this is because the payer is redirected to the selected bank to complete the payment.</li>
 <li>The response page must have the following variables:</li>
 </ul>
@@ -4650,9 +4650,9 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-November 2, 2021:
+November 25, 2021:
 
- <b>Changes found during the translation procedure (177862ea)</b>
+ <b>Grammar fixes found during the translation procedure (667c2df9)</b>
 </div>
 </div>
 
