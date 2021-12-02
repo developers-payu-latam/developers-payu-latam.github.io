@@ -1,2 +1,9 @@
-var element = document.getElementById(window.location.pathname.replace('/latam',''));
+var strLocation = window.location.pathname;
+var strsplit = strLocation.split('/');
+if (strsplit[1].length > 2) {
+    var folder = '/' + strsplit[0];
+    strLocation = strLocation.replace(folder, '');
+}
+
+var element = document.getElementById(strLocation);
 element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })

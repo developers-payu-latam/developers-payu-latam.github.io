@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/sdk-integration/tokenizationsdk.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T08:31:38-05:00" />
-<meta property="article:modified_time" content="2021-11-03T17:04:11-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-12-02T14:30:25-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Tokenization SDK">
 <meta itemprop="description" content="Tokenization SDK allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
 "><meta itemprop="datePublished" content="2021-03-29T08:31:38-05:00" />
-<meta itemprop="dateModified" content="2021-11-03T17:04:11-05:00" />
-<meta itemprop="wordCount" content="1045">
+<meta itemprop="dateModified" content="2021-12-02T14:30:25-05:00" />
+<meta itemprop="wordCount" content="1068">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tokenization SDK"/>
 <meta name="twitter:description" content="Tokenization SDK allows you to safely store the data of your customers&#39; credit cards through the creation of a token. This token lets you make regular charges or implement the 1 Click payment feature, following PCI DSS (Payment Card Industry Data Security Standard) security standards to handle credit card data.
@@ -139,7 +139,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.add7e06097dedefafa35c4dc8441a251f600f581c7007e0bd7373163bc603762973cb1173f466176f879ad2ead7fd478c27e33f7a3ebef9e8bbbaef80b4b7711.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.813801ee2689951fc8aea832946f747e42436ebc3b957b5b245993816236185b6789be62936f197008b652aa4b6c6d338f5b570e102eb8c616e57f000f9af1d4.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -886,7 +886,6 @@
 </div>
 <h2 id="available-methods">Available methods</h2>
 <p>Tokenization SDK includes methods to register and remove tokens, and methods to query tokens.</p>
-<p>For registration a removal of tokens:</p>
 <ul>
 <li><a href="../../../../en/docs/integrations/sdk-integration/tokenizationsdk.html#individual-credit-card-registration">Individual credit card registration</a></li>
 <li><a href="../../../../en/docs/integrations/sdk-integration/tokenizationsdk.html#individual-token-removal">Individual token removal</a></li>
@@ -1078,7 +1077,18 @@
 
 <div class="tab-pane fade" id="tab42" role="tabpanel" aria-labelledby="nav-tabName2">
 
-	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#000">$parameters</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">array</span><span style="color:#000;font-weight:bold">(</span>
+	<span style="color:#8f5902;font-style:italic">// Enter the ID of the payer here.
+</span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">PAYER_ID</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;10&#34;</span><span style="color:#000;font-weight:bold">,</span>
+	<span style="color:#8f5902;font-style:italic">// Enter the ID of the token here.
+</span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PayUParameters</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">TOKEN_ID</span> <span style="color:#ce5c00;font-weight:bold">=&gt;</span> <span style="color:#4e9a06">&#34;ab01ecd5-7d8f-4bee-91c1-4535d9ba282e&#34;</span>         
+<span style="color:#000;font-weight:bold">);</span>
+
+<span style="color:#000">$response</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">PayUTokens</span><span style="color:#ce5c00;font-weight:bold">::</span><span style="color:#c4a000">remove</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">$parameters</span><span style="color:#000;font-weight:bold">);</span>
+
+<span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">$response</span><span style="color:#000;font-weight:bold">){</span>
+
+<span style="color:#000;font-weight:bold">}</span>
 </code></pre></div>
 
 </div>
@@ -1411,9 +1421,9 @@ By default, processing credit cards without security code is not enabled. If you
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-November 3, 2021:
+December 2, 2021:
 
- <b>Changes found during the translation procedure (f2b9d537)</b>
+ <b>Grammar fixes found during the translation procedure (b003eb73)</b>
 </div>
 </div>
 
