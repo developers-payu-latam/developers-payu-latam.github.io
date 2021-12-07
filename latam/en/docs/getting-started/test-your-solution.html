@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/getting-started/test-your-solution.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-04-06T15:34:20-05:00" />
-<meta property="article:modified_time" content="2021-10-05T16:23:59-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-12-07T09:26:41-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Test Your Solution">
 <meta itemprop="description" content="PayU has a sandbox environment in which, you can test your solution before moving to the live environment, where you can receive real payments and transactions.
 "><meta itemprop="datePublished" content="2021-04-06T15:34:20-05:00" />
-<meta itemprop="dateModified" content="2021-10-05T16:23:59-05:00" />
-<meta itemprop="wordCount" content="674">
+<meta itemprop="dateModified" content="2021-12-07T09:26:41-05:00" />
+<meta itemprop="wordCount" content="809">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Test Your Solution"/>
 <meta name="twitter:description" content="PayU has a sandbox environment in which, you can test your solution before moving to the live environment, where you can receive real payments and transactions.
@@ -139,7 +139,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.997c1fb9024854ca320db911810aec630579da420eea11463c80ff530160fa7e66bd5c75f00e2e09473c12a04e8b680c5bc9a22b4e6b1c7d8294b29bde32b7f3.json"
+  data-offline-search-index-json-src="../../../offline-search-index.53a392783f46236fd053153424a051c83bb5230e9636efb1b501dc30943ac916e3f576013bc8b1d046d697d7040234ebaeeba0b98faa9fceecd17434aa2249ca.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -1104,13 +1104,28 @@
 <h3 id="testing-status">Testing status</h3>
 <p>When testing Payments, you must send in the request:</p>
 <ul>
-<li>The <code>test</code> parameter as <code>true</code>.</li>
-<li>Set <strong>777</strong> in the CVV of the card (for AMEX, use <strong>7777</strong>).</li>
-<li>Send the name of the transaction status in the name of the cardholder.
+<li><strong>To get <em>approved</em> transactions</strong>:
 <ul>
-<li>For approved transactions, send <strong>APPROVED</strong> value.</li>
-<li>For rejected transactions, send <strong>REJECTED</strong> value.</li>
-<li>For pending transactions, send <strong>PENDING</strong> value.</li>
+<li>Send <code>APPROVED</code> in the name of the cardholder.</li>
+<li>Send <strong>777</strong> in the CVV of the card (for AMEX, use <strong>7777</strong>).</li>
+<li>The <code>test</code> parameter and the description also define the state. If it doesn&rsquo;t work with <code>test</code> set as <em>false</em>, change its value to <em>true</em>.</li>
+<li>Send the month of the expiration date of the card less than <code>6</code> and the year must be <code>2023</code> or higher. Example: <code>05/2025</code>.</li>
+</ul>
+</li>
+<li><strong>To get <em>declined</em> transactions</strong>:
+<ul>
+<li>Send <code>REJECTED</code> in the name of the cardholder.</li>
+<li>Send <strong>666</strong> in the CVV of the card (for AMEX, use <strong>6666</strong>).</li>
+<li>The <code>test</code> parameter and the description also define the state. If it doesn&rsquo;t work with <code>test</code> set as <em>false</em>, change its value to <em>true</em>.</li>
+<li>Send the month of the expiration date of the card higher than <code>6</code> and the year must be <code>2023</code> or higher. Example: <code>07/2027</code>.</li>
+</ul>
+</li>
+<li><strong>To get <em>pending</em> transactions</strong>:
+<ul>
+<li>Send <code>PENDING</code> in the name of the cardholder.</li>
+<li>Send <strong>777</strong> in the CVV of the card (for AMEX, use <strong>7777</strong>).</li>
+<li>Send the <code>test</code> parameter as <em>true</em>.</li>
+<li>In the buyer and payer information, set the email as <code>manual-reviewhub@email.com</code>.</li>
 </ul>
 </li>
 <li>For the card number you must enter a valid number, corresponding to the franchise sent in the request. You can use an online card generator for testing purposes or use one of the cards available for your country mentioned before.</li>
@@ -1159,9 +1174,9 @@ data-postman-param="env%5BPayU%20API%20-%20Sandbox%5D=W3sia2V5IjoiZW52IiwidmFsdW
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 5, 2021:
+December 7, 2021:
 
- <b>Changes due to grammar errors found during translation process (c52d10d9)</b>
+ <b>Changes in testing status (9e58b776)</b>
 </div>
 </div>
 
