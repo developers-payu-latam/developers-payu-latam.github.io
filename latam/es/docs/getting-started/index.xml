@@ -1039,13 +1039,28 @@ Para activar tu cuenta debes:&lt;/p&gt;
 &lt;h3 id=&#34;testing-status&#34;&gt;Probar estados&lt;/h3&gt;
 &lt;p&gt;Cuando pruebas los Pagos, debes enviar en el request:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;El parámetro &lt;code&gt;test&lt;/code&gt; como &lt;code&gt;true&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Asigna &lt;strong&gt;777&lt;/strong&gt; en el CVV de la tarjeta (para AMEX, utilice &lt;strong&gt;7777&lt;/strong&gt;).&lt;/li&gt;
-&lt;li&gt;Envía el nombre del estado de la transacción en el nombre del tarjetahabiente.
+&lt;li&gt;&lt;strong&gt;Para obtener transacciones &lt;em&gt;aprobadas&lt;/em&gt;&lt;/strong&gt;:
 &lt;ul&gt;
-&lt;li&gt;Para transacciones aprobadas, envía el valor &lt;strong&gt;APPROVED&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;Para transacciones rechazadas, envía el valor &lt;strong&gt;REJECTED&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;Para transacciones en estado pendiente, envía el valor &lt;strong&gt;PENDING&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Envía &lt;code&gt;APPROVED&lt;/code&gt; en el nombre del tarjetahabiente.&lt;/li&gt;
+&lt;li&gt;Envía &lt;strong&gt;777&lt;/strong&gt; en el CVV de la tarjeta (para AMEX, utiliza &lt;strong&gt;7777&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;El parámetro &lt;code&gt;test&lt;/code&gt; y la descripción también definen el estado. Si no funciona con &lt;code&gt;test&lt;/code&gt; asignado como &lt;em&gt;false&lt;/em&gt;, cambia su valor a &lt;em&gt;true&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Envía el mes de la expiración de la tarjeta menor a &lt;code&gt;6&lt;/code&gt; y el año debe ser &lt;code&gt;2023&lt;/code&gt; o mayor. Ejemplo: &lt;code&gt;05/2025&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Para obtener transacciones &lt;em&gt;declinadas&lt;/em&gt;&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Envía &lt;code&gt;REJECTED&lt;/code&gt; en el nombre del tarjetahabiente.&lt;/li&gt;
+&lt;li&gt;Envía &lt;strong&gt;666&lt;/strong&gt; en el CVV de la tarjeta (para AMEX, utiliza &lt;strong&gt;666&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;El parámetro &lt;code&gt;test&lt;/code&gt; y la descripción también definen el estado. Si no funciona con &lt;code&gt;test&lt;/code&gt; asignado como &lt;em&gt;false&lt;/em&gt;, cambia su valor a &lt;em&gt;true&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Envía el mes de la expiración de la tarjeta mayor a &lt;code&gt;6&lt;/code&gt; y el año debe ser &lt;code&gt;2023&lt;/code&gt; o mayor. Ejemplo: &lt;code&gt;07/2027&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Para obtener transacciones &lt;em&gt;pendientes&lt;/em&gt;&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Envía &lt;code&gt;PENDING&lt;/code&gt; en el nombre del tarjetahabiente.&lt;/li&gt;
+&lt;li&gt;Envía &lt;strong&gt;777&lt;/strong&gt; en el CVV de la tarjeta (para AMEX, utiliza &lt;strong&gt;7777&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;Envía el parámetro &lt;code&gt;test&lt;/code&gt; como &lt;em&gt;true&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;En la información del comprador y el pagador, asigna la dirección de correo electrónico &lt;code&gt;manual-reviewhub@email.com&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Para el número de la tarjeta, utiliza un número válido que corresponda a la franquicia enviada en el request. Puedes utilizar un generador en línea de tarjetas de crédito o una de las  correspondientes a tu país mencionadas anteriormente.&lt;/li&gt;
