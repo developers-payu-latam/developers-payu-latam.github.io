@@ -1,0 +1,2546 @@
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>API de Payouts | PayU Latam</title><meta property="og:title" content="API de Payouts" />
+<meta property="og:description" content="Este recurso permite que você crie pagamentos múltiplos e seguros para beneficiários (usuários, vendedores, provedores, clientes, etc.) usando os fundos que você tem em sua conta PayU.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pt/docs/integrations/api-integration/payouts-api.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-08-09T14:58:45-05:00" />
+<meta property="article:modified_time" content="2021-12-17T14:22:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="API de Payouts">
+<meta itemprop="description" content="Este recurso permite que você crie pagamentos múltiplos e seguros para beneficiários (usuários, vendedores, provedores, clientes, etc.) usando os fundos que você tem em sua conta PayU.
+"><meta itemprop="datePublished" content="2021-08-09T14:58:45-05:00" />
+<meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
+<meta itemprop="wordCount" content="3096">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="API de Payouts"/>
+<meta name="twitter:description" content="Este recurso permite que você crie pagamentos múltiplos e seguros para beneficiários (usuários, vendedores, provedores, clientes, etc.) usando os fundos que você tem em sua conta PayU.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../pt/">
+			
+			
+			<span class="navbar-logo"><img src="../../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../../pt/docs.html" ><span class="active">Pagamentos Online</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../../pt/payu-module-documentation.html" ><span>Guia do Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../es/docs/integrations/api-integration/payouts-api.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/api-integration/payouts-api.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar no site…"
+  aria-label="Buscar no site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../offline-search-index.fa5d8842ef501d9b5efffb7036cc38f0b8891b5dc6f85c098b704be150099196a0b1c5a83e68d3a1172ca98cfa91dc8125737bceeb145954b7bfec4b1312fb26.json"
+  data-offline-search-base-href="../../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../es/docs/integrations/api-integration/payouts-api.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/api-integration/payouts-api.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs.html" href="../../../../pt/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Início</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/getting-started.html" href="../../../../pt/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Para começar</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedcreate-an-accounthtml" href="../../../../pt/docs/getting-started/create-an-account.html">Crie uma conta PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-integrationhtml" href="../../../../pt/docs/getting-started/select-your-integration.html">Selecione sua integração</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-payment-methodhtml" href="../../../../pt/docs/getting-started/select-your-payment-method.html">Selecione seu método de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedtest-your-solutionhtml" href="../../../../pt/docs/getting-started/test-your-solution.html">Teste sua solução</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-starteddeploy-to-productionhtml" href="../../../../pt/docs/getting-started/deploy-to-production.html">Implementar na produção</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedresponse-codes-and-variableshtml" href="../../../../pt/docs/getting-started/response-codes-and-variables.html">Códigos e variáveis de resposta</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/services.html" href="../../../../pt/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Serviços</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespaymentshtml" href="../../../../pt/docs/services/payments.html">Pagamentos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesquerieshtml" href="../../../../pt/docs/services/queries.html">Consultas para transações</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicestokenizationhtml" href="../../../../pt/docs/services/tokenization.html">Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespromotionshtml" href="../../../../pt/docs/services/promotions.html">Parcelas e promoções - Argentina e México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesrefundshtml" href="../../../../pt/docs/services/refunds.html">Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespayoutshtml" href="../../../../pt/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/tools.html" href="../../../../pt/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Ferramentas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-requesthtml" href="../../../../pt/docs/tools/payment-request.html">Solicitação de pagamento</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/tools/shopping-cart-plugins.html" href="../../../../pt/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins do carrinho de compras</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsmagentohtml" href="../../../../pt/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../../pt/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../../pt/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../../pt/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsopencarthtml" href="../../../../pt/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayu-modulehtml" href="../../../../pt/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsdisputeshtml" href="../../../../pt/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-couponshtml" href="../../../../pt/docs/tools/payment-coupons.html">Cupons de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsantifraud-guaranteehtml" href="../../../../pt/docs/tools/antifraud-guarantee.html">Garantia Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/integrations.html" href="../../../../pt/docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integrações</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/webcheckout-integration.html" href="../../../../pt/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração Webcheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../../pt/docs/integrations/webcheckout-integration/payment-form.html">Formulário de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../../pt/docs/integrations/webcheckout-integration/response-page.html">Página de resposta</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../../pt/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmação</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/api-integration.html" href="../../../../pt/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Integração API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-argentina.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-argentina.html">API de pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-brazil.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../../pt/docs/integrations/api-integration/payments-api-brazil.html">API de pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-chile.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../../pt/docs/integrations/api-integration/payments-api-chile.html">API de pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-colombia.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-colombia.html">API de pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-mexico.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../../pt/docs/integrations/api-integration/payments-api-mexico.html">API de pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-panama.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-panama.html">API de pagamentos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-peru.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../../pt/docs/integrations/api-integration/payments-api-peru.html">API de pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/queries-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationqueries-apihtml" href="../../../../pt/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/tokenization-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationtokenization-apihtml" href="../../../../pt/docs/integrations/api-integration/tokenization-api.html">API de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/promotions-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpromotions-apihtml" href="../../../../pt/docs/integrations/api-integration/promotions-api.html">API de promoções</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/refunds-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationrefunds-apihtml" href="../../../../pt/docs/integrations/api-integration/refunds-api.html">API de Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payouts-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayouts-apihtml" href="../../../../pt/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/sdk-integration.html" href="../../../../pt/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationqueriessdkhtml" href="../../../../pt/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationrefundssdkhtml" href="../../../../pt/docs/integrations/sdk-integration/refundssdk.html">SDK de Cancelamentos e Reembolsos</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/server-status.html" href="../../../../pt/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Status do servidor</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>Nesta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#configuring-the-authentication">Como configurar a autenticação</a></li>
+    <li><a href="#available-methods">Métodos disponíveis</a></li>
+    <li><a href="#authentication">Autenticação</a>
+      <ul>
+        <li><a href="#api-call">Chamada API</a></li>
+      </ul>
+    </li>
+    <li><a href="#request-payout">Solicitar payout</a>
+      <ul>
+        <li><a href="#api-call-1">Chamada API</a></li>
+        <li><a href="#variables-for-request-and-response">Variáveis para pedido e resposta</a></li>
+      </ul>
+    </li>
+    <li><a href="#cancel-payout-request">Cancelar ordem de Payout</a>
+      <ul>
+        <li><a href="#api-call-2">Chamada API</a></li>
+        <li><a href="#variables-for-request">Variáveis para pedido</a></li>
+      </ul>
+    </li>
+    <li><a href="#create-or-update-a-webhook">Create ou Update a WebHook</a>
+      <ul>
+        <li><a href="#api-call-3">Chamada API</a></li>
+        <li><a href="#variables-for-request-and-response-1">Variáveis para pedido e resposta</a></li>
+      </ul>
+    </li>
+    <li><a href="#delete-a-webhook">Excluir um WebHook</a>
+      <ul>
+        <li><a href="#api-call-4">Chamada API</a></li>
+      </ul>
+    </li>
+    <li><a href="#query-webhooks">Consultar WebHooks</a>
+      <ul>
+        <li><a href="#query-webhooks-by-id">Consultar WebHooks por Id</a></li>
+        <li><a href="#query-webhooks-by-account">Consultar webhooks por conta</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs.html">Início</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs/integrations.html">Integrações</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs/integrations/api-integration.html">Integração API</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../../pt/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>API de Payouts</h1>
+    <div class="lead">Este recurso permite que você crie pagamentos múltiplos e seguros para beneficiários (usuários, vendedores, provedores, clientes, etc.) usando os fundos que você tem em sua conta PayU.</div>
+	       
+	<p>Para termos introdutórios, como solicitar este serviço e mais informações, consulte <a href="../../../../pt/docs/services/payouts.html">Payouts</a>.</p>
+<h2 id="configuring-the-authentication">Como configurar a autenticação</h2>
+<p>Para usar os métodos de gerenciamento de Payouts ou WebHooks expostos pelo serviço de Payouts, você deve incluir os cabeçalhos <code>Authorization</code> e <code>PublicKey</code>:</p>
+<ul>
+<li>Para configurar o cabeçalho <code>Authorization</code>, use o <a href="#authentication">Método de autenticação</a> fornecido pelo serviço de Payouts. <br>Exemplo:</li>
+</ul>
+<pre><code>Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c 
+</code></pre><br>
+<ul>
+<li>Para configurar o cabeçalho <code>PublicKey</code>, use sua chave pública, que pode ser encontrada no Módulo PayU (<strong><em>Configuração</em></strong> &gt; <strong><em>Configuração técnica</em></strong> &gt; <strong><em>Chave pública</em></strong>).</li>
+</ul>
+<p><img src="../../../../assets/Promotions/PublicKey_pt.png" alt="PrintScreen"></p>
+<h2 id="available-methods">Métodos disponíveis</h2>
+<p>A API de Payouts inclui os seguintes métodos:</p>
+<ul>
+<li><a href="#authentication">Autenticação</a></li>
+<li><a href="#request-payout">Solicitar payout</a></li>
+<li><a href="#cancel-payout-request">Cancelar ordem de Payout</a></li>
+<li><a href="#create-or-update-a-webhook">Criar ou atualizar um WebHook</a></li>
+<li><a href="#delete-a-webhook">Excluir um WebHook</a></li>
+<li><a href="#query-webhooks">Consultar WebHooks</a></li>
+</ul>
+<h2 id="authentication">Autenticação</h2>
+<p>A primeira etapa, seja qual for o método que você deseja solicitar, é autenticar sua conta usando as credenciais fornecidas pelo PayU.</p>
+<p>O método <em>autenticação</em> registra o comércio retornando o Token JWT gerado para usar os serviços expostos pelos Payouts. Este token fica disponível durante 10 minutos após sua criação.</p>
+<h3 id="api-call">Chamada API</h3>
+<p>Para autenticar, envie a solicitação da seguinte forma:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/authenticate?accountId={accountId}&amp;apiKey={apiKey}&amp;apiLogin={apiLogin}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> mostrado acima é <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>Senha fornecida pelo PayU. <a href="../../../../pt/docs/integrations.html#api-key-and-api-login">Como faço para obter minha API key</a></td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>apiLogin</td>
+<td>Usuário ou login fornecido pelo PayU. <a href="../../../../pt/docs/integrations.html#api-key-and-api-login">Como faço para obter minha API Login</a></td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-example">Exemplo resposta</h4>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab11" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="1">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab11" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;token&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Bearer eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTYyODU0ODE2NywiaWF0IjoxNjI4NTQ4MTY3fQ.jrO3u5ramYKOvoNNb0TNfBuZkbYg1EvPmCDDYXFEO4c&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab12" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+<h2 id="request-payout">Solicitar payout</h2>
+<p>Este método permite que você crie uma ou várias solicitações de Payouts para beneficiários, que podem ser novas ou existentes. Assim que você cria a solicitação, ela passa pelos <a href="../../../../pt/docs/services/payouts.html#payout-states">estados disponíveis</a> para Payouts.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Você precisa incluir dois cabeçalhos para usar este método, consulte <a href="#configuring-the-authentication">Configurar autenticação </a> para obter mais informações. Além disso, você precisa saber seu ID de vendedor e conta, você pode obter essas informações no seu Módulo PayU.
+</div>
+
+<h3 id="api-call-1">Chamada API</h3>
+<p>Para criar um pedido de Payout, use a seguinte URL:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/supplier-transfers/{merchantId}/{accountId}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> mostrado acima é <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Número de identificação do comércio no sistema PayU.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<p>Ambos os parâmetros podem ser encontrados em seu módulo PayU.</p>
+<h3 id="variables-for-request-and-response">Variáveis para pedido e resposta</h3>
+<details>
+<summary>Parâmetros de pedido</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transfers</td>
+<td>Lista</td>
+<td></td>
+<td>Lista das transferências que você deseja criar.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; value</td>
+<td>Numérico</td>
+<td></td>
+<td>Valor a ser transferido de seus fundos. A moeda deste valor é a que está configurada em sua conta PayU</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount</td>
+<td></td>
+<td></td>
+<td>Este objeto contém as informações da conta bancária do beneficiário que receberá o pagamento.<br>O beneficiário pode ser existente ou novo.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; id</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identificador da conta bancária do beneficiário.<br>Envie este parâmetro quando quiser solicitar um pagamento para um beneficiário existente.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; supplierType</td>
+<td>Alfanumérico</td>
+<td>Mín:11 Máx:16</td>
+<td>RTipo de relacionamento entre você e o beneficiário. Você pode escolher um dos seguintes valores: <ul style="margin-bottom: initial;"><li><code>SUBMERCHANT</code>: selecione esta relação se o beneficiário for um vendedor relacionado.</li><li><code>RELATED_PROVIDER</code>: selecione esta relação se o beneficiário for um provedor</li><li><code>RELATED_THIRD_PARTY</code>: selecione este tipo se o beneficiário for um cliente, um funcionário ou qualquer usuário de seus serviços.</li></ul><br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; accountNumber</td>
+<td>Alfanumérico</td>
+<td>Máx:17</td>
+<td>Número da conta bancária do beneficiário.<br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; bankCode</td>
+<td>Numérico</td>
+<td>Mín:3 Máx:4</td>
+<td>Código do banco que emitiu a conta do beneficiário. <a href="../../../../pt/docs/getting-started/response-codes-and-variables.html#banks-for-payouts">Veja os códigos de bancos</a>.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; accountType</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Definir <code>CC</code> para conta corrente e <code>CA</code> para conta poupança ou <code>Nequi</code><sup>*</sup>.<br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.<br><sup>*</sup><em>Nequi está disponível na Colômbia</em>.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; country</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>País da conta bancária no formato ISO 3166 Alpha-2.<br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; documentNumber</td>
+<td>Numérico</td>
+<td>50</td>
+<td>Número de identificação do beneficiário. If the <code>documentType</code> is <code>NIT</code>, the document number must have a hyphen (<code>-</code>) and the check digit. Exemplo: <code>830140299-6</code>.<br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; documentType</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Tipo de identificação do beneficiário. <a href="../../../../pt/docs/getting-started/response-codes-and-variables.html#document-types">Veja os tipos de documentos</a>.<br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; expeditionDate</td>
+<td>Alfanumérico</td>
+<td>10</td>
+<td>Data de expedição do documento de identidade. Formato <code>YYYY/MM/DD</code>.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; fullName</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Nome completo do beneficiário.<br>Este parâmetro é obrigatório quando você está criando uma solicitação de pagamento para um novo beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; birthDate</td>
+<td>Alfanumérico</td>
+<td>10</td>
+<td>Data de nascimento do beneficiário. Formato <code>YYYY/MM/DD</code>.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; state</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Estado da conta bancária. Definir <code>ACTIVE</code> quando você está criando um beneficiário.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; bankAccount &gt; merchantId</td>
+<td>Numérico</td>
+<td></td>
+<td>Identificador da sua loja no PayU.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transfers[n] &gt; description</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Informações adicionais sobre o pagamento.</td>
+<td style="text-align:center">Não</td>
+</tr>
+</tbody>
+</table>
+<!--additionalData-->
+</details>
+<details>
+<summary>Parâmetros de resposta</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>totalSuccessful</td>
+<td>Numérico</td>
+<td></td>
+<td>Número de Payouts criados com sucesso.</td>
+</tr>
+<tr>
+<td>totalFailed</td>
+<td>Numérico</td>
+<td></td>
+<td>Número de pagamentos que não puderam ser criados.</td>
+</tr>
+<tr>
+<td>successfulItems</td>
+<td>Lista</td>
+<td></td>
+<td>Lista de itens que foram processados com sucesso.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Status do pedido de Payout. Para transações bem-sucedidas, o valor é <code>SUCCESS</code></td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; paymentOrderId</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>ID gerado para a solicitação de Payout. Use este id para atualizar ou cancelar a solicitação.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; value</td>
+<td>Numérico</td>
+<td></td>
+<td>Valor do pedido.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount</td>
+<td></td>
+<td></td>
+<td>Este objeto contém as informações da conta bancária que receberá o pagamento.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>BStatus de registro da conta bancária. Para registros bem-sucedidos, o valor é <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; id</td>
+<td>Alfanumérico</td>
+<td>36</td>
+<td>Identifier of the registered Bank account.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; supplierType</td>
+<td>Alfanumérico</td>
+<td>Mín:11 Máx:16</td>
+<td>Relationship type selected for the payee.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; accountNumber</td>
+<td>Alfanumérico</td>
+<td>Máx:17</td>
+<td>Número da conta bancária do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; bankCode</td>
+<td>Numérico</td>
+<td>Mín:3 Máx:4</td>
+<td>Código do banco que emitiu a conta do beneficiário. <a href="../../../../pt/docs/getting-started/response-codes-and-variables.html#banks-for-payouts">Veja os códigos de bancos</a>.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; bankName</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Nome do banco do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; accountType</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Tipo de conta do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; country</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>País da conta bancária .</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; documentNumber</td>
+<td>Numérico</td>
+<td>50</td>
+<td>Número de identificação do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; documentType</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Tipo de identificação do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; expeditionDate</td>
+<td>Alfanumérico</td>
+<td>10</td>
+<td>Data de expedição do documento de identidade.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; fullName</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Nome completo do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; birthDate</td>
+<td>Alfanumérico</td>
+<td>10</td>
+<td>Data de nascimento do beneficiário.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; bankAccount &gt; state</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Estado da conta bancária.</td>
+</tr>
+<tr>
+<td>successfulItems[n] &gt; description</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Informações adicionais sobre o pagamento.</td>
+</tr>
+<tr>
+<td>failedItems</td>
+<td>Lista</td>
+<td></td>
+<td>Lista de itens que falharam durante o processamento.</td>
+</tr>
+<tr>
+<td>failedItems[n] &gt; processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Status do pedido de Payout. Para transações com falha, o valor é <code>FAILED</code>.</td>
+</tr>
+<tr>
+<td>failedItems[n] &gt; failureMessages</td>
+<td>Lista</td>
+<td></td>
+<td>Lista de mensagens de erro que geraram a falha.</td>
+</tr>
+<tr>
+<td>failedItems[n] &gt; value</td>
+<td>Numérico</td>
+<td></td>
+<td>Valor do pedido.</td>
+</tr>
+<tr>
+<td>failedItems[n] &gt; bankAccount</td>
+<td></td>
+<td></td>
+<td>Este objeto contém as informações da conta bancária que falhou. Este elemento possui os mesmos parâmetros do objeto <code>successfulItems[n].bankAccount</code>.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<br>
+<p>O seguinte exemplo de pedido envia três Payouts:</p>
+<ul>
+<li>O primeiro e o segundo pagamento são solicitados para beneficiários não registrados. O segundo falha porque o parâmetro Código bancário tem um valor inválido.</li>
+<li>O beneficiário pagamento é para um beneficiário registrado.</li>
+</ul>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-2" data-toggle="tab" href="#tab21" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="2">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab21" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;transfers&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1500000</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;bankAccount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;supplierType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RELATED_THIRD_PARTY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2198922910000</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;bankCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;007&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CO&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;documentNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1026304116</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;documentType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;expeditionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1996-05-17&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Santiago Romero Pineda&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;birthDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1975-03-07&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;merchantId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">510608</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;First Payment&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2000000</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;bankAccount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;supplierType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RELATED_PROVIDER&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2198922910330</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;bankCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CO&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;documentNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">102688116</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;documentType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;expeditionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2001-05-17&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Juan Perez&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;birthDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1985-04-17&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;merchantId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">510608</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Payment of supplies&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">4500000</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;bankAccount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e202507e-5551-4b67-be2a-a2a834bf1438&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Registered supplier payment&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;totalSuccessful&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;totalFailed&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;successfulItems&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentOrderId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7202a9a7-ef51-4202-bd23-e604f9cbb25b&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1500000.00</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;bankAccount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e202507e-5551-4b67-be2a-a2a834bf1438&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;supplierType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RELATED_THIRD_PARTY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;accountNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2198922910000&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;bankCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;007&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;bankName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BANCOLOMBIA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;accountType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CO&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;documentNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1026304116&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;documentType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;expeditionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1996-05-16T05:00:00.000+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Santiago Romero Pineda&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;birthDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1975-03-06T05:00:00.000+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ACTIVE&#34;</span>
+            <span style="color:#000;font-weight:bold">},</span>
+            <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;First Payment&#34;</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentOrderId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;32740b81-5ecc-466c-bc09-699e6e5ceefb&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">4500000.00</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;bankAccount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;8f425a79-3f15-4e64-a1bf-2f7c087587ec&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;supplierType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RELATED_THIRD_PARTY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;accountNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0200005555&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;bankCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;013&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;bankName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BBVA COLOMBIA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;accountType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CO&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;documentNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;81856522&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;documentType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;expeditionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2002-02-17T05:00:00.000+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Jorge Gutierrez&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;birthDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1986-02-11T05:00:00.000+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ACTIVE&#34;</span>
+            <span style="color:#000;font-weight:bold">},</span>
+            <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Registered supplier payment&#34;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;failedItems&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;FAILED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;failureMessages&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;There is no registered bank with code: 8&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2000000</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;bankAccount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;FAILED&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;supplierType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;RELATED_PROVIDER&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;accountNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2198922910330&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;bankCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;8&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;accountType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CO&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;documentNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;102688116&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;documentType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CC&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;expeditionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2001-05-17T00:00:00.000+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Juan Perez&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#204a87;font-weight:bold">&#34;birthDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1985-04-17T00:00:00.000+00:00&#34;</span>
+            <span style="color:#000;font-weight:bold">},</span>
+            <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Payment of supplies&#34;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab22" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+<!--## Update payout request
+This method lets you request the update of the bank information of a payee on a running payout request. Por exemplo, this method is useful to change the bank account number do beneficiário.
+
+You can only request the update of the information of a payee when the Payout status is in `IN_PAYU_PROCESS` ou earlier. Consulte [Payout states](/pt/docs/services/payouts.html#payout-states) para obter mais informações. 
+
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Você precisa incluir dois cabeçalhos para usar este método, consulte <a href="#configuring-the-authentication">Configurar autenticação </a> para obter mais informações. Além disso, você precisa saber seu ID de vendedor e conta, você pode obter essas informações no seu Módulo PayU.
+</div>
+
+
+### Chamada API {#api-call}
+To update a Payout request, use the following URL:
+
+```JAVA
+PUT
+https://{env-api}.payulatam.com/v1.0/supplier-transfers/bank-account/{merchantId}/{accountId}/{bankAccountId}
+```
+<br>
+
+O valor da variável `{env-api}` is `sandbox-transfers` para teste e `transfers` para o modo de produção.
+
+| Parâmetro     | Descrição                                                                 | Obrigatório |
+|---------------|-----------------------------------------------------------------------------|:---------:|
+| merchantId    | Número de identificação do comércio no sistema PayU.                                      |    Sim    |
+| accountId     | ID da conta do usuário para cada país associado ao comércio.       |    Sim    |
+| bankAccountId | ID returned by the [Solicitar payout service](#request-payout). |    Sim    |
+
+### Variáveis para pedido
+
+<div class="variables"></div>
+
+| Nome do campo | Formato | Tamanho | Descrição | Obrigatório |
+|---|---|---|---|:-:|
+| id | Alfanumérico | 36 | Identificador da conta bancária do beneficiário. | Sim |
+| accountNumber | Alfanumérico | Máx:17 | Número da conta bancária do beneficiário. | Sim |-->
+<!--additionalData-->
+<!--A seguir estão os exemplos de pedido e resposta para este método.
+
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-3" data-toggle="tab" href="#tab31" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="3">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab31" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1f92a225-9559-4b7f-9739-e6bb27b8b838&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;accountNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2198922910031</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;message&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Update received&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+-->
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab32" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+<!--
+
+</div>-->
+<h2 id="cancel-payout-request">Cancelar ordem de Payout</h2>
+<p>Este método permite solicitar o cancelamento de uma solicitação de Payout. Você só pode solicitar o cancelamento de um Payout quando seu status for <code>IN_PAYU_PROCESS</code> ou anterior. Consulte <a href="../../../../pt/docs/services/payouts.html#payout-states">Payout states</a> para obter mais informações.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Você precisa incluir dois cabeçalhos para usar este método, consulte <a href="#configuring-the-authentication">Configurar autenticação </a> para obter mais informações. Além disso, você precisa saber seu ID de vendedor e conta, você pode obter essas informações no seu Módulo PayU.
+</div>
+
+<h3 id="api-call-2">Chamada API</h3>
+<p>Para cancelar um pedido de Payout, use a seguinte URL:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">DELETE</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/supplier-transfers/{merchantId}/{accountId}/{paymentOrderId}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> is <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Número de identificação do comércio no sistema PayU.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>paymentOrderId</td>
+<td>ID de pagamento gerado quando o pedido foi criado pelo <a href="#request-payout">serviço de Solicitar pagamento</a>.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variables-for-request">Variáveis para pedido</h3>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>comments</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Motivo para cancelar a solicitação de Payout.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>pushPaymentId</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>ID de Payout da solicitação a ser cancelada.</td>
+<td style="text-align:center">Não</td>
+</tr>
+</tbody>
+</table>
+<p>A seguir estão os exemplos de pedido e resposta para este método.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-4" data-toggle="tab" href="#tab41" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="4">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab41" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;comments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Request cancellation for payout&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;pushPaymentId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1f92a225-9559-4b7f-9739-e6bb27b8b838&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;message&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Cancellation request received&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab42" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+<h2 id="create-or-update-a-webhook">Create ou Update a WebHook</h2>
+<p>Este método permite criar ou atualizar um WebHook onde é possível configurar uma URL em que o PayU notifica os estados de um pagamento via <code>POST</code>.</p>
+<p>Você pode configurar um WebHook para os seguintes eventos:</p>
+<ul>
+<li><strong>Criação de transferência</strong>: envia uma notificação quando uma solicitação de payout é criada. Para habilitar estas notificações, inclua o valor <code>TRANSFER_CREATION</code> no parâmetro da lista <code>enabledEvents</code>.</li>
+<li><strong>Atualização de transferência</strong>: envia uma notificação quando a validação da triagem de sanção rejeita o beneficiário. Para habilitar estas notificações, inclua o valor <code>TRANSFER_UPDATE</code> no parâmetro da lista <code>enabledEvents</code>.</li>
+<li><strong>Resultado de validação</strong>: envia uma notificação quando o beneficiário aprova a validação da triagem de sanção e quando a transferência é rejeitada pelo banco. Inclui o valor <code>VALIDATION_RESULT</code> no parâmetro da lista <code>enabledEvents</code>.</li>
+</ul>
+<p><a href="../../../../pt/docs/services/payouts.html#variables-in-the-notifications">Clique aqui para conhecer as variáveis nas notificações</a>.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Você precisa incluir dois cabeçalhos para usar este método, consulte <a href="#configuring-the-authentication">Configurar autenticação </a> para obter mais informações. Além disso, você precisa saber seu ID de vendedor e conta, você pode obter essas informações no seu Módulo PayU.
+</div>
+
+<h3 id="api-call-3">Chamada API</h3>
+<ul>
+<li>Para criar um WebHook, use:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">POST</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}
+</span></code></pre></div><br>
+<ul>
+<li>Para atualizar um WebHook, use:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">PUT</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> is <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Número de identificação do comércio no sistema PayU.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variables-for-request-and-response-1">Variáveis para pedido e resposta</h3>
+<details>
+<summary>Parâmetros de pedido</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Id do WebHook que você deseja atualizar. Este parâmetro é obrigatório ao atualizar um WebHook</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Numérico</td>
+<td></td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>callbackUrl</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>URL usada para receber as notificações de <code>POST</code> enviadas pelo PayU de acordo com os eventos selecionados. Esta URL deve ser única para cada WebHook.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Descrição do WebHook que você deseja criar.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>enabledEvents</td>
+<td>Lista</td>
+<td>Máx:3</td>
+<td>Lista dos eventos que gerarão uma notificação para a URL configurada quando ocorrerem. Pelo menos um evento deve ser selecionado.<br>Os valores possíveis são: <code>TRANSFER_UPDATE</code>, <code>TRANSFER_CREATION</code>, <code>VALIDATION_RESULT</code>.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Parâmetros de resposta</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Id do WebHook criado.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Date</td>
+<td></td>
+<td>Data de criação do WebHook. Formato <code>YYYY-DD-MM hh:mm:ss</code>.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Numérico</td>
+<td></td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+</tr>
+<tr>
+<td>callbackUrl</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>URL usada que receberá notificações de <code>POST</code> de acordo com os eventos selecionados.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Descrição do WebHook criado.</td>
+</tr>
+<tr>
+<td>enabledEvents</td>
+<td>Lista</td>
+<td>Máx:3</td>
+<td>Lista dos eventos selecionados.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado do WebHook. Por padrão, o estado do novo WebHook é <code>ENABLED</code>.</td>
+</tr>
+<tr>
+<td>processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado de criação ou atualização do WebHook. Por padrão, este estado é <code>SUCCESS</code>.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<br>
+<p>A seguir estão os exemplos de pedido e resposta para este método.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-5" data-toggle="tab" href="#tab51" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="5">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab51" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;callbackUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wwww.callbackurltest.com/&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Web Hook For Test Swagger&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;enabledEvents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#4e9a06">&#34;TRANSFER_UPDATE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;TRANSFER_CREATION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;256dd74e-9187-4efb-8238-fa29bf8f587a&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-27T21:57:28.874+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;callbackUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wwww.callbackurltest.com/&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Web Hook For Test Swagger&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;enabledEvents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;TRANSFER_UPDATE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;TRANSFER_CREATION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ENABLED&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab52" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Exemplo pedido:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div><br>
+<p>Exemplo resposta:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+<h2 id="delete-a-webhook">Excluir um WebHook</h2>
+<p>Este método permite excluir um WebHook criado anteriormente. Assim que exclui um WebHook, você para de receber notificações.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Você precisa incluir dois cabeçalhos para usar este método, consulte <a href="#configuring-the-authentication">Configurar autenticação </a> para obter mais informações. Além disso, você precisa saber seu ID de vendedor e conta, você pode obter essas informações no seu Módulo PayU.
+</div>
+
+<h3 id="api-call-4">Chamada API</h3>
+<p>Para excluir um WebHook, use a seguinte URL:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">DELETE</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}/{id}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> is <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Número de identificação do comércio no sistema PayU.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Id do WebHook que você deseja excluir.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-example-1">Exemplo resposta</h4>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado de exclusão do WebHook. Por padrão, este estado é <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Id do WebHook excluído.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado do WebHook. Por padrão, o estado do WebHook excluído é <code>DELETED</code>.</td>
+</tr>
+</tbody>
+</table>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-6" data-toggle="tab" href="#tab61" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="6">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab61" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;054e0fc5-a025-4a00-b666-95673c11dee1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DELETED&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab62" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+<h2 id="query-webhooks">Consultar WebHooks</h2>
+<p>Você pode consultar WebHooks relacionados à sua conta pelo id do WeHook ou pelo id da conta. Ambos os métodos são explicados a seguir.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Você precisa incluir dois cabeçalhos para usar este método, consulte <a href="#configuring-the-authentication">Configurar autenticação </a> para obter mais informações. Além disso, você precisa saber seu ID de vendedor e conta, você pode obter essas informações no seu Módulo PayU.
+</div>
+
+<h3 id="query-webhooks-by-id">Consultar WebHooks por Id</h3>
+<p>Este método permite consultar as informações de um determinado WebHook usando seu id. Para consultar um WebHook, use a seguinte URL:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/{merchantId}/{accountId}/{id}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> is <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Número de identificação do comércio no sistema PayU.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Id do WebHook que você deseja consultar.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-example-2">Exemplo resposta</h4>
+<details>
+<summary>Parâmetros de resposta</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado da consulta. Por padrão, este estado é <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Id do WebHook.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Date</td>
+<td></td>
+<td>Data de criação do WebHook. Formato <code>YYYY-DD-MM hh:mm:ss</code>.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Numérico</td>
+<td></td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+</tr>
+<tr>
+<td>callbackUrl</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>URL usada que receberá notificações de <code>POST</code> de acordo com os eventos selecionados.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Descrição of the WebHook.</td>
+</tr>
+<tr>
+<td>enabledEvents</td>
+<td>Lista</td>
+<td>Máx:3</td>
+<td>Lista dos eventos selecionados.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado do WebHook. Por padrão, o estado do novo WebHook é <code>ENABLED</code>.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<br>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-7" data-toggle="tab" href="#tab71" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="7">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab71" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;9628b74d-e2fb-40cc-b137-b156d1401641&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-28T00:52:26.206+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">515058</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;callbackUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wwww.callbackurltest.com/&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Web Hook For Test Swagger&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;enabledEvents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#4e9a06">&#34;TRANSFER_UPDATE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;TRANSFER_CREATION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ENABLED&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab72" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+<h3 id="query-webhooks-by-account">Consultar webhooks por conta</h3>
+<p>Este método permite que você consulte as informações de todos os WebHooks criados em sua conta. Para consultar a lista de WebHooks, use a seguinte URL:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/v1.0/webhooks/account/{merchantId}/{accountId}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> is <code>sandbox-transfers</code> para teste e <code>transfers</code> para o modo de produção.</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantId</td>
+<td>Número de identificação do comércio no sistema PayU.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-example-3">Exemplo resposta</h4>
+<details>
+<summary>Parâmetros de resposta</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>processingStatus</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado da consulta. Por padrão, este estado é <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Id do WebHook.</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Date</td>
+<td></td>
+<td>Data de criação do WebHook. Formato <code>YYYY-DD-MM hh:mm:ss</code>.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Numérico</td>
+<td></td>
+<td>ID da conta do usuário para cada país associado ao comércio.</td>
+</tr>
+<tr>
+<td>callbackUrl</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>URL usada que receberá notificações de <code>POST</code> de acordo com os eventos selecionados.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Alfanumérico</td>
+<td></td>
+<td>Descrição of the WebHook.</td>
+</tr>
+<tr>
+<td>enabledEvents</td>
+<td>Lista</td>
+<td>Máx:3</td>
+<td>Lista dos eventos selecionados.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Estado do WebHook. Por padrão, o estado do novo WebHook é <code>ENABLED</code>.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<br>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-8" data-toggle="tab" href="#tab81" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="8">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab81" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;9628b74d-e2fb-40cc-b137-b156d1401641&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-08-28T00:52:26.206+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">515058</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;callbackUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wwww.callbackurltest.com.co/&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Web Hook For Test Swagger&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;enabledEvents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#4e9a06">&#34;TRANSFER_UPDATE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#4e9a06">&#34;TRANSFER_CREATION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
+        <span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ENABLED&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;processingStatus&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;672497c2-00f8-4787-a396-4024042eaa20&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;created&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2021-09-15T16:04:49.131+00:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">515058</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;callbackUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://wwww.callbackurltest.com.co/&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Web Hook For Test Swagger&#34;</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;enabledEvents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+            <span style="color:#4e9a06">&#34;TRANSFER_UPDATE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#4e9a06">&#34;VALIDATION_RESULT&#34;</span>
+        <span style="color:#000;font-weight:bold">],</span>
+        <span style="color:#204a87;font-weight:bold">&#34;status&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ENABLED&#34;</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">]</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+<!--
+
+
+
+
+
+<div class="tab-pane fade" id="tab82" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML">
+</code></pre></div>
+
+</div>
+
+
+-->
+
+
+</div>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificação
+
+17 de dezembro de 2021:
+
+ <b>Documentation in Portuguese (53de9675)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../../js/scrollspy.js"></script>
+<script src="../../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/api-integration/payments-api-brazil.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2021-11-25T12:42:09-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2021-12-17T14:22:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payments API - Brazil">
 <meta itemprop="description" content="Payments API Brazil lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2021-11-25T12:42:09-05:00" />
-<meta itemprop="wordCount" content="9112">
+<meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
+<meta itemprop="wordCount" content="11462">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Brazil"/>
 <meta name="twitter:description" content="Payments API Brazil lets your shop process different transaction types with multiple payment methods.
@@ -107,6 +107,8 @@
 	
 	<a class="dropdown-item" href="../../../../es/docs/integrations/api-integration/payments-api-brazil.html">Español</a>
 	
+	<a class="dropdown-item" href="../../../../pt/docs/integrations/api-integration/payments-api-brazil.html">Português</a>
+	
 </div>
 			</li>
 			
@@ -139,7 +141,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.db42a0ed832dfa2db07526985d42870cdb330851c850ad4ffa5048e35ade4f06785025f1cdcdc67d2bdd63a7c1687c311ecafd88e4579fbd65dd8e2350482f52.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.fa5d8842ef501d9b5efffb7036cc38f0b8891b5dc6f85c098b704be150099196a0b1c5a83e68d3a1172ca98cfa91dc8125737bceeb145954b7bfec4b1312fb26.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -159,6 +161,8 @@
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
 	<a class="dropdown-item" href="../../../../es/docs/integrations/api-integration/payments-api-brazil.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../pt/docs/integrations/api-integration/payments-api-brazil.html">Português</a>
 	
 </div>
     </div>
@@ -741,28 +745,35 @@
         <li><a href="#charge">Charge</a></li>
       </ul>
     </li>
-    <li><a href="#submit-transaction-with-cash">Submit transaction with cash</a>
+    <li><a href="#submit-transaction-with-pix">Submit transaction with PIX</a>
       <ul>
+        <li><a href="#how-does-pix-work">How does PIX work?</a></li>
         <li><a href="#variables-for-request-and-response-1">Variables for request and response</a></li>
         <li><a href="#api-call">API call</a></li>
       </ul>
     </li>
-    <li><a href="#submit-transaction-with-bank-transfer">Submit transaction with bank transfer</a>
+    <li><a href="#submit-transaction-with-cash">Submit transaction with cash</a>
       <ul>
         <li><a href="#variables-for-request-and-response-2">Variables for request and response</a></li>
         <li><a href="#api-call-1">API call</a></li>
       </ul>
     </li>
-    <li><a href="#available-payment-methods-query">Available payment methods query</a>
+    <li><a href="#submit-transaction-with-bank-transfer">Submit transaction with bank transfer</a>
       <ul>
         <li><a href="#variables-for-request-and-response-3">Variables for request and response</a></li>
         <li><a href="#api-call-2">API call</a></li>
       </ul>
     </li>
-    <li><a href="#ping">Ping</a>
+    <li><a href="#available-payment-methods-query">Available payment methods query</a>
       <ul>
         <li><a href="#variables-for-request-and-response-4">Variables for request and response</a></li>
-        <li><a href="#api-call-3">Api call</a></li>
+        <li><a href="#api-call-3">API call</a></li>
+      </ul>
+    </li>
+    <li><a href="#ping">Ping</a>
+      <ul>
+        <li><a href="#variables-for-request-and-response-5">Variables for request and response</a></li>
+        <li><a href="#api-call-4">Api call</a></li>
       </ul>
     </li>
   </ul>
@@ -840,6 +851,7 @@
 <p>Payments API includes the following methods:</p>
 <ul>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-brazil.html#submit-transaction-with-credit-cards">Submit transaction with credit card</a></li>
+<li><a href="../../../../en/docs/integrations/api-integration/payments-api-brazil.html#submit-transaction-with-pix">Submit transaction with PIX</a></li>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-brazil.html#submit-transaction-with-cash">Submit transaction with cash</a></li>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-brazil.html#submit-transaction-with-bank-transfer">Submit transaction with bank transfer</a></li>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-brazil.html#available-payment-methods-query">Available payment methods query</a></li>
@@ -2821,10 +2833,942 @@ By default, processing credit cards without security code is not enabled. If you
 
 
 </div>
+<h2 id="submit-transaction-with-pix">Submit transaction with PIX</h2>
+<p>This method lets you process payments using PIX. To integrate with PIX you need to show in your checkout page a QR code so your customer can read it using their smartphone to perform the payment.</p>
+<p>In the end, your customer sees a checkout page like this.</p>
+<p><img src="../../../../assets/Payments/PixCheckout.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Note</h4>
+Integration with PIX will be available for merchants since January, 2022. For more information, contact your sales representative.
+</div>
+
+<h3 id="how-does-pix-work">How does PIX work?</h3>
+<p>PIX is an online transfer method released in November, 2020 by the Brazilian Central Bank (<em>Banco Central do Brasil</em> - BACEN) which allows you make and receive transfers easily regardless of the bank who issued your account.</p>
+<p>Unlike other cash and bank transfer methods, PIX allows you to receive transfers immediately without sharing your account number; at any time, on any day. The funds received using this payment method will appear in your PayU account in a matter of seconds.</p>
+<p>Pix has two parts:</p>
+<ul>
+<li>
+<p>PIX key: unique identifier of a banking or payment account in the Brazilian Banking System. Your key can be generated using any of the following values:</p>
+<ul>
+<li>Tax ID (CPF or CNPJ).</li>
+<li>E-mail</li>
+<li>Phone number</li>
+<li>Random key</li>
+</ul>
+</li>
+<li>
+<p>QR code: this code is read by your customer using their phone and performs the payment.</p>
+</li>
+</ul>
+<h3 id="variables-for-request-and-response-1">Variables for request and response</h3>
+<details>
+<summary>Request</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+<th style="text-align:center">Mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in the request, this language is used to display the error messages generated. <a href="../../../../en/docs/getting-started/response-codes-and-variables.html#supported-languages">See supported languages</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>command</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>Set <code>SUBMIT_TRANSACTION</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>test (JSON)<hr>isTest (XML)</td>
+<td>Boolean</td>
+<td></td>
+<td>Set <code>true</code> if the request is in test mode. Otherwise, set <code>false</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant</td>
+<td></td>
+<td></td>
+<td>This object has the authentication data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiLogin</td>
+<td>Alphanumeric</td>
+<td>Min:12 Max:32</td>
+<td>User or login provided by PayU. <a href="../../../../en/docs/integrations.html#api-key-and-api-login">How do I get my API Login</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>merchant &gt; apiKey</td>
+<td>Alphanumeric</td>
+<td>Min:6 Max:32</td>
+<td>Password provided by PayU. <a href="../../../../en/docs/integrations.html#api-key-and-api-login">How do I get my API Key</a></td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction</td>
+<td></td>
+<td></td>
+<td>This object has the transaction data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order</td>
+<td></td>
+<td></td>
+<td>This object has the order data.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; accountId</td>
+<td>Number</td>
+<td></td>
+<td>Identifier of your account.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; referenceCode</td>
+<td>Alphanumeric</td>
+<td>Min:1 Max:255</td>
+<td>Represents the identifier of the order in your system.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; description</td>
+<td>Alphanumeric</td>
+<td>Min:1 Max:255</td>
+<td>Description of the order.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; language</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Language used in emails sent to the buyer and the seller.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; notifyUrl</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>Confirmation URL of the order.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; partnerId</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>Partner ID in PayU.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; signature</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>The signature associated to the form. For more information refer <a href="../../../../en/docs/integrations.html#authentication-signature">Authentication signature</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress</td>
+<td></td>
+<td></td>
+<td>Shipping address.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; street1</td>
+<td>Alphanumeric</td>
+<td>Max:100</td>
+<td>Address Line 1.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; street2</td>
+<td>Alphanumeric</td>
+<td>Max:100</td>
+<td>Address Line 2.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; city</td>
+<td>Alphanumeric</td>
+<td>Max:50</td>
+<td>Address city.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; state</td>
+<td>Alphanumeric</td>
+<td>Max:40</td>
+<td>Address State. For Brazil, only send two characters, For example, set <code>SP</code> for São Paulo.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; country</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Address country.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; postalCode</td>
+<td>Alphanumeric</td>
+<td>Max:8</td>
+<td>Address Zip code. For Brazil, use the format <code>XXXXX-XXX</code> or <code>XXXXXXXX</code>. Example: <code>09210-710</code> or <code>09210710</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; shippingAddress &gt; phone</td>
+<td>Alphanumeric</td>
+<td>Max:11</td>
+<td>Phone number associated to the address. For Brazil, use the format <code>ddd(2)+number(7-9)</code>. Example: <code>(11)756312633</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer</td>
+<td></td>
+<td></td>
+<td>Buyer information.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; merchantBuyerId</td>
+<td>Alphanumeric</td>
+<td>Max:100</td>
+<td>Buyer ID in your system.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; fullName</td>
+<td>Alphanumeric</td>
+<td>Max:150</td>
+<td>Full name of the buyer.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; emailAddress</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>E-mail of the buyer.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; contactPhone</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Phone number of the buyer.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; dniNumber</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Identification number of the buyer. You must use an algorithm to validate the CPF and must be set using the format <code>XXX.XXX.XXX-XX</code>. Example: <code>811.807.405-64</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; cnpj</td>
+<td>Alphanumeric</td>
+<td>Max:14</td>
+<td>Identification number of the buyer (For Legal person in Brazil). You must use an algorithm to validate the CNPJ and must be set using the format <code>XXXXXXXXXXXXXX</code>. Example: <code>32593371000110</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>Shipping address of the buyer.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; street1</td>
+<td>Alphanumeric</td>
+<td>Max:150</td>
+<td>Buyer&rsquo;s shipping address Line 1.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; city</td>
+<td>Alphanumeric</td>
+<td>Max:50</td>
+<td>Buyer&rsquo;s shipping address city.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; state</td>
+<td>Alphanumeric</td>
+<td>Max:40</td>
+<td>Buyer&rsquo;s shipping address state. For Brazil, only send two characters, For example, set <code>SP</code> for São Paulo.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; country</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Buyer&rsquo;s shipping address country in format ISO 3166 alpha-2.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; postalCode</td>
+<td>Number</td>
+<td>Max:20</td>
+<td>Buyer&rsquo;s shipping address zip code. For Brazil, use the format <code>XXXXX-XXX</code> or <code>XXXXXXXX</code>. Example: <code>09210-710</code> or <code>09210710</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; phone</td>
+<td>Number</td>
+<td>Max:20</td>
+<td>Buyer&rsquo;s shipping address phone number. For Brazil, use the format <code>ddd(2)+number(7-9)</code>. Example: <code>(11)756312633</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt;</td>
+<td></td>
+<td>64</td>
+<td>Amount of the order or its associated values.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE</td>
+<td>Alphanumeric</td>
+<td>64</td>
+<td>Amount of the transaction.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE &gt; value</td>
+<td>Number</td>
+<td>19, 2</td>
+<td>Specifies the amount of the transaction, this value may have two decimal digits (Ex. <code>10000.00</code> or <code>10000</code>).</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_VALUE &gt; currency</td>
+<td>Alphanumeric</td>
+<td>3</td>
+<td>ISO code of the currency. <a href="../../../../en/docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX</td>
+<td>Alphanumeric</td>
+<td>64</td>
+<td>Amount of the Value Added Tax (VAT).</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; value</td>
+<td>Number</td>
+<td>19, 2</td>
+<td>Specifies the amount of the VAT.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; currency</td>
+<td>Alphanumeric</td>
+<td>3</td>
+<td>ISO code of the currency. <a href="../../../../en/docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE</td>
+<td>Alphanumeric</td>
+<td>64</td>
+<td>Base value to calculate the VAT.<br>If the amount does not have IVA, send 0.<br>This value may have two decimal digits.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; value</td>
+<td>Number</td>
+<td>19, 2</td>
+<td>Specifies the base amount of the transaction.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; additionalValues &gt; TX_TAX_RETURN_BASE &gt; currency</td>
+<td>Alphanumeric</td>
+<td>3</td>
+<td>ISO code of the currency. <a href="../../../../en/docs/getting-started/response-codes-and-variables.html#accepted-currencies">See accepted currencies</a>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer</td>
+<td></td>
+<td></td>
+<td>Payer information.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; emailAddress</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>Payer e-mail address.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; merchantPayerId</td>
+<td>Alphanumeric</td>
+<td>Max:100</td>
+<td>Identifier of the payer in your system.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; fullName</td>
+<td>Alphanumeric</td>
+<td>Max:150</td>
+<td>Name of the payer.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress</td>
+<td></td>
+<td></td>
+<td>Billing address.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; street1</td>
+<td>Alphanumeric</td>
+<td>Max:100</td>
+<td>Billing Address Line 1.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; street2</td>
+<td>Alphanumeric</td>
+<td>Max:100</td>
+<td>Billing Address Line 2.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; city</td>
+<td>Alphanumeric</td>
+<td>Max:50</td>
+<td>Billing address city.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; state</td>
+<td>Alphanumeric</td>
+<td>Max:40</td>
+<td>Billing address state. For Brazil, only send two characters, For example, set <code>SP</code> for São Paulo.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; country</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Billing address country in format ISO 3166 Alpha-2.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; postalCode</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Billing address zip code. For Brazil, use the format <code>XXXXX-XXX</code> or ´. Example: <code>09210-710</code> or <code>09210710</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; billingAddress &gt; phone</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Billing address phone number. For Brazil, use the format <code>ddd(2)+number(7-9)</code>. Example: <code>(11)756312633</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; birthdate</td>
+<td>Alphanumeric</td>
+<td>Max:10</td>
+<td>Payer&rsquo;s date of birth.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; contactPhone</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Payer&rsquo;s phone number. For Brazil, use the format <code>ddd(2)+number(7-9)</code>. Example: <code>(11)756312633</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; dniNumber</td>
+<td>Alphanumeric</td>
+<td>Max:20</td>
+<td>Identification number of the buyer. You must use an algorithm to validate the CPF and must be set using the format <code>XXX.XXX.XXX-XX</code>. Example: <code>811.807.405-64</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; cnpj</td>
+<td>Alphanumeric</td>
+<td>Max:14</td>
+<td>Identification number of the buyer (For Legal person in Brazil). You must use an algorithm to validate the CNPJ and must be set using the format <code>XXXXXXXXXXXXXX</code>. Example: <code>32593371000110</code>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; payer &gt; dniType</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Identification type of the buyer. <a href="../../../../en/docs/getting-started/response-codes-and-variables.html#document-types">See Document types</a>.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>transaction &gt; type</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>As PIX payments are performed using the payer mobile phone, the only available transaction type is <code>AUTHORIZATION_AND_CAPTURE</code>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; paymentMethod</td>
+<td>Alphanumeric</td>
+<td>32</td>
+<td>Set <code>PIX</code> for this payment method. If you want to see other payment method, refer to <a href="../../../../en/docs/getting-started/select-your-payment-method.html#Brazil">Payment Methods for Brazil</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; paymentCountry</td>
+<td>Alphanumeric</td>
+<td>2</td>
+<td>Set <code>BR</code> for Brazil.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; deviceSessionId</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>Session identifier of the device where the customer performs the transaction. For more information, refer to <a href="../../../../en/docs/integrations.html#_devicesessionid_-variable">this topic</a>.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; ipAddress</td>
+<td>Alphanumeric</td>
+<td>Max:39</td>
+<td>IP address of the device where the customer performs the transaction.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>transaction &gt; extraParameters</td>
+<td></td>
+<td></td>
+<td>Additional parameters or data associated with the request. The maximum size of each <em>extraParameters</em> name is 64 characters.<br>In JSON, the <em>extraParameters</em> parameter follows this structure: <br><code>&quot;extraParameters&quot;: {</code><br> <code>&quot;PARAMETER_NAME&quot;: &quot;VALUE&quot;</code><br><code>}</code><br><br>In XML, the <em>extraParameters</em> parameter follows this structure: <br><code>&lt;extraParameters&gt;</code><br> <code>&lt;entry&gt;</code><br>  <code>&lt;string&gt;PARAMETER_NAME&lt;/string&gt;</code><br>  <code>&lt;string&gt;VALUE&lt;/string&gt;</code><br> <code>&lt;/entry&gt;</code><br><code>&lt;/extraParameters&gt;</code><br><em>Set the respective data type</em></td>
+<td style="text-align:center">No</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Response</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Format</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>Alphanumeric</td>
+<td></td>
+<td>The response code of the transaction. Possible values are <code>ERROR</code> and <code>SUCCESS</code>.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>The error message associated when the response code is <code>ERROR</code>.</td>
+</tr>
+<tr>
+<td>transactionResponse</td>
+<td></td>
+<td></td>
+<td>The response data.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; orderId</td>
+<td>Number</td>
+<td></td>
+<td>The generated or existing order Id in PayU.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; transactionId</td>
+<td>Alphanumeric</td>
+<td>36</td>
+<td>The identifier of the transaction in PayU.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; state</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>The status of the transaction. As the payment is performed by the user in their phone, the state for a successful transaction is <code>PENDING</code></td>
+</tr>
+<tr>
+<td>transactionResponse &gt; paymentNetworkResponseCode</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>The response code returned by the financial network.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; paymentNetworkResponseErrorMessage</td>
+<td>Alphanumeric</td>
+<td>Max:255</td>
+<td>The error message returned by the financial network.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; trazabilityCode</td>
+<td>Alphanumeric</td>
+<td>Max:32</td>
+<td>The traceability code returned by the financial network.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; authorizationCode</td>
+<td>Alphanumeric</td>
+<td>Max:12</td>
+<td>The authorization code returned by the financial network.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; pendingReason</td>
+<td>Alphanumeric</td>
+<td>Max:21</td>
+<td>The reason code associated with the status, as mentioned in <code>transactionResponse &gt; state</code>, the transaction is waiting for the payment.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; responseCode</td>
+<td>Alphanumeric</td>
+<td>Max:64</td>
+<td>The response code associated with the status. In this case, for successful transactions is <code>PENDING_PAYMENT_IN_ENTITY</code>.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; responseMessage</td>
+<td>Alphanumeric</td>
+<td>Max:2048</td>
+<td>Message associated with the response code.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; operationDate</td>
+<td>Date</td>
+<td></td>
+<td>Creation date of the response in the PayU´s system.</td>
+</tr>
+<tr>
+<td>transactionResponse &gt; extraParameters</td>
+<td></td>
+<td></td>
+<td>Additional parameters or data associated with the response.<br>In JSON, the <em>extraParameters</em> parameter follows this structure: <br><code>&quot;extraParameters&quot;: {</code><br> <code>&quot;EXPIRATION_DATE&quot;: &quot;1627488070000&quot;</code><br><code>}</code><br><br>In XML, the <em>extraParameters</em> parameter follows this structure: <br><code>&lt;extraParameters&gt;</code><br> <code>&lt;entry&gt;</code><br>  <code>&lt;string&gt;EXPIRATION_DATE&lt;/string&gt;</code><br>  <code>&lt;int&gt;1627488070000&lt;/int&gt;</code><br> <code>&lt;/entry&gt;</code><br><code>&lt;/extraParameters&gt;</code></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h4 id="considerations-2">Considerations</h4>
+<ul>
+<li>Payments processed through our gateway will be for PayU on behalf of your commerce.</li>
+<li>If your commerce does not have a local entity, it is mandatory to send either the CPF (parameter <code>transaction.[payer|buyer].dniNumber</code>) or the CNPJ (parameter <code>transaction.[payer|buyer].cnpj</code>).</li>
+<li>To configure the expiration time of the QR code, contact your sales representative. The maximum time you can request is one day.<br>By default, the expiration time is two (2) hours.</li>
+<li>The minimum amount you can process with PIX is R$ 1.00, the maximum amount depends on your customer and their bank.</li>
+<li>The parameter <code>transaction.payer.fullName</code> is mandatory to create the request.</li>
+<li>The QR code and the PIX key used to receive payments is generated by PayU, it is not supported to configure your own QR code nor PIX key. Nevertheless, the total of the transaction minus the commission fee is transferred to your PayU account.</li>
+<li>To query an active code of your transaction, use the <a href="../../../../en/docs/integrations/api-integration/queries-api.html">Queries API</a>.</li>
+<li>The parameter <code>transactionResponse.extraParameters</code> has the following parameters related to the transaction:
+<ul>
+<li><strong>EXPIRATION_DATE</strong>: deadline to make the payment.</li>
+<li><strong>QRCODE_EMV</strong>: code to be pasted in the bank portal to perform the payment. This code is used when the customer cannot read the QR code.</li>
+<li><strong>QRCODE_IMAGE_BASE64</strong>: image of the QR code. This is a string codified in Base64.</li>
+</ul>
+</li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Note</h4>
+It is recommended to display in your Checkout both the image of the QR code (parameter <code>QRCODE_IMAGE_BASE64</code> decoded) and the string of the code (parameter <code>QRCODE_EMV</code>) to avoid payment desertions.
+</div>
+
+<h3 id="api-call">API call</h3>
+<p>The following are the bodies of the request and response of this payment method.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-4" data-toggle="tab" href="#tab41" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-4" data-toggle="tab" href="#tab42" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="4">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab41" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+   <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pt&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;command&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUBMIT_TRANSACTION&#34;</span><span style="color:#000;font-weight:bold">,</span>
+   <span style="color:#204a87;font-weight:bold">&#34;merchant&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiKey&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;4Vj8eK4rloUd272L48hsrarnUA&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;apiLogin&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pRRXKOl8ikMmt9u&#34;</span>
+   <span style="color:#000;font-weight:bold">},</span>
+   <span style="color:#204a87;font-weight:bold">&#34;transaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;order&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;accountId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;512327&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;referenceCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PRODUCT_TEST_2021-06-17T19:11:57.179Z&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;description&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Payment test description&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;pt&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;signature&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fbc089272288edc52c332395d9566f4c&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;notifyUrl&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://www.payu.com/notify&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;additionalValues&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;TX_VALUE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+               <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;currency&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BRL&#34;</span>
+            <span style="color:#000;font-weight:bold">}</span>
+         <span style="color:#000;font-weight:bold">},</span>
+         <span style="color:#204a87;font-weight:bold">&#34;buyer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;merchantBuyerId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;First name and second buyer name&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;emailAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;buyer_test@test.com&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;contactPhone&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;7563126&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;dniNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;811.807.405-64&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;cnpj&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;32593371000110&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;shippingAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+               <span style="color:#204a87;font-weight:bold">&#34;street1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Quadra QNP 34 Conjunto G 780&#34;</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;street2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;5555487&#34;</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;city&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Manaos&#34;</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SP&#34;</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BR&#34;</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;postalCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;10012545&#34;</span><span style="color:#000;font-weight:bold">,</span>
+               <span style="color:#204a87;font-weight:bold">&#34;phone&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;(11)756312633&#34;</span>
+            <span style="color:#000;font-weight:bold">}</span>
+         <span style="color:#000;font-weight:bold">},</span>
+         <span style="color:#204a87;font-weight:bold">&#34;shippingAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;street1&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Quadra QNP 34 Conjunto G 780&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;street2&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;5555487&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;city&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Manaos&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SP&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;country&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BR&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;postalCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;10012545&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;phone&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;(11)756312633&#34;</span>
+         <span style="color:#000;font-weight:bold">}</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;payer&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+         <span style="color:#204a87;font-weight:bold">&#34;fullName&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;Payer Name&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;emailAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;buyer_test@test.com&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;contactPhone&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;55 12345678901&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;dniType&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;CPF&#34;</span><span style="color:#000;font-weight:bold">,</span>
+         <span style="color:#204a87;font-weight:bold">&#34;dniNumber&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;653.098.319-83&#34;</span>
+      <span style="color:#000;font-weight:bold">},</span>
+      <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AUTHORIZATION_AND_CAPTURE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PIX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;paymentCountry&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;BR&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;ipAddress&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;127.0.0.1&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;test&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">false</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;code&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SUCCESS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;error&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;transactionResponse&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;orderId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">120000260</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;transactionId&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;e82ace4c-647b-457d-b4f5-136c921445b6&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;state&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;paymentNetworkResponseCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;paymentNetworkResponseErrorMessage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;trazabilityCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;9c7d3f2d-6c2c-436c-a06d-e6f99271ff3f&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;authorizationCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;pendingReason&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AWAITING_PAYMENT_IN_ENTITY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;responseCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;PENDING_PAYMENT_IN_ENTITY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;errorCode&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;responseMessage&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;transactionDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;transactionTime&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;operationDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1627473671920</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;referenceQuestionnaire&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;extraParameters&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;EXPIRATION_DATE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1627488070000</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;QRCODE_EMV&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;00020101021126950014BR.GOV.BCB.PIX2573spi.dev.cloud.itau.com.br/documentos/198e49c5-2330-4ad7-9d0b-967c7b5371225204000053039865802BR5923PMD Gotham NegA cios ME6009SAO PAULO62410503***50300017BR.GOV.BCB.BRCODE01051.0.063040866&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;QRCODE_IMAGE_BASE64&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6AQAAAACgl2eQAAADCUlEQVR4Xu2XUW4cIRBE6YvA/W+Ro8BFIPWKsWU5kpWPbOVn8SaZhWep1F1dTNr5ef1q33e+rTdw1xu466+A2VqtXbuP3etMPY9zlrdjwPLnrNm1NceaNXtv426nAOliqw5K+1io3IBhoFyZsWuaE/UfgM1h0xpzTMqUBfRxXZB2ONylhy/Nej0wMe2fi+0Y4KUend1omcZHR7vufgigNMzLEDXFbL63Pj6bFQBkld57MS0KkEWfdhOg3sWAI0mYRUIJMkvGwq5VCJhWtwkwAWoXIcJvjRxw9WnL/YKQWxejPGKAxvZgEHWoBKlhErztmBhgafaMXCtqWKVDJQYc2oNndY5llncEspUDlOFFrXRA23QiUl9jwB7aPvhkoE5UGeQxBlyFLEaXCbrW+XT16wGe9Kcsk25JsH/oWgjw9PbGge+ysdAtgRAhwNm1iW+rXN5pV2oMuEaVTHlXL30iFaySXU+hAsBGpJulzAAclE3geEQGAIzCfcKrFv7VEVna3LAQMIcNyiue7lKSg1ppQ0OcAshPWWT4amNtarb4GgN8qcmwvlAk8qNRtC4GuEVKLn13fKlUUuxepQC+C9NWJ9ZlHRu5iLMUMPGrdhkZLKwLpvQfoXvXhoCDzsZP0beFgagefgkC0yWiVbxqFBmmn/Xh6tcDyxnGtUpskJ/Mb0dpDGBQnSJSJ7NKHYahaR+Fej3wWMSqMI/+Utmkmm6lgCewfICwmyPdHg4BGtRBkHp+m29VqbPyHCCPKL+pFzpJUiZIep9CBQAnOZ+nQwu3TP8bAybjqvJgkyI+DjLF07gQ4M5wXEibvtod5u0RGQDYKhhZFX3ca9hYuRID9GbDidql+kgt/eKCpYMpwGaVIAZGAaKObZyL1BygxTMgMUKXuOEXbQwBFEWaOt4tusQW/eKXQsDic0vE+17njA4SrjFg8n43XCwbZQsdfooCC4eSJJoXJVkRYJ/NSgHEOBIJ8wtYeAzQh0HpCjLop3GDeU4BtEU2kUpXR1YhQqlXDvhxvYG73sBd/wD4Df7+v4eqIoYgAAAAAElFTkSuQmCC&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span>
+  <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab42" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<br>
+<p>Request body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;request&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>pt<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;command&gt;</span>SUBMIT_TRANSACTION<span style="color:#204a87;font-weight:bold">&lt;/command&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;merchant&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiKey&gt;</span>4Vj8eK4rloUd272L48hsrarnUA<span style="color:#204a87;font-weight:bold">&lt;/apiKey&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;apiLogin&gt;</span>pRRXKOl8ikMmt9u<span style="color:#204a87;font-weight:bold">&lt;/apiLogin&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/merchant&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;transaction&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;order&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;accountId&gt;</span>512327<span style="color:#204a87;font-weight:bold">&lt;/accountId&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;referenceCode&gt;</span>PRODUCT_TEST_2021-06-17T19:11:57.179Z<span style="color:#204a87;font-weight:bold">&lt;/referenceCode&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;description&gt;</span>payment test<span style="color:#204a87;font-weight:bold">&lt;/description&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;language&gt;</span>pt<span style="color:#204a87;font-weight:bold">&lt;/language&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;signature&gt;</span>fbc089272288edc52c332395d9566f4c<span style="color:#204a87;font-weight:bold">&lt;/signature&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;notifyUrl&gt;</span>http://www.payu.com/notify<span style="color:#204a87;font-weight:bold">&lt;/notifyUrl&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;additionalValues&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>TX_VALUE<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;additionalValue&gt;</span>
+                  <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>1000<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                  <span style="color:#204a87;font-weight:bold">&lt;currency&gt;</span>BRL<span style="color:#204a87;font-weight:bold">&lt;/currency&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;/additionalValue&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;/additionalValues&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;buyer&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;contactPhone&gt;</span>7563126<span style="color:#204a87;font-weight:bold">&lt;/contactPhone&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;dniNumber&gt;</span>811.807.405-64<span style="color:#204a87;font-weight:bold">&lt;/dniNumber&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;cnpj&gt;</span>32593371000110<span style="color:#204a87;font-weight:bold">&lt;/cnpj&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;emailAddress&gt;</span>buyer_test@test.com<span style="color:#204a87;font-weight:bold">&lt;/emailAddress&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;fullName&gt;</span>First name and second buyer name<span style="color:#204a87;font-weight:bold">&lt;/fullName&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;merchantBuyerId&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/merchantBuyerId&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;shippingAddress&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;street1&gt;</span>Quadra QNP 34 Conjunto G 780<span style="color:#204a87;font-weight:bold">&lt;/street1&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;street2&gt;</span>5555487<span style="color:#204a87;font-weight:bold">&lt;/street2&gt;</span>            
+               <span style="color:#204a87;font-weight:bold">&lt;city&gt;</span>Manaos<span style="color:#204a87;font-weight:bold">&lt;/city&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;state&gt;</span>SP<span style="color:#204a87;font-weight:bold">&lt;/state&gt;</span>               
+               <span style="color:#204a87;font-weight:bold">&lt;country&gt;</span>BR<span style="color:#204a87;font-weight:bold">&lt;/country&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;postalCode&gt;</span>10012545<span style="color:#204a87;font-weight:bold">&lt;/postalCode&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;phone&gt;</span>7563126<span style="color:#204a87;font-weight:bold">&lt;/phone&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/shippingAddress&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;/buyer&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;shippingAddress&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;street1&gt;</span>Quadra QNP 34 Conjunto G 780<span style="color:#204a87;font-weight:bold">&lt;/street1&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;street2&gt;</span>5555487<span style="color:#204a87;font-weight:bold">&lt;/street2&gt;</span>            
+               <span style="color:#204a87;font-weight:bold">&lt;city&gt;</span>Manaos<span style="color:#204a87;font-weight:bold">&lt;/city&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;state&gt;</span>SP<span style="color:#204a87;font-weight:bold">&lt;/state&gt;</span>               
+               <span style="color:#204a87;font-weight:bold">&lt;country&gt;</span>BR<span style="color:#204a87;font-weight:bold">&lt;/country&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;postalCode&gt;</span>10012545<span style="color:#204a87;font-weight:bold">&lt;/postalCode&gt;</span>
+               <span style="color:#204a87;font-weight:bold">&lt;phone&gt;</span>7563126<span style="color:#204a87;font-weight:bold">&lt;/phone&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;/shippingAddress&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/order&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;payer&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;contactPhone&gt;</span>55 12345678901<span style="color:#204a87;font-weight:bold">&lt;/contactPhone&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;dniNumber&gt;</span>653.098.319-83<span style="color:#204a87;font-weight:bold">&lt;/dniNumber&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;dniType&gt;</span>CPF<span style="color:#204a87;font-weight:bold">&lt;/dniType&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;emailAddress&gt;</span>buyer_test@test.com<span style="color:#204a87;font-weight:bold">&lt;/emailAddress&gt;</span>
+         <span style="color:#204a87;font-weight:bold">&lt;fullName&gt;</span>Payer Name<span style="color:#204a87;font-weight:bold">&lt;/fullName&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;/payer&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>AUTHORIZATION_AND_CAPTURE<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>PIX<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;paymentCountry&gt;</span>BR<span style="color:#204a87;font-weight:bold">&lt;/paymentCountry&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;deviceSessionId&gt;</span>vghs6tvkcle931686k1900o6e<span style="color:#204a87;font-weight:bold">&lt;/deviceSessionId&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;ipAddress&gt;</span>127.0.0.1<span style="color:#204a87;font-weight:bold">&lt;/ipAddress&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;cookie&gt;</span>pt1t38347bs6jc9ruv2ecpv7o2<span style="color:#204a87;font-weight:bold">&lt;/cookie&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;userAgent&gt;</span>Mozilla/5.0 (Windows NT 5.1; rv:18.0) Gecko/20100101 Firefox/18.0<span style="color:#204a87;font-weight:bold">&lt;/userAgent&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;/transaction&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;isTest&gt;</span>false<span style="color:#204a87;font-weight:bold">&lt;/isTest&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/request&gt;</span>
+
+</code></pre></div><br>
+<p>Response body:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;paymentResponse&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;code&gt;</span>SUCCESS<span style="color:#204a87;font-weight:bold">&lt;/code&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;transactionResponse&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;orderId&gt;</span>1181965893<span style="color:#204a87;font-weight:bold">&lt;/orderId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;transactionId&gt;</span>8397992b-3717-49c5-92ee-345a65ff13cf<span style="color:#204a87;font-weight:bold">&lt;/transactionId&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;state&gt;</span>PENDING<span style="color:#204a87;font-weight:bold">&lt;/state&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;trazabilityCode&gt;</span>e0a52a20-6ae2-4970-9b81-47f208bbf40e<span style="color:#204a87;font-weight:bold">&lt;/trazabilityCode&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;pendingReason&gt;</span>AWAITING_NOTIFICATION<span style="color:#204a87;font-weight:bold">&lt;/pendingReason&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;responseCode&gt;</span>PENDING_TRANSACTION_CONFIRMATION<span style="color:#204a87;font-weight:bold">&lt;/responseCode&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;operationDate&gt;</span>2021-10-08T12:14:15<span style="color:#204a87;font-weight:bold">&lt;/operationDate&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;extraParameters&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>EXPIRATION_DATE<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;date&gt;</span>2021-10-08T18:14:13<span style="color:#204a87;font-weight:bold">&lt;/date&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>QRCODE_EMV<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>00020101021226770014BR.GOV.BCB.PIX2555api.itau/pix/qr/v2/8ccd84ae-0c8d-4f71-8abf-b676a666bf9f5204000053039865802BR5911PAYU BRASIL6009SAO PAULO62070503***6304E404<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>QRCODE_IMAGE_BASE64<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6AQAAAACgl2eQAAAC0ElEQVR4Xu2XW27cMAxFpY1I+99FlyJtRO45VFIrUyDoR8z+DDEPj3QMMCTvlVOu7+NXeV15iTew4w3seAM7/g0YpdTJ92p1lTpKveY1XUwE2JyT3TnnqF6WFnd4UxowKq/R56qrldZH68uVfIDc+mqktyBb/w/A6vSMXtms0kePxUyAl79t2AVKyWYsJgIxtK/x11S/xs8CH0GOrJEh7+WmkQWMPpjW3aWYFybY8b3/iucBqtLwjn4txsWSIRs13BMB80E2zqrqoUyle08qQFV6zK0UqfpuXiYC5OQu9sXqMmGRW7wJwBykMxCuWdosb6Fcf5JMAJAMFo5e9HFHZtvaXagEYG7n4kDzHMHRi656NCsBcErJLIQLZc56+t2sDECJ+IF1TWNtI7uTfB64LEswJQR8sYV4j24+Dww9nCeLzzpFo0LHeQCIBO8aEtZYQ0KJgJ4pwsB4qpic2rGFaYC9Kj5k9Rk1o2DSIxMgIxdCL2SMlTq+425WBjCqZ5idwkb57ZeLiYBaoVlLH9lDIzcPdT8PRJkUSkiG3OJ4+9KsxwH2PE/YVi+OjeI5DpQEYDgmJQ73poThMNR1NOt5YKqZmFObxMfSQ5RPHsCkVPfYIMsisLwjE2BqL/eKeZmxvZqHeBOAuX8iGZKjT1g5rTqb9TzADu5hTvYo3ItUj2YlAGywHk3D08ltWKuzks8DeNfSwxwUL6NSX9X9PIBtqBpey+cM9snbtTzg2koZrkz/K3OM19ms5wHr08JM9fHqR+vx+J0IOKXTXTanQ4yU0dGVCAwFa5rVR4zlBb/5SAQMc3R6PelXqGee4n0cMKHl814Ixvy63j4yAdKbnufD2iiYj/M1FRjhGaGd4qMO8/qlWUlAjE1MK7BCqldEJqBfUCwa5NV0fpZMGhDNas2xwTlIUU87zDwBiMZooFZIIYsq4UTgu3gDO97Ajjew4weA30GD9ELLE47fAAAAAElFTkSuQmC<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/extraParameters&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/transactionResponse&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/paymentResponse&gt;</span>
+
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
 <h2 id="submit-transaction-with-cash">Submit transaction with cash</h2>
 <p>This method lets you process the payments in cash of your customers. To integrate with cash transactions, you must redirect the customer to the URL found in the response of the method; your customer sees a payment receipt like this.</p>
 <img src="../../../../assets/Payments/CashReceiptBR.png" alt="PrintScreen" width="50%">
-<h3 id="variables-for-request-and-response-1">Variables for request and response</h3>
+<h3 id="variables-for-request-and-response-2">Variables for request and response</h3>
 <details>
 <summary>Request</summary>
 <br>
@@ -3433,7 +4377,7 @@ By default, processing credit cards without security code is not enabled. If you
 </tbody>
 </table>
 </details>
-<h4 id="considerations-2">Considerations</h4>
+<h4 id="considerations-3">Considerations</h4>
 <ul>
 <li>If your commerce does not have a local entity, it is mandatory to send either the CPF (parameter <code>transaction.[payer|buyer].dniNumber</code>) or the CNPJ (parameter <code>transaction.[payer|buyer].cnpj</code>).</li>
 <li>The parameter <code>transaction.expirationDate</code> is not mandatory. If you don&rsquo;t send this parameter, its default value is seven (7) days after the current date.<br>If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.</li>
@@ -3447,7 +4391,7 @@ By default, processing credit cards without security code is not enabled. If you
 </ul>
 </li>
 </ul>
-<h3 id="api-call">API call</h3>
+<h3 id="api-call-1">API call</h3>
 <p>The following are the bodies of the request and response of this payment method.</p>
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -3698,7 +4642,7 @@ By default, processing credit cards without security code is not enabled. If you
 <p>This method lets you process the bank transfer payments of your customers. When using this payment method, the payer performs a bank transfer from their bank account issued in ITAU.<br>
 To integrate with these transactions, you must redirect the customer to the URL found in the response of the method.</p>
 <img src="../../../../assets/Payments/BankTransferReceiptBR.png" alt="PrintScreen" width="50%">
-<h3 id="variables-for-request-and-response-2">Variables for request and response</h3>
+<h3 id="variables-for-request-and-response-3">Variables for request and response</h3>
 <details>
 <summary>Request</summary>
 <br>
@@ -4320,14 +5264,14 @@ To integrate with these transactions, you must redirect the customer to the URL 
 </tbody>
 </table>
 </details>
-<h4 id="considerations-3">Considerations</h4>
+<h4 id="considerations-4">Considerations</h4>
 <ul>
 <li>If your commerce does not have a local entity, it is mandatory to send either the CPF (parameter <code>transaction.[payer|buyer].dniNumber</code>) or the CNPJ (parameter <code>transaction.[payer|buyer].cnpj</code>).</li>
 <li>The parameter <code>transaction.expirationDate</code> is not mandatory. If you don&rsquo;t send this parameter, its default value is four (4) day after the current date.<br>If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.</li>
 <li>When the payer selects this payment method, PayU creates an order in <em>in progress</em> state and a transaction in <code>PENDING</code> state.</li>
 <li>In the response body, you can find the receipt generated by PayU and the expiration date.</li>
 </ul>
-<h3 id="api-call-1">API call</h3>
+<h3 id="api-call-2">API call</h3>
 <p>The following are the bodies of the request and response of this payment method.</p>
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -4586,7 +5530,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 </div>
 <h2 id="available-payment-methods-query">Available payment methods query</h2>
 <p>This method returns a list of the payment methods available in all countries.</p>
-<h3 id="variables-for-request-and-response-3">Variables for request and response</h3>
+<h3 id="variables-for-request-and-response-4">Variables for request and response</h3>
 <details>
 <summary>Request</summary>
 <br>
@@ -4706,7 +5650,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 </tbody>
 </table>
 </details>
-<h3 id="api-call-2">API call</h3>
+<h3 id="api-call-3">API call</h3>
 <p>The following are the bodies of the request and response of this method. For the sake of the example, the response here shows two payment methods.</p>
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -4841,7 +5785,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 </div>
 <h2 id="ping">Ping</h2>
 <p>The <code>PING</code> method lets you verify the connection to our platform.</p>
-<h3 id="variables-for-request-and-response-4">Variables for request and response</h3>
+<h3 id="variables-for-request-and-response-5">Variables for request and response</h3>
 <details>
 <summary>Request</summary>
 <br>
@@ -4937,7 +5881,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 </tbody>
 </table>
 </details>
-<h3 id="api-call-3">Api call</h3>
+<h3 id="api-call-4">Api call</h3>
 <p>The following are the bodies of the request and response of this method.</p>
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -5047,9 +5991,9 @@ To integrate with these transactions, you must redirect the customer to the URL 
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-November 25, 2021:
+December 17, 2021:
 
- <b>Grammar fixes found during the translation procedure (667c2df9)</b>
+ <b>Documentation in Portuguese (53de9675)</b>
 </div>
 </div>
 

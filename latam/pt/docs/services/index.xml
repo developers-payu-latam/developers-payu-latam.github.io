@@ -1,0 +1,572 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PayU Latam – Serviços</title>
+    <link>/pt/docs/services.html</link>
+    <description>Recent content in Serviços on PayU Latam</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 31 Mar 2021 08:19:46 -0500</lastBuildDate>
+    
+	  <atom:link href="/pt/docs/services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Pagamentos</title>
+      <link>/pt/docs/services/payments.html</link>
+      <pubDate>Thu, 25 Mar 2021 14:28:20 -0500</pubDate>
+      
+      <guid>/pt/docs/services/payments.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;Seja qual for o &lt;a href=&#34;../../../pt/docs/integrations.html&#34;&gt;tipo de integração&lt;/a&gt; que você escolher, PayU oferece operações para processar suas transações. A seção a seguir explica esses métodos.&lt;/p&gt;
+&lt;h2 id=&#34;payment-flows&#34;&gt;Fluxos de pagamento&lt;/h2&gt;
+&lt;p&gt;PayU pode processar os pagamentos usando dois tipos de fluxos de pagamento: duas etapas e uma etapa.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/Payments/autorizacionycaptura-pt.png&#34; alt=&#34;Payments&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;No fluxo de uma etapa, combina as etapas &lt;em&gt;&lt;strong&gt;Autorização&lt;/strong&gt;&lt;/em&gt; e &lt;em&gt;&lt;strong&gt;Captura&lt;/strong&gt;&lt;/em&gt; em uma só transação. Os fundos são transferidos da conta do cliente para a conta PayU quando o pagamento é autorizado. A única etapa neste fluxo é:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Cobrança (Autorização e captura)&lt;/strong&gt;&lt;/em&gt;: esta operação envia o valor da transação para validar (AutorizaçãoAutorizaçãorovada, o valor é debitado do cartão imediatamente (captura). Este é o método mais comum para processar transações.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No fluxo de duas etapas, primeiro você precisa autorizar e reter os fundos do cliente. Em seguida, conclua a transação para transferir os fundos autorizados para sua conta PayU. As etapas neste fluxo são:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Autorização&lt;/strong&gt;&lt;/em&gt;: esta operação serve para verificar se o cartão utilizado para o pagamento está ativo, possui fundos etc. A cobrança não se completa até que seja enviada a captura da transação. &lt;/br&gt;
+Por exemplo, quando você usa um aplicativo de transporte, depois de solicitar o serviço, o aplicativo envia uma Autorização para reservar o valor da viagem e verificar se o seu cartão é válido (ativo e com fundos suficientes). No entanto, a cobrança ainda não é realizada em seu cartão&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Captura&lt;/strong&gt;&lt;/em&gt;: esta operação conclui a uma operação previamente autorizada e a conta faz um débito no cartão.&lt;/br&gt;
+De volta ao exemplo do aplicativo de transporte, assim que o serviço for concluído, o aplicativo cobra o valor total da sua viagem e encerra a transação.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
+O fluxo em duas etapas não está disponível na Colômbia e no Panamá. No Chile, este fluxo está disponível somente sob solicitação, entre em contato com seu representante de vendas.
+&lt;/div&gt;
+
+&lt;h3 id=&#34;payment-methods&#34;&gt;Métodos de pagamento&lt;/h3&gt;
+&lt;p&gt;Os métodos de pagamento disponíveis para processar transações são::&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cartões de crédito.&lt;/li&gt;
+&lt;li&gt;Pagamentos em dinheiro ou bancários.&lt;/li&gt;
+&lt;li&gt;Transferências bancárias.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
+Consultar &lt;a href=&#34;../../../pt/docs/getting-started/select-your-payment-method.html&#34;&gt;este artigo&lt;/a&gt; para saber os métodos de pagamento disponíveis para os compradores por país.
+&lt;/div&gt;
+
+&lt;h2 id=&#34;whats-next&#34;&gt;O que acontece agora?&lt;/h2&gt;
+&lt;p&gt;A integração com este recurso depende do país de suas transações, da operação selecionada e da forma de pagamento.&lt;/p&gt;
+&lt;div class=&#34;container overview-topic&#34; align=&#34;center&#34;&gt;
+  &lt;div class=&#34;row&#34;&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Argentina.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-argentina.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-argentina.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Brasil.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-brazil.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-brazil.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Chile.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-chile.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-chile.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Colombia.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-colombia.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-colombia.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Mexico.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-mexico.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-mexico.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Panama.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-panama.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%;cursor:default;box-shadow:initial&#34;&gt;
+      &lt;img src=&#34;&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;display:none&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%&#34;&gt;
+      &lt;img src=&#34;../../../assets/Peru.png&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/api-integration/payments-api-peru.html&#39;&gt;API&lt;/a&gt;&lt;/div&gt;
+        &lt;div style=&#34;float: left;width: 50%;&#34;&gt;&lt;a href=&#39;../integrations/sdk-integration/payments-sdk-peru.html&#39;&gt;SDK&lt;/a&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;col-sm-4 getting-started&#34; style=&#34;max-width:30%;cursor:default;box-shadow:initial&#34;&gt;
+      &lt;img src=&#34;&#34; width=&#34;40px&#34; style=&#34;padding-bottom: 14px;display:none&#34;&gt;
+      &lt;br&gt;
+      &lt;div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Consultas para transações</title>
+      <link>/pt/docs/services/queries.html</link>
+      <pubDate>Fri, 26 Mar 2021 09:12:41 -0500</pubDate>
+      
+      <guid>/pt/docs/services/queries.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;considerations&#34;&gt;Observações&lt;/h2&gt;
+&lt;p&gt;Antes de usar o recurso &lt;em&gt;Consultas&lt;/em&gt;, leve em conta o seguinte:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Recomenda-se usar &lt;em&gt;Consultas&lt;/em&gt; para transações em estado &lt;code&gt;PENDING&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;O tempo para realizar a consulta pode variar de acordo com a forma de pagamento. No entanto, é recomendável realizar a primeira consulta 7 minutos após a criação da transação.&lt;/li&gt;
+&lt;li&gt;Não tente novamente uma consulta de uma transação quando PayU indicar que a transação não existe.&lt;/li&gt;
+&lt;li&gt;As transações de transferência bancária estão disponíveis apenas a cada 10 minutos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;query-criteria&#34;&gt;Critérios da consulta&lt;/h2&gt;
+&lt;p&gt;To query transactions, PayU allows you to search by any of the following criteria:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Order Id&lt;/em&gt;: gerado pelo PayU. Identifica a ordem no sistema PayU e é o principal elemento onde qualquer movimentação é registrada (cobranças, novas tentativas, reembolsos etc.)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Transaction Id&lt;/em&gt;: PayU gera este identificador para cada movimento associado a uma ordem (Order ID).&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Reference Número&lt;/em&gt;: gerado pela loja. Identifica a ordem ou compra em seu sistema, o PayU salva este valor conforme você o envia.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;O que acontece agora?&lt;/h2&gt;
+&lt;p&gt;A integração com este recurso pode ser feita com um dos nossos tipos de integração:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../../pt/docs/integrations/api-integration/queries-api.html&#34;&gt;Para integrações API, consulte este tópico&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../../pt/docs/integrations/sdk-integration/queriessdk.html&#34;&gt;Para integrações SDK, consulte este tópico&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Tokenização</title>
+      <link>/pt/docs/services/tokenization.html</link>
+      <pubDate>Fri, 26 Mar 2021 09:34:59 -0500</pubDate>
+      
+      <guid>/pt/docs/services/tokenization.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;Para usar o recurso de tokenização, você precisa habilitá-lo em sua conta PayU. Para isso, entre em contato com seu representante de vendas:&lt;/p&gt;
+&lt;div style=&#34;display: flex;&#34;&gt;
+  &lt;div style=&#34;float: left;width: 50%;&#34;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Argentina.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.ar@payu.com&#34;&gt;comercios.ar@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Brasil.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.br@payu.com&#34;&gt;comercios.br@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Chile.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.cl@payu.com&#34;&gt;comercios.cl@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Colombia.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.co@payu.com&#34;&gt;comercios.co@payu.com&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;float: left;width: 50%;&#34;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Mexico.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.mx@payu.com&#34;&gt;comercios.mx@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Panama.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.pa@payu.com&#34;&gt;comercios.pa@payu.com&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&#34;../../../assets/Peru.png&#34; width=&#34;25px&#34;/&gt; &lt;a href=&#34;comercios.pe@payu.com&#34;&gt;comercios.pe@payu.com&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;how-does-tokenization-work&#34;&gt;Como funciona a tokenização?&lt;/h2&gt;
+&lt;p&gt;A tokenização inclui dois processos separados:&lt;/p&gt;
+&lt;h3 id=&#34;generate-token&#34;&gt;Gerar token&lt;/h3&gt;
+&lt;p&gt;O primeiro processo permite salvar as informações de um cartão de crédito. Essas informações são transformadas em um token para que você possa usá-las mais tarde.&lt;/p&gt;
+&lt;img src=&#34;../../../assets/Tokenization/tokenizacion1-pt.png&#34; width=&#34;50%&#34;/&gt;
+&lt;h3 id=&#34;make-charges&#34;&gt;Realizar cobranças&lt;/h3&gt;
+&lt;p&gt;Com as informações de um cartão de crédito armazenadas em um token, você pode usá-las para fazer cobranças periódicas de acordo com sua necessidade, e seu cliente não precisará fornecer as informações de cartão de crédito sempre que você solicitar um pagamento.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/Tokenization/tokenizacion2-pt.png&#34; width=&#34;50%&#34;/&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Além disso, o recurso de tokenização permite armazenar, remover ou cobrar vários cartões de crédito enviando um arquivo codificado em Base64.&lt;/p&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;O que acontece agora?&lt;/h2&gt;
+&lt;p&gt;A integração com este recurso pode ser feita com um dos nossos tipos de integração:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../../pt/docs/integrations/api-integration/tokenization-api.html&#34;&gt;Para integrações API, consulte este tópico&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html&#34;&gt;Para integrações SDK, consulte este tópico&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Parcelas e promoções - Argentina e México</title>
+      <link>/pt/docs/services/promotions.html</link>
+      <pubDate>Fri, 26 Mar 2021 14:02:05 -0500</pubDate>
+      
+      <guid>/pt/docs/services/promotions.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;what-are-installments-and-promotions&#34;&gt;O que são Parcelas e Promoções&lt;/h2&gt;
+&lt;p&gt;Com Parcelas e Promoções, você pode oferecer ao seu cliente a possibilidade de adquirir seus produtos pagando um determinado número de parcelas com uma taxa de juros reduzida. Seja qual for a quantidade de parcelas selecionadas pelo seu cliente, você receberá o valor total da compra, descontada a comissão determinada com o PayU.&lt;/p&gt;
+&lt;p&gt;Para configurar Parcelas e Promoções com base nos contratos que você possui com entidades bancárias, entre em contato com seu representante de vendas.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
+No México, você pode usar &lt;a href=&#34;../../../pt/docs/services/promotions.html#months-without-interests-msi---meses-sin-intereses&#34;&gt;Meses sem juros (MSI - Meses sin intereses)&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;how-does-installments-and-promotions-works-in-payu&#34;&gt;Como funciona Parcelas e Promoções no PayU&lt;/h2&gt;
+&lt;p&gt;Para usar as promoções, é necessário primeiro consultar as promoções disponíveis para a sua loja. Em seguida, selecione a promoção que mais se adapta às suas necessidades. Por fim, envie a solicitação de pagamento juntamente com o ID da promoção selecionada e o número de parcelas.&lt;/p&gt;
+&lt;p&gt;A sequência de eventos a seguir explica melhor o fluxo de promoções.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/Promotions/PromotionsFlow_pt.png&#34; alt=&#34;Promotions Flow&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;months-without-interests-msi---meses-sin-intereses&#34;&gt;Meses sem juros (MSI - Meses sin intereses)&lt;/h2&gt;
+&lt;p&gt;Meses sem juros (conhecido no México como &lt;em&gt;Meses sin intereses&lt;/em&gt;) permite oferecer aos seus clientes a possibilidade de pagar em um determinado número de parcelas sem juros (3, 6, 9, 12 ou 18). Ao contrário do modelo de promoções, ao usar o MSI não é necessário consultar o ID da promoção.&lt;/p&gt;
+&lt;p&gt;Para solicitar o MSI, entre em contato com seu representante de vendas.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
+&lt;p&gt;Os valores mínimos para MSI dependem do número de parcelas selecionadas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;3 &amp;gt; $300 MXN&lt;/li&gt;
+&lt;li&gt;6 &amp;gt; $600 MXN&lt;/li&gt;
+&lt;li&gt;9 &amp;gt; $900 MXN&lt;/li&gt;
+&lt;li&gt;12 &amp;gt; $1200 MXN&lt;/li&gt;
+&lt;li&gt;18 &amp;gt; $1800 MXN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&#34;whats-next&#34;&gt;O que acontece agora?&lt;/h2&gt;
+&lt;p&gt;A integração com este recurso pode ser realizada usando o &lt;a href=&#34;../../../pt/docs/integrations/api-integration/promotions-api.html&#34;&gt;API de promoções&lt;/a&gt;. Para saber como se integrar com o MSI, consulte esta &lt;a href=&#34;../../../pt/docs/integrations/api-integration/promotions-api.html#msi&#34;&gt;seção&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Cancelamentos e Reembolsos</title>
+      <link>/pt/docs/services/refunds.html</link>
+      <pubDate>Fri, 26 Mar 2021 15:09:39 -0500</pubDate>
+      
+      <guid>/pt/docs/services/refunds.html</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;understanding-concepts&#34;&gt;Conceitos&lt;/h2&gt;
+&lt;p&gt;Antes de prosseguir, vamos explicar os seguintes conceitos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Cancelamento ou Void&lt;/em&gt;: esta operação reverte uma transação previamente autorizada.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Reembolso ou Refund&lt;/em&gt;: esta operação solicita o estorno de uma transação capturada anteriormente. Reembolsos podem ser solicitados pelo valor total ou parcial. Um comprador pode solicitar um reembolso quando não estiver satisfeito com a compra, a compra tiver várias cobranças ou o comprador não receber o produto ou serviço.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;void&#34;&gt;Cancelamento ou Void&lt;/h3&gt;
+&lt;p&gt;O método &lt;code&gt;VOID&lt;/code&gt; cancela uma transação previamente autorizada. O cancelamento é um procedimento automático. Assim que você enviar o pedido de  &lt;code&gt;VOID&lt;/code&gt;, não há nenhum fluxo de aprovação e a transação não é cobrada do titular do cartão.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
+&lt;code&gt;VOID&lt;/code&gt; não estão disponíveis na Colômbia e no Panamá.
+&lt;/div&gt;
+
+&lt;h3 id=&#34;refund&#34;&gt;Reembolso ou Refund&lt;/h3&gt;
+&lt;p&gt;Reembolsos são solicitados quando uma loja decide devolver voluntariamente o dinheiro gasto pelo comprador por motivos de insatisfação ou quando a loja não possui estoque suficiente do produto adquirido. O método &lt;code&gt;REFUND&lt;/code&gt; solicita a reversão de uma transação capturada anteriormente.&lt;/p&gt;
+&lt;p&gt;Ao contrário do método &lt;code&gt;VOID&lt;/code&gt;, este método precisa de uma aprovação. O procedimento de reembolso é explicado abaixo:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Quando um reembolso é solicitado por seu cliente, você precisa solicitá-lo com o &lt;a href=&#34;../../../pt/payu-module-documentation/payu-operations/refunds-mp.html&#34;&gt;Módulo PayU&lt;/a&gt; ou nossas integrações. São necessários o &lt;em&gt;ID da ordem&lt;/em&gt; e um motivo de reembolso.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Depois que você enviar a solicitação, PayU analisa a solicitação e aprova ou rejeita em 1 - 3 dias úteis.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Os &lt;code&gt;REFUND&lt;/code&gt; têm três estados:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;UNRESOLVED&lt;/code&gt;: a solicitação foi enviada ao PayU para aprovação. Nesta etapa, nenhuma transação foi adicionada ao ordem e quando você o consulta usando o &lt;a href=&#34;../../../pt/docs/services/queries.html&#34; title=&#34;Query Service&#34;&gt;Serviço de consultas&lt;/a&gt;, a resposta mostra apenas a transação de aprovação do pagamento.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;APPROVED&lt;/code&gt;: a solicitação foi aprovada por um agente de atendimento ao cliente PayU. Nesta etapa, a ordem mudou de estado para &lt;code&gt;REFUNDED&lt;/code&gt; e o PayU adiciona uma transação aprovada de reembolso (&lt;code&gt;REFUND&lt;/code&gt;) à ordem.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DECLINED&lt;/code&gt;: a solicitação não atende às políticas definidas pelo PayU e foi rejeitada. Quando o reembolso é recusado, PayU adiciona um uma transação recusada de reembolso (&lt;code&gt;REFUND&lt;/code&gt;) à ordem.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para obter mais informações sobre transações autorizadas e capturadas, consulte &lt;a href=&#34;../../../pt/docs/services/payments.html#payment-flows&#34;&gt;Pagamentos&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Observações&lt;/h2&gt;
+&lt;p&gt;Antes de usar qualquer recurso de CANCELAMENTO ou REEMBOLSO, leve em conta as seguintes observações:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Reembolso&lt;/em&gt; ou &lt;em&gt;Cancelamento&lt;/em&gt; estão disponíveis apenas para transações feitas com cartão de crédito. Se a solicitação se referir a um meio de pagamento diferente, como pagamento em dinheiro ou transferência bancária; a solicitação é recusada por PayU.&lt;/li&gt;
+&lt;li&gt;PayU cria apenas um aplicativo para cada solicitação de reembolso. Se uma solicitação for postada repetidamente para a mesma transação, PayU indica que a solicitação já está registrada.&lt;/li&gt;
+&lt;li&gt;PayU só aceita solicitações de reembolso de transações capturadas.&lt;/li&gt;
+&lt;li&gt;Você pode tentar novamente a ordem de reembolso se ele foi recusado anteriormente.&lt;/li&gt;
+&lt;li&gt;Assim que você faz a solicitação, o valor da transação passa a fazer parte do Saldo Congelado de sua conta PayU até que seja processado.
+&lt;ul&gt;
+&lt;li&gt;Se a sua ordem de reembolso for  &lt;code&gt;APPROVED&lt;/code&gt;, o valor será devolvido ao titular do cartão.&lt;/li&gt;
+&lt;li&gt;Se a sua ordem de reembolso for  &lt;code&gt;DECLINED&lt;/code&gt;, o valor é liberado do Saldo Congelado e retorna ao Saldo disponível de sua conta PayU.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Assim que o reembolso for aprovado, isso será refletido no cartão de crédito do pagador quando o banco o efetivar.&lt;/li&gt;
+&lt;li&gt;Para verificar o status de sua solicitação de reembolso, use o &lt;a href=&#34;../../../pt/docs/services/queries.html&#34; title=&#34;Query Service&#34;&gt;Serviço de consultas&lt;/a&gt; disponíveis para esse fim.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;O que acontece agora?&lt;/h2&gt;
+&lt;p&gt;De acordo com o país de processamento, algumas condições especiais podem ser necessárias para a execução de cancelamentos ou reembolsos. Essas condições são explicadas no tipo de integração selecionado.&lt;/p&gt;
+&lt;p&gt;A integração com este recurso pode ser feita com um dos nossos tipos de integração:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../../../pt/docs/integrations/api-integration/refunds-api.html&#34;&gt;Para integrações API, consulte este tópico&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../../pt/docs/integrations/sdk-integration/refundssdk.html&#34;&gt;Para integrações SDK, consulte este tópico&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Payouts</title>
+      <link>/pt/docs/services/payouts.html</link>
+      <pubDate>Fri, 16 Jul 2021 11:32:55 -0500</pubDate>
+      
+      <guid>/pt/docs/services/payouts.html</guid>
+      <description>
+        
+        
+        &lt;p&gt;Payouts é um serviço de integração disponível sob demanda, e sua ativação depende de uma análise de segurança e risco. Para obter mais informações ou solicitar este serviço, entre em contato com seu Representante de Vendas.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/PushPayments/PushPayments_pt.png&#34; width=&#34;70%&#34; alt=&#34;Concepts&#34;/&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Vamos explicar os pagamentos usando um exemplo. Um comércio oferece produtos e serviços disponíveis para entrega. Este comércio usa PayU como sua plataforma de pagamento online e tem uma conta onde recebe o dinheiro pago de seus clientes. Este comércio tem muitos entregadores para quem paga um valor fixo por entrega efetuada.&lt;/p&gt;
+&lt;p&gt;A cada semana, o comércio paga o valor ganho a cada mensageiro. Para fazer isso, ele pode usar Payouts para pagar diretamente de sua conta PayU em vez de gerenciar os pagamentos por conta própria. Nesse caso, o comércio deve transferir o dinheiro para suas contas ou usar fundos de outras fontes.&lt;/p&gt;
+&lt;p&gt;Para solicitar o pagamento, o comércio envia a lista de beneficiários que deseja pagar e o valor de cada um. O PayU valida esses beneficiários e programa o payout.&lt;/p&gt;
+&lt;p&gt;O valor de cada payout, mais a taxa de processamento, é deduzido de sua conta. Entre em contato com seu representante de vendas para saber a taxa de processamento para usar este serviço.&lt;/p&gt;
+&lt;h2 id=&#34;benefits&#34;&gt;Benefícios&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Leverage regional capabilities&lt;/strong&gt;.&lt;br&gt;A complete and easy-to-use API to make payments to any bank in the processing country&lt;sup&gt;*&lt;/sup&gt;.&lt;br&gt;&lt;sup&gt;*&lt;/sup&gt;&lt;em&gt;Available for now in Colombia, with other markets coming soon.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;One ou multiple payouts&lt;/strong&gt;.&lt;br&gt;The API is flexible. You can create one ou multiple requests which can be new ou existing. There is no restriction for the number of records.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Save time and costs&lt;/strong&gt;.&lt;br&gt;You can save operational costs and time managing all payment operations in just one place.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Better manage account funds and balance&lt;/strong&gt;.&lt;br&gt;You can cancel payment orders before the payout is sent to the bank. Payouts feature helps you to better manage your account funds and balance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customizable notifications&lt;/strong&gt;.&lt;br&gt;Any changes in the payment order status are updated through our solution. You can customize the update notifications you receive.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-does-the-payouts-feature-work&#34;&gt;Como funcionam os Payouts?&lt;/h2&gt;
+&lt;p&gt;Through Payouts, you can send multiple and secure payouts such as fund disbursement to employees, sub-merchants, suppliers or customers, using the funds you have in your PayU Account.&lt;/p&gt;
+&lt;p&gt;Você só precisa fornecer o valor a pagar juntamente com os dados de cada beneficiário (como nome, identificação, dados bancários etc.), e PayU transfere o valor solicitado após as validações.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../../assets/PushPayments/PushPaymentsFlow_pt.png&#34; alt=&#34;Concepts&#34;/&gt;&lt;br&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Solicitação de Payout&lt;/strong&gt;: você envia uma solicitação via API com a lista de beneficiários para os quais deseja enviar os fundos, junto com o valor de cada transação e seus dados de pagamento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validação de beneficiário&lt;/strong&gt;: os beneficiários são validados por meio de nossa solução (processo de Sanction Screening) e os pagamentos são agendados.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Débito de fundos&lt;/strong&gt;: o valor de cada Payout junto com a taxa de processamento são debitados de sua conta virtual do PayU.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Confirmação do processo&lt;/strong&gt;: o banco processa o pagamento de acordo com o &lt;a href=&#34;#transaction-processing&#34;&gt;processo ACH&lt;/a&gt;. Você pode personalizar as notificações para receber alterações no status do pagamento.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;payout-states&#34;&gt;Estados de Payouts&lt;/h3&gt;
+&lt;p&gt;Os Payouts são realizados em duas etapas principais: a primeira etapa é quando você solicita o pagamento a um beneficiário. O segundo é quando o pedido foi aprovado e passa para a transferência dos fundos.&lt;/p&gt;
+&lt;p&gt;O procedimento transacional de Payouts possui os seguintes estados.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AWAITING SANCTION SCREENING&lt;/strong&gt;: este estado indica que o beneficiário a quem será feito o pagamento está sujeito à validação de listas restritas e demais políticas do PayU relacionadas à análise de risco. Se um beneficiário não passar na validação, o pagamento será automaticamente rejeitado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AWAITING FOR SENT&lt;/strong&gt;: se o beneficiário passa na validação ou não está sujeito a ela, este estado indica que o pedido está pronto para ser processado. Neste estado, a comunicação com o serviço não foi realizada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SENT TO CREATE&lt;/strong&gt;: este estado indica que a comunicação com o serviço foi concluída e o ordem de Pagamento está em processo de criação.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CREATED&lt;/strong&gt;: este estado indica que a solicitação foi criada e se tornou uma ordem de pagamento. Quando a solicitação se torna uma ordem de pagamento, ela passa pelos estados explicados em &lt;a href=&#34;#payment-order-states&#34;&gt;Estados de ordem de pagamento&lt;/a&gt;. O próximo estado depende do resultado do processo da ordem de pagamento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;REJECTED&lt;/strong&gt;: este estado indica que o pedido foi rejeitado. Um pedido pode ser rejeitado quando:
+&lt;ul&gt;
+&lt;li&gt;A validação do beneficiário falhou.&lt;/li&gt;
+&lt;li&gt;A criação do payout falhou.&lt;/li&gt;
+&lt;li&gt;Você solicitou o cancelamento da solicitação de Payout e ela foi aprovada.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PROCESSING COMPLETED&lt;/strong&gt;: este estado indica que o processo de Payout foi concluído.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AWAITING TO CANCEL&lt;/strong&gt;: este estado indica que você solicitou o cancelamento de uma solicitação de Payout. Leve em conta que você pode solicitar o cancelamento de uma ordem de Payout quando este não estiver em processo Bancário.&lt;br&gt;Neste estado, a comunicação com o serviço não foi realizada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SENT FOR CANCELLATION&lt;/strong&gt;: este estado indica que a comunicação com o serviço foi concluída e o ordem de Payout está em processo de cancelamento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CANCELLATION FAILED&lt;/strong&gt;: este estado indica que o pedido de cancelamento não pode ser executado devido às políticas do PayU ou porque o pedido não está sendo processado pelo PayU.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O diagrama a seguir ilustra as mudanças de estado:&lt;/p&gt;
+&lt;img src=&#34;../../../assets/PushPayments/PushPaymentsStates_pt.png&#34; width=&#34;80%&#34; alt=&#34;Concepts&#34;/&gt;
+&lt;h3 id=&#34;payment-order-states&#34;&gt;Estados de ordem de pagamento&lt;/h3&gt;
+&lt;p&gt;Assim que o Payout for aprovado, ele será transformado em ordem de pagamento. A seguir estão os estados de uma ordem de pagamento.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;REQUEST_BY_THE_MERCHANT&lt;/strong&gt;: este é o estado inicial da transação, uma vez que você envia a lista de beneficiários a serem pagos e os beneficiários são aprovados, a transação entra neste estado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IN_VALIDATION&lt;/strong&gt;: devido às políticas do PayU, cada pagamento pode estar sujeito a validação. Esse estado indica que sua solicitação deve ser analisada de acordo com nossas políticas internas. Se a validação falha, o pagamento que não atendeu às políticas é rejeitado.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IN_PAYU_PROCESS&lt;/strong&gt;: este estado indica que PayU iniciou o processo de pagamento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AWAITING_BANK_SENT&lt;/strong&gt;: este estado indica que PayU iniciou a transferência do valor para o beneficiário.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IN_BANKING_PROCESS&lt;/strong&gt;: teste estado indica que o pagamento está sendo processado na conta bancária do beneficiário. Nesta etapa, você não pode cancelar a solicitação.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CONFIRMED_BY_THE_BANK&lt;/strong&gt;: este estado indica que o beneficiário recebeu o valor transferido.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;REJECTED&lt;/strong&gt;: este estado indica que a transação foi rejeitada pelo PayU (devido a violação da política) ou pelo Banco (devido a erros nas informações bancárias).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;O diagrama a seguir ilustra as mudanças de estado:&lt;/p&gt;
+&lt;img src=&#34;../../../assets/PushPayments/PushPaymentsSteps_pt.png&#34; width=&#34;60%&#34; alt=&#34;Concepts&#34;/&gt;
+&lt;h3 id=&#34;transaction-validation&#34;&gt;Validação de transação&lt;/h3&gt;
+&lt;p&gt;Cada solicitação de Payout é validada para verificar se a pessoa que receberá o dinheiro não está incluída nas listas restritas. Esta validação pode demorar até 24 horas o que pode atrasar o procedimento de pagamento.&lt;/p&gt;
+&lt;p&gt;Quando uma pessoa precisa ser verificada, PayU verifica primeiro no cache de validação, de modo que uma pessoa só é validada uma vez no quadro de cache.&lt;/p&gt;
+&lt;p&gt;Se uma pessoa não aprova a validação, o Payout não é realizado e você é notificado, caso tenha configurado as notificações dos resultados da validação.&lt;/p&gt;
+&lt;h2 id=&#34;considerations&#34;&gt;Observações&lt;/h2&gt;
+&lt;p&gt;Leve em conta as seguintes informações:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Payouts não é um serviço incluído como padrão. Você deve solicitar e assinar um anexo ao contrato para definir a taxa e demais condições. Para contratar este serviço, entre em contato com seu gerente de contas.&lt;/li&gt;
+&lt;li&gt;Os comércios são responsáveis pela integridade e precisão dos dados de beneficiários. PayU não valida se os dados fornecidos pelo estabelecimento estão completos e corretos. Além disso, a atualização dos dados deve ser solicitada pelos estabelecimentos.&lt;br&gt;PayU não se responsabiliza por transações malsucedidas devido a dados incorretos.&lt;/li&gt;
+&lt;li&gt;Os Payouts permitem apenas pagamentos locais. O comércio pode ser internacional (sob análise de segurança e risco), mas só pode solicitar Payouts usando os fundos coletados no país de processamento.&lt;br&gt;Por exemplo, se o vendedor &lt;em&gt;ABC&lt;/em&gt; processa pagamentos na Colômbia e no Peru, ele pode solicitar pagamentos a beneficiários na Colômbia usando os fundos arrecadados na Colômbia, mas não pode solicitar pagamentos a beneficiários no Peru usando os fundos arrecadados na Colômbia.&lt;/li&gt;
+&lt;li&gt;Depois que o payout é criado, ele segue o fluxo regular no PayU. Isso significa que você pode ver o payout criado em seu módulo PayU.&lt;/li&gt;
+&lt;li&gt;O comércio deve comprovar a relação entre ele e seus beneficiários para garantir que a transação seja legítima.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- * For Gambling commerces, Payouts cannot be used to make refunds. Therefore, it is necessary to guarantee that the commerce is paying a prize. --&gt;
+&lt;h2 id=&#34;transaction-processing&#34;&gt;Processamento de transação&lt;/h2&gt;
+&lt;p&gt;Payouts usam transferências ACH (&lt;strong&gt;A&lt;/strong&gt;utomated &lt;strong&gt;C&lt;/strong&gt;learing &lt;strong&gt;H&lt;/strong&gt;ouse) para envio dos pagamentos aos beneficiários, ou seja, as transações são processadas em lotes durante o dia. O momento em que a transação será processada é explicado na tabela a seguir:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;em&gt;IN_BANKING_PROCESS&lt;/em&gt; state time&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Tempo de processamento ACH&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Tempo estimado de resposta&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;05:31 p.m. - 07:20 a.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9:00 a.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7:55 p.m.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;07:21 a.m. - 09:45 a.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11:30 a.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10:40 a.m.&lt;br&gt;&lt;em&gt;Próximo dia útil&lt;/em&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;09:46 a.m. - 12:30 p.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2:00 p.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1:45 p.m.&lt;br&gt;&lt;em&gt;Próximo dia útil&lt;/em&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12:31 p.m. - 02:50 p.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4:00 p.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4:40 p.m.&lt;br&gt;&lt;em&gt;Próximo dia útil&lt;/em&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;02:59 p.m. - 04:20 p.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6:00 p.m.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6:20 p.m.&lt;br&gt;&lt;em&gt;Próximo dia útil&lt;/em&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Transações que chegam ao estado &lt;strong&gt;IN_BANKING_PROCESS&lt;/strong&gt; após as 16h20 são processadas no próximo dia útil.&lt;/em&gt;&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
+Os pedidos de Payout podem não estar no estado &lt;strong&gt;IN_BANKING_PROCESS&lt;/strong&gt; depois de enviados, e dependendo da validação do beneficiário, podem demorar até &lt;em&gt;24&lt;/em&gt; horas.
+&lt;/div&gt;
+
+&lt;h2 id=&#34;notifications&#34;&gt;Notificações&lt;/h2&gt;
+&lt;p&gt;Ao usar Payouts, você pode criar um WebHook para configurar notificações sobre mudanças de status. Recomenda-se configurar o WebHook antes de enviar a solicitação de Payout ao configurar notificações.&lt;/p&gt;
+&lt;p&gt;Você pode configurar um WebHook para um ou mais dos seguintes eventos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Criação de transferência&lt;/strong&gt;: envia uma notificação quando uma solicitação de payout é criada.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Atualização de transferência&lt;/strong&gt;: envia uma notificação quando a validação da triagem de sanção rejeita o beneficiário.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;•	Resultado de validação&lt;/strong&gt;: senvia uma notificação quando o beneficiário aprovou a validação da triagem de sanção e quando a transferência foi rejeitada pelo banco.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para saber como criar WebHooks, consulte &lt;a href=&#34;../../../pt/docs/integrations/api-integration/payouts-api.html#create-or-update-a-webhook&#34;&gt;este artigo&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;variables-in-the-notifications&#34;&gt;Variáveis nas notificações&lt;/h3&gt;
+&lt;p&gt;As seguintes variáveis são enviadas ao WebHook quando ocorre algum dos eventos explicados anteriormente.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Variável&lt;/th&gt;
+&lt;th&gt;Formato&lt;/th&gt;
+&lt;th&gt;Descrição&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pushPaymentId&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Id do pagamento criado.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;creationDate&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Numérico&lt;/td&gt;
+&lt;td&gt;Data em que o pagamento foi criado.&lt;br&gt;Esta data está em milissegundos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Numérico&lt;/td&gt;
+&lt;td&gt;Quantia solicitada a ser transferida para o beneficiário.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;currency&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Moeda do valor solicitado.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Atual &lt;a href=&#34;#payout-states&#34;&gt;Estado de Payout&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Atual &lt;a href=&#34;#payment-order-states&#34;&gt;Estado da ordem de Payout&lt;/a&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;errorCode&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Erro gerado após a validação da sanction screening.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;errorMessage&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Mensagem de erro gerada após a validação da sanction screening.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;supplierBankAccountId&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Id da conta bancária do beneficiário gerado pela solicitação de payout.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;fullName&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Nome do beneficiário do Payout.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;documentNumber&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Numérico&lt;/td&gt;
+&lt;td&gt;Número do documento do beneficiário do Payout.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;country&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;País do beneficiário do Payout.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;validationState&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Alfanumérico&lt;/td&gt;
+&lt;td&gt;Resultado da validação realizada pelo PayU.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;dateOfTheNextValidation&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Numérico&lt;/td&gt;
+&lt;td&gt;Data em que o beneficiário será validado por sanction screening.&lt;br&gt;Esta data está em milissegundos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;O que acontece agora?&lt;/h2&gt;
+&lt;p&gt;A integração com este recurso é realizada usando &lt;a href=&#34;../../../pt/docs/integrations/api-integration/payouts-api.html&#34;&gt;Integrações de API&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
