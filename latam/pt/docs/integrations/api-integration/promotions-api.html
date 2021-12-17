@@ -1,0 +1,2230 @@
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>API de promoções para a Argentina e o México | PayU Latam</title><meta property="og:title" content="API de promoções para a Argentina e o México" />
+<meta property="og:description" content="PO recurso de promoções permite que você consulte as promoções válidas, seus custos associados, características e outras informações relevantes disponíveis para seus clientes. A API de promoções está disponível somente na Argentina e no México (MSI - Meses Sin Intereses).
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pt/docs/integrations/api-integration/promotions-api.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-06-29T12:38:41-05:00" />
+<meta property="article:modified_time" content="2021-12-17T14:22:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="API de promoções para a Argentina e o México">
+<meta itemprop="description" content="PO recurso de promoções permite que você consulte as promoções válidas, seus custos associados, características e outras informações relevantes disponíveis para seus clientes. A API de promoções está disponível somente na Argentina e no México (MSI - Meses Sin Intereses).
+"><meta itemprop="datePublished" content="2021-06-29T12:38:41-05:00" />
+<meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
+<meta itemprop="wordCount" content="2366">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="API de promoções para a Argentina e o México"/>
+<meta name="twitter:description" content="PO recurso de promoções permite que você consulte as promoções válidas, seus custos associados, características e outras informações relevantes disponíveis para seus clientes. A API de promoções está disponível somente na Argentina e no México (MSI - Meses Sin Intereses).
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../pt/">
+			
+			
+			<span class="navbar-logo"><img src="../../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../../pt/docs.html" ><span class="active">Pagamentos Online</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../../pt/payu-module-documentation.html" ><span>Guia do Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../es/docs/integrations/api-integration/promotions-api.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/api-integration/promotions-api.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar no site…"
+  aria-label="Buscar no site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../offline-search-index.fa5d8842ef501d9b5efffb7036cc38f0b8891b5dc6f85c098b704be150099196a0b1c5a83e68d3a1172ca98cfa91dc8125737bceeb145954b7bfec4b1312fb26.json"
+  data-offline-search-base-href="../../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../es/docs/integrations/api-integration/promotions-api.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../en/docs/integrations/api-integration/promotions-api.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs.html" href="../../../../pt/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Início</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/getting-started.html" href="../../../../pt/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Para começar</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedcreate-an-accounthtml" href="../../../../pt/docs/getting-started/create-an-account.html">Crie uma conta PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-integrationhtml" href="../../../../pt/docs/getting-started/select-your-integration.html">Selecione sua integração</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-payment-methodhtml" href="../../../../pt/docs/getting-started/select-your-payment-method.html">Selecione seu método de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedtest-your-solutionhtml" href="../../../../pt/docs/getting-started/test-your-solution.html">Teste sua solução</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-starteddeploy-to-productionhtml" href="../../../../pt/docs/getting-started/deploy-to-production.html">Implementar na produção</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedresponse-codes-and-variableshtml" href="../../../../pt/docs/getting-started/response-codes-and-variables.html">Códigos e variáveis de resposta</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/services.html" href="../../../../pt/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Serviços</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespaymentshtml" href="../../../../pt/docs/services/payments.html">Pagamentos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesquerieshtml" href="../../../../pt/docs/services/queries.html">Consultas para transações</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicestokenizationhtml" href="../../../../pt/docs/services/tokenization.html">Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespromotionshtml" href="../../../../pt/docs/services/promotions.html">Parcelas e promoções - Argentina e México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesrefundshtml" href="../../../../pt/docs/services/refunds.html">Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespayoutshtml" href="../../../../pt/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/tools.html" href="../../../../pt/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Ferramentas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-requesthtml" href="../../../../pt/docs/tools/payment-request.html">Solicitação de pagamento</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/tools/shopping-cart-plugins.html" href="../../../../pt/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins do carrinho de compras</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsmagentohtml" href="../../../../pt/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../../pt/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../../pt/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../../pt/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsopencarthtml" href="../../../../pt/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayu-modulehtml" href="../../../../pt/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsdisputeshtml" href="../../../../pt/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-couponshtml" href="../../../../pt/docs/tools/payment-coupons.html">Cupons de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsantifraud-guaranteehtml" href="../../../../pt/docs/tools/antifraud-guarantee.html">Garantia Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/integrations.html" href="../../../../pt/docs/integrations.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Integrações</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/webcheckout-integration.html" href="../../../../pt/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração Webcheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../../pt/docs/integrations/webcheckout-integration/payment-form.html">Formulário de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../../pt/docs/integrations/webcheckout-integration/response-page.html">Página de resposta</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../../pt/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmação</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/api-integration.html" href="../../../../pt/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Integração API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-argentina.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-argentina.html">API de pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-brazil.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../../pt/docs/integrations/api-integration/payments-api-brazil.html">API de pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-chile.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../../pt/docs/integrations/api-integration/payments-api-chile.html">API de pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-colombia.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-colombia.html">API de pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-mexico.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../../pt/docs/integrations/api-integration/payments-api-mexico.html">API de pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-panama.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-panama.html">API de pagamentos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-peru.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../../pt/docs/integrations/api-integration/payments-api-peru.html">API de pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/queries-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationqueries-apihtml" href="../../../../pt/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/tokenization-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationtokenization-apihtml" href="../../../../pt/docs/integrations/api-integration/tokenization-api.html">API de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/promotions-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpromotions-apihtml" href="../../../../pt/docs/integrations/api-integration/promotions-api.html">API de promoções</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/refunds-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationrefunds-apihtml" href="../../../../pt/docs/integrations/api-integration/refunds-api.html">API de Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payouts-api.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayouts-apihtml" href="../../../../pt/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/sdk-integration.html" href="../../../../pt/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationqueriessdkhtml" href="../../../../pt/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationrefundssdkhtml" href="../../../../pt/docs/integrations/sdk-integration/refundssdk.html">SDK de Cancelamentos e Reembolsos</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/server-status.html" href="../../../../pt/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Status do servidor</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>Nesta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#promotions">Promoções</a>
+      <ul>
+        <li><a href="#authentication-for-promotions">Autenticação para Promoções</a></li>
+        <li><a href="#configuring-the-authentication">Como configurar a autenticação</a></li>
+        <li><a href="#consult-available-promotions">Consulte as promoções disponíveis</a></li>
+        <li><a href="#execute-a-transaction-with-promotions">Executar uma transação com Promoções</a></li>
+      </ul>
+    </li>
+    <li><a href="#msi">Meses sem juros (MSI - Meses Sin Intereses)</a>
+      <ul>
+        <li><a href="#considerations">Observações</a></li>
+        <li><a href="#variables-for-msi">Variáveis para MSI</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs.html">Início</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs/integrations.html">Integrações</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs/integrations/api-integration.html">Integração API</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../../pt/docs/integrations/api-integration/promotions-api.html">API de promoções</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>API de promoções para a Argentina e o México</h1>
+    <div class="lead">PO recurso de promoções permite que você consulte as promoções válidas, seus custos associados, características e outras informações relevantes disponíveis para seus clientes. A API de promoções está disponível somente na Argentina e no México (MSI - Meses Sin Intereses).</div>
+	       
+	<p>Esta seção explica como integrar usando <a href="../../../../pt/docs/integrations/api-integration/promotions-api.html#promotions">Promoções</a> ou <a href="../../../../pt/docs/integrations/api-integration/promotions-api.html#msi">MSI</a> (Disponível apenas para o México).</p>
+<h2 id="promotions">Promoções</h2>
+<p>Esta funcionalidade permite consultar via API as promoções ativas, suas características e mais informações que quiser apresentar aos clientes.</p>
+<p>Uma promoção tem o método de pagamento, os dias da semana em que é válida, a lista de bancos e as datas de início e término.</p>
+<h3 id="authentication-for-promotions">Autenticação para Promoções</h3>
+<p>Para Promoções, você precisa autenticar e autorizar as solicitações recebidas pelo seu servidor usando um mecanismo baseado em HMAC. Para autenticar, você precisa saber sua <code>MerchantPublicKey</code>. Você pode obter essas informações em seu Módulo PayU (<strong><em>Configuração</em></strong> &gt; <strong><em>Configuração técnica</em></strong> &gt; <strong><em>Chave pública</em></strong>).</p>
+<p><img src="../../../../assets/Promotions/PublicKey_pt.png" alt="PrintScreen"></p>
+<h3 id="configuring-the-authentication">Como configurar a autenticação</h3>
+<p>Você deve incluir os cabeçalhos <code>Authorization</code> e <code>Date</code>. O cabeçalho <code>Authorization</code> segue esta estrutura:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#4e9a06">&#34;Hmac&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34; &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">MerchantPublicKey</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;:&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#000">Signature</span>
+</code></pre></div><br>
+<p>Onde <code>Signature</code> é criado da seguinte forma:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Signature</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Base64</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">HMAC</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">SHA256</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">MerchantApiKey</span><span style="color:#ce5c00;font-weight:bold">,</span><span style="color:#000">ContentToSign</span><span style="color:#ce5c00;font-weight:bold">))</span> 
+</code></pre></div><br>
+<p>E <code>ContentToSign</code> corresponde a:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">HTTP</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">Verb</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;\n&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;\n&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;\n&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+<span style="color:#000">Date</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#4e9a06">&#34;\n&#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span>
+<span style="color:#000">URI</span>
+</code></pre></div>
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+É obrigatório incluir as três quebras de linha (<code>\n</code>) depois de <code>HTTP-Verb</code>
+</div>
+
+<p>Os exemplos a seguir mostram como criar o cabeçalho de autenticação usando os seguintes valores de teste:</p>
+<p><strong>ContentToSign</strong>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">GET</span> 
+    
+
+<span style="color:#000">Fri</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">28</span> <span style="color:#000">Apr</span> <span style="color:#000">2017</span> <span style="color:#000">18</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">32</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">01</span> <span style="color:#000">GMT</span>
+<span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">payments</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">api</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">rest</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v4</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">9</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">pricing</span>
+</code></pre></div><br>
+<p><strong>MerchantApiKey</strong>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">4Vj8eK4rloUd272L48hsrarnUA</span>
+</code></pre></div><br>
+<p><strong>MerchantPublicKey</strong>:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">PKaC6H4cEDJD919n705L544kSU</span>
+</code></pre></div><br>
+<p>Criptografe o <code>ContentToSign</code> usando <code>MerchantApiKey</code> como senha. Em seguida, concatene o resultado com a <code>MerchantPublicKey</code> conforme explicado antes. O resultado é o seguinte:</p>
+<p><strong>Authorization</strong></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Hmac</span> <span style="color:#000">PKaC6H4cEDJD919n705L544kSU</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">sIxh54sANfKaxO0ugX6QwhPmZRS</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#000">TGy8gmdCwr3kjP0</span><span style="color:#ce5c00;font-weight:bold">=</span> 
+</code></pre></div><br>
+<p>Para evitar ataques de repetição, envie o cabeçalho <code>Date</code> seguindo este formato:</p>
+<p><strong>Date</strong></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Mon</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">11</span> <span style="color:#000">May</span> <span style="color:#000">2015</span> <span style="color:#000">21</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">14</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">41</span> <span style="color:#000">GMT</span>
+</code></pre></div><br>
+<p>Devido a algumas restrições dos clientes REST, você também pode enviar o cabeçalho <code>x-hmac-date</code> para atender aos requisitos de segurança. Este cabeçalho segue o mesmo formato usado em <code>Date</code>:</p>
+<p><strong>x-hmac-date</strong></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000">Mon</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">11</span> <span style="color:#000">May</span> <span style="color:#000">2015</span> <span style="color:#000">21</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">14</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#000">41</span> <span style="color:#000">GMT</span>
+</code></pre></div><h3 id="consult-available-promotions">Consulte as promoções disponíveis</h3>
+<p>Para consultar as promoções disponíveis com API de Promoções, direcione sua solicitação para as seguintes URLs de acordo com seu ambiente.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">URL</h4>
+<ul>
+<li>Teste: <code>GET https://sandbox.api.payulatam.com/payments-api/rest/v4.9/pricing</code></li>
+<li>Produção: <code>GET https://api.payulatam.com/payments-api/rest/v4.9/pricing</code></li>
+</ul>
+
+</div>
+
+<p>Como este é um serviço RESTful, recomendamos enfaticamente que você não valide o esquema.
+Se o esquema não for validado, a integração não será afetada e você só precisará realizar pequenas alterações para implementar novos recursos quando uma atualização for adicionada ao serviço web.</p>
+<h4 id="variables-for-request-and-response">Variáveis para pedido e resposta</h4>
+<details>
+<summary>Parâmetros de pedido</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th style="text-align:center">Obrigatório</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accountId</td>
+<td>Identificador da sua conta.</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Moeda da sua conta</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Valor da compra</td>
+<td style="text-align:center">Sim</td>
+</tr>
+<tr>
+<td>paymentMethod</td>
+<td>Envie este método se deseja filtrar as Promoções por Método de Pagamento.</td>
+<td style="text-align:center">Não</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details>
+<summary>Resposta</summary>
+<br>
+<div class="variables"></div>
+<table>
+<thead>
+<tr>
+<th>Nome do campo</th>
+<th>Formato</th>
+<th>Tamanho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>promotion &gt; id</td>
+<td>Integer</td>
+<td></td>
+<td>Identificador de promoção na plataforma PayU.</td>
+</tr>
+<tr>
+<td>promotion &gt; title</td>
+<td>String</td>
+<td>50</td>
+<td>Título da promoção.</td>
+</tr>
+<tr>
+<td>promotion &gt; termsAndConditions</td>
+<td>String</td>
+<td>250</td>
+<td>Termos e condições da promoção.</td>
+</tr>
+<tr>
+<td>promotion &gt; paymentMethod</td>
+<td>String</td>
+<td></td>
+<td>Nome do método de pagamento disponível para a promoção.</td>
+</tr>
+<tr>
+<td>promotion &gt; subFranchise</td>
+<td>String</td>
+<td></td>
+<td>Nome da submarca / subfranquia de um determinado método de pagamento.</td>
+</tr>
+<tr>
+<td>promotion &gt; banks</td>
+<td>Lista</td>
+<td></td>
+<td>Lista de bancos onde a promoção é válida.</td>
+</tr>
+<tr>
+<td>promotion &gt; iins</td>
+<td>Lista</td>
+<td></td>
+<td>Lista do banco IIN / BINES onde a promoção é válida.</td>
+</tr>
+<tr>
+<td>promotion &gt; days</td>
+<td>Lista</td>
+<td></td>
+<td>Lista de dias em que a promoção é válida.</td>
+</tr>
+<tr>
+<td>promotion &gt; startDate</td>
+<td>Data e hora</td>
+<td></td>
+<td>Data de início da promoção.</td>
+</tr>
+<tr>
+<td>promotion &gt; endDate</td>
+<td>Data e hora</td>
+<td></td>
+<td>Data de término da promoção.</td>
+</tr>
+<tr>
+<td>paymentMethodFee</td>
+<td>Lista</td>
+<td></td>
+<td>Descrição do custo assumido pela loja de acordo com o método de pagamento.</td>
+</tr>
+<tr>
+<td>paymentMethodFee &gt; paymentMethodFeeDetail.paymentMethod</td>
+<td>String</td>
+<td></td>
+<td>Nome do método de pagamento.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees</td>
+<td></td>
+<td></td>
+<td>Objeto que possui todos os preços de um método de pagamento e parcelamento, ou todas as parcelas (para países que oferecem sistema parcelado).</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; installments</td>
+<td>String</td>
+<td></td>
+<td>Parcela (1) ou conjunto de parcelas (1-36 para países que oferecem um número de parcelas).</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing</td>
+<td></td>
+<td></td>
+<td>Inclui os valores de preços por padrão para a transação.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; payerDetail</td>
+<td></td>
+<td></td>
+<td>Inclui os valores dos juros e taxas que serão repassados ao pagador.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; payerDetail &gt; commission</td>
+<td>Decimal</td>
+<td></td>
+<td>Taxas totais a serem repassadas ao pagador, incluindo taxas e impostos, quando relevantes.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; payerDetail &gt; interests</td>
+<td>Decimal</td>
+<td></td>
+<td>Juros totais a serem repassados ao pagador, incluindo taxas e impostos, quando relevantes.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; payerDetail &gt; total</td>
+<td>Decimal</td>
+<td></td>
+<td>O valor total a ser quitado pelo pagador em taxas e juros.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; merchantDetail &gt; commission</td>
+<td>Detalhe do vendedor</td>
+<td></td>
+<td>Taxas totais a serem repassadas à loja, incluindo taxas e impostos, quando relevantes.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; merchantDetail &gt; interests</td>
+<td>Decimal</td>
+<td></td>
+<td>Juros totais a serem repassados à loja, incluindo taxas e impostos, quando relevantes.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; merchantDetail &gt; total</td>
+<td>Decimal</td>
+<td></td>
+<td>O valor total a ser pago pela loja, devido a taxas e juros.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; totalValue</td>
+<td>Decimal</td>
+<td></td>
+<td>O total do pagamento, é o valor enviado pela loja, mais as taxas e juros que podem corresponder ao pagador.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; totalIncomeTransaction</td>
+<td>Decimal</td>
+<td></td>
+<td>Receita total da transação.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; additionalInfo</td>
+<td></td>
+<td></td>
+<td>Informação da taxa de juros efetiva anual (TEA) aplicada e do custo financeiro total (CFT).<br>Esta informação está disponível para a Argentina.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; additionalInfo &gt; cft</td>
+<td>Decimal</td>
+<td></td>
+<td>Custo financeiro total aplicado.</td>
+</tr>
+<tr>
+<td>paymentMethodFeeDetail &gt; pricingFees &gt; fee &gt; pricing &gt; additionalInfo &gt; tea</td>
+<td>Decimal</td>
+<td></td>
+<td>Taxa de juros efetiva anual aplicada.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h4 id="api-call">Chamada de API</h4>
+<p>Para consultar as promoções disponíveis, envie o pedido da seguinte forma:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span>
+<span style="color:#f57900">https:</span><span style="color:#8f5902;font-style:italic">//{env-api}.payulatam.com/payments-api/rest/v4.9/pricing?accountId={accountId}&amp;currency={currency}&amp;amount={amount}&amp;paymentMethod={paymentMethod}
+</span></code></pre></div><br>
+<p>O valor da variável <code>{env-api}</code> mostrado acima é <code>sandbox.api</code> para teste e <code>api</code> para o modo de produção. Além disso, o parâmetro <code>paymentMethod</code> é opcional se você deseja filtrar por um determinado método de pagamento. Exemplo:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JAVA" data-lang="JAVA"><span style="color:#000">GET</span> <span style="color:#000">https</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#8f5902;font-style:italic">//sandbox.api.payulatam.com/payments-api/rest/v4.9/pricing?accountId=512322&amp;currency=ARS&amp;amount=1000
+</span></code></pre></div><br>
+<p>Exemplo resposta:</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#tab11" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-1" data-toggle="tab" href="#tab12" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="1">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab11" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;amount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;tax&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;purchaseValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;currency&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ARS&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;convertedAmount&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;tax&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;purchaseValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+        <span style="color:#204a87;font-weight:bold">&#34;currency&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;ARS&#34;</span>
+    <span style="color:#000;font-weight:bold">},</span>
+    <span style="color:#204a87;font-weight:bold">&#34;promotions&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">49</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;title&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Promotion_ID AMEX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;termsAndConditions&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;SI&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethodMain&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AMEX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;startDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-08-16 18:48:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;endDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2090-08-16 18:48:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;days&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;MONDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;TUESDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;WEDNESDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;THURSDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;FRIDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;SATURDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;SUNDAY&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;priority&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;MSI&#34;</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">45</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;title&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Promotion Test - Master&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;termsAndConditions&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Terminos y condiciones&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethodMain&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;MASTERCARD&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;startDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2018-06-26 17:06:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;endDate&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2030-06-26 17:06:00&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;days&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#4e9a06">&#34;MONDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;TUESDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;WEDNESDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;THURSDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;FRIDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;SATURDAY&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                <span style="color:#4e9a06">&#34;SUNDAY&#34;</span>
+            <span style="color:#000;font-weight:bold">],</span>
+            <span style="color:#204a87;font-weight:bold">&#34;priority&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;MSI&#34;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;paymentMethodFee&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DINERS&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;pricingFees&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">171.29</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">171.29</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1171.29</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;162%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;123.28%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">230.01</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">230.01</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1230.01</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;107%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;83.97%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;9&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">340.05</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">340.05</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1340.04</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;108%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;85.03%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;12&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">490.01</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">490.01</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1490.02</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;119%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;93.68%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;18&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">641.38</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">641.38</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1641.39</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;97%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;77.91%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;24&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">822.72</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">822.72</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1822.72</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;90%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;72.47%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">]</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#204a87;font-weight:bold">&#34;paymentMethod&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;AMEX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+            <span style="color:#204a87;font-weight:bold">&#34;pricingFees&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">},</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;promos&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+                        <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">49</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                                <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span>
+                                <span style="color:#000;font-weight:bold">},</span>
+                                <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1044.65</span><span style="color:#000;font-weight:bold">,</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1044.65</span>
+                                <span style="color:#000;font-weight:bold">},</span>
+                                <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1000.00</span><span style="color:#000;font-weight:bold">,</span>
+                                <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">-44.65</span><span style="color:#000;font-weight:bold">,</span>
+                                <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                                    <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;0%&#34;</span>
+                                <span style="color:#000;font-weight:bold">}</span>
+                            <span style="color:#000;font-weight:bold">},</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;priority&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">10</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">]</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;3&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">171.29</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">171.29</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1171.29</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;162%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;123.28%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;6&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">230.01</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">230.01</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1230.01</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;107%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;83.97%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;9&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">340.05</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">340.05</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1340.04</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;108%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;85.03%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;12&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">490.01</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">490.01</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1490.02</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;119%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;93.68%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;18&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">641.38</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">641.38</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1641.39</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;97%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;77.91%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">},</span>
+                <span style="color:#000;font-weight:bold">{</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;installments&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;24&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                    <span style="color:#204a87;font-weight:bold">&#34;pricing&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;payerDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">822.72</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">822.72</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;merchantDetail&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;commission&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;interests&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0.00</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">44.65</span>
+                        <span style="color:#000;font-weight:bold">},</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalValue&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1822.72</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;totalIncomeTransaction&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">955.35</span><span style="color:#000;font-weight:bold">,</span>
+                        <span style="color:#204a87;font-weight:bold">&#34;additionalInfo&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;cft&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;90%&#34;</span><span style="color:#000;font-weight:bold">,</span>
+                            <span style="color:#204a87;font-weight:bold">&#34;tea&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;72.47%&#34;</span>
+                        <span style="color:#000;font-weight:bold">}</span>
+                    <span style="color:#000;font-weight:bold">}</span>
+                <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#000;font-weight:bold">]</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;paymentTaxesDetails&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[],</span>
+    <span style="color:#204a87;font-weight:bold">&#34;taxesServiceFailed&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab12" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;consultPriceListaResponse</span> <span style="color:#c4a000">xmlns:atom=</span><span style="color:#4e9a06">&#34;http://www.w3.org/2005/Atom&#34;</span> <span style="color:#c4a000">xmlns:ns3=</span><span style="color:#4e9a06">&#34;http://wadl.dev.java.net/2009/02&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;amount&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;tax&gt;</span>0<span style="color:#204a87;font-weight:bold">&lt;/tax&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;purchaseValue&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/purchaseValue&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;currency&gt;</span>ARS<span style="color:#204a87;font-weight:bold">&lt;/currency&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/amount&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;convertedAmount&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;tax&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/tax&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;purchaseValue&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/purchaseValue&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;currency&gt;</span>ARS<span style="color:#204a87;font-weight:bold">&lt;/currency&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/convertedAmount&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;promotions&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;promotion</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;49&#34;</span> <span style="color:#c4a000">title=</span><span style="color:#4e9a06">&#34;Promotion_ID AMEX&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;priority&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/priority&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>MSI<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>AMEX<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;termsAndConditions&gt;</span>SI<span style="color:#204a87;font-weight:bold">&lt;/termsAndConditions&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;startDate&gt;</span>2018-08-16 18:48:00<span style="color:#204a87;font-weight:bold">&lt;/startDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;endDate&gt;</span>2090-08-16 18:48:00<span style="color:#204a87;font-weight:bold">&lt;/endDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;days&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>MONDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>TUESDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>WEDNESDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>THURSDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>FRIDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>SATURDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>SUNDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/days&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/promotion&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;promotion</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;45&#34;</span> <span style="color:#c4a000">title=</span><span style="color:#4e9a06">&#34;Promotion Test - Master&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;priority&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/priority&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>MSI<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;paymentMethod&gt;</span>MASTERCARD<span style="color:#204a87;font-weight:bold">&lt;/paymentMethod&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;termsAndConditions&gt;</span>Terminos y condiciones<span style="color:#204a87;font-weight:bold">&lt;/termsAndConditions&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;startDate&gt;</span>2018-06-26 17:06:00<span style="color:#204a87;font-weight:bold">&lt;/startDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;endDate&gt;</span>2030-06-26 17:06:00<span style="color:#204a87;font-weight:bold">&lt;/endDate&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;days&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>MONDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>TUESDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>WEDNESDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>THURSDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>FRIDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>SATURDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;day&gt;</span>SUNDAY<span style="color:#204a87;font-weight:bold">&lt;/day&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/days&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/promotion&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/promotions&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;paymentMethodFee&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;paymentMethodFeeDetail</span> <span style="color:#c4a000">paymentMethod=</span><span style="color:#4e9a06">&#34;DINERS&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;pricingFees&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>0%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>0%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;3&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>171.29<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>171.29<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1171.29<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>162%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>123.28%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;6&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>230.01<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>230.01<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1230.01<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>107%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>83.97%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;9&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>340.05<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>340.05<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1340.04<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>108%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>85.03%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;12&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>490.01<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>490.01<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1490.02<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>119%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>93.68%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;18&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>641.38<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>641.38<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1641.39<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>97%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>77.91%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;24&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>822.72<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>822.72<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1822.72<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>90%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>72.47%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/pricingFees&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/paymentMethodFeeDetail&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;paymentMethodFeeDetail</span> <span style="color:#c4a000">paymentMethod=</span><span style="color:#4e9a06">&#34;AMEX&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;pricingFees&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>0%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>0%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;promos&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;promo</span> <span style="color:#c4a000">id=</span><span style="color:#4e9a06">&#34;49&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;priority&gt;</span>10<span style="color:#204a87;font-weight:bold">&lt;/priority&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>1044.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>1044.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1000.00<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>-44.65<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                        <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                        <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>0%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                        <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                        <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>0%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                                    <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/promo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/promos&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;3&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>171.29<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>171.29<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1171.29<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>162%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>123.28%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;6&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>230.01<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>230.01<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1230.01<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>107%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>83.97%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;9&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>340.05<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>340.05<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1340.04<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>108%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>85.03%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;12&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>490.01<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>490.01<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1490.02<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>119%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>93.68%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;18&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>641.38<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>641.38<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1641.39<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>97%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>77.91%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;fee</span> <span style="color:#c4a000">installments=</span><span style="color:#4e9a06">&#34;24&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;pricing&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;payerDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>822.72<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>822.72<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/payerDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;merchantDetail&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;commission&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/commission&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;interests&gt;</span>0.00<span style="color:#204a87;font-weight:bold">&lt;/interests&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;total&gt;</span>44.65<span style="color:#204a87;font-weight:bold">&lt;/total&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/merchantDetail&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalValue&gt;</span>1822.72<span style="color:#204a87;font-weight:bold">&lt;/totalValue&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;totalIncomeTransaction&gt;</span>955.35<span style="color:#204a87;font-weight:bold">&lt;/totalIncomeTransaction&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;additionalInfo&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>cft<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>90%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;key&gt;</span>tea<span style="color:#204a87;font-weight:bold">&lt;/key&gt;</span>
+                                <span style="color:#204a87;font-weight:bold">&lt;value&gt;</span>72.47%<span style="color:#204a87;font-weight:bold">&lt;/value&gt;</span>
+                            <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+                        <span style="color:#204a87;font-weight:bold">&lt;/additionalInfo&gt;</span>
+                    <span style="color:#204a87;font-weight:bold">&lt;/pricing&gt;</span>
+                <span style="color:#204a87;font-weight:bold">&lt;/fee&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;/pricingFees&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/paymentMethodFeeDetail&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/paymentMethodFee&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;paymentTaxesDetails/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;taxesServiceFailed&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/taxesServiceFailed&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/consultPriceListaResponse&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<h3 id="execute-a-transaction-with-promotions">Executar uma transação com Promoções</h3>
+<p>Depois de selecionar a promoção, você precisa incluir o ID da promoção e o número de parcelas como um parâmetro extra:</p>
+<p><nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-2" data-toggle="tab" href="#tab21" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-2" data-toggle="tab" href="#tab22" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="2">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab21" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#4e9a06">&#34;extraParameters&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;INSTALLMENTS_NUMBER&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">(Número</span> <span style="color:#a40000">de</span> <span style="color:#a40000">parcelas)</span><span style="color:#000;font-weight:bold">,</span>
+    <span style="color:#204a87;font-weight:bold">&#34;PROMOTION_ID&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">(ID</span> <span style="color:#a40000">da</span> <span style="color:#a40000">promoção</span> <span style="color:#a40000">selecionada)</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab22" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;extraParameters&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>INSTALLMENTS_NUMBER<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>Número de parcelas<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>PROMOTION_ID<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>ID da promoção selecionada<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/extraParameters&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<br></p>
+<p>Para saber como incluir esses parâmetros extras, consulte a API de pagamentos para a <a href="../../../../pt/docs/integrations/api-integration/payments-api-argentina.html#submit-transaction-with-credit-or-debit-card">Argentina</a> e o <a href="../../../../pt/docs/integrations/api-integration/payments-api-mexico.html#submit-transaction-with-credit-or-debit-card">México</a>.</p>
+<h2 id="msi">Meses sem juros (MSI - Meses Sin Intereses)</h2>
+<p>Se sua conta for no México, você pode oferecer aos seus clientes a opção de dividir em um determinado número de parcelas sem juros. Se você deseja habilitar este recurso, entre em contato com seu representante de vendas.</p>
+<h3 id="considerations">Observações</h3>
+<ul>
+<li>O número permitido de parcelas é 3, 6, 9, 12 ou 18.</li>
+<li>Os valores mínimos para MSI dependem do número de parcelas selecionadas:
+<ul>
+<li>3 &gt; $300 MXN</li>
+<li>6 &gt; $600 MXN</li>
+<li>9 &gt; $900 MXN</li>
+<li>12 &gt; $1200 MXN</li>
+<li>18 &gt; $1800 MXN</li>
+</ul>
+</li>
+<li>Os bancos disponíveis para MSI são: BANAMEX, BANCO REGIONAL DE MONTERREY S.A, BANCOPPEL, BANCO AZTECA, SCOTIABANK, HSBC, INBURSA, BANCA MIFEL SA, BANCO MULTIVA, BAJIO, CI BANCO, Afirme, Banregio, Banjercito, Banorte, Famsa, Invex, Premium Card Liverpool, Santander e Bancomer.</li>
+<li>Ao usar MSI, sempre exiba a frase <strong>“PAGOS DIFERIDOS”</strong> durante o processo de pagamento.</li>
+</ul>
+<h3 id="variables-for-msi">Variáveis para MSI</h3>
+<p>Para usar o MSI, você precisa incluir o número de meses como um parâmetro extra:</p>
+<p><nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link active" id="nav-3" data-toggle="tab" href="#tab31" role="tab"
+		   aria-controls="nav-home" aria-selected="true">JSON</a>
+
+		
+		
+
+		
+		
+		
+
+		
+
+		<a class="nav-item nav-link" id="nav-3" data-toggle="tab" href="#tab32" role="tab"
+		   aria-controls="nav-home" aria-selected="false">XML</a>
+
+		
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="3">
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="tab31" role="tabpanel" aria-labelledby="nav-tabName1">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON"><span style="color:#4e9a06">&#34;extraParameters&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">&#34;INSTALLMENTS_NUMBER&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">(Número</span> <span style="color:#a40000">de</span> <span style="color:#a40000">meses)</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="tab32" role="tabpanel" aria-labelledby="nav-tabName2">
+
+	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#204a87;font-weight:bold">&lt;extraParameters&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;entry&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>INSTALLMENTS_NUMBER<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;string&gt;</span>Número de meses<span style="color:#204a87;font-weight:bold">&lt;/string&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/entry&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/extraParameters&gt;</span>
+</code></pre></div>
+
+</div>
+
+
+
+
+
+</div>
+<br></p>
+<p>Para saber como incluir esses parâmetros, consulte <a href="../../../../pt/docs/integrations/api-integration/payments-api-mexico.html#submit-transaction-with-credit-or-debit-card">API de pagamentos para o México</a>.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificação
+
+17 de dezembro de 2021:
+
+ <b>Documentation in Portuguese (53de9675)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../../js/scrollspy.js"></script>
+<script src="../../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Gerenciamento de perfis e permissões | PayU Latam</title><meta property="og:title" content="Gerenciamento de perfis e permissões" />
+<meta property="og:description" content="Aprenda a criar, atualizar e remover as permissões que você pode atribuir aos seus usuários.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html" /><meta property="article:section" content="PayU Module Documentation" />
+<meta property="article:published_time" content="2021-08-27T16:07:39-05:00" />
+<meta property="article:modified_time" content="2021-12-17T14:22:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Gerenciamento de perfis e permissões">
+<meta itemprop="description" content="Aprenda a criar, atualizar e remover as permissões que você pode atribuir aos seus usuários.
+"><meta itemprop="datePublished" content="2021-08-27T16:07:39-05:00" />
+<meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
+<meta itemprop="wordCount" content="582">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gerenciamento de perfis e permissões"/>
+<meta name="twitter:description" content="Aprenda a criar, atualizar e remover as permissões que você pode atribuir aos seus usuários.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../pt/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../pt/docs.html" ><span>Pagamentos Online</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../pt/payu-module-documentation.html" ><span class="active">Guia do Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar no site…"
+  aria-label="Buscar no site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.fa5d8842ef501d9b5efffb7036cc38f0b8891b5dc6f85c098b704be150099196a0b1c5a83e68d3a1172ca98cfa91dc8125737bceeb145954b7bfec4b1312fb26.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../es/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation.html" href="../../../pt/payu-module-documentation.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Início</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/getting-started.html" href="../../../pt/payu-module-documentation/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Para começar</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationgetting-startedhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/payu-module-documentation/getting-started/log-in.html" href="../../../pt/payu-module-documentation/getting-started/log-in.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Log In</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationgetting-startedlog-inhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/log-in/google-accounts.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptpayu-module-documentationgetting-startedlog-ingoogle-accountshtml" href="../../../pt/payu-module-documentation/getting-started/log-in/google-accounts.html">Faça login usando contas do Google</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/password-recovery.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationgetting-startedpassword-recoveryhtml" href="../../../pt/payu-module-documentation/getting-started/password-recovery.html">Recuperação de senha</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/payu-module-documentation/getting-started/understanding-the-payu-module.html" href="../../../pt/payu-module-documentation/getting-started/understanding-the-payu-module.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Conheça o Módulo PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationgetting-startedunderstanding-the-payu-modulehtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptpayu-module-documentationgetting-startedunderstanding-the-payu-moduleupdate-my-informationhtml" href="../../../pt/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html">Atualizar minhas informações</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptpayu-module-documentationgetting-startedunderstanding-the-payu-moduletechnical-configurationhtml" href="../../../pt/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Configuração técnica</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/user-and-profile-management.html" href="../../../pt/payu-module-documentation/user-and-profile-management.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">Gerenciamento de usuários e perfis</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationuser-and-profile-managementhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/user-and-profile-management/user-management.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationuser-and-profile-managementuser-managementhtml" href="../../../pt/payu-module-documentation/user-and-profile-management/user-management.html">Gestão de usuários</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active " id="m-ptpayu-module-documentationuser-and-profile-managementprofile-and-permissions-managementhtml" href="../../../pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Gerenciamento de perfis e permissões</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/payu-operations.html" href="../../../pt/payu-module-documentation/payu-operations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Operações PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationpayu-operationshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/sell-with-payu.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationssell-with-payuhtml" href="../../../pt/payu-module-documentation/payu-operations/sell-with-payu.html">Vender com PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/transfers.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationstransfershtml" href="../../../pt/payu-module-documentation/payu-operations/transfers.html">Transferências</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/refunds-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationsrefunds-mphtml" href="../../../pt/payu-module-documentation/payu-operations/refunds-mp.html">Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/disputes-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationsdisputes-mphtml" href="../../../pt/payu-module-documentation/payu-operations/disputes-mp.html">Disputas</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/reports.html" href="../../../pt/payu-module-documentation/reports.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Relatórios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationreportshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/sales-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportssales-reporthtml" href="../../../pt/payu-module-documentation/reports/sales-report.html">Relatório de Vendas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/transfer-report.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportstransfer-reporthtml" href="../../../pt/payu-module-documentation/reports/transfer-report.html">Relatório de transferências</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/financial-statement.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportsfinancial-statementhtml" href="../../../pt/payu-module-documentation/reports/financial-statement.html">Extrato</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/withholding-certificate.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportswithholding-certificatehtml" href="../../../pt/payu-module-documentation/reports/withholding-certificate.html">Certificado de retenção</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/operation-reports.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportsoperation-reportshtml" href="../../../pt/payu-module-documentation/reports/operation-reports.html">Relatório de operações</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>Nesta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#permission-required">Permissão necessária</a></li>
+    <li><a href="#default-profiles">Perfis padrão</a></li>
+    <li><a href="#profile-and-permission-management">Gerenciamento de perfis e permissões</a>
+      <ul>
+        <li><a href="#create-profiles">Criar perfis</a></li>
+        <li><a href="#edit-profiles">Editar perfis</a></li>
+        <li><a href="#delete-profiles">Apagar perfis</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../pt/payu-module-documentation.html">Início</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../pt/payu-module-documentation/user-and-profile-management.html">Gerenciamento de usuários e perfis</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Gerenciamento de perfis e permissões</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Gerenciamento de perfis e permissões</h1>
+    <div class="lead">Aprenda a criar, atualizar e remover as permissões que você pode atribuir aos seus usuários.</div>
+	       
+	<p>Um <em>Perfil</em> é uma série de permissões para que um usuário acesse um recurso de um <em>conta</em>. Um <em>usuário</em> usando um <em>perfil</em> pode acessar quantas contas houver em cada comércio.</p>
+<p>Para obter mais informações sobre comércios, contas e muito mais, leia <a href="../../../pt/payu-module-documentation.html#payu-module-concepts">conceitos por trás do Módulo PayU</a>.</p>
+<h2 id="permission-required">Permissão necessária</h2>
+<p>Para ter acesso a este módulo, você precisa ter um perfil com a seguinte permissão habilitada:</p>
+<ul>
+<li><em>Listar Perfis</em></li>
+<li><em>Gerenciar Perfis</em></li>
+</ul>
+<h2 id="default-profiles">Perfis padrão</h2>
+<p>Por padrão, PayU fornece três perfis para que seus usuários acessem as contas. Esses perfis são:</p>
+<ul>
+<li><strong>Administrador</strong>: este perfil habilita todas as permissões da conta. Um usuário com direito a este perfil pode criar, consultar, atualizar e excluir (ou desabilitar) as informações relacionadas à conta. Além disso, este usuário pode ver e baixar todos os relatórios, visualizar as informações técnicas, resolver disputas, gerenciar usuários, realizar transferências e gerenciar perfis.</li>
+<li><strong>Consultar e editar</strong>: este perfil é equivalente a um perfil de <em>manager</em>. Um usuário com direito a este perfil pode criar, consultar, atualizar e excluir (ou desabilitar) as informações relacionadas à conta. Além disso, esse usuário pode ver e baixar todos os relatórios, ver as informações técnicas, resolver disputas e revisar os usuários e perfis criados.</li>
+<li><strong>Somente consultar</strong>: este perfil pode acessar a conta no modo somente leitura. Um usuário com direito a este perfil pode criar e consultar as informações relacionadas à conta, baixar alguns dos relatórios e visualizar as transferências da conta. Além disso, este usuário <strong>não pode</strong> ver os detalhes técnicos ou ter acesso aos usuários e perfis.</li>
+</ul>
+<p>Esses perfis não podem ser excluídos e suas permissões são fixas. Se alguma dessas permissões não atenderem às suas necessidades, você deve <a href="#create-profiles">criar uma</a>.</p>
+<h2 id="profile-and-permission-management">Gerenciamento de perfis e permissões</h2>
+<p>Para gerenciar usuários, abra sua conta PayU e clique no menu <em><strong>Configuração</strong></em> na parte superior da tela. Em seguida, selecione <em><strong>Perfis e permissões</strong></em>.</p>
+<p><img src="../../../assets/Profiles/Profiles_01_pt.png" alt="PrintScreen"></p>
+<p>O módulo <em><strong>Gestão de serviços e permissões</strong></em> abrirá. Aqui você encontra uma tabela com todas as permissões de acesso ao módulo PayU e os perfis com acesso a eles.</p>
+<p><img src="../../../assets/Profiles/Profiles_02_pt.png" alt="PrintScreen"></p>
+<h3 id="create-profiles">Criar perfis</h3>
+<p>Quando nenhum dos <a href="#default-profiles">perfis padrão</a> atende aos seus requisitos, você pode criar um e atribuir um conjunto personalizado de permissões. Para criar um perfil, siga estas etapas.</p>
+<ol>
+<li>No módulo <em><strong>Gestão de serviços e permissões</strong></em>, clique <em><strong>Criar perfil personalizado</strong></em>.</li>
+</ol>
+<p><img src="../../../assets/Profiles/Profiles_03_pt.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Uma nova coluna é adicionada à tabela. Forneça um nome significativo para seu perfil personalizado.</li>
+</ol>
+<p><img src="../../../assets/Profiles/Profiles_04_pt.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Depois de definir o nome, você pode atribuir quantas permissões precisar, clicando na caixa de seleção de cada linha.</li>
+</ol>
+<p><img src="../../../assets/Profiles/Profiles_05_pt.png" alt="PrintScreen"></p>
+<ol start="4">
+<li>Quando terminar, clique em <em><strong>Salvar configuraçãos</strong></em>. Se você clicar em <em><strong>Apagar mudanças</strong></em>, o perfil não será salvo e a coluna será excluída da tabela.</li>
+</ol>
+<h3 id="edit-profiles">Editar perfis</h3>
+<p>Ao editar um perfil, você pode renomeá-lo, além de atribuir ou remover permissões.</p>
+<ul>
+<li>
+<p>Para renomear um determinado perfil, clique no símbolo▾ ao lado de seu nome. Clique em <em><strong>Mudar nome</strong></em>.<br><br><img src="../../../assets/Profiles/Profiles_06_pt.png" alt="PrintScreen"><br>Isso permite que o campo de nome do perfil atualize.</p>
+</li>
+<li>
+<p>Para atribuir ou remover uma permissão, basta clicar na caixa de seleção da permissão</p>
+</li>
+</ul>
+<p>Quando terminar, clique em <em><strong>Salvar configuraçãos</strong></em>. Se você clicar em <em><strong>Apagar mudanças</strong></em>, todas as alterações de renomeação e alteração de permissão serão descartadas.</p>
+<h3 id="delete-profiles">Apagar perfis</h3>
+<p>Para excluir um determinado perfil, clique no símbolo▾ ao lado do nome dele. Clique em <em><strong>Remover</strong></em>.</p>
+<p><img src="../../../assets/Profiles/Profiles_07_pt.png" alt="PrintScreen"></p>
+<p>Se houver usuários com direito ao perfil que você está prestes a excluir, será solicitado que você defina um novo perfil para eles. Selecione o novo perfil no menu suspenso e clique em <em><strong>Eliminar e eassociar</strong></em>.</p>
+<p><img src="../../../assets/Profiles/Profiles_08_pt.png" alt="PrintScreen" width="50%"/><br></p>
+<p>Assim que você apagar o perfil, sua coluna será removida da tabela e nenhum usuário poderá ter este perfil.</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificação
+
+17 de dezembro de 2021:
+
+ <b>Documentation in Portuguese (53de9675)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>

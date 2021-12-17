@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Relatório de transferências | PayU Latam</title><meta property="og:title" content="Relatório de transferências" />
+<meta property="og:description" content="Consulte o estado das transferências solicitadas dos fundos recolhidos na sua conta PayU.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pt/payu-module-documentation/reports/transfer-report.html" /><meta property="article:section" content="PayU Module Documentation" />
+<meta property="article:published_time" content="2021-09-03T16:46:15-05:00" />
+<meta property="article:modified_time" content="2021-12-17T14:22:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Relatório de transferências">
+<meta itemprop="description" content="Consulte o estado das transferências solicitadas dos fundos recolhidos na sua conta PayU.
+"><meta itemprop="datePublished" content="2021-09-03T16:46:15-05:00" />
+<meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
+<meta itemprop="wordCount" content="382">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Relatório de transferências"/>
+<meta name="twitter:description" content="Consulte o estado das transferências solicitadas dos fundos recolhidos na sua conta PayU.
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../pt/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../pt/docs.html" ><span>Pagamentos Online</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../pt/payu-module-documentation.html" ><span class="active">Guia do Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../es/payu-module-documentation/reports/transfer-report.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/reports/transfer-report.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar no site…"
+  aria-label="Buscar no site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.fa5d8842ef501d9b5efffb7036cc38f0b8891b5dc6f85c098b704be150099196a0b1c5a83e68d3a1172ca98cfa91dc8125737bceeb145954b7bfec4b1312fb26.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../es/payu-module-documentation/reports/transfer-report.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../en/payu-module-documentation/reports/transfer-report.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation.html" href="../../../pt/payu-module-documentation.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Início</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/getting-started.html" href="../../../pt/payu-module-documentation/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Para começar</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationgetting-startedhtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/payu-module-documentation/getting-started/log-in.html" href="../../../pt/payu-module-documentation/getting-started/log-in.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Log In</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationgetting-startedlog-inhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/log-in/google-accounts.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptpayu-module-documentationgetting-startedlog-ingoogle-accountshtml" href="../../../pt/payu-module-documentation/getting-started/log-in/google-accounts.html">Faça login usando contas do Google</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/password-recovery.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationgetting-startedpassword-recoveryhtml" href="../../../pt/payu-module-documentation/getting-started/password-recovery.html">Recuperação de senha</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/payu-module-documentation/getting-started/understanding-the-payu-module.html" href="../../../pt/payu-module-documentation/getting-started/understanding-the-payu-module.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Conheça o Módulo PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationgetting-startedunderstanding-the-payu-modulehtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptpayu-module-documentationgetting-startedunderstanding-the-payu-moduleupdate-my-informationhtml" href="../../../pt/payu-module-documentation/getting-started/understanding-the-payu-module/update-my-information.html">Atualizar minhas informações</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptpayu-module-documentationgetting-startedunderstanding-the-payu-moduletechnical-configurationhtml" href="../../../pt/payu-module-documentation/getting-started/understanding-the-payu-module/technical-configuration.html">Configuração técnica</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/user-and-profile-management.html" href="../../../pt/payu-module-documentation/user-and-profile-management.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Gerenciamento de usuários e perfis</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationuser-and-profile-managementhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/user-and-profile-management/user-management.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationuser-and-profile-managementuser-managementhtml" href="../../../pt/payu-module-documentation/user-and-profile-management/user-management.html">Gestão de usuários</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationuser-and-profile-managementprofile-and-permissions-managementhtml" href="../../../pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Gerenciamento de perfis e permissões</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/payu-operations.html" href="../../../pt/payu-module-documentation/payu-operations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Operações PayU</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationpayu-operationshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/sell-with-payu.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationssell-with-payuhtml" href="../../../pt/payu-module-documentation/payu-operations/sell-with-payu.html">Vender com PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/transfers.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationstransfershtml" href="../../../pt/payu-module-documentation/payu-operations/transfers.html">Transferências</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/refunds-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationsrefunds-mphtml" href="../../../pt/payu-module-documentation/payu-operations/refunds-mp.html">Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/payu-operations/disputes-mp.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationpayu-operationsdisputes-mphtml" href="../../../pt/payu-module-documentation/payu-operations/disputes-mp.html">Disputas</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/payu-module-documentation/reports.html" href="../../../pt/payu-module-documentation/reports.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">Relatórios</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptpayu-module-documentationreportshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/sales-report.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportssales-reporthtml" href="../../../pt/payu-module-documentation/reports/sales-report.html">Relatório de Vendas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/transfer-report.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active " id="m-ptpayu-module-documentationreportstransfer-reporthtml" href="../../../pt/payu-module-documentation/reports/transfer-report.html">Relatório de transferências</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/financial-statement.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportsfinancial-statementhtml" href="../../../pt/payu-module-documentation/reports/financial-statement.html">Extrato</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/withholding-certificate.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportswithholding-certificatehtml" href="../../../pt/payu-module-documentation/reports/withholding-certificate.html">Certificado de retenção</a>
+      
+      
+      
+      
+      
+        <a id="/pt/payu-module-documentation/reports/operation-reports.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptpayu-module-documentationreportsoperation-reportshtml" href="../../../pt/payu-module-documentation/reports/operation-reports.html">Relatório de operações</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>Nesta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#permission-required">Permissão necessária</a></li>
+    <li><a href="#consult-the-report">Consulte o relatório</a></li>
+    <li><a href="#download-the-report">Baixar o relatório</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../pt/payu-module-documentation.html">Início</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../pt/payu-module-documentation/reports.html">Relatórios</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../pt/payu-module-documentation/reports/transfer-report.html">Relatório de transferências</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Relatório de transferências</h1>
+    <div class="lead">Consulte o estado das transferências solicitadas dos fundos recolhidos na sua conta PayU.</div>
+	       
+	<p>Além disso, se você ativou a API de Payouts, pode consultar o estado dos pagamentos solicitados por terceiros. Para obter mais informações, consulte <a href="../../../pt/docs/services/payouts.html">Payouts</a>.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+<img src="../../../assets/Brasil.png" width="20px"/> Para contas brasileiras, o <em><strong>Relatório de transferência</strong></em> encontra-se na opção <em><strong>Para conta bancária</strong></em> (<em><strong>Transferências</strong></em> &gt; <em><strong>Para conta bancária</strong></em>).
+</div>
+
+<h2 id="permission-required">Permissão necessária</h2>
+<p>Para ter acesso a este módulo, você precisa ter um perfil com a seguinte permissão habilitada.</p>
+<ul>
+<li>Se sua conta não é brasileira: <em>Transferências</em> &gt; <em>Consultar</em>.</li>
+<li>Se sua conta é brasileira: (Relatório de transferências Brasil):
+<ul>
+<li><em>Visualizar</em></li>
+<li><em>download.csv</em></li>
+</ul>
+</li>
+</ul>
+<p>Consulte <a href="../../../pt/payu-module-documentation/user-and-profile-management/profile-and-permissions-management.html">Perfis e permissões</a> para obter mais informações.</p>
+<h2 id="consult-the-report">Consulte o relatório</h2>
+<p>Faça login em sua conta PayU. No menu esquerdo, expanda o menu <em><strong>Transferências</strong></em> e selecione <em><strong>Transferências</strong></em> ou <em><strong>Para conta bancária</strong></em> se sua conta for brasileira.</p>
+<p><img src="../../../assets/Reports/Reports_33.png" alt="PrintScreen"></p>
+<p>Para contas não brasileiras, role para baixo até a seção <em><strong>Relatório de transferências realizadas</strong></em> onde a tabela do relatório está localizada. Por padrão, o relatório exibe as transferências criadas nos últimos 30 dias, da mais recente para a mais antiga.</p>
+<p><img src="../../../assets/Reports/Reports_04_pt.png" alt="PrintScreen"></p>
+<p>O relatório tem as seguintes colunas:</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>Id da transferência solicitada.</td>
+</tr>
+<tr>
+<td>Data de solicitação</td>
+<td>Data e hora em que a transferência foi criada.</td>
+</tr>
+<tr>
+<td>Last update</td>
+<td>Data e hora da última ação executada na transferência.</td>
+</tr>
+<tr>
+<td>Valor transferido</td>
+<td>Valor da transferência</td>
+</tr>
+<tr>
+<td>Conta destino</td>
+<td>Conta bancária do pedido.</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Último status do pedido. The possible states são: <ul style="margin-bottom: initial;"><li>Aprovada</li><li>Em processo</li><li>Rejeitada</li></ul></td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Se você precisar exibir mais informações, entre em contato com seu representante de vendas.
+</div>
+
+<p>Você pode filtrar as transferências pela data de sua criação usando o filtro de datas no canto superior direito.</p>
+<p><img src="../../../assets/Reports/Reports_07_pt.png" alt="PrintScreen" width="60%"/><br></p>
+<p>O intervalo de datas deste filtro é três (3) meses antes da data de término. Se você exceder esse intervalo, o relatório exibirá as informações de três (3) meses após a data de início.<br>Para ver as informações de uma determinada data, defina a mesma para a data de início e de término.</p>
+<h2 id="download-the-report">Baixar o relatório</h2>
+<p>Para baixar o relatório, clique no botão <em><strong>Baixar</strong></em> localizado na parte superior ou inferior da tabela do relatório.</p>
+<p><img src="../../../assets/Reports/Reports_08_pt.png" alt="PrintScreen"></p>
+<p>Uma barra de progresso aparece na parte superior da tela. Assim que o processo for concluído, o relatório será baixado automaticamente em formato Excel (<em>.csv</em>). O nome do relatório usa o formato:</p>
+<ul>
+<li>Se sua conta não é brasileira: <em><strong>[DataDeDownloadEmMilis]_payment_orders_[AccountId].csv</strong></em>.</li>
+<li>Se sua conta é brasileira: <em><strong>[DataDeDownloadEmMilis]_daily_payment_order_[AccountId].csv</strong></em>.</li>
+</ul>
+<p><img src="../../../assets/Reports/Reports_09.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+O relatório gerado é armazenado durante 90 dias na seção <a href="../../../pt/payu-module-documentation/reports.html#my-downloaded-reports">Meus relatórios baixados</a>.
+</div>
+
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificação
+
+17 de dezembro de 2021:
+
+ <b>Documentation in Portuguese (53de9675)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
