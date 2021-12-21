@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>Autenticação 3DS | PayU Latam</title><meta property="og:title" content="Autenticação 3DS" />
+<meta property="og:description" content="3DS (em inglês **Three-Domain Secure**) permite realizar um processo de autenticação intuitivo e amigável para o cliente. 3DS acrescenta camadas adicionais de segurança para reduzir a fraude, impedindo a utilização não autorizada de cartões de crédito. 
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pt/docs/services/3ds-authentication.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-12-07T10:25:17-05:00" />
+<meta property="article:modified_time" content="2021-12-21T13:49:52-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Autenticação 3DS">
+<meta itemprop="description" content="3DS (em inglês **Three-Domain Secure**) permite realizar um processo de autenticação intuitivo e amigável para o cliente. 3DS acrescenta camadas adicionais de segurança para reduzir a fraude, impedindo a utilização não autorizada de cartões de crédito. 
+"><meta itemprop="datePublished" content="2021-12-07T10:25:17-05:00" />
+<meta itemprop="dateModified" content="2021-12-21T13:49:52-05:00" />
+<meta itemprop="wordCount" content="853">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Autenticação 3DS"/>
+<meta name="twitter:description" content="3DS (em inglês **Three-Domain Secure**) permite realizar um processo de autenticação intuitivo e amigável para o cliente. 3DS acrescenta camadas adicionais de segurança para reduzir a fraude, impedindo a utilização não autorizada de cartões de crédito. 
+"/>
+
+
+
+
+
+<link rel="preload" href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../pt/">
+			
+			
+			<span class="navbar-logo"><img src="../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../pt/docs.html" ><span class="active">Pagamentos Online</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../pt/payu-module-documentation.html" ><span>Guia do Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../es/docs/services/3ds-authentication.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../en/docs/services/3ds-authentication.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar no site…"
+  aria-label="Buscar no site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../offline-search-index.72829f20817569e307b02b339cf608b875d670bbe37aebca8ed147b6c21250b5fb2c153015bd281e6b4c479a71358214f5e97a33353e3a2238f37d6ae101ad51.json"
+  data-offline-search-base-href="../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../es/docs/services/3ds-authentication.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../en/docs/services/3ds-authentication.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs.html" href="../../../pt/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Início</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/getting-started.html" href="../../../pt/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Para começar</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedcreate-an-accounthtml" href="../../../pt/docs/getting-started/create-an-account.html">Crie uma conta PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-integrationhtml" href="../../../pt/docs/getting-started/select-your-integration.html">Selecione sua integração</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-payment-methodhtml" href="../../../pt/docs/getting-started/select-your-payment-method.html">Selecione seu método de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedtest-your-solutionhtml" href="../../../pt/docs/getting-started/test-your-solution.html">Teste sua solução</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-starteddeploy-to-productionhtml" href="../../../pt/docs/getting-started/deploy-to-production.html">Implementar na produção</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedresponse-codes-and-variableshtml" href="../../../pt/docs/getting-started/response-codes-and-variables.html">Códigos e variáveis de resposta</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/services.html" href="../../../pt/docs/services.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">Serviços</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payments.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespaymentshtml" href="../../../pt/docs/services/payments.html">Pagamentos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/3ds-authentication.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active " id="m-ptdocsservices3ds-authenticationhtml" href="../../../pt/docs/services/3ds-authentication.html">Autenticação 3DS</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/queries.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesquerieshtml" href="../../../pt/docs/services/queries.html">Consultas para transações</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/tokenization.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicestokenizationhtml" href="../../../pt/docs/services/tokenization.html">Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/promotions.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespromotionshtml" href="../../../pt/docs/services/promotions.html">Parcelas e promoções - Argentina e México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/refunds.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesrefundshtml" href="../../../pt/docs/services/refunds.html">Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payouts.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespayoutshtml" href="../../../pt/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/tools.html" href="../../../pt/docs/tools.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Ferramentas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-request.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-requesthtml" href="../../../pt/docs/tools/payment-request.html">Solicitação de pagamento</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/tools/shopping-cart-plugins.html" href="../../../pt/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Plugins do carrinho de compras</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/shopify.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../pt/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/magento.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsmagentohtml" href="../../../pt/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/drupal.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../pt/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/virtuemart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../pt/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/woocommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../pt/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/oscommerce.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../pt/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/opencart.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsopencarthtml" href="../../../pt/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payu-module.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayu-modulehtml" href="../../../pt/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/disputes.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsdisputeshtml" href="../../../pt/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-coupons.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-couponshtml" href="../../../pt/docs/tools/payment-coupons.html">Cupons de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/antifraud-guarantee.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsantifraud-guaranteehtml" href="../../../pt/docs/tools/antifraud-guarantee.html">Garantia Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/integrations.html" href="../../../pt/docs/integrations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Integrações</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/webcheckout-integration.html" href="../../../pt/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração Webcheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../pt/docs/integrations/webcheckout-integration/payment-form.html">Formulário de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../pt/docs/integrations/webcheckout-integration/response-page.html">Página de resposta</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../pt/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmação</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/api-integration.html" href="../../../pt/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../pt/docs/integrations/api-integration/payments-api-argentina.html">API de pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../pt/docs/integrations/api-integration/payments-api-brazil.html">API de pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../pt/docs/integrations/api-integration/payments-api-chile.html">API de pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../pt/docs/integrations/api-integration/payments-api-colombia.html">API de pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../pt/docs/integrations/api-integration/payments-api-mexico.html">API de pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../pt/docs/integrations/api-integration/payments-api-panama.html">API de pagamentos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../pt/docs/integrations/api-integration/payments-api-peru.html">API de pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationqueries-apihtml" href="../../../pt/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationtokenization-apihtml" href="../../../pt/docs/integrations/api-integration/tokenization-api.html">API de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpromotions-apihtml" href="../../../pt/docs/integrations/api-integration/promotions-api.html">API de promoções</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationrefunds-apihtml" href="../../../pt/docs/integrations/api-integration/refunds-api.html">API de Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayouts-apihtml" href="../../../pt/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/sdk-integration.html" href="../../../pt/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../pt/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../pt/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../pt/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../pt/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../pt/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../pt/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationqueriessdkhtml" href="../../../pt/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationrefundssdkhtml" href="../../../pt/docs/integrations/sdk-integration/refundssdk.html">SDK de Cancelamentos e Reembolsos</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/server-status.html" href="../../../pt/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Status do servidor</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>Nesta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-3ds">O que é 3DS?</a></li>
+    <li><a href="#3ds-benefits">Benefícios do 3DS</a></li>
+    <li><a href="#3ds-authentication-solution">Solução de Autenticação 3DS</a>
+      <ul>
+        <li><a href="#benefits-of-our-solution">Benefícios da nossa solução</a></li>
+        <li><a href="#how-to-integrate-3ds">Como integrar 3DS?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../pt/docs.html">Início</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../pt/docs/services.html">Serviços</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../pt/docs/services/3ds-authentication.html">Autenticação 3DS</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Autenticação 3DS</h1>
+    <div class="lead">3DS (em inglês <strong>Three-Domain Secure</strong>) permite realizar um processo de autenticação intuitivo e amigável para o cliente. 3DS acrescenta camadas adicionais de segurança para reduzir a fraude, impedindo a utilização não autorizada de cartões de crédito.</div>
+	       
+	<h2 id="what-is-3ds">O que é 3DS?</h2>
+<p>3DS (em inglês <strong>Three-Domain Secure</strong>) é um protocolo de mensagens que permite aos emissores autenticar os seus titulares de cartões durante as compras on-line. Esta autenticação é realizada antes de a transacção ser autorizada e segue este fluxo.</p>
+<p><img src="../../../assets/3DS/3DS_whatis_pt.png" alt=""></p>
+<p>O infográfico seguinte explica o fluxo de autenticação 3DS.</p>
+<div class="infographicDiv" align="center">
+    <div class="DivGray" >
+        <p align="center">João faz a compra de um smartphone a través do seu computador para ser entregue na sua casa.</p>
+        <div class="img1">
+            <p align="center"><img src="../../../assets/3DS/3DS_step_1_en.png"/></p>
+        </div>
+    </div>
+    <div class="DivWhite" >
+        <p align="center">A <b>loja de smartphones, que está integrada com o serviço de autenticação da PayU</b>, quer verificar se é o João que faz a compra, pelo que envia esta transacção para autenticar.</p>
+        <div class="img2">
+            <p align="center"><img src="../../../assets/3DS/3DS_step_2_en.png"/></p>
+        </div>
+    </div>
+    <div class="DivGray longDiv" >
+        <p align="center">Através da comunicação dos três domínios, o remetente recebe o pedido para autenticar a transacção e começa a verificar os dados enviados.</p>
+        <div class="img3">
+            <p align="center"><img src="../../../assets/3DS/3DS_step_3_en.png"/></p>
+        </div>
+    </div>
+    <div class="DivWhite Div4" >
+        <p align="center">O emitente autenticou com sucesso o comprador que efectuou a transacção. Uma vez que o risco era baixo, a autenticação ocorreu silenciosamente sem contactar o João.</p>
+        <hr style="border: 1px solid #ACC629;">
+        <p align="center">Quando a transacção envolve um risco mais elevado para o remetente, João poderia receber um simples desafio, como um OTP enviado para o seu telefone.</p>
+        <div class="img4">
+            <p align="center"><img src="../../../assets/3DS/3DS_step_4_en.png"/></p>
+        </div>
+    </div>
+    <div class="DivGray lastDiv" >
+        <p align="center">João recebe a confirmação da sua compra e finalmente recebe o seu smartphone em casa.</p>
+        <div class="img5">
+            <p align="center"><img src="../../../assets/3DS/3DS_step_5_en.png"/></p>
+        </div>
+    </div>
+</div>
+<h2 id="3ds-benefits">Benefícios do 3DS</h2>
+<p>3DS (em inglês <strong>Three-Domain Secure</strong>) acrescenta camadas adicionais de segurança para reduzir a fraude, impedindo a utilização não autorizada de cartões de crédito, protegendo-o de estornos de fraude.</p>
+<p>Usando o 3DS, pode ter:</p>
+<ul>
+<li>
+<p><strong>Mais aprovação, menos fraude.</strong><br>
+O intercâmbio de dados entre comerciantes e emitentes apoia melhores decisões de autorização e detecção de fraudes. Em caso de fraude, o emissor é responsável perante o comprador.</p>
+</li>
+<li>
+<p><strong>Melhoria da experiência do utilizador.</strong><br>
+3DS permite uma melhor integração do processo de autenticação na experiência de compra do utilizador final. Reduz o atrito do utilizador numa maior percentagem de transacções.</p>
+</li>
+<li>
+<p><strong>Cumpre os regulamentos e normas da <a href="https://www.emvco.com/emv-technologies/3d-secure/">EMVCo</a>.</strong><br>
+Apoia uma forte autenticação de clientes para emissores, adquirentes e serviços de pagamento em mercados regulamentados.</p>
+</li>
+</ul>
+<h2 id="3ds-authentication-solution">Solução de Autenticação 3DS</h2>
+<p>A Autenticação 3DS, disponível para o Brasil e Colômbia, é oferecida através de API sob duas modalidades:</p>
+<ul>
+<li>
+<p><em><strong>Pass Through</strong></em>: se tiver o seu próprio serviço 3DS Authentication, pode enviar-nos a resposta de autenticação no pedido de pagamento. Sob esta modalidade, é responsável pela integração com um <em><strong>MPI</strong></em> ou um <em><strong>3DS Server</strong></em>.<br>Para mais informações, queira contactar o seu representante de vendas.</p>
+</li>
+<li>
+<p><em><strong>Fluxo de duas chamadas</strong></em>: se desejar autenticar a transacção utilizando PayU, pode integrar através do <strong>PayU Hub</strong><sup>*</sup> utilizando o <a href="https://developers.paymentsos.com/docs/threed-d-secure-authentication-service.html">Serviço de Autenticação</a> que funciona num fluxo de duas chamadas; uma para autenticação e outra para autorização.<br>Para autenticação, deve ligar-se ao PayU Hub, onde obterá a resposta de autenticação.<br>Para autorização, pode optar por utilizar <strong>PayU Latam</strong> ou <strong>PayU Hub</strong>.</p>
+</li>
+</ul>
+<p><sup>*</sup>O <strong>PayU Hub</strong> é a solução de pagamento sem fronteiras globais. Com uma integração API única, processa pagamentos locais com métodos de pagamento relevantes em 18 mercados.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+A Autenticação 3DS é suportada para os cartões Visa e MasterCard.
+</div>
+
+<p>Leve em conta o seguinte ao utilizar a Autenticação 3DS:</p>
+<ul>
+<li>O Serviço de Autenticação é separado do Serviço de Autorização.</li>
+<li>A Autorização deve incluir a resposta de Autenticação.</li>
+</ul>
+<h3 id="benefits-of-our-solution">Benefícios da nossa solução</h3>
+<p>Quando utiliza o Serviço de Autenticação oferecido pelo <strong>PayU Hub</strong> (Fluxo de duas chamadas), tem os seguintes benefícios.</p>
+<ul>
+<li>PayU está conectado a un servidor 3DS (MPI), no es necesario que lo hagas por tu cuenta. ¡Menos proveedores y contratos!</li>
+<li>Você controla e decide quando autenticar uma transação.</li>
+<li>Sem custos adicionais<sup>*</sup> - a autenticação é um serviço gratuito oferecido pelo PayU!</li>
+<li>Mínimo ou nenhum ajuste contratual para aceder ao serviço 3DS.</li>
+<li>Se migrar para o HUB, poderá ter benefícios adicionais da nossa solução global.</li>
+</ul>
+<p><sup>*</sup> <em>Os adquirentes podem cobrar uma taxa de autenticação, se assim for, esta taxa ser-lhe-á transmitida.</em></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Estamos a trabalhar para nos ligarmos a múltiplos servidores 3DS para melhorar o desempenho e garantir o serviço de autenticação a todo o momento.
+</div>
+
+<h3 id="how-to-integrate-3ds">Como integrar 3DS?</h3>
+<p>A Autenticação 3DS é um serviço disponível a pedido, contacte o seu Key Account Manager ou o Apoio Técnico para o activar.<br>Dependendo do cenário escolhido para utilizar a Autenticação 3DS, o procedimento de integração varia.</p>
+<h4 id="pass-through">Pass Through</h4>
+<p>Quando está integrado com um <em><strong>MPI</strong></em> ou um <em><strong>3DS Server</strong></em>, só precisa de nos enviar a resposta de autenticação no pedido de pagamento. Veja o seu país de processamento para um exemplo de como enviamos os parâmetros devolvidos na resposta:</p>
+<div style="display: flex;">
+  <div style="float: left;width: 50%;text-align: center;">
+    <a href='../../../pt/docs/integrations/api-integration/payments-api-brazil.html#considerations'><img src="../../../assets/Brasil.png" width="10%"/></a>
+  </div>
+  <div style="float: left;width: 50%;text-align: center;">
+    <a href='../../../pt/docs/integrations/api-integration/payments-api-colombia.html#considerations'><img src="../../../assets/Colombia.png" width="10%"/></a>
+  </div>
+</div>
+<br>
+<h4 id="flujo-de-dos-llamados">Fluxo de duas chamadas</h4>
+<p>Siga estes passos para se integrar com o nosso serviço de Autenticação:</p>
+<ol>
+<li>
+<p>Para começar, abra uma conta no <strong>PayU Hub</strong>.<br>Clique <a href="https://control.paymentsos.com/signup">aqui</a> para criar uma conta.</p>
+</li>
+<li>
+<p>Actualize a sua integração. Peça à sua equipa de desenvolvimento para actualizar a sua integração de modo a que esta se ligue agora ao API do <strong>PayU Hub</strong>.</p>
+</li>
+<li>
+<p>Tudo o que resta agora são alguns testes, e é tudo - dar o passo da produção.</p>
+</li>
+</ol>
+<p>Tudo o resto permanece igual!</p>
+<ul>
+<li>A sua oferta actual permanece a mesma. Pode continuar a oferecer os seus métodos de pagamento actuais através de <strong>PayU Latam</strong> ou <strong>PayU Hub</strong>*.</li>
+<li>Novo processo de Onboarding? Claro que não! Já está connosco, por isso não precisamos de mais nada.</li>
+<li>Os pagamentos continuam a ser tratados pelas plataformas locais, por isso certificamo-nos de que os mesmos dados estão disponíveis para si.</li>
+</ul>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificação
+
+21 de dezembro de 2021:
+
+ <b>Articles for 3DS Authentication for Brazil and Colombia (c830d305)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../js/scrollspy.js"></script>
+<script src="../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
