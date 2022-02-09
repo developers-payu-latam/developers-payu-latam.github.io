@@ -33,7 +33,7 @@
 <meta itemprop="description" content="Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (_Refund_) o de cancelación (_Void_) de acuerdo con el estado de la transacción.
 "><meta itemprop="datePublished" content="2021-06-25T09:24:50-05:00" />
 <meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
-<meta itemprop="wordCount" content="2411">
+<meta itemprop="wordCount" content="2461">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de Reembolsos y Anulaciones"/>
 <meta name="twitter:description" content="Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (_Refund_) o de cancelación (_Void_) de acuerdo con el estado de la transacción.
@@ -141,7 +141,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.99d96cba92daf02f147250f5b5d5c5ba9cb2def5233b819b952b3c5b897e0d8fd386fcc8eed7b4faa5d1b2f1d6a8d48d62640087f224d2267136aa2a189871cd.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b15e3662ca0801b6176ff355d48d339532a60548a487e687ca10f70ad8db7094648c5759bb8c34670c44c65b8a895a35a68612aca0815c94df52e3ebbdbcf706.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -823,7 +823,22 @@
 	<h1>API de Reembolsos y Anulaciones</h1>
     <div class="lead">Esta funcionalidad te permite solicitar la cancelación o el reembolso de transacciones autorizadas o cobradas. Puedes crear la solicitud utilizando los métodos de reembolso (<em>Refund</em>) o de cancelación (<em>Void</em>) de acuerdo con el estado de la transacción.</div>
 	       
-	<p>Para integrarte con el API de Reembolsos y Anulaciones, apunta tus peticiones a las siguientes URLs de acuerdo con tu ambiente.</p>
+	<script>
+   function hideAlert() {
+      var today = new Date();
+      var launchDate = new Date("2/17/22");
+      var note = document.getElementsByClassName("pageinfo pageinfo-info")[0];
+      if((today - launchDate) > 0) {
+         note.style.display = "none";
+
+      } else {
+         note.style.display = "";
+      }
+   }
+  
+   window.onload = hideAlert;
+</script>
+<p>Para integrarte con el API de Reembolsos y Anulaciones, apunta tus peticiones a las siguientes URLs de acuerdo con tu ambiente.</p>
 
 
 <div class="alert alert-info" role="alert">
@@ -853,14 +868,17 @@
 <li>90 días para transacciones con PIX<sup>*</sup> o procesadas en Redecard</li>
 <li>120 días para transacciones procesadas en Cielo.</li>
 </ul>
+<ul>
+<li>Solo se permite un reembolso por transacción cuando se usa PIX.</li>
+</ul>
 </li>
 <li>Cuando se aprueba el reembolso, el pagador obtiene su dinero en máximo 15 días hábiles.</li>
 </ul>
 
 
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Nota</h4>
-<sup>*</sup> La integración con PIX como medio de pago estará disponibles desde enero del 2022. Para más información, consulta a tu representante de ventas.
+<div class="pageinfo pageinfo-info">
+<p><sup>*</sup> La integración con <strong>PIX</strong> como medio de pago estará disponibles desde el <em>16 de febrero del 2022</em>. Para más información, consulta a tu representante de ventas.</p>
+
 </div>
 
 <h3 id="chile">Chile</h3>

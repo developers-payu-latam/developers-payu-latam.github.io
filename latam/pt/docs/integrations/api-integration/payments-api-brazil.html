@@ -33,7 +33,7 @@
 <meta itemprop="description" content="A API de pagamentos do Brasil permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
 <meta itemprop="dateModified" content="2022-01-03T10:07:52-05:00" />
-<meta itemprop="wordCount" content="11823">
+<meta itemprop="wordCount" content="11838">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de pagamentos - Brasil"/>
 <meta name="twitter:description" content="A API de pagamentos do Brasil permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
@@ -141,7 +141,7 @@
   aria-label="Buscar no site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.99d96cba92daf02f147250f5b5d5c5ba9cb2def5233b819b952b3c5b897e0d8fd386fcc8eed7b4faa5d1b2f1d6a8d48d62640087f224d2267136aa2a189871cd.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b15e3662ca0801b6176ff355d48d339532a60548a487e687ca10f70ad8db7094648c5759bb8c34670c44c65b8a895a35a68612aca0815c94df52e3ebbdbcf706.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -841,7 +841,22 @@
 	<h1>API de pagamentos - Brasil</h1>
     <div class="lead">A API de pagamentos do Brasil permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.</div>
 	       
-	<p>Para integrar com a API de pagamentos do Brasil, direcione sua solicitação para as seguintes URLs de acordo com seu ambiente.</p>
+	<script>
+   function hideAlert() {
+      var today = new Date();
+      var launchDate = new Date("2/17/22");
+      var note = document.getElementsByClassName("pageinfo pageinfo-info")[0];
+      if((today - launchDate) > 0) {
+         note.style.display = "none";
+
+      } else {
+         note.style.display = "";
+      }
+   }
+  
+   window.onload = hideAlert;
+</script>
+<p>Para integrar com a API de pagamentos do Brasil, direcione sua solicitação para as seguintes URLs de acordo com seu ambiente.</p>
 
 
 <div class="alert alert-info" role="alert">
@@ -2845,9 +2860,10 @@ Por padrão, o processamento de cartões de crédito sem código de segurança n
 <p><img src="../../../../assets/Payments/PixCheckout.png" alt="PrintScreen"></p>
 
 
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Observação</h4>
-A integração com o PIX estará disponível a partir de janeiro 2022. Para mais informações, consulte com o seu executivo de vendas.
+<div class="pageinfo pageinfo-info">
+<h4 id="observação">Observação</h4>
+<p>A integração com o <strong>PIX</strong> estará disponível a partir de <em>16 de fevereiro de 2022</em>. Para mais informações, consulte seu representante de vendas.</p>
+
 </div>
 
 <h3 id="how-does-pix-work">Como funciona o PIX?</h3>
@@ -3774,13 +3790,6 @@ Recomenda-se exibir em seu Checkout a imagem do código QR (parâmetro <code>QRC
 <h2 id="submit-transaction-with-cash">Enviar transação em dinheiro</h2>
 <p>Este método permite processar os pagamentos de seus clientes em dinheiro. Para integrar com transações em dinheiro, você deve redirecionar o cliente para a URL encontrada na resposta do método; Seu cliente verá um recibo de pagamento como este.</p>
 <img src="../../../../assets/Payments/CashReceiptBR.png" alt="PrintScreen" width="50%">
-
-
-<div class="alert alert-warning" role="alert">
-<h4 class="alert-heading">Observação</h4>
-A integração com o PIX estará disponível a partir de janeiro 2022. Para mais informações, consulte com o seu executivo de vendas.
-</div>
-
 <h3 id="variables-for-request-and-response-2">Variáveis para pedido e resposta</h3>
 <details>
 <summary>Pedido</summary>
