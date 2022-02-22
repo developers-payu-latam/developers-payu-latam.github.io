@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/es/docs/integrations/api-integration/payments-api-brazil.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-02-09T16:08:40-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-02-22T16:55:14-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="API de Pagos - Brasil">
 <meta itemprop="description" content="El API de Pagos de Brasil le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-02-09T16:08:40-05:00" />
-<meta itemprop="wordCount" content="11930">
+<meta itemprop="dateModified" content="2022-02-22T16:55:14-05:00" />
+<meta itemprop="wordCount" content="11949">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de Pagos - Brasil"/>
 <meta name="twitter:description" content="El API de Pagos de Brasil le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.
@@ -141,7 +141,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.bb3d3d8e42a2db563fcf04428ca4a261b80aeb35c0285d96d17ad0f46bd3f8e95b7ba8f6acb40ce9dc1562022be6137dde8fae70f02643ff2ea64d9336c228c6.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.c5b60ca2e9d0b6d97ca8bef6db35bd94fa6fa1affe168ff69cd925d64605c383760c7b408b5241f875ada4b39396d2271ccb019588573b9160fc245d6ba82c6c.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -3080,7 +3080,7 @@ Por defecto, el procesamiento de tarjetas de crédito sin código de seguridad n
 <td>Alfanumérico</td>
 <td>Max:150</td>
 <td>Nombre del comprador.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; emailAddress</td>
@@ -3094,6 +3094,13 @@ Por defecto, el procesamiento de tarjetas de crédito sin código de seguridad n
 <td>Alfanumérico</td>
 <td>Max:20</td>
 <td>Teléfono del comprador.</td>
+<td style="text-align:center">Sí</td>
+</tr>
+<tr>
+<td>transaction &gt; order &gt; buyer &gt; dniType</td>
+<td>Alfanumérico</td>
+<td>2</td>
+<td>Tipo de identificación del comprador. <a href="../../../../es/docs/getting-started/response-codes-and-variables.html#document-types">Ver tipos de documentos</a>.</td>
 <td style="text-align:center">Sí</td>
 </tr>
 <tr>
@@ -3115,49 +3122,49 @@ Por defecto, el procesamiento de tarjetas de crédito sin código de seguridad n
 <td>Alfanumérico</td>
 <td></td>
 <td>Dirección de envío del comprador.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; street1</td>
 <td>Alfanumérico</td>
 <td>Max:150</td>
 <td>Línea de dirección 1 del comprador.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; city</td>
 <td>Alfanumérico</td>
 <td>Max:50</td>
 <td>Ciudad de la dirección del comprador.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; state</td>
 <td>Alfanumérico</td>
 <td>Max:40</td>
 <td>Estado de la dirección del comprador. Para Brasil, solo debes enviar dos caracteres, por ejemplo, asigna <code>SP</code> para São Paulo.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; country</td>
 <td>Alfanumérico</td>
 <td>2</td>
 <td>País de la dirección del comprador en formato ISO 3166 alpha-2.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; postalCode</td>
 <td>Numérico</td>
 <td>Max:20</td>
 <td>Código postal de la dirección del comprador. Para Brasil, utiliza el formato <code>XXXXX-XXX</code> o <code>XXXXXXXX</code>. Ejemplo: <code>09210-710</code> o <code>09210710</code>.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; buyer &gt; shippingAddress &gt; phone</td>
 <td>Numérico</td>
 <td>Max:20</td>
 <td>Teléfono asociado a la dirección del comprador. Para Brasil, utiliza el formato <code>ddd(2)+number(7-9)</code>. Ejemplo: <code>(11)756312633</code>.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt;</td>
@@ -3192,7 +3199,7 @@ Por defecto, el procesamiento de tarjetas de crédito sin código de seguridad n
 <td>Alfanumérico</td>
 <td>64</td>
 <td>Monto del impuesto a las ventas.</td>
-<td style="text-align:center">Sí</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; order &gt; additionalValues &gt; TX_TAX &gt; value</td>
@@ -6013,9 +6020,9 @@ Para integrarte con estas transacciones, debes redirigir a tu cliente a la URL q
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificación
 
-9 de febrero de 2022:
+22 de febrero de 2022:
 
- <b>Publish February 9 ,2022 (12938b1a)</b>
+ <b>Changes for PIX, mandatory fields and refunds notes (8f304bab)</b>
 </div>
 </div>
 
