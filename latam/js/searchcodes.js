@@ -71,3 +71,36 @@ function findTables() {
     }
 
 }
+
+function showMandatory(element) {
+    var table = element.parentNode;
+    while(table.nodeName != 'TABLE' && table) {
+      table = table.nextSibling;
+    }
+    if (table) {
+        var checked = element.checked;
+        if (checked) {
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                var elm1 = tr[i].getElementsByTagName("td");
+                td = elm1[elm1.length - 1];
+                if (td) {
+                    var txtValue = td.textContent || td.innerText;
+                    if (txtValue == 'Yes' || txtValue == 'Sí' || txtValue == 'Sim') {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        } else {
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    tr[i].style.display = "";
+                }       
+            }
+        }
+    }
+}
