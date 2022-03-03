@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/pt/docs/integrations/webcheckout-integration/payment-form.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T12:15:27-05:00" />
-<meta property="article:modified_time" content="2022-01-03T10:07:52-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Formulário de pagamento">
 <meta itemprop="description" content="Com este formulário HTML, você pode enviar a solicitação de transação para nosso portal de pagamento junto com as informações de compra. Envie a solicitação usando o método HTTP POST.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:27-05:00" />
-<meta itemprop="dateModified" content="2022-01-03T10:07:52-05:00" />
-<meta itemprop="wordCount" content="1428">
+<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
+<meta itemprop="wordCount" content="1432">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Formulário de pagamento"/>
 <meta name="twitter:description" content="Com este formulário HTML, você pode enviar a solicitação de transação para nosso portal de pagamento junto com as informações de compra. Envie a solicitação usando o método HTTP POST.
@@ -141,7 +141,7 @@
   aria-label="Buscar no site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.9f4fe8ae3e8c1c61e0927ca6dbd38ded3f7b627742330bc1184ff1d5bb191a2b663b0873147ad01a825c52addcb840c2cd1824f4a75122840236673ce43f9e3e.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.5aa0bbb74426f04b215c65465ec88ad50114df9c2757365b09f331674882449e97da528b7519a5b8d2cd51903c76ad3e04d215f9f5301db0bf2d1bcbd1e5bff3.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -817,6 +817,7 @@
 <script src="../../../../js/signature-generator/sha1.js"></script>
 <script src="../../../../js/signature-generator/sha256.js"></script>
 <script src="../../../../js/signature-generator/signature-generator.js"></script>
+<script src="../../../../js/searchcodes.js"></script>
 <p>Neste tópico, você aprenderá a enviar dados de uma transação para o portal de pagamento PayU. Para isso, deve-se gerar um formulário HTML com os dados da transação utilizando o método HTTP POST e apontando-o para o nosso sistema.</p>
 <h2 id="considerations">Observações</h2>
 <ul>
@@ -830,6 +831,7 @@
 <p>As seguintes variáveis podem ser incluídas no formulário de pagamento.</p>
 <details>
 <summary>Variáveis no formulário de pagamento</summary>
+<label for="table1" class="showMandatory"><input type="checkbox" id="table1" name="table1" value="true" onchange="showMandatory(this)"> Mostrar apenas campos obrigatórios</label>
 <br>
 <div class="variables"></div>
 <table>
@@ -848,294 +850,294 @@
 <td>Número</td>
 <td>12</td>
 <td>Número de identificação da sua loja no sistema PayU. Você encontrará este número no e-mail de criação de conta.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>referenceCode</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Referência da venda ou ordem. Deve ser exclusiva para cada transação enviada ao sistema. Normalmente, é uma forma de identificar as solicitações enviadas para a plataforma de pagamento.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>accountId</td>
 <td>Número</td>
 <td>6</td>
 <td>ID da conta do usuário para cada país associado à loja. Esta variável é usada para exibir os métodos de pagamento disponíveis para este país.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>description</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Descrição da venda.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>Alfanumérico</td>
 <td>3</td>
 <td>A respectiva moeda na qual o pagamento é feito. O processo de reconciliação é realizado em pesos na taxa representativa do dia.<br><a href="../../../../pt/docs/getting-started/response-codes-and-variables.html#accepted-currencies">Veja as moedas aceitas</a>.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>Número</td>
 <td>10</td>
 <td>Valor total da transação. Ele pode conter dois dígitos decimais. Exemplo 10000.00 ou 10000.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>tax</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Valor do IVA da transação.<br>Na Colômbia, se nenhum IVA for enviado, o sistema aplica 19% automaticamente. Ele pode conter dois dígitos decimais, por exemplo 19000.00.<br>Se o produto ou serviço for isento de IVA, atribua <code>0</code> a esta variável.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>discount</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Discount value applied to the sale.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>taxReturnBase</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Valor base para cálculo do VAT.<br>Se o produto ou serviço for isento de IVA, atribua <code>0</code> a esta variável.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>additionalValue</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Valor adicional da venda.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>signature</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Assinatura digital criada para cada transação. Consultar <a href="../../../../pt/docs/integrations/webcheckout-integration/payment-form.html#signature-for-payment-form">Assinatura para forma de pagamento</a> para aprender como gerar.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>algorithmSignature</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Algoritmo de criptografia da assinatura digital (campo <code>signature</code>). Os três algoritmos disponíveis são: <code>MD5</code>, <code>SHA</code> e <code>SHA256</code>.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>test</td>
 <td>Número</td>
 <td>1</td>
 <td>Indica se a transação está em modo de teste ou produção. Definir <code>1</code> para teste e <code>0</code>para produção.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>lng</td>
 <td>Alfanumérico</td>
 <td>3</td>
 <td>Idioma no qual a plataforma de pagamento deve ser exibida.<br><a href="../../../../pt/docs/getting-started/response-codes-and-variables.html#supported-languages">Veja os idiomas disponíveis</a>.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>extra1</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Campo adicional para envio de informações sobre a compra.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>extra2</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Campo adicional para envio de informações sobre a compra.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>extra3</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Campo adicional para envio de informações sobre a compra.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>template</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Modelo para a página de pagamento.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>responseUrl</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>URL da página de resposta.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>confirmationUrl</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>URL da página de resposta.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>sourceUrl</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>URL de origem das transações do comércio. É aqui que o botão de pagamento está localizado.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>airline</td>
 <td>Alfanumérico</td>
 <td>4</td>
 <td>Código da companhia aérea.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>billingAddress</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Endereço de correspondência.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>shippingAddress</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>O endereço de entrega da mercadoria.<br><sup>*</sup> Obrigatório se sua loja enviar o produto.</td>
-<td style="text-align:center">✓*</td>
+<td style="text-align:center">Sim*</td>
 </tr>
 <tr>
 <td>billingCity</td>
 <td>Alfanumérico</td>
 <td>50</td>
 <td>Cidade associada ao endereço de cobrança.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>shippingCity</td>
 <td>Alfanumérico</td>
 <td>50</td>
 <td>A cidade de entrega da mercadoria.<br><sup>*</sup> Obrigatório se sua loja enviar o produto.</td>
-<td style="text-align:center">✓*</td>
+<td style="text-align:center">Sim*</td>
 </tr>
 <tr>
 <td>zipCode</td>
 <td>Alfanumérico</td>
 <td>20</td>
 <td>Código postal.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>billingCountry</td>
 <td>Alfanumérico</td>
 <td>2</td>
 <td>Código ISO do país associado ao endereço de cobrança.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>shippingCountry</td>
 <td>Alfanumérico</td>
 <td>2</td>
 <td>O código ISO do país associado ao endereço de entrega da mercadoria.<br><sup>*</sup> Obrigatório se sua loja enviar o produto.<br><a href="../../../../pt/docs/getting-started/response-codes-and-variables.html#processing-countries">Veja os países de processamento</a>.</td>
-<td style="text-align:center">✓*</td>
+<td style="text-align:center">Sim*</td>
 </tr>
 <tr>
 <td>buyerEmail</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Campo que contém o e-mail do comprador para notificar o resultado da transação por e-mail. Recomenda-se validar se este campo foi fornecido no formulário.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>telephone</td>
 <td>Alfanumérico</td>
 <td>50</td>
 <td>O telefone residencial do comprador.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>officeTelephone</td>
 <td>Alfanumérico</td>
 <td>50</td>
 <td>O telefone do comprador em horário comercial.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>mobilePhone</td>
 <td>Alfanumérico</td>
 <td>50</td>
 <td>O número do celular do comprador. Este valor será usado para preencher o formulário do cartão de crédito e será o telefone de contato.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>buyerFullName</td>
 <td>Alfanumérico</td>
 <td>150</td>
 <td>O nome completo do comprador.</td>
-<td style="text-align:center">✓</td>
+<td style="text-align:center">Sim</td>
 </tr>
 <tr>
 <td>paymentMethods</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Lista das formas de pagamento habilitadas no processo de pagamento.<br>Esta lista deve ser separada por vírgula e sem espaços em branco. Por exemplo: <code>VISA,MASTERCARD</code>.<br>YVocê pode incluir parcelas para as formas de pagamento adicionando-as usando hifens. Exemplo: <code>VISA-1-3,MASTERCARD-3-5-9</code>.<br><a href="../../../../pt/docs/getting-started/select-your-payment-method.html">Veja os métodos de pagamento disponíveis para seu país na coluna <code>Parâmetro paymentMethod</code></a>.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>administrativeFee</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Valor da taxa administrativa.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>taxAdministrativeFee</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Valor do imposto da taxa administrativa.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>taxAdministrativeFeeReturnBase</td>
 <td>Número</td>
 <td>10,2</td>
 <td>Valor base para cálculo do imposto da taxa administrativa.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>payerEmail</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>E-mail do pagador.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>payerPhone</td>
 <td>Alfanumérico</td>
 <td>20</td>
 <td>Número de telefone do pagador.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>payerOfficePhone</td>
 <td>Alfanumérico</td>
 <td>20</td>
 <td>Número de telefone do local de trabalho do pagador.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>payerMobilePhone</td>
 <td>Alfanumérico</td>
 <td>20</td>
 <td>Número do celular do pagador.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>expirationDate</td>
@@ -1149,42 +1151,42 @@
 <td>Alfanumérico</td>
 <td>50</td>
 <td>O nome do pagador. Este valor será usado para preencher o formulário do cartão de crédito.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>payerDocument</td>
 <td>Alfanumérico</td>
 <td>25</td>
 <td>O número de identificação do comprador. Este valor será usado para preencher o formulário do cartão de crédito.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>payerDocumentType</td>
 <td>Alfanumérico</td>
 <td>25</td>
 <td>O tipo de identificação do comprador. Este valor será usado para preencher o formulário do cartão de crédito.</td>
-<td style="text-align:center">—</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>iin</td>
 <td>Alfanumérico</td>
 <td>2048</td>
 <td>Lista de Bins admitidos durante o processo de pagamento (separados por vírgula).<br><em>Este parâmetro só pode ser utilizado por estabelecimentos que validem assinatura.</em></td>
-<td style="text-align:center">-</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>paymentMethodsDescription</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Descrição dos meios de pagamento e Caixas admitidas durante o processo de pagamento.</td>
-<td style="text-align:center">-</td>
+<td style="text-align:center">Não</td>
 </tr>
 <tr>
 <td>pseBanks</td>
 <td>Alfanumérico</td>
 <td>255</td>
 <td>Lista de códigos bancários habilitados no processo de pagamento via PSE.<br>Esta lista deve ser separada por vírgula e sem espaços em branco.</td>
-<td style="text-align:center">-</td>
+<td style="text-align:center">Não</td>
 </tr>
 </tbody>
 </table>
@@ -1351,9 +1353,9 @@ buyerEmail: test@test.com
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificação
 
-3 de janeiro de 2022:
+2 de março de 2022:
 
- <b>Fix in the number of integers and decimals for transaction values (7eb5fee8)</b>
+ <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
 </div>
 </div>
 
