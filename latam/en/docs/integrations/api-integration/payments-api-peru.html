@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/api-integration/payments-api-peru.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-03-03T09:37:35-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payments API - Peru">
 <meta itemprop="description" content="Payments API Peru lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
-<meta itemprop="wordCount" content="5299">
+<meta itemprop="dateModified" content="2022-03-03T09:37:35-05:00" />
+<meta itemprop="wordCount" content="5382">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Peru"/>
 <meta name="twitter:description" content="Payments API Peru lets your shop process different transaction types with multiple payment methods.
@@ -141,7 +141,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.5aa0bbb74426f04b215c65465ec88ad50114df9c2757365b09f331674882449e97da528b7519a5b8d2cd51903c76ad3e04d215f9f5301db0bf2d1bcbd1e5bff3.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.03279d3ca0d2e636b1eaaa92a1582ce11fb25a5622cb619bc68e798fa40252f8bb2d9d28ba69cb94c763fae87cf4b1194f3ab6e258e0230496687767fbd6422f.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -1422,28 +1422,28 @@
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Session identifier of the device where the customer performs the transaction. For more information, refer to <a href="../../../../en/docs/integrations.html#_devicesessionid_-variable">this topic</a>.</td>
-<td style="text-align:center">Yes</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; ipAddress</td>
 <td>Alphanumeric</td>
 <td>Max:39</td>
 <td>IP address of the device where the customer performs the transaction.</td>
-<td style="text-align:center">Yes</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; cookie</td>
 <td>Alphanumeric</td>
 <td>Max:255</td>
 <td>Cookie stored by the device where the customer performs the transaction.</td>
-<td style="text-align:center">Yes</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; userAgent</td>
 <td>Alphanumeric</td>
 <td>Max:1024</td>
 <td>The User agent of the browser where the customer performs the transaction.</td>
-<td style="text-align:center">Yes</td>
+<td style="text-align:center">No</td>
 </tr>
 <tr>
 <td>transaction &gt; extraParameters</td>
@@ -1857,6 +1857,19 @@
 
 
 </div>
+<h4 id="zero-authorization">Zero Authorization</h4>
+<p>Zero Authorization allows you to validate a card without performing any charge or capture operation. Through this option, you can send an <em>Authorization</em> request as explained before with <code>TX_VALUE</code> equals to 0 and you will receive the result of the card validation.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Important</h4>
+<ul>
+<li>This feature is not enabled by default, contact your sales representative to request it.</li>
+<li><em>Zero Authorization</em> is available for VISA cards only. Mastercard and other franchises must send the transaction value greater than or equals to 1 PEN.</li>
+</ul>
+
+</div>
+
 <h3 id="capture">Capture</h3>
 <p>Use this method to perform the <strong>Capture</strong> step of a two-step flow. In this step, you capture the funds previously <a href="../../../../en/docs/integrations/api-integration/payments-api-peru.html#authorization">Authorized</a> to transfer them to your PayU account.</p>
 <h4 id="considerations-1">Considerations</h4>
@@ -3664,9 +3677,9 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-March 2, 2022:
+March 3, 2022:
 
- <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
+ <b>Zero Authorization for Peru (5e6f6bed)</b>
 </div>
 </div>
 

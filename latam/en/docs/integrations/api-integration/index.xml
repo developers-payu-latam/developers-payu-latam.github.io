@@ -23250,28 +23250,28 @@ To integrate with these transactions, you must redirect the customer to the URL 
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;Max:255&lt;/td&gt;
 &lt;td&gt;Session identifier of the device where the customer performs the transaction. For more information, refer to &lt;a href=&#34;../../../../en/docs/integrations.html#_devicesessionid_-variable&#34;&gt;this topic&lt;/a&gt;.&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;transaction &amp;gt; ipAddress&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;Max:39&lt;/td&gt;
 &lt;td&gt;IP address of the device where the customer performs the transaction.&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;transaction &amp;gt; cookie&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;Max:255&lt;/td&gt;
 &lt;td&gt;Cookie stored by the device where the customer performs the transaction.&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;transaction &amp;gt; userAgent&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;Max:1024&lt;/td&gt;
 &lt;td&gt;The User agent of the browser where the customer performs the transaction.&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;Yes&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;transaction &amp;gt; extraParameters&lt;/td&gt;
@@ -23685,6 +23685,19 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 &lt;/div&gt;
+&lt;h4 id=&#34;zero-authorization&#34;&gt;Zero Authorization&lt;/h4&gt;
+&lt;p&gt;Zero Authorization allows you to validate a card without performing any charge or capture operation. Through this option, you can send an &lt;em&gt;Authorization&lt;/em&gt; request as explained before with &lt;code&gt;TX_VALUE&lt;/code&gt; equals to 0 and you will receive the result of the card validation.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Important&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;This feature is not enabled by default, contact your sales representative to request it.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Zero Authorization&lt;/em&gt; is available for VISA cards only. Mastercard and other franchises must send the transaction value greater than or equals to 1 PEN.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/div&gt;
+
 &lt;h3 id=&#34;capture&#34;&gt;Capture&lt;/h3&gt;
 &lt;p&gt;Use this method to perform the &lt;strong&gt;Capture&lt;/strong&gt; step of a two-step flow. In this step, you capture the funds previously &lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-peru.html#authorization&#34;&gt;Authorized&lt;/a&gt; to transfer them to your PayU account.&lt;/p&gt;
 &lt;h4 id=&#34;considerations-1&#34;&gt;Considerations&lt;/h4&gt;
