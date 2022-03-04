@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+<link rel="alternate" type="application/rss&#43;xml" href="../es/orderid-validation/index.xml">
+
+
+<link rel="shortcut icon" href="../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../favicons/android-192x192.png" sizes="192x192">
+
+<title>Validación de la variable OrderId | PayU Latam</title><meta property="og:title" content="Validación de la variable OrderId" />
+<meta property="og:description" content="Documentación de PayU desarrolladores" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/es/orderid-validation.html" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="Validación de la variable OrderId">
+<meta itemprop="description" content="Documentación de PayU desarrolladores"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Validación de la variable OrderId"/>
+<meta name="twitter:description" content="Documentación de PayU desarrolladores"/>
+
+
+
+
+
+<link rel="preload" href="../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../es/">
+			
+			
+			<span class="navbar-logo"><img src="../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../es/docs.html" ><span>Pagos en línea</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../es/payu-module-documentation.html" ><span>Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../en/orderid-validation.html">English</a>
+	
+	<a class="dropdown-item" href="../pt/orderid-validation.html">Português</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar en este sitio…"
+  aria-label="Buscar en este sitio…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../offline-search-index.03279d3ca0d2e636b1eaaa92a1582ce11fb25a5622cb619bc68e798fa40252f8bb2d9d28ba69cb94c763fae87cf4b1194f3ab6e258e0230496687767fbd6422f.json"
+  data-offline-search-base-href="../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Español
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../en/orderid-validation.html">English</a>
+	
+	<a class="dropdown-item" href="../pt/orderid-validation.html">Português</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/es/orderid-validation.html" href="../es/orderid-validation.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__section ">Variable OrderId</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="esorderid-validationhtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>En esta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Introducción</a>
+      <ul>
+        <li><a href="#frequently-asked-questions">Preguntas frecuentes</a></li>
+      </ul>
+    </li>
+    <li><a href="#validation-procedure">Procedimiento de validación</a>
+      <ul>
+        <li><a href="#api-integración">Integración API</a></li>
+        <li><a href="#sdk-integration">Integración SDK</a></li>
+        <li><a href="#webcheckout-integration">Integración WebCheckout</a></li>
+      </ul>
+    </li>
+    <li><a href="#support">Soporte</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../es/orderid-validation.html">Variable OrderId</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Validación de la variable OrderId</h1>
+        
+	
+	<script src="../js/countdown.js"></script>
+<br>
+<div id="MainCounter">
+    <p class="CounterHeader">Tu sistema debe estar listo en</p>
+    <div class="CounterContent">
+      <div id="DaysDiv">
+        <p id="days"></p>
+        <p style="color:white;text-align:center;">Días</p>
+      </div>
+      <div id="HoursDiv">
+        <p id="hours"></p>
+        <p style="color:white;text-align:center;">Horas</p>
+      </div>
+      <div id="MinutesDiv">
+        <p id="minutes"></p>
+        <p style="color:white;text-align:center;">Minutos</p>
+      </div>
+      <div id="SecondsDiv">
+        <p id="seconds"></p>
+        <p style="color:white;text-align:center;">Segundos</p>
+      </div>
+    </div>  
+</div>
+<h2 id="overview">Introducción</h2>
+<p>Debido al crecimiento exponencial del comercio electrónico y los pagos en línea, el tamaño de los identificadores que devolvemos desde nuestro procesador de pagos se ha incrementado.</p>
+<p>Nuestras estimaciones muestran que aproximadamente el <em>30 de abril de 2022</em>, sobrepasaremos la barrera de los 10 dígitos del parámetro <code>orderId</code>. Esto hace que cambiamos el tipo numérico actual del parámetro para permitir un mayor número de dígitos en los identificadores retornados; por lo tanto, el tipo de datos actual ya no será compatible y este cambio puede afectar tu integración con nuestra plataforma.</p>
+<p>Para evitar problemas debido a este cambio, debes validar si el nuevo tipo retornado coincide con tu integración actual. Sigue las pautas explicadas en este artículo para verificar si tu integración requiere una actualización.</p>
+<h3 id="frequently-asked-questions">Preguntas frecuentes</h3>
+<ul>
+<li>
+<p><strong>¿Cómo puedo comprobar si el cambio del tipo de datos afecta mi integración?</strong><br>Consulta la sección <a href="#validation-procedure"><em><strong>Procedimiento de validación</strong></em></a> para saber cómo validar según el tipo de integración que tengas con nosotros.</p>
+</li>
+<li>
+<p><strong>Mi integración es a través de una plataforma de comercio digital (como VTEX, Shopify, etc), ¿Necesito implementar el cambio?</strong><br>No, tu plataforma de comercio digital implementará el cambio de forma silenciosa. Sin embargo, debes verificar si tienes conexiones externas a la plataforma para reportes o consultas.</p>
+</li>
+<li>
+<p><strong>¿Cuál es el cambio en el tipo de datos?</strong><br>Actualmente, el parámetro <code>orderId</code> se retorna utilizando el tipo <code>Integer</code>, el nuevo tipo de datos para este parámetro será <code>Long</code>.</p>
+</li>
+<li>
+<p><strong>¿Este cambio es obligatorio?</strong><br>Si después de haber verificado tu integración, encontraste que el <code>orderId</code> es una variable de tipo <code>Integer</code>, sí. De lo contrario, no tienes que cambiar tu integración.</p>
+</li>
+<li>
+<p><strong>¿Este cambio solo afecta el flujo de Pago?</strong><br>No, este cambio también puede tener impacto en tus reportes o consultas relacionadas con transacciones. Ten cuidado cuando realices la validación.</p>
+</li>
+<li>
+<p><strong>¿Qué sucede si no aplico este cambio?</strong><br>Si no realizas este cambio y este afecta tu integración, <strong>no</strong> podrás recibir la confirmación del procedimiento de pago. Además, <strong>no</strong> podrás consultar nuevas transacciones a partir de que empecemos a retornar el poarámetro <code>orderId</code> con más de 10 dígitos (aproximadamente, después del <em>30 de abril de 2022</em>).</p>
+</li>
+<li>
+<p><strong>¿El equipo de Soporte de PayU puede hacer este cambio por mí?</strong><br>No, tú decides cómo te integras con nuestros servicios. PayU no se hace responsable por errores debido a integraciones incorrectas.</p>
+</li>
+<li>
+<p><strong>¿Es necesario volver a implementar este cambio?</strong><br>No en un futuro cercano. El cambio del tipo de dato nos permite tener una mayor capacidad en la generación de identificadores. Este cambio nos permite generar hasta <em><strong>9.223.372.036.854.775.807</strong></em> identificadores.</p>
+</li>
+</ul>
+<h2 id="validation-procedure">Procedimiento de validación</h2>
+<p>La validación de <code>orderId</code> depende de tu integración.</p>
+<h3 id="api-integración">Integración API</h3>
+<p>Si tu tienda está integrada a través de <strong>API</strong> y utilizas un lenguaje <strong>tipado</strong> para tu integración, debes validar cómo declaraste la variable numérica <code>orderId</code>.</p>
+<ul>
+<li>Si la variable <code>orderId</code> es de tipo <code>int</code> o <code>Integer</code>, debes cambiarla a tipo <code>long</code> o <code>Long</code>.</li>
+<li>Si usas el API de consultas y estás mapeando la variable <code>orderId</code> con el tipo <code>int</code> o <code>Integer</code>, debes cambiarlo al tipo <code>long</code> o <code>Long</code>.</li>
+<li>Debes validar con tu equipo técnico si la variable <code>orderId</code> está siendo almacenada en una base de Datos. Si es así, valida que la columna en tu base de datos admita valores de tipo <code>Long</code>.</li>
+</ul>
+<h3 id="sdk-integration">Integración SDK</h3>
+<p>Si te estás integrando con nuestros servicios usando el SDK, cambia el archivo <em><strong>.jar</strong></em> de la versión actual.</p>
+<p><a href="http://developers.payulatam.com/sdk/java/payu-java-sdk-1.4.0.zip" target="_blank" class="payu-btn-green">Descarga el SDK Java 1.4.0</a></p>
+<h3 id="webcheckout-integration">Integración WebCheckout</h3>
+<p>Si tu tienda está integrada a través de <strong>WebCheckout</strong> y utilizas un lenguaje <strong>tipado</strong> para tu integración, debes validar cómo declaraste la variable numérica <code>orderId</code>.</p>
+<ul>
+<li>Si la variable <code>orderId</code> utilizada en la página de confirmación está definida como tipo <code>int</code> o <code>Integer</code>, debe cambiarla al tipo <code>long</code> o <code>Long</code>.</li>
+<li>Si usas el API de consultas y estás mapeando la variable <code>orderId</code> con el tipo <code>int</code> o <code>Integer</code>, debes cambiarlo al tipo <code>long</code> o <code>Long</code>.</li>
+<li>Debes validar con tu equipo técnico si la variable <code>orderId</code> está siendo almacenada en una base de Datos. Si es así, valida que la columna en tu base de datos admita valores de tipo <code>Long</code>.</li>
+</ul>
+<h2 id="support">Soporte</h2>
+<p>Para solicitar soporte o hacer preguntas relacionadas con este cambio, comunícate con nuestro equipo de soporte en tu país:</p>
+<div style="display: flex;">
+  <div style="float: left;width: 50%;">
+    <ul>
+      <li><img src="../assets/Argentina.png" width="25px"/> <a href="tecnico.ar@payu.com">tecnico.ar@payu.com</a></li>
+      <li><img src="../assets/Brasil.png" width="25px"/> <a href="tecnico.br@payu.com">tecnico.br@payu.com</a></li>
+      <li><img src="../assets/Chile.png" width="25px"/> <a href="tecnico.cl@payu.com">tecnico.cl@payu.com</a></li>
+      <li><img src="../assets/Colombia.png" width="25px"/> <a href="tecnico.co@payu.com">tecnico.co@payu.com</a></li>
+    </ul>
+  </div>
+  <div style="float: left;width: 50%;">
+    <ul>
+      <li><img src="../assets/Mexico.png" width="25px"/> <a href="tecnico.mx@payu.com">tecnico.mx@payu.com</a></li>
+      <li><img src="../assets/Panama.png" width="25px"/> <a href="tecnico.pa@payu.com">tecnico.pa@payu.com</a></li>
+      <li><img src="../assets/Peru.png" width="25px"/> <a href="tecnico.pe@payu.com">tecnico.pe@payu.com</a></li>
+    </ul>
+  </div>
+</div>
+		
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificación
+
+4 de marzo de 2022:
+
+ <b>OrderID validation for merchants (7ad96e52)</b>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../js/scrollspy.js"></script>
+<script src="../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
