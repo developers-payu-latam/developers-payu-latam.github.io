@@ -2644,7 +2644,7 @@ Para confirmar o status de uma transação, você pode usar o &lt;a href=&#34;..
 &lt;h2 id=&#34;available-methods&#34;&gt;Métodos disponíveis&lt;/h2&gt;
 &lt;p&gt;O SDK de pagamentos inclui os seguintes métodos&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#submit-transaction-with-credit-cards&#34;&gt;Enviar transação com cartão de crédito&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#submit-transaction-with-credit-cards&#34;&gt;Enviar transação com cartão de crédito, débito ou pré-pago&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#available-payment-methods-query&#34;&gt;Consulta de métodos de pagamento disponíveis&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#ping&#34;&gt;Ping&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2656,13 +2656,13 @@ Para confirmar o status de uma transação, você pode usar o &lt;a href=&#34;..
 Para confirmar o status de uma transação, você pode usar o &lt;a href=&#34;../../../../pt/docs/integrations/sdk-integration/queriessdk.html&#34;&gt;SDK de Consultas&lt;/a&gt;.
 &lt;/div&gt;
 
-&lt;h2 id=&#34;submit-transaction-with-credit-cards&#34;&gt;Enviar transação com cartão de crédito&lt;/h2&gt;
-&lt;p&gt;Este método permite processar os pagamentos efetuados com cartão de crédito pelos seus clientes. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (&lt;strong&gt;Autorização&lt;/strong&gt;, &lt;strong&gt;Captura&lt;/strong&gt;) e fluxos de uma etapa (&lt;strong&gt;Cobrança&lt;/strong&gt;). Para obter mais informações, consulte &lt;a href=&#34;../../../../pt/docs/services/payments.html#payment-flows&#34;&gt;Fluxos de pagamento&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;submit-transaction-with-credit-cards&#34;&gt;Enviar transação com cartão de crédito, débito ou pré-pago&lt;/h2&gt;
+&lt;p&gt;Este método permite processar os pagamentos efetuados com cartões de crédito, débito ou pré-pago pelos seus clientes. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (&lt;strong&gt;Autorização&lt;/strong&gt;, &lt;strong&gt;Captura&lt;/strong&gt;) e fluxos de uma etapa (&lt;strong&gt;Cobrança&lt;/strong&gt;). Para obter mais informações, consulte &lt;a href=&#34;../../../../pt/docs/services/payments.html#payment-flows&#34;&gt;Fluxos de pagamento&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
-Transações com cartão de crédito usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações.
+Transações usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações.
 &lt;/div&gt;
 
 &lt;h3 id=&#34;considerations&#34;&gt;Observações&lt;/h3&gt;
@@ -2670,7 +2670,6 @@ Transações com cartão de crédito usando fluxos de duas etapas estão dispon�
 &lt;li&gt;Enviar um método de pagamento com cartão de crédito válido, &lt;a href=&#34;../../../../pt/docs/getting-started/select-your-payment-method.html#Chile&#34;&gt;see the available Payment Methods o Chile&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Para pagamentos com tokens de cartão de crédito, inclua os parâmetros &lt;code&gt;TOKEN_ID&lt;/code&gt; e &lt;code&gt;CREDIT_CARD_SECURITY_CODE&lt;/code&gt; (se processar com código de segurança) substituindo as informações do cartão de crédito. Para obter mais informações, consulte &lt;a href=&#34;../../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html&#34;&gt;SDK de Tokenização&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Não são permitidas transações em PESOS CHILENOS com valores decimais.&lt;/li&gt;
-&lt;li&gt;Os fluxos de duas etapas não são compatíveis com cartões de crédito internacionais.&lt;/li&gt;
 &lt;li&gt;As transações com cartão de crédito usando fluxos de duas etapas estão disponíveis para pagamento em parcela única. Contate seu representante de vendas para obter mais informações.&lt;/li&gt;
 &lt;li&gt;Por padrão, o processamento de cartões de crédito sem código de segurança não está habilitado. Se você deseja habilitar este recurso, entre em contato com seu representante de vendas. Depois que esse recurso for habilitado para você, envie no pedido o parâmetro &lt;code&gt;PROCESS_WITHOUT_CVV2&lt;/code&gt; como true e remova o parâmetro &lt;code&gt;CREDIT_CARD_SECURITY_CODE&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;

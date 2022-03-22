@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/api-integration/payments-api-chile.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-03-22T11:11:30-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Payments API - Chile">
 <meta itemprop="description" content="Payments API Chile lets your shop process different transaction types with multiple payment methods.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
-<meta itemprop="wordCount" content="7424">
+<meta itemprop="dateModified" content="2022-03-22T11:11:30-05:00" />
+<meta itemprop="wordCount" content="7406">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Payments API - Chile"/>
 <meta name="twitter:description" content="Payments API Chile lets your shop process different transaction types with multiple payment methods.
@@ -141,7 +141,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.578c0331893dd87e235ad48cbc3829347cdc4ade1454479517d0ce44dac4ef702d124dcd56ae9d400647c231a87b7cca56c546f180f60f9d01cdba6f16d9add9.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.9f007a039372c1e159ee81f84b55601d72ddcf391b0806518fecf26f8621a6c7bf5aea8a7f8ac683e6737bce7b261014f061c424b7c7ef2ea559b9e38e33d008.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -741,7 +741,7 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#available-methods">Available methods</a></li>
-    <li><a href="#submit-transaction-with-credit-or-debit-cards">Submit transaction with credit or debit cards</a>
+    <li><a href="#submit-transaction-with-credit-or-debit-cards">Submit transaction with credit, debit or prepaid cards</a>
       <ul>
         <li><a href="#variables-for-request-and-response">Variables for request and response</a></li>
         <li><a href="#authorization">Authorization</a></li>
@@ -848,7 +848,7 @@
 <h2 id="available-methods">Available methods</h2>
 <p>Payments API includes the following methods:</p>
 <ul>
-<li><a href="../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-credit-or-debit-cards">Submit transaction with credit or debit cards</a></li>
+<li><a href="../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-credit-or-debit-cards">Submit transaction with credit, debit or prepaid cards</a></li>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-cash">Submit transaction with cash</a></li>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-debit-and-prepaid-cards">Submit transaction with debit and prepaid cards using WebPay Plus</a></li>
 <li><a href="../../../../en/docs/integrations/api-integration/payments-api-chile.html#available-payment-methods-query">Available payment methods query</a></li>
@@ -866,13 +866,13 @@
 
 </div>
 
-<h2 id="submit-transaction-with-credit-or-debit-cards">Submit transaction with credit or debit cards</h2>
-<p>This method lets you process the payments performed by your customers using credit or debit cards. For Chile, you can perform the two-step flows (<strong>Authorization</strong>, <strong>Capture</strong>), and one-step flows (<strong>Charge</strong>). For more information, refer to <a href="../../../../en/docs/services/payments.html#payment-flows">Payment flows</a>.</p>
+<h2 id="submit-transaction-with-credit-or-debit-cards">Submit transaction with credit, debit or prepaid cards</h2>
+<p>This method lets you process the payments performed by your customers using credit, debit or prepaid cards. For Chile, you can perform the two-step flows (<strong>Authorization</strong>, <strong>Capture</strong>), and one-step flows (<strong>Charge</strong>). For more information, refer to <a href="../../../../en/docs/services/payments.html#payment-flows">Payment flows</a>.</p>
 
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Note</h4>
-Transactions with credit card using two-step flows are available under demand. Contact your Sales representative for more information.
+Transactions using two-step flows are available under demand. Contact your Sales representative for more information.
 </div>
 
 <h3 id="variables-for-request-and-response">Variables for request and response</h3>
@@ -1573,9 +1573,7 @@ Transactions with credit card using two-step flows are available under demand. C
 <h4 id="considerations">Considerations</h4>
 <ul>
 <li>For payments with credit card tokens, include the parameters <code>transaction.creditCardTokenId</code> and <code>transaction.creditCard.securityCode</code> (if you process with security code) replacing the information of the credit card. For more information, refer to <a href="../../../../en/docs/integrations/api-integration/tokenization-api.html">Tokenization API</a>.</li>
-<li>International debit cards are not supported.</li>
 <li>Transactions in CHILEAN PESOS with decimal amounts are not allowed.</li>
-<li>Two-step flows are not supported for debit, prepaid and international credit cards.</li>
 <li>Transactions with credit card using two-step flows are available for single installment payments. If you send a two-step transaction with more two installments or more, this transaction is automatically rejected by the acquirer.<br>Two-step flow is available under request, contact your Sales representative for more information.</li>
 <li>By default, processing credit cards without security code is not enabled. If you want to enable this feature, contact your Sales representative. After this feature is enabled for you, send in the request the variable <code>creditCard.processWithoutCvv2</code> as true and remove the variable <code>creditCard.securityCode</code>.</li>
 </ul>
@@ -4664,9 +4662,9 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-March 2, 2022:
+March 22, 2022:
 
- <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
+ <b>New acquirer for Chile (79481878)</b>
 </div>
 </div>
 
