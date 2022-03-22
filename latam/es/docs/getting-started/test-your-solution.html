@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/es/docs/getting-started/test-your-solution.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-04-06T15:34:20-05:00" />
-<meta property="article:modified_time" content="2022-01-26T14:00:54-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-03-22T11:11:30-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Probar tu solución">
 <meta itemprop="description" content="PayU tiene un ambiente de sandbox en el cual, puedes probar tu solución antes de moverte al ambiente en vivo, donde puedes recibir pagos reales y transacciones.
 "><meta itemprop="datePublished" content="2021-04-06T15:34:20-05:00" />
-<meta itemprop="dateModified" content="2022-01-26T14:00:54-05:00" />
-<meta itemprop="wordCount" content="826">
+<meta itemprop="dateModified" content="2022-03-22T11:11:30-05:00" />
+<meta itemprop="wordCount" content="925">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Probar tu solución"/>
 <meta name="twitter:description" content="PayU tiene un ambiente de sandbox en el cual, puedes probar tu solución antes de moverte al ambiente en vivo, donde puedes recibir pagos reales y transacciones.
@@ -141,7 +141,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../offline-search-index.578c0331893dd87e235ad48cbc3829347cdc4ade1454479517d0ce44dac4ef702d124dcd56ae9d400647c231a87b7cca56c546f180f60f9d01cdba6f16d9add9.json"
+  data-offline-search-index-json-src="../../../offline-search-index.9f007a039372c1e159ee81f84b55601d72ddcf391b0806518fecf26f8621a6c7bf5aea8a7f8ac683e6737bce7b261014f061c424b7c7ef2ea559b9e38e33d008.json"
   data-offline-search-base-href="../../../"
 >
 
@@ -801,7 +801,20 @@
 	<h1>Probar tu solución</h1>
     <div class="lead">PayU tiene un ambiente de sandbox en el cual, puedes probar tu solución antes de moverte al ambiente en vivo, donde puedes recibir pagos reales y transacciones.</div>
 	       
-	<p>Si deseas hace pruebas con PayU, necesitas utilizar las siguientes credenciales en el request, dependiendo del país de tu cuenta:</p>
+	<script>
+  function openTarget() {
+    var hash = location.hash.substring(1);
+    if(hash) {
+      var details = document.getElementById(hash);
+    } 
+    if(details && details.tagName.toLowerCase() === 'details') {
+      details.open = true;
+      details.scrollIntoView(true);
+    }
+  }
+  window.addEventListener('DOMContentLoaded', openTarget);
+</script>
+<p>Si deseas hace pruebas con PayU, necesitas utilizar las siguientes credenciales en el request, dependiendo del país de tu cuenta:</p>
 <table>
     <thead>
     <tr>
@@ -852,7 +865,7 @@
 <p>El ambiente de pruebas no replica los datos de tu cuenta de producción.</p>
 <h2 id="test-cards">Tarjetas de prueba</h2>
 <p>Puedes utilizar las siguientes tarjetas de prueba:</p>
-<details>
+<details id="argentina">
 <summary><img src="../../../assets/Argentina.png" width="25px"/> Argentina</summary>
 <table>
 <thead>
@@ -905,7 +918,7 @@
 </tbody>
 </table>
 </details>
-<details>
+<details id="brazil">
 <summary><img src="../../../assets/Brasil.png" width="25px"/> Brasil</summary>
 <table>
 <thead>
@@ -942,36 +955,74 @@
 </tbody>
 </table>
 </details>
-<details>
+<details id="chile">
 <summary><img src="../../../assets/Chile.png" width="25px"/> Chile</summary>
 <table>
 <thead>
-<tr>
-<th>Tarjeta</th>
-<th>Número</th>
-</tr>
+  <tr>
+    <th>Tarjeta</th>
+    <th>Número</th>
+    <th>Tarjetahabiente</th>
+    <th>CVV</th>
+    <th>Fecha de expiración</th>
+  </tr>
 </thead>
 <tbody>
-<tr>
-<td><strong>Tarjeta de Crédito AMEX</strong></td>
-<td>377825000000005</td>
-</tr>
-<tr>
-<td><strong>Tarjeta de Crédito DINERS</strong></td>
-<td>36525200000002</td>
-</tr>
-<tr>
-<td><strong>Tarjeta de Crédito MASTERCARD</strong></td>
-<td>5435630000000008</td>
-</tr>
-<tr>
-<td><strong>Tarjeta de Crédito VISA</strong></td>
-<td>4051885600446623 - 4938590000000017</td>
-</tr>
+  <tr>
+    <td><b>Tarjeta de crédito AMEX</b></td>
+    <td>377825000000005</td>
+    <td colspan="3" rowspan="2" style="vertical-align:middle"><a href="#testing-status">Utiliza los valores de prueba de acuerdo con el resultado esperado.</a></td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta de crédito DINERS</b></td>
+    <td>36525200000002</td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta de crédito MASTERCARD</b></td>
+    <td>5457210001000019</td>
+    <td>BKN_DMC_001</td>
+    <td>300</td>
+    <td>12/25</td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta débito MASTERCARD</b></td>
+    <td>5204730000001003</td>
+    <td>BKN_MCS_001</td>
+    <td>100</td>
+    <td>12/25</td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta prepago MASTERCARD</b></td>
+    <td>5185540320000012</td>
+    <td>BKN_DMC_001</td>
+    <td>001</td>
+    <td>12/25</td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta de crédito VISA</b></td>
+    <td>4761340000000035</td>
+    <td>VISA_GLOBAL_3</td>
+    <td>846</td>
+    <td>12/27</td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta Internacional VISA</b></td>
+    <td>4005520000000129</td>
+    <td>VISA_ECOMMERCE_03</td>
+    <td>921</td>
+    <td>12/27</td>
+  </tr>
+  <tr>
+    <td><b>Tarjeta débito VISA</b></td>
+    <td>4761340000000050</td>
+    <td>VISA_GLOBAL_5</td>
+    <td>846</td>
+    <td>12/27</td>
+  </tr>
 </tbody>
 </table>
 </details>
-<details>
+<details id="colombia">
 <summary><img src="../../../assets/Colombia.png" width="25px"/> Colombia</summary>
 <table>
 <thead>
@@ -1020,7 +1071,7 @@
 </tbody>
 </table>
 </details>
-<details>
+<details id="mexico">
 <summary><img src="../../../assets/Mexico.png" width="25px"/> México</summary>
 <table>
 <thead>
@@ -1053,7 +1104,7 @@
 </tbody>
 </table>
 </details>
-<details>
+<details id="panama">
 <summary><img src="../../../assets/Panama.png" width="25px"/> Panamá</summary>
 <table>
 <thead>
@@ -1074,7 +1125,7 @@
 </tbody>
 </table>
 </details>
-<details>
+<details id="peru">
 <summary><img src="../../../assets/Peru.png" width="25px"/> Perú</summary>
 <table>
 <thead>
@@ -1139,6 +1190,7 @@
 <ul>
 <li>Para el número de la tarjeta, utiliza un número válido que corresponda a la franquicia enviada en el request. Puedes utilizar un generador en línea de tarjetas de crédito o una de las  correspondientes a tu país mencionadas anteriormente.</li>
 <li>Para probar transferencias bancarias por PSE (Disponible en Colombia) en el ambiente de Sandbox de PayU, consulta la <a href="../../../assets/pse-test-guide-v5-es.pdf">Guía de pruebas PSE (PDF)</a>.</li>
+<li>Para probar tarjetas en Chile, utiliza los valores de nombre del tarjetahabiente, CVV y fecha de expiración mostrados en las <a href="#chile" id="linkcl" onclick="document.getElementById('chile').open = true;">tarjetas de ejemplo</a>.</li>
 </ul>
 <h2 id="importing-the-collection">Importar la colección</h2>
 <p>Haz clic en el siguiente botón para importar nuestra colección en Postman (puede que necesites refrescar la página si el botón no funciona). Ten en cuenta que creamos un ambiente cada vez que importas la colección.</p>
@@ -1183,9 +1235,9 @@ data-postman-param="env%5BPayU%20API%20-%20Sandbox%5D=W3sia2V5IjoiZW52IiwidmFsdW
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificación
 
-26 de enero de 2022:
+22 de marzo de 2022:
 
- <b>Publish January 26, 2022 (c4b75f3f)</b>
+ <b>New acquirer for Chile (79481878)</b>
 </div>
 </div>
 

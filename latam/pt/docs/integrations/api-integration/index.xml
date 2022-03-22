@@ -8108,7 +8108,7 @@ Para se integrar a essas transações, você deve redirecionar o cliente para a 
 &lt;h2 id=&#34;available-methods&#34;&gt;Métodos disponíveis&lt;/h2&gt;
 &lt;p&gt;A API de pagamentos inclui os seguintes métodos:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#submit-transaction-with-credit-or-debit-cards&#34;&gt;Enviar transação com cartões de crédito ou débito&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#submit-transaction-with-credit-or-debit-cards&#34;&gt;Enviar transação com cartões de crédito, débito ou pré-pago&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#submit-transaction-with-cash&#34;&gt;Enviar transação em dinheiro&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#submit-transaction-with-debit-and-prepaid-cards&#34;&gt;Enviar a transação com cartões de débito e pré-pagos usando WebPay Plus&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#available-payment-methods-query&#34;&gt;Consulta de métodos de pagamento disponíveis&lt;/a&gt;&lt;/li&gt;
@@ -8126,13 +8126,13 @@ Para se integrar a essas transações, você deve redirecionar o cliente para a 
 
 &lt;/div&gt;
 
-&lt;h2 id=&#34;submit-transaction-with-credit-or-debit-cards&#34;&gt;Enviar transação com cartões de crédito ou débito&lt;/h2&gt;
-&lt;p&gt;Este método permite processar os pagamentos efetuados pelos seus clientes com cartões de crédito ou débito. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (&lt;strong&gt;Autorização&lt;/strong&gt;, &lt;strong&gt;Captura&lt;/strong&gt;) e fluxos de uma etapa (&lt;strong&gt;Cobrança&lt;/strong&gt;). Para obter mais informações, consulte &lt;a href=&#34;../../../../pt/docs/services/payments.html#payment-flows&#34;&gt;Fluxos de pagamento&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;submit-transaction-with-credit-or-debit-cards&#34;&gt;Enviar transação com cartões de crédito, débito ou pré-pago&lt;/h2&gt;
+&lt;p&gt;Este método permite processar os pagamentos efetuados pelos seus clientes com cartões de crédito, débito ou pré-pago. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (&lt;strong&gt;Autorização&lt;/strong&gt;, &lt;strong&gt;Captura&lt;/strong&gt;) e fluxos de uma etapa (&lt;strong&gt;Cobrança&lt;/strong&gt;). Para obter mais informações, consulte &lt;a href=&#34;../../../../pt/docs/services/payments.html#payment-flows&#34;&gt;Fluxos de pagamento&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;Observação&lt;/h4&gt;
-Transações com cartão de crédito usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações
+Transações usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações
 &lt;/div&gt;
 
 &lt;h3 id=&#34;variables-for-request-and-response&#34;&gt;Variáveis para pedido e resposta&lt;/h3&gt;
@@ -8833,9 +8833,7 @@ Transações com cartão de crédito usando fluxos de duas etapas estão dispon�
 &lt;h4 id=&#34;considerations&#34;&gt;Observações&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Para pagamentos com tokens de cartão de crédito, inclua os parâmetros &lt;code&gt;transaction.creditCardTokenId&lt;/code&gt; e &lt;code&gt;transaction.creditCard.securityCode&lt;/code&gt; (se processar com código de segurança) substituindo as informações do cartão de crédito. Para obter mais informações, consulte &lt;a href=&#34;../../../../pt/docs/integrations/api-integration/tokenization-api.html&#34;&gt;API de tokenização&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Cartões de débito internacionais não são aceitos.&lt;/li&gt;
 &lt;li&gt;Não são permitidas transações em PESOS CHILENOS com valores decimais.&lt;/li&gt;
-&lt;li&gt;Os fluxos de duas etapas não são compatíveis com cartões de débito, pré-pagos e cartões de crédito internacionais.&lt;/li&gt;
 &lt;li&gt;As transações com cartão de crédito usando fluxos de duas etapas estão disponíveis para pagamento em parcela única. Se você enviar uma transação em duas etapas com duas parcelas ou mais, esta transação será automaticamente rejeitada pelo adquirente.&lt;br&gt;O fluxo em duas etapas está disponível mediante solicitação, entre em contato com seu representante de vendas para obter mais informações.&lt;/li&gt;
 &lt;li&gt;Por padrão, o processamento de cartões de crédito sem código de segurança não está habilitado. Se você deseja habilitar este recurso, entre em contato com seu representante de vendas. Depois que esse recurso for habilitado para você, envie no pedido a variável &lt;code&gt;creditCard.processWithoutCvv2&lt;/code&gt; como true e remova a variável &lt;code&gt;creditCard.securityCode&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;

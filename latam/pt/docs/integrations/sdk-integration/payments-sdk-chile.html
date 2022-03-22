@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/pt/docs/integrations/sdk-integration/payments-sdk-chile.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2021-12-17T14:22:44-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-03-22T11:11:30-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="SDK de Pagamentos - Chile">
 <meta itemprop="description" content="SDK de Pagamentos do Chile permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2021-12-17T14:22:44-05:00" />
-<meta itemprop="wordCount" content="2987">
+<meta itemprop="dateModified" content="2022-03-22T11:11:30-05:00" />
+<meta itemprop="wordCount" content="2979">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="SDK de Pagamentos - Chile"/>
 <meta name="twitter:description" content="SDK de Pagamentos do Chile permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
@@ -141,7 +141,7 @@
   aria-label="Buscar no site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.578c0331893dd87e235ad48cbc3829347cdc4ade1454479517d0ce44dac4ef702d124dcd56ae9d400647c231a87b7cca56c546f180f60f9d01cdba6f16d9add9.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.9f007a039372c1e159ee81f84b55601d72ddcf391b0806518fecf26f8621a6c7bf5aea8a7f8ac683e6737bce7b261014f061c424b7c7ef2ea559b9e38e33d008.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -741,7 +741,7 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#available-methods">Métodos disponíveis</a></li>
-    <li><a href="#submit-transaction-with-credit-cards">Enviar transação com cartão de crédito</a>
+    <li><a href="#submit-transaction-with-credit-cards">Enviar transação com cartão de crédito, débito ou pré-pago</a>
       <ul>
         <li><a href="#considerations">Observações</a></li>
         <li><a href="#authorization">Autorização</a></li>
@@ -898,7 +898,7 @@
 <h2 id="available-methods">Métodos disponíveis</h2>
 <p>O SDK de pagamentos inclui os seguintes métodos</p>
 <ul>
-<li><a href="#submit-transaction-with-credit-cards">Enviar transação com cartão de crédito</a></li>
+<li><a href="#submit-transaction-with-credit-cards">Enviar transação com cartão de crédito, débito ou pré-pago</a></li>
 <li><a href="#available-payment-methods-query">Consulta de métodos de pagamento disponíveis</a></li>
 <li><a href="#ping">Ping</a></li>
 </ul>
@@ -910,13 +910,13 @@
 Para confirmar o status de uma transação, você pode usar o <a href="../../../../pt/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>.
 </div>
 
-<h2 id="submit-transaction-with-credit-cards">Enviar transação com cartão de crédito</h2>
-<p>Este método permite processar os pagamentos efetuados com cartão de crédito pelos seus clientes. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (<strong>Autorização</strong>, <strong>Captura</strong>) e fluxos de uma etapa (<strong>Cobrança</strong>). Para obter mais informações, consulte <a href="../../../../pt/docs/services/payments.html#payment-flows">Fluxos de pagamento</a>.</p>
+<h2 id="submit-transaction-with-credit-cards">Enviar transação com cartão de crédito, débito ou pré-pago</h2>
+<p>Este método permite processar os pagamentos efetuados com cartões de crédito, débito ou pré-pago pelos seus clientes. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (<strong>Autorização</strong>, <strong>Captura</strong>) e fluxos de uma etapa (<strong>Cobrança</strong>). Para obter mais informações, consulte <a href="../../../../pt/docs/services/payments.html#payment-flows">Fluxos de pagamento</a>.</p>
 
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Observação</h4>
-Transações com cartão de crédito usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações.
+Transações usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações.
 </div>
 
 <h3 id="considerations">Observações</h3>
@@ -924,7 +924,6 @@ Transações com cartão de crédito usando fluxos de duas etapas estão dispon�
 <li>Enviar um método de pagamento com cartão de crédito válido, <a href="../../../../pt/docs/getting-started/select-your-payment-method.html#Chile">see the available Payment Methods o Chile</a>.</li>
 <li>Para pagamentos com tokens de cartão de crédito, inclua os parâmetros <code>TOKEN_ID</code> e <code>CREDIT_CARD_SECURITY_CODE</code> (se processar com código de segurança) substituindo as informações do cartão de crédito. Para obter mais informações, consulte <a href="../../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenização</a>.</li>
 <li>Não são permitidas transações em PESOS CHILENOS com valores decimais.</li>
-<li>Os fluxos de duas etapas não são compatíveis com cartões de crédito internacionais.</li>
 <li>As transações com cartão de crédito usando fluxos de duas etapas estão disponíveis para pagamento em parcela única. Contate seu representante de vendas para obter mais informações.</li>
 <li>Por padrão, o processamento de cartões de crédito sem código de segurança não está habilitado. Se você deseja habilitar este recurso, entre em contato com seu representante de vendas. Depois que esse recurso for habilitado para você, envie no pedido o parâmetro <code>PROCESS_WITHOUT_CVV2</code> como true e remova o parâmetro <code>CREDIT_CARD_SECURITY_CODE</code>.</li>
 </ul>
@@ -1886,9 +1885,9 @@ A seguir estão o corpo do pedido e da resposta deste meio de pagamento.
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificação
 
-17 de dezembro de 2021:
+22 de março de 2022:
 
- <b>Documentation in Portuguese (53de9675)</b>
+ <b>New acquirer for Chile (79481878)</b>
 </div>
 </div>
 

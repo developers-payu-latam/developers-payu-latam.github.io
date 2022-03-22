@@ -8109,7 +8109,7 @@ To integrate with these transactions, you must redirect the customer to the URL 
 &lt;h2 id=&#34;available-methods&#34;&gt;Available methods&lt;/h2&gt;
 &lt;p&gt;Payments API includes the following methods:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-credit-or-debit-cards&#34;&gt;Submit transaction with credit or debit cards&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-credit-or-debit-cards&#34;&gt;Submit transaction with credit, debit or prepaid cards&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-cash&#34;&gt;Submit transaction with cash&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-chile.html#submit-transaction-with-debit-and-prepaid-cards&#34;&gt;Submit transaction with debit and prepaid cards using WebPay Plus&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-chile.html#available-payment-methods-query&#34;&gt;Available payment methods query&lt;/a&gt;&lt;/li&gt;
@@ -8127,13 +8127,13 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 &lt;/div&gt;
 
-&lt;h2 id=&#34;submit-transaction-with-credit-or-debit-cards&#34;&gt;Submit transaction with credit or debit cards&lt;/h2&gt;
-&lt;p&gt;This method lets you process the payments performed by your customers using credit or debit cards. For Chile, you can perform the two-step flows (&lt;strong&gt;Authorization&lt;/strong&gt;, &lt;strong&gt;Capture&lt;/strong&gt;), and one-step flows (&lt;strong&gt;Charge&lt;/strong&gt;). For more information, refer to &lt;a href=&#34;../../../../en/docs/services/payments.html#payment-flows&#34;&gt;Payment flows&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;submit-transaction-with-credit-or-debit-cards&#34;&gt;Submit transaction with credit, debit or prepaid cards&lt;/h2&gt;
+&lt;p&gt;This method lets you process the payments performed by your customers using credit, debit or prepaid cards. For Chile, you can perform the two-step flows (&lt;strong&gt;Authorization&lt;/strong&gt;, &lt;strong&gt;Capture&lt;/strong&gt;), and one-step flows (&lt;strong&gt;Charge&lt;/strong&gt;). For more information, refer to &lt;a href=&#34;../../../../en/docs/services/payments.html#payment-flows&#34;&gt;Payment flows&lt;/a&gt;.&lt;/p&gt;
 
 
 &lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
-Transactions with credit card using two-step flows are available under demand. Contact your Sales representative for more information.
+Transactions using two-step flows are available under demand. Contact your Sales representative for more information.
 &lt;/div&gt;
 
 &lt;h3 id=&#34;variables-for-request-and-response&#34;&gt;Variables for request and response&lt;/h3&gt;
@@ -8834,9 +8834,7 @@ Transactions with credit card using two-step flows are available under demand. C
 &lt;h4 id=&#34;considerations&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;For payments with credit card tokens, include the parameters &lt;code&gt;transaction.creditCardTokenId&lt;/code&gt; and &lt;code&gt;transaction.creditCard.securityCode&lt;/code&gt; (if you process with security code) replacing the information of the credit card. For more information, refer to &lt;a href=&#34;../../../../en/docs/integrations/api-integration/tokenization-api.html&#34;&gt;Tokenization API&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;International debit cards are not supported.&lt;/li&gt;
 &lt;li&gt;Transactions in CHILEAN PESOS with decimal amounts are not allowed.&lt;/li&gt;
-&lt;li&gt;Two-step flows are not supported for debit, prepaid and international credit cards.&lt;/li&gt;
 &lt;li&gt;Transactions with credit card using two-step flows are available for single installment payments. If you send a two-step transaction with more two installments or more, this transaction is automatically rejected by the acquirer.&lt;br&gt;Two-step flow is available under request, contact your Sales representative for more information.&lt;/li&gt;
 &lt;li&gt;By default, processing credit cards without security code is not enabled. If you want to enable this feature, contact your Sales representative. After this feature is enabled for you, send in the request the variable &lt;code&gt;creditCard.processWithoutCvv2&lt;/code&gt; as true and remove the variable &lt;code&gt;creditCard.securityCode&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;

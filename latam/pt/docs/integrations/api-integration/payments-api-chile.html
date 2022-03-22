@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/pt/docs/integrations/api-integration/payments-api-chile.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-03-22T11:11:30-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="API de pagamentos - Chile">
 <meta itemprop="description" content="A API de pagamentos do Chile permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
-<meta itemprop="wordCount" content="7668">
+<meta itemprop="dateModified" content="2022-03-22T11:11:30-05:00" />
+<meta itemprop="wordCount" content="7642">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de pagamentos - Chile"/>
 <meta name="twitter:description" content="A API de pagamentos do Chile permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
@@ -141,7 +141,7 @@
   aria-label="Buscar no site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.578c0331893dd87e235ad48cbc3829347cdc4ade1454479517d0ce44dac4ef702d124dcd56ae9d400647c231a87b7cca56c546f180f60f9d01cdba6f16d9add9.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.9f007a039372c1e159ee81f84b55601d72ddcf391b0806518fecf26f8621a6c7bf5aea8a7f8ac683e6737bce7b261014f061c424b7c7ef2ea559b9e38e33d008.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -741,7 +741,7 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#available-methods">Métodos disponíveis</a></li>
-    <li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transação com cartões de crédito ou débito</a>
+    <li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transação com cartões de crédito, débito ou pré-pago</a>
       <ul>
         <li><a href="#variables-for-request-and-response">Variáveis para pedido e resposta</a></li>
         <li><a href="#authorization">Autorização</a></li>
@@ -848,7 +848,7 @@
 <h2 id="available-methods">Métodos disponíveis</h2>
 <p>A API de pagamentos inclui os seguintes métodos:</p>
 <ul>
-<li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transação com cartões de crédito ou débito</a></li>
+<li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transação com cartões de crédito, débito ou pré-pago</a></li>
 <li><a href="#submit-transaction-with-cash">Enviar transação em dinheiro</a></li>
 <li><a href="#submit-transaction-with-debit-and-prepaid-cards">Enviar a transação com cartões de débito e pré-pagos usando WebPay Plus</a></li>
 <li><a href="#available-payment-methods-query">Consulta de métodos de pagamento disponíveis</a></li>
@@ -866,13 +866,13 @@
 
 </div>
 
-<h2 id="submit-transaction-with-credit-or-debit-cards">Enviar transação com cartões de crédito ou débito</h2>
-<p>Este método permite processar os pagamentos efetuados pelos seus clientes com cartões de crédito ou débito. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (<strong>Autorização</strong>, <strong>Captura</strong>) e fluxos de uma etapa (<strong>Cobrança</strong>). Para obter mais informações, consulte <a href="../../../../pt/docs/services/payments.html#payment-flows">Fluxos de pagamento</a>.</p>
+<h2 id="submit-transaction-with-credit-or-debit-cards">Enviar transação com cartões de crédito, débito ou pré-pago</h2>
+<p>Este método permite processar os pagamentos efetuados pelos seus clientes com cartões de crédito, débito ou pré-pago. Para o Chile, você pode executar os fluxos de duas etapas, você pode executar os fluxos de duas etapas (<strong>Autorização</strong>, <strong>Captura</strong>) e fluxos de uma etapa (<strong>Cobrança</strong>). Para obter mais informações, consulte <a href="../../../../pt/docs/services/payments.html#payment-flows">Fluxos de pagamento</a>.</p>
 
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Observação</h4>
-Transações com cartão de crédito usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações
+Transações usando fluxos de duas etapas estão disponíveis sob demanda. Contate seu representante de vendas para obter mais informações
 </div>
 
 <h3 id="variables-for-request-and-response">Variáveis para pedido e resposta</h3>
@@ -1573,9 +1573,7 @@ Transações com cartão de crédito usando fluxos de duas etapas estão dispon�
 <h4 id="considerations">Observações</h4>
 <ul>
 <li>Para pagamentos com tokens de cartão de crédito, inclua os parâmetros <code>transaction.creditCardTokenId</code> e <code>transaction.creditCard.securityCode</code> (se processar com código de segurança) substituindo as informações do cartão de crédito. Para obter mais informações, consulte <a href="../../../../pt/docs/integrations/api-integration/tokenization-api.html">API de tokenização</a>.</li>
-<li>Cartões de débito internacionais não são aceitos.</li>
 <li>Não são permitidas transações em PESOS CHILENOS com valores decimais.</li>
-<li>Os fluxos de duas etapas não são compatíveis com cartões de débito, pré-pagos e cartões de crédito internacionais.</li>
 <li>As transações com cartão de crédito usando fluxos de duas etapas estão disponíveis para pagamento em parcela única. Se você enviar uma transação em duas etapas com duas parcelas ou mais, esta transação será automaticamente rejeitada pelo adquirente.<br>O fluxo em duas etapas está disponível mediante solicitação, entre em contato com seu representante de vendas para obter mais informações.</li>
 <li>Por padrão, o processamento de cartões de crédito sem código de segurança não está habilitado. Se você deseja habilitar este recurso, entre em contato com seu representante de vendas. Depois que esse recurso for habilitado para você, envie no pedido a variável <code>creditCard.processWithoutCvv2</code> como true e remova a variável <code>creditCard.securityCode</code>.</li>
 </ul>
@@ -4664,9 +4662,9 @@ Klap era anteriormente conhecido como MULTICAJA. Você ainda pode ver os element
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificação
 
-2 de março de 2022:
+22 de março de 2022:
 
- <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
+ <b>New acquirer for Chile (79481878)</b>
 </div>
 </div>
 
