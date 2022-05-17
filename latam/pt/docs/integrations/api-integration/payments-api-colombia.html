@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/pt/docs/integrations/api-integration/payments-api-colombia.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-05-17T16:19:56-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="API de pagamentos - Colômbia">
 <meta itemprop="description" content="A API de pagamentos da Colômbia permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
-<meta itemprop="wordCount" content="8704">
+<meta itemprop="dateModified" content="2022-05-17T16:19:56-05:00" />
+<meta itemprop="wordCount" content="8941">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de pagamentos - Colômbia"/>
 <meta name="twitter:description" content="A API de pagamentos da Colômbia permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
@@ -141,7 +141,7 @@
   aria-label="Buscar no site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.e771b4067412dec5f970ee760c7d82ad56162c558be5ba9d32513811c484662e3aeb77b0a82678d19c8281b366468597a589dacaaab4904254dd9d68702bfced.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.403a0b4e29a1599ebef2f6497b7bbe64564314e04c8c9ac4a4fd420c3f2cd8140defaf73f8bd0b23d55cecc615efdd397227de16b83f3c8ffa35719cba1b20a9.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -741,7 +741,7 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#available-methods">Métodos disponíveis</a></li>
-    <li><a href="#submit-transaction-with-credit-cards">Enviar transação com cartão de crédito</a>
+    <li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transação com cartão de crédito ou débito</a>
       <ul>
         <li><a href="#variables-for-request-and-response">Variáveis para pedido e resposta</a></li>
         <li><a href="#api-call">Chamada API</a></li>
@@ -838,6 +838,30 @@
     <div class="lead">A API de pagamentos da Colômbia permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.</div>
 	       
 	<script src="../../../../js/searchcodes.js"></script>
+<script src="../../../../js/banner.js"></script>
+<script>
+window.onload = function() {
+    var bannerText = "<ul class='fa-ul' style='--fa-li-width: 2em;margin-bottom: initial;'><li style='margin-bottom: initial;'><span class='fa-li'><i class='fas fa-exclamation-triangle'></i></span>Informamos que PayU S.A. foi notificada pela IGT - Operador da rede Baloto - da sua decisão de rescindir o contrato de cobrança em dinheiro por entrada de um novo operador, que até à data não deu informação sobre a continuidade deste serviço. Portanto, o serviço de pagamento por meio do Baloto deixará de funcionar a partir de <b>25 de maio de 2022</b>. Recomenda-se desabilitar este meio de pagamento pelo menos 7 (sete) dias antes desta data. Se precisar de assistência adicional, entre em contato com a equipe de suporte técnico através de <a href='mailto:tecnico.co@payu.com'>tecnico.co@payu.com</a>.</li></ul>";
+
+    loadBanner(bannerText);
+}
+
+window.onresize = function() {
+    refreshBanner();
+}
+</script>
+<style type="text/css" media="screen">
+    div#banner { 
+        z-index: 999;
+        background-color: #DDEEEE; 
+        width: 100%;
+        margin-top: -1.3rem;
+    }
+    div#banner-content { 
+        margin: 0 auto; 
+        padding: 10px; 
+    }
+</style>
 <p>Para integrar com a API de pagamentos da Colômbia, direcione sua solicitação para as seguintes URLs de acordo com seu ambiente.</p>
 
 
@@ -853,7 +877,7 @@
 <h2 id="available-methods">Métodos disponíveis</h2>
 <p>A API de pagamentos inclui os seguintes métodos:</p>
 <ul>
-<li><a href="#submit-transaction-with-credit-cards">Enviar transação com cartão de crédito</a></li>
+<li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transação com cartão de crédito ou débito</a></li>
 <li><a href="#submit-transaction-with-cash-or-bank-reference">Enviar transação em dinheiro ou referência bancária</a></li>
 <li><a href="#submit-transaction-with-bank-transfer-pse">Enviar transação com transferência bancária (PSE)</a></li>
 <li><a href="#bank-list---pse">Lista de bancos - PSE</a></li>
@@ -864,7 +888,7 @@
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Observação</h4>
-<p>Para confirmar o status de uma transação, você pode usar one of the following options:</p>
+<p>Para confirmar o status de uma transação, você pode usar:</p>
 <ul>
 <li>Navegue até a URL definida na variável <code>transaction.notifyUrl</code> ou na opção <em><strong>URL de confirmação</strong></em> localizada no Módulo PayU em <em><strong>Configuração</strong></em> &gt; <em><strong>Configuração técnica</strong></em>.</li>
 <li>Use o <a href="../../../../pt/docs/services/queries.html">API ou SDK de Consultas</a>.</li>
@@ -872,8 +896,15 @@
 
 </div>
 
-<h2 id="submit-transaction-with-credit-cards">Enviar transação com cartão de crédito</h2>
-<p>Este método permite processar os pagamentos efetuados com cartão de crédito pelos seus clientes. Para a Colômbia, você pode fazer fluxos de uma etapa (<strong>Cobrança</strong>). Para obter mais informações, consulte <a href="../../../../pt/docs/services/payments.html#payment-flows">Fluxos de pagamento</a>.</p>
+<h2 id="submit-transaction-with-credit-or-debit-cards">Enviar transação com cartão de crédito ou débito</h2>
+<p>Este método permite processar os pagamentos efetuados com cartão de crédito ou débito pelos seus clientes. Para a Colômbia, você pode fazer fluxos de uma etapa (<strong>Cobrança</strong>). Para obter mais informações, consulte <a href="../../../../pt/docs/services/payments.html#payment-flows">Fluxos de pagamento</a>.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+O fluxo em duas etapas está disponível somente sob solicitação, entre em contato com seu representante de vendas.
+</div>
+
 <h3 id="variables-for-request-and-response">Variáveis para pedido e resposta</h3>
 <details>
 <summary>Pedido</summary>
@@ -1224,7 +1255,7 @@
 <td>transaction &gt; creditCard</td>
 <td></td>
 <td></td>
-<td>Informações do cartão de crédito. Este objeto e seus parâmetros são obrigatórios quando o pagamento é realizado com cartão de crédito não tokenizado.</td>
+<td>Informações do cartão de crédito. Se você processar usando cartão de débito, não envie este parâmetro.<br>Este objeto e seus parâmetros são obrigatórios quando o pagamento é realizado com cartão de crédito não tokenizado.</td>
 <td style="text-align:center">Não</td>
 </tr>
 <tr>
@@ -1245,7 +1276,7 @@
 <td>transaction &gt; creditCard &gt; expirationDate</td>
 <td>Alfanumérico</td>
 <td>7</td>
-<td>Data de validade do cartão de crédito. Formato <code>YYYY/MM</code>. Este parâmetro e obrigatório quando o pagamento é realizado com cartão de crédito tokenizado.</td>
+<td>Data de validade do cartão de crédito. Formato <code>YYYY/MM</code>.</td>
 <td style="text-align:center">Não</td>
 </tr>
 <tr>
@@ -1260,6 +1291,41 @@
 <td>Boolean</td>
 <td>Máx:255</td>
 <td>Permite processar transações sem incluir o código de segurança do cartão de crédito. Sua loja precisa da autorização do PayU antes de usar este recurso.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transaction &gt; debitCard</td>
+<td></td>
+<td></td>
+<td>Informações do cartão de débito. Este objeto e seus parâmetros são obrigatórios quando o pagamento é realizado com cartão de débito.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transaction &gt; debitCard &gt; number</td>
+<td>Alfanumérico</td>
+<td>Mín:13 Máx:20</td>
+<td>Número do cartão de débito.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transaction &gt; debitCard &gt; securityCode</td>
+<td>Alfanumérico</td>
+<td>Mín:1 Máx:4</td>
+<td>Código de segurança do cartão de débito (CVC2, CVV2, CID).</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transaction &gt; debitCard &gt; expirationDate</td>
+<td>Alfanumérico</td>
+<td>7</td>
+<td>Data de validade do cartão de débito. Formato <code>YYYY/MM</code>.</td>
+<td style="text-align:center">Não</td>
+</tr>
+<tr>
+<td>transaction &gt; debitCard &gt; name</td>
+<td>Alfanumérico</td>
+<td>Mín:1 Máx:255</td>
+<td>Nome do titular exibido no cartão de débito.</td>
 <td style="text-align:center">Não</td>
 </tr>
 <tr>
@@ -5248,9 +5314,9 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificação
 
-2 de março de 2022:
+17 de maio de 2022:
 
- <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
+ <b>Warning about Baloto&#39;s shut down (96356735)</b>
 </div>
 </div>
 

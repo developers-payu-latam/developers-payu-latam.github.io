@@ -1061,7 +1061,7 @@
 &lt;ul&gt;
 &lt;li&gt;The maximum time to capture an approved transaction is 14 days. After this time, the transaction is auto voided.&lt;/li&gt;
 &lt;li&gt;Only the parameters displayed in the request body are mandatory to invoke a Capture transaction. Recall that the order and transaction ids must meet with a currently authorized transaction.&lt;/li&gt;
-&lt;li&gt;You can perform partial captures over an authorized amount. To do this, you need to send in the request the parameter &lt;code&gt;transaction.order.additionalValues.TX_VALUE&lt;/code&gt; with its value (as sent during the Authorization) and set &lt;code&gt;PARTIAL_CAPTURE&lt;/code&gt; for &lt;code&gt;transaction.type&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You can perform partial captures over an authorized amount. To do this, you need to send in the request the parameter &lt;code&gt;transaction.order.TX_VALUE&lt;/code&gt; with its value (as sent during the Authorization).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The following are the request and response bodies for this transaction type.&lt;/p&gt;
 &lt;nav&gt;
@@ -9143,7 +9143,7 @@ Transactions using two-step flows are available under demand. Contact your Sales
 &lt;ul&gt;
 &lt;li&gt;The maximum time to capture an approved transaction is 7 days. After this time, the transaction is auto-voided.&lt;/li&gt;
 &lt;li&gt;Only the parameters displayed in the request body are mandatory to invoke a Capture transaction. Recall that the order and transaction ids must meet with a currently authorized transaction.&lt;/li&gt;
-&lt;li&gt;You can perform only one partial capture over an authorized amount. To do this, you need to send in the request the parameter &lt;code&gt;transaction.order.additionalValues.TX_VALUE&lt;/code&gt; with its value (as sent during the Authorization) and set &lt;code&gt;PARTIAL_CAPTURE&lt;/code&gt; for &lt;code&gt;transaction.type&lt;/code&gt;.&lt;br&gt;The minimum amount is 50 CLP.&lt;/li&gt;
+&lt;li&gt;You can perform partial captures over an authorized amount. To do this, you need to send in the request the parameter &lt;code&gt;transaction.order.TX_VALUE&lt;/code&gt; with its value (as sent during the Authorization).&lt;br&gt;The minimum amount is 50 CLP.&lt;/li&gt;
 &lt;li&gt;It is not allowed to capture a higher amount than the amount previously authorized.&lt;/li&gt;
 &lt;li&gt;Captures are only allowed for transactions in one installment.&lt;/li&gt;
 &lt;/ul&gt;
@@ -11931,6 +11931,30 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
         
         
         &lt;script src=&#34;../../../../js/searchcodes.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;../../../../js/banner.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+window.onload = function() {
+    var bannerText = &#34;&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;We inform that PayU S.A. has been notified by IGT – operator for Baloto network – its decision to terminate the contract for the cash collection model given the entry of a new operator, which to date has not provided information on the continuity of this service. Therefore, the payment service through Baloto will stop working since &lt;b&gt;May 25, 2022&lt;/b&gt;. It is recommended to disable this service at least seven (7) days before this date. If you need further assistance, contact the technical support team through &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&#34;;
+
+    loadBanner(bannerText);
+}
+
+window.onresize = function() {
+    refreshBanner();
+}
+&lt;/script&gt;
+&lt;style type=&#34;text/css&#34; media=&#34;screen&#34;&gt;
+    div#banner { 
+        z-index: 999;
+        background-color: #DDEEEE; 
+        width: 100%;
+        margin-top: -1.3rem;
+    }
+    div#banner-content { 
+        margin: 0 auto; 
+        padding: 10px; 
+    }
+&lt;/style&gt;
 &lt;p&gt;To integrate with Payments API Colombia, target your request to the following URLs according to your environment.&lt;/p&gt;
 
 
@@ -11946,7 +11970,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;h2 id=&#34;available-methods&#34;&gt;Available methods&lt;/h2&gt;
 &lt;p&gt;Payments API includes the following methods:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-colombia.html#submit-transaction-with-credit-cards&#34;&gt;Submit transaction with credit card&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-colombia.html#submit-transaction-with-credit-or-debit-cards&#34;&gt;Submit transaction with credit or debit cards&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-colombia.html#submit-transaction-with-cash-or-bank-reference&#34;&gt;Submit transaction with cash or Bank reference&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-colombia.html#submit-transaction-with-bank-transfer-pse&#34;&gt;Submit transaction with bank transfer (PSE)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-colombia.html#bank-list---pse&#34;&gt;Bank List - PSE&lt;/a&gt;&lt;/li&gt;
@@ -11965,8 +11989,15 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 
 &lt;/div&gt;
 
-&lt;h2 id=&#34;submit-transaction-with-credit-cards&#34;&gt;Submit transaction with credit cards&lt;/h2&gt;
-&lt;p&gt;This method lets you process the payments performed by your customers using credit cards. For Colombia, you can perform one-step flows (&lt;strong&gt;Charge&lt;/strong&gt;). For more information, refer to &lt;a href=&#34;../../../../en/docs/services/payments.html#payment-flows&#34;&gt;Payment flows&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;submit-transaction-with-credit-or-debit-cards&#34;&gt;Submit transaction with credit or debit cards&lt;/h2&gt;
+&lt;p&gt;This method lets you process the payments performed by your customers using credit or debit cards. For Colombia, you can perform one-step flows (&lt;strong&gt;Charge&lt;/strong&gt;). For more information, refer to &lt;a href=&#34;../../../../en/docs/services/payments.html#payment-flows&#34;&gt;Payment flows&lt;/a&gt;.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
+&lt;h4 class=&#34;alert-heading&#34;&gt;Note&lt;/h4&gt;
+Two-step flow is available under request, contact your sales representative.
+&lt;/div&gt;
+
 &lt;h3 id=&#34;variables-for-request-and-response&#34;&gt;Variables for request and response&lt;/h3&gt;
 &lt;details&gt;
 &lt;summary&gt;Request&lt;/summary&gt;
@@ -12321,6 +12352,13 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;transaction &amp;gt; creditCard&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Credit card information. If you process using debit card, do not send this parameter.&lt;br&gt;This object and its parameters are mandatory when the payment is performed using not tokenized credit card.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;transaction &amp;gt; creditCard &amp;gt; number&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;Min:13 Max:20&lt;/td&gt;
@@ -12338,7 +12376,7 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td&gt;transaction &amp;gt; creditCard &amp;gt; expirationDate&lt;/td&gt;
 &lt;td&gt;Alphanumeric&lt;/td&gt;
 &lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;Credit card expiration date. Format &lt;code&gt;YYYY/MM&lt;/code&gt;. This parameter is mandatory when the payment is performed using a tokenized credit card.&lt;/td&gt;
+&lt;td&gt;Credit card expiration date. Format &lt;code&gt;YYYY/MM&lt;/code&gt;.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -12353,6 +12391,41 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;td&gt;Boolean&lt;/td&gt;
 &lt;td&gt;Max:255&lt;/td&gt;
 &lt;td&gt;Allows you to process transactions without including the credit card security code. Your commerce requires PayU&amp;rsquo;s authorization before using this feature.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction &amp;gt; debitCard&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Debit card information. This object and its parameters are mandatory when the payment is performed using debit card.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction &amp;gt; debitCard &amp;gt; number&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;Min:13 Max:20&lt;/td&gt;
+&lt;td&gt;Debit card number.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction &amp;gt; debitCard &amp;gt; securityCode&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;Min:1 Max:4&lt;/td&gt;
+&lt;td&gt;Debit card security code (CVC2, CVV2, CID).&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction &amp;gt; debitCard &amp;gt; expirationDate&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;Debit card expiration date. Format &lt;code&gt;YYYY/MM&lt;/code&gt;.&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;transaction &amp;gt; debitCard &amp;gt; name&lt;/td&gt;
+&lt;td&gt;Alphanumeric&lt;/td&gt;
+&lt;td&gt;Min:1 Max:255&lt;/td&gt;
+&lt;td&gt;Holder&amp;rsquo;s name displayed in the debit card.&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;No&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -12797,15 +12870,15 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;TX_VALUE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;65000&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;currency&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;COP&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;TX_TAX&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10378&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;currency&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;COP&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;TX_TAX_RETURN_BASE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;54622&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;currency&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;COP&amp;#34;&lt;/span&gt;
-         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
          &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;buyer&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;merchantBuyerId&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
@@ -13070,6 +13143,14 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
 &lt;/div&gt;
 &lt;h2 id=&#34;submit-transaction-with-cash-or-bank-reference&#34;&gt;Submit transaction with cash or Bank reference&lt;/h2&gt;
 &lt;p&gt;This method lets you process the payments of your customers in cash or using a Bank reference. To integrate with these transactions, you must redirect the customer to the URL found in the response of the method; your customer sees a payment receipt like the followings.&lt;/p&gt;
+
+
+&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
+
+&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;We inform that PayU S.A. has been notified by IGT – operator for Baloto network – its decision to terminate the contract for the cash collection model given the entry of a new operator, which to date has not provided information on the continuity of this service. Therefore, the payment service through Baloto will stop working since &lt;b&gt;May 25, 2022&lt;/b&gt;. It is recommended to disable this service at least seven (7) days before this date. If you need further assistance, contact the technical support team through &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;/div&gt;
+
 &lt;h4 id=&#34;payments-in-cash&#34;&gt;Payments in cash&lt;/h4&gt;
 &lt;img src=&#34;../../../../assets/Payments/CashReceiptCO.png&#34; alt=&#34;PrintScreen&#34; width=&#34;75%&#34;&gt;
 &lt;h4 id=&#34;payments-with-bank-reference&#34;&gt;Payments with Bank reference&lt;/h4&gt;
@@ -17433,7 +17514,7 @@ Two-step flows are only supported for Mastercard and Visa.
 &lt;ul&gt;
 &lt;li&gt;The maximum time to capture an approved transaction is 30 days. After this time, the transaction is auto voided.&lt;/li&gt;
 &lt;li&gt;Only the parameters displayed in the request body are mandatory to invoke a Capture transaction. Recall that the order and transaction ids must meet with a currently authorized transaction.&lt;/li&gt;
-&lt;li&gt;You can perform partial captures over an authorized amount as long as the partial capture amount does not exceed the authorized amount. To do this, you need to send in the request the parameter &lt;code&gt;transaction.order.additionalValues.TX_VALUE&lt;/code&gt; with its value (as sent during the Authorization) and set &lt;code&gt;PARTIAL_CAPTURE&lt;/code&gt; for &lt;code&gt;transaction.type&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;You can perform partial captures over an authorized amount as long as the partial capture amount does not exceed the authorized amount. To do this, you need to send in the request the parameter &lt;code&gt;transaction.order.TX_VALUE&lt;/code&gt; with its value (as sent during the Authorization).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The following are the request and response bodies for this transaction type.&lt;/p&gt;
 &lt;nav&gt;

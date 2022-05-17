@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/es/docs/integrations/api-integration/payments-api-colombia.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-05-17T16:19:56-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="API de Pagos - Colombia">
 <meta itemprop="description" content="El API de Pagos de Colombia le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
-<meta itemprop="wordCount" content="8851">
+<meta itemprop="dateModified" content="2022-05-17T16:19:56-05:00" />
+<meta itemprop="wordCount" content="9114">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de Pagos - Colombia"/>
 <meta name="twitter:description" content="El API de Pagos de Colombia le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.
@@ -141,7 +141,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.e771b4067412dec5f970ee760c7d82ad56162c558be5ba9d32513811c484662e3aeb77b0a82678d19c8281b366468597a589dacaaab4904254dd9d68702bfced.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.403a0b4e29a1599ebef2f6497b7bbe64564314e04c8c9ac4a4fd420c3f2cd8140defaf73f8bd0b23d55cecc615efdd397227de16b83f3c8ffa35719cba1b20a9.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -741,7 +741,7 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#available-methods">Métodos disponibles</a></li>
-    <li><a href="#submit-transaction-with-credit-cards">Enviar transacciones con tarjeta de crédito</a>
+    <li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transacciones con tarjeta de crédito o débito</a>
       <ul>
         <li><a href="#variables-for-request-and-response">Variables para la petición y la respuesta</a></li>
         <li><a href="#api-call">Llamado del API</a></li>
@@ -838,6 +838,30 @@
     <div class="lead">El API de Pagos de Colombia le permite a tu tienda procesar diferentes tipos de transacciones con múltiples métodos de pago.</div>
 	       
 	<script src="../../../../js/searchcodes.js"></script>
+<script src="../../../../js/banner.js"></script>
+<script>
+window.onload = function() {
+    var bannerText = "<ul class='fa-ul' style='--fa-li-width: 2em;margin-bottom: initial;'><li style='margin-bottom: initial;'><span class='fa-li'><i class='fas fa-exclamation-triangle'></i></span>Informamos que PayU S.A. ha sido notificado por parte de IGT - operador de la red Baloto - su decisión de terminar el contrato para el recaudo en efectivo debido a la entrada de un nuevo operador, el cual a la fecha no ha entregado información sobre la continuidad de este servicio. Por lo tanto, el servicio de pago a través de Baloto dejará de funcionar a partir del <b>25 de mayo de 2022</b>. Se recomienda deshabilitar este medio de pago al menos siete (7) días antes de esta fecha. Si necesitas asistencia adicional, contacta al equipo de soporte técnico a través de <a href='mailto:tecnico.co@payu.com'>tecnico.co@payu.com</a>.</li></ul>";
+
+    loadBanner(bannerText);
+}
+
+window.onresize = function() {
+    refreshBanner();
+}
+</script>
+<style type="text/css" media="screen">
+    div#banner { 
+        z-index: 999;
+        background-color: #DDEEEE; 
+        width: 100%;
+        margin-top: -1.3rem;
+    }
+    div#banner-content { 
+        margin: 0 auto; 
+        padding: 10px; 
+    }
+</style>
 <p>Para integrarte con el API de Pagos de Colombia, apunta tus peticiones a las siguientes URLs de acuerdo con tu ambiente.</p>
 
 
@@ -853,7 +877,7 @@
 <h2 id="available-methods">Métodos disponibles</h2>
 <p>El API de pagos incluye los siguiente métodos:</p>
 <ul>
-<li><a href="#submit-transaction-with-credit-cards">Enviar transacciones con tarjeta de crédito</a></li>
+<li><a href="#submit-transaction-with-credit-or-debit-cards">Enviar transacciones con tarjeta de crédito o débito</a></li>
 <li><a href="#submit-transaction-with-cash-or-bank-reference">Enviar transacciones en efectivo o referencia bancaria</a></li>
 <li><a href="#submit-transaction-with-bank-transfer-pse">Enviar transacciones con transferencia bancaria (PSE)</a></li>
 <li><a href="#bank-list---pse">Lista de Bancos - PSE</a></li>
@@ -872,8 +896,15 @@
 
 </div>
 
-<h2 id="submit-transaction-with-credit-cards">Enviar transacciones con tarjeta de crédito</h2>
+<h2 id="submit-transaction-with-credit-or-debit-cards">Enviar transacciones con tarjeta de crédito o débito</h2>
 <p>Este método te permite procesar pagos realizados por tus clientes utilizando tarjetas de crédito o débito. Para Colombia, puedes realizar los flujos de un paso (<strong>Cobro</strong>). Para más información, consulta los <a href="../../../../es/docs/services/payments.html#payment-flows">flujos de pago</a>.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Nota</h4>
+El flujo de dos pasos está disponible únicamente bajo solicitud, contacta a tu representante de ventas.
+</div>
+
 <h3 id="variables-for-request-and-response">Variables para la petición y la respuesta</h3>
 <details>
 <summary>Petición (Request)</summary>
@@ -1977,6 +2008,14 @@
 </div>
 <h2 id="submit-transaction-with-cash-or-bank-reference">Enviar transacciones en efectivo o referencia bancaria</h2>
 <p>Este método te permite procesar los pagos en efectivo o por referencia bancaria de tus clientes. Para integrarte con estas transacciones, debes redirigir a tu cliente a la URL que se encuentra en la respuesta; tu cliente ve un recibo de pago como los siguientes.</p>
+
+
+<div class="alert alert-warning" role="alert">
+
+<ul class='fa-ul' style='--fa-li-width: 2em;margin-bottom: initial;'><li style='margin-bottom: initial;'><span class='fa-li'><i class='fas fa-exclamation-triangle'></i></span>Informamos que PayU S.A. ha sido notificado por parte de IGT - operador de la red Baloto - su decisión de terminar el contrato para el recaudo en efectivo debido a la entrada de un nuevo operador, el cual a la fecha no ha entregado información sobre la continuidad de este servicio. Por lo tanto, el servicio de pago a través de Baloto dejará de funcionar a partir del <b>25 de mayo de 2022</b>. Se recomienda deshabilitar este medio de pago al menos siete (7) días antes de esta fecha. Si necesitas asistencia adicional, contacta al equipo de soporte técnico a través de <a href='mailto:tecnico.co@payu.com'>tecnico.co@payu.com</a>.</li></ul>
+
+</div>
+
 <h4 id="payments-in-cash">Pagos en efectivo</h4>
 <img src="../../../../assets/Payments/CashReceiptCO.png" alt="PrintScreen" width="75%">
 <h4 id="payments-with-bank-reference">Pagos con Referencia bancaria</h4>
@@ -5247,9 +5286,9 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificación
 
-2 de marzo de 2022:
+17 de mayo de 2022:
 
- <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
+ <b>Warning about Baloto&#39;s shut down (96356735)</b>
 </div>
 </div>
 
