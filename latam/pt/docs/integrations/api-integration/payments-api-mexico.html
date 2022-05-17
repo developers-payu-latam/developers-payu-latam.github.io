@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/pt/docs/integrations/api-integration/payments-api-mexico.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-05-03T15:48:08-05:00" />
-<meta property="article:modified_time" content="2022-03-02T16:57:06-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-05-17T16:20:14-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="API de pagamentos - México">
 <meta itemprop="description" content="A API de pagamentos do México permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
 "><meta itemprop="datePublished" content="2021-05-03T15:48:08-05:00" />
-<meta itemprop="dateModified" content="2022-03-02T16:57:06-05:00" />
-<meta itemprop="wordCount" content="9908">
+<meta itemprop="dateModified" content="2022-05-17T16:20:14-05:00" />
+<meta itemprop="wordCount" content="9898">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="API de pagamentos - México"/>
 <meta name="twitter:description" content="A API de pagamentos do México permite que sua loja processe diferentes tipos de transações com vários métodos de pagamento.
@@ -141,7 +141,7 @@
   aria-label="Buscar no site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.e771b4067412dec5f970ee760c7d82ad56162c558be5ba9d32513811c484662e3aeb77b0a82678d19c8281b366468597a589dacaaab4904254dd9d68702bfced.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.403a0b4e29a1599ebef2f6497b7bbe64564314e04c8c9ac4a4fd420c3f2cd8140defaf73f8bd0b23d55cecc615efdd397227de16b83f3c8ffa35719cba1b20a9.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -865,7 +865,7 @@
 
 <div class="alert alert-info" role="alert">
 <h4 class="alert-heading">Observação</h4>
-<p>Para confirmar o status de uma transação, você pode usar one of the following options:</p>
+<p>Para confirmar o status de uma transação, você pode usar:</p>
 <ul>
 <li>Navegue até a URL definida na variável <code>transaction.notifyUrl</code> ou na opção <em><strong>URL de confirmação</strong></em> localizada no Módulo PayU em <em><strong>Configuração</strong></em> &gt; <em><strong>Configuração técnica</strong></em>.</li>
 <li>Use o <a href="../../../../pt/docs/services/queries.html">API ou SDK de Consultas</a>.</li>
@@ -1923,7 +1923,7 @@ Os fluxos de duas etapas são compatíveis apenas com Mastercard e Visa.
 <ul>
 <li>O tempo máximo para capturar uma transação aprovada é de 30 dias. Após este período, a transação é automaticamente cancelada.</li>
 <li>Apenas os parâmetros exibidos no corpo da solicitação são obrigatórios para invocar uma transação de Captura. Lembre-se de que os IDs da ordem e da transação devem corresponder a uma transação atualmente autorizada.</li>
-<li>Você pode executar capturas parciais sobre um valor autorizado, desde que o valor da captura parcial não exceda o valor autorizado. Para fazer isso, você precisa enviar a solicitação do parâmetro <code>transaction.order.additionalValues.TX_VALUE</code> com seu valor (conforme enviado durante a Autorização) e definir <code>PARTIAL_CAPTURE</code> para <code>transaction.type</code>.</li>
+<li>Você pode executar capturas parciais sobre um valor autorizado, desde que o valor da captura parcial não exceda o valor autorizado. Para fazer isso, você precisa enviar a solicitação do parâmetro <code>transaction.order.TX_VALUE</code> com seu valor (conforme enviado durante a Autorização).</li>
 </ul>
 <p>A seguir estão os corpos de pedido e resposta para este tipo de transação.</p>
 <nav>
@@ -5669,9 +5669,9 @@ Para se integrar a essas transações, você deve redirecionar o cliente para a 
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificação
 
-2 de março de 2022:
+17 de maio de 2022:
 
- <b>Checkbox to display the mandatory fields only (bd6f7fa2)</b>
+ <b>Fixes for partial captures (a5f177cb)</b>
 </div>
 </div>
 
