@@ -11930,30 +11930,6 @@ Klap era anteriormente conhecido como MULTICAJA. Você ainda pode ver os element
         
         
         &lt;script src=&#34;../../../../js/searchcodes.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../../../js/banner.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-window.onload = function() {
-    var bannerText = &#34;&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;Informamos que PayU S.A. foi notificada pela IGT - Operador da rede Baloto - da sua decisão de rescindir o contrato de cobrança em dinheiro por entrada de um novo operador, que até à data não deu informação sobre a continuidade deste serviço. Portanto, o serviço de pagamento por meio do Baloto deixará de funcionar a partir de &lt;b&gt;25 de maio de 2022&lt;/b&gt;. Recomenda-se desabilitar este meio de pagamento pelo menos 7 (sete) dias antes desta data. Se precisar de assistência adicional, entre em contato com a equipe de suporte técnico através de &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&#34;;
-
-    loadBanner(bannerText);
-}
-
-window.onresize = function() {
-    refreshBanner();
-}
-&lt;/script&gt;
-&lt;style type=&#34;text/css&#34; media=&#34;screen&#34;&gt;
-    div#banner { 
-        z-index: 999;
-        background-color: #DDEEEE; 
-        width: 100%;
-        margin-top: -1.3rem;
-    }
-    div#banner-content { 
-        margin: 0 auto; 
-        padding: 10px; 
-    }
-&lt;/style&gt;
 &lt;p&gt;Para integrar com a API de pagamentos da Colômbia, direcione sua solicitação para as seguintes URLs de acordo com seu ambiente.&lt;/p&gt;
 
 
@@ -13744,13 +13720,13 @@ O fluxo em duas etapas está disponível somente sob solicitação, entre em con
 &lt;h4 id=&#34;considerations-1&#34;&gt;Observações&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;O parâmetro &lt;code&gt;transaction.expirationDate&lt;/code&gt; não é obrigatórionão é obrigatório. Se você não enviar este parâmetro, seu valor padrão será de 7 dias após a data atual.&lt;br&gt;Se você enviar uma data posterior ao número de dias padrão, PayU ignorará esse valor e o vencimento será definido como padrão.&lt;/li&gt;
-&lt;li&gt;Para &lt;code&gt;BALOTO&lt;/code&gt; e &lt;code&gt;EFECTY&lt;/code&gt;, a confirmação do pagamento leva 15 minutos. Para &lt;code&gt;BANK_REFERENCED&lt;/code&gt; e &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red), a confirmação é feita online.&lt;/li&gt;
-&lt;li&gt;Os valores mínimo e máximo para &lt;code&gt;BALOTO&lt;/code&gt;, &lt;code&gt;EFECTY&lt;/code&gt; e &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) são:
+&lt;li&gt;Para &lt;!--`BALOTO` e --&gt;&lt;code&gt;EFECTY&lt;/code&gt;, a confirmação do pagamento leva 15 minutos. Para &lt;code&gt;BANK_REFERENCED&lt;/code&gt; e &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red), a confirmação é feita online.&lt;/li&gt;
+&lt;li&gt;Os valores mínimo e máximo para &lt;!--`BALOTO`, --&gt;&lt;code&gt;EFECTY&lt;/code&gt; e &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) são:
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BALOTO&lt;/code&gt; &amp;gt; Mín: $3.000 COP - Máx: $1.000.000 COP&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;EFECTY&lt;/code&gt; &amp;gt; Mín: $20.000 COP - Máx: $6.000.000 COP&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) &amp;gt; Mín: $1.000 COP - Máx: $4.000.000 COP&lt;/li&gt;
 &lt;/ul&gt;
+ &lt;!-- - `BALOTO` &gt; Mín: $3.000 COP - Máx: $1.000.000 COP--&gt;
 &lt;/li&gt;
 &lt;li&gt;O parâmetro &lt;code&gt;transactionResponse.extraParameters&lt;/code&gt; tem os seguintes parâmetros relacionados à transação:
 &lt;ul&gt;
@@ -16129,8 +16105,8 @@ O fluxo em duas etapas está disponível somente sob solicitação, entre em con
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;paymentMethods&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;35&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;BALOTO&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;36&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;EFECTY&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;country&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;CO&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;enabled&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;reason&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;null&lt;/span&gt;
@@ -16176,8 +16152,8 @@ O fluxo em duas etapas está disponível somente sob solicitação, entre em con
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;SUCCESS&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;paymentMethods&amp;gt;&lt;/span&gt;
         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;paymentMethodComplete&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;35&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;BALOTO&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;36&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;EFECTY&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;country&amp;gt;&lt;/span&gt;CO&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/country&amp;gt;&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/paymentMethodComplete&amp;gt;&lt;/span&gt;

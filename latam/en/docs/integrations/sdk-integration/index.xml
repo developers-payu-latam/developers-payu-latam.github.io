@@ -3638,31 +3638,7 @@ The following are the bodies of the request and response of this payment method.
       <description>
         
         
-        &lt;script src=&#34;../../../../js/banner.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-window.onload = function() {
-    var bannerText = &#34;&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;We inform that PayU S.A. has been notified by IGT – operator for Baloto network – its decision to terminate the contract for the cash collection model given the entry of a new operator, which to date has not provided information on the continuity of this service. Therefore, the payment service through Baloto will stop working since &lt;b&gt;May 25, 2022&lt;/b&gt;. It is recommended to disable this service at least seven (7) days before this date. If you need further assistance, contact the technical support team through &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&#34;;
-
-    loadBanner(bannerText);
-}
-
-window.onresize = function() {
-    refreshBanner();
-}
-&lt;/script&gt;
-&lt;style type=&#34;text/css&#34; media=&#34;screen&#34;&gt;
-    div#banner { 
-        z-index: 999;
-        background-color: #DDEEEE; 
-        width: 100%;
-        margin-top: -1.3rem;
-    }
-    div#banner-content { 
-        margin: 0 auto; 
-        padding: 10px; 
-    }
-&lt;/style&gt;
-&lt;p&gt;To integrate with Payments SDK Colombia, target the requests to the following URLs:&lt;/p&gt;
+        &lt;p&gt;To integrate with Payments SDK Colombia, target the requests to the following URLs:&lt;/p&gt;
 &lt;nav&gt;
 	&lt;div class=&#34;nav nav-tabs&#34; id=&#34;nav-tab&#34; role=&#34;tablist&#34;&gt;
 
@@ -4113,12 +4089,10 @@ To confirm the status of a transaction, you can use the &lt;a href=&#34;../../..
 &lt;ul&gt;
 &lt;li&gt;Send a valid cash Payment Method in the request, &lt;a href=&#34;../../../../en/docs/getting-started/select-your-payment-method.html#Colombia&#34;&gt;see the available Payment Methods for Colombia&lt;/a&gt;. &lt;code&gt;OTHERS_CASH&lt;/code&gt; method is not supported.&lt;/li&gt;
 &lt;li&gt;The parameter &lt;code&gt;EXPIRATION_DATE&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
-&lt;li&gt;For &lt;code&gt;BALOTO&lt;/code&gt; and &lt;code&gt;EFECTY&lt;/code&gt;, the confirmation of the payment takes 15 minutes. For &lt;code&gt;BANK_REFERENCED&lt;/code&gt;, the confirmation is online.&lt;/li&gt;
-&lt;li&gt;The minimum and maximum values for &lt;code&gt;BALOTO&lt;/code&gt; and &lt;code&gt;EFECTY&lt;/code&gt; are:
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BALOTO&lt;/code&gt; &amp;gt; Min: $3.000 COP - Max: $1.000.000 COP&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;EFECTY&lt;/code&gt; &amp;gt; Min: $20.000 COP - Max: $6.000.000 COP&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;For &lt;!--`BALOTO` and --&gt;&lt;code&gt;EFECTY&lt;/code&gt;, the confirmation of the payment takes 15 minutes. For &lt;code&gt;BANK_REFERENCED&lt;/code&gt;, the confirmation is online.&lt;/li&gt;
+&lt;li&gt;The minimum and maximum values for &lt;!--`BALOTO` and --&gt;&lt;code&gt;EFECTY&lt;/code&gt; are Min: $20.000 COP - Max: $6.000.000 COP &lt;!-- are:--&gt;
+ &lt;!-- - `BALOTO` &gt; Min: $3.000 COP - Max: $1.000.000 COP
+ - `EFECTY` &gt; --&gt; 
 &lt;/li&gt;
 &lt;li&gt;The extra parameters have the following data related to the transaction:
 &lt;ul&gt;
