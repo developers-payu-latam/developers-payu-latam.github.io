@@ -11931,30 +11931,6 @@ Klap is formerly known as MULTICAJA. You can still see elements or configuration
         
         
         &lt;script src=&#34;../../../../js/searchcodes.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;../../../../js/banner.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-window.onload = function() {
-    var bannerText = &#34;&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;We inform that PayU S.A. has been notified by IGT – operator for Baloto network – its decision to terminate the contract for the cash collection model given the entry of a new operator, which to date has not provided information on the continuity of this service. Therefore, the payment service through Baloto will stop working since &lt;b&gt;May 25, 2022&lt;/b&gt;. It is recommended to disable this service at least seven (7) days before this date. If you need further assistance, contact the technical support team through &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&#34;;
-
-    loadBanner(bannerText);
-}
-
-window.onresize = function() {
-    refreshBanner();
-}
-&lt;/script&gt;
-&lt;style type=&#34;text/css&#34; media=&#34;screen&#34;&gt;
-    div#banner { 
-        z-index: 999;
-        background-color: #DDEEEE; 
-        width: 100%;
-        margin-top: -1.3rem;
-    }
-    div#banner-content { 
-        margin: 0 auto; 
-        padding: 10px; 
-    }
-&lt;/style&gt;
 &lt;p&gt;To integrate with Payments API Colombia, target your request to the following URLs according to your environment.&lt;/p&gt;
 
 
@@ -13143,14 +13119,6 @@ Two-step flow is available under request, contact your sales representative.
 &lt;/div&gt;
 &lt;h2 id=&#34;submit-transaction-with-cash-or-bank-reference&#34;&gt;Submit transaction with cash or Bank reference&lt;/h2&gt;
 &lt;p&gt;This method lets you process the payments of your customers in cash or using a Bank reference. To integrate with these transactions, you must redirect the customer to the URL found in the response of the method; your customer sees a payment receipt like the followings.&lt;/p&gt;
-
-
-&lt;div class=&#34;alert alert-warning&#34; role=&#34;alert&#34;&gt;
-
-&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;We inform that PayU S.A. has been notified by IGT – operator for Baloto network – its decision to terminate the contract for the cash collection model given the entry of a new operator, which to date has not provided information on the continuity of this service. Therefore, the payment service through Baloto will stop working since &lt;b&gt;May 25, 2022&lt;/b&gt;. It is recommended to disable this service at least seven (7) days before this date. If you need further assistance, contact the technical support team through &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;/div&gt;
-
 &lt;h4 id=&#34;payments-in-cash&#34;&gt;Payments in cash&lt;/h4&gt;
 &lt;img src=&#34;../../../../assets/Payments/CashReceiptCO.png&#34; alt=&#34;PrintScreen&#34; width=&#34;75%&#34;&gt;
 &lt;h4 id=&#34;payments-with-bank-reference&#34;&gt;Payments with Bank reference&lt;/h4&gt;
@@ -13760,12 +13728,11 @@ Two-step flow is available under request, contact your sales representative.
 &lt;h4 id=&#34;considerations-1&#34;&gt;Considerations&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;The parameter &lt;code&gt;transaction.expirationDate&lt;/code&gt; is not mandatory. If you don&amp;rsquo;t send this parameter, its default value is seven (7) days after the current date.&lt;br&gt;If you send a date later than the default number of days, PayU will ignore this value and the expiration will be set as default.&lt;/li&gt;
-&lt;li&gt;For &lt;code&gt;BALOTO&lt;/code&gt; and &lt;code&gt;EFECTY&lt;/code&gt;, the confirmation of the payment takes 15 minutes. For &lt;code&gt;BANK_REFERENCED&lt;/code&gt; and &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red), the confirmation is online.&lt;/li&gt;
-&lt;li&gt;The minimum and maximum values for &lt;code&gt;BALOTO&lt;/code&gt;, &lt;code&gt;EFECTY&lt;/code&gt;, and &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) are:
+&lt;li&gt;For &lt;!--`BALOTO` and --&gt;&lt;code&gt;EFECTY&lt;/code&gt;, the confirmation of the payment takes 15 minutes. For &lt;code&gt;BANK_REFERENCED&lt;/code&gt; and &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red), the confirmation is online.&lt;/li&gt;
+&lt;li&gt;The minimum and maximum values for &lt;!--`BALOTO`, --&gt;&lt;code&gt;EFECTY&lt;/code&gt;, and &lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) are:
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BALOTO&lt;/code&gt; &amp;gt; Min: $3.000 COP - Max: $1.000.000 COP&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;EFECTY&lt;/code&gt; &amp;gt; Min: $20.000 COP - Max: $6.000.000 COP&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) &amp;gt; Min: $1.000 COP - Max: $4.000.000 COP&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;OTHERS_CASH&lt;/code&gt; (Su Red) &amp;gt; Min: $1.000 COP - Max: $4.000.000 COP&lt;!-- - `BALOTO` &gt; Min: $3.000 COP - Max: $1.000.000 COP--&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;The parameter &lt;code&gt;transactionResponse.extraParameters&lt;/code&gt; has the following parameters related to the transaction:
@@ -16145,8 +16112,8 @@ Two-step flow is available under request, contact your sales representative.
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;paymentMethods&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;35&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;BALOTO&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;36&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;EFECTY&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;country&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;CO&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;enabled&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;reason&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;null&lt;/span&gt;
@@ -16192,8 +16159,8 @@ Two-step flow is available under request, contact your sales representative.
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;SUCCESS&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;paymentMethods&amp;gt;&lt;/span&gt;
         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;paymentMethodComplete&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;35&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;BALOTO&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;36&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;EFECTY&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;country&amp;gt;&lt;/span&gt;CO&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/country&amp;gt;&lt;/span&gt;
             &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;enabled&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/enabled&amp;gt;&lt;/span&gt;
         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/paymentMethodComplete&amp;gt;&lt;/span&gt;
@@ -23764,19 +23731,23 @@ To integrate with these transactions, you must redirect the customer to the URL 
 
 
 &lt;/div&gt;
-&lt;h4 id=&#34;zero-authorization&#34;&gt;Zero Authorization&lt;/h4&gt;
-&lt;p&gt;Zero Authorization allows you to validate a card without performing any charge or capture operation. Through this option, you can send an &lt;em&gt;Authorization&lt;/em&gt; request as explained before with &lt;code&gt;TX_VALUE&lt;/code&gt; equals to 0 and you will receive the result of the card validation.&lt;/p&gt;
+&lt;!--
+#### Zero Authorization
+Zero Authorization allows you to validate a card without performing any charge or capture operation. Through this option, you can send an _Authorization_ request as explained before with `TX_VALUE` equals to 0 and you will receive the result of the card validation.
+
 
 
 &lt;div class=&#34;alert alert-info&#34; role=&#34;alert&#34;&gt;
 &lt;h4 class=&#34;alert-heading&#34;&gt;Important&lt;/h4&gt;
 &lt;ul&gt;
+&lt;li&gt;Make sure your shop can create transactions with &lt;code&gt;TX_VALUE&lt;/code&gt; equals to 0.&lt;/li&gt;
 &lt;li&gt;This feature is not enabled by default, contact your sales representative to request it.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Zero Authorization&lt;/em&gt; is available for VISA cards only. Mastercard and other franchises must send the transaction value greater than or equals to 1 PEN.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Zero Authorization&lt;/em&gt; is available for VISA and Mastercard cards only. For other franchises, send the transaction value greater than or equals to 1 PEN.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;/div&gt;
 
+--&gt;
 &lt;h3 id=&#34;capture&#34;&gt;Capture&lt;/h3&gt;
 &lt;p&gt;Use this method to perform the &lt;strong&gt;Capture&lt;/strong&gt; step of a two-step flow. In this step, you capture the funds previously &lt;a href=&#34;../../../../en/docs/integrations/api-integration/payments-api-peru.html#authorization&#34;&gt;Authorized&lt;/a&gt; to transfer them to your PayU account.&lt;/p&gt;
 &lt;h4 id=&#34;considerations-1&#34;&gt;Considerations&lt;/h4&gt;

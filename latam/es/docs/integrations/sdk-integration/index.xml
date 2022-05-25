@@ -3638,31 +3638,7 @@ Los siguientes ejemplos muestra cómo llamar los métodos para esta transacción
       <description>
         
         
-        &lt;script src=&#34;../../../../js/banner.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-window.onload = function() {
-    var bannerText = &#34;&lt;ul class=&#39;fa-ul&#39; style=&#39;--fa-li-width: 2em;margin-bottom: initial;&#39;&gt;&lt;li style=&#39;margin-bottom: initial;&#39;&gt;&lt;span class=&#39;fa-li&#39;&gt;&lt;i class=&#39;fas fa-exclamation-triangle&#39;&gt;&lt;/i&gt;&lt;/span&gt;Informamos que PayU S.A. ha sido notificado por parte de IGT - operador de la red Baloto - su decisión de terminar el contrato para el recaudo en efectivo debido a la entrada de un nuevo operador, el cual a la fecha no ha entregado información sobre la continuidad de este servicio. Por lo tanto, el servicio de pago a través de Baloto dejará de funcionar a partir del &lt;b&gt;25 de mayo de 2022&lt;/b&gt;. Se recomienda deshabilitar este medio de pago al menos siete (7) días antes de esta fecha. Si necesitas asistencia adicional, contacta al equipo de soporte técnico a través de &lt;a href=&#39;mailto:tecnico.co@payu.com&#39;&gt;tecnico.co@payu.com&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&#34;;
-
-    loadBanner(bannerText);
-}
-
-window.onresize = function() {
-    refreshBanner();
-}
-&lt;/script&gt;
-&lt;style type=&#34;text/css&#34; media=&#34;screen&#34;&gt;
-    div#banner { 
-        z-index: 999;
-        background-color: #DDEEEE; 
-        width: 100%;
-        margin-top: -1.3rem;
-    }
-    div#banner-content { 
-        margin: 0 auto; 
-        padding: 10px; 
-    }
-&lt;/style&gt;
-&lt;p&gt;Para integrarte con el SDK de Pagos de Colombia, apunta tus peticiones a las siguientes URLs:&lt;/p&gt;
+        &lt;p&gt;Para integrarte con el SDK de Pagos de Colombia, apunta tus peticiones a las siguientes URLs:&lt;/p&gt;
 &lt;nav&gt;
 	&lt;div class=&#34;nav nav-tabs&#34; id=&#34;nav-tab&#34; role=&#34;tablist&#34;&gt;
 
@@ -4113,12 +4089,10 @@ Para confirmar el estado de una transacción, puedes utilizar el &lt;a href=&#34
 &lt;ul&gt;
 &lt;li&gt;Envía un método de pago válido en efectivo o por referencia bancaria, &lt;a href=&#34;../../../../es/docs/getting-started/select-your-payment-method.html#Colombia&#34;&gt;mira los métodos de pago disponibles para Colombia&lt;/a&gt;. No está soportado el método &lt;code&gt;OTHERS_CASH&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;El parámetro &lt;code&gt;EXPIRATION_DATE&lt;/code&gt; no es obligatorio. Si no envías este parámetro, su valor por defecto es siete (7) días luego de la fecha actual.&lt;br&gt;Si envías una fecha posterior a dicho número de días, PayU ignorará este valor y asignará el valor por defecto&lt;/li&gt;
-&lt;li&gt;Para &lt;code&gt;BALOTO&lt;/code&gt; y &lt;code&gt;EFECTY&lt;/code&gt;, la confirmación de pago toma 15 minutos. Para &lt;code&gt;BANK_REFERENCED&lt;/code&gt;, la confirmación es en línea.&lt;/li&gt;
-&lt;li&gt;Los valores mínimos de máximos para pagos en &lt;code&gt;BALOTO&lt;/code&gt; y &lt;code&gt;EFECTY&lt;/code&gt; son:
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BALOTO&lt;/code&gt; &amp;gt; Min: $3.000 COP - Max: $1.000.000 COP&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;EFECTY&lt;/code&gt; &amp;gt; Min: $20.000 COP - Max: $6.000.000 COP&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;Para &lt;!--`BALOTO` y --&gt;&lt;code&gt;EFECTY&lt;/code&gt;, la confirmación de pago toma 15 minutos. Para &lt;code&gt;BANK_REFERENCED&lt;/code&gt;, la confirmación es en línea.&lt;/li&gt;
+&lt;li&gt;Los valores mínimos de máximos para pagos en &lt;!--`BALOTO` y --&gt;&lt;code&gt;EFECTY&lt;/code&gt; son Min: $20.000 COP - Max: $6.000.000 COP.
+&lt;!-- - `BALOTO` &gt; Min: $3.000 COP - Max: $1.000.000 COP
+ - `EFECTY` &gt; Min: $20.000 COP - Max: $6.000.000 COP --&gt;
 &lt;/li&gt;
 &lt;li&gt;Los extra parámetros tienen los siguientes parámetros relacionados con la transacción:
 &lt;ul&gt;
