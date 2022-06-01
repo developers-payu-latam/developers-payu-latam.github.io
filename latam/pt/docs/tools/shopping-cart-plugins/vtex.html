@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.84.2" />
+
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="../../../../favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="../../../../favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="../../../../favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../../../favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="../../../../favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="../../../../favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="../../../../favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../../../favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="../../../../favicons/android-192x192.png" sizes="192x192">
+
+<title>VTEX | PayU Latam</title><meta property="og:title" content="VTEX" />
+<meta property="og:description" content="Este artigo mostra o procedimento para habilitar o PayU em seu site VTEX." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/pt/docs/tools/shopping-cart-plugins/vtex.html" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-05-25T10:30:35-05:00" />
+<meta property="article:modified_time" content="2022-06-01T12:53:29-05:00" /><meta property="og:site_name" content="PayU Latam" />
+
+<meta itemprop="name" content="VTEX">
+<meta itemprop="description" content="Este artigo mostra o procedimento para habilitar o PayU em seu site VTEX."><meta itemprop="datePublished" content="2021-05-25T10:30:35-05:00" />
+<meta itemprop="dateModified" content="2022-06-01T12:53:29-05:00" />
+<meta itemprop="wordCount" content="2776">
+<meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="VTEX"/>
+<meta name="twitter:description" content="Este artigo mostra o procedimento para habilitar o PayU em seu site VTEX."/>
+
+
+
+
+
+<link rel="preload" href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" as="style">
+<link href="../../../../scss/main.min.2c800af6f7a24d9ae00100d75d78e9de82241a7ddc379ab6cb8b076cd0d05395.css" rel="stylesheet" integrity="">
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<script defer language="javascript" type="text/javascript"  src="../../../../js/add-on.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="../../../../pt/">
+			
+			
+			<span class="navbar-logo"><img src="../../../../assets/PayULatam.png"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link active" href="../../../../pt/docs.html" ><span class="active">Pagamentos Online</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="../../../../pt/payu-module-documentation.html" ><span>Guia do Módulo PayU</span></a>
+			</li>
+			
+			
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../es/docs/tools/shopping-cart-plugins/vtex.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../en/docs/tools/shopping-cart-plugins/vtex.html">English</a>
+	
+</div>
+			</li>
+			
+		</ul>
+	</div>
+	
+	
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Buscar no site…"
+  aria-label="Buscar no site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="../../../../offline-search-index.6f61763d2b71e2c150665e03b024a4156ff735b9d89eaf539e7812a8b138ae86dd00f4dd70d442c5b58650fc73dd02800d2a05ae814dae0135532b2c141637a1.json"
+  data-offline-search-base-href="../../../../"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    <div class="nav-item dropdown d-block d-lg-none">
+      
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Português
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="../../../../es/docs/tools/shopping-cart-plugins/vtex.html">Español</a>
+	
+	<a class="dropdown-item" href="../../../../en/docs/tools/shopping-cart-plugins/vtex.html">English</a>
+	
+</div>
+    </div>
+    
+    
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs.html" href="../../../../pt/docs.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Início</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/getting-started.html" href="../../../../pt/docs/getting-started.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Para começar</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsgetting-startedhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/create-an-account.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedcreate-an-accounthtml" href="../../../../pt/docs/getting-started/create-an-account.html">Crie uma conta PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-integration.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-integrationhtml" href="../../../../pt/docs/getting-started/select-your-integration.html">Selecione sua integração</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/select-your-payment-method.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedselect-your-payment-methodhtml" href="../../../../pt/docs/getting-started/select-your-payment-method.html">Selecione seu método de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/test-your-solution.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedtest-your-solutionhtml" href="../../../../pt/docs/getting-started/test-your-solution.html">Teste sua solução</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/deploy-to-production.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-starteddeploy-to-productionhtml" href="../../../../pt/docs/getting-started/deploy-to-production.html">Implementar na produção</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/getting-started/response-codes-and-variables.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsgetting-startedresponse-codes-and-variableshtml" href="../../../../pt/docs/getting-started/response-codes-and-variables.html">Códigos e variáveis de resposta</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/services.html" href="../../../../pt/docs/services.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Serviços</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserviceshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payments.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespaymentshtml" href="../../../../pt/docs/services/payments.html">Pagamentos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/3ds-authentication.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservices3ds-authenticationhtml" href="../../../../pt/docs/services/3ds-authentication.html">Autenticação 3DS</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/queries.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesquerieshtml" href="../../../../pt/docs/services/queries.html">Consultas para transações</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/tokenization.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicestokenizationhtml" href="../../../../pt/docs/services/tokenization.html">Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/promotions.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespromotionshtml" href="../../../../pt/docs/services/promotions.html">Parcelas e promoções - Argentina e México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/refunds.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicesrefundshtml" href="../../../../pt/docs/services/refunds.html">Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/services/payouts.html" style=""  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocsservicespayoutshtml" href="../../../../pt/docs/services/payouts.html">Payouts</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/tools.html" href="../../../../pt/docs/tools.html" class="align-left pl-0 pr-2  td-sidebar-link td-sidebar-link__section ">Ferramentas</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-request.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-requesthtml" href="../../../../pt/docs/tools/payment-request.html">Solicitação de pagamento</a>
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/tools/shopping-cart-plugins.html" href="../../../../pt/docs/tools/shopping-cart-plugins.html" class="align-left pl-0 pr-2 active  td-sidebar-link td-sidebar-link__page ">Plugins do carrinho de compras</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocstoolsshopping-cart-pluginshtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/vtex.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  active sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsvtexhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/vtex.html">VTEX</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/shopify.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsshopifyhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/shopify.html">Shopify</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/magento.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsmagentohtml" href="../../../../pt/docs/tools/shopping-cart-plugins/magento.html">Magento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/drupal.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsdrupalhtml" href="../../../../pt/docs/tools/shopping-cart-plugins/drupal.html">Drupal</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/virtuemart.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsvirtuemarthtml" href="../../../../pt/docs/tools/shopping-cart-plugins/virtuemart.html">VirtueMart</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/woocommerce.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginswoocommercehtml" href="../../../../pt/docs/tools/shopping-cart-plugins/woocommerce.html">WooCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/oscommerce.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsoscommercehtml" href="../../../../pt/docs/tools/shopping-cart-plugins/oscommerce.html">osCommerce</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/shopping-cart-plugins/opencart.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocstoolsshopping-cart-pluginsopencarthtml" href="../../../../pt/docs/tools/shopping-cart-plugins/opencart.html">OpenCart</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payu-module.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayu-modulehtml" href="../../../../pt/docs/tools/payu-module.html">Módulo PayU</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/disputes.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsdisputeshtml" href="../../../../pt/docs/tools/disputes.html">Disputas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/payment-coupons.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolspayment-couponshtml" href="../../../../pt/docs/tools/payment-coupons.html">Cupons de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/tools/antifraud-guarantee.html" style="  display: block !important; "  class="td-sidebar-link td-sidebar-link__page  " id="m-ptdocstoolsantifraud-guaranteehtml" href="../../../../pt/docs/tools/antifraud-guarantee.html">Garantia Antifraude</a>
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/integrations.html" href="../../../../pt/docs/integrations.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Integrações</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationshtml">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/webcheckout-integration.html" href="../../../../pt/docs/integrations/webcheckout-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração Webcheckout</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationswebcheckout-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/payment-form.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationpayment-formhtml" href="../../../../pt/docs/integrations/webcheckout-integration/payment-form.html">Formulário de pagamento</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/response-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationresponse-pagehtml" href="../../../../pt/docs/integrations/webcheckout-integration/response-page.html">Página de resposta</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/webcheckout-integration/confirmation-page.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationswebcheckout-integrationconfirmation-pagehtml" href="../../../../pt/docs/integrations/webcheckout-integration/confirmation-page.html">Página de confirmação</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/api-integration.html" href="../../../../pt/docs/integrations/api-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração API</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationsapi-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-argentinahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-argentina.html">API de pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-brazilhtml" href="../../../../pt/docs/integrations/api-integration/payments-api-brazil.html">API de pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-chilehtml" href="../../../../pt/docs/integrations/api-integration/payments-api-chile.html">API de pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-colombiahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-colombia.html">API de pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-mexicohtml" href="../../../../pt/docs/integrations/api-integration/payments-api-mexico.html">API de pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-panama.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-panamahtml" href="../../../../pt/docs/integrations/api-integration/payments-api-panama.html">API de pagamentos - Panamá</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payments-api-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayments-api-peruhtml" href="../../../../pt/docs/integrations/api-integration/payments-api-peru.html">API de pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/queries-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationqueries-apihtml" href="../../../../pt/docs/integrations/api-integration/queries-api.html">API de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/tokenization-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationtokenization-apihtml" href="../../../../pt/docs/integrations/api-integration/tokenization-api.html">API de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/promotions-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpromotions-apihtml" href="../../../../pt/docs/integrations/api-integration/promotions-api.html">API de promoções</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/refunds-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationrefunds-apihtml" href="../../../../pt/docs/integrations/api-integration/refunds-api.html">API de Cancelamentos e Reembolsos</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/api-integration/payouts-api.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationsapi-integrationpayouts-apihtml" href="../../../../pt/docs/integrations/api-integration/payouts-api.html">API de Payouts</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+<li class=" td-sidebar-link td-sidebar-link__sub_section_title ">
+    <a id="/pt/docs/integrations/sdk-integration.html" href="../../../../pt/docs/integrations/sdk-integration.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__page ">Integração SDK</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsintegrationssdk-integrationhtml">
+      
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-argentina.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-argentinahtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-argentina.html">SDK de Pagamentos - Argentina</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-brazil.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-brazilhtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-brazil.html">SDK de Pagamentos - Brasil</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-chile.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-chilehtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-chile.html">SDK de Pagamentos - Chile</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-colombia.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-colombiahtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-colombia.html">SDK de Pagamentos - Colômbia</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-mexico.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-mexicohtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-mexico.html">SDK de Pagamentos - México</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/payments-sdk-peru.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationpayments-sdk-peruhtml" href="../../../../pt/docs/integrations/sdk-integration/payments-sdk-peru.html">SDK de Pagamentos - Peru</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/queriessdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationqueriessdkhtml" href="../../../../pt/docs/integrations/sdk-integration/queriessdk.html">SDK de Consultas</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/tokenizationsdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationtokenizationsdkhtml" href="../../../../pt/docs/integrations/sdk-integration/tokenizationsdk.html">SDK de Tokenização</a>
+      
+      
+      
+      
+      
+        <a id="/pt/docs/integrations/sdk-integration/refundssdk.html" style=""  class="td-sidebar-link td-sidebar-link__page  sub-section-child-topic" id="m-ptdocsintegrationssdk-integrationrefundssdkhtml" href="../../../../pt/docs/integrations/sdk-integration/refundssdk.html">SDK de Cancelamentos e Reembolsos</a>
+      
+      
+    </li>
+  </ul>
+  
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+ <ul class="td-sidebar-nav__section pr-md-3"> 
+<li class="  td-sidebar-nav__section-title ">
+    <a id="/pt/docs/server-status.html" href="../../../../pt/docs/server-status.html" class="align-left pl-0 pr-2 collapsed  td-sidebar-link td-sidebar-link__section ">Status do servidor</a>
+  </li>
+  <ul class="side-main">
+    <li class="" id="ptdocsserver-statushtml">
+      
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+      
+      
+    </li>
+  </ul>
+   </ul> 
+
+  </nav>
+</div>
+
+
+<script>
+  $('.td-sidebar-nav').scrollTop(localStorage.getItem("currentPosition"))
+  var currentPosition = 0;
+  $(".td-sidebar-nav" ).scroll(function() {
+    currentPosition = $('.td-sidebar-nav').scrollTop()
+    localStorage.setItem("currentPosition",currentPosition);
+  });
+  
+</script>
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+<p>Nesta página</p>
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Pré-requisitos</a></li>
+    <li><a href="#configuration-procedure">Procedimento de configuração</a>
+      <ul>
+        <li><a href="#1-configure-your-paymentsos-account">1. Configure sua conta do PaymentsOS</a></li>
+        <li><a href="#2-configure-the-vtex-provider">2. Configuração do provedor VTEX</a></li>
+      </ul>
+    </li>
+    <li><a href="#testing-the-integration">Teste a integração</a>
+      <ul>
+        <li><a href="#testing-two-step-flows">Probar flujos de dos pasos</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs.html">Início</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs/tools.html">Ferramentas</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="../../../../pt/docs/tools/shopping-cart-plugins.html">Plugins do carrinho de compras</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="../../../../pt/docs/tools/shopping-cart-plugins/vtex.html">VTEX</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>VTEX</h1>
+    <div class="lead">Este artigo mostra o procedimento para habilitar o PayU em seu site VTEX.</div>
+	       
+	<p>A VTEX é uma plataforma de comércio digital que permite criar rapidamente uma loja online com recursos prontos para uso. Para obter mais informações, consulte o <a href="https://vtex.com/">site oficial da VTEX</a>.</p>
+<h2 id="prerequisites">Pré-requisitos</h2>
+<ul>
+<li>Você precisa de uma conta PayU Latam ativa.</li>
+<li>Você precisa de uma conta ativa do PaymentsOS. Se você não tiver uma conta, clique <a href="https://control.paymentsos.com/signup">aqui</a> para criar uma.<br>Todos os comerciantes que precisam integrar PayU com VTEX <strong>devem</strong> ter um PaymentsOS conta.</li>
+<li>Você precisa de uma conta com permissões suficientes para acessar o VTEX admin. Esta conta deve ter a autenticação de dois fatores habilitada.</li>
+</ul>
+<h2 id="configuration-procedure">Procedimento de configuração</h2>
+<p>O procedimento para habilitar os meios de pagamento que processamos em nossa plataforma na VTEX é dividido em duas etapas. Antes de continuar, certifique-se de atender aos pré-requisitos acima.</p>
+<h3 id="1-configure-your-paymentsos-account">1. Configure sua conta do PaymentsOS</h3>
+<p>A integração da PayU Latam com a VTEX é feita utilizando PaymentsOS como middleware. Como primeiro passo, você precisa configurar os seguintes objetos em sua conta do PaymentsOS.</p>
+<ul>
+<li>Uma configuração de provedor.</li>
+<li>Uma Unidade de Negócios.</li>
+<li>Um WebHook.</li>
+</ul>
+<p>Você pode configurar esses objetos usando uma das seguintes opções:</p>
+<ul>
+<li><a href="#configure-the-account-using-postman">Configurar conta usando o Postman</a>.</li>
+<li><a href="#configure-the-account-manually-using-paymentsos-dashboard">Configure a conta manualmente usando o Painel de controle do PaymentsOS</a>.</li>
+</ul>
+<h4 id="configure-the-account-using-postman">Configurar conta usando o Postman</h4>
+<p>Siga estas etapas para configurar sua conta usando o Postman.</p>
+<ol>
+<li>Clique no botão abaixo para importar nossa coleção para o Postman (pode ser necessário atualizar a página se o botão não funcionar).</li>
+</ol>
+<p><div class="postman-run-button"
+data-postman-action="collection/import"
+data-postman-var-1="400731dd3ca5aa713cd3"></div>
+<script type="text/javascript">
+  (function (p,o,s,t,m,a,n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+      (n.id = s+t), (n.async = 1), (n.src = m), n
+    ));
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+</script>
+<br></p>
+<ol start="2">
+<li>
+<p>Depois de executar a coleção, você precisa definir os globais. Baixe o arquivo global <a href="../../../../static/assets/globals/VTEX%20Hub.postman_globals.json" download>aqui</a>.</p>
+</li>
+<li>
+<p>Na coleção Postman, clique em <em><strong>Import</strong></em> ao lado do nome da área de trabalho e localize o arquivo json baixado anteriormente.</p>
+</li>
+<li>
+<p>Ao terminar, clique em <em><strong>Import</strong></em>.</p>
+</li>
+<li>
+<p>É obrigatório executar os métodos de coleta na ordem apresentada. Primeiro, clique no método <code>POST</code> chamado <code>1. Login</code> e abra a guia <em><strong>Body</strong></em>.</p>
+</li>
+</ol>
+<p><img src="../../../../assets/VTEX/Postman/VTEX_Postman_01.png" alt="PrintScreen"></p>
+<ol start="6">
+<li>
+<p>Digite o e-mail (<em><strong>email</strong></em>) e a senha (<em><strong>password</strong></em>) da sua conta do PaymentsOS. Em seguida, clique em <em><strong>Send</strong></em>.</p>
+</li>
+<li>
+<p>Se o login for bem-sucedido, os dados de autenticação são atribuídos no segundo método.<br>Clique no método <code>GET</code> chamado <code>2. Retrieve PayU Latam ID</code>.</p>
+</li>
+<li>
+<p>No canto superior direito, clique no ícone de olho e localize o parâmetro <code>env</code>. Em seguida, clique no ícone de lápis e digite <code>test</code> se estiver processando no ambiente de teste, ou <code>live</code> caso contrário.</p>
+</li>
+</ol>
+<p><img src="../../../../assets/VTEX/Postman/VTEX_Postman_02.png" alt="PrintScreen"></p>
+<ol start="9">
+<li>
+<p>Uma vez configurado, clique em <em><strong>Send</strong></em>.</p>
+</li>
+<li>
+<p>Clique no método <code>POST</code> chamado <code>3. Create Provider Configuration</code>, este método cria o <em><strong>Configuração de Provedor</strong></em> no PaymentsOS. Em seguida, vá para a guia <em><strong>Body</strong></em>.</p>
+</li>
+</ol>
+<p><img src="../../../../assets/VTEX/Postman/VTEX_Postman_03.png" alt="PrintScreen"></p>
+<p>Insira as seguintes informações:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>Insira um nome para a <em><strong>Configuração do Provedor</strong></em>.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Insira uma descrição significativa para a <em><strong>Configuração de Provedor</strong></em>.<br>Este valor é opcional.</td>
+</tr>
+<tr>
+<td>apiLogin</td>
+<td>Usuário ou login fornecido pelo PayU. <a href="../../../../pt/docs/integrations.html#api-key-and-api-login">Como faço para obter minha API Login</a></td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>Senha fornecida pelo PayU. <a href="../../../../pt/docs/integrations.html#api-key-and-api-login">Como faço para obter minha API key</a></td>
+</tr>
+<tr>
+<td>configuration_data.accountId</td>
+<td>ID da conta PayU de acordo com o país em que você vai vender.</td>
+</tr>
+<tr>
+<td>configuration_data.merchantId</td>
+<td>ID do seu negócio na PayU Latam.</td>
+</tr>
+<tr>
+<td>configuration_data.paymentCountry</td>
+<td>País de processamento no formato ISO 3166 Alpha-3.</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+O parâmetro <code>provider_id</code> é preenchido automaticamente pela resposta do método <code>2. Retrieve PayU Latam ID</code>. Não mude esse valor.
+</div>
+
+<ol start="11">
+<li>Clique no método <code>POST</code> chamado <code>4. Create Business Unit</code>, este método cria a <em><strong>Unidade de Negócios</strong></em> no PaymentsOS. Em seguida, vá para a guia <em><strong>Body</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/Postman/VTEX_Postman_04.png" alt="PrintScreen"></p>
+<p>Insira as seguintes informações:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>Identificador da <em><strong>Unidade de Negócios</strong></em>. Este id deve estar em letras minúsculas e sem espaços.<br><em>Certifique-se de ter inserido o valor correto para o id, pois este valor não pode ser atualizado posteriormente</em>.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Insira uma descrição significativa para a <em><strong>Unidade de Negócios</strong></em>.<br>Esse valor é opcional.</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+O parâmetro <code>default_processor</code>  preenchido automaticamente pela resposta do método <code>3. Create Provider Configuration</code>. Não mude esse valor.
+</div>
+
+<ol start="12">
+<li>Clique no método <code>POST</code> chamado <code>5. Create Webhook</code>, este método cria o <em><strong>WebHook</strong></em> no PaymentsOS. Este WebHook é a URL de confirmação que receberá as notificações enviadas pela VTEX quando uma transação mudar de estado.<br>A seguir, vá para a guia <em><strong>Body</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/Postman/VTEX_Postman_05.png" alt="PrintScreen"></p>
+<p>Defina o parâmetro <code>endpoint</code> com os seguintes valores de acordo com seu ambiente.</p>
+<ul>
+<li>Teste: <code>https://sandbox.api.payulatam.com/vtex-payments-integration/paymentsos/webhook</code></li>
+<li>Produção: <code>https://api.payulatam.com/vtex-payments-integration/paymentsos/webhook</code></li>
+</ul>
+<p>Deixe os outros valores com seu valor padrão.</p>
+<p>Neste ponto, você configurou sua conta do PaymentsOS como middleware, o próximo passo é a <a href="#2-configure-the-vtex-provider">configuração do provedor VTEX</a>.</p>
+<h4 id="configure-the-account-manually-using-paymentsos-dashboard">Configure a conta manualmente usando o Painel de controle do PaymentsOS</h4>
+<p>Siga estas etapas para configurar sua conta usando o painel de controle do PaymentsOS.</p>
+<ol>
+<li>Crie a Configuração de Provedor.<br>
+No painel de controle do PaymentsOS, expanda o menu <em><strong>Configuração</strong></em> e selecione <em><strong>Provedores de Pagamento</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_01_pt.png" alt="PrintScreen"></p>
+<p>Use o campo <em><strong>Buscar</strong></em> na seção <em><strong>Criar uma nova configuração de Provedor</strong></em> e digite <em>PayU</em> para encontrar o provedor <em>PayU Latam</em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_02_pt.png" alt="PrintScreen"></p>
+<p>Insira as seguintes informações para a <em><strong>Configuração de Provedor</strong></em>:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configurar Nome</td>
+<td>Insira um nome para a <em><strong>Configuração do Provedor</strong></em>.</td>
+</tr>
+<tr>
+<td>Descrição</td>
+<td>Insira uma descrição significativa para a <em><strong>Configuração de Provedor</strong></em>.<br>Este valor é opcional.</td>
+</tr>
+<tr>
+<td>apiLogin</td>
+<td>Usuário ou login fornecido pelo PayU. <a href="../../../../pt/docs/integrations.html#api-key-and-api-login">Como faço para obter minha API Login</a></td>
+</tr>
+<tr>
+<td>apiKey</td>
+<td>Senha fornecida pelo PayU. <a href="../../../../pt/docs/integrations.html#api-key-and-api-login">Como faço para obter minha API key</a></td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>ID da conta PayU de acordo com o país em que você vai vender.</td>
+</tr>
+<tr>
+<td>merchantId</td>
+<td>ID do seu negócio na PayU Latam.</td>
+</tr>
+<tr>
+<td>paymentCountry</td>
+<td>País de processamento no formato ISO 3166 Alpha-3.</td>
+</tr>
+</tbody>
+</table>
+<p>Quando terminar, clique em <em><strong>Salvar</strong></em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_03_pt.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Crie a Unidade de Negócios.<br>
+No painel do PaymentsOS, expanda o menu <em><strong>Configuração</strong></em> e selecione <em><strong>Unidades de Negócios</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_04_pt.png" alt="PrintScreen"></p>
+<p>Clique no botão <em><strong>Criar uma Unidade de Negócios</strong></em> e insira as seguintes informações:</p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nome da Unidade de Negócios</td>
+<td>Nome da <em><strong>Unidade de Negócios</strong></em>. Este id deve estar em letras minúsculas e sem espaços.<br><em>Certifique-se de ter inserido o valor correto para o id, pois este valor não pode ser atualizado posteriormente</em>.</td>
+</tr>
+<tr>
+<td>Descrição</td>
+<td>Insira uma descrição significativa para a <em><strong>Unidade de Negócios</strong></em>.<br>Esse valor é opcional.</td>
+</tr>
+</tbody>
+</table>
+<p>Na seção <em><strong>Escolha um Provedor padrão para esta Unidade de Negócios</strong></em>, escolha a <em><strong>Configuração do Provedor</strong></em> criada na etapa anterior.<br>Ao terminar, clique em <em><strong>Salvar</strong></em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_05_pt.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Crie o webhook. Este WebHook é a URL de confirmação que receberá as notificações enviadas pela VTEX quando uma transação mudar de status.<br></li>
+</ol>
+<p>De volta ao painel do PaymentsOS, expanda o menu <em><strong>Configuração</strong></em> e selecione <em><strong>Webhooks</strong></em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_06_pt.png" alt="PrintScreen"></p>
+<p>Clique no botão <em><strong>Criar Endpoint para Webhook</strong></em> e insira a URL de acordo com seu ambiente:</p>
+<ul>
+<li>Teste: <code>https://sandbox.api.payulatam.com/vtex-payments-integration/paymentsos/webhook</code></li>
+<li>Produção: <code>https://api.payulatam.com/vtex-payments-integration/paymentsos/webhook</code></li>
+</ul>
+<p>Na tabela <em><strong>Payment Events Alert</strong></em>, acione o evento <em><strong>Update</strong></em> para <em><strong>Authorization</strong></em> e <em><strong>Charge</strong></em>. Além disso, selecione no combo <em><strong>Unidades de Negócios Associadas</strong></em> a <em><strong>Unidade de Negócios</strong></em> criada na etapa anterior.<br>Ao terminar, clique em <em><strong>Criar</strong></em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_07_pt.png" alt="PrintScreen"></p>
+<p>Neste ponto, você configurou sua conta do PaymentsOS como middleware, o próximo passo é a <a href="#2-configure-the-vtex-provider">Configuração do provedor VTEX</a>.</p>
+<h3 id="2-configure-the-vtex-provider">2. Configuração do provedor VTEX</h3>
+<p>Depois de configurar sua conta PaymentsOS, o próximo passo é a configuração do provedor VTEX para cada forma de pagamento. Para esta etapa, é obrigatório que você tenha um usuário válido para acessar o VTEX admin.</p>
+<h4 id="configure-the-gateway-affiliation">Configurar la afiliación de Gateway</h4>
+<p>Antes de configurar a <em><strong>Afiliação de Gateway</strong></em>, certifique-se de ter configurado o FingerPrint para PayU. Para isso, veja este <a href="https://help.vtex.com/pt/tutorial/configure-fingerprint-for-payu">artigo</a>.</p>
+<ol>
+<li>No VTEX admin, expanda o menu <em><strong>Pagamentos</strong></em> dentro do grupo <em><strong>Transações</strong></em>. Em seguida, selecione <em><strong>Configurações</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_08_pt.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Antes de prosseguir com as Condições de pagamento, você deve criar uma afiliação ao nosso gateway. No painel superior, clique em <em><strong>Afiliações de Gateways</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_09_pt.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Clique no ícone de adição. Desça até a seção <em><strong>OUTROS</strong></em> e localize o conector <em><strong>PayUv2</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_10_pt.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Importante</h4>
+Certifique-se de selecionar o conector <em><strong>PayUv2</strong></em>, o procedimento explicado neste guia se aplica especificamente a este conector.
+</div>
+
+<ol start="4">
+<li>Nas configurações do conector, você precisa instalá-lo clicando no botão <em><strong>Instalar app</strong></em>. Em seguida, insira as seguintes informações.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_11_pt.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+<p>As informações do conector podem ser obtidas através do seguinte:</p>
+<ul>
+<li>Usando a coleção Postman.<br>Execute o método <strong>Retrieve Authentication Keys</strong> configurando o parâmetro global <code>env</code> para <code>test</code> ou <code>live</code> de acordo com seu ambiente de processamento.</li>
+<li>Usando o Painel de Controle do PaymentsOS.<br>Vá para <em><strong>Configuração</strong></em> &gt; <em><strong>Unidades de Negócios</strong></em> ye selecione a unidade de negócios que você criou na etapa <a href="#1-configure-your-paymentsos-account">acima</a>. Lembre-se que você deve usar o seletor na parte superior para escolher o ambiente de renderização.<br>Alguns valores estão ocultos por padrão, clique no ícone de olho para mostrá-los.</li>
+</ul>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nome da afiliação</td>
+<td>Nome que você deseja atribuir para identificar a <em><strong>Afiliação de Gateway</strong></em>.</td>
+</tr>
+<tr>
+<td>Seletor de Ambiente</td>
+<td>Selecione o ambiente onde deseja criar as transações.<br>De acordo com a seleção que fizer aqui, você deve inserir outros parâmetros selecionando o mesmo ambiente no PaymentsOS.</td>
+</tr>
+<tr>
+<td>Application Key</td>
+<td>ID do aplicativo da <em><strong>Unidade de Negócios</strong></em>.</td>
+</tr>
+<tr>
+<td>Application Token</td>
+<td>Chave de API privada da <em><strong>Unidade de Negócios</strong></em>.</td>
+</tr>
+<tr>
+<td>Captura automática de pagamento</td>
+<td>Selecione como deseja fazer a captura (pagamento) em sua afiliação.<br><ul style="margin-bottom: initial;"><li>Para fluxos de uma etapa, selecione <code>Inmediatamente: captura automática al autorizar el pago</code>.</li><li>Para fluxos de duas etapas, selecione <code>Desactivado: no capturado automáticamente</code> para executar a captura assim que você faturar o pedido.</li><li>Selecione <code>Agendada: Defina quando a captura automática será realizada</code> para definir um tempo em horas para capturar automaticamente o pedido.</li></ul><br>Para obter mais informações, consulte <a href="https://developers.vtex.com/vtex-rest-api/docs/custom-auto-capture-feature">Recurso de captura automática personalizada</a> na documentação do desenvolvedor.<br>O valor padrão de esta opção é de sete (7) dias após a aprovação.</td>
+</tr>
+<tr>
+<td>Prazo agendado em horas para a captura automática</td>
+<td>Este campo aparece quando você seleciona <code>Agendada: Defina quando a captura automática será realizada</code> como forma de captura de pagamento; selecione o período programado que deseja configurar de acordo com suas configurações. Este valor deve ser um número inteiro, portanto, decimais não são permitidos.</td>
+</tr>
+<tr>
+<td>Tipo Autorizacion</td>
+<td>Selecione se suas transações de pagamento são executadas em fluxos de uma ou duas etapas.<br><ul style="margin-bottom: initial;"><li>Para fluxos de uma etapa, selecione <code>Autorizacion y Captura</code>.</li><li>Para fluxos de duas etapas, selecione <code>Pre-Autorizacion</code>.</li></ul><br>Consulte o seguinte <a href="../../../../pt/docs/services/payments.html#payment-flows">link</a> para saber mais sobre fluxos de pagamento.</td>
+</tr>
+<tr>
+<td>Public Key</td>
+<td>Chave de API pública da <em><strong>Unidade de negócios</strong></em>.</td>
+</tr>
+<tr>
+<td>Ativar split e enviar recebedores?</td>
+<td>Selecione <code>Não</code> neste campo.</td>
+</tr>
+</tbody>
+</table>
+<p>Quando terminar, clique em <em><strong>Salvar</strong></em>.</p>
+<h4 id="configure-payment-methods">Configurar métodos de pagamento</h4>
+<p>Defina os métodos de pagamento a serem exibidos no site para pagamento. <a href="../../../../pt/docs/getting-started/select-your-payment-method.html">Veja nossos métodos de pagamento disponíveis</a>.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Importante</h4>
+<ul>
+<li>PSE (método colombiano de transferência bancária) não é suportado nesta versão do conector. Se você precisar configurar este método de pagamento, consulte o <a href="https://help.vtex.com/pt/tutorial/setting-up-payu-gateway--36zWOAFHmwIAoWIEU2Y08q">Procedimento para instalar o conector versão 1</a>.</li>
+<li>PIX não está disponível no Brasil usando VTEX.</li>
+<li>As alterações nas condições de pagamento podem levar até 10 minutos para serem aplicadas ao fluxo de pagamento.</li>
+</ul>
+
+</div>
+
+<h5 id="configure-credit-or-debit-cards">Configurar cartões de débito ou crédito</h5>
+<p>De acordo com seu <a href="../../../../pt/docs/getting-started/select-your-payment-method.html">país de processamento</a>, você pode configurar a afiliação que criou para usar cartões de crédito ou débito<sup>*</sup> . Siga estas instruções para adicionar esta forma de pagamento à sua loja VTEX.</p>
+<p><sup>*</sup> <em>O uso de cartões de débito depende do seu país de processamento.</em></p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Importante</h4>
+Clique <a href="#configure-co-branded-or-private-labels-cards">aqui</a> se quiser saber como configurar cartões co-branded ou bandeira própria
+</div>
+
+<ol>
+<li>Na opção Configuração (<em><strong>Transações</strong></em> &gt; <em><strong>Pagamentos</strong></em> &gt; <em><strong>Configurações</strong></em>), selecione a guia <em><strong>Condições de pagamento</strong></em> e clique no ícone de adição.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_12_pt.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Selecione o método de pagamento que deseja incluir. Os métodos de pagamento são agrupados por tipo.<br>Para nosso exemplo, selecionamos <em><strong>American Express</strong></em> na seção Cartão de crédito.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_13_pt.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Insira as seguintes informações.</li>
+</ol>
+<ul>
+<li><strong>Nome da Regra (para fácil identificação)</strong>: insira um nome significativo para a condição de pagamento ao lado do método de pagamento selecionada.</li>
+<li><strong>Status</strong>: selecione o status da condição de pagamento. Você só pode ter <strong>uma</strong> condição de pagamento ativa por método de pagamento.</li>
+<li><strong>Processar com a afiliação</strong>: selecione a afiliação do gateway configurada anteriormente.</li>
+<li><strong>À vista ou parcelado?</strong>: selecione <em><strong>À vista</strong></em><sup>*</sup>.</li>
+</ul>
+<p><sup>*</sup><em>O processamento de parcelas não é suportado</em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_14_pt.png" alt="PrintScreen"></p>
+<ol start="4">
+<li>Clique em <em><strong>Salvar</strong></em>. Quando você cria a condição de pagamento, ela é listada na guia <em><strong>Condições de pagamento</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_15_pt.png" alt="PrintScreen"></p>
+<h5 id="configure-co-branded-or-private-labels-cards">Configurar cartões co-branded ou bandeira própria</h5>
+<p>Os cartões co-branded ou bandeira própria são cartões emitidos por uma loja ou marca em associação com uma rede como AMEX, VISA, MasterCard, etc. Siga estas instruções para adicionar esta forma de pagamento à sua loja VTEX.</p>
+<ol>
+<li>Na opção Configuração (<em><strong>Transações</strong></em> &gt; <em><strong>Pagamentos</strong></em> &gt; <em><strong>Configurações</strong></em>), selecione a guia <em><strong>Pagamentos customizados</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_26_pt.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Nesta guia, você tem cinco (5) slots disponíveis para configurar cartões co-branded e bandeira própria. Neste exemplo, vamos configurar o cartão Colombian Codensa que é um cartão bandeira própria.<br>Clique em qualquer uma das caixas disponíveis na seção <em><strong>CCartões da Loja (Bandeira Própria)</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_27_pt.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Insira as seguintes informações usando as letras maiúsculas e minúsculas mostradas.</li>
+</ol>
+<ul>
+<li><strong>Nome</strong>: <code>Codensa</code>.</li>
+<li><strong>Descrição</strong>: <code>Codensa</code></li>
+<li><strong>Faixas de Bin</strong>: <code>590712-590712</code></li>
+<li><strong>Código de pagamento do adquirente</strong>: <code>codensa</code></li>
+</ul>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Para cartões <em>co-branded</em>, você deve selecionar a marca do mesmo.
+</div>
+
+<p><img src="../../../../assets/VTEX/VTEX_28_pt.png" alt="PrintScreen" width="60%"/><br></p>
+<p>Os valores restantes podem ser deixados como padrão. Use os seguintes valores para configurar cartões de marca compartilhada e de marca privada.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">País</th>
+<th>Nome</th>
+<th>Descrição</th>
+<th>Faixas de Bin</th>
+<th>Código de pagamento do adquirente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="../../../../assets/Argentina.png" width="25px"/></td>
+<td>Argencard</td>
+<td>Argencard</td>
+<td><code>501105-532362</code></td>
+<td>argencard</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="../../../../assets/Argentina.png" width="25px"/></td>
+<td>Cabal</td>
+<td>Cabal</td>
+<td><code>60423,60400,589657</code></td>
+<td>cabal</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="../../../../assets/Argentina.png" width="25px"/></td>
+<td>Cencosud</td>
+<td>Cencosud</td>
+<td><code>603493-603493</code></td>
+<td>cencosud</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="../../../../assets/Argentina.png" width="25px"/></td>
+<td>Naranja</td>
+<td>Naranja</td>
+<td><code>589562</code></td>
+<td>naranja</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="../../../../assets/Argentina.png" width="25px"/></td>
+<td>Shopping</td>
+<td>Shopping</td>
+<td><code>603488</code></td>
+<td>shopping</td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="../../../../assets/Colombia.png" width="25px"/></td>
+<td>Codensa</td>
+<td>Codensa</td>
+<td><code>590712-590712</code></td>
+<td>codensa</td>
+</tr>
+</tbody>
+</table>
+<p>Para mais informações sobre como configurar <a href="https://help.vtex.com/pt/tutorial/configurar-pagamentos-com-cartoes-de-loja-cobranded--jrkLK41IjuquUmyKUi86Q">co-branded</a> e <a href="https://help.vtex.com/pt/tutorial/configurar-pagamentos-com-cartoes-de-loja-bandeira-propria--428FgVdSGQUeAOoogkaIw4">bandeira própria</a>, consulte a central de ajuda da VTEX.</p>
+<ol start="4">
+<li>Clique em <em><strong>Salvar</strong></em>. Assim que o pagamento customizado for criado, você será redirecionado para a opção de criar um novo <em><strong>Condições de pagamento</strong></em>. Esta condição de pagamento é criada conforme explicado na seção <a href="#configure-credit-or-debit-cards">Configurar cartões de crédito ou débito</a>.</li>
+</ol>
+<h5 id="configure-cash-payment-methods">Configurar métodos de pagamento em dinheiro</h5>
+<p>Como as formas de pagamento à vista exigem que o cliente pague em escritórios físicos, você pode configurar essa forma de pagamento na VTEX como Notas Promissórias.</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Este procedimento não é obrigatório para <em>Boleto Bancário</em> no Brasil, basta configurar esta forma de pagamento como condição de pagamento.
+</div>
+
+<p>Ao configurar uma forma de pagamento em dinheiro, seus clientes são redirecionados para o checkout PayU para baixar o comprovante de pagamento e pagar no respectivo escritório físico. Siga as instruções abaixo para adicionar esta forma de pagamento à sua loja VTEX.</p>
+<ol>
+<li>Na opção Configuração (<em><strong>Transações</strong></em> &gt; <em><strong>Pagamentos</strong></em> &gt; <em><strong>Configurações</strong></em>), selecione a guia <em><strong>Pagamentos customizados</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_26_pt.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>Nesta guia, você tem cinco (5) slots disponíveis para configurar pagamentos em dinheiro. Neste exemplo, vamos configurar o <code>OXXO</code>, um método mexicano de pagamento em dinheiro.<br>Clique em qualquer uma das caixas disponíveis na seção <em><strong>Promissórias</strong></em>.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_29_pt.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>Insira as seguintes informações para o método de pagamento em dinheiro.</li>
+</ol>
+<ul>
+<li><strong>Nome</strong>: neste parâmetro, você precisa usar o valor mostrado <a href="../../../../pt/docs/getting-started/select-your-payment-method.html">aqui</a> na coluna <code>Parâmetro paymentMethod</code>. Para este exemplo, definimos <code>OXXO</code>.</li>
+<li><strong>Descrição</strong>: Insira a descrição que deseja exibir quando o cliente selecionar esta forma de pagamento. Este parâmetro é opcional.</li>
+<li><strong>Validade da promissória</strong>: Informe o número de dias antes do vencimento do pagamento em dinheiro. Por padrão, esse valor é atribuído a sete dias.</li>
+</ul>
+<p>Você deixa os outros parâmetros com seus valores padrão</p>
+<ol start="4">
+<li>Clique em <em><strong>Salvar</strong></em>. Assim que o pagamento customizado for criado, você será redirecionado para a opção de criar um novo <em><strong>Condições de pagamento</strong></em>. Esta condição de pagamento é criada conforme explicado na seção <a href="#configure-credit-or-debit-cards">Configurar cartões de crédito ou débito</a>.</li>
+</ol>
+<h2 id="testing-the-integration">Teste a integração</h2>
+<p>Depois de configurar as Condições de pagamento para seus métodos de pagamento, é recomendável testar a integração antes de começar a receber transações reais. Como pré-requisito, verifique se sua conta do PaymentsOS está no modo <code>TESTE</code>, bem como o <em><strong>Seletor de ambiente</strong></em> em sua <em><strong>Afiliação do Gateway</strong></em>.</p>
+<ol>
+<li>No VTEX admin, clique em <em><strong>VISIT A LOJA</strong></em> no painel superior.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_16_es.png" alt="PrintScreen"></p>
+<ol start="2">
+<li>A loja configurada para sua conta VTEX é aberta. Selecione qualquer produto e clique em comprar.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_17.png" alt="PrintScreen"></p>
+<ol start="3">
+<li>No carrinho de compras, clique no botão fechar pedido.</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_18.png" alt="PrintScreen"></p>
+<ol start="4">
+<li>Na seção de pagamento, aparecem os meios de pagamento agrupados por tipo. Selecione aquele que você deseja testar e insira os dados do teste. Encontre <a href="../../../../pt/docs/getting-started/test-your-solution.html#test-cards">aqui</a> alguns números de cartões de teste e informações para testar os status. <br>Finalmente, clique em Finalizar .</li>
+</ol>
+<p><img src="../../../../assets/VTEX/VTEX_19.png" alt="PrintScreen"></p>
+<p>Assim que a compra for aprovada, você poderá verificá-la em:</p>
+<ul>
+<li>VTEX admin: <em><strong>Pagamentos</strong></em> &gt; <em><strong>Transações</strong></em>.</li>
+</ul>
+<p><img src="../../../../assets/VTEX/VTEX_20_pt.png" alt="PrintScreen"></p>
+<ul>
+<li>
+<p>Painel de controle de PaymentsOS: <em><strong>Pagamentos</strong></em> &gt; <em><strong>Buscar</strong></em>.<br><br><img src="../../../../assets/VTEX/VTEX_21_pt.png" alt="PrintScreen"><br>O parâmetro <em><strong>ID de Transação Externa</strong></em> dentro de <em><strong>Atividade de Transação</strong></em> é o OrderID da PayU.</p>
+</li>
+<li>
+<p>Módulo PayU: no <a href="../../../../pt/payu-module-documentation/reports/sales-report.html"><em><strong>Relatório de Vendas</strong></em></a>.</p>
+</li>
+</ul>
+<p><img src="../../../../assets/VTEX/VTEX_22.png" alt="PrintScreen"></p>
+<ul>
+<li><a href="../../../../pt/docs/services/queries.html">Query API</a> usando o parâmetro <em><strong>ID de Transação Externa</strong></em> como OrderID.</li>
+</ul>
+<h3 id="testing-two-step-flows">Probar flujos de dos pasos</h3>
+<p>Quando você configura sua <em><strong>Afiliação do Gatewa</strong></em> para processar transações em fluxos de duas etapas, os fundos autorizados do cartão de crédito não são capturados até que você solicite explicitamente a captura. Para solicitar a captura, você precisa faturar o pedido.</p>
+<p>Para faturar um pedido, localize a transação no VTEX Admin (<em><strong>Pagamentos</strong></em> &gt; <em><strong>Transações</strong></em>) e clique sobre ela. Em seguida, clique no botão <em><strong>Pedido</strong></em> no canto superior direito.</p>
+<p><img src="../../../../assets/VTEX/VTEX_23_pt.png" alt="PrintScreen"></p>
+<p>Role para baixo até a seção Pacote e clique em <em><strong>Faturar pacote</strong></em>.</p>
+<p><img src="../../../../assets/VTEX/VTEX_24_pt.png" alt="PrintScreen"></p>
+<p>Forneça as informações da sua fatura e clique em <em><strong>Enviar Nota</strong></em> na parte inferior do painel. Após o envio da fatura ao cliente, o valor autorizado é debitado no cartão do cliente.</p>
+<p><img src="../../../../assets/VTEX/VTEX_25_pt.png" alt="PrintScreen"></p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Observação</h4>
+Um pedido autorizado pode ser cancelado usando o botão <em><strong>Cancelar pedido</strong></em> nas Informações do pedido. Ao cancelá-lo, a PayU envia uma transação <em>void</em> que é registrada tanto no Hub quanto na PayU Latam.
+</div>
+
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+Última modificação
+
+1 de junho de 2022:
+
+ <b>Reverse integration for VTEX (5eb41eee)</b>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="../../../../js/main.min.8c865aba183c7b45657c96d592a977547887a44cf70782e8996d3c3687a50bc5.js" integrity="sha256-jIZauhg8e0VlfJbVkql3VHiHpEz3B4LomW08NoelC8U=" crossorigin="anonymous"></script>
+
+
+<script src="../../../../js/scrollspy.js"></script>
+<script src="../../../../js/scrolltotoc.js"></script>
+
+  </body>
+</html>
