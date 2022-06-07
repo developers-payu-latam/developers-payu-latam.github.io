@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/en/docs/integrations/webcheckout-integration/confirmation-page.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T12:15:57-05:00" />
-<meta property="article:modified_time" content="2021-10-27T17:42:39-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-06-07T15:28:04-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Confirmation Page">
 <meta itemprop="description" content="This page allows you to get system confirmations related with the transaction results. You can update your system&#39;s inventories, orders, or databases. This page is not visible to the customer and its goal is to enable communication between systems. The data is sent via the HTTP POST method. &lt;/br&gt;If the payer generates payment retries during the payment process, a confirmation page is generated for each transaction. This page is invoked for approved and rejected states.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:57-05:00" />
-<meta itemprop="dateModified" content="2021-10-27T17:42:39-05:00" />
-<meta itemprop="wordCount" content="1415">
+<meta itemprop="dateModified" content="2022-06-07T15:28:04-05:00" />
+<meta itemprop="wordCount" content="1368">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Confirmation Page"/>
 <meta name="twitter:description" content="This page allows you to get system confirmations related with the transaction results. You can update your system&#39;s inventories, orders, or databases. This page is not visible to the customer and its goal is to enable communication between systems. The data is sent via the HTTP POST method. &lt;/br&gt;If the payer generates payment retries during the payment process, a confirmation page is generated for each transaction. This page is invoked for approved and rejected states.
@@ -141,7 +141,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.638fd619b0852d19356c34fdbffd248952bf90577336469cefa66404487900b46cdcc862a5bb1bd2bcfeb68d9101c984b44e12498300dac4bbc68ce94a45f761.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b3a3dbe9754f08bd4fcb9a28d504db154c5d137590ef8bc5b88966a5cbfa0f47d55eef48dad3fd416376be3a7f22e1a932eed0427f771ed97b905970941e9cef.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -829,7 +829,6 @@
 <li>If you&rsquo;re using HTTPS, you must have a valid certificate.</li>
 <li>The format of your confirmation page must be <code>x-www-form-urlencoded</code>.</li>
 <li>Do not use security certificates elliptic curve or those who have the suite of encryption <code>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</code> on your confirmation page.</li>
-<li>PayU assumes that the confirmation page is reported correctly when receives the HTTP 200 code; otherwise, PayU makes a maximum of nine (9) attempts to send the confirmation page to your system. If after these attempts, HTTP 200 code is not received, PayU sends an e-mail alert.</li>
 <li>PayU reports the confirmation page once the transaction has a final status for example, when approved, rejected or expired. If a transaction is in progress (waiting for payment or analysis), PayU does not report until the transaction has a final status.</li>
 </ul>
 <h2 id="variables-sent-with-the-confirmation-page">Variables sent with the confirmation page</h2>
@@ -1367,9 +1366,9 @@ state_pol=4
 	<div class="text-muted mt-5 pt-3 border-top">
 Last modified
 
-October 27, 2021:
+June 7, 2022:
 
- <b>Changes from the Production environment (5cb8fc1e)</b>
+ <b>Fixes in the confirmation page (f8d28d9d)</b>
 </div>
 </div>
 
