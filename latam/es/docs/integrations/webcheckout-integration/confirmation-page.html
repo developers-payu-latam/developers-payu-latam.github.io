@@ -27,13 +27,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/es/docs/integrations/webcheckout-integration/confirmation-page.html" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-03-29T12:15:57-05:00" />
-<meta property="article:modified_time" content="2022-03-11T14:59:57-05:00" /><meta property="og:site_name" content="PayU Latam" />
+<meta property="article:modified_time" content="2022-06-07T15:28:04-05:00" /><meta property="og:site_name" content="PayU Latam" />
 
 <meta itemprop="name" content="Página de confirmación">
 <meta itemprop="description" content="Esta página te permite obtener confirmaciones de sistema relacionadas con los resultados de la transacción. Puedes actualizar tus inventarios, órdenes o bases de datos. Está página no es visible para el cliente y su objetivo es permitir la comunicación entre sistemas. Los datos se envía a través del método HTTP POST. &lt;/br&gt;Si el pagador genera reintentos de pago durante el proceso, se genera una página de confirmación por cada transacción. Esta página es invocada por transacciones aprobadas o rechazadas.
 "><meta itemprop="datePublished" content="2021-03-29T12:15:57-05:00" />
-<meta itemprop="dateModified" content="2022-03-11T14:59:57-05:00" />
-<meta itemprop="wordCount" content="1484">
+<meta itemprop="dateModified" content="2022-06-07T15:28:04-05:00" />
+<meta itemprop="wordCount" content="1429">
 <meta itemprop="keywords" content="subtopic," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Página de confirmación"/>
 <meta name="twitter:description" content="Esta página te permite obtener confirmaciones de sistema relacionadas con los resultados de la transacción. Puedes actualizar tus inventarios, órdenes o bases de datos. Está página no es visible para el cliente y su objetivo es permitir la comunicación entre sistemas. Los datos se envía a través del método HTTP POST. &lt;/br&gt;Si el pagador genera reintentos de pago durante el proceso, se genera una página de confirmación por cada transacción. Esta página es invocada por transacciones aprobadas o rechazadas.
@@ -141,7 +141,7 @@
   aria-label="Buscar en este sitio…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="../../../../offline-search-index.638fd619b0852d19356c34fdbffd248952bf90577336469cefa66404487900b46cdcc862a5bb1bd2bcfeb68d9101c984b44e12498300dac4bbc68ce94a45f761.json"
+  data-offline-search-index-json-src="../../../../offline-search-index.b3a3dbe9754f08bd4fcb9a28d504db154c5d137590ef8bc5b88966a5cbfa0f47d55eef48dad3fd416376be3a7f22e1a932eed0427f771ed97b905970941e9cef.json"
   data-offline-search-base-href="../../../../"
 >
 
@@ -829,7 +829,6 @@
 <li>Si utilizas HTTPS, debes tener un certificado válido.</li>
 <li>El formato de tu página de confirmación debe ser <code>x-www-form-urlencoded</code>.</li>
 <li>No utilices certificados de seguridad de curva elíptica o aquellos que cuenten con la suite de encriptación <code>TLS_ECDHE_ECDSA_WITH_RC4_128_SHA</code> en tu página de confirmación.</li>
-<li>PayU asume que la página de confirmación es reportada correctamente cuando recibe el código HTTP 200; en caso contrario, PayU realiza un máximo de nueve (9) intentos de enviar la página de confirmación a tu sistema. Si luego de estos intentos no se recibe el código HTTP 200, PayU envía una alerta por correo electrónico.</li>
 <li>PayU reporta la página de confirmación una vez la transacción tenga un estado final, ed decir, cuando se aprueba, se rechaza o se vence. Si una transacción está en proceso (esperando pago o análisis), PayU no reporta hasta que la transacción tenga un estado final.</li>
 </ul>
 <h2 id="variables-sent-with-the-confirmation-page">Variables enviadas con la página de confirmación</h2>
@@ -1367,9 +1366,9 @@ state_pol=4
 	<div class="text-muted mt-5 pt-3 border-top">
 Última modificación
 
-11 de marzo de 2022:
+7 de junio de 2022:
 
- <b>3DS Authentication: service description updated (b1d6207b)</b>
+ <b>Fixes in the confirmation page (f8d28d9d)</b>
 </div>
 </div>
 
